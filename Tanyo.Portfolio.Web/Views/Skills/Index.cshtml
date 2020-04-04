@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Skill>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles {
+    <link href="~/lib/datatables/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="~/lib/datatables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+}
+
+<section class="portfolio_area section-margin pb-0" id="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="main_title">
+                    <p class="top_text">Updated 04/04/2020 <span></span></p>
+                    <h2>
+                        Here are most of my Skills
+                    </h2>
+                </div>
+            </div>
+            <div class="col-lg-3">
+            </div>
+        </div>
+
+        <div>
+            <h3>Tech Skills</h3>
+            <img style="margin-left: auto; margin-right: auto; display: block;" src="~/img/specs/chart.png" alt="Technologies chart" />
+            <div class="align-items-center">
+                <table id="tbl-skills" class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Points</th>
+                            <th scope="col">Years</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var skill in Model)
+                        {
+                            <tr>
+                                <th scope="row">@skill.Name</th>
+                                <td>@skill.Value / 10</td>
+                                <td>@skill.Years</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.js"></script>
+    <script src="~/js/custom/skills.js"></script>
+    <script>
+        $(function () {
+            skills.load();
+        });
+    </script>
+}

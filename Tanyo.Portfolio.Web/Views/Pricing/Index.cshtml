@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="portfolio_area section-margin pb-0" id="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="main_title">
+                    <p class="top_text">Updated 01/04/2020 <span></span></p>
+                    <h2>
+                        Here are my Prices Roughly
+                    </h2>
+                    <p>
+                        The prices could be negotiated.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <label for="employmentType">Employment Type</label>
+                <select id="employmentType" class="custom-select pricing-event">
+                    <option value="0">Permanent</option>
+                    <option value="1">Contract</option>
+                </select>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <label for="workLocation">Location</label>
+                <select id="workLocation" class="custom-select pricing-event">
+                    <option value="0">Onsite</option>
+                    <option value="1">Remote</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg col-md col-sm">
+                <div id="pricing-table"></div>
+                @*
+                    <span class="text-center" style="margin: 0 auto;">
+                        <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSZcY8GdaWZl1pvtdQ_AHYYrtkOAi5WG10ROj5NL1pwE0DKs7d1rObKGXyto89HQRcgyjQJAMmTHxnK/pubhtml?gid=0&amp;range=A3:F6" target="_blank">View sheet</a>
+                    </span>
+                *@
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script src="~/js/custom/pricing.js"></script>
+    <script>
+        $(function (e) {
+            $('#employmentType').val(1);
+            $('#workLocation').val(1);
+
+            pricing.loadPrices(1, 1);
+
+            $('.pricing-event').change(function (data) {
+                var employmentTypeId = $('#employmentType').val();
+                var locationId = $('#workLocation').val();
+                pricing.loadPrices(employmentTypeId, locationId);
+            });
+        });
+    </script>
+}

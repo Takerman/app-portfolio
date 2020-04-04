@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Brand>
+
+<section class="brands-area section_gap_bottom">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="owl-carousel brand-carousel">
+                    @foreach (var brand in Model)
+                    {
+                        <div class="single-brand-item d-table">
+                            <div class="d-table-cell">
+                                <a href="@brand.Url" target="_blank"><img src="/img/brands/@(brand.ImageName).png" alt=""></a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Post";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="blog_area single-post-area section-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 posts-list">
+                <div class="single-post">
+                    <div class="feature-img">
+                        <img class="img-fluid blog-post-image" src="/img/blog/main-blog/m-blog-1.jpg" alt="">
+                    </div>
+                    <div class="blog_details">
+                        <h2>
+                            Personal branding and portfolio completed
+                        </h2>
+                        <ul class="blog-info-link mt-3 mb-4">
+                            <li><i class="ti-user"></i> Tanyo Ivanov</li>
+                            <li><i class="ti-calendar"></i> Jan 01, 2020</li>
+                        </ul>
+                        <p class="excert">
+                            How and why I choose to change my employment style and to have personal branding. Teams that I joined.
+                        </p>
+                        <p>
+                            I studied many years and worked hard for so long, but i always wanted more fredom and flexability, more option to choose from and more free time to get my ideas into practice.<br />
+                            After 8 long years on permanent positions with average or low salary and working simutanously on 2 or 3 places i realised that the things are not happening as I wanted to happened.<br />
+                            I had good knowledge, but i wanted to be better too. I tried to work as small company alone and with some friends, but it was not successful in a long term.<br />
+                            After so many troubles I realised one thing: The best way of working for me is to be a CONTRACTOR. <br />
+                            <br />
+                            If I work as a contractor I will constantly improve myself, have more time and flexability, work hard for some period and rest for while after the end of the project. <br />
+                            Also I would be free to pass my knowledge to students and to contact with more contractors as me. That's the best option, and it's good that there are such options.<br />
+                            <br />
+                            My company <a href="https://takerman.net" target="_blank">TAKERMAN</a> is frozen from some years and not functioning.<br />
+                            I will check if I need to defreeze it or register as self employed.<br />
+                            <br />
+                            I am starting to change my way of thinking and to create a list with the Right things to do.<br />
+                            My branding is ready and my portfolio is online. I bought a course for contractors and I am improving myself in different areas as accounting etc.<br />
+                            <br />
+                            Soon I will be able to show to the people how I can help them and there would be no borders to tell me that some technologies are not the right for<br />
+                            that case.<br />
+                            <br />
+                            Follow my blog, there will be interestning posts.<br />
+                        </p>
+                        <div id="disqus_thread"></div>
+                        <script>
+                            const PAGE_URL = 'http://tanyo.takerman.net';
+                            const PAGE_IDENTIFIER = location.href;
+                            var disqus_config = function () {
+                                this.page.url = PAGE_URL;
+                                this.page.identifier = PAGE_IDENTIFIER;
+                            };
+                            (function () {
+                                var d = document, s = d.createElement('script');
+                                s.src = 'https://tanyo-takerman-net-1.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                            })();
+                        </script>
+                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Post";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="blog_area single-post-area section-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 posts-list">
+                <div class="single-post">
+                    <div class="blog_details">
+                        <h2>
+                            Design Patterns Package
+                        </h2>
+                        <ul class="blog-info-link mt-3 mb-4">
+                            <li><i class="ti-user"></i> Tanyo Ivanov</li>
+                            <li><i class="ti-calendar"></i> Mar 22, 2020</li>
+                        </ul>
+                        <p style="width: 60%; text-align: center; margin: auto; padding-bottom: 40px;">
+                            Hello friends,<br />
+                            Here you can find a package with Design Patterns which I made while watching
+                            a YouTube channel. There is explanation and a video about all of them.
+                        </p>
+                        <table style="width: 100%; margin-bottom: 40px;">
+                            <tr>
+                                <td>
+                                    <iframe width="420" height="315"
+                                            src="https://www.youtube.com/embed/phuYBWg2mG4">
+                                    </iframe>
+                                </td>
+                                <td class="text-center">
+                                    <strong>Here are the resources</strong><br />
+                                    <a target="_blank" href="https://www.youtube.com/watch?v=v9ejT8FO-7I&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=1">Design Patterns YouTube Playlist</a><br />
+                                    <a target="_blank" href="http://tanyo.takerman.net/files/DesignPatterns.zip">Download Design Patterns Package</a><br />
+                                    <a target="_blank" href="https://www.facebook.com/dev.tanyoivanov/">Facebook</a><br />
+                                    <a target="_blank" href="https://www.linkedin.com/in/tanyo-ivanov/">LinkedIn</a><br />
+                                    <a target="_blank" href="https://twitter.com/TanyoIvanov">Twitter</a><br />
+                                    <a target="_blank" href="https://www.instagram.com/ivanov.tanyo">Instagram</a><br />
+
+                                    Hope you enjoyed, see you in the next videos :)<br />
+                                    Regards,<br />
+                                    Tanyo Ivanov
+                                </td>
+                            </tr>
+                        </table>
+                        <div id="disqus_thread"></div>
+                        <script>
+                            const PAGE_URL = 'http://tanyo.takerman.net';
+                            const PAGE_IDENTIFIER = location.href;
+                            var disqus_config = function () {
+                                this.page.url = PAGE_URL;
+                                this.page.identifier = PAGE_IDENTIFIER;
+                            };
+                            (function () {
+                                var d = document, s = d.createElement('script');
+                                s.src = 'https://tanyo-takerman-net-1.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                            })();
+                        </script>
+                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

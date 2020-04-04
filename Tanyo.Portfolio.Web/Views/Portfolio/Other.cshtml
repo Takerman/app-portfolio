@@ -1,0 +1,108 @@
+﻿@{
+    ViewData["Title"] = "Other";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="portfolio_details_area">
+    <div class="container">
+        <div class="row">
+            <div class="offset-xl-1 col-xl-10">
+                <div class="portfolio_details_inner">
+                    <div class="row">
+                        <div class="col-12">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-7 mb-4 mb-lg-0">
+                            <article>
+                                <h3>2012 - Internal phone calls web reports</h3>
+                                <p>
+                                    <strong>About: </strong>Simple and well designed web application with a dropdown and a grid which shows the phone calls of the employee for this month. The data was taken from an Excel file exported from the  profile of the employeer. Started and delivered successfully.<br />
+                                    <strong>Tech:</strong> ASP.NET MVC3, Kendo MVC controls, Firebird DB, SQL, Javascript, HTML, CSS
+                                </p>
+                            </article>
+                            <article>
+                                <h3>2013 - Gambling websites</h3>
+                                <p>
+                                    <strong>About: </strong>Complicated projects with a lot of algorithms, high transactional systems with a lot of users and money transactions. Started before me and remained in development after me.<br />
+                                    <strong>Tech:</strong> ASP.NET WebForms, WEB API, Web Services, VB.NET, Kendo UI, MS SQL, a lot of Javascript, HTML, CSS, TFS
+                                </p>
+                            </article>
+                            <article>
+                                <h3>2014 - Mobile plan chooser</h3>
+                                <p>
+                                    <strong>About: </strong>Web application for choosing, configuring and buying mobile plan. Uses Ogone payment provider. Started and delivered successfully.<br />
+                                    <strong>Tech:</strong> ASP.NET MVC4, Bootstrap, WEB API, MS SQL, Entity Framework, Javascript, HTML, CSS
+                                </p>
+                            </article>
+                            <article>
+                                <h3>2019 - Email managing service</h3>
+                                <p>
+                                    <strong>About: </strong>Web API which receives and stores emails in Azure and distributes them in packages with a background job.<br />
+                                    <strong>Tech: </strong>APS.NET WEB API 5+, Azure Blob storage, MS SQL, Entity Framework, Swagger and more
+                                </p>
+                            </article>
+                            <article>
+                                <h3>2017 - Raspberry PI Cluster server with Docker Swarm Mode</h3>
+                                <p>
+                                    <strong>About: </strong>In my free time I created a webserver for my emails, websites etc. from 3 Raspberry PIs. They work as One virtual machine through the Docker swarm mode and can run multiple applications, scale them etc. As a cloud platform.<br />
+                                    <strong>Tech:</strong> Raspberry PI3 Model B, Docker Swarm, DietPi Linux, Bash, Linux
+                                </p>
+                                <div class="w3-row-padding">
+                                    <div class="w3-half">
+                                        <img src="./images/pi.jpg" style="width:100%; border: 1px solid black;" onclick="onClick(this)" alt="In my free time I created a webserver for my emails, websites etc. from 3 Raspberry PIs. They work as One virtual machine through the Docker swarm mode and can run multiple applications, scale them etc. As a cloud platform. Raspberry PI3 Model B, Docker Swarm, DietPi Linux, Bash, Linux">
+                                    </div>
+
+                                    <div class="w3-half">
+                                        <img src="./images/swarm.png" style="width:100%; border: 1px solid black;" onclick="onClick(this)" alt="That's a picture from a docker swarm running on the cluster server. The management portal which I'm using is Portainer.">
+                                    </div>
+                                </div>
+                                <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display=&#39;none&#39;">
+                                    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+                                    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+                                        <img id="img01" class="w3-image">
+                                        <p id="caption">
+                                            <strong>About: </strong>In my free time I created a webserver for my emails, websites etc. from 3 Raspberry PIs. They work as One virtual machine through the Docker swarm mode and can run multiple applications, scale them etc. As a cloud platform.<br />
+                                            <strong>Tech:</strong> Raspberry PI3 Model B, Docker Swarm, DietPi Linux, Bash, Linux
+                                        </p>
+                                    </div>
+                                </div>
+                            </article>
+                            <article>
+                                <h3>2018 - Design Patterns Package</h3>
+                                <p>
+                                    <strong>About: </strong>I wanted to create a package with design patterns which contains the most used design patterns so I will be able to learn them.<br />
+                                    <strong>Tech:</strong>C# <br />
+                                    <a href="~/files/DesignPatterns.zip"><button>Download</button></a>
+                                </p>
+                            </article>
+                            <article>
+                                <h3>2019 - Horoscope mobile application</h3>
+                                <p>
+                                    <strong>About: </strong>I wanted to learn how to create Android applications and to install one on my phone, just to try. So I started with a WEB API for horoscopes and displaying the daily horoscope through the mobile application.<br />
+                                    <strong>Tech:</strong> Framework7, HTML, CSS, Javascript.
+                                </p>
+                            </article>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="portfolio_right_text mt-30">
+                                <h4 class="text-uppercase">Project Info</h4>
+                                <p>
+                                    Desktop administration module for a Swiss university of Business. The module is used for the students grades.
+                                </p>
+                                <ul class="list">
+                                    <li>
+                                        <span>Rating</span>: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                    </li>
+                                    <li><span>Client</span>: HSO Business School</li>
+                                    <li><span>Website</span>: <a href="https://www.hso.ch/">hso.ch</a></li>
+                                    <li><span>Completed</span>: 14 Jan 2015</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

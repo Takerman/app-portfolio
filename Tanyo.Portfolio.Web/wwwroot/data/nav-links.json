@@ -1,0 +1,37 @@
+[
+  {
+    "action": "Index",
+    "controller": "Home",
+    "label": "Home"
+  },
+  {
+    "action": "Index",
+    "controller": "CV",
+    "label": "CV"
+  },
+  {
+    "action": "Index",
+    "controller": "Skills",
+    "label": "Skills"
+  },
+  {
+    "action": "Index",
+    "controller": "Pricing",
+    "label": "Pricing"
+  },
+  {
+    "action": "Index",
+    "controller": "Portfolio",
+    "label": "Portfolio"
+  },
+  {
+    "action": "Index",
+    "controller": "Blog",
+    "label": "Blog"
+  },
+  {
+    "action": "Index",
+    "controller": "Contact",
+    "label": "Contact"
+  }
+]

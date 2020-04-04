@@ -1,0 +1,200 @@
+[
+  {
+    "Value": 9,
+    "Name": ".NET Framework",
+    "Years": 7,
+    "Category": "Technology"
+  },
+  {
+    "Value": 9,
+    "Name": "ASP.NET",
+    "Years": 7,
+    "Category": "Technology"
+  },
+  {
+    "Value": 4,
+    "Name": "Bash",
+    "Years": 2,
+    "Category": "Language"
+  },
+  {
+    "Value": 6,
+    "Name": "CSS",
+    "Years": 6,
+    "Category": "Language"
+  },
+  {
+    "Value": 9,
+    "Name": "HTML",
+    "Years": 7,
+    "Category": "Language"
+  },
+  {
+    "Value": 8,
+    "Name": "HTML5",
+    "Years": 5,
+    "Category": "Language"
+  },
+  {
+    "Value": 4,
+    "Name": "IoT",
+    "Years": 2,
+    "Category": "Stream"
+  },
+  {
+    "Value": 8,
+    "Name": "JavaScript",
+    "Years": 6,
+    "Category": "Language"
+  },
+  {
+    "Value": 9,
+    "Name": "ASP.NET MVC",
+    "Years": 7,
+    "Category": "Technology"
+  },
+  {
+    "Value": 8,
+    "Name": "SQL",
+    "Years": 5,
+    "Category": "Language"
+  },
+  {
+    "Value": 6,
+    "Name": "T-SQL",
+    "Years": 5,
+    "Category": "Language"
+  },
+  {
+    "Value": 7,
+    "Name": "SQL-Server",
+    "Years": 5,
+    "Category": "Technology"
+  },
+  {
+    "Value": 4,
+    "Name": "Selenium",
+    "Years": 1,
+    "Category": "Technology"
+  },
+  {
+    "Value": 8,
+    "Name": "Windows Services",
+    "Years": 3,
+    "Category": "Technology"
+  },
+  {
+    "Value": 5,
+    "Name": "Amazon EC2",
+    "Years": 2,
+    "Category": "Technology"
+  },
+  {
+    "Value": 5,
+    "Name": "TypeScript",
+    "Years": 1,
+    "Category": "Language"
+  },
+  {
+    "Value": 6,
+    "Name": "Windows Server",
+    "Years": 5,
+    "Category": "Technology"
+  },
+  {
+    "Value": 9,
+    "Name": "Windows Forms",
+    "Years": 4,
+    "Category": "Technology"
+  },
+  {
+    "Value": 8,
+    "Name": "Agile",
+    "Years": 4,
+    "Category": "Stream"
+  },
+  {
+    "Value": 6,
+    "Name": "Tests Automation",
+    "Years": 1,
+    "Category": "Stream"
+  },
+  {
+    "Value": 9,
+    "Name": "C#",
+    "Years": 7,
+    "Category": "Language"
+  },
+  {
+    "Value": 8,
+    "Name": "Bootstrap",
+    "Years": 4,
+    "Category": "Technology"
+  },
+  {
+    "Value": 8,
+    "Name": "Entity Framework",
+    "Years": 7,
+    "Category": "Technology"
+  },
+  {
+    "Value": 8,
+    "Name": "ASP.NET Web API",
+    "Years": 5,
+    "Category": "Technology"
+  },
+  {
+    "Value": 6,
+    "Name": "Raspberry Pi",
+    "Years": 2,
+    "Category": "Stream"
+  },
+  {
+    "Value": 6,
+    "Name": "Load Testing",
+    "Years": 1,
+    "Category": "Stream"
+  },
+  {
+    "Value": 7,
+    "Name": "Design Patterns",
+    "Years": 1,
+    "Category": "Stream"
+  },
+  {
+    "Value": 3,
+    "Name": "Multi-Threeading",
+    "Years": 0,
+    "Category": "Stream"
+  },
+  {
+    "Value": 4,
+    "Name": "Async and Paralell",
+    "Years": 2,
+    "Category": "Stream"
+  },
+  {
+    "Value": 8,
+    "Name": "jQuery",
+    "Years": 5,
+    "Category": "Technology"
+  },
+  {
+    "Value": 7,
+    "Name": "Docker",
+    "Years": 1,
+    "Category": "Technology"
+  },
+  {
+    "Value": 6,
+    "Name": "Git",
+    "Years": 5,
+    "Category": "Technology"
+  },
+  {
+    "Value": 6,
+    "Name": "Linux/Unix",
+    "Years": 3,
+    "Category": "Stream"
+  }
+]

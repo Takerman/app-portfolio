@@ -1,0 +1,30 @@
+﻿@model Stats
+
+<section class="statistics_area">
+    <div class="container">
+        <div class="row justify-content-lg-start justify-content-center">
+            <div class="col-lg-2 col-md-3">
+                <div class="statistics_item">
+                    <h3><span class="counter">@Model.HappyCustomers</span>+</h3>
+                    <p>Happy Customer</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <div class="statistics_item">
+                    <h3><span class="counter">@Model.SolvedTickets</span>+</h3>
+                    <p>Ticket Solved</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <div class="statistics_item">
+                    <h3><span class="counter">@Model.AverageRating</span>/10</h3>
+                    <p>Average Rating</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div style="margin-top: 30px; margin-bottom: 60px;" class="trustpilot-widget" data-locale="en-US" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="5e5ad03c09f40400014b10e9" data-style-height="24px" data-style-width="100%" data-theme="light">
+    <a href="https://www.trustpilot.com/review/tanyo.takerman.net" target="_blank" rel="noopener">Trustpilot</a>
+</div>

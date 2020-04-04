@@ -1,0 +1,62 @@
+﻿<section class="section-margin">
+    <div class="container">
+        <div class="d-none d-sm-block mb-5 pb-4">
+            <div id="map" style="height: 480px;"></div>
+            <script src="/lib/gmaps.js/gmaps.min.js"></script>
+            <script>
+                function initMap() {
+                    var uluru = { lat: 42.151449299999996, lng: 24.763270799999997 };
+                    var map = new google.maps.Map(
+                        document.getElementById('map'), { zoom: 15, center: uluru });
+                    var marker = new google.maps.Marker({ position: uluru, map: map });
+                }
+            </script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5nwUNJjIK4NUyzix073RcwOZb8EsKy8E&callback=initMap" type="text/javascript"></script>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <h2 class="contact-title">Get in Touch</h2>
+            </div>
+            <div class="col-lg-8 mb-4 mb-lg-0">
+                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/shell.js"></script>
+                <script>
+                    hbspt.forms.create({
+                        portalId: "6846508",
+                        formId: "1e7c1f2d-57d7-4b9d-9e0e-5e0f9add410e"
+                    });
+                </script>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><i class="ti-home"></i></span>
+                    <div class="media-body">
+                        @*
+                            <h3>London, United Kingdom.</h3>
+                            <p>Battersea, SW11 5DN</p>
+                        *@
+                        <h3>Plovdiv, 4000</h3>
+                        <p>Bulgaria</p>
+                        @*<p>bul. Iztochen 80</p>*@
+                    </div>
+                </div>
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                    <div class="media-body">
+                        <h3><a href="tel:+447383721742">UK: +447383721742</a></h3>
+                        <h3 style="margin-top: 5px;"><a href="tel:+359879213817">BG: +359879213817</a></h3>
+                        <p style="margin-top: 10px;">Mon to Fri 9am to 6pm</p>
+                    </div>
+                </div>
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><i class="ti-email"></i></span>
+                    <div class="media-body">
+                        <h3><a href="mailto:support@colorlib.com">contact@takerman.net</a></h3>
+                        <p>Send me your query anytime!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

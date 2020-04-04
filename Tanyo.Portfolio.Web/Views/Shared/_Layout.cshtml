@@ -1,0 +1,54 @@
+﻿@{
+    var Model = (Layout)ViewData["Layout"];
+    Model.Header.Classes = Model.Banner != null ? "header_area header_inner_page" : "header_area";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="noindex" />
+    <meta name="geo.position" content="51.4726108; -0.1611423">
+    <meta name="geo.placename" content="London">
+    <meta name="geo.region" content="en">
+    <meta name="keywords" content="portfolio, developer, software, tanyo, ivanov, contractor, employee, programming, project, C#, asp, net, freelance, price, hour, day, month" />
+    <meta name="description" content="Portfolio of Tanyo Ivanov, a software developer with long experience. Order demo, check his projects and prices." />
+    <meta name="image" content="/img/about-us.png" />
+    <meta name="thumbnail" content="/img/about-us.png" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Tanyo Ivanov's Portfolio" />
+    <meta property="og:description" content="This is the portfolio of Tanyo Ivanov. .NET Full Stack Developer." />
+    <meta property="og:image" content="/img/about-us.png" />
+    <meta property="og:url" content="https://tanyoivanov.net" />
+    <meta property="og:site_name" content="Tanyo Ivanov's Portfolio" />
+    <meta name="twitter:title" content="Tanyo Ivanov's Portfolio">
+    <meta name="twitter:description" content="This is the portfolio of Tanyo Ivanov. .NET Full Stack Developer.">
+    <meta name="twitter:image" content="/img/about-us.png">
+    <meta name="twitter:site" content="@@TanyoIvanov">
+    <meta name="twitter:creator" content="@@TanyoIvanov">
+    <link rel="icon" href="/img/favicon.png" type="image/png">
+    <title>@Model.Head.Title</title>
+    <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/vendors/linericon/style.css">
+    <link rel="stylesheet" href="~/css/themify-icons.css">
+    <link rel="stylesheet" href="~/vendors/owl-carousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/vendors/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="~/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/vendors/nice-select/css/nice-select.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/custom.css">
+    @RenderSection("styles", required: false)
+</head>
+<body>
+    @await Html.PartialAsync("~/Views/Shared/Partials/Header.cshtml", Model.Header)
+    @if (Model.Banner != null)
+    {
+        await Html.RenderPartialAsync("~/Views/Shared/Partials/Banner.cshtml", Model.Banner);
+    }
+    @RenderBody()
+    @await Html.PartialAsync("~/Views/Shared/Partials/Footer.cshtml", Model.Footer)
+    @await Html.PartialAsync("~/Views/Shared/Partials/Scripts.cshtml")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

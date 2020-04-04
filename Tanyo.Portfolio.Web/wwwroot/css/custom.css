@@ -1,0 +1,81 @@
+﻿.button-box {
+    text-align: left;
+    margin-top: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.center-x {
+    display: block;
+    margin: auto;
+}
+
+#hso-mockup {
+    width: 518px;
+    height: 281px;
+}
+
+#harp-mockup {
+    width: 518px;
+    height: 281px;
+}
+
+#intranet-mockup {
+    width: 518px;
+    height: 200px;
+}
+
+#hso-diagram {
+    width: 518px;
+    height: 181px;
+}
+
+.card-img-blog {
+    width: 50%;
+    padding-left: 30px;
+}
+
+.header-image {
+    width: 70%;
+    height: 70%
+}
+
+#skills table {
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    width: 100%;
+}
+
+/* PRICING */
+#pricing-table {
+    margin-top: 30px;
+}
+
+    #pricing-table table {
+        margin-left: 0 auto;
+        margin-right: 0 auto;
+        color: black !important;
+        width: 100%;
+    }
+
+        #pricing-table table td {
+            background-color: #bcaed3 !important;
+            padding-left: 10px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+
+/* END PRICING */
+
+.blog-post-image {
+    width: 40%;
+    max-width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #e0e0e0;
+}
+
+.blog-post-thumbnail {
+    padding: 20px 50px 20px 50px;
+}
