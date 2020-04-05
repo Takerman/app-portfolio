@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Takerman.Portfolio.Web.Models
+namespace Tanyo.Portfolio.Web.Models
 {
     public class NavLink
     {

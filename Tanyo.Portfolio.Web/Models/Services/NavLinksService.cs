@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
-namespace Takerman.Portfolio.Web.Models.Services
+namespace Tanyo.Portfolio.Web.Models.Services
 {
     public class NavLinksService
     {

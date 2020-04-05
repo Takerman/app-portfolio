@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Takerman.Portfolio.Web
+namespace Tanyo.Portfolio.Web
 {
     public class Program
     {

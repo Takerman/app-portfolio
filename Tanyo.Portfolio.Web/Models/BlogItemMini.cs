@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Takerman.Portfolio.Web.Models
+namespace Tanyo.Portfolio.Web.Models
 {
     public class BlogItemMini
     {

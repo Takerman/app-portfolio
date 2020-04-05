@@ -1,4 +1,4 @@
-﻿namespace Takerman.Portfolio.Web.Models.Partials
+﻿namespace Tanyo.Portfolio.Web.Models.Partials
 {
     public class Stats
     {

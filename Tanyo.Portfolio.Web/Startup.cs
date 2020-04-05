@@ -2,15 +2,19 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Options;
 using System.Globalization;
-using Takerman.Portfolio.Web.Models.Services;
-using Takerman.Portfolio.Web.Resources;
+using Tanyo.Portfolio.Web.Models.Services;
+using Tanyo.Portfolio.Web.Resources;
+using Tanyo.Portfolio.Web.Services;
 
-namespace Takerman.Portfolio.Web
+namespace Tanyo.Portfolio.Web
 {
     public class Startup
     {
@@ -21,18 +25,20 @@ namespace Takerman.Portfolio.Web
 
         public IConfiguration Configuration { get; }
 
-        public const string DefaultCulture = "en-US";
+        public const string DefaultCulture = "en-GB";
 
         public readonly CultureInfo[] SupportedCultures = new[]
         {
             new CultureInfo(DefaultCulture),
+            new CultureInfo("de"),
+            new CultureInfo("ru"),
             new CultureInfo("bg")
         };
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddLocalization(options => options.ResourcesPath = "Resources");
 
             services.AddMvc(option => option.EnableEndpointRouting = false)
@@ -41,25 +47,19 @@ namespace Takerman.Portfolio.Web
 
             services.AddTransient<NavLinksService>();
             services.AddTransient<SkillsService>();
+            services.AddSingleton<SharedLocalizationService>();
 
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 options.DefaultRequestCulture = new RequestCulture(culture: DefaultCulture, uiCulture: DefaultCulture);
-
                 options.SupportedCultures = SupportedCultures;
-
                 options.SupportedUICultures = SupportedCultures;
-
-                options.AddInitialRequestCultureProvider(new CustomRequestCultureProvider(async context =>
-                {
-                    return new ProviderCultureResult("en");
-                }));
             });
 
             services.AddHttpsRedirection(options =>
             {
                 options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
-                options.HttpsPort = 443; // dev = 5001
+                options.HttpsPort = 443;
             });
         }
 
@@ -86,12 +86,9 @@ namespace Takerman.Portfolio.Web
 
             app.UseStatusCodePages();
 
-            app.UseRequestLocalization(new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture(DefaultCulture),
-                SupportedCultures = SupportedCultures,
-                SupportedUICultures = SupportedCultures
-            });
+            var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+
+            app.UseRequestLocalization(options.Value);
 
             app.UseEndpoints(endpoints =>
             {

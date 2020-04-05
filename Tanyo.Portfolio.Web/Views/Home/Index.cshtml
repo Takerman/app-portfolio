@@ -1,10 +1,9 @@
-﻿@using Takerman.Portfolio.Web.Models
-@using Takerman.Portfolio.Web.Models.Partials
-@inject IViewLocalizer Localizer
-@inject IHtmlLocalizer<SharedResource> SharedLocalizer
+﻿@page
+@using Tanyo.Portfolio.Web.Models.Partials
+@inject SharedLocalizationService localizer
 @{
-    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <section class="home_banner_area" style="background: url(/img/profile/home-banner.png) no-repeat top center;">
@@ -13,7 +12,7 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-6">
                     <div class="banner_content">
-                        <h3>@Localizer["HEY THERE"] !</h3>
+                        <h3>@localizer.Get("hey-there") !</h3>
                         <h1 class="text-uppercase">I'M TANYO IVANOV</h1>
                         <h5 class="text-uppercase">.NET Application Developer</h5>
                         <div class="social_icons my-5">

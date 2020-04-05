@@ -7,19 +7,16 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 using System.Reflection;
-using Takerman.Portfolio.Web.Models;
-using Takerman.Portfolio.Web.Models.Filters;
-using Takerman.Portfolio.Web.Models.Services;
-using Takerman.Portfolio.Web.Resources;
+using Tanyo.Portfolio.Web.Models;
+using Tanyo.Portfolio.Web.Models.Filters;
+using Tanyo.Portfolio.Web.Models.Services;
+using Tanyo.Portfolio.Web.Resources;
 
-namespace Takerman.Portfolio.Web.Areas.Tanyo.Controllers
+namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
     [TanyoLayoutActionFilter]
     public abstract class BaseController : Controller
     {
-        private readonly IStringLocalizer _localizer;
-        private readonly IHtmlLocalizer<SharedResource> _sharedLocalizer;
-
         public Layout Layout { get; set; }
 
         protected ILogger<BaseController> _logger;
@@ -27,17 +24,10 @@ namespace Takerman.Portfolio.Web.Areas.Tanyo.Controllers
         public string Area { get; set; }
 
         public BaseController(ILogger<BaseController> logger,
-            NavLinksService navLinksService,
-            IStringLocalizer<BaseController> localizer,
-            IHtmlLocalizer<SharedResource> sharedLocalizer,
-            IStringLocalizerFactory factory)
+            NavLinksService navLinksService)
         {
-            _localizer = localizer;
-            _sharedLocalizer = sharedLocalizer;
-
             var type = typeof(SharedResource);
             var assemblyName = new AssemblyName(type.GetTypeInfo().Assembly.FullName);
-            _localizer = factory.Create("SharedResource", assemblyName.Name);
 
             this.Area = "Tanyo";
 

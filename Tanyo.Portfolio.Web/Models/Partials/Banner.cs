@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Takerman.Portfolio.Web.Models
+namespace Tanyo.Portfolio.Web.Models
 {
     public class Banner
     {

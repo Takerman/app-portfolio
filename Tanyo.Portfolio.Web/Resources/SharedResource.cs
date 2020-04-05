@@ -1,4 +1,4 @@
-﻿namespace Takerman.Portfolio.Web.Resources
+﻿namespace Tanyo.Portfolio.Web.Resources
 {
     public class SharedResource
     {

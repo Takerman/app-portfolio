@@ -4,11 +4,11 @@ using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
-using Takerman.Portfolio.Web.Models;
-using Takerman.Portfolio.Web.Models.Services;
-using Takerman.Portfolio.Web.Resources;
+using Tanyo.Portfolio.Web.Models;
+using Tanyo.Portfolio.Web.Models.Services;
+using Tanyo.Portfolio.Web.Resources;
 
-namespace Takerman.Portfolio.Web.Areas.Tanyo.Controllers
+namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
     public class SkillsController : BaseController
     {
@@ -16,10 +16,7 @@ namespace Takerman.Portfolio.Web.Areas.Tanyo.Controllers
 
         public SkillsController(ILogger<BaseController> logger,
             NavLinksService navLinksService,
-            SkillsService skillsService,
-            IStringLocalizer<SkillsController> localizer,
-            IHtmlLocalizer<SharedResource> sharedLocalizer,
-            IStringLocalizerFactory factory) : base(logger, navLinksService, localizer, sharedLocalizer, factory)
+            SkillsService skillsService) : base(logger, navLinksService)
         {
             _skillsService = skillsService;
         }

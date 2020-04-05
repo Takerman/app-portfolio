@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 
-namespace Takerman.Portfolio.Web.Models.Filters
+namespace Tanyo.Portfolio.Web.Models.Filters
 {
     public class TanyoLayoutActionFilter : Attribute, IActionFilter
     {

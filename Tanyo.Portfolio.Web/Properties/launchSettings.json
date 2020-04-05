@@ -14,7 +14,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Takerman.Portfolio.Web": {
+    "Tanyo.Portfolio.Web": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
