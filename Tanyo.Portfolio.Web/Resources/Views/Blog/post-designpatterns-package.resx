@@ -117,7 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="hey-there" xml:space="preserve">
-    <value>Hallo</value>
+  <data name="String1" xml:space="preserve">
+    <value>Design Patterns Package</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value>Tanyo Ivanov</value>
+  </data>
+  <data name="String3" xml:space="preserve">
+    <value>Hello friends</value>
+  </data>
+  <data name="String4" xml:space="preserve">
+    <value>Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them.</value>
+  </data>
+  <data name="String5" xml:space="preserve">
+    <value>Design Patterns YouTube Playlist</value>
+  </data>
+  <data name="String6" xml:space="preserve">
+    <value>Download Design Patterns Package</value>
+  </data>
+  <data name="String7" xml:space="preserve">
+    <value>Hope you enjoyed, see you in the next videos</value>
+  </data>
+  <data name="String8" xml:space="preserve">
+    <value>Regards</value>
   </data>
 </root>

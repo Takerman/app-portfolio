@@ -14,14 +14,47 @@
 
   <ItemGroup>
     <Content Remove="bundleconfig.json" />
-    <Content Remove="wwwroot\js\site.min.js" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Views\Portfolio\Egain.cshtml_bak" />
-    <None Remove="Views\Portfolio\Harp.cshtml_bak" />
-    <None Remove="Views\Portfolio\Hso.cshtml_bak" />
-    <None Remove="Views\Portfolio\Intranet.cshtml_bak" />
+    <EmbeddedResource Remove="Resources\Views\Blog\bak-post-portfiolio-has-been-released.resx" />
+    <EmbeddedResource Remove="Resources\Views\Blog\Index.resx" />
+    <EmbeddedResource Remove="Resources\Views\Blog\post-designpatterns-package.resx" />
+    <EmbeddedResource Remove="Resources\Views\Blog\post-prices-listed.resx" />
+    <EmbeddedResource Remove="Resources\Views\Blog\post-raspberrypi-home-automation.resx" />
+    <EmbeddedResource Remove="Resources\Views\Contact\Index.resx" />
+    <EmbeddedResource Remove="Resources\Views\CV\Index.resx" />
+    <EmbeddedResource Remove="Resources\Views\Home\Index.resx" />
+    <EmbeddedResource Remove="Resources\Views\Portfolio\Hobby.resx" />
+    <EmbeddedResource Remove="Resources\Views\Portfolio\Index.resx" />
+    <EmbeddedResource Remove="Resources\Views\Portfolio\Other.resx" />
+    <EmbeddedResource Remove="Resources\Views\Portfolio\Various.resx" />
+    <EmbeddedResource Remove="Resources\Views\Pricing\Index.resx" />
+    <EmbeddedResource Remove="Resources\Views\Shared\Error.resx" />
+    <EmbeddedResource Remove="Resources\Views\Shared\Partials\About.resx" />
+    <EmbeddedResource Remove="Resources\Views\Shared\Partials\Banner.resx" />
+    <EmbeddedResource Remove="Resources\Views\Shared\Partials\Blog.resx" />
+    <EmbeddedResource Remove="Resources\Views\Shared\Partials\Brands.resx" />
+    <EmbeddedResource Remove="Resources\Views\Shared\Partials\Contact.resx" />
+    <EmbeddedResource Remove="Resources\Views\Shared\Partials\Footer.resx" />
+    <EmbeddedResource Remove="Resources\Views\Shared\Partials\Head.resx" />
+    <EmbeddedResource Remove="Resources\Views\Shared\Partials\Header.resx" />
+    <EmbeddedResource Remove="Resources\Views\Shared\Partials\Localizer.resx" />
+    <EmbeddedResource Remove="Resources\Views\Shared\Partials\Portfolio.resx" />
+    <EmbeddedResource Remove="Resources\Views\Shared\Partials\ProgressBars.resx" />
+    <EmbeddedResource Remove="Resources\Views\Shared\Partials\Scripts.resx" />
+    <EmbeddedResource Remove="Resources\Views\Shared\Partials\Services.resx" />
+    <EmbeddedResource Remove="Resources\Views\Shared\Partials\Stats.resx" />
+    <EmbeddedResource Remove="Resources\Views\Shared\Partials\Testimonial.resx" />
+    <EmbeddedResource Remove="Resources\Views\Shared\_Layout.resx" />
+    <EmbeddedResource Remove="Resources\Views\Skills\Index.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Views\Portfolio\Egain.cshtml_bak" />
+    <None Remove="Resources\Views\Portfolio\Harp.cshtml_bak" />
+    <None Remove="Resources\Views\Portfolio\Hso.cshtml_bak" />
+    <None Remove="Resources\Views\Portfolio\Intranet.cshtml_bak" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,15 +62,48 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Views\Portfolio\Egain.cshtml_bak" />
-    <Content Include="Views\Portfolio\Harp.cshtml_bak" />
-    <Content Include="Views\Portfolio\Hso.cshtml_bak" />
-    <Content Include="Views\Portfolio\Intranet.cshtml_bak" />
+    <Content Include="Resources\Views\Blog\bak-post-portfiolio-has-been-released.resx" />
+    <Content Include="Resources\Views\Blog\Index.resx" />
+    <Content Include="Resources\Views\Blog\post-designpatterns-package.resx" />
+    <Content Include="Resources\Views\Blog\post-prices-listed.resx" />
+    <Content Include="Resources\Views\Blog\post-raspberrypi-home-automation.resx" />
+    <Content Include="Resources\Views\Contact\Index.resx" />
+    <Content Include="Resources\Views\CV\Index.resx" />
+    <Content Include="Resources\Views\Home\Index.resx" />
+    <Content Include="Resources\Views\Portfolio\Egain.cshtml_bak" />
+    <Content Include="Resources\Views\Portfolio\Harp.cshtml_bak" />
+    <Content Include="Resources\Views\Portfolio\Hobby.resx" />
+    <Content Include="Resources\Views\Portfolio\Hso.cshtml_bak" />
+    <Content Include="Resources\Views\Portfolio\Index.resx" />
+    <Content Include="Resources\Views\Portfolio\Intranet.cshtml_bak" />
+    <Content Include="Resources\Views\Portfolio\Other.resx" />
+    <Content Include="Resources\Views\Portfolio\Various.resx" />
+    <Content Include="Resources\Views\Pricing\Index.resx" />
+    <Content Include="Resources\Views\Shared\Error.resx" />
+    <Content Include="Resources\Views\Shared\Partials\About.resx" />
+    <Content Include="Resources\Views\Shared\Partials\Banner.resx" />
+    <Content Include="Resources\Views\Shared\Partials\Blog.resx" />
+    <Content Include="Resources\Views\Shared\Partials\Brands.resx" />
+    <Content Include="Resources\Views\Shared\Partials\Contact.resx" />
+    <Content Include="Resources\Views\Shared\Partials\Footer.resx" />
+    <Content Include="Resources\Views\Shared\Partials\Head.resx" />
+    <Content Include="Resources\Views\Shared\Partials\Header.resx" />
+    <Content Include="Resources\Views\Shared\Partials\Localizer.resx" />
+    <Content Include="Resources\Views\Shared\Partials\Portfolio.resx" />
+    <Content Include="Resources\Views\Shared\Partials\ProgressBars.resx" />
+    <Content Include="Resources\Views\Shared\Partials\Scripts.resx" />
+    <Content Include="Resources\Views\Shared\Partials\Services.resx" />
+    <Content Include="Resources\Views\Shared\Partials\Stats.resx" />
+    <Content Include="Resources\Views\Shared\Partials\Testimonial.resx" />
+    <Content Include="Resources\Views\Shared\_Layout.resx" />
+    <Content Include="Resources\Views\Skills\Index.resx" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.447" />
+    <PackageReference Include="BundlerMinifier.Core" Version="3.2.447" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -66,7 +132,6 @@
     <None Include="wwwroot\img\portfolio\p4.png.kra" />
     <None Include="wwwroot\img\portfolio\p5.png.kra" />
     <None Include="wwwroot\img\portfolio\p6.png.kra" />
-    <None Include="wwwroot\js\site.min.js" />
     <None Include="wwwroot\vendors\bootstrap-datepicker\bootstrap-datetimepicker.min.js" />
     <None Include="wwwroot\vendors\bootstrap-datepicker\bootstrap-select.js" />
     <None Include="wwwroot\vendors\flipclock\timer.js" />
@@ -97,12 +162,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resources\SharedResource.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\SharedResource.de.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Resources\SharedResource.bg.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>

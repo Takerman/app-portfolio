@@ -2,6 +2,8 @@
 {
     public class Project
     {
+        public int ID { get; set; }
+        public bool IsPrivate { get; set; }
         public string Title { get; set; }
         public string Location { get; set; }
         public string Client { get; set; }

@@ -1,19 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Localization;
-using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Linq;
 using Tanyo.Portfolio.Web.Models;
 using Tanyo.Portfolio.Web.Models.Services;
-using Tanyo.Portfolio.Web.Resources;
 
 namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
     public class PortfolioController : BaseController
     {
+        private readonly ProjectsService _projectsService;
+
         public PortfolioController(ILogger<BaseController> logger,
-            NavLinksService navLinksService) : base(logger, navLinksService)
+            NavLinksService navLinksService,
+            ProjectsService projectsService) : base(logger, navLinksService)
         {
+            _projectsService = projectsService;
         }
 
         public IActionResult Index()
@@ -26,7 +28,22 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
                 new NavLink(){ Action = "Index", Controller = "Portfolio", Label = "Portfolio" },
             };
 
-            var model = new Models.Partials.Portfolio();
+            var model = _projectsService.GetAll().Where(x => x.IsPrivate == false).ToList();
+            return View(model);
+        }
+
+        public IActionResult Confidential()
+        {
+            Layout.Head.Title = "Portfolio | " + Layout.Head.Title + " | .NET Developer";
+            Layout.Banner.Title = "Portfolio";
+            Layout.Banner.NavLinks = new List<NavLink>()
+            {
+                new NavLink(){ Action = "Index", Controller = "Home", Label = "Home" },
+                new NavLink(){ Action = "Index", Controller = "Portfolio", Label = "Portfolio" },
+                new NavLink(){ Action = "Confidential", Controller = "Portfolio", Label = "Confidential" }
+            };
+
+            var model = _projectsService.GetAll().ToList();
             return View(model);
         }
 

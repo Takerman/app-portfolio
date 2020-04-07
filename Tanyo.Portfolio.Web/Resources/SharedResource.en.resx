@@ -118,6 +118,57 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="hey-there" xml:space="preserve">
-    <value>Hey There</value>
+    <value>HEY THERE</value>
+  </data>
+  <data name="Jan" xml:space="preserve">
+    <value>Jan</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Feb</value>
+  </data>
+  <data name="String10" xml:space="preserve">
+    <value>Nov</value>
+  </data>
+  <data name="String11" xml:space="preserve">
+    <value>Dec</value>
+  </data>
+  <data name="String12" xml:space="preserve">
+    <value>Tanyo Ivanov</value>
+  </data>
+  <data name="String13" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="String14" xml:space="preserve">
+    <value>LinkedIn</value>
+  </data>
+  <data name="String15" xml:space="preserve">
+    <value>Twitter</value>
+  </data>
+  <data name="String16" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value>Mar</value>
+  </data>
+  <data name="String3" xml:space="preserve">
+    <value>Apr</value>
+  </data>
+  <data name="String4" xml:space="preserve">
+    <value>May</value>
+  </data>
+  <data name="String5" xml:space="preserve">
+    <value>Jun</value>
+  </data>
+  <data name="String6" xml:space="preserve">
+    <value>Jul</value>
+  </data>
+  <data name="String7" xml:space="preserve">
+    <value>Aug</value>
+  </data>
+  <data name="String8" xml:space="preserve">
+    <value>Sep</value>
+  </data>
+  <data name="String9" xml:space="preserve">
+    <value>Oct</value>
   </data>
 </root>

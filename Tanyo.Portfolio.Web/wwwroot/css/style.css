@@ -4012,7 +4012,7 @@ h6 {
     /* Footer Area css
 	============================================================================================ */
     .footer_area {
-        padding-top: 80px !important;
+        padding-top: 40px !important;
         padding-bottom: 80px !important;
         background-image: none !important;
         background-color: #fcf8ff;
@@ -4302,13 +4302,13 @@ h6 {
 ============================================================================================ */
 .footer_area {
     background: #021017;
-    padding: 120px 0;
+    padding: 40px 0;
     position: relative;
 }
 
 @media (max-width: 1024px) {
     .footer_area {
-        padding: 60px 0;
+        padding: 40px 0;
     }
 }
 

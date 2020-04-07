@@ -23,14 +23,14 @@
                             <a href="https://twitter.com/TanyoIvanov" target="_blank" title="Twitter"><i class="ti-twitter-alt"></i></a>
                             <a href="https://www.github.com/takerman" target="_blank" title="GitHub"><i class="ti-github"></i></a>
                             <a href="https://meetings.hubspot.com/contact683" target="_blank" title="Schedule a meeting" class="text-sm-left"><i class="ti-calendar"></i> schedule</a>
-                        </div>
-                        <div class="fb-like"
-                             data-href="https://tanyoivanov.net"
-                             data-show-faces="true"
-                             data-layout="button_count"
-                             data-action="like"
-                             data-size="small"
-                             data-share="true">
+                            <div class="fb-like"
+                                 data-href="https://tanyoivanov.net"
+                                 data-show-faces="true"
+                                 data-layout="button_count"
+                                 data-action="like"
+                                 data-size="small"
+                                 data-share="true">
+                            </div>
                         </div>
                         <div class="button-box col-lg-12">
                             <a class="primary_btn" role="button" href="@Url.ActionLink("Index", "Portfolio")"><span>PORTFOLIO</span></a>
@@ -52,5 +52,4 @@
 @await Html.PartialAsync("~/Views/Shared/Partials/About.cshtml")
 @await Html.PartialAsync("~/Views/Shared/Partials/Services.cshtml")
 @await Html.PartialAsync("~/Views/Shared/Partials/Testimonial.cshtml")
-@await Html.PartialAsync("~/Views/Shared/Partials/Portfolio.cshtml", new Portfolio())
 @await Html.PartialAsync("~/Views/Shared/Partials/Blog.cshtml", new Blog(3))

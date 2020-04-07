@@ -79,3 +79,11 @@
 .blog-post-thumbnail {
     padding: 20px 50px 20px 50px;
 }
+
+.fb-like {
+    top: -7px !important;
+}
+
+.trustpilot-widget {
+    margin-bottom: 100px;
+}

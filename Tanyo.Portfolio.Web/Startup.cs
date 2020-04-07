@@ -2,12 +2,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 using System.Globalization;
 using Tanyo.Portfolio.Web.Models.Services;
@@ -30,8 +28,6 @@ namespace Tanyo.Portfolio.Web
         public readonly CultureInfo[] SupportedCultures = new[]
         {
             new CultureInfo(DefaultCulture),
-            new CultureInfo("de"),
-            new CultureInfo("ru"),
             new CultureInfo("bg")
         };
 
@@ -45,9 +41,10 @@ namespace Tanyo.Portfolio.Web
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                 .AddDataAnnotationsLocalization(options => { options.DataAnnotationLocalizerProvider = (type, factory) => factory.Create(typeof(SharedResource)); });
 
+            services.AddSingleton<SharedLocalizationService>();
             services.AddTransient<NavLinksService>();
             services.AddTransient<SkillsService>();
-            services.AddSingleton<SharedLocalizationService>();
+            services.AddTransient<ProjectsService>();
 
             services.Configure<RequestLocalizationOptions>(options =>
             {

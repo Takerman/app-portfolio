@@ -1,0 +1,74 @@
+[
+  {
+    "ID": 1,
+    "Title": "Various short term projects",
+    "Location": "",
+    "Client": "List with various short term projects",
+    "Image": "/img/portfolio/p1.png",
+    "Name": "Various",
+    "Type": "Other",
+    "SizeLg": 6,
+    "SizeMd": 6,
+    "IsPrivate": false
+  },
+  {
+    "ID": 2,
+    "Title": "Intranet",
+    "Location": "London, United Kingdom",
+    "Client": "Foster + Partners",
+    "Image": "/img/portfolio/p4.png",
+    "Name": "Intranet",
+    "Type": "Web",
+    "SizeLg": 6,
+    "SizeMd": 6,
+    "IsPrivate": true
+  },
+  {
+    "ID": 3,
+    "Title": "HSO Business School",
+    "Location": "Zurich, Switzerland",
+    "Client": "BuCons",
+    "Image": "/img/portfolio/p2.png",
+    "Name": "HSO",
+    "Type": "Desktop",
+    "SizeLg": 3,
+    "SizeMd": 6,
+    "IsPrivate": true
+  },
+  {
+    "ID": 4,
+    "Title": "HARP - contribution",
+    "Location": "United Kingdom",
+    "Client": "BGO Software",
+    "Image": "/img/portfolio/p3.png",
+    "Name": "HARP",
+    "Type": "Web",
+    "SizeLg": 3,
+    "SizeMd": 6,
+    "IsPrivate": true
+  },
+  {
+    "ID": 5,
+    "Title": "Receiver installer",
+    "Location": "Gothernburg, Sweden",
+    "Client": "Comstream",
+    "Image": "/img/portfolio/p5.png",
+    "Name": "Egain",
+    "Type": "Web",
+    "SizeLg": 6,
+    "SizeMd": 6,
+    "IsPrivate": true
+  },
+  {
+    "ID": 6,
+    "Title": "As Hobby",
+    "Location": "Home",
+    "Client": "Me",
+    "Image": "/img/portfolio/p6.png",
+    "Name": "Hobby",
+    "Type": "Other",
+    "SizeLg": 6,
+    "SizeMd": 6,
+    "IsPrivate": false
+  }
+]
