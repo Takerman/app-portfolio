@@ -9,10 +9,12 @@
       "wwwroot/vendors/fontawesome/css/all.min.css",
       "wwwroot/vendors/owl-carousel/owl.carousel.min.css",
       "wwwroot/css/magnific-popup.css",
-      "wwwroot/vendors/nice-select/css/nice-select.css",
-      "wwwroot/css/style.css",
-      "wwwroot/css/custom.css"
-    ]
+      "wwwroot/vendors/nice-select/css/nice-select.css"
+    ],
+    "minify": {
+      "enabled": true
+    },
+    "sourceMap": false
   },
   {
     "outputFileName": "wwwroot/js/site.js",
@@ -29,6 +31,11 @@
       "wwwroot/js/theme.js",
       "wwwroot/js/custom/ga.js",
       "wwwroot/js/custom/main.js"
-    ]
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
   }
 ]
