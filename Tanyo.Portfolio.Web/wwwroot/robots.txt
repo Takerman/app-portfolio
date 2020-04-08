@@ -1,3 +1,4 @@
-﻿User-agent: *
-Disallow: /data/
-Disallow: /vendors/
+Sitemap: https://tanyo.takerman.net/sitemap.xml
+User-agent: *
+Allow: /
+Allow: /sitemap.htm

@@ -3,6 +3,29 @@
 <script src="https://www.googletagmanager.com/gtag/js?id=UA-162800673-1" async></script>
 <script src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=2899110347083020&autoLogAppEvents=1"></script>
-<script type="application/ld+json" src="~/js/custom/social.js">
+<script type="application/ld+json">
+    {
+    "@Html.Raw("@")context": "http://schema.org",
+    "@Html.Raw("@")typ": "Organization",
+    "name": "Takerman",
+    "url": "https://tanyo.takerman.net",
+    "sameAs": [
+    "https://www.facebook.com/dev.tanyoivanov",
+    "https://twitter.com/TanyoIvanov",
+    "https://www.linkedin.com/in/tanyo-ivanov"
+    "https://www.fiverr.com/takerman?up_rollout=true",
+    "https://www.instagram.com/ivanov.tanyo/?hl=bg"
+    ],
+    "address": {
+    "@Html.Raw("@")type": "Plovdiv 4000",
+    "streetAddress": "bul. Iztochen 80",
+    "addressRegion": "Bulgaria",
+    "postalCode": "4000",
+    "addressCountry": "BG",
+    },
+    "email": "contact@takerman.net",
+    "founder": "Tanyo Ivanov",
+    "image": "https://cdn.takerman.net/takerman.net/logo/png/png_trns_logo.png"
+    }
 </script>
 <script src="~/js/site.js"></script>
