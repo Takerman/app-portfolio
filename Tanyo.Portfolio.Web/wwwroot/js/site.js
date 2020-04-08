@@ -407,7 +407,7 @@ var googleAnalytics = {
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        gtag('config', 'UA-162800673-1');
+        gtag('config', 'UA-130195294-1');
     }
 }
 $(function () {
