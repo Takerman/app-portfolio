@@ -1,7 +1,8 @@
-﻿@inject IHtmlLocalizer<SharedResource> Localizer
+﻿@using Microsoft.AspNetCore.Mvc.Localization
 
+@inject IViewLocalizer localizer
+@inject IHtmlLocalizer<SharedResource> sharedLocalizer
 @{
-    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,9 +11,9 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="main_title">
-                    <p class="top_text">Updated 23/02/2020 <span></span></p>
+                    <p class="top_text">Updated 12/04/2020 <span></span></p>
                     <h2>
-                        Here is my CV
+                        @localizer["Here is my CV"]
                     </h2>
                     <h3>
                         <a href="~/files/Tanyo_Ivanov_CV.pdf" download><i class="fa fa-download fa-fw w3-margin-right"></i>PDF</a> |

@@ -23,7 +23,7 @@
     <EmbeddedResource Remove="Resources\Views\Blog\post-prices-listed.resx" />
     <EmbeddedResource Remove="Resources\Views\Blog\post-raspberrypi-home-automation.resx" />
     <EmbeddedResource Remove="Resources\Views\Contact\Index.resx" />
-    <EmbeddedResource Remove="Resources\Views\CV\Index.resx" />
+    <EmbeddedResource Remove="Resources\Views\CV\Index.bg.resx" />
     <EmbeddedResource Remove="Resources\Views\Home\Index.resx" />
     <EmbeddedResource Remove="Resources\Views\Portfolio\Hobby.resx" />
     <EmbeddedResource Remove="Resources\Views\Portfolio\Index.resx" />
@@ -68,7 +68,9 @@
     <Content Include="Resources\Views\Blog\post-prices-listed.resx" />
     <Content Include="Resources\Views\Blog\post-raspberrypi-home-automation.resx" />
     <Content Include="Resources\Views\Contact\Index.resx" />
-    <Content Include="Resources\Views\CV\Index.resx" />
+    <Content Include="Resources\Views\CV\Index.bg.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </Content>
     <Content Include="Resources\Views\Home\Index.resx" />
     <Content Include="Resources\Views\Portfolio\Egain.cshtml_bak" />
     <Content Include="Resources\Views\Portfolio\Harp.cshtml_bak" />

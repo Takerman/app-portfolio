@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.Net.Http.Headers;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using Tanyo.Portfolio.Web.Models.Services;
 using Tanyo.Portfolio.Web.Resources;
@@ -26,7 +27,7 @@ namespace Tanyo.Portfolio.Web
 
         public IConfiguration Configuration { get; }
 
-        public const string DefaultCulture = "en-GB";
+        public const string DefaultCulture = "en-US";
 
         public readonly CultureInfo[] SupportedCultures = new[]
         {
@@ -41,8 +42,8 @@ namespace Tanyo.Portfolio.Web
             services.AddLocalization(options => options.ResourcesPath = "Resources");
 
             services.AddMvc(option => option.EnableEndpointRouting = false)
-                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
-                .AddDataAnnotationsLocalization(options => { options.DataAnnotationLocalizerProvider = (type, factory) => factory.Create(typeof(SharedResource)); });
+                   .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                   .AddDataAnnotationsLocalization(options => { options.DataAnnotationLocalizerProvider = (type, factory) => factory.Create(typeof(SharedResource)); });
 
             services.AddSingleton<SharedLocalizationService>();
             services.AddTransient<NavLinksService>();
@@ -51,7 +52,7 @@ namespace Tanyo.Portfolio.Web
 
             services.Configure<RequestLocalizationOptions>(options =>
             {
-                options.DefaultRequestCulture = new RequestCulture(culture: DefaultCulture, uiCulture: DefaultCulture);
+                options.DefaultRequestCulture = new RequestCulture(DefaultCulture);
                 options.SupportedCultures = SupportedCultures;
                 options.SupportedUICultures = SupportedCultures;
             });
