@@ -10,7 +10,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.Net.Http.Headers;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using Tanyo.Portfolio.Web.Models.Services;
 using Tanyo.Portfolio.Web.Resources;
@@ -20,12 +19,16 @@ namespace Tanyo.Portfolio.Web
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(
+            IConfiguration configuration,
+            IWebHostEnvironment env)
         {
             Configuration = configuration;
+            Env = env;
         }
 
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment Env { get; }
 
         public const string DefaultCulture = "en-US";
 
@@ -57,10 +60,22 @@ namespace Tanyo.Portfolio.Web
                 options.SupportedUICultures = SupportedCultures;
             });
 
-            services.AddHttpsRedirection(options =>
+            if (!Env.IsDevelopment())
             {
-                options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
-                options.HttpsPort = 443;
+                services.AddHttpsRedirection(options =>
+                {
+                    options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
+                    options.HttpsPort = 443;
+                });
+            }
+
+            services.AddHsts(options =>
+            {
+                options.Preload = true;
+                options.IncludeSubDomains = true;
+                options.MaxAge = TimeSpan.FromDays(60);
+                options.ExcludedHosts.Add("tanyo.takerman.net");
+                options.ExcludedHosts.Add("www.tanyo.takerman.net");
             });
         }
 
