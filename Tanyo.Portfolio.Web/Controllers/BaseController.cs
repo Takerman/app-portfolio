@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using Tanyo.Portfolio.Web.Models;
@@ -54,6 +55,12 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
             );
 
             return LocalRedirect(returnUrl);
+        }
+
+        // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
