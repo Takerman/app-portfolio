@@ -54,6 +54,18 @@
     "Category": "Technology"
   },
   {
+    "Value": 4,
+    "Name": "Azure",
+    "Years": 1,
+    "Category": "Technology"
+  },
+  {
+    "Value": 4,
+    "Name": "AWS",
+    "Years": 3,
+    "Category": "Technology"
+  },
+  {
     "Value": 8,
     "Name": "SQL",
     "Years": 5,

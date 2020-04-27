@@ -4,4 +4,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@await Html.PartialAsync("~/Views/Shared/Partials/Blog.cshtml", new Blog())
+<div class="section-margin">
+    @await Html.PartialAsync("~/Views/Shared/Partials/Blog.cshtml", new Blog())
+</div>
