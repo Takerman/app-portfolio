@@ -1,4 +1,7 @@
-﻿<section style="margin-top: 80px;" class="about_area">
+﻿@inject SharedLocalizationService sharedLocalizer
+@inject IViewLocalizer localizer
+
+<section style="margin-top: 80px;" class="about_area">
     <div class="container">
         <div class="row justify-content-start align-items-center">
             <div class="col-lg-5">
@@ -8,12 +11,12 @@
             </div>
             <div class="offset-lg-1 col-lg-5">
                 <div class="main_title text-left row">
-                    <p class="top_text">About me <span></span></p>
+                    <p class="top_text">@localizer["About me"] <span></span></p>
                     <h2>
-                        Software Developer
+                        @localizer["Software Developer"]
                     </h2>
                     <p>
-                        Software developer with long years of experience in various technologies, projects, environments and companies. A person who don't stop until delivery. A person who invests from himself in his work. Able to learn new technologies in short period of time when needed.
+                        @localizer["Software developer with long years of experience in various technologies, projects, environments and companies. A person who don't stop until delivery. A person who invests from himself in his work. Able to learn new technologies in short period of time when needed."]
                     </p>
                 </div>
                 <div class="button-box main_title col-lg-12">

@@ -24,14 +24,13 @@
     <EmbeddedResource Remove="Resources\Views\Blog\post-raspberrypi-home-automation.resx" />
     <EmbeddedResource Remove="Resources\Views\Contact\Index.resx" />
     <EmbeddedResource Remove="Resources\Views\CV\Index.bg.resx" />
-    <EmbeddedResource Remove="Resources\Views\Home\Index.resx" />
     <EmbeddedResource Remove="Resources\Views\Portfolio\Hobby.resx" />
     <EmbeddedResource Remove="Resources\Views\Portfolio\Index.resx" />
     <EmbeddedResource Remove="Resources\Views\Portfolio\Other.resx" />
     <EmbeddedResource Remove="Resources\Views\Portfolio\Various.resx" />
     <EmbeddedResource Remove="Resources\Views\Pricing\Index.resx" />
     <EmbeddedResource Remove="Resources\Views\Shared\Error.resx" />
-    <EmbeddedResource Remove="Resources\Views\Shared\Partials\About.resx" />
+    <EmbeddedResource Remove="Resources\Views\Shared\Partials\About.bg.resx" />
     <EmbeddedResource Remove="Resources\Views\Shared\Partials\Banner.resx" />
     <EmbeddedResource Remove="Resources\Views\Shared\Partials\Blog.resx" />
     <EmbeddedResource Remove="Resources\Views\Shared\Partials\Brands.resx" />
@@ -71,7 +70,6 @@
     <Content Include="Resources\Views\CV\Index.bg.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </Content>
-    <Content Include="Resources\Views\Home\Index.resx" />
     <Content Include="Resources\Views\Portfolio\Egain.cshtml_bak" />
     <Content Include="Resources\Views\Portfolio\Harp.cshtml_bak" />
     <Content Include="Resources\Views\Portfolio\Hobby.resx" />
@@ -82,7 +80,9 @@
     <Content Include="Resources\Views\Portfolio\Various.resx" />
     <Content Include="Resources\Views\Pricing\Index.resx" />
     <Content Include="Resources\Views\Shared\Error.resx" />
-    <Content Include="Resources\Views\Shared\Partials\About.resx" />
+    <Content Include="Resources\Views\Shared\Partials\About.bg.resx">
+      <Generator></Generator>
+    </Content>
     <Content Include="Resources\Views\Shared\Partials\Banner.resx" />
     <Content Include="Resources\Views\Shared\Partials\Blog.resx" />
     <Content Include="Resources\Views\Shared\Partials\Brands.resx" />

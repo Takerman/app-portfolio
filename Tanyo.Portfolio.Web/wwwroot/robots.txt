@@ -1,4 +1,4 @@
-Sitemap: https://tanyo.takerman.net/sitemap.xml
+Sitemap: https://tivanov.takerman.net/sitemap.xml
 User-agent: *
 Allow: /
 Allow: /sitemap.htm

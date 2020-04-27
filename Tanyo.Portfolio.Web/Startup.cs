@@ -10,7 +10,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.Net.Http.Headers;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using System.Threading.Tasks;
 using Tanyo.Portfolio.Web.Models.Services;
 using Tanyo.Portfolio.Web.Resources;
 using Tanyo.Portfolio.Web.Services;
@@ -53,11 +56,20 @@ namespace Tanyo.Portfolio.Web
             services.AddTransient<SkillsService>();
             services.AddTransient<ProjectsService>();
 
+            CustomRequestCultureProvider Provider = new CustomRequestCultureProvider(async (HttpContext) =>
+            {
+                await Task.Yield();
+                var culture = HttpContext.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName].Split('=').LastOrDefault();
+                CultureInfo ci = new CultureInfo(culture);
+                return new ProviderCultureResult(ci.Name);
+            });
+
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 options.DefaultRequestCulture = new RequestCulture(DefaultCulture);
                 options.SupportedCultures = SupportedCultures;
                 options.SupportedUICultures = SupportedCultures;
+                options.RequestCultureProviders.Insert(0, Provider);
             });
 
             if (!Env.IsDevelopment())
@@ -74,8 +86,6 @@ namespace Tanyo.Portfolio.Web
                 options.Preload = true;
                 options.IncludeSubDomains = true;
                 options.MaxAge = TimeSpan.FromDays(60);
-                options.ExcludedHosts.Add("tanyo.takerman.net");
-                options.ExcludedHosts.Add("www.tanyo.takerman.net");
             });
         }
 
@@ -110,13 +120,9 @@ namespace Tanyo.Portfolio.Web
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseStatusCodePages();
 
-            // app.UseStatusCodePages();
-
-            var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
-
-            app.UseRequestLocalization(options.Value);
+            app.UseRequestLocalization();
 
             app.UseEndpoints(endpoints =>
             {
