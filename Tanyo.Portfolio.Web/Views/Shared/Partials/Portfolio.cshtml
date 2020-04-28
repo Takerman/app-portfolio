@@ -7,10 +7,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="main_title">
-                    <p class="top_text">MY PORTFOLIO <span></span></p>
+                    <p class="top_text">@localizer["MY PORTFOLIO"] <span></span></p>
                     <h2>
-                        Check My Recent <br>
-                        Client Work
+                        @localizer["Check My Recent"] <br>
+                        @localizer["Client Work"]
                     </h2>
                 </div>
             </div>
@@ -18,10 +18,10 @@
 
         <div class="filters portfolio-filter">
             <ul>
-                <li class="active" data-filter="*">all</li>
-                <li data-filter=".web">web</li>
-                <li data-filter=".desktop">desktop</li>
-                <li data-filter=".other">other</li>
+                <li class="active" data-filter="*">@localizer["all"]</li>
+                <li data-filter=".web">@localizer["web"]</li>
+                <li data-filter=".desktop">@localizer["desktop"]</li>
+                <li data-filter=".other">@localizer["other"]</li>
             </ul>
         </div>
 
@@ -37,10 +37,10 @@
                                 <div class="overlay"></div>
                                 <div class="short_info">
                                     <h4 style="color: white">
-                                        @project.Title
+                                        @localizer[project.Title]
                                     </h4>
                                     <p>@project.Location </p>
-                                    <p>Client: @project.Client </p>
+                                    <p>@localizer["Client:"] @localizer[project.Client] </p>
                                 </div>
                             </div>
                         </div>

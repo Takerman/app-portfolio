@@ -117,34 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Design Patterns Package" xml:space="preserve">
-    <value>Модели за дизайн</value>
+  <data name="CMS deployment" xml:space="preserve">
+    <value>Работа със CMS системи</value>
   </data>
-  <data name="Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them." xml:space="preserve">
-    <value>Тук можете да намерите пакети със модели за дйзайн, които създадох докато гледам един YouTube канал. Има обяснение и видео за всеки един от тях.</value>
+  <data name="Deployment, configuration and development of components for CMS systems. Preparation for production ussage, users management, testing, security and much more..." xml:space="preserve">
+    <value>Пускане онлайн, конфигуриране и разработка на компоненти за CMS системи. Подготовка за използване от клиенти, управление на потребители, тестване, сигурност и други...</value>
   </data>
-  <data name="How I defined and listed my optimized for the client prices." xml:space="preserve">
-    <value>Как обособих и изброих цените си, така че да са оптимизирани за клиента.</value>
+  <data name="People mentoring" xml:space="preserve">
+    <value>Напътствие за хора</value>
   </data>
-  <data name="In this blog post I will show you how I'm using some Raspberry PIs&#xD;&#xA;                                        for web server, media center, smar home, database server, to save pictures&#xD;&#xA;                                        from a camera and more." xml:space="preserve">
-    <value>Във този блог пост ще ви покажа как ползвам няколко Raspberry Pi платки за да създам уеб сървър, медиен център, умен дом, база данни сървър за запазване на картинки от камера и повече.</value>
+  <data name="Services" xml:space="preserve">
+    <value>Услуги</value>
   </data>
-  <data name="Latest Stories From" xml:space="preserve">
-    <value>Последни истории от</value>
+  <data name="Software Development" xml:space="preserve">
+    <value>Разработка на софтуер</value>
   </data>
-  <data name="Learn More" xml:space="preserve">
-    <value>Научи повече</value>
+  <data name="Teaching of new staff, preparation of learning materials and documentation. Tasks and tickets management, low-level project management and much more..." xml:space="preserve">
+    <value>Обучение на нови хора в екипа, подготовка на обучителни материали и документация. Задачи и управление на тикети, ниско ниво на управление на проекти и много повече...</value>
   </data>
-  <data name="My blog" xml:space="preserve">
-    <value>блога ми</value>
+  <data name="Web, Desktop and Mobile Development. Software architecture, optimisation, automated testing, components development, bugfixing, servers management and much more..." xml:space="preserve">
+    <value>Уеб, Десктоп и мобилни приложения. Архитектура на софтуер, оптимизация, автоматично тестване, разработка на компоненти, поправки, управление на сървъри и други...</value>
   </data>
-  <data name="Prices defined and listed" xml:space="preserve">
-    <value>Цените са дефинирани и изброени</value>
-  </data>
-  <data name="Raspberry Pi Home Automation" xml:space="preserve">
-    <value>Автоматизация на дом чрез Raspberry Pi</value>
-  </data>
-  <data name="Tanyo Ivanov" xml:space="preserve">
-    <value>Таньо Иванов</value>
+  <data name="What can I do for You" xml:space="preserve">
+    <value>Какво мога да направя за Вас</value>
   </data>
 </root>

@@ -8,7 +8,7 @@
             @foreach (var progressBar in Model.Bars)
             {
                 <div class="progress">
-                    <div class="progress-bar bg-success" style="width:@(progressBar.Value)0%;">@progressBar.Key @progressBar.Value/10</div>
+                    <div class="progress-bar bg-success" style="width:@(progressBar.Value)0%;">@localizer[progressBar.Key] @progressBar.Value/10</div>
                 </div>
                 <br />
             }

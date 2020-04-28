@@ -117,34 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Design Patterns Package" xml:space="preserve">
-    <value>Модели за дизайн</value>
+  <data name="Portfolio of Tanyo Ivanov, a software developer with long experience. Order demo, check his projects and prices." xml:space="preserve">
+    <value>Портфолиото на Таньо Иванов, програмист със дълъг опит. Поръчайте демонстрация или проверете проектите и цените му.</value>
   </data>
-  <data name="Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them." xml:space="preserve">
-    <value>Тук можете да намерите пакети със модели за дйзайн, които създадох докато гледам един YouTube канал. Има обяснение и видео за всеки един от тях.</value>
+  <data name="portfolio, developer, software, tanyo, ivanov, contractor, employee, programming, project, C#, asp, net, freelance, price, hour, day, month" xml:space="preserve">
+    <value>портфолио, програмист, софтуер, таньо, иванов, фрийлансър, работник, служител, програмиране, проект, асп, нет, фрийланс, час, ден, месец</value>
   </data>
-  <data name="How I defined and listed my optimized for the client prices." xml:space="preserve">
-    <value>Как обособих и изброих цените си, така че да са оптимизирани за клиента.</value>
+  <data name="The Portfolio of Tanyo Ivanov" xml:space="preserve">
+    <value>Портфолиото на Таньо Иванов</value>
   </data>
-  <data name="In this blog post I will show you how I'm using some Raspberry PIs&#xD;&#xA;                                        for web server, media center, smar home, database server, to save pictures&#xD;&#xA;                                        from a camera and more." xml:space="preserve">
-    <value>Във този блог пост ще ви покажа как ползвам няколко Raspberry Pi платки за да създам уеб сървър, медиен център, умен дом, база данни сървър за запазване на картинки от камера и повече.</value>
-  </data>
-  <data name="Latest Stories From" xml:space="preserve">
-    <value>Последни истории от</value>
-  </data>
-  <data name="Learn More" xml:space="preserve">
-    <value>Научи повече</value>
-  </data>
-  <data name="My blog" xml:space="preserve">
-    <value>блога ми</value>
-  </data>
-  <data name="Prices defined and listed" xml:space="preserve">
-    <value>Цените са дефинирани и изброени</value>
-  </data>
-  <data name="Raspberry Pi Home Automation" xml:space="preserve">
-    <value>Автоматизация на дом чрез Raspberry Pi</value>
-  </data>
-  <data name="Tanyo Ivanov" xml:space="preserve">
-    <value>Таньо Иванов</value>
+  <data name="This is the portfolio of Tanyo Ivanov. .NET Full Stack Developer." xml:space="preserve">
+    <value>Това е портфолиото на Таньо Иванов. .NET програмист</value>
   </data>
 </root>

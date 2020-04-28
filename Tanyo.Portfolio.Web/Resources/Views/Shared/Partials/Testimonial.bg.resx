@@ -117,34 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Design Patterns Package" xml:space="preserve">
-    <value>Модели за дизайн</value>
+  <data name="About Me" xml:space="preserve">
+    <value>За мен</value>
   </data>
-  <data name="Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them." xml:space="preserve">
-    <value>Тук можете да намерите пакети със модели за дйзайн, които създадох докато гледам един YouTube канал. Има обяснение и видео за всеки един от тях.</value>
+  <data name="Anders Person" xml:space="preserve">
+    <value>Андерс Пърсън</value>
   </data>
-  <data name="How I defined and listed my optimized for the client prices." xml:space="preserve">
-    <value>Как обособих и изброих цените си, така че да са оптимизирани за клиента.</value>
+  <data name="BGO Software" xml:space="preserve">
+    <value>БГО Софтуер</value>
   </data>
-  <data name="In this blog post I will show you how I'm using some Raspberry PIs&#xD;&#xA;                                        for web server, media center, smar home, database server, to save pictures&#xD;&#xA;                                        from a camera and more." xml:space="preserve">
-    <value>Във този блог пост ще ви покажа как ползвам няколко Raspberry Pi платки за да създам уеб сървър, медиен център, умен дом, база данни сървър за запазване на картинки от камера и повече.</value>
+  <data name="Comstream" xml:space="preserve">
+    <value>Комстрийм</value>
   </data>
-  <data name="Latest Stories From" xml:space="preserve">
-    <value>Последни истории от</value>
+  <data name="Honourable Clients Says" xml:space="preserve">
+    <value>Уважавани клиенти казват</value>
   </data>
-  <data name="Learn More" xml:space="preserve">
-    <value>Научи повече</value>
+  <data name="In our opinion, Tanyo conducted his tasks in an excellent way. He was appreciated by his colleagues and showed a great attitude towards work. I would recommend Tanyo for a similar position based on his professional and personal skills." xml:space="preserve">
+    <value>Мислим, че Таньо изпълняваше задачите си по идеален начин. Той беше оценен от колегите си и показа добро отношение спрямо работата. Бих препоръчал Таньо за подобна позиция спрямо неговите лични умения</value>
   </data>
-  <data name="My blog" xml:space="preserve">
-    <value>блога ми</value>
+  <data name="Ivan Lekushev" xml:space="preserve">
+    <value>Иван Лекушев</value>
   </data>
-  <data name="Prices defined and listed" xml:space="preserve">
-    <value>Цените са дефинирани и изброени</value>
+  <data name="Ivaylo Ivanov" xml:space="preserve">
+    <value>Ивайло Иванов</value>
   </data>
-  <data name="Raspberry Pi Home Automation" xml:space="preserve">
-    <value>Автоматизация на дом чрез Raspberry Pi</value>
+  <data name="My testimonials" xml:space="preserve">
+    <value>Моите препоръки</value>
   </data>
-  <data name="Tanyo Ivanov" xml:space="preserve">
-    <value>Таньо Иванов</value>
+  <data name="Recomendation" xml:space="preserve">
+    <value>Препоръка</value>
+  </data>
+  <data name="Tanyo was with us for long time and contributed to an important project in our company. He gave some creative ideas and stayed in touch after leaving the company." xml:space="preserve">
+    <value>Таньо беше със нас за дълго време и помогна за важен проект във компанията ни. Даде няколко креативни идей и останахме в контакт след престоя му в компанията.</value>
+  </data>
+  <data name="Tanyo would be a good part in every team as he was an important part of our. I would definately recommend Tanyo to his next employers." xml:space="preserve">
+    <value>Таньо би бил добра част във всеки екип, като той беше важна във нашия. Определено бих препоръчал Таньо на следващ работодател.</value>
   </data>
 </root>

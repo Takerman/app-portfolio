@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BG" xml:space="preserve">
+    <value>Бълг.</value>
+  </data>
   <data name="Bulgaria" xml:space="preserve">
     <value>България</value>
   </data>
@@ -131,5 +134,8 @@
   </data>
   <data name="Send me your query anytime!" xml:space="preserve">
     <value>Може да ми изпратите съобщение по всяко време!</value>
+  </data>
+  <data name="UK" xml:space="preserve">
+    <value>Англ.</value>
   </data>
 </root>

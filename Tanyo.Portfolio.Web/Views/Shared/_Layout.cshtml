@@ -7,33 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex" />
-    <meta name="geo.position" content="51.4726108; -0.1611423">
-    <meta name="geo.placename" content="London">
-    <meta name="geo.region" content="en">
-    <meta name="keywords" content="portfolio, developer, software, tanyo, ivanov, contractor, employee, programming, project, C#, asp, net, freelance, price, hour, day, month" />
-    <meta name="description" content="Portfolio of Tanyo Ivanov, a software developer with long experience. Order demo, check his projects and prices." />
-    <meta name="image" content="https://cdn.takerman.net/takerman.net/logo/png/png_trns_logomark.png" />
-    <meta name="thumbnail" content="https://cdn.takerman.net/takerman.net/logo/png/png_trns_logomark.png" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="Tanyo Ivanov's Portfolio" />
-    <meta property="og:description" content="This is the portfolio of Tanyo Ivanov. .NET Full Stack Developer." />
-    <meta property="og:image" content="https://cdn.takerman.net/takerman.net/logo/png/png_trns_logomark.png" />
-    <meta property="og:url" content="https://tivanov.takerman.net" />
-    <meta property="og:site_name" content="Tanyo Ivanov's Portfolio" />
-    <meta name="twitter:title" content="Tanyo Ivanov's Portfolio">
-    <meta name="twitter:description" content="This is the portfolio of Tanyo Ivanov. .NET Full Stack Developer.">
-    <meta name="twitter:image" content="https://cdn.takerman.net/takerman.net/logo/png/png_trns_logomark.png">
-    <meta name="twitter:site" content="@@TanyoIvanov">
-    <meta name="twitter:creator" content="@@TanyoIvanov">
-    <meta name="msvalidate.01" content="C875DBC6AE17DB50390E9C9791007B8C" />
-    <link rel="icon" href="/img/favicon.png" type="image/png">
-    <title>@Model.Head.Title</title>
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/style.css" />
-    <link rel="stylesheet" href="~/css/custom.css" />
+    @await Html.PartialAsync("~/Views/Shared/Partials/Head.cshtml", Model.Head)
     @RenderSection("styles", required: false)
 </head>
 <body>

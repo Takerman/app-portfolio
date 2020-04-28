@@ -17,7 +17,7 @@
                     <ul class="nav navbar-nav menu_nav">
                         @foreach (var navLink in Model.NavigationLinks)
                         {
-                            <li class="nav-item"><a asp-action="@navLink.Action" asp-controller="@navLink.Controller" class="nav-link">@navLink.Label</a></li>
+                            <li class="nav-item"><a asp-action="@navLink.Action" asp-controller="@navLink.Controller" class="nav-link">@localizer[navLink.Label]</a></li>
                         }
                     </ul>
                 </div>

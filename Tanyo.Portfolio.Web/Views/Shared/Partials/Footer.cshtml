@@ -17,7 +17,7 @@
                                     <ul class="nav navbar-nav menu_nav mx-auto">
                                         @foreach (var navLink in Model.NavigationLinks)
                                         {
-                                            <li class="nav-item"><a class="nav-link text-white" asp-action="@navLink.Action" asp-controller="@navLink.Controller">@navLink.Label</a></li>
+                                            <li class="nav-item"><a class="nav-link text-white" asp-action="@navLink.Action" asp-controller="@navLink.Controller">@localizer[navLink.Label]</a></li>
                                         }
                                     </ul>
                                 </div>
@@ -37,7 +37,7 @@
             <p class="col-lg-8 col-sm-12 footer-text">
                 Copyright &copy;
                 <script>document.write(new Date().getFullYear());</script>
-                All rights reserved by <a href="@Model.CopyLink.Url" target="_blank">@Model.CopyLink.Label</a> @DateTime.Now.Year
+                @localizer["All rights reserved by"] <a href="@Model.CopyLink.Url" target="_blank">@localizer[Model.CopyLink.Label]</a> @DateTime.Now.Year
             </p>
         </div>
     </div>
