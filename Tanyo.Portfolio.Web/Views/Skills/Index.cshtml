@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Skill>
+﻿@inject SharedLocalizationService sharedLocalizer
+@inject IViewLocalizer localizer
+@model IEnumerable<Skill>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";

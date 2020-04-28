@@ -117,28 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="design-patterns-package" xml:space="preserve">
-    <value>Design Patterns Package</value>
+  <data name="Design Patterns Package" xml:space="preserve">
+    <value>Модели за дизайн</value>
   </data>
-  <data name="String2" xml:space="preserve">
-    <value>Tanyo Ivanov</value>
+  <data name="Design Patterns YouTube Playlist" xml:space="preserve">
+    <value>YouTube плейлист</value>
   </data>
-  <data name="String3" xml:space="preserve">
-    <value>Hello friends</value>
+  <data name="Download Design Patterns Package" xml:space="preserve">
+    <value>Свали Пакета със моделите за дизайн</value>
   </data>
-  <data name="String4" xml:space="preserve">
-    <value>Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them.</value>
+  <data name="Facebook" xml:space="preserve">
+    <value>Фейсбук</value>
   </data>
-  <data name="String5" xml:space="preserve">
-    <value>Design Patterns YouTube Playlist</value>
+  <data name="Hello friends" xml:space="preserve">
+    <value>Здравейте приятели</value>
   </data>
-  <data name="String6" xml:space="preserve">
-    <value>Download Design Patterns Package</value>
+  <data name="Here are the resources" xml:space="preserve">
+    <value>Тук са ресурсите</value>
   </data>
-  <data name="String7" xml:space="preserve">
-    <value>Hope you enjoyed, see you in the next videos</value>
+  <data name="Here you can find a package with Design Patterns which I made while watching a YouTube channel.There is explanation and a video about all of them." xml:space="preserve">
+    <value>Тук можете да намерите пакети със модели за дизайн, които създадох докато гледах един канал във YouTube. Има описание и видео за всеки един от тях.</value>
   </data>
-  <data name="String8" xml:space="preserve">
-    <value>Regards</value>
+  <data name="Hope you enjoyed, see you in the next videos" xml:space="preserve">
+    <value>Надявам се, че се забавлявахте. Очаквайте нови видеа.</value>
+  </data>
+  <data name="Instagram" xml:space="preserve">
+    <value>Инстаграм</value>
+  </data>
+  <data name="LinkedIn" xml:space="preserve">
+    <value>LinkedIn</value>
+  </data>
+  <data name="Mar" xml:space="preserve">
+    <value>Март</value>
+  </data>
+  <data name="Regards" xml:space="preserve">
+    <value>Поздрави</value>
+  </data>
+  <data name="Tanyo Ivanov" xml:space="preserve">
+    <value>Таньо Иванов</value>
+  </data>
+  <data name="Twitter" xml:space="preserve">
+    <value>Туитър</value>
   </data>
 </root>

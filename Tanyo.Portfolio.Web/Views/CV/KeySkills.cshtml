@@ -1,5 +1,7 @@
-﻿<div class="w3-container w3-card w3-white">
-    <h2 class="w3-text-grey w3-padding-16 text-center"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Key Skills</h2>
+﻿@inject SharedLocalizationService sharedLocalizer
+@inject IViewLocalizer localizer
+<div class="w3-container w3-card w3-white">
+    <h2 class="w3-text-grey w3-padding-16 text-center"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>@localizer["Key Skills"]</h2>
     <div class="w3-container">
         <table style="width: 100%" class="tbl">
             <tr>

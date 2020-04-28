@@ -117,19 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About me" xml:space="preserve">
-    <value>За мен</value>
+  <data name="Design Patterns Package" xml:space="preserve">
+    <value>Модели за дизайн</value>
   </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>Цена</value>
+  <data name="Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them." xml:space="preserve">
+    <value>Тук можете да намерите пакети със модели за дйзайн, което създадох докато гледам един YouTube канал. Има обяснение и видео за всеки един от тях.</value>
   </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Умения</value>
+  <data name="How I defined and listed my optimized for the client prices." xml:space="preserve">
+    <value>Как обособих и изброих цените си, така че да са оптимизирани за клиента.</value>
   </data>
-  <data name="Software Developer" xml:space="preserve">
-    <value>Програмист</value>
+  <data name="In this blog post I will show you how I'm using some Raspberry PIs&#xD;&#xA;                                        for web server, media center, smar home, database server, to save pictures&#xD;&#xA;                                        from a camera and more." xml:space="preserve">
+    <value>Във този блог пост ще ви покажа как ползвам няколко Raspberry Pi платки за да създам уеб сървър, медиен център, умен дом, база данни сървър за запазване на картинки от камера и повече.</value>
   </data>
-  <data name="Software developer with long years of experience in various technologies, projects, environments and companies. A person who don't stop until delivery. A person who invests from himself in his work. Able to learn new technologies in short period of time when needed." xml:space="preserve">
-    <value>Програмист със много години опит във различни технологии, проекти, среди и компании. Личност която не спира до доставка. Личност, която инвестира от себе си във работата си. Успява да научи нови технологии за кратък период от време, когато е нужно.</value>
+  <data name="Latest Stories From" xml:space="preserve">
+    <value>Последни истории от</value>
+  </data>
+  <data name="Learn More" xml:space="preserve">
+    <value>Научи повече</value>
+  </data>
+  <data name="My blog" xml:space="preserve">
+    <value>блога ми</value>
+  </data>
+  <data name="Prices defined and listed" xml:space="preserve">
+    <value>Цените са дефинирани и изброени</value>
+  </data>
+  <data name="Raspberry Pi Home Automation" xml:space="preserve">
+    <value>Автоматизация на дом чрез Raspberry Pi</value>
+  </data>
+  <data name="Tanyo Ivanov" xml:space="preserve">
+    <value>Таньо Иванов</value>
   </data>
 </root>

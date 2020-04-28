@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Tanyo.Portfolio.Web.Models.Partials
+@inject SharedLocalizationService sharedLocalizer
+@inject IViewLocalizer localizer
+@{
     ViewData["Title"] = "Post";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -10,15 +13,15 @@
                 <div class="single-post">
                     <div class="blog_details">
                         <h2>
-                            Design Patterns Package
+                            @localizer["Design Patterns Package"]
                         </h2>
                         <ul class="blog-info-link mt-3 mb-4">
-                            <li><i class="ti-user"></i> Tanyo Ivanov</li>
-                            <li><i class="ti-calendar"></i> Mar 22, 2020</li>
+                            <li><i class="ti-user"></i> @localizer["Tanyo Ivanov"]</li>
+                            <li><i class="ti-calendar"></i> @localizer["Mar"] 22, 2020</li>
                         </ul>
                         <p style="width: 60%; text-align: center; margin: auto; padding-bottom: 40px;">
-                            Hello friends,<br />
-                            Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them.
+                            @localizer["Hello friends"],<br />
+                            @localizer["Here you can find a package with Design Patterns which I made while watching a YouTube channel.There is explanation and a video about all of them."]
                         </p>
                         <table style="width: 100%; margin-bottom: 40px;">
                             <tr>
@@ -28,17 +31,17 @@
                                     </iframe>
                                 </td>
                                 <td class="text-center">
-                                    <strong>Here are the resources</strong><br />
-                                    <a target="_blank" href="https://youtube.com/watch?v=v9ejT8FO-7I&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=1">Design Patterns YouTube Playlist</a><br />
-                                    <a target="_blank" href="~/files/DesignPatterns.zip">Download Design Patterns Package</a><br />
-                                    <a target="_blank" href="https://facebook.com/dev.tanyoivanov">Facebook</a><br />
-                                    <a target="_blank" href="https://linkedin.com/in/tanyo-ivanov">LinkedIn</a><br />
-                                    <a target="_blank" href="https://twitter.com/TanyoIvanov">Twitter</a><br />
-                                    <a target="_blank" href="https://instagram.com/ivanov.tanyo">Instagram</a><br />
+                                    <strong>@localizer["Here are the resources"]</strong><br />
+                                    <a target="_blank" href="https://youtube.com/watch?v=v9ejT8FO-7I&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=1">@localizer["Design Patterns YouTube Playlist"]</a><br />
+                                    <a target="_blank" href="~/files/DesignPatterns.zip">@localizer["Download Design Patterns Package"]</a><br />
+                                    <a target="_blank" href="https://facebook.com/dev.tanyoivanov">@localizer["Facebook"]</a><br />
+                                    <a target="_blank" href="https://linkedin.com/in/tanyo-ivanov">@localizer["LinkedIn"]</a><br />
+                                    <a target="_blank" href="https://twitter.com/TanyoIvanov">@localizer["Twitter"]</a><br />
+                                    <a target="_blank" href="https://instagram.com/ivanov.tanyo">@localizer["Instagram"]</a><br />
 
-                                    Hope you enjoyed, see you in the next videos :)<br />
-                                    Regards,<br />
-                                    Tanyo Ivanov
+                                    @localizer["Hope you enjoyed, see you in the next videos"] :)<br />
+                                    @localizer["Regards"],<br />
+                                    @localizer["Tanyo Ivanov"]
                                 </td>
                             </tr>
                         </table>
@@ -57,7 +60,7 @@
                                 (d.head || d.body).appendChild(s);
                             })();
                         </script>
-                        <noscript>Please enable JavaScript to view the comments.</noscript>
+                        <noscript>@localizer["Please enable JavaScript to view the comments."]</noscript>
                     </div>
                 </div>
             </div>

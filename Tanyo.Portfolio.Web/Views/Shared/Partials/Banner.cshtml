@@ -1,4 +1,6 @@
-﻿@model Banner
+﻿@inject SharedLocalizationService sharedLocalizer
+@inject IViewLocalizer localizer
+@model Banner
 
 <sction class="banner_area">
     <div class="banner_inner d-flex align-items-center">
@@ -8,7 +10,7 @@
                 <div class="page_link">
                     @foreach (var navLink in Model.NavLinks)
                     {
-                        <a href="@Url.ActionLink(navLink.Action, navLink.Controller, navLink.Data)">@navLink.Label</a>
+                        <a href="@Url.ActionLink(navLink.Action, navLink.Controller, navLink.Data)">@localizer[navLink.Label]</a>
                     }
                 </div>
                 <div class="fb-like"

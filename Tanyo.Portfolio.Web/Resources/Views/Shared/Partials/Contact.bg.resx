@@ -117,19 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About me" xml:space="preserve">
-    <value>За мен</value>
+  <data name="Bulgaria" xml:space="preserve">
+    <value>България</value>
   </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>Цена</value>
+  <data name="Get in Touch" xml:space="preserve">
+    <value>Свържете се със мен</value>
   </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Умения</value>
+  <data name="Mon to Fri 9am to 6pm" xml:space="preserve">
+    <value>От Понеделник до Петък, от 9 до 18 часа</value>
   </data>
-  <data name="Software Developer" xml:space="preserve">
-    <value>Програмист</value>
+  <data name="Plovdiv" xml:space="preserve">
+    <value>Пловдив</value>
   </data>
-  <data name="Software developer with long years of experience in various technologies, projects, environments and companies. A person who don't stop until delivery. A person who invests from himself in his work. Able to learn new technologies in short period of time when needed." xml:space="preserve">
-    <value>Програмист със много години опит във различни технологии, проекти, среди и компании. Личност която не спира до доставка. Личност, която инвестира от себе си във работата си. Успява да научи нови технологии за кратък период от време, когато е нужно.</value>
+  <data name="Send me your query anytime!" xml:space="preserve">
+    <value>Може да ми изпратите съобщение по всяко време!</value>
   </data>
 </root>

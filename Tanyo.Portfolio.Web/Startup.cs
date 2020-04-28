@@ -7,10 +7,8 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 using Microsoft.Net.Http.Headers;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -60,6 +58,8 @@ namespace Tanyo.Portfolio.Web
             {
                 await Task.Yield();
                 var culture = HttpContext.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName].Split('=').LastOrDefault();
+                if (string.IsNullOrEmpty(culture))
+                    culture = DefaultCulture;
                 CultureInfo ci = new CultureInfo(culture);
                 return new ProviderCultureResult(ci.Name);
             });

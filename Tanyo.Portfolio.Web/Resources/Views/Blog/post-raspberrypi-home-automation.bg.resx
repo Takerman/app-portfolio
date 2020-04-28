@@ -117,19 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About me" xml:space="preserve">
-    <value>За мен</value>
+  <data name="Cluster" xml:space="preserve">
+    <value>Клъстър</value>
   </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>Цена</value>
+  <data name="Feb" xml:space="preserve">
+    <value>Февруари</value>
   </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Умения</value>
+  <data name="Forum" xml:space="preserve">
+    <value>Форум</value>
   </data>
-  <data name="Software Developer" xml:space="preserve">
-    <value>Програмист</value>
+  <data name="Hello friends" xml:space="preserve">
+    <value>Здравейте приятели</value>
   </data>
-  <data name="Software developer with long years of experience in various technologies, projects, environments and companies. A person who don't stop until delivery. A person who invests from himself in his work. Able to learn new technologies in short period of time when needed." xml:space="preserve">
-    <value>Програмист със много години опит във различни технологии, проекти, среди и компании. Личност която не спира до доставка. Личност, която инвестира от себе си във работата си. Успява да научи нови технологии за кратък период от време, когато е нужно.</value>
+  <data name="Here are the resources" xml:space="preserve">
+    <value>Тук са ресурсите</value>
+  </data>
+  <data name="Hope you enjoyed, see you in the next videos" xml:space="preserve">
+    <value>Надявам се, че се забавлявахте. Ще се видим във следващото видео.</value>
+  </data>
+  <data name="How to cluster" xml:space="preserve">
+    <value>Как да създадеш клъстър</value>
+  </data>
+  <data name="In this video I'll show you how I made my appartment smarter with a few raspberry pi 3B+ boards. I'm using the PIs for web server, media center, smart home, database server, to save pictures from a camera and more." xml:space="preserve">
+    <value>Във това видео ще ви покажа как да направите апартамента си по-умен със няколко Raspberry Pi 3B+ платки. Ползвам компютърчетата за уеб сървър, медиен център, умна къща, база данни сървър, да запазвам снимки от камера и още.</value>
+  </data>
+  <data name="Kodi" xml:space="preserve">
+    <value>Коди</value>
+  </data>
+  <data name="Regards" xml:space="preserve">
+    <value>Поздрави</value>
+  </data>
+  <data name="Tanyo Ivanov" xml:space="preserve">
+    <value>Таньо Иванов</value>
+  </data>
+  <data name="The video is long, but it gives a lot of information how to configure the server. If you have difficulties write a comment or send me a message, I'll try to answer you when I have time." xml:space="preserve">
+    <value>Видеото е дълго, но дава много информация за това как да конфигурирате сървъра. Ако имате проблеми можете да напишете коментар или да ми изпратите съобщение. Ще опитам да отговоря на всеки когато имам време.</value>
   </data>
 </root>

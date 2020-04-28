@@ -1,4 +1,6 @@
-﻿@{
+﻿@inject SharedLocalizationService sharedLocalizer
+@inject IViewLocalizer localizer
+@{
     var Model = (Layout)ViewData["Layout"];
     Model.Header.Classes = Model.Banner != null ? "header_area header_inner_page" : "header_area";
 }

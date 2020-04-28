@@ -1,4 +1,6 @@
-﻿<section class="section-margin">
+﻿@inject SharedLocalizationService sharedLocalizer
+@inject IViewLocalizer localizer
+<section class="section-margin">
     <div class="container">
         <div class="d-none d-sm-block mb-5 pb-4">
             <div id="map" style="height: 480px;"></div>
@@ -16,7 +18,7 @@
 
         <div class="row">
             <div class="col-12">
-                <h2 class="contact-title">Get in Touch</h2>
+                <h2 class="contact-title">@localizer["Get in Touch"]</h2>
             </div>
             <div class="col-lg-8 mb-4 mb-lg-0">
                 <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/shell.js"></script>
@@ -36,8 +38,8 @@
                             <h3>London, United Kingdom.</h3>
                             <p>Battersea, SW11 5DN</p>
                         *@
-                        <h3>Plovdiv, 4000</h3>
-                        <p>Bulgaria</p>
+                        <h3>@localizer["Plovdiv"], 4000</h3>
+                        <p>@localizer["Bulgaria"]</p>
                         @*<p>bul. Iztochen 80</p>*@
                     </div>
                 </div>
@@ -46,14 +48,14 @@
                     <div class="media-body">
                         <h3><a href="tel:+447383721742">UK: +447383721742</a></h3>
                         <h3 style="margin-top: 5px;"><a href="tel:+359879213817">BG: +359879213817</a></h3>
-                        <p style="margin-top: 10px;">Mon to Fri 9am to 6pm</p>
+                        <p style="margin-top: 10px;">@localizer["Mon to Fri 9am to 6pm"]</p>
                     </div>
                 </div>
                 <div class="media contact-info">
                     <span class="contact-info__icon"><i class="ti-email"></i></span>
                     <div class="media-body">
                         <h3><a href="mailto:tivanov@takerman.net">tivanov@takerman.net</a></h3>
-                        <p>Send me your query anytime!</p>
+                        <p>@localizer["Send me your query anytime!"]</p>
                     </div>
                 </div>
             </div>
