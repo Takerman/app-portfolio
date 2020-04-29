@@ -49,6 +49,7 @@
 /* PRICING */
 #pricing-table {
     margin-top: 30px;
+    border: none !important;
 }
 
     #pricing-table table {

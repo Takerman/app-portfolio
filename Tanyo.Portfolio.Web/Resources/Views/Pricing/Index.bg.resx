@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Contract" xml:space="preserve">
-    <value>Фрийланс</value>
+    <value>Проектна работа</value>
   </data>
   <data name="Employment Type" xml:space="preserve">
     <value>Тип на наетост</value>
@@ -133,7 +133,7 @@
     <value>На място</value>
   </data>
   <data name="Permanent" xml:space="preserve">
-    <value>Постоянно</value>
+    <value>Постоянна позиция</value>
   </data>
   <data name="Remote" xml:space="preserve">
     <value>Отдалечено</value>
