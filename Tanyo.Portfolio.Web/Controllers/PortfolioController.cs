@@ -32,6 +32,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
             return View(model);
         }
 
+        /*
         public IActionResult Confidential()
         {
             Layout.Head.Title = "Portfolio | " + Layout.Head.Title + " | .NET Developer";
@@ -46,6 +47,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
             var model = _projectsService.GetAll().ToList();
             return View(model);
         }
+        */
 
         public IActionResult Project(string name)
         {
