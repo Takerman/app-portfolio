@@ -45,7 +45,7 @@ namespace Tanyo.Portfolio.Web
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-            services.AddMvc(option => option.EnableEndpointRouting = false)
+            services.AddMvc(option => option.EnableEndpointRouting = true)
                    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                    .AddDataAnnotationsLocalization(options => { options.DataAnnotationLocalizerProvider = (type, factory) => factory.Create(typeof(SharedResource)); });
 
@@ -54,13 +54,13 @@ namespace Tanyo.Portfolio.Web
             services.AddTransient<SkillsService>();
             services.AddTransient<ProjectsService>();
 
-            CustomRequestCultureProvider Provider = new CustomRequestCultureProvider(async (HttpContext) =>
+            var provider = new CustomRequestCultureProvider(async (HttpContext) =>
             {
                 await Task.Yield();
                 var culture = HttpContext.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName].Split('=').LastOrDefault();
                 if (string.IsNullOrEmpty(culture))
                     culture = DefaultCulture;
-                CultureInfo ci = new CultureInfo(culture);
+                var ci = new CultureInfo(culture);
                 return new ProviderCultureResult(ci.Name);
             });
 
@@ -69,7 +69,7 @@ namespace Tanyo.Portfolio.Web
                 options.DefaultRequestCulture = new RequestCulture(DefaultCulture);
                 options.SupportedCultures = SupportedCultures;
                 options.SupportedUICultures = SupportedCultures;
-                options.RequestCultureProviders.Insert(0, Provider);
+                options.RequestCultureProviders.Insert(0, provider);
             });
 
             if (!Env.IsDevelopment())
@@ -86,6 +86,14 @@ namespace Tanyo.Portfolio.Web
                 options.Preload = true;
                 options.IncludeSubDomains = true;
                 options.MaxAge = TimeSpan.FromDays(60);
+                options.ExcludedHosts.Add("takerman.net");
+                options.ExcludedHosts.Add("www.takerman.net");
+                options.ExcludedHosts.Add("tanyoivanov.net");
+                options.ExcludedHosts.Add("www.tanyoivanov.net");
+                options.ExcludedHosts.Add("tivanov.takerman.net");
+                options.ExcludedHosts.Add("www.tivanov.takerman.net");
+                options.ExcludedHosts.Add("tanyo.takerman.net");
+                options.ExcludedHosts.Add("www.tanyo.takerman.net");
             });
         }
 
