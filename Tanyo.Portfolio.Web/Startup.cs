@@ -57,10 +57,24 @@ namespace Tanyo.Portfolio.Web
             var provider = new CustomRequestCultureProvider(async (HttpContext) =>
             {
                 await Task.Yield();
-                var culture = HttpContext.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName].Split('=').LastOrDefault();
-                if (string.IsNullOrEmpty(culture))
-                    culture = DefaultCulture;
+
+                var culture = DefaultCulture;
+
+                try
+                {
+                    var cookie = HttpContext.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName];
+
+                    if (cookie != null)
+                    {
+                        culture = cookie.Split('=').LastOrDefault();
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+
                 var ci = new CultureInfo(culture);
+                
                 return new ProviderCultureResult(ci.Name);
             });
 
@@ -86,14 +100,14 @@ namespace Tanyo.Portfolio.Web
                 options.Preload = true;
                 options.IncludeSubDomains = true;
                 options.MaxAge = TimeSpan.FromDays(60);
-                options.ExcludedHosts.Add("takerman.net");
-                options.ExcludedHosts.Add("www.takerman.net");
-                options.ExcludedHosts.Add("tanyoivanov.net");
-                options.ExcludedHosts.Add("www.tanyoivanov.net");
-                options.ExcludedHosts.Add("tivanov.takerman.net");
-                options.ExcludedHosts.Add("www.tivanov.takerman.net");
-                options.ExcludedHosts.Add("tanyo.takerman.net");
-                options.ExcludedHosts.Add("www.tanyo.takerman.net");
+                //options.ExcludedHosts.Add("takerman.net");
+                //options.ExcludedHosts.Add("www.takerman.net");
+                //options.ExcludedHosts.Add("tanyoivanov.net");
+                //options.ExcludedHosts.Add("www.tanyoivanov.net");
+                //options.ExcludedHosts.Add("tivanov.takerman.net");
+                //options.ExcludedHosts.Add("www.tivanov.takerman.net");
+                //options.ExcludedHosts.Add("tanyo.takerman.net");
+                //options.ExcludedHosts.Add("www.tanyo.takerman.net");
             });
         }
 
