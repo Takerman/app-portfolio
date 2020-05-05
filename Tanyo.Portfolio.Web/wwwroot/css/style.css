@@ -1,30 +1,4 @@
-﻿/*----------------------------------------------------
-@File: Default Styles
-@Author: SPONDON IT
-
-This file contains the styling for the actual theme, this
-is the file you need to edit to change the look of the
-theme.
----------------------------------------------------- */
-/*=====================================================================
-@Template Name: Breed Portfolio
-@Developed By: Spondon It
-
-=====================================================================*/
-/*----------------------------------------------------*/
-/*font Variables*/
-/*Color Variables*/
-/*=================== fonts ====================*/
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
-/*---------------------------------------------------- */
-/*----------------------------------------------------*/
-/* Medium Layout: 1280px */
-/* Tablet Layout: 768px */
-/* Mobile Layout: 320px */
-/* Wide Mobile Layout: 480px */
-/*---------------------------------------------------- */
-/*----------------------------------------------------*/
-body {
+﻿body {
     font-size: 14px;
     line-height: 27px;
     font-weight: 300;
