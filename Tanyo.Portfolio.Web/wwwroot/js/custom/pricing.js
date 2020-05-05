@@ -1,4 +1,5 @@
-﻿var pricing = (function () {
+﻿// TODO: Move all the data to the JSON files and similar table as in the skills
+var pricing = (function () {
     this.url = 'https://docs.google.com/spreadsheets/d/1zjgE1PTWX42fH4eoIMzhvRhUyyYjhJ3a50YqfbZy5dk/gviz/tq?tqx=out:html&tq&gid=0&range=';
 
     var employmentType = {
