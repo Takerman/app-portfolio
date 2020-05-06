@@ -1,0 +1,43 @@
+﻿@inject SharedLocalizationService sharedLocalizer
+@inject IViewLocalizer localizer
+
+<section class="portfolio_area section-margin pb-0" id="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="main_title">
+                    <p class="top_text">@localizer["Updated"] 01/04/2020 <span></span></p>
+                    <h2>
+                        @localizer["Prices"]
+                    </h2>
+                    <p>
+                        @localizer["Here are my Prices Roughly"].  @localizer["The prices could be negotiated."]
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <label for="employmentType">@localizer["Employment Type"]</label>
+                <select id="employmentType" class="custom-select pricing-event">
+                    <option value="0">@localizer["Permanent"]</option>
+                    <option value="1">@localizer["Contract"]</option>
+                </select>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <label for="workLocation">@localizer["Location"]</label>
+                <select id="workLocation" class="custom-select pricing-event">
+                    <option value="0">@localizer["Onsite"]</option>
+                    <option value="1">@localizer["Remote"]</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="pricing-table" class="col-lg-12 col-md-12 col-sm-12">
+            </div>
+        </div>
+    </div>
+</section>

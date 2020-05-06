@@ -120,14 +120,14 @@
   <data name="Here are most of my Skills" xml:space="preserve">
     <value>Това са повечето от техническите ми уменията</value>
   </data>
-  <data name="Name" xml:space="preserve">
-    <value>Име</value>
-  </data>
-  <data name="Points" xml:space="preserve">
-    <value>Точки</value>
+  <data name="Skills" xml:space="preserve">
+    <value>Умения</value>
   </data>
   <data name="Tech Skills" xml:space="preserve">
     <value>Технически умения</value>
+  </data>
+  <data name="The prices could be negotiated." xml:space="preserve">
+    <value>Цените могат да бъдат преговаряни</value>
   </data>
   <data name="Updated" xml:space="preserve">
     <value>Обновено</value>

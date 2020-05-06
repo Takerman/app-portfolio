@@ -11,11 +11,6 @@
   },
   {
     "action": "Index",
-    "controller": "Skills",
-    "label": "Skills"
-  },
-  {
-    "action": "Index",
     "controller": "Pricing",
     "label": "Pricing"
   },

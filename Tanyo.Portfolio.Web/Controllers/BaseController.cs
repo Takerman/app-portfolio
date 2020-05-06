@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Diagnostics;
@@ -20,18 +21,16 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 
         protected ILogger<BaseController> _logger;
 
-        public string Area { get; set; }
+        protected IStringLocalizer _sharedLocalizer;
 
         public BaseController(ILogger<BaseController> logger,
-            NavLinksService navLinksService)
+            NavLinksService navLinksService,
+            IStringLocalizer<SharedResource> sharedLocalizer)
         {
-            var type = typeof(SharedResource);
-            var assemblyName = new AssemblyName(type.GetTypeInfo().Assembly.FullName);
-
-            this.Area = "Tanyo";
+            _sharedLocalizer = sharedLocalizer;
 
             Layout = new Layout();
-            Layout.Head.Title = "Tanyo Ivanov";
+            Layout.Head.Title = _sharedLocalizer["Tanyo Ivanov"];
             Layout.Header.ImageUrl = "/img/profile/logo.png";
             Layout.Header.NavigationLinks = navLinksService.GetNavLinks().ToList();
 
@@ -57,7 +56,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
             return LocalRedirect(returnUrl);
         }
 
-        // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

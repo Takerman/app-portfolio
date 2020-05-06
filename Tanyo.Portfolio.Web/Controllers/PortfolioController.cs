@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using Tanyo.Portfolio.Web.Models;
 using Tanyo.Portfolio.Web.Models.Services;
+using Tanyo.Portfolio.Web.Resources;
 
 namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
@@ -13,19 +15,24 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 
         public PortfolioController(ILogger<BaseController> logger,
             NavLinksService navLinksService,
-            ProjectsService projectsService) : base(logger, navLinksService)
+            ProjectsService projectsService,
+            IStringLocalizer<PortfolioController> localizer,
+            IStringLocalizer<SharedResource> sharedLocalizer) : base(logger, navLinksService, sharedLocalizer)
         {
             _projectsService = projectsService;
+            _localizer = localizer;
         }
+
+        private IStringLocalizer<PortfolioController> _localizer;
 
         public IActionResult Index()
         {
-            Layout.Head.Title = "Portfolio | " + Layout.Head.Title + " | .NET Developer";
-            Layout.Banner.Title = "Portfolio";
+            Layout.Head.Title = _sharedLocalizer["Portfolio | " + Layout.Head.Title + " | .NET Developer"];
+            Layout.Banner.Title = _sharedLocalizer["Portfolio"];
             Layout.Banner.NavLinks = new List<NavLink>()
             {
-                new NavLink(){ Action = "Index", Controller = "Home", Label = "Home" },
-                new NavLink(){ Action = "Index", Controller = "Portfolio", Label = "Portfolio" },
+                new NavLink(){ Action = "Index", Controller = "Home", Label = _sharedLocalizer["Home"] },
+                new NavLink(){ Action = "Index", Controller = "Portfolio", Label = _sharedLocalizer["Portfolio"] },
             };
 
             var model = _projectsService.GetAll().Where(x => x.IsPrivate == false).ToList();
@@ -52,11 +59,11 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
         public IActionResult Project(string name)
         {
             Layout.Head.Title = name + " | " + Layout.Head.Title + " | .NET Developer";
-            Layout.Banner.Title = "Portfolio";
+            Layout.Banner.Title = _sharedLocalizer["Portfolio"];
             Layout.Banner.NavLinks = new List<NavLink>()
             {
-                new NavLink(){ Action = "Index", Controller = "Home", Label = "Home" },
-                new NavLink(){ Action = "Index", Controller = "Portfolio", Label = "Portfolio" },
+                new NavLink(){ Action = "Index", Controller = "Home", Label = _sharedLocalizer["Home"] },
+                new NavLink(){ Action = "Index", Controller = "Portfolio", Label = _sharedLocalizer["Portfolio"] },
                 new NavLink(){ Action = "Project", Controller = "Portfolio", Data = new { name = name }, Label = name },
             };
             return View(name);

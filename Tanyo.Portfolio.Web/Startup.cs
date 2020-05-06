@@ -52,6 +52,7 @@ namespace Tanyo.Portfolio.Web
             services.AddSingleton<SharedLocalizationService>();
             services.AddTransient<NavLinksService>();
             services.AddTransient<SkillsService>();
+            services.AddTransient<PricingService>();
             services.AddTransient<ProjectsService>();
 
             var provider = new CustomRequestCultureProvider(async (HttpContext) =>

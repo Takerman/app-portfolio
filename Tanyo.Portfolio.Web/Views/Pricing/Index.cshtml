@@ -1,53 +1,25 @@
 ﻿@inject SharedLocalizationService sharedLocalizer
 @inject IViewLocalizer localizer
+@model PricingModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="portfolio_area section-margin pb-0" id="portfolio">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9">
-                <div class="main_title">
-                    <p class="top_text">@localizer["Updated"] 01/04/2020 <span></span></p>
-                    <h2>
-                        @localizer["Here are my Prices Roughly"]
-                    </h2>
-                    <p>
-                        @localizer["The prices could be negotiated."]
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-3"></div>
-        </div>
+@section styles {
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.20/af-2.3.4/b-1.6.1/b-html5-1.6.1/cr-1.5.2/fh-3.1.6/r-2.2.3/sc-2.0.1/sl-1.3.1/datatables.min.css" />
+}
 
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <label for="employmentType">@localizer["Employment Type"]</label>
-                <select id="employmentType" class="custom-select pricing-event">
-                    <option value="0">@localizer["Permanent"]</option>
-                    <option value="1">@localizer["Contract"]</option>
-                </select>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <label for="workLocation">@localizer["Location"]</label>
-                <select id="workLocation" class="custom-select pricing-event">
-                    <option value="0">@localizer["Onsite"]</option>
-                    <option value="1">@localizer["Remote"]</option>
-                </select>
-            </div>
-        </div>
+@await Html.PartialAsync("~/Views/Shared/Partials/Pricing.cshtml", Model.Prices)
 
-        <div class="row">
-            <div id="pricing-table" class="col-lg-12 col-md-12 col-sm-12">
-            </div>
-        </div>
-    </div>
-</section>
+@await Html.PartialAsync("~/Views/Shared/Partials/Skills.cshtml", Model.Skills)
 
 @section scripts {
     <script src="~/js/custom/pricing.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.20/af-2.3.4/b-1.6.1/b-html5-1.6.1/cr-1.5.2/fh-3.1.6/r-2.2.3/sc-2.0.1/sl-1.3.1/datatables.min.js"></script>
+    <script src="~/js/custom/skills.js"></script>
     <script>
         $(function (e) {
             $('#employmentType').val(1);
@@ -60,6 +32,8 @@
                 var locationId = $('#workLocation').val();
                 pricing.loadPrices(employmentTypeId, locationId);
             });
+
+            skills.load();
         });
     </script>
 }

@@ -117,7 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Относно</value>
+  </data>
+  <data name="About | Tanyo Ivanov | .NET Developer" xml:space="preserve">
+    <value>Относно | Таньо Иванов | .NET Програмист</value>
+  </data>
+  <data name="Blog" xml:space="preserve">
+    <value>Блог</value>
+  </data>
+  <data name="Blog | Tanyo Ivanov | .NET Developer" xml:space="preserve">
+    <value>Блог | Таньо Иванов | .NET Програмист</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Контакти</value>
+  </data>
+  <data name="Contact | Tanyo Ivanov | .NET Developer" xml:space="preserve">
+    <value>Контакти | Таньо Иванов | .NET Програмист</value>
+  </data>
+  <data name="CV" xml:space="preserve">
+    <value>Био</value>
+  </data>
+  <data name="CV | Tanyo Ivanov | .NET Developer" xml:space="preserve">
+    <value>Био | Таньо Иванов | .NET Програмист</value>
+  </data>
   <data name="hey-there" xml:space="preserve">
     <value>Хей Здравей</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Начало</value>
+  </data>
+  <data name="Home | Tanyo Ivanov | .NET Developer" xml:space="preserve">
+    <value>Начало | Таньо Иванов | .NET Програмист</value>
+  </data>
+  <data name="Portfolio" xml:space="preserve">
+    <value>Портфолио</value>
+  </data>
+  <data name="Portfolio | Tanyo Ivanov | .NET Developer" xml:space="preserve">
+    <value>Портфолио | Таньо Иванов | .NET Програмист</value>
+  </data>
+  <data name="Pricing" xml:space="preserve">
+    <value>Цени</value>
+  </data>
+  <data name="Pricing | Tanyo Ivanov | .NET Developer" xml:space="preserve">
+    <value>Цени | Таньо Иванов | .NET Програмист</value>
+  </data>
+  <data name="Skills" xml:space="preserve">
+    <value>Умения</value>
+  </data>
+  <data name="Skills | Tanyo Ivanov | .NET Developer" xml:space="preserve">
+    <value>Умения | Таньо Иванов | .NET Програмист</value>
   </data>
 </root>
