@@ -1,4 +1,4 @@
 Sitemap: https://tivanov.takerman.net/sitemap.xml
 User-agent: *
 Allow: /
-Allow: /sitemap.htm
+Allow: /sitemap.xml

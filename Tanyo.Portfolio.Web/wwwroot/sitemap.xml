@@ -1,229 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-<url>
-
-    <loc>https://tivanov.takerman.net</loc>
-
-
-
-    <lastmod>2020-04-08</lastmod>
-
-    <changefreq>monthly</changefreq>
-
-    <priority>0.5</priority>
-
-</url>  
-
-<url>
-
-    <loc>https://tivanov.takerman.net/</loc>
-
-
-
-    <lastmod>2020-04-08</lastmod>
-
-    <changefreq>monthly</changefreq>
-
-    <priority>0.5</priority>
-
-</url>  
-
-<url>
-
-    <loc>https://tivanov.takerman.net/cv</loc>
-
-
-
-    <lastmod>2020-04-08</lastmod>
-
-    <changefreq>monthly</changefreq>
-
-    <priority>0.5</priority>
-
-</url>  
-
-<url>
-
-    <loc>https://tivanov.takerman.net/skills</loc>
-
-
-
-    <lastmod>2020-04-08</lastmod>
-
-    <changefreq>monthly</changefreq>
-
-    <priority>0.5</priority>
-
-</url>  
-
-<url>
-
-    <loc>https://tivanov.takerman.net/pricing</loc>
-
-
-
-    <lastmod>2020-04-08</lastmod>
-
-    <changefreq>monthly</changefreq>
-
-    <priority>0.5</priority>
-
-</url>  
-
-<url>
-
-    <loc>https://tivanov.takerman.net/portfolio</loc>
-
-
-
-    <lastmod>2020-04-08</lastmod>
-
-    <changefreq>monthly</changefreq>
-
-    <priority>0.5</priority>
-
-</url>  
-
-<url>
-
-    <loc>https://tivanov.takerman.net/blog</loc>
-
-
-
-    <lastmod>2020-04-08</lastmod>
-
-    <changefreq>monthly</changefreq>
-
-    <priority>0.5</priority>
-
-</url>  
-
-<url>
-
-    <loc>https://tivanov.takerman.net/contact</loc>
-
-
-
-    <lastmod>2020-04-08</lastmod>
-
-    <changefreq>monthly</changefreq>
-
-    <priority>0.5</priority>
-
-</url>  
-
-<url>
-
-    <loc>https://tivanov.takerman.net/live:contact_44094?chat</loc>
-
-
-
-    <lastmod>2020-04-08</lastmod>
-
-    <changefreq>monthly</changefreq>
-
-    <priority>0.5</priority>
-
-</url>  
-
-<url>
-
-    <loc>https://tivanov.takerman.net/files/recomendations/anderspersson.pdf</loc>
-
-
-
-    <lastmod>2020-04-08</lastmod>
-
-    <changefreq>monthly</changefreq>
-
-    <priority>0.5</priority>
-
-</url>  
-
-<url>
-
-    <loc>https://tivanov.takerman.net/files/recomendations/ivayloivanov.pdf</loc>
-
-
-
-    <lastmod>2020-04-08</lastmod>
-
-    <changefreq>monthly</changefreq>
-
-    <priority>0.5</priority>
-
-</url>  
-
-<url>
-
-    <loc>https://tivanov.takerman.net/files/recomendations/ivanlekushev.pdf</loc>
-
-
-
-    <lastmod>2020-04-08</lastmod>
-
-    <changefreq>monthly</changefreq>
-
-    <priority>0.5</priority>
-
-</url>  
-
-<url>
-
-    <loc>https://tivanov.takerman.net/files/tanyo_ivanov_cv.pdf</loc>
-
-
-
-    <lastmod>2020-04-08</lastmod>
-
-    <changefreq>monthly</changefreq>
-
-    <priority>0.5</priority>
-
-</url>  
-
-<url>
-
-    <loc>https://tivanov.takerman.net/files/tanyo_ivanov_cv.docx</loc>
-
-
-
-    <lastmod>2020-04-08</lastmod>
-
-    <changefreq>monthly</changefreq>
-
-    <priority>0.5</priority>
-
-</url>  
-
-<url>
-
-    <loc>https://tivanov.takerman.net/+447383721742</loc>
-
-
-
-    <lastmod>2020-04-08</lastmod>
-
-    <changefreq>monthly</changefreq>
-
-    <priority>0.5</priority>
-
-</url>  
-
-<url>
-
-    <loc>https://tivanov.takerman.net/+359879213817</loc>
-
-
-
-    <lastmod>2020-04-08</lastmod>
-
-    <changefreq>monthly</changefreq>
-
-    <priority>0.5</priority>
-
-</url>  
-
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+	<url>
+		<loc>https://tanyo.takerman.net/</loc>
+		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
+		<priority>1.00</priority>
+	</url>
+	<url>
+		<loc>https://tanyo.takerman.net/CV</loc>
+		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://tanyo.takerman.net/Skills</loc>
+		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://tanyo.takerman.net/Pricing</loc>
+		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://tanyo.takerman.net/Portfolio</loc>
+		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://tanyo.takerman.net/Blog</loc>
+		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://tanyo.takerman.net/Contact</loc>
+		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://tanyo.takerman.net/files/recomendations/AndersPersson.pdf</loc>
+		<lastmod>2020-05-05T22:27:51+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://tanyo.takerman.net/files/recomendations/IvayloIvanov.pdf</loc>
+		<lastmod>2020-05-05T22:27:53+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://tanyo.takerman.net/files/recomendations/IvanLekushev.pdf</loc>
+		<lastmod>2020-05-05T22:27:52+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://tanyo.takerman.net/Blog/Post?name=designpatterns-package</loc>
+		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://tanyo.takerman.net/Blog/Post?name=raspberrypi-home-automation</loc>
+		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://tanyo.takerman.net/Blog/Post?name=prices-listed</loc>
+		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://tanyo.takerman.net/files/Tanyo_Ivanov_CV.pdf</loc>
+		<lastmod>2020-05-05T22:27:49+00:00</lastmod>
+		<priority>0.64</priority>
+	</url>
+	<url>
+		<loc>https://tanyo.takerman.net/files/Tanyo_Ivanov_CV.docx</loc>
+		<lastmod>2020-05-05T22:27:48+00:00</lastmod>
+		<priority>0.64</priority>
+	</url>
+	<url>
+		<loc>https://tanyo.takerman.net/files/EN_Intermediate.pdf</loc>
+		<lastmod>2020-05-05T22:27:45+00:00</lastmod>
+		<priority>0.64</priority>
+	</url>
+	<url>
+		<loc>https://tanyo.takerman.net/files/EN_PreIntermediate.pdf</loc>
+		<lastmod>2020-05-05T22:27:47+00:00</lastmod>
+		<priority>0.64</priority>
+	</url>
+	<url>
+		<loc>https://tanyo.takerman.net/Portfolio/Project?name=Various</loc>
+		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
+		<priority>0.64</priority>
+	</url>
+	<url>
+		<loc>https://tanyo.takerman.net/Portfolio/Project?name=Hobby</loc>
+		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
+		<priority>0.64</priority>
+	</url>
 </urlset>
