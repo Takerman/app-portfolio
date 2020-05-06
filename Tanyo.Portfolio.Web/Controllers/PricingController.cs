@@ -28,6 +28,18 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
             _pricingService = pricingService;
         }
 
+        public IActionResult GetTable(int employmentTypeId, int locationId)
+        {
+            var prices = _pricingService.GetPrices().Where(x=>x.Type == employmentTypeId && x.Location == locationId).ToList();
+
+            var model = new PricingTableModel(employmentTypeId)
+            {
+                Prices = prices
+            };
+
+            return PartialView("PricingTable", model);
+        }
+
         public IActionResult Index()
         {
             Layout.Head.Title = _sharedLocalizer["Pricing | " + Layout.Head.Title + " | .NET Developer"];

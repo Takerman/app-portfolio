@@ -93,30 +93,30 @@
     "value": 170,
     "currency": "BGN",
     "type": 2,
-    "location": 1
+    "location": 2
   },
   {
     "value": 105,
     "currency": "GBP",
     "type": 2,
-    "location": 1
+    "location": 2
   },
   {
     "value": 120,
     "currency": "USD",
     "type": 2,
-    "location": 1
+    "location": 2
   },
   {
     "value": 130,
     "currency": "CHF",
     "type": 2,
-    "location": 1
+    "location": 2
   },
   {
     "value": 110,
     "currency": "EUR",
     "type": 2,
-    "location": 1
+    "location": 2
   }
 ]

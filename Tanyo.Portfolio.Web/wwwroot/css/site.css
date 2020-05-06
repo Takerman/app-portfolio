@@ -18210,24 +18210,19 @@ h6 {
 }
 
 /* PRICING */
-#pricing-table {
-    margin-top: 30px;
-    border: none !important;
+.portfolio-table {
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    color: black !important;
+    width: 100%;
 }
 
-    #pricing-table table {
-        margin-left: 0 auto;
-        margin-right: 0 auto;
-        color: black !important;
-        width: 100%;
+    .portfolio-table td {
+        background-color: #bcaed3 !important;
+        padding-left: 10px;
+        padding-top: 2px;
+        padding-bottom: 2px;
     }
-
-        #pricing-table table td {
-            background-color: #bcaed3 !important;
-            padding-left: 10px;
-            padding-top: 2px;
-            padding-bottom: 2px;
-        }
 
 /* END PRICING */
 

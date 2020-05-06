@@ -23,7 +23,7 @@
         <div>
             <img style="margin-left: auto; margin-right: auto; display: block; top: -30px" src="~/img/specs/chart.png" alt="Technologies chart" />
             <div class="align-items-center">
-                <table id="tbl-skills" class="table display compact table-sm">
+                <table id="tbl-skills" class="table portfolio-table display compact table-sm">
                     <thead>
                         <tr class="thead-dark">
                             <th scope="col">@localizer["Name"]</th>
@@ -35,7 +35,7 @@
                         @foreach (var skill in Model)
                         {
                             <tr class="thead-active">
-                                <th scope="row">@skill.Name</th>
+                                <td><strong>@skill.Name</strong></td>
                                 <td>@skill.Value / 10</td>
                                 <td>@skill.Years</td>
                             </tr>

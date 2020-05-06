@@ -70,7 +70,7 @@ namespace Tanyo.Portfolio.Web
                         culture = cookie.Split('=').LastOrDefault();
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                 }
 
