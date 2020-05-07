@@ -31,8 +31,7 @@
       "wwwroot/lib/jquery-ajaxchimp/jquery.ajaxchimp.min.js",
       "wwwroot/js/mail-script.js",
       "wwwroot/js/theme.js",
-      "wwwroot/js/custom/ga.js",
-      "wwwroot/js/custom/main.js"
+      "wwwroot/js/custom/ga.js"
     ],
     "minify": {
       "enabled": true,

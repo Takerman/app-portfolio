@@ -1,8 +1,8 @@
 ﻿var googleAnalytics = {
-    load: function () {
+    load: function (code) {
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        gtag('config', 'UA-130195294-1');
+        gtag('config', code);
     }
 }
