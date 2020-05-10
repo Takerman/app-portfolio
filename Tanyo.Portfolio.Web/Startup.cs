@@ -75,7 +75,7 @@ namespace Tanyo.Portfolio.Web
                 }
 
                 var ci = new CultureInfo(culture);
-                
+
                 return new ProviderCultureResult(ci.Name);
             });
 
@@ -120,7 +120,8 @@ namespace Tanyo.Portfolio.Web
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
 
                 app.UseHsts();
             }

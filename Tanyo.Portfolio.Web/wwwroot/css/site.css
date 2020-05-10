@@ -14413,7 +14413,7 @@ button.primary_btn {
     position: relative;
     overflow: hidden;
     width: 100%;
-    min-height: 300px;
+    min-height: 240px;
     background: url(../img/banner/common-banner.png) no-repeat right bottom;
     background-size: cover;
     z-index: 1;
@@ -14421,7 +14421,7 @@ button.primary_btn {
 
 @media (max-width: 1199px) {
     .banner_area .banner_inner {
-        min-height: 300px;
+        min-height: 240px;
     }
 }
 

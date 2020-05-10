@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using Tanyo.Portfolio.Web.Models;
 using Tanyo.Portfolio.Web.Models.Services;
@@ -30,6 +31,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
                 new NavLink(){ Action = "Index", Controller = "Home", Label = _sharedLocalizer["Home"] },
                 new NavLink(){ Action = "Index", Controller = "CV", Label = _sharedLocalizer["CV"] },
             };
+
             return View();
         }
     }
