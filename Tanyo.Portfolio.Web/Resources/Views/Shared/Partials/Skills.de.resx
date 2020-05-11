@@ -117,70 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="apr" xml:space="preserve">
-    <value>Apr</value>
+  <data name="Here are most of my Skills" xml:space="preserve">
+    <value>Hier sind die meisten meiner Fähigkeiten</value>
   </data>
-  <data name="aug" xml:space="preserve">
-    <value>Aug</value>
+  <data name="Skills" xml:space="preserve">
+    <value>Kompetenzen</value>
   </data>
-  <data name="dec" xml:space="preserve">
-    <value>Dec</value>
+  <data name="Tech Skills" xml:space="preserve">
+    <value>Tech Fähigkeiten</value>
   </data>
-  <data name="facebook" xml:space="preserve">
-    <value>Facebook</value>
+  <data name="The prices could be negotiated." xml:space="preserve">
+    <value>Die Preise ausgehandelt werden könnte.</value>
   </data>
-  <data name="feb" xml:space="preserve">
-    <value>Feb</value>
+  <data name="Updated" xml:space="preserve">
+    <value>Aktualisiert</value>
   </data>
-  <data name="github" xml:space="preserve">
-    <value>GitHub</value>
-  </data>
-  <data name="hey-there" xml:space="preserve">
-    <value>HEY THERE</value>
-  </data>
-  <data name="i-m" xml:space="preserve">
-    <value>I'm</value>
-  </data>
-  <data name="instagram" xml:space="preserve">
-    <value>Instagram</value>
-  </data>
-  <data name="jan" xml:space="preserve">
-    <value>Jan</value>
-  </data>
-  <data name="jul" xml:space="preserve">
-    <value>Jul</value>
-  </data>
-  <data name="jun" xml:space="preserve">
-    <value>Jun</value>
-  </data>
-  <data name="linkedin" xml:space="preserve">
-    <value>LinkedIn</value>
-  </data>
-  <data name="mar" xml:space="preserve">
-    <value>Mar</value>
-  </data>
-  <data name="may" xml:space="preserve">
-    <value>May</value>
-  </data>
-  <data name="nov" xml:space="preserve">
-    <value>Nov</value>
-  </data>
-  <data name="oct" xml:space="preserve">
-    <value>Oct</value>
-  </data>
-  <data name="sep" xml:space="preserve">
-    <value>Sep</value>
-  </data>
-  <data name="skype" xml:space="preserve">
-    <value>skype</value>
-  </data>
-  <data name="tanyo-ivanov" xml:space="preserve">
-    <value>Tanyo Ivanov</value>
-  </data>
-  <data name="twitter" xml:space="preserve">
-    <value>Twitter</value>
-  </data>
-  <data name="youtube" xml:space="preserve">
-    <value>YouTube</value>
+  <data name="Years" xml:space="preserve">
+    <value>Jahre</value>
   </data>
 </root>

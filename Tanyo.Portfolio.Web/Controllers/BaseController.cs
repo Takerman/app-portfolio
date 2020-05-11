@@ -1,13 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
 using Tanyo.Portfolio.Web.Models;
 using Tanyo.Portfolio.Web.Models.Filters;
 using Tanyo.Portfolio.Web.Models.Services;

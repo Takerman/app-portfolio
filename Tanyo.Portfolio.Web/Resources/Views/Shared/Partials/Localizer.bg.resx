@@ -120,13 +120,19 @@
   <data name="Bulgarian" xml:space="preserve">
     <value>Български</value>
   </data>
-  <data name="English (United States}" xml:space="preserve">
-    <value>Английски (САЩ)</value>
+  <data name="English" xml:space="preserve">
+    <value>Английски</value>
+  </data>
+  <data name="German" xml:space="preserve">
+    <value>Немски</value>
   </data>
   <data name="Language:" xml:space="preserve">
     <value>Език:</value>
   </data>
   <data name="Request culture provider:" xml:space="preserve">
     <value>Изберете език:</value>
+  </data>
+  <data name="Russian" xml:space="preserve">
+    <value>Руски</value>
   </data>
 </root>

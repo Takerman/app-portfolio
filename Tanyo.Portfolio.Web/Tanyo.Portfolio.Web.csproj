@@ -8,9 +8,14 @@
 
   <ItemGroup>
     <Compile Remove="wwwroot\img\elements\**" />
+    <Compile Remove="wwwroot\img\skills\**" />
     <Content Remove="wwwroot\img\elements\**" />
+    <Content Remove="wwwroot\img\skills\**" />
     <EmbeddedResource Remove="wwwroot\img\elements\**" />
+    <EmbeddedResource Remove="wwwroot\img\skills\**" />
     <None Remove="wwwroot\img\elements\**" />
+    <None Remove="wwwroot\img\skills\**" />
+    <TypeScriptCompile Remove="wwwroot\img\skills\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,10 +36,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\img\skills\" />
+    <PackageReference Include="PostSharp" Version="6.7.1-preview" />
   </ItemGroup>
 
   <ItemGroup>
@@ -89,10 +91,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\SharedResource.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\SharedResource.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\SharedResource.bg.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\SharedResource.en.resx">
+    <EmbeddedResource Update="Resources\Views\Blog\post-designpatterns-package.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>

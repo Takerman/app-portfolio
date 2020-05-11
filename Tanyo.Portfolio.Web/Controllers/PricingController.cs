@@ -30,7 +30,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 
         public IActionResult GetTable(int employmentTypeId, int locationId)
         {
-            var prices = _pricingService.GetPrices().Where(x=>x.Type == employmentTypeId && x.Location == locationId).ToList();
+            var prices = _pricingService.GetPrices().Where(x => x.Type == employmentTypeId && x.Location == locationId).ToList();
 
             var model = new PricingTableModel(employmentTypeId)
             {
@@ -49,7 +49,6 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
                 new NavLink(){ Action = "Index", Controller = "Home", Label = _sharedLocalizer["Home"] },
                 new NavLink(){ Action = "Index", Controller = "Pricing", Label = _sharedLocalizer["Pricing"] },
             };
-
 
             var skills = _skillsService.GetSkills().ToList();
             var prices = _pricingService.GetPrices().ToList();

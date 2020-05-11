@@ -14,13 +14,10 @@
     var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value + Convert.ToString(Context.Request.QueryString)}";
 }
 
-<div title="@localizer["Request culture provider:"] @requestCulture?.Provider?.GetType().Name">
-    <form id="selectLanguage" asp-controller="Home"
-          asp-action="SetLanguage" asp-route-returnUrl="@returnUrl"
-          method="post" class="form-horizontal" role="form">
-        <strong style="color: black;" asp-for="@requestCulture.RequestCulture.UICulture.Name">@localizer["Language:"]</strong> <select name="culture"
-                                                                                                                                       onchange="this.form.submit();"
-                                                                                                                                       asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
-        </select>
-    </form>
-</div>
+<form asp-controller="Home" asp-action="SetLanguage" id="selectLanguage" asp-route-returnUrl="@returnUrl" method="post" class="form-horizontal" role="form">
+    @foreach (var culture in cultureItems)
+    {
+        <img src="~/img/flags/@(culture.Value).png" title="@localizer[culture.Text]" onclick="document.getElementById('culture').value = '@culture.Value'; document.getElementById('selectLanguage').submit();" class="btn-localization" />
+    }
+    <input id="culture" type="hidden" name="culture" value="en" />
+</form>

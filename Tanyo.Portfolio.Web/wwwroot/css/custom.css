@@ -83,3 +83,9 @@
 .trustpilot-widget {
     margin-bottom: 100px;
 }
+
+.btn-localization {
+    cursor: pointer;
+    width: 33px;
+    height: 33px;
+}
