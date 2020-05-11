@@ -10,16 +10,11 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
     public class CvController : BaseController
     {
-        public CvController(
-            ILogger<BaseController> logger,
+        public CvController(ILogger<BaseController> logger,
             NavLinksService navLinksService,
-            IStringLocalizer<CvController> localizer,
-            IStringLocalizer<SharedResource> sharedLocalizer) : base(logger, navLinksService, sharedLocalizer)
+            IStringLocalizerFactory factory) : base(logger, navLinksService, factory)
         {
-            _localizer = localizer;
         }
-
-        private IStringLocalizer<CvController> _localizer;
 
         public IActionResult Index()
         {

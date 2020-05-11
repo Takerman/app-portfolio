@@ -13,14 +13,10 @@ namespace Tanyo.Portfolio.Web.Controllers
 {
     public class ErrorController : BaseController
     {
-        private IStringLocalizer<AboutController> _localizer;
-
         public ErrorController(ILogger<BaseController> logger,
             NavLinksService navLinksService,
-            IStringLocalizer<AboutController> localizer,
-            IStringLocalizer<SharedResource> sharedLocalizer) : base(logger, navLinksService, sharedLocalizer)
+            IStringLocalizerFactory factory) : base(logger, navLinksService, factory)
         {
-            _localizer = localizer;
         }
 
         [AllowAnonymous]

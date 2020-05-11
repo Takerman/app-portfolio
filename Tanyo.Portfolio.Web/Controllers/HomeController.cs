@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
+using System.Reflection;
 using Tanyo.Portfolio.Web.Models.Services;
 using Tanyo.Portfolio.Web.Resources;
 
@@ -10,13 +11,9 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
     {
         public HomeController(ILogger<BaseController> logger,
             NavLinksService navLinksService,
-            IStringLocalizer<HomeController> localizer,
-            IStringLocalizer<SharedResource> sharedLocalizer) : base(logger, navLinksService, sharedLocalizer)
+            IStringLocalizerFactory factory) : base(logger, navLinksService, factory)
         {
-            _localizer = localizer;
         }
-
-        private IStringLocalizer<HomeController> _localizer;
 
         public IActionResult Index()
         {

@@ -12,13 +12,9 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
     {
         public AboutController(ILogger<BaseController> logger,
             NavLinksService navLinksService,
-            IStringLocalizer<AboutController> localizer,
-            IStringLocalizer<SharedResource> sharedLocalizer) : base(logger, navLinksService, sharedLocalizer)
+            IStringLocalizerFactory factory) : base(logger, navLinksService, factory)
         {
-            _localizer = localizer;
         }
-
-        private IStringLocalizer<AboutController> _localizer;
 
         public IActionResult Index()
         {

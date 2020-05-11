@@ -12,18 +12,15 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
     public class PricingController : BaseController
     {
-        private readonly IStringLocalizer<PricingController> _localizer;
         private readonly SkillsService _skillsService;
         private readonly PricingService _pricingService;
 
         public PricingController(ILogger<BaseController> logger,
             NavLinksService navLinksService,
-            IStringLocalizer<PricingController> localizer,
             SkillsService skillsService,
             PricingService pricingService,
-            IStringLocalizer<SharedResource> sharedLocalizer) : base(logger, navLinksService, sharedLocalizer)
+            IStringLocalizerFactory factory) : base(logger, navLinksService, factory)
         {
-            _localizer = localizer;
             _skillsService = skillsService;
             _pricingService = pricingService;
         }

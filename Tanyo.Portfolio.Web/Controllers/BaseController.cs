@@ -5,6 +5,7 @@ using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
+using System.Reflection;
 using Tanyo.Portfolio.Web.Models;
 using Tanyo.Portfolio.Web.Models.Filters;
 using Tanyo.Portfolio.Web.Models.Services;
@@ -18,14 +19,18 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
         public Layout Layout { get; set; }
 
         protected ILogger<BaseController> _logger;
-
+        private readonly IStringLocalizer _localizer;
         protected IStringLocalizer _sharedLocalizer;
 
         public BaseController(ILogger<BaseController> logger,
             NavLinksService navLinksService,
-            IStringLocalizer<SharedResource> sharedLocalizer)
+            IStringLocalizerFactory factory)
         {
-            _sharedLocalizer = sharedLocalizer;
+
+            var type = typeof(SharedResource);
+            var assemblyName = new AssemblyName(type.GetTypeInfo().Assembly.FullName);
+            _localizer = factory.Create(type);
+            _sharedLocalizer = factory.Create("SharedResource", assemblyName.Name);
 
             Layout = new Layout();
             Layout.Head.Title = _sharedLocalizer["Tanyo Ivanov"];
