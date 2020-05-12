@@ -103,6 +103,10 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\cv\" />
+  </ItemGroup>
+
 
 
 </Project>

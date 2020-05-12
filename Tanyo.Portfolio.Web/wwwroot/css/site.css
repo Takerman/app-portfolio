@@ -14174,7 +14174,7 @@ button.primary_btn {
     }
 
         .navbar .nav .nav-item .nav-link {
-            font: 500 14px/100px "Roboto", sans-serif;
+            font: 500 14px/80px "Roboto", sans-serif;
             text-transform: uppercase;
             color: #05364d;
             padding: 0px;
@@ -17805,8 +17805,8 @@ h6 {
     /* Footer Area css
 	============================================================================================ */
     .footer_area {
-        padding-top: 40px !important;
-        padding-bottom: 80px !important;
+        padding-top: 10px !important;
+        padding-bottom: 30px !important;
         background-image: none !important;
         background-color: #fcf8ff;
     }
@@ -17852,7 +17852,7 @@ h6 {
     /* Footer Area css
 	============================================================================================ */
     .footer_area .col-sm-6 {
-        margin-bottom: 30px;
+        margin-bottom: 10px;
     }
 
     .footer_area .footer_inner {
@@ -17928,7 +17928,7 @@ h6 {
     /* Footer Area css
 	============================================================================================ */
     .footer_area .f_title {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
     .footer-bottom {
@@ -18095,13 +18095,13 @@ h6 {
 ============================================================================================ */
 .footer_area {
     background: #021017;
-    padding: 40px 0;
+    padding: 10px 0;
     position: relative;
 }
 
 @media (max-width: 1024px) {
     .footer_area {
-        padding: 40px 0;
+        padding: 10px 0;
     }
 }
 
@@ -18251,4 +18251,9 @@ h6 {
     cursor: pointer;
     width: 33px;
     height: 33px;
+}
+
+.cv-image {
+    /*border: 1px solid #e0e0e0;*/
+    width: 80px;
 }
