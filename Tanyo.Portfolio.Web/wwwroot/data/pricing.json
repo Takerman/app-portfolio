@@ -66,19 +66,19 @@
     "location": 1
   },
   {
-    "value": 200,
+    "value": 250,
     "currency": "GBP",
     "type": 2,
     "location": 1
   },
   {
-    "value": 250,
+    "value": 300,
     "currency": "USD",
     "type": 2,
     "location": 1
   },
   {
-    "value": 230,
+    "value": 260,
     "currency": "CHF",
     "type": 2,
     "location": 1
@@ -96,7 +96,7 @@
     "location": 2
   },
   {
-    "value": 105,
+    "value": 110,
     "currency": "GBP",
     "type": 2,
     "location": 2

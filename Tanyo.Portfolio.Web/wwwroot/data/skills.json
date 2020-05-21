@@ -208,5 +208,23 @@
     "Name": "Linux/Unix",
     "Years": 3,
     "Category": "Stream"
+  },
+  {
+    "Value": 6,
+    "Name": "Umbraco",
+    "Years": 1,
+    "Category": "Technology"
+  },
+  {
+    "Value": 6,
+    "Name": "Piranha CMS",
+    "Years": 1,
+    "Category": "Technology"
+  },
+  {
+    "Value": 6,
+    "Name": "Angular",
+    "Years": 1,
+    "Category": "Technology"
   }
 ]
