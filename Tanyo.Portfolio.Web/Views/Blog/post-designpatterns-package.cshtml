@@ -23,46 +23,42 @@
                             @localizer["Hello friends"],<br />
                             @localizer["Here you can find a package with Design Patterns which I made while watching a YouTube channel.There is explanation and a video about all of them."]
                         </p>
-                        <table style="width: 100%; margin-bottom: 40px;">
-                            <tr>
-                                <td>
-                                    <iframe width="420" height="315"
-                                            src="https://www.youtube.com/embed/phuYBWg2mG4">
-                                    </iframe>
-                                </td>
-                                <td class="text-center">
-                                    <strong>@localizer["Here are the resources"]</strong><br />
-                                    <a target="_blank" href="https://youtube.com/watch?v=v9ejT8FO-7I&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=1">@localizer["Design Patterns YouTube Playlist"]</a><br />
-                                    <a target="_blank" href="~/files/DesignPatterns.zip">@localizer["Download Design Patterns Package"]</a><br />
-                                    <a target="_blank" href="https://facebook.com/dev.tanyoivanov">@localizer["Facebook"]</a><br />
-                                    <a target="_blank" href="https://linkedin.com/in/tanyo-ivanov">@localizer["LinkedIn"]</a><br />
-                                    <a target="_blank" href="https://twitter.com/TanyoIvanov">@localizer["Twitter"]</a><br />
-
-                                    @localizer["Hope you enjoyed, see you in the next videos"] :)<br />
-                                    @localizer["Regards"],<br />
-                                    @localizer["Tanyo Ivanov"]
-                                </td>
-                            </tr>
-                        </table>
-                        <div id="disqus_thread"></div>
-                        <script>
-                            const PAGE_URL = 'https://tivanov.takerman.net';
-                            const PAGE_IDENTIFIER = location.href;
-                            var disqus_config = function () {
-                                this.page.url = PAGE_URL;
-                                this.page.identifier = PAGE_IDENTIFIER;
-                            };
-                            (function () {
-                                var d = document, s = d.createElement('script');
-                                s.src = 'https://tanyo-takerman-net-1.disqus.com/embed.js';
-                                s.setAttribute('data-timestamp', +new Date());
-                                (d.head || d.body).appendChild(s);
-                            })();
-                        </script>
-                        <noscript>@localizer["Please enable JavaScript to view the comments."]</noscript>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-6 p-0">
+                <iframe class="p-0" width="400" height="250" src="https://www.youtube.com/embed/phuYBWg2mG4"></iframe>
+            </div>
+            <div class="text-center col-sm-12 col-md-12 col-lg-6 p-0">
+                <strong>@localizer["Here are the resources"]</strong><br />
+                <a target="_blank" href="https://youtube.com/watch?v=v9ejT8FO-7I&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=1">@localizer["Design Patterns YouTube Playlist"]</a><br />
+                <a target="_blank" href="~/files/DesignPatterns.zip">@localizer["Download Design Patterns Package"]</a><br />
+                <a target="_blank" href="https://facebook.com/dev.tanyoivanov">@localizer["Facebook"]</a><br />
+                <a target="_blank" href="https://linkedin.com/in/tanyo-ivanov">@localizer["LinkedIn"]</a><br />
+                <a target="_blank" href="https://twitter.com/TanyoIvanov">@localizer["Twitter"]</a><br />
+
+                @localizer["Hope you enjoyed, see you in the next videos"] :)<br />
+                @localizer["Regards"],<br />
+                @localizer["Tanyo Ivanov"]
+            </div>
+        </div>
+        <div id="disqus_thread"></div>
+        <script>
+            const PAGE_URL = 'https://tivanov.takerman.net';
+            const PAGE_IDENTIFIER = location.href;
+            var disqus_config = function () {
+                this.page.url = PAGE_URL;
+                this.page.identifier = PAGE_IDENTIFIER;
+            };
+            (function () {
+                var d = document, s = d.createElement('script');
+                s.src = 'https://tanyo-takerman-net-1.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>@localizer["Please enable JavaScript to view the comments."]</noscript>
     </div>
 </section>
