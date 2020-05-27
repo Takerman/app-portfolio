@@ -5,92 +5,92 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 	<url>
-		<loc>https://tanyo.takerman.net/</loc>
+		<loc>https://tanyoivanov.net/</loc>
 		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
 		<priority>1.00</priority>
 	</url>
 	<url>
-		<loc>https://tanyo.takerman.net/CV</loc>
+		<loc>https://tanyoivanov.net/CV</loc>
 		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
 		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://tanyo.takerman.net/Pricing</loc>
+		<loc>https://tanyoivanov.net/Pricing</loc>
 		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
 		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://tanyo.takerman.net/Portfolio</loc>
+		<loc>https://tanyoivanov.net/Portfolio</loc>
 		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
 		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://tanyo.takerman.net/Blog</loc>
+		<loc>https://tanyoivanov.net/Blog</loc>
 		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
 		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://tanyo.takerman.net/Contact</loc>
+		<loc>https://tanyoivanov.net/Contact</loc>
 		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
 		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://tanyo.takerman.net/files/recomendations/AndersPersson.pdf</loc>
+		<loc>https://tanyoivanov.net/files/recomendations/AndersPersson.pdf</loc>
 		<lastmod>2020-05-05T22:27:51+00:00</lastmod>
 		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://tanyo.takerman.net/files/recomendations/IvayloIvanov.pdf</loc>
+		<loc>https://tanyoivanov.net/files/recomendations/IvayloIvanov.pdf</loc>
 		<lastmod>2020-05-05T22:27:53+00:00</lastmod>
 		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://tanyo.takerman.net/files/recomendations/IvanLekushev.pdf</loc>
+		<loc>https://tanyoivanov.net/files/recomendations/IvanLekushev.pdf</loc>
 		<lastmod>2020-05-05T22:27:52+00:00</lastmod>
 		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://tanyo.takerman.net/Blog/Post?name=designpatterns-package</loc>
+		<loc>https://tanyoivanov.net/Blog/Post?name=designpatterns-package</loc>
 		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
 		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://tanyo.takerman.net/Blog/Post?name=raspberrypi-home-automation</loc>
+		<loc>https://tanyoivanov.net/Blog/Post?name=raspberrypi-home-automation</loc>
 		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
 		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://tanyo.takerman.net/Blog/Post?name=prices-listed</loc>
+		<loc>https://tanyoivanov.net/Blog/Post?name=prices-listed</loc>
 		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
 		<priority>0.80</priority>
 	</url>
 	<url>
-		<loc>https://tanyo.takerman.net/files/Tanyo_Ivanov_CV.pdf</loc>
+		<loc>https://tanyoivanov.net/files/Tanyo_Ivanov_CV.pdf</loc>
 		<lastmod>2020-05-05T22:27:49+00:00</lastmod>
 		<priority>0.64</priority>
 	</url>
 	<url>
-		<loc>https://tanyo.takerman.net/files/Tanyo_Ivanov_CV.docx</loc>
+		<loc>https://tanyoivanov.net/files/Tanyo_Ivanov_CV.docx</loc>
 		<lastmod>2020-05-05T22:27:48+00:00</lastmod>
 		<priority>0.64</priority>
 	</url>
 	<url>
-		<loc>https://tanyo.takerman.net/files/EN_Intermediate.pdf</loc>
+		<loc>https://tanyoivanov.net/files/EN_Intermediate.pdf</loc>
 		<lastmod>2020-05-05T22:27:45+00:00</lastmod>
 		<priority>0.64</priority>
 	</url>
 	<url>
-		<loc>https://tanyo.takerman.net/files/EN_PreIntermediate.pdf</loc>
+		<loc>https://tanyoivanov.net/files/EN_PreIntermediate.pdf</loc>
 		<lastmod>2020-05-05T22:27:47+00:00</lastmod>
 		<priority>0.64</priority>
 	</url>
 	<url>
-		<loc>https://tanyo.takerman.net/Portfolio/Project?name=Various</loc>
+		<loc>https://tanyoivanov.net/Portfolio/Project?name=Various</loc>
 		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
 		<priority>0.64</priority>
 	</url>
 	<url>
-		<loc>https://tanyo.takerman.net/Portfolio/Project?name=Hobby</loc>
+		<loc>https://tanyoivanov.net/Portfolio/Project?name=Hobby</loc>
 		<lastmod>2020-05-06T08:29:02+00:00</lastmod>
 		<priority>0.64</priority>
 	</url>
