@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -47,9 +48,15 @@ namespace Tanyo.Portfolio.Web
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-            services.AddMvc(option => option.EnableEndpointRouting = true)
-                   .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
-                   .AddDataAnnotationsLocalization(options => { options.DataAnnotationLocalizerProvider = (type, factory) => factory.Create(typeof(SharedResource)); });
+            services.AddMvc(option =>
+            {
+                option.EnableEndpointRouting = false;
+                option.CacheProfiles.Add("Default", new CacheProfile()
+                {
+                    Duration = 30
+                });
+            }).AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+            .AddDataAnnotationsLocalization(options => { options.DataAnnotationLocalizerProvider = (type, factory) => factory.Create(typeof(SharedResource)); });
 
             services.AddSingleton<SharedLocalizationService>();
             services.AddTransient<NavLinksService>();
@@ -134,6 +141,8 @@ namespace Tanyo.Portfolio.Web
 
             app.UseHttpsRedirection();
 
+            var cachePeriod = env.IsDevelopment() ? "600" : "604800";
+
             app.UseStaticFiles(new StaticFileOptions
             {
                 HttpsCompression = HttpsCompressionMode.Compress,
@@ -145,6 +154,7 @@ namespace Tanyo.Portfolio.Web
                         Public = true,
                         MaxAge = TimeSpan.FromDays(Configuration.GetValue<int>("CacheDays"))
                     };
+                    context.Context.Response.Headers.Append("Cache-Control", $"public, max-age={cachePeriod}");
                 }
             });
 

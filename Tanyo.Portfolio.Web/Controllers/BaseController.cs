@@ -14,6 +14,7 @@ using Tanyo.Portfolio.Web.Resources;
 namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
     [TanyoLayoutActionFilter]
+    [ResponseCache(CacheProfileName = "Default")]
     public abstract class BaseController : Controller
     {
         public Layout Layout { get; set; }
