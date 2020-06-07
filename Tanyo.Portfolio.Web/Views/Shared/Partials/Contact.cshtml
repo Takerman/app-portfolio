@@ -3,17 +3,7 @@
 <section class="section-margin">
     <div class="container">
         <div class="d-none d-sm-block mb-5 pb-4">
-            <div id="map" style="height: 480px;"></div>
-            <script src="/lib/gmaps.js/gmaps.min.js"></script>
-            <script>
-                function initMap() {
-                    var uluru = { lat: 42.151449299999996, lng: 24.763270799999997 };
-                    var map = new google.maps.Map(
-                        document.getElementById('map'), { zoom: 15, center: uluru });
-                    var marker = new google.maps.Marker({ position: uluru, map: map });
-                }
-            </script>
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5nwUNJjIK4NUyzix073RcwOZb8EsKy8E&callback=initMap" type="text/javascript"></script>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2957.9456672518913!2d24.761658315315238!3d42.15144947920149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ad32ddcf6de943%3A0x5306aea73ed7127a!2sTakerman!5e0!3m2!1sen!2sbg!4v1591565987724!5m2!1sen!2sbg" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
         </div>
 
         <div class="row">
