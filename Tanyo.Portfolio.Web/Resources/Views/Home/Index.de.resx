@@ -120,6 +120,9 @@
   <data name=".NET Application Developer" xml:space="preserve">
     <value>.NET Application Developer</value>
   </data>
+  <data name="BROCHURE" xml:space="preserve">
+    <value>Broschüre</value>
+  </data>
   <data name="CV" xml:space="preserve">
     <value>Lebenslauf</value>
   </data>
