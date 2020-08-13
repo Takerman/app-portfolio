@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <AssemblyName>Tanyo.Portfolio.Web</AssemblyName>
+    <UserSecretsId>badb8582-24ff-4b9b-ad8c-b341b41d634a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
