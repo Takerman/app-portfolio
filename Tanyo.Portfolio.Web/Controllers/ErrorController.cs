@@ -7,7 +7,6 @@ using System.Diagnostics;
 using Tanyo.Portfolio.Web.Areas.Tanyo.Controllers;
 using Tanyo.Portfolio.Web.Models;
 using Tanyo.Portfolio.Web.Models.Services;
-using Tanyo.Portfolio.Web.Resources;
 
 namespace Tanyo.Portfolio.Web.Controllers
 {

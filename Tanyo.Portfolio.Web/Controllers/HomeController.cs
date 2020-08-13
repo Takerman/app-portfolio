@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
-using System.Reflection;
 using Tanyo.Portfolio.Web.Models.Services;
-using Tanyo.Portfolio.Web.Resources;
 
 namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {

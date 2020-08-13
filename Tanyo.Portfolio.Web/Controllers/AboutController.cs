@@ -4,7 +4,6 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using Tanyo.Portfolio.Web.Models;
 using Tanyo.Portfolio.Web.Models.Services;
-using Tanyo.Portfolio.Web.Resources;
 
 namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {

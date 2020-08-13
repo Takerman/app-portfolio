@@ -27,7 +27,6 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
             NavLinksService navLinksService,
             IStringLocalizerFactory factory)
         {
-
             var type = typeof(SharedResource);
             var assemblyName = new AssemblyName(type.GetTypeInfo().Assembly.FullName);
             _localizer = factory.Create(type);
