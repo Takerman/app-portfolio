@@ -17,6 +17,7 @@ There would be included many features which makes easier for the recruiter and t
 * Docker containerisation
 * xUnit Tests
 * Selenium Testing
+* CI/CD to hosting
 
 ## Features
 Some of the features includes
