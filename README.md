@@ -1,4 +1,6 @@
 # Online Resume
+<a href="https://img.shields.io/github/downloads/takerman/tanyo.portfolio/latest/total">
+<img src="https://img.shields.io/github/downloads/takerman/tanyo.portfolio/latest/total" alt="build status"></a>
 
 Hello visitors!
 The purpose of this project is not to be just implemented and to use the most suitable technologies for it, bu is mostly to show knowledge in some of the newest technologies and to practice them.
