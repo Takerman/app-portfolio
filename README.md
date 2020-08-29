@@ -13,6 +13,7 @@ There would be included many features which makes easier for the recruiter and t
 * BDD with SpecFlow
 * Angular
 * ASP.NET Web API Core
+* GraphQL
 * SQLite database with Entity Framework Core
 * Repository-Service Pattern
 * Thin Headless CMS for a backoffice
