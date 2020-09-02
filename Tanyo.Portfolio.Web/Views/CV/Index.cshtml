@@ -11,12 +11,13 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="main_title">
-                    <p class="top_text">@localizer["Updated"] 12/04/2020 <span></span></p>
+                    <p class="top_text">@localizer["Updated"] 01/09/2020 <span></span></p>
                     <h2>
                         @localizer["Here is my CV"]
                     </h2>
                     <h4>
-                        <a href="~/files/Tanyo_Ivanov_CV.pdf" download><i class="fa fa-download fa-fw w3-margin-right"></i>DOWNLOAD</a>
+                        <a href="~/files/Tanyo_Ivanov_CV.pdf" download><i class="fa fa-download fa-fw w3-margin-right"></i>PDF</a> |
+                        <a href="~/files/Tanyo_Ivanov_CV.docx" download><i class="fa fa-download fa-fw w3-margin-right"></i>DOCX</a>
                     </h4>
                 </div>
             </div>
@@ -24,20 +25,42 @@
             </div>
         </div>
 
-        <div>
+        <div class="container">
+            <div class="w3-container w3-card w3-white w3-margin-bottom">
+                <h2 class="w3-text-grey w3-padding-16 text-center"><i class="fa fa-blog fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>@localizer["Personal Statement"]</h2>
+                <div class="w3-container">
+                    <p>@localizer["I am a Software Developer with 7 years of experience in custom software development. As a developer, I am competent at understanding the project's needs, ensuring high standards of code quality and contributing to a warm and welcoming atmosphere.I am looking for a full-time position."]</p>
+                    <hr>
+                </div>
+            </div>
+
             <div class="w3-container w3-card w3-white w3-margin-bottom">
                 <h2 class="w3-text-grey w3-padding-16 text-center"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>@localizer["Work Experience"]</h2>
+                <div class="w3-container">
+                    <img class="cv-image" src="~/img/cv/foster-partners.png" alt="OneDigital Tech" />
+                    <h5 class="w3-opacity">
+                        <b style="color: black;">
+                            @localizer["Full Stack .NET Developer"] at OneDigital Tech - Remote
+                        </b>
+                    </h5>
+                    <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>@localizer["Feb"] 2020 - @localizer["Jul"] 2020</h6>
+                    <p>
+                        @localizer["In my role at OneDigital Tech, I worked on an existing API for the invoicing of cargo ships. My main duty was to change the way of invoicing and to introduce new charges to the system.I also took part in the Angular 8 front - end layer development and sprints planning."]<br />
+                        <strong>@localizer["Tech"]:</strong> ASP.NET Core Web API, Angular 8, Angular Material, Entity Framework Core, SQL Server
+                    </p>
+                    <hr>
+                </div>
                 <div class="w3-container">
                     <img class="cv-image" src="~/img/cv/foster-partners.png" alt="Foster + Partners" />
                     <h5 class="w3-opacity">
                         <b style="color: black;">
-                            @localizer["Application Developer"] .NET at <a href="https://www.fosterandpartners.com/" target="_blank">Foster + Partners</a> - UK, @localizer["London"]
+                            @localizer["Application Developer"] at <a href="https://www.fosterandpartners.com/" target="_blank">Foster + Partners</a> - UK, @localizer["London"]
                         </b>
                     </h5>
                     <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>@localizer["Jan"] 2019 - @localizer["Dec"] 2019</h6>
                     <p>
-                        @localizer["Developed and the tested the main Intranet application which has relation with loads of small inhouse developed applications written with different technologies. Renewed, documented and presented a lot of outdated applications used for organisation of the architects. For example, apps for booking meeting rooms, taxis travels, emails etc. Agile methodology."]<br />
-                        <strong>@localizer["Tech"]:</strong> .NET Core, Design Patterns, ASP.NET, Azure, Load/UI/Unit/Integration Testing, Umbraco, Vue.js, SQL, Selenium, and other common skills
+                        @localizer["Took an important part of the development and testing of the new Intranet and all the accompanying applications(~20).My role also included helpdesk tickets handling, new internal microservice development, everyday communication with the employees.Impeccable knowledge in many technologies was key to this position.I left purely because of family reasons."]<br />
+                        <strong>@localizer["Tech"]:</strong> ASP.NET Core MVC/Web API, ASP.NET WebForms/MVC, WinForms, Azure, Vue.js, Umbraco, Selenium, xUnit Tests, SQL Server, EntityFramework Core, Bootstrap, jQuery
                     </p>
                     <hr>
                 </div>
@@ -52,8 +75,8 @@
                     </h5>
                     <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>@localizer["Jun"] 2016 - @localizer["Nov"] 2018</h6>
                     <p>
-                        @localizer["Developed web system for managing the health researches of the UK and global scientists. The application is used for organising meetings in the UK government. Worked on the development of internal components and fixes of the project. Communicated everyday with the NHS client team. Trained a Junior. Agile methodology."]<br />
-                        <strong>@localizer["Tech"]:</strong> .NET, Design Patterns, Jira, ASP.NET, Ace Admin, SQL, MS Tests, @localizer["and other common skills"]
+                        @localizer["In this role, I was responsible for the software development and maintenance of a public portal (https://harp.org.uk) of the NHS related to health researches. My main daily tasks included bug fixing, new features development, helpdesk tickets handling, client - team communication and planning, junior developers introduction."]<br />
+                        <strong>@localizer["Tech"]:</strong> ASP.NET MVC/WebForms, SQL Server, EF, jQuery, Ace Admin, Bootstrap, CI/CD, Jira
                     </p>
                     <hr>
                 </div>
@@ -68,8 +91,8 @@
                     </h5>
                     <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>@localizer["Jun"] 2015- @localizer["Jun"] 2016</h6>
                     <p>
-                        @localizer["Built web and mobile applications for Smart Houses and Energy consumption optimisation. Worked onsite from the client location in Sweden. Trained a junior. Internet of Things devices integration. Agile methodology."]<br />
-                        <strong>@localizer["Tech"]:</strong> .NET, Design Patterns, VS Online, ASP.NET, SQL, IoT, @localizer["and other common skills"]
+                        @localizer["Worked in the client location in Gothenburg on an ASP.NET MVC installer application of IoT devices who decreases the buildings overall energy consumption.I was responsible for the application development and mentoring of a junior developer."]<br />
+                        <strong>@localizer["Tech"]:</strong> ASP.NET MVC, Angular.js, SQL Server, Entity Framework, JavaScript, Bootstrap
                     </p><br>
                 </div>
                 <div class="w3-container">
@@ -81,13 +104,13 @@
                     </h5>
                     <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>@localizer["Jan"] 2013- @localizer["Jun"] 2015</h6>
                     <p>
-                        @localizer["Developed, documented and delivered a lot of applications for the company clients. The main application was a Desktop WinForms application used for the administration of the scores and the profiles of the students. Worked with the team of HSO from Switzerland remotely until the delivery. Trained a junior. Waterfall methodology."]<br />
-                        <strong>@localizer["Tech"]:</strong> .NET, WinForms, ASP.NET, AWS, DotNetNuke, SQL, WPF, XBAP @localizer["and other common skills"]
+                        @localizer["Developed, documented and delivered a lot of small applications like webshops, windows services, etc. The main application was a Desktop Win Forms application used for the administration of the scores and profiles of the students.Worked with the team of HSO from Switzerland remotely until the delivery. Trained a junior.Waterfall methodology."]<br />
+                        <strong>@localizer["Tech"]:</strong> AWS, WinForms, DotNet Bar, WPF, XBAP ASP.NET MVC/WebForms, DotNetNuke, SQL Server, Entity Framework
                     </p><br>
                 </div>
             </div>
 
-            <div class="w3-container w3-card w3-white">
+            <div class="w3-container w3-card w3-white w3-margin-bottom">
                 <h2 class="w3-text-grey w3-padding-16 text-center"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>@localizer["Education"]</h2>
                 <div class="w3-container">
                     <h5 class="w3-opacity">
@@ -97,7 +120,7 @@
                         </b>
                     </h5>
                     <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2010 - 2014</h6>
-                    <p>@localizer["Programming, Economics, Banking, Excel, 3D Software, English"]</p>
+                    <p>@localizer[".NET (A), Java (A), Design Patterns (A), C++ (A), Banking (A), Finance (A), Accounting (A), Excel (A)"]</p>
                     <hr>
                 </div>
                 <div class="w3-container">
@@ -108,11 +131,11 @@
                         </b>
                     </h5>
                     <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2005 - 2009</h6>
-                    <p>@localizer["Programming, MS Office, 3D Software and design"]</p>
+                    <p>@localizer["Basic Programming (A), Microsoft Office (A), 3D Software and design (A)"]</p>
                     <hr>
                 </div>
 
-                <h3 class="w3-text-grey w3-padding-16 text-center"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>@localizer["Courses"]</h3>
+                <h3 class="w3-text-grey w3-padding-16 text-center"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>@localizer["Certificates"]</h3>
                 <div class="w3-container">
                     <h6 class="w3-opacity">
                         <b style="color: black;">
@@ -127,6 +150,36 @@
                             <a href="~/files/EN_PreIntermediate.pdf" target="_blank">@localizer["Pre-Intermediate English"]</a> - @localizer["Maximum English School - May 2017 - Plovdiv"]
                         </b>
                     </h6>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="w3-container w3-card w3-white w3-margin-bottom">
+                <h2 class="w3-text-grey w3-padding-16 text-center"><i class="fa fa-star fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>@localizer["Skills"]</h2>
+                <div class="w3-container">
+                    <h5 class="w3-opacity">
+                        <b style="color: black;">
+                            @localizer["Technologies"]
+                        </b>
+                    </h5>
+                    <p>@localizer["AWS, Azure, ASP.NET MVC/WebForms/Web API, ASP.NET Core, WinForms, WPF, Angular, Vue.js, Umbraco, Selenium, SQL Server, WinServices, EntityFramework Core, xUnit Test, Docker, Git, jQuery, Bootstrap"]</p>
+                    <hr>
+                </div>
+                <div class="w3-container">
+                    <h5 class="w3-opacity">
+                        <b style="color: black;">
+                            @localizer["Languages"]
+                        </b>
+                    </h5>
+                    <p>@localizer["English, Bulgarian, C#, JavaScript, HTML, CSS, SQL, SpecFlow, Docker, TypeScript"]</p>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="w3-container w3-card w3-white w3-margin-bottom">
+                <h2 class="w3-text-grey w3-padding-16 text-center"><i class="fa fa-shapes fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>@localizer["Hobbies"]</h2>
+                <div class="w3-container">
+                    <p>@localizer["Outside of work, I love visiting the gym and going hiking sometimes. I am going to different activities and events to open my creativity.In my free time, I am reading books and watching movies."]</p>
                     <hr>
                 </div>
             </div>
