@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tanyo.Portfolio.Web", "Tanyo.Portfolio.Web\Tanyo.Portfolio.Web.csproj", "{4E8AB887-7AE4-4D5F-ABDB-5A360A025ABE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tanyo.Portfolio.Web", "Tanyo.Portfolio.Web\Tanyo.Portfolio.Web.csproj", "{6133A041-8914-402F-855F-4749D498311E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tanyo.Portfolio.Web.Domain", "Tanyo.Portfolio.Web.Domain\Tanyo.Portfolio.Web.Domain.csproj", "{484BCD95-0758-481C-A189-D52DEF7BE54F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4E8AB887-7AE4-4D5F-ABDB-5A360A025ABE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E8AB887-7AE4-4D5F-ABDB-5A360A025ABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E8AB887-7AE4-4D5F-ABDB-5A360A025ABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E8AB887-7AE4-4D5F-ABDB-5A360A025ABE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6133A041-8914-402F-855F-4749D498311E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6133A041-8914-402F-855F-4749D498311E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6133A041-8914-402F-855F-4749D498311E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6133A041-8914-402F-855F-4749D498311E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{484BCD95-0758-481C-A189-D52DEF7BE54F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{484BCD95-0758-481C-A189-D52DEF7BE54F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{484BCD95-0758-481C-A189-D52DEF7BE54F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{484BCD95-0758-481C-A189-D52DEF7BE54F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
