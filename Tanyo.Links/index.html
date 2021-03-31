@@ -6,69 +6,115 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Links | Tanyo Ivanov</title>
-    <!-- <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
-    <link rel="stylesheet" href="css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet"
+        href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="css/materialdesignicons.min.css" />
+    <style>
+        .center {
+            margin: 0 auto;
+        }
+
+        .padding-10 {
+            padding: 10px;
+        }
+
+        .section-card {
+            height: 350px;
+            width: 350px;
+        }
+
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            text-transform: capitalize;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="padding-10">
-        <strong>Professional: </strong>
-        <a class="padding-10" href="https://tanyoivanov.net" target="_blank">
-            <span class="mdi mdi-36px mdi-web"></span>
-        </a>
-        <a class="padding-10" href="https://github.com/takerman" target="_blank">
-            <span class="mdi mdi-36px mdi-github"></span>
-        </a>
-        <a class="padding-10" href="https://www.facebook.com/dev.tanyoivanov" target="_blank">
-            <span class="mdi mdi-36px mdi-facebook"></span>
-        </a>
-        <a class="padding-10" href="https://www.timetoast.com/timelines/2322281" target="_blank">
-            <span class="mdi mdi-36px mdi-timer"></span>
-        </a>
-        <a class="padding-10" href="https://www.linkedin.com/in/tanyo-ivanov/" target="_blank">
-            <span class="mdi mdi-36px mdi-linkedin"></span>
-        </a>
-        <a class="padding-10" href="https://www.instagram.com/dev.tanyoivanov/" target="_blank">
-            <span class="mdi mdi-36px mdi-instagram"></span>
-        </a>
-        <a class="padding-10" href="https://www.youtube.com/channel/UCPTCSnkn2CtiVFc-EGdJycg/videos" target="_blank">
-            <span class="mdi mdi-36px mdi-youtube"></span>
-        </a>
-    </div>
-    <div class="padding-10">
-        <strong>Personal: </strong>
-        <a class="padding-10" href="https://www.facebook.com/dev.takerman/" target="_blank">
-            <span class="mdi mdi-36px mdi-facebook"></span>
-        </a>
-        <a class="padding-10" href="https://blog.tanyoivanov.net" target="_blank">
-            <span class="mdi mdi-36px mdi-blog"></span>
-        </a>
-        <a class="padding-10" href="https://www.instagram.com/me.tanyoivanov/" target="_blank">
-            <span class="mdi mdi-36px mdi-instagram"></span>
-        </a>
-        <a class="padding-10" href="https://www.youtube.com/c/TanyoIvanov/videos" target="_blank">
-            <span class="mdi mdi-36px mdi-youtube"></span>
-        </a>
-    </div>
-    <div class="padding-10">
-        <strong>Corporate: </strong>
-        <a class="padding-10" href="https://takerman.net" target="_blank">
-            <span class="mdi mdi-36px mdi-web"></span>
-        </a>
-        <a class="padding-10" href="https://github.com/takermanltd" target="_blank">
-            <span class="mdi mdi-36px mdi-github"></span>
-        </a>
-        <a class="padding-10" href="https://www.linkedin.com/company/takerman-ltd" target="_blank">
-            <span class="mdi mdi-36px mdi-linkedin"></span>
-        </a>
-    </div>
-    <!-- <button onclick="window.open('https://tanyoivanov.net')" class="mdc-button mdc-button--raised">
-        <span class="mdi mdi-36px mdi-web"></span>
-        <span class="mdc-button__label"></span>
-    </button>
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script> -->
+    <table style="margin: 0 auto;">
+        <tr>
+            <td>
+                <div class="padding-10 section-card mdc-card mdc-card--outlined">
+                    <h1>Professional</h1>
+                    <button onclick="window.open('https://tanyoivanov.net')" class="mdc-button mdc-button--raised">
+                        <span class="mdi mdi-36px mdi-web"></span>
+                        <span class="mdc-button__label">Website</span>
+                    </button><br />
+                    <button onclick="window.open('https://github.com/takerman')" class="mdc-button mdc-button--raised">
+                        <span class="mdi mdi-36px mdi-github"></span>
+                        <span class="mdc-button__label">GitHub</span>
+                    </button><br />
+                    <button onclick="window.open('https://www.facebook.com/dev.tanyoivanov')"
+                        class="mdc-button mdc-button--raised">
+                        <span class="mdi mdi-36px mdi-facebook"></span>
+                        <span class="mdc-button__label">Facebook</span>
+                    </button><br />
+                    <button onclick="window.open('https://www.linkedin.com/in/tanyo-ivanov')"
+                        class="mdc-button mdc-button--raised">
+                        <span class="mdi mdi-36px mdi-linkedin"></span>
+                        <span class="mdc-button__label">LinkedIn</span>
+                    </button><br />
+                    <button onclick="window.open('https://www.instagram.com/dev.tanyoivanov')"
+                        class="mdc-button mdc-button--raised">
+                        <span class="mdi mdi-36px mdi-instagram"></span>
+                        <span class="mdc-button__label">Instagram</span>
+                    </button><br />
+                    <button onclick="window.open('https://www.youtube.com/channel/UCPTCSnkn2CtiVFc-EGdJycg/videos')"
+                        class="mdc-button mdc-button--raised">
+                        <span class="mdi mdi-36px mdi-youtube"></span>
+                        <span class="mdc-button__label">YouTube</span>
+                    </button>
+                </div>
+            </td>
+            <td>
+                <div class="padding-10 section-card mdc-card mdc-card--outlined">
+                    <h1>Personal</h1>
+                    <button onclick="window.open('https://blog.tanyoivanov.net')" class="mdc-button mdc-button--raised">
+                        <span class="mdi mdi-36px mdi-web"></span>
+                        <span class="mdc-button__label">Blog</span>
+                    </button><br />
+                    <button onclick="window.open('https://www.facebook.com/dev.takerman')"
+                        class="mdc-button mdc-button--raised">
+                        <span class="mdi mdi-36px mdi-facebook"></span>
+                        <span class="mdc-button__label">Facebook</span>
+                    </button><br />
+                    <button onclick="window.open('https://www.instagram.com/me.tanyoivanov')"
+                        class="mdc-button mdc-button--raised">
+                        <span class="mdi mdi-36px mdi-instagram"></span>
+                        <span class="mdc-button__label">Instagram</span>
+                    </button><br />
+                    <button onclick="window.open('https://www.youtube.com/c/TanyoIvanov/videos')"
+                        class="mdc-button mdc-button--raised">
+                        <span class="mdi mdi-36px mdi-youtube">YouTube</span>
+                        <span class="mdc-button__label"></span>
+                    </button>
+                </div>
+            </td>
+            <td>
+                <div class="padding-10 section-card mdc-card mdc-card--outlined">
+                    <h1>Corporate</h1>
+                    <button onclick="window.open('https://takerman.net')" class="mdc-button mdc-button--raised">
+                        <span class="mdi mdi-36px mdi-web"></span>
+                        <span class="mdc-button__label">Website</span>
+                    </button><br />
+                    <button onclick="window.open('https://github.com/takermanltd')"
+                        class="mdc-button mdc-button--raised">
+                        <span class="mdi mdi-36px mdi-github"></span>
+                        <span class="mdc-button__label">GitHub</span>
+                    </button><br />
+                    <button onclick="window.open('https://www.linkedin.com/company/takerman-ltd')"
+                        class="mdc-button mdc-button--raised">
+                        <span class="mdi mdi-36px mdi-linkedin"></span>
+                        <span class="mdc-button__label">LinkedIn</span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 </body>
 
 </html>
