@@ -29,6 +29,17 @@
             text-align: center;
             text-transform: capitalize;
         }
+
+        .button-table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .button-table button {
+            margin-left: 3px;
+            margin-right: 3px;
+            padding: 2px;
+        }
     </style>
 </head>
 
@@ -46,26 +57,29 @@
                         <span class="mdi mdi-36px mdi-github"></span>
                         <span class="mdc-button__label">GitHub</span>
                     </button><br />
-                    <button onclick="window.open('https://www.facebook.com/dev.tanyoivanov')"
-                        class="mdc-button mdc-button--raised">
-                        <span class="mdi mdi-36px mdi-facebook"></span>
-                        <span class="mdc-button__label">Facebook</span>
-                    </button><br />
-                    <button onclick="window.open('https://www.linkedin.com/in/tanyo-ivanov')"
-                        class="mdc-button mdc-button--raised">
-                        <span class="mdi mdi-36px mdi-linkedin"></span>
-                        <span class="mdc-button__label">LinkedIn</span>
-                    </button><br />
-                    <button onclick="window.open('https://www.instagram.com/dev.tanyoivanov')"
-                        class="mdc-button mdc-button--raised">
-                        <span class="mdi mdi-36px mdi-instagram"></span>
-                        <span class="mdc-button__label">Instagram</span>
-                    </button><br />
-                    <button onclick="window.open('https://www.youtube.com/channel/UCPTCSnkn2CtiVFc-EGdJycg/videos')"
-                        class="mdc-button mdc-button--raised">
-                        <span class="mdi mdi-36px mdi-youtube"></span>
-                        <span class="mdc-button__label">YouTube</span>
-                    </button>
+                    <table class="button-table">
+                        <tr>
+                            <td>
+                                <button onclick="window.open('https://www.facebook.com/dev.tanyoivanov')"
+                                    class="mdc-button mdc-button--raised">
+                                    <span class="mdi mdi-36px mdi-facebook"></span>
+                                </button>
+                                <button onclick="window.open('https://www.linkedin.com/in/tanyo-ivanov')"
+                                    class="mdc-button mdc-button--raised">
+                                    <span class="mdi mdi-36px mdi-linkedin"></span>
+                                </button>
+                                <button onclick="window.open('https://www.instagram.com/dev.tanyoivanov')"
+                                    class="mdc-button mdc-button--raised">
+                                    <span class="mdi mdi-36px mdi-instagram"></span>
+                                </button>
+                                <button
+                                    onclick="window.open('https://www.youtube.com/channel/UCPTCSnkn2CtiVFc-EGdJycg/videos')"
+                                    class="mdc-button mdc-button--raised">
+                                    <span class="mdi mdi-36px mdi-youtube"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </td>
             <td>
@@ -75,21 +89,21 @@
                         <span class="mdi mdi-36px mdi-web"></span>
                         <span class="mdc-button__label">Blog</span>
                     </button><br />
-                    <button onclick="window.open('https://www.facebook.com/dev.takerman')"
-                        class="mdc-button mdc-button--raised">
-                        <span class="mdi mdi-36px mdi-facebook"></span>
-                        <span class="mdc-button__label">Facebook</span>
-                    </button><br />
-                    <button onclick="window.open('https://www.instagram.com/me.tanyoivanov')"
-                        class="mdc-button mdc-button--raised">
-                        <span class="mdi mdi-36px mdi-instagram"></span>
-                        <span class="mdc-button__label">Instagram</span>
-                    </button><br />
-                    <button onclick="window.open('https://www.youtube.com/c/TanyoIvanov/videos')"
-                        class="mdc-button mdc-button--raised">
-                        <span class="mdi mdi-36px mdi-youtube">YouTube</span>
-                        <span class="mdc-button__label"></span>
-                    </button>
+                    <table class="button-table">
+                        <tr>
+                            <td><button onclick="window.open('https://www.facebook.com/dev.takerman')"
+                                    class="mdc-button mdc-button--raised">
+                                    <span class="mdi mdi-36px mdi-facebook"></span>
+                                </button><button onclick="window.open('https://www.instagram.com/me.tanyoivanov')"
+                                    class="mdc-button mdc-button--raised">
+                                    <span class="mdi mdi-36px mdi-instagram"></span>
+                                </button><button onclick="window.open('https://www.youtube.com/c/TanyoIvanov/videos')"
+                                    class="mdc-button mdc-button--raised">
+                                    <span class="mdi mdi-36px mdi-youtube"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </td>
             <td>
@@ -104,11 +118,16 @@
                         <span class="mdi mdi-36px mdi-github"></span>
                         <span class="mdc-button__label">GitHub</span>
                     </button><br />
-                    <button onclick="window.open('https://www.linkedin.com/company/takerman-ltd')"
-                        class="mdc-button mdc-button--raised">
-                        <span class="mdi mdi-36px mdi-linkedin"></span>
-                        <span class="mdc-button__label">LinkedIn</span>
-                    </button>
+                    <table class="button-table">
+                        <tr>
+                            <td>
+                                <button onclick="window.open('https://www.linkedin.com/company/takerman-ltd')"
+                                    class="mdc-button mdc-button--raised">
+                                    <span class="mdi mdi-36px mdi-linkedin"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </td>
         </tr>
