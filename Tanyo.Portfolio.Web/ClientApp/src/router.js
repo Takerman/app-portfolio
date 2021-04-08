@@ -12,17 +12,29 @@ export default new Router({
         name: 'home',
         component: Home
     }, {
-        path: '/cat/:id',
-        name: 'catDetails',
-        component: () => import(/* webpackChunkName: "CatDetails" */ './views/CatDetails.vue')
+        path: '/home',
+        name: 'home',
+        component: Home
     }, {
-        path: '/login',
-        name: 'login',
-        component: () => import(/* webpackChunkName: "Login" */ './views/Login.vue')
+        path: '/blog',
+        name: 'blog',
+        component: () => import('./views/Blog.vue')
     }, {
-        path: '/register',
-        name: 'register',
-        component: () => import(/* webpackChunkName: "Register" */ './views/Register.vue')
+        path: '/cv',
+        name: 'cv',
+        component: () => import('./views/CV.vue')
+    }, {
+        path: '/portfolio',
+        name: 'portfolio',
+        component: () => import('./views/Portfolio.vue')
+    }, {
+        path: '/pricing',
+        name: 'pricing',
+        component: () => import('./views/Pricing.vue')
+    }, {
+        path: '/contacts',
+        name: 'contacts',
+        component: () => import('./views/Contacts.vue')
     }, {
         path: '*',
         name: 'NotFound',

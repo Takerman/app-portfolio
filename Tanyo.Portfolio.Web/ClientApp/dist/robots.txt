@@ -1,0 +1,4 @@
+Sitemap: https://tanyoivanov.net/sitemap.xml
+User-agent: *
+Allow: /
+Allow: /sitemap.xml

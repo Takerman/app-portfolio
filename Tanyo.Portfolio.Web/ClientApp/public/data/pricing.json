@@ -1,0 +1,98 @@
+[
+  {
+    "value": 50000,
+    "currency": "GBP",
+    "type": 1,
+    "location": 1
+  },
+  {
+    "value": 80000,
+    "currency": "USD",
+    "type": 1,
+    "location": 1
+  },
+  {
+    "value": 80000,
+    "currency": "CHF",
+    "type": 1,
+    "location": 1
+  },
+  {
+    "value": 55000,
+    "currency": "EUR",
+    "type": 1,
+    "location": 1
+  },
+  {
+    "value": 40000,
+    "currency": "GBP",
+    "type": 1,
+    "location": 2
+  },
+  {
+    "value": 50000,
+    "currency": "USD",
+    "type": 1,
+    "location": 2
+  },
+  {
+    "value": 45000,
+    "currency": "CHF",
+    "type": 1,
+    "location": 2
+  },
+  {
+    "value": 42000,
+    "currency": "EUR",
+    "type": 1,
+    "location": 2
+  },
+  {
+    "value": 300,
+    "currency": "GBP",
+    "type": 2,
+    "location": 1
+  },
+  {
+    "value": 360,
+    "currency": "USD",
+    "type": 2,
+    "location": 1
+  },
+  {
+    "value": 360,
+    "currency": "CHF",
+    "type": 2,
+    "location": 1
+  },
+  {
+    "value": 340,
+    "currency": "EUR",
+    "type": 2,
+    "location": 1
+  },
+  {
+    "value": 200,
+    "currency": "GBP",
+    "type": 2,
+    "location": 2
+  },
+  {
+    "value": 200,
+    "currency": "USD",
+    "type": 2,
+    "location": 2
+  },
+  {
+    "value": 200,
+    "currency": "CHF",
+    "type": 2,
+    "location": 2
+  },
+  {
+    "value": 250,
+    "currency": "EUR",
+    "type": 2,
+    "location": 2
+  }
+]
