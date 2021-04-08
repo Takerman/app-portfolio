@@ -5,12 +5,11 @@
         <!-- <div class="d-none d-sm-block mb-5 pb-4">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2957.9456672518913!2d24.761658315315238!3d42.15144947920149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ad32ddcf6de943%3A0x5306aea73ed7127a!2sTakerman!5e0!3m2!1sen!2sbg!4v1591565987724!5m2!1sen!2sbg" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div> -->
-
         <div class="row">
             <div class="col-12">
                 <h2 class="contact-title">Get in Touch</h2>
             </div>
-            <div class="col-lg-8 mb-4 mb-lg-0">
+            <!-- <div class="col-lg-8 mb-4 mb-lg-0">
                 <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/shell.js"></script>
                 <script>
                     hbspt.forms.create({
@@ -18,7 +17,7 @@
                         formId: "1e7c1f2d-57d7-4b9d-9e0e-5e0f9add410e"
                     });
                 </script>
-            </div>
+            </div> -->
 
             <div class="col-lg-4">
                 <!-- <div class="media contact-info">

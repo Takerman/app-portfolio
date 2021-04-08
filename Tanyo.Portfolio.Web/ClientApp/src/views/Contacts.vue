@@ -1,14 +1,20 @@
 
 <template>
+<div>
+  <banner></banner>
 <contacts></contacts>
+</div>
 </template>
 
 <script>
+import Banner from '../components/Banner.vue'
 import Contacts from '../components/Contacts.vue'
+
 export default {
   name: 'Contacts',
   components: {
-      Contacts
+      Contacts,
+    Banner
   },
   created()
      {

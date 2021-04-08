@@ -1,5 +1,7 @@
 
 <template>
+<div>
+    <banner></banner>
 <section class="portfolio_area section-margin pb-0" id="portfolio">
     <div class="container">
         <div class="row">
@@ -106,16 +108,19 @@
         </div>
     </div>
 </section>
+</div>
 </template>
 
 <script>
+import Banner from '../components/Banner.vue'
 import Position from '../components/Position.vue'
 export default {
   name: 'CV',
   components: {
-      Position
+      Position,
+      Banner
   },
-  created() {
+    created() {
     },
   data() {
     return {

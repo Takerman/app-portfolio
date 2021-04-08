@@ -1,12 +1,17 @@
 
 <template>
+<div>
+  <banner></banner>
 <portfolio></portfolio>
+</div>
 </template>
 
 <script>
+import Banner from '../components/Banner.vue'
 import Portfolio from '../components/Portfolio.vue'
+
 export default {
-  components: { Portfolio },
+  components: { Portfolio, Banner },
   name: 'Portfolio',
   created() {
 
