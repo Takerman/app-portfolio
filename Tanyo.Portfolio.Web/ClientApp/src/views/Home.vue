@@ -6,16 +6,13 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-6">
                     <div class="banner_content">
-                        <h3>Hey There !</h3>
+                        <h3>HEY-THERE !</h3>
                         <h1 class="text-uppercase">I'M TANYO IVANOV</h1>
-                        <h5 class="text-uppercase">.NET Application Developer</h5>
+                        <h5 class="text-uppercase">Software Developer</h5>
                         <div class="social_icons my-5">
-                            <a href="skype:live:contact_44094?chat" target="_blank"><i class="ti-skype" title="Skype"></i></a>
-                            <a href="https://www.youtube.com/channel/UCPTCSnkn2CtiVFc-EGdJycg" target="_blank" title="YouTube"><i class="ti-youtube"></i></a>
-                            <a href="https://facebook.com/dev.tanyoivanov/" target="_blank" title="FaceBook"><i class="ti-facebook"></i></a>
                             <a href="https://linkedin.com/in/tanyo-ivanov/" target="_blank" title="LinkedIn"><i class="ti-linkedin"></i></a>
-                            <a href="https://twitter.com/TanyoIvanov" target="_blank" title="Twitter"><i class="ti-twitter-alt"></i></a>
                             <a href="https://github.com/takerman" target="_blank" title="GitHub"><i class="ti-github"></i></a>
+                            <a href="https://www.youtube.com/channel/UCPTCSnkn2CtiVFc-EGdJycg" target="_blank" title="YouTube"><i class="ti-youtube"></i></a>
                             <a href="https://meetings.hubspot.com/contact683" target="_blank" title="Schedule a meeting" class="text-sm-left"><i class="ti-calendar"></i> schedule</a>
                             <div class="fb-like"
                                  data-href="https://tanyoivanov.net"
@@ -46,6 +43,7 @@
 <about></about>
 <services></services>
 <testimonials></testimonials>
+<trustpilot></trustpilot>
 <blog></blog>
     </main>
 </template>
@@ -57,6 +55,7 @@ import Testimonials from '../components/Testimonials.vue';
 import Blog from '../components/Blog.vue';
 import Stats from '../components/Stats.vue';
 import ProgressBar from '../components/ProgressBar.vue';
+import Trustpilot from '../components/Trustpilot.vue';
 
 export default {
     name: "home",
@@ -66,7 +65,8 @@ export default {
         Blog,
         Testimonials,
         Stats,
-        ProgressBar
+        ProgressBar,
+        Trustpilot
     },
     data() {
         return {

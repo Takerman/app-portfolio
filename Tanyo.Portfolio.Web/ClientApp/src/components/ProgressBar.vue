@@ -3,11 +3,25 @@
 <div class="container">
     <div class="row align-items-center justify-content-between">
         <div class="col-lg-6" style="top: -40px; font-weight: bold;">
-                <div :v-for="bar in this.bars" :key="bar.key" class="progress">
-                    <div class="progress-bar bg-success" style="width:{{bar.value}}0%;">{{bar.key}} {{bar.value}}/10</div>
+                <div class="progress">
+                    <div class="progress-bar bg-success" style="width: 80%;">Front-End 8/10</div>
                 </div>
                 <br />
-            }
+                <div class="progress">
+                    <div class="progress-bar bg-success" style="width: 90%;">Back-End 9/10</div>
+                </div>
+                <br />
+                <div class="progress">
+                    <div class="progress-bar bg-success" style="width: 70%;">Databases 7/10</div>
+                </div>
+                <br />
+                <div class="progress">
+                    <div class="progress-bar bg-success" style="width: 80%;">Web 8/10</div>
+                </div>
+                <br />
+                <div class="progress">
+                    <div class="progress-bar bg-success" style="width: 70%;">Desktop 7/10</div>
+                </div>
         </div>
     </div>
 </div>

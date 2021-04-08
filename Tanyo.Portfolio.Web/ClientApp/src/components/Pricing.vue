@@ -47,10 +47,10 @@ export default {
   },
   data() {
     return {
-  dateUpdated: new Date(),
     }
   },
   props: {
+      dateUpdated: new Date()
   },
   methods: {
    

@@ -4,9 +4,9 @@
     <div class="banner_inner d-flex align-items-center">
         <div class="container">
             <div class="banner_content text-center">
-                <h2>{{this.title}}</h2>
+                <h2>TITLE</h2>
                 <div class="page_link">
-                        <a :v-for="link in this.navLinks" href="{{link.url}}">{{link.label}}</a>
+                  <a :v-for="link in this.navLinks" href="">LABEL</a>
                 </div>
                 <div class="fb-like"
                      data-href="https://tanyoivanov.net"

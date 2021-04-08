@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="row">
-                <div :v-for="blogpost in this.blogposts" class="col-lg-4 col-md-6">
+                <!-- <div :v-for="blogpost in this.blogposts" class="col-lg-4 col-md-6">
                     <div onclick="location.href='{{blogpost.url}}'" style="cursor: pointer;" class="single-blog">
                         <div class="thumb">
                             <img class="img-fluid blog-post-thumbnail" src="{{blogpost.image}}" alt="">
@@ -34,7 +34,7 @@
                             <a href="{{blogpost.url}}" class="primary_btn2">Learn More</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
         </div>
     </div>
 </section>
@@ -44,7 +44,7 @@
 export default {
   name: 'Blog',
   created() {
-
+this.loadBlogposts();
   },
   data() {
     return {
@@ -54,7 +54,8 @@ blogposts: [],
   props: {
   },
   methods: {
-   
+   loadBlogposts: () => {
+    }
   },
 }
 </script>

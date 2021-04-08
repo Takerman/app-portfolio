@@ -30,11 +30,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                            <tr :v-for="skill in this.skills" :key="skill.name" class="thead-active">
+                            <!-- <tr :v-for="skill in this.skills" :key="skill.name" class="thead-active">
                                 <td><strong>{{skill.name}}</strong></td>
                                 <td>{{skill.value}} / 10</td>
                                 <td>{{skill.years}}</td>
-                            </tr>
+                            </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -51,12 +51,10 @@ export default {
 
   },
   data() {
-    return {
-  skills: [],
-  dateUpdated: new Date(),
-    }
   },
   props: {
+  skills: [],
+  dateUpdated: new Date(),
   },
   methods: {
    

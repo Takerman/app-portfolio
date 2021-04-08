@@ -26,17 +26,17 @@
         <div class="filters-content">
             <div class="row portfolio-grid">
                 <div class="grid-sizer col-md-3 col-lg-3"></div>
-                    <a :v-for="portfolio in this.portfolioItems" href="/portfolio/projects?name={{portfolio.name}}">
+                    <a href="/portfolio/projects?name=portfolio.name">
                         <div class="col-lg-@project.SizeLg col-md-@project.SizeMd all @project.Type.ToLower()">
                             <div class="single_portfolio">
-                                <img class="img-fluid w-100 border" src="{{portoflio.img}}" alt="">
+                                <img class="img-fluid w-100 border" src="portoflio.img" alt="">
                                 <div class="overlay"></div>
                                 <div class="short_info">
                                     <h4 style="color: white">
-                                        {{portfolio.name}}
+                                        portfolio.name
                                     </h4>
-                                    <p>{{portfolio.location}} </p>
-                                    <p>Client: {{portfolio.client}} </p>
+                                    <p>portfolio.location </p>
+                                    <p>Client: portfolio.client </p>
                                 </div>
                             </div>
                         </div>

@@ -38,6 +38,6 @@ export default new Router({
     }, {
         path: '*',
         name: 'NotFound',
-        component: () => import(/* webpackChunkName: "404" */ './views/NotFound.vue')
+        component: () => import('./views/NotFound.vue')
     }]
 })

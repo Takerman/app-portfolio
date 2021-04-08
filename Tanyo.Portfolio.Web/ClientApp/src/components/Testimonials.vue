@@ -1,6 +1,5 @@
 
 <template>
-<div>
 <section style="padding-bottom: 240px !important" class="testimonial_area">
     <div class="container">
         <div class="row">
@@ -15,7 +14,7 @@
             </div>
         </div>
 
-        <div class="owl-carousel owl-theme testimonial-slider ">
+        <div class="owl-carousel owl-theme testimonial-slider">
 
             <div class="testimonial-item">
                 <div class="row">
@@ -102,11 +101,6 @@
         </div>
     </div>
 </section>
-
-<div class="trustpilot-widget" data-locale="en-US" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="5e5ad03c09f40400014b10e9" data-style-height="24px" data-style-width="100%" data-theme="light">
-    <a href="https://www.trustpilot.com/review/tivanov.takerman.net" target="_blank" rel="noopener">Trustpilot</a>
-</div>
-</div>
 </template>
 
 <script>

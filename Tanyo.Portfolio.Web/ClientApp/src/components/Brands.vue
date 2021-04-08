@@ -7,7 +7,7 @@
                 <div class="owl-carousel brand-carousel">
                         <div :v-for="brand in this.Brands" class="single-brand-item d-table">
                             <div class="d-table-cell">
-                                <a href="{{brand.url}}" target="_blank"><img src="{{brand.image}}" alt=""></a>
+                                <a href="https://google.com" target="_blank"><img src="" alt=""></a>
                             </div>
                         </div>
                 </div>
