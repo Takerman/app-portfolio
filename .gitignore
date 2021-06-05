@@ -32,6 +32,10 @@ bld/
 [Oo]ut/
 [Ll]og/
 [Ll]ogs/
+Tanyo.Portfolio.Web/ClientApp/dist
+/Tanyo.Portfolio.Web/ClientApp/dist
+/dist
+/ClientApp/dist
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
