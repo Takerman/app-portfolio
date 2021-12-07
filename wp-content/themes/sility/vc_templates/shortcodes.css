@@ -1,0 +1,202 @@
+/*progress bar*/
+.wpb-layout-element-button .icon-wpb-my_progress { background-image: url('../library/functions/shortcodes/images/progress-bars.png'); }
+.wpb_progressbar .wpb_element_wrapper { background-image: url('../library/functions/shortcodes/images/progress-bars.png'); }
+
+/*button*/
+.wpb-layout-element-button .icon-wpb-my_button { background-image: url('icons/button.png'); }
+.wpb_button .wpb_element_wrapper { background-image: url('icons/button.png'); }
+
+/*Alert box*/
+.wpb-layout-element-button .icon-wpb-my_alert { background-image: url('icons/alert.png'); }
+.wpb_alert .wpb_element_wrapper { background-image: url('icons/alert.png'); }
+
+/*video*/
+.wpb-layout-element-button .icon-wpb-my_video { background-image: url('icons/video.png'); }
+.wpb_video .wpb_element_wrapper { background-image: url('icons/video.png'); }
+
+/*local audio*/
+.wpb-layout-element-button .icon-wpb-my_audio { background-image: url('icons/audio.png'); }
+.wpb_audio .wpb_element_wrapper { background-image: url('icons/audio.png'); }
+
+/*self osted video*/
+.wpb-layout-element-button .icon-wpb-my_shvideo { background-image: url('icons/shvideo.png'); }
+.wpb_shvideo .wpb_element_wrapper { background-image: url('icons/shvideo.png'); }
+
+/*contact*/
+.wpb-layout-element-button .icon-wpb-my_contact { background-image: url('icons/contact.png'); }
+.wpb_contact .wpb_element_wrapper, .alc_contact .wpb_element_wrapper { background-image: url('icons/contact.png'); }
+
+/*featured block*/
+.wpb-layout-element-button .icon-wpb-my_fblock { background-image: url('icons/fblock.png'); }
+.wpb_fblock .wpb_element_wrapper { background-image: url('icons/fblock.png'); }
+
+/*title block*/
+.wpb-layout-element-button .icon-wpb-my_tblock { background-image: url('icons/tblock.png'); }
+.wpb_tblock .wpb_element_wrapper { background-image: url('icons/tblock.png'); }
+
+/*Modal box*/
+.wpb-layout-element-button .icon-wpb-my_reveal { background-image: url('icons/reveal.png'); }
+.wpb_reveal .wpb_element_wrapper { background-image: url('icons/reveal.png'); }
+
+/*team member*/
+.wpb-layout-element-button .icon-wpb-my_teammember { background-image: url('icons/teammember.png'); }
+.wpb_teammember .wpb_element_wrapper { background-image: url('icons/teammember.png'); }
+
+/*dropdown button*/
+.wpb-layout-element-button .icon-wpb-my_dropdown { background: url('icons/dropdown.png') no-repeat; }
+.wpb_dropdown .wpb_element_wrapper { background: url('icons/dropdown.png') no-repeat; }
+
+/*portfolio listing*/
+.wpb-layout-element-button .icon-wpb-my_portlist { background-image: url('icons/portlist.png'); }
+.wpb_portlist .wpb_element_wrapper { background-image: url('icons/portlist.png'); }
+
+/*blog listing*/
+.wpb-layout-element-button .icon-wpb-my_bloglist { background-image: url('icons/bloglist.png'); }
+.wpb_list_posts .wpb_element_wrapper { background-image: url('icons/bloglist.png'); }
+
+/*Panel*/
+.wpb-layout-element-button .icon-wpb-my_panel { background-image: url('icons/panel.png'); }
+.wpb_panel .wpb_element_wrapper { background-image: url('icons/panel.png'); }
+/***********************************************************/
+/*full background*/
+/*full width backgroun(parallax)*/
+.wpb-layout-element-button .icon-wpb-my_fullbg { background: url('icons/fullbg.png') no-repeat; }
+.wpb_fullbg .wpb_element_wrapper { background: url('icons/fullbg.png') no-repeat; }
+
+/*well*/
+.wpb-layout-element-button .icon-wpb-my_well { background-image: url('icons/well.png'); }
+.wpb_well .wpb_element_wrapper { background-image: url('icons/well.png'); }
+
+/*circle progress bar*/
+.wpb-layout-element-button .icon-wpb-my_circle { background-image: url('icons/circle.png'); }
+.wpb_circle .wpb_element_wrapper { background-image: url('icons/circle.png'); }
+
+/*promo block*/
+.wpb-layout-element-button .icon-wpb-my_promo { background-image: url('icons/promo.png'); }
+.wpb_promo .wpb_element_wrapper { background-image: url('icons/promo.png'); }
+
+/*blockquote*/
+.wpb-layout-element-button .icon-wpb-my_blockquote { background-image: url('icons/blockquote.png'); }
+.wpb_blockquote .wpb_element_wrapper { background-image: url('icons/blockquote.png'); }
+
+/*label*/
+.wpb-layout-element-button .icon-wpb-my_label { background-image: url('icons/label.png'); }
+.wpb_label .wpb_element_wrapper { background-image: url('icons/label.png'); }
+
+/*divider*/
+.wpb-layout-element-button .icon-wpb-my_divider { background-image: url('icons/divider.png'); }
+.wpb_divider .wpb_element_wrapper { background-image: url('icons/divider.png'); }
+
+/*tooltip*/
+.wpb-layout-element-button .icon-wpb-my_tooltip { background-image: url('icons/tooltip.png'); }
+.wpb_tooltip .wpb_element_wrapper { background-image: url('icons/tooltip.png'); }
+
+/*lightbox*/
+.wpb-layout-element-button .icon-wpb-my_lightbox { background-image: url('icons/lightbox.png'); }
+.wpb_lightbox .wpb_element_wrapper { background-image: url('icons/lightbox.png'); }
+
+/*thumbnail*/
+.wpb-layout-element-button .icon-wpb-my_thumbnail { background-image: url('icons/thumbnail.png'); }
+.wpb_thumbnail .wpb_element_wrapper { background-image: url('icons/thumbnail.png'); }
+
+/*smicon*/
+.wpb-layout-element-button .icon-wpb-my_smicon { background-image: url('icons/smicon.png'); }
+.wpb_smicon .wpb_element_wrapper { background-image: url('icons/smicon.png'); }
+
+/*smgallery*/
+.wpb-layout-element-button .icon-wpb-my_smgallery { background-image: url('icons/smgallery.png'); }
+.wpb_smgallery .wpb_element_wrapper { background-image: url('icons/smgallery.png'); }
+
+
+/*testimonial*/
+.wpb-layout-element-button .icon-wpb-my_testimonial { background: url('icons/testimonial.png' ) no-repeat; }
+.wpb_testimonial .wpb_element_wrapper { background: url('icons/testimonial.png') no-repeat; }
+
+/*Social*/
+.wpb-layout-element-button .icon-wpb-my_social { background: url('icons/social.png') no-repeat; }
+.wpb_social .wpb_element_wrapper { background: url('icons/social.png')  no-repeat; }
+
+
+/*slider*/
+.wpb-layout-element-button .icon-wpb-my_slider { background-image: url('icons/slider.png'); }
+.wpb_slider .wpb_element_wrapper { background-image: url('icons/slider.png'); }
+
+/*carousel*/
+.wpb-layout-element-button .icon-wpb-my_carousel { background: url('icons/carousel.png') no-repeat; }
+.wpb_carousel .wpb_element_wrapper { background: url('icons/carousel.png') no-repeat; }
+
+
+
+/*counter*/
+.wpb-layout-element-button .icon-wpb-my_counter { background-image: url('icons/counter.png'); }
+.wpb_counter .wpb_element_wrapper { background-image: url('icons/counter.png'); }
+
+/*creative links*/
+.wpb-layout-element-button .icon-wpb-my_crlink { background-image: url('icons/crlink.png'); }
+.wpb_crlink .wpb_element_wrapper { background-image: url('icons/crlink.png'); }
+
+/*dropcaps*/
+.wpb-layout-element-button .icon-wpb-my_dropcap { background-image: url('icons/dropcap.png'); }
+.wpb_dropcap .wpb_element_wrapper { background-image: url('icons/dropcap.png'); }
+
+/*google map*/
+.wpb-layout-element-button .icon-wpb-my_gmap { background-image: url('icons/gmap.png'); }
+.wpb_gmap .wpb_element_wrapper { background-image: url('icons/gmap.png'); }
+
+/*list*/
+
+.wpb-layout-element-button .icon-wpb-my_list { background: url('icons/unordered.png')no-repeat; }
+.wpb_list.vc_shortcodes_container { background: url('icons/unordered.png') no-repeat; }
+/*list item*/
+.wpb-layout-element-button .icon-wpb-my_list_item { background-image: url('icons/unordered.png'); }
+.wpb_list_item.vc_shortcodes_container { background-image: url('icons/unordered.png'); }
+
+/*Iconbox list*/
+.wpb-layout-element-button .icon-wpb-my_biglist { background-image: url('icons/biglist.png'); }
+.wpb_biglist.vc_shortcodes_container { background-image: url('icons/biglist.png'); }
+
+/*tweets*/
+.wpb-layout-element-button .icon-wpb-my_tweet { background-image: url('icons/tweet.png'); }
+.wpb_tweet.vc_shortcodes_container { background-image: url('icons/tweet.png'); }
+
+/*pricing table*/
+.wpb-layout-element-button .icon-wpb-my_pricing { background: url('icons/pricing.png') no-repeat; }
+.wpb_pricing.vc_shortcodes_container { background: url('icons/pricing.png') no-repeat; }
+
+/*Tabs*/
+.wpb-layout-element-button .icon-wpb-my_tabs { background: url('icons/tabs.png') no-repeat; }
+.wpb_tabs.vc_shortcodes_container { background: url('icons/tabs.png') no-repeat; }
+
+/* Lead paragraph*/
+.wpb-layout-element-button .icon-wpb-my_lead { background-image: url('icons/lead.png'); }
+.wpb_lead.vc_shortcodes_container { background-image: url('icons/lead.png'); }
+
+/*Product carousel*/
+.wpb-layout-element-button .icon-wpb-my_productcar { background-image: url('icons/portlist.png'); }
+.wpb_productcar .wpb_element_wrapper { background-image: url('icons/portlist.png'); }
+
+/*special products*/
+.wpb-layout-element-button .icon-wpb-my_shop_special_products { background-image: url('icons/portlist.png'); }
+.wpb_shop_special_products .wpb_element_wrapper { background-image: url('icons/portlist.png'); }
+
+/*Content Carousel*/
+.wpb-layout-element-button .icon-wpb-my_av_carousel { background: url('icons/carousel.png') no-repeat; }
+.wpb__av_carousel .wpb_element_wrapper { background: url('icons/carousel.png') no-repeat; }
+
+/*Flickr*/
+.wpb-layout-element-button .icon-wpb-my_flickr { background-image: url('icons/flickr.png'); }
+.wpb_flickr.vc_shortcodes_container { background-image: url('icons/flickr.png'); }
+
+/*Accordion*/
+.wpb-layout-element-button .icon-wpb-my_accordion { background: url('icons/accordion.png') no-repeat; }
+.wpb_accordion.vc_shortcodes_container { background: url('icons/accordion.png') no-repeat; }
+
+/*Vernav*/
+.wpb-layout-element-button .icon-wpb-my_vernav { background: url('icons/vernav.png') no-repeat; }
+.wpb_vernav.vc_shortcodes_container { background: url('icons/vernav.png') no-repeat; }
+/*infoblock*/
+.wpb-layout-element-button .icon-wpb-my_infoblock { background: url('icons/well.png') no-repeat; }
+.wpb_infoblock .wpb_element_wrapper { background: url('icons/well.png') no-repeat; }
+/*Timeline*/
+.wpb-layout-element-button .icon-wpb-my_timeline { background: url('icons/timeline.png') no-repeat; }
+.wpb_timeline.vc_shortcodes_container { background: url('icons/timeline.png') no-repeat; }

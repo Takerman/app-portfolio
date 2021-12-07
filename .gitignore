@@ -107,4 +107,8 @@ Thumbs.db
 # add your own entries here
 !wp-content/mu-plugins/example-mu-plugin/
 !wp-content/plugins/example-plugin/
-!wp-content/themes/example-theme/
+!wp-content/plugins/
+!wp-content/themes/sility/
+!wp-content/themes/sility-child/
+
+# !wp-config.php

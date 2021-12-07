@@ -1,0 +1,603 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.7.4\n"
+
+#. Text in function
+#: functions.php:160
+msgid "% Comments "
+msgstr ""
+
+#. Text in function
+#: loop.php:276 loop.php:235
+msgid "% comments"
+msgstr ""
+
+#. Text in function
+#: helper-functions.php:341
+msgid "%1$s - %2$s"
+msgstr ""
+
+#. Text in function
+#: functions.php:160
+msgid "0 Comment "
+msgstr ""
+
+#. Text in function
+#: loop.php:276 loop.php:235
+msgid "0 comment"
+msgstr ""
+
+#. Text in function
+#: loop.php:276 loop.php:235
+msgid "1 comment"
+msgstr ""
+
+#. Text in function
+#: functions.php:160
+msgid "1 comment "
+msgstr ""
+
+#. Text in echo
+#: 404.php:15
+msgid "404"
+msgstr ""
+
+#. Text in function
+#: comments.php:20
+msgid "<span class=\"meta-nav\">&larr;</span> Older Comments"
+msgstr ""
+
+#. Text in echo
+#: taxonomy-portfolio_category.php:39 portfolio_loop.php:40
+#: portfolio_loop.php:48
+msgid "All"
+msgstr ""
+
+#. Text in function
+#: functions.php:167
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#. Text in echo
+#: loop.php:70
+msgid "Audio post format was chosen but no embed code provided. Please fix this by providing it."
+msgstr ""
+
+#. Text in echo
+#: single.php:140
+msgid "Author Details"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:174
+msgid "Bitbucket:"
+msgstr ""
+
+#. Text in echo
+#: archive.php:32
+msgid "Blog Archives"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:680
+msgid "Category (Leave Blank to show from all categories)"
+msgstr ""
+
+#. Text in echo
+#: comments.php:47
+msgid "Click here to login."
+msgstr ""
+
+#. Text in echo
+#: header.php:139 shortcode.php:1 header-standalone.php:140
+msgid "Close"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:568
+msgid "Comments"
+msgstr ""
+
+#. Text in echo
+#: comments.php:34
+msgid "Comments are closed."
+msgstr ""
+
+#. Text in function
+#: widgets.php:683
+msgid "Contact Us"
+msgstr ""
+
+#. Text in function
+#: widgets.php:683
+msgid "Contact widget"
+msgstr ""
+
+#. Text in function
+#: archive.php:24
+msgid "Daily Archives: %s"
+msgstr ""
+
+#. Text in echo
+#: under-construction.php:67
+msgid "Days"
+msgstr ""
+
+#. Text in function
+#: widgets.php:683
+msgid "Display images from flickr"
+msgstr ""
+
+#. Text in function
+#: widgets.php:683
+msgid "Display latest blog posts"
+msgstr ""
+
+#. Text in function
+#: widgets.php:683
+msgid "Display latest works (Portoflio)"
+msgstr ""
+
+#. Text in function
+#: widgets.php:790
+msgid "Display recent tweets"
+msgstr ""
+
+#. Text in function
+#: widgets.php:790
+msgid "Display social links"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:178
+msgid "Dribble:"
+msgstr ""
+
+#. Text in echo
+#: comments.php:66 comments.php:68 widgets.php:725
+msgid "Email"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:782
+msgid "Email Address:<br />"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:182
+msgid "Facebook:"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:302
+msgid "Flickr ID:"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:186
+msgid "Flickr:"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:190
+msgid "Github:"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:194
+msgid "Google+:"
+msgstr ""
+
+#. Text in function
+#: the_breadcrumb.php:1
+msgid "Home"
+msgstr ""
+
+#. Text in echo
+#: under-construction.php:68
+msgid "Hours"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:163
+msgid "Icon size:"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:198
+msgid "Instagram:"
+msgstr ""
+
+#. Text in function
+#: functions.php:167
+msgid "Install Plugins"
+msgstr ""
+
+#. Text in function
+#: functions.php:167
+msgid "Install Required Plugins"
+msgstr ""
+
+#. Text in function
+#: functions.php:167
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#. Text in echo
+#: header.php:36 header-standalone.php:36
+msgid "Just Start Typing Text and Press Enter"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:202
+msgid "LinkedIn:"
+msgstr ""
+
+#. Text in echo
+#: blog-template.php:34
+msgid "Load More Posts"
+msgstr ""
+
+#. Text in echo
+#: comments.php:56
+msgid "Log out"
+msgstr ""
+
+#. Text in echo
+#: comments.php:54
+msgid "Logged in as"
+msgstr ""
+
+#. Text in echo
+#: header.php:116 header-standalone.php:117
+msgid "Menu"
+msgstr ""
+
+#. Text in echo
+#: comments.php:73 comments.php:75 widgets.php:731
+msgid "Message"
+msgstr ""
+
+#. Text in echo
+#: under-construction.php:69
+msgid "Minutes"
+msgstr ""
+
+#. Text in function
+#: archive.php:26
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#. Text in echo
+#: comments.php:60 comments.php:62 widgets.php:719
+msgid "Name"
+msgstr ""
+
+#. Text in function
+#: comments.php:21
+msgid "Newer Comments <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#. Text in echo
+#: single.php:55
+msgid "Next "
+msgstr ""
+
+#. Text in echo
+#: single-portfolio.php:
+msgid "Next Project"
+msgstr ""
+
+#. Text in function
+#: shortcode.php:1
+msgid "No Image"
+msgstr ""
+
+#. Text in echo
+#: portfolio_loop.php:60
+msgid "No categories selected. To fix this, please login to your WP Admin area and se"
+msgstr ""
+
+#. Text in function
+#: shortcode.php:1
+msgid "No image"
+msgstr ""
+
+#. Text in function
+#: shortcode.php:1
+msgid "No related posts for this one"
+msgstr ""
+
+#. Text in echo
+#: slider-shortcode.php:107 page-head.php:154
+msgid "No slider items were found in the selected slider. Please make sure to create some via \"Slider\" section in your admin panel."
+msgstr ""
+
+#. Text in echo
+#: search.php:31
+msgid "Nothing Found"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:675
+msgid "Number of Posts to show"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:307
+msgid "Number of photos:"
+msgstr ""
+
+#. Text in function
+#: homepage-template.php:20 page.php:25
+msgid "Pages:"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:206
+msgid "Pinterest:"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:155
+msgid "Placement:"
+msgstr ""
+
+#. Text in function
+#: functions.php:167
+msgid "Plugin activated successfully."
+msgstr ""
+
+#. Text in echo
+#: widgets.php:566
+msgid "Popular"
+msgstr ""
+
+#. Text in echo
+#: single.php:51
+msgid "Prev "
+msgstr ""
+
+#. Text in echo
+#: single-portfolio.php:
+msgid "Prev Project"
+msgstr ""
+
+#. Text in function
+#: functions.php:90
+msgid "Primary Navigation"
+msgstr ""
+
+#. Text in function
+#: functions.php:167
+msgid "Primary Widget Area"
+msgstr ""
+
+#. Text in echo
+#: loop.php:104
+msgid "Quote post format was chosen but no url or embed code provided. Please fix this by providing it."
+msgstr ""
+
+#. Text in echo
+#: widgets.php:567
+msgid "Recent"
+msgstr ""
+
+#. Text in function
+#: helper-functions.php:342
+msgid "Reply <i class=\"fa fa-reply\"></i>"
+msgstr ""
+
+#. Text in function
+#: widgets.php:683
+msgid "Retrieve and display popular/latest posts/latest comments."
+msgstr ""
+
+#. Text in echo
+#: 404.php:17
+msgid "Return To Home"
+msgstr ""
+
+#. Text in function
+#: functions.php:167
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#. Text in echo
+#: searchform.php:3
+msgid "Search"
+msgstr ""
+
+#. Text in function
+#: search.php:21
+msgid "Search Results for: %s"
+msgstr ""
+
+#. Text in echo
+#: under-construction.php:70
+msgid "Seconds"
+msgstr ""
+
+#. Text in echo
+#: comments.php:80 widgets.php:738
+msgid "Send Message"
+msgstr ""
+
+#. Text in echo
+#: single.php:152
+msgid "Share Post "
+msgstr ""
+
+#. Text in echo
+#: widgets.php:390
+msgid "Show only featured posts"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:511
+msgid "Show thumbnails"
+msgstr ""
+
+#. Text in function
+#: shortcode.php:1
+msgid "Sility Shortcodes"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:210
+msgid "Skype:"
+msgstr ""
+
+#. Text in function
+#: functions.php:167
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#. Text in echo
+#: search.php:33
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr ""
+
+#. Text in echo
+#: widgets.php:786
+msgid "Success Message:<br />"
+msgstr ""
+
+#. Text in echo
+#: single.php:162
+msgid "Tags "
+msgstr ""
+
+#. Text in echo
+#: widgets.php:147
+msgid "Target window:"
+msgstr ""
+
+#. Text in function
+#: widgets.php:683
+msgid "Thank you, e-mail sent."
+msgstr ""
+
+#. Text in echo
+#: 404.php:16
+msgid "The Page You Requested Could Not be Found. Try Refining Your Search, or Use the Navigation Above to Locate The Post."
+msgstr ""
+
+#. Text in function
+#: functions.php:167
+msgid "The Primary widget area"
+msgstr ""
+
+#. Text in echo
+#: comments.php:8
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#. Text in echo
+#: widgets.php:670
+msgid "Title"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:297
+msgid "Title:"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:778
+msgid "Title:<br />"
+msgstr ""
+
+#. Text in echo
+#: widgets.php:214
+msgid "Twitter:"
+msgstr ""
+
+#. Text in function
+#: admin-functions.php:536
+msgid "Use this image"
+msgstr ""
+
+#. Text in echo
+#: loop.php:151
+msgid "Video post format was chosen but no url or embed code provided. Please fix this by providing it."
+msgstr ""
+
+#. Text in echo
+#: page-head.php:61
+msgid "Vimeo video chosen from post head options but no video ID provided. Please make sure to provide a video ID to display it."
+msgstr ""
+
+#. Text in echo
+#: under-construction.php:66
+msgid "Weeks"
+msgstr ""
+
+#. Text in function
+#: archive.php:28
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#. Text in echo
+#: comments.php:45
+msgid "You must be logged in to post a comment."
+msgstr ""
+
+#. Text in echo
+#: helper-functions.php:338
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#. Text in echo
+#: page-head.php:80
+msgid "Youtube video was chosen from post head options but no video ID provided. Please make sure to provide a video ID  to display it."
+msgstr ""
+
+#. Text in echo
+#: widgets.php:218
+msgid "Youtube:"
+msgstr ""
+
+#. Text in function
+#: widgets.php:683
+msgid "sility - Contact Form"
+msgstr ""
+
+#. Text in function
+#: widgets.php:683
+msgid "sility - Flickr images"
+msgstr ""
+
+#. Text in function
+#: widgets.php:683
+msgid "sility - Latest Works"
+msgstr ""
+
+#. Text in function
+#: widgets.php:790
+msgid "sility - Social links"
+msgstr ""
+
+#. Text in function
+#: widgets.php:683
+msgid "sility Blog Posts"
+msgstr ""
+
+#. Text in function
+#: widgets.php:683
+msgid "sility Popular/Latest posts/Last comments"
+msgstr ""
+
+#. Text in echo
+#: functions.php:164
+msgid "| By "
+msgstr ""
