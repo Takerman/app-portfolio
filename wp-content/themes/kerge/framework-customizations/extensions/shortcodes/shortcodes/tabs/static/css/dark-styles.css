@@ -1,0 +1,18 @@
+.fw-tabs-container .fw-tabs ul li {
+    background: none repeat scroll 0 0 #444;
+    border: 1px solid #444;
+}
+.fw-tabs-container .fw-tabs ul li:first-child {
+    border-left: 1px solid #444;
+    border-right: 0px solid #444;
+}
+.fw-tabs-container .fw-tabs ul li a {
+    color: #fff;
+}
+.fw-tabs-container .fw-tabs ul li.ui-state-active {
+    background: none repeat scroll 0 0 #222;
+    border-bottom-color: #222;
+}
+.fw-tabs-container .fw-tab-content {
+    border: 1px solid #444;
+}

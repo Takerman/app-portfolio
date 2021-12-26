@@ -1,0 +1,67 @@
+.fw-accordion {
+	border: 1px solid #e5e5e5;
+	clear: both;
+}
+
+.fw-accordion .fw-accordion-title {
+	position: relative;
+	font-size: 15px;
+	font-weight: bold;
+	background: #f5f5f5;
+	padding: 15px 40px;
+	margin: 0;
+	cursor: pointer;
+	border-top: 1px solid #e5e5e5;
+}
+
+.fw-accordion .fw-accordion-title:focus {
+	outline: medium none;
+}
+
+.fw-accordion .fw-accordion-title:first-child {
+	border-top: none;
+}
+
+.fw-accordion .fw-accordion-title.ui-state-active {
+	background: none;
+}
+
+.fw-accordion .fw-accordion-title .ui-icon {
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 10px;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.fw-accordion .fw-accordion-title .ui-icon {
+	position: absolute;
+	top: 22px;
+	left: 15px;
+	width: 8px;
+	height: 8px;
+}
+
+.fw-accordion .fw-accordion-title .ui-icon:before {
+	content: "\f067";
+}
+
+.fw-accordion .fw-accordion-title.ui-state-active .ui-icon {
+	top: 23px;
+}
+
+.fw-accordion .fw-accordion-title.ui-state-active .ui-icon:before {
+	content: "\f068";
+}
+
+.fw-accordion .fw-accordion-content {
+	padding: 0;
+}
+
+.fw-accordion .fw-accordion-content > div {
+	padding: 0 30px 20px 30px;
+}
+
+.fw-accordion .fw-accordion-content p:last-child {
+	margin-bottom: 0;
+}

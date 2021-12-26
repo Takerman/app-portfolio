@@ -1,0 +1,66 @@
+/*
+* Theme Name: Kerge - Resume / CV / vCard WordPress Theme
+* Author: lmpixels
+* Author URL: http://themeforest.net/user/lmpixels
+* Version: 3.1.0
+*/
+
+body {
+  overflow: auto;
+}
+
+.page-layout {
+  height: auto;
+}
+
+.site-main,
+.pt-wrapper,
+.subpages {
+  min-height: auto;
+  max-height: none;
+  height: auto;
+}
+
+.pt-page {
+  position: relative;
+  height: auto;
+  overflow: hidden;
+  min-height: auto;
+  padding-bottom: 10px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.pt-page:last-child {
+  padding-bottom: 0;
+}
+
+.pt-page .section-inner:not(.start-page-full-width) {
+  padding-top: 40px;
+}
+
+.pt-page:last-child .section-inner:not(.start-page-full-width) {
+  padding-bottom: 70px;
+}
+
+.lmpixels-arrows-nav {
+  position: fixed;
+}
+
+.blog-masonry {
+  margin-bottom: 0;
+}
+
+.pt-page.start-page.first-style {
+  min-height: 100vh;
+}
+
+.start-page.first-style .section-inner {
+  min-height: 100vh;
+}
+
+@media only screen and (max-width: 991px) {
+  .site-main {
+    overflow: initial;
+  }
+}

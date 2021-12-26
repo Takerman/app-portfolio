@@ -1,0 +1,66 @@
+<wpml-config>
+    <admin-texts>
+        <key name="fw_theme_settings_options:kerge">
+            <key name="sp_style">
+                <key name="first-style">
+                    <key name="hp_main_title" />
+                    <key name="hp_subtitles">
+                        <key name="0" />
+                        <key name="1" />
+                        <key name="2" />
+                        <key name="3" />
+                        <key name="4" />
+                        <key name="5" />
+                        <key name="6" />
+                        <key name="7" />
+                        <key name="8" />
+                        <key name="9" />
+                        <key name="10" />
+                        <key name="11" />
+                        <key name="12" />
+                        <key name="13" />
+                        <key name="14" />
+                        <key name="15" />
+                    </key>
+                </key>
+                <key name="second-style">
+                    <key name="hp_main_title" />
+                    <key name="hp_text" />
+                    <key name="hp_subtitles">
+                        <key name="0" />
+                        <key name="1" />
+                        <key name="2" />
+                        <key name="3" />
+                        <key name="4" />
+                        <key name="5" />
+                        <key name="6" />
+                        <key name="7" />
+                        <key name="8" />
+                        <key name="9" />
+                        <key name="10" />
+                        <key name="11" />
+                        <key name="12" />
+                        <key name="13" />
+                        <key name="14" />
+                        <key name="15" />
+                    </key>
+                    <key name="hp_buttons" />
+                </key>
+            </key>
+            <key name="logo" />
+            <key name="header_subtitle" />
+            <key name="copyrights" />
+            <key name="contact_form_subject" />
+            <key name="contact_form_text" />
+            <key name="contact_form_s_message" />
+            <key name="contact_form_e_message" />
+            <key name="portfolio_titles">
+                <key name="on">
+                    <key name="description_title" />
+                    <key name="technology_title" />
+                    <key name="share_title" />
+                </key>
+            </key>
+        </key>
+    </admin-texts>
+</wpml-config>

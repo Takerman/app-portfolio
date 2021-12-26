@@ -1,0 +1,436 @@
+/*
+* Kerge WordPress Theme RTL Styles
+* Theme Name: Kerge - Resume / CV / vCard WordPress Theme
+* Author: lmpixels
+* Author URL: http://themeforest.net/user/lmpixels
+* Version: 3.1.1
+*/
+
+html .col-sm-1, html .col-sm-10, html .col-sm-11, html .col-sm-12, html .col-sm-2, html .col-sm-3, html .col-sm-4, html .col-sm-5, html .col-sm-6, html .col-sm-7, html .col-sm-8, html .col-sm-9,
+html .col-xs-1, html .col-xs-10, html .col-xs-11, html .col-xs-12, html .col-xs-2, html .col-xs-3, html .col-xs-4, html .col-xs-5, html .col-xs-6, html .col-xs-7, html .col-xs-8, html .col-xs-9,
+html .col-md-1, html .col-md-10, html .col-md-11, html .col-md-12, html .col-md-2, html .col-md-3, html .col-md-4, html .col-md-5, html .col-md-6, html .col-md-7, html .col-md-8, html .col-md-9 {
+    float: right;
+}
+
+.ps>.ps__scrollbar-y-rail {
+  margin-left: 0;
+  margin-right: -15px;
+}
+
+.header .copyrights {
+    right: 0;
+    left: auto;
+}
+
+.header-photo:after {
+    right: 7%;
+    left: auto;
+}
+
+.form-control, .form-control:focus, .has-error .form-control, .has-error .form-control:focus, input[type="search"], input[type="password"], input[type="text"], .header-search input.form-control {
+    text-align: right;
+    padding: 10px 12px 10px 25px;
+}
+
+.form-group label {
+    left: auto;
+    right: 15px;
+}
+
+.mobile-logo-container,
+.mobile-header-image {
+    float: right;
+}
+
+.menu-toggle {
+    float: left;
+}
+
+.mobile-header-image img {
+    max-height: 34px;
+    margin: 8px 0 8px 8px;
+}
+
+
+
+.project-description {
+    margin-right: 20px;
+    margin-left: 0;
+}
+
+.order-first .project-description {
+    margin-right: 0;
+    margin-left: 20px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .project-description,
+    .order-first .project-description {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.project-general-info {
+    text-align: right;
+}
+
+.project-general-info .fa {
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+.portfolio-page-nav {
+    text-align: left;
+    float: left;
+}
+
+.portfolio-page-nav .lnr-chevron-left:before {
+    content: "\e876";
+}
+
+.portfolio-page-nav .lnr-chevron-right:before {
+    content: "\e875";
+}
+
+.portfolio-page-title,
+.tags,
+.share-buttons {
+    text-align: right;
+}
+
+.portfolio-page-content .share-buttons a.btn:first-child {
+    margin-right: 0;
+}
+
+.portfolio-page-content .share-buttons a.btn:last-child {
+    margin-right: 7px;
+    margin-left: 0;
+}
+
+.site-content .entry-header {
+    text-align: right;
+}
+
+.form-group-with-icon i {
+    left: 13px;
+    right: auto;
+}
+
+.comment-respond h3 {
+    text-align: right;
+}
+
+form {
+    text-align: right;
+}
+
+.post-content {
+    text-align: right;
+}
+
+.entry-meta-bottom .entry-share {
+    float: left;
+}
+
+blockquote {
+    border-right: 2px solid #d8d8d8;
+    border-left: 0;
+}
+
+.btn-primary, .btn-secondary, button, input[type="button"], input[type="submit"], .wp-block-button .wp-block-button__link, .elementor .btn-primary, .elementor .btn-secondary {
+    margin-left: .25em;
+    margin-right: 0;
+}
+
+.btn-primary:last-child, .btn-secondary:last-child, button:last-child, input[type="button"]:last-child, input[type="submit"]:last-child, .wp-block-button .wp-block-button__link:last-child {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.share-buttons a.btn:last-child {
+    margin-right: 3px;
+}
+
+
+
+
+
+
+
+
+
+.site-main-menu li a:after,
+.header-search button, .header-search button:hover, .header-search button:focus {
+    right: auto;
+    left: 0;
+}
+
+.section-title-block.first-style .section-title, .page-title-wrap.first-style h2.page-title, .section-title-block.second-style .section-title, .page-title-wrap.second-style h2.page-title,
+.block-title {
+    text-align: right;
+}
+
+.section-title-block.second-style .section-description, .page-title-wrap.second-style .page-description {
+    text-align: left;
+}
+
+.timeline-first-style .timeline-item {
+    text-align: right;
+}
+
+.timeline-first-style .timeline-item .item-period:before, .timeline-first-style .timeline-item .item-period:after {
+    left: auto;
+    right: 0;
+    transform: rotate(270deg);
+}
+
+.timeline-second-style .left-part {
+    text-align: left;
+    padding-left: 25px;
+    padding-right: 0;
+}
+
+.timeline-second-style .right-part {
+    padding-left: 15px;
+    padding-right: 25px;
+    text-align: right
+}
+
+.timeline-second-style .divider {
+    left: auto;
+    right: 30%;
+}
+
+.timeline-second-style .divider:after {
+    margin-right: -5px;
+    margin-left: 0;
+}
+
+.skills-info.skills-first-style h4 {
+    text-align: right;
+}
+
+.skills-info.skills-second-style h4 {
+    float: right;
+}
+
+.skills-second-style .skill-value {
+    float: left;
+}
+
+.info-block-w-icon .ci-text {
+    text-align: right;
+}
+
+.info-block-w-icon .ci-icon {
+    padding-left: 25px;
+    padding-right: 0;
+}
+
+.testimonials.owl-carousel .owl-nav, .clients.owl-carousel .owl-nav {
+    right: auto;
+    left: 0;
+}
+
+.testimonials.owl-carousel .owl-nav .owl-next:before, .clients.owl-carousel .owl-nav .owl-next:before {
+    content: "\f104";
+}
+
+.testimonials.owl-carousel .owl-nav .owl-prev:before, .clients.owl-carousel .owl-nav .owl-prev:before {
+    content: "\f105";
+}
+
+.testimonial-picture {
+    right: 0;
+}
+
+.testimonial-author-info {
+    padding-right: 92px;
+    padding-left: 0;
+    width: 100%;
+    text-align: right;
+}
+
+.testimonial-content {
+    padding-right: 50px;
+    padding-left: 0;
+}
+
+.portfolio-grid figure .name,
+.portfolio-grid figure .category {
+    left: auto;
+    right: 15px;
+}
+
+.portfolio-grid figure i {
+    left: 15px;
+    right: auto;
+}
+
+.blog-card .category {
+    right: 10px;
+    left: auto;
+}
+
+.blog-card .post-info {
+    text-align: right;
+}
+
+.see-all-posts {
+    text-align: right;
+}
+
+.section-inner.start-page-full-width .hp-text-block {
+    text-align: right;
+}
+
+.post-tags {
+    text-align: right;
+}
+
+.site-content .entry-meta.entry-meta-bottom span {
+    float: right;
+}
+
+.section-title-block.first-style, .section-title-block.second-style,
+.page-title-wrap.first-style {
+    text-align: right;
+}
+
+.section-title-block.first-style .section-title:after, .page-title-wrap.first-style .page-title:after, .section-title-block.first-style .section-title:before, .page-title-wrap.first-style .page-title:before {
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #ffcd38;
+    border-right: 0;
+    left: auto;
+    right: 0;
+}
+
+.section-title-block.first-style .section-title:after, .page-title-wrap.first-style .page-title:after {
+    border-left: 10px solid #000;
+    border-right: 0;
+}
+
+.section-title-block.first-style .section-description, .page-title-wrap.first-style .page-description {
+    margin-left: 0;
+    margin-right: 15px;
+}
+
+span[data-cal-date] {
+    margin-right: 11px;
+    margin-left: auto;
+}
+
+
+div[class*="cal-cell"] {
+    float: right;
+}
+
+div#cal-day-box #cal-day-panel {
+    padding-right: 120px;
+    padding-left: 0;
+}
+
+div#cal-day-box #cal-day-panel-hour {
+    margin-left: 0;
+    margin-right: -120px;
+}
+
+div#cal-day-box .time-col {
+    border-left: 2px solid #fff;
+    border-right: 0;
+}
+
+.template-style-dark div#cal-day-box .time-col {
+    border-color: #222;
+}
+
+div#cal-day-box .cal-day-hour .time-col {
+    margin-left: 0;
+    margin-right: -2px;
+}
+
+div#cal-day-box .cal-row-head .events-col {
+    margin: 10px 20px 0 0;
+}
+
+div.cal-row-fluid [class*="cal-cell"] {
+    float: right;
+}
+
+div.fw-accordion .fw-accordion-title .ui-icon {
+    right: 15px;
+    left: auto;
+}
+
+div.cal-year-box .row-fluid [class*="span"]:last-child, div.cal-month-box .cal-row-fluid [class*="cal-cell"]:last-child {
+    border-right-width: 2px;
+}
+
+.lmpixels-arrows-nav .dashicons-arrow-right-alt2:before,
+.portfolio-page-nav > div.nav-item .dashicons-arrow-right-alt2:before {
+    content: "\f341";
+}
+
+.lmpixels-arrows-nav .dashicons-arrow-left-alt2:before,
+.portfolio-page-nav > div.nav-item .dashicons-arrow-left-alt2:before {
+    content: "\f345";
+}
+
+.info-list {
+    display: block;
+    text-align: right;
+}
+
+.info-list li {
+    text-align: right;
+}
+
+.info-list li .title {
+    margin-right: 0;
+    margin-left: 15px;
+}
+
+
+
+@media only screen and (min-width: 992px) {
+    .pt-page,
+    .single-page-content {
+        padding-left: 0;
+        padding-right: 15px;
+    }
+
+    .pt-page.start-page.first-style {
+        padding-right: 15px;
+        padding-left: 0;
+    }
+
+    .section-title-block.first-style .section-title, .page-title-wrap.first-style h2.page-title {
+        margin: 0 -80px 0 0;
+        padding: 10px 70px 10px 20px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .section-title-block.first-style .section-title, .page-title-wrap.first-style h2.page-title {
+        margin: 0 -30px 0 0;
+        padding: 10px 28px 10px 20px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .section-title-block.first-style .section-description {
+        margin: 7px 0 0;
+        width: 100%;
+    }
+
+    .timeline-second-style .left-part {
+        padding-right: 25px;
+        padding-left: 0;
+        text-align: right;
+    }
+
+    .timeline-second-style .divider {
+        right: 0;
+    }
+}

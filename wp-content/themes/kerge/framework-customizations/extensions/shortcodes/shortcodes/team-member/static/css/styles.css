@@ -1,0 +1,42 @@
+.fw-team .fw-team-image {
+	text-align: center;
+}
+.fw-team .fw-team-inner {
+	text-align: center;
+}
+.fw-team .fw-team-name {
+	margin-bottom: 3px;
+}
+.fw-team .fw-team-name h3 {
+	font-size: 18px;
+    margin: 12px 0 0px 0;
+}
+.fw-team .fw-team-name span {
+	font-size: 13px;
+	color: #929292;
+}
+.fw-team-image img {
+  max-width: 200px;
+  width: 100%;
+  border: 3px solid #fff;
+  background-color: #fff;
+  text-align: center;
+  -webkit-box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.1);
+  box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.1);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.fw-team-image img:hover {
+  -webkit-transform: translateY(-9px);
+  -ms-transform: translateY(-9px);
+  -o-transform: translateY(-9px);
+  transform: translateY(-9px);
+  -webkit-box-shadow: 0 18px 24px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 18px 24px rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 0 18px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 18px 24px rgba(0, 0, 0, 0.15);
+}
