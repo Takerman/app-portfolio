@@ -1,0 +1,35 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Kerge Share Buttons 1.2.0\n"
+"POT-Creation-Date: 2020-10-23 11:27+0400\n"
+"PO-Revision-Date: 2017-06-27 11:19+0400\n"
+"Last-Translator: \n"
+"Language-Team: LMPixels linar@lmpixels.com\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext;_n;__ngettext_noop;_n_noop;_x;_nx;"
+"_nx_noop;_ex;esc_attr__;esc_attr_e;esc_attr_x;esc_html__;esc_html_e;"
+"esc_html_x;_c;_nc\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: kerge-share-buttons.php:30
+msgid "Share on Facebook"
+msgstr ""
+
+#: kerge-share-buttons.php:38
+msgid "Share on Twitter"
+msgstr ""
+
+#: kerge-share-buttons.php:45
+msgid "Share on LinkedIn"
+msgstr ""
+
+#: kerge-share-buttons.php:52
+msgid "Share on Digg"
+msgstr ""

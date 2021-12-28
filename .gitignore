@@ -1,15 +1,15 @@
 *.log
-wp-config.php
+# wp-config.php
 wp-content/advanced-cache.php
-wp-content/backup-db/
-wp-content/backups/
+# wp-content/backup-db/
+# wp-content/backups/
 wp-content/blogs.dir/
 wp-content/cache/
 wp-content/upgrade/
-wp-content/uploads/
+# wp-content/uploads/
 wp-content/mu-plugins/
 wp-content/wp-cache-config.php
-wp-content/plugins/
+# wp-content/plugins/
 /.htaccess
 .well-known/
 php_errorlog

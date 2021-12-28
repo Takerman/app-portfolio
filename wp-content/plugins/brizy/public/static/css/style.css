@@ -1,0 +1,48 @@
+#brizy-root-element {
+	position: relative;
+	min-height: 400px;
+	background: #f3f3f3;
+}
+
+#brizy-root-element > .spinner {
+	display: none;
+}
+
+#brizy-root-element > .spinner:first-child:last-child {
+	display: block;
+}
+
+#brizy-root-element > .spinner,
+#brizy-root-element > .spinner:after,
+#brizy-root-element > .spinner:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	border: 3px solid transparent;
+	border-radius: 50%;
+	animation: spin 1s linear infinite
+}
+
+#brizy-root-element > .spinner {
+	width: 100px;
+	height: 100px;
+	margin: -50px 0 0 -50px;
+	border-top-color: #2eb9d7;
+	animation-duration: 2.5s
+}
+
+#brizy-root-element > .spinner:after {
+	width: 80px;
+	height: 80px;
+	margin: -40px 0 0 -40px;
+	border-right-color: #8767bc;
+	animation-duration: 2s
+}
+
+#brizy-root-element > .spinner:before {
+	width: 60px;
+	height: 60px;
+	margin: -30px 0 0 -30px;
+	border-bottom-color: #fff
+}

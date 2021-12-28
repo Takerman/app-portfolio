@@ -1,0 +1,2497 @@
+# Copyright (C) 2021 Brizy.io
+# This file is distributed under the same license as the Brizy plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Brizy 2.2.13\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/brizy\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-05-05T16:10:49+03:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: brizy\n"
+
+#. Plugin Name of the plugin
+msgid "Brizy"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://brizy.io/"
+msgstr ""
+
+#. Description of the plugin
+msgid "A free drag & drop front-end page builder to help you create WordPress pages lightning fast. It's easy with Brizy."
+msgstr ""
+
+#. Author of the plugin
+msgid "Brizy.io"
+msgstr ""
+
+#: admin/blocks/main.php:108
+msgid "global block."
+msgstr ""
+
+#: admin/dashboard-widget.php:69
+msgid "Something went wrong. There is no a valid response code."
+msgstr ""
+
+#: admin/dashboard-widget.php:76
+msgid "The request was blocked, or something is wrong with the remote server."
+msgstr ""
+
+#: admin/dashboard-widget.php:80
+msgid "There is no body in the remote server response."
+msgstr ""
+
+#: admin/dashboard-widget.php:86
+msgid "Filed decode returned json by brizy.io"
+msgstr ""
+
+#: admin/feedback.php:30
+msgid "Hello! Seems like you are using Brizy to build your website - Thanks a lot!"
+msgstr ""
+
+#: admin/feedback.php:32
+msgid "Could you please do us a BIG favor and give it a 5-star rating on WordPress? This would boost our motivation and help other users make a comfortable decision while choosing the Brizy plugin."
+msgstr ""
+
+#: admin/feedback.php:36
+msgid "Ok, you deserve it"
+msgstr ""
+
+#: admin/feedback.php:40
+msgid "Nope, maybe later"
+msgstr ""
+
+#: admin/feedback.php:44
+msgid "I already did"
+msgstr ""
+
+#: admin/feedback.php:111
+msgid "I no longer need the plugin"
+msgstr ""
+
+#: admin/feedback.php:115
+msgid "I found a better plugin"
+msgstr ""
+
+#: admin/feedback.php:116
+msgid "Please share which plugin"
+msgstr ""
+
+#: admin/feedback.php:119
+msgid "I couldn't get the plugin to work"
+msgstr ""
+
+#: admin/feedback.php:123
+msgid "It's a temporary deactivation"
+msgstr ""
+
+#: admin/feedback.php:127
+msgid "I have Brizy Pro"
+msgstr ""
+
+#: admin/feedback.php:129
+msgid "Wait! Don't deactivate Brizy. You have to activate both Brizy and Brizy Pro in order for the plugin to work."
+msgstr ""
+
+#: admin/feedback.php:132
+msgid "Other"
+msgstr ""
+
+#: admin/feedback.php:133
+msgid "Please share the reason"
+msgstr ""
+
+#: admin/feedback.php:142
+msgid "Quick Feedback"
+msgstr ""
+
+#: admin/feedback.php:146
+msgid "If you have a moment, please share why you are deactivating Brizy:"
+msgstr ""
+
+#: admin/fonts/main.php:105
+msgid "font"
+msgstr ""
+
+#: admin/form-entries.php:61
+msgid "Leads details"
+msgstr ""
+
+#: admin/form-entries.php:62
+#: languages/texts.php:314
+msgid "Date"
+msgstr ""
+
+#: admin/form-entries.php:121
+#: admin/form-entries.php:324
+#: admin/form-entries.php:336
+msgid "Leads"
+msgstr ""
+
+#: admin/form-entries.php:144
+msgid "Disable"
+msgstr ""
+
+#: admin/form-entries.php:148
+msgid "Enable "
+msgstr ""
+
+#: admin/form-entries.php:201
+msgid "Export to .csv"
+msgstr ""
+
+#: admin/form-entries.php:315
+msgctxt "post type general name"
+msgid "Leads"
+msgstr ""
+
+#: admin/form-entries.php:316
+msgctxt "post type singular name"
+msgid "Lead"
+msgstr ""
+
+#: admin/form-entries.php:317
+msgctxt "admin menu"
+msgid "Leads"
+msgstr ""
+
+#: admin/form-entries.php:318
+msgctxt "add new on admin bar"
+msgid "Lead"
+msgstr ""
+
+#: admin/form-entries.php:319
+#: admin/popups/main.php:49
+#: admin/templates.php:245
+#: languages/texts.php:74
+msgid "Add New"
+msgstr ""
+
+#: admin/form-entries.php:320
+msgid "Add New Lead"
+msgstr ""
+
+#: admin/form-entries.php:321
+msgid "New Lead"
+msgstr ""
+
+#: admin/form-entries.php:322
+msgid "Edit Lead"
+msgstr ""
+
+#: admin/form-entries.php:323
+msgid "View Lead"
+msgstr ""
+
+#: admin/form-entries.php:325
+msgid "Search Leads"
+msgstr ""
+
+#: admin/form-entries.php:326
+msgid "Parent Leads:"
+msgstr ""
+
+#: admin/form-entries.php:327
+msgid "No Leads found."
+msgstr ""
+
+#: admin/form-entries.php:328
+msgid "No Leads found in Trash."
+msgstr ""
+
+#: admin/layouts/main.php:43
+msgid "Layout."
+msgstr ""
+
+#: admin/main.php:218
+#: admin/optimize-images.php:354
+#: admin/settings.php:108
+#: admin/settings.php:109
+#: languages/texts.php:181
+msgid "Settings"
+msgstr ""
+
+#: admin/main.php:226
+#: admin/settings.php:147
+msgid "Go Pro"
+msgstr ""
+
+#: admin/main.php:285
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: admin/main.php:286
+msgid "Skip & Deactivate"
+msgstr ""
+
+#: admin/main.php:400
+msgid "Edit with %s"
+msgstr ""
+
+#: admin/main.php:510
+msgid "Importing Brizy post &#8220;%s&#8221; will be skipped due to incompatible version: %s "
+msgstr ""
+
+#: admin/membership/membership.php:48
+msgctxt "post type general name"
+msgid "Roles"
+msgstr ""
+
+#: admin/membership/membership.php:49
+msgctxt "post type singular name"
+msgid "Role"
+msgstr ""
+
+#: admin/membership/membership.php:50
+msgctxt "admin menu"
+msgid "Roles"
+msgstr ""
+
+#: admin/membership/membership.php:51
+msgctxt "add new on admin bar"
+msgid "Role"
+msgstr ""
+
+#: admin/membership/membership.php:52
+msgctxt "add new post type role"
+msgid "Add Role"
+msgstr ""
+
+#: admin/membership/membership.php:53
+msgid "Add New Role"
+msgstr ""
+
+#: admin/membership/membership.php:54
+msgid "New Role"
+msgstr ""
+
+#: admin/membership/membership.php:55
+msgid "Edit Role"
+msgstr ""
+
+#: admin/membership/membership.php:56
+msgid "View Role"
+msgstr ""
+
+#: admin/membership/membership.php:57
+#: admin/views/settings/maintenance.php:33
+msgid "Roles"
+msgstr ""
+
+#: admin/membership/membership.php:58
+msgid "Search Role"
+msgstr ""
+
+#: admin/membership/membership.php:59
+msgid "Parent Role:"
+msgstr ""
+
+#: admin/membership/membership.php:60
+msgid "No Roles found."
+msgstr ""
+
+#: admin/membership/membership.php:61
+msgid "No Roles found in Trash."
+msgstr ""
+
+#: admin/membership/membership.php:69
+msgid "roles"
+msgstr ""
+
+#: admin/membership/membership.php:91
+msgid "Enter Role Name"
+msgstr ""
+
+#: admin/membership/membership.php:136
+#: admin/membership/membership.php:139
+msgid "Role updated."
+msgstr ""
+
+#: admin/membership/membership.php:137
+msgid "Custom field updated."
+msgstr ""
+
+#: admin/membership/membership.php:138
+msgid "Custom field deleted."
+msgstr ""
+
+#: admin/membership/membership.php:140
+msgid "Role published."
+msgstr ""
+
+#: admin/membership/membership.php:141
+msgid "Role saved."
+msgstr ""
+
+#: admin/membership/membership.php:142
+msgid "Role submitted."
+msgstr ""
+
+#: admin/network-settings.php:82
+#: admin/settings.php:296
+msgid "Full Access"
+msgstr ""
+
+#: admin/optimize-images.php:115
+#: admin/optimize-images.php:348
+msgid "Optimize"
+msgstr ""
+
+#: admin/popups/main.php:45
+msgctxt "post type general name"
+msgid "Popups"
+msgstr ""
+
+#: admin/popups/main.php:46
+msgctxt "post type singular name"
+msgid "Popup"
+msgstr ""
+
+#: admin/popups/main.php:47
+msgctxt "admin menu"
+msgid "Popups"
+msgstr ""
+
+#: admin/popups/main.php:48
+msgctxt "add new on admin bar"
+msgid "Popup"
+msgstr ""
+
+#: admin/popups/main.php:50
+msgid "Add New Popup"
+msgstr ""
+
+#: admin/popups/main.php:51
+msgid "New Popup"
+msgstr ""
+
+#: admin/popups/main.php:52
+msgid "Edit Popup"
+msgstr ""
+
+#: admin/popups/main.php:53
+msgid "View Popup"
+msgstr ""
+
+#: admin/popups/main.php:54
+#: admin/popups/main.php:67
+msgid "Popups"
+msgstr ""
+
+#: admin/popups/main.php:55
+msgid "Search Popups"
+msgstr ""
+
+#: admin/popups/main.php:56
+msgid "Parent Popups:"
+msgstr ""
+
+#: admin/popups/main.php:57
+msgid "No Popups found."
+msgstr ""
+
+#: admin/popups/main.php:58
+msgid "No Popups found in Trash."
+msgstr ""
+
+#: admin/popups/main.php:59
+msgid "Popup attributes:"
+msgstr ""
+
+#: admin/rules/api.php:463
+msgid "From"
+msgstr ""
+
+#: admin/rules/api.php:475
+msgid "From any child of"
+msgstr ""
+
+#: admin/rules/api.php:534
+msgid "Specific"
+msgstr ""
+
+#: admin/rules/api.php:544
+msgid "Any child of"
+msgstr ""
+
+#: admin/settings.php:130
+msgid "Get Help"
+msgstr ""
+
+#: admin/settings.php:159
+msgid "General"
+msgstr ""
+
+#: admin/settings.php:165
+msgid "Role Manager"
+msgstr ""
+
+#: admin/settings.php:171
+msgid "Maintenance Mode"
+msgstr ""
+
+#: admin/stories/main.php:39
+msgctxt "post type general name"
+msgid "Stories"
+msgstr ""
+
+#: admin/stories/main.php:40
+msgctxt "post type singular name"
+msgid "Story"
+msgstr ""
+
+#: admin/stories/main.php:41
+msgctxt "admin menu"
+msgid "Stories"
+msgstr ""
+
+#: admin/stories/main.php:42
+msgctxt "add new on admin bar"
+msgid "Story"
+msgstr ""
+
+#: admin/stories/main.php:43
+#: admin/stories/main.php:44
+msgid "Add New Story"
+msgstr ""
+
+#: admin/stories/main.php:45
+msgid "New Story"
+msgstr ""
+
+#: admin/stories/main.php:46
+msgid "Edit Story"
+msgstr ""
+
+#: admin/stories/main.php:47
+msgid "View Story"
+msgstr ""
+
+#: admin/stories/main.php:48
+msgid "Stories"
+msgstr ""
+
+#: admin/stories/main.php:49
+msgid "Search Stories"
+msgstr ""
+
+#: admin/stories/main.php:50
+msgid "Parent Stories:"
+msgstr ""
+
+#: admin/stories/main.php:51
+msgid "No Stories found."
+msgstr ""
+
+#: admin/stories/main.php:52
+msgid "No Stories found in Trash."
+msgstr ""
+
+#: admin/stories/main.php:60
+msgid "stories"
+msgstr ""
+
+#: admin/templates.php:125
+msgid "Single"
+msgstr ""
+
+#: admin/templates.php:126
+msgid "Archive"
+msgstr ""
+
+#: admin/templates.php:131
+#: languages/texts.php:56
+msgid "Product"
+msgstr ""
+
+#: admin/templates.php:132
+msgid "Product Archive"
+msgstr ""
+
+#: admin/templates.php:241
+msgctxt "post type general name"
+msgid "Templates"
+msgstr ""
+
+#: admin/templates.php:242
+msgctxt "post type singular name"
+msgid "Template"
+msgstr ""
+
+#: admin/templates.php:243
+msgctxt "admin menu"
+msgid "Templates"
+msgstr ""
+
+#: admin/templates.php:244
+msgctxt "add new on admin bar"
+msgid "Template"
+msgstr ""
+
+#: admin/templates.php:246
+msgid "Add New Template"
+msgstr ""
+
+#: admin/templates.php:247
+msgid "New Template"
+msgstr ""
+
+#: admin/templates.php:248
+msgid "Edit Template"
+msgstr ""
+
+#: admin/templates.php:249
+msgid "View Template"
+msgstr ""
+
+#: admin/templates.php:250
+msgid "Templates"
+msgstr ""
+
+#: admin/templates.php:251
+msgid "Search Templates"
+msgstr ""
+
+#: admin/templates.php:252
+msgid "Parent Templates:"
+msgstr ""
+
+#: admin/templates.php:253
+msgid "No Templates found."
+msgstr ""
+
+#: admin/templates.php:254
+msgid "No Templates found in Trash."
+msgstr ""
+
+#: admin/templates.php:263
+msgid "templates"
+msgstr ""
+
+#: admin/templates.php:292
+msgid "Display Conditions"
+msgstr ""
+
+#: admin/templates.php:344
+msgid "Unable to show the rule box."
+msgstr ""
+
+#: admin/templates.php:914
+msgid "Unable to get the rule validator for this post type."
+msgstr ""
+
+#: admin/templates.php:921
+#: admin/templates.php:942
+msgid "Invalid data version."
+msgstr ""
+
+#: admin/views/button.php:20
+#: compatibilities/gutenberg.php:91
+msgid "Back to WordPress Editor"
+msgstr ""
+
+#: admin/views/button.php:24
+#: compatibilities/gutenberg.php:109
+msgid "Edit with"
+msgstr ""
+
+#: admin/views/button.php:44
+#: admin/views/editor.php:21
+msgid "Continue to edit with"
+msgstr ""
+
+#: admin/views/dashboard-news.php:4
+msgid "News & Updates"
+msgstr ""
+
+#: admin/views/dashboard-news.php:10
+msgid "New"
+msgstr ""
+
+#: admin/views/dashboard-news.php:19
+msgid "No News"
+msgstr ""
+
+#: admin/views/dashboard-posts.php:4
+msgid "Recently Edited"
+msgstr ""
+
+#: admin/views/dashboard.php:12
+msgid "Blog"
+msgstr ""
+
+#: admin/views/dashboard.php:17
+msgid "Help"
+msgstr ""
+
+#: admin/views/dashboard.php:23
+msgid "Go PRO"
+msgstr ""
+
+#: admin/views/notice.php:14
+msgid "Dismiss this notice"
+msgstr ""
+
+#: admin/views/settings/general.php:46
+#: admin/views/settings/maintenance.php:76
+#: admin/views/settings/roles.php:26
+msgid "Save Changes"
+msgstr ""
+
+#: admin/views/settings/maintenance.php:10
+msgid "Choose Mode"
+msgstr ""
+
+#: admin/views/settings/maintenance.php:14
+msgid "Disabled"
+msgstr ""
+
+#: admin/views/settings/maintenance.php:15
+msgid "Coming Soon"
+msgstr ""
+
+#: admin/views/settings/maintenance.php:16
+msgid "Maintenance"
+msgstr ""
+
+#: admin/views/settings/maintenance.php:22
+msgid "Who Can Access"
+msgstr ""
+
+#: admin/views/settings/maintenance.php:26
+msgid "Logged In"
+msgstr ""
+
+#: admin/views/settings/maintenance.php:27
+#: languages/texts.php:140
+msgid "Custom"
+msgstr ""
+
+#: admin/views/settings/maintenance.php:49
+msgid "Choose a Page"
+msgstr ""
+
+#: admin/views/settings/maintenance.php:54
+msgid "Select a page"
+msgstr ""
+
+#: admin/views/settings/maintenance.php:60
+msgid "You have no pages. Please %s create %s one."
+msgstr ""
+
+#: admin/views/settings/maintenance.php:66
+msgid "Whitelisted IP Addresses"
+msgstr ""
+
+#: brizy.php:108
+msgid "%1$s requires PHP version 5.6+, you currently running PHP %2$s. <b>%3$s IS NOT RUNNING.</b>"
+msgstr ""
+
+#: compatibilities/gutenberg.php:98
+msgid "Continue to edit with "
+msgstr ""
+
+#: content/providers/free-provider.php:106
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: content/providers/free-provider.php:144
+msgid "Please set a valid product"
+msgstr ""
+
+#: editor.php:278
+msgid " Template"
+msgstr ""
+
+#: editor/asset/cleaner.php:86
+msgid "Every Ten Minutes"
+msgstr ""
+
+#: editor/block-screenshot-api.php:61
+msgid "Bad request"
+msgstr ""
+
+#: editor/block-screenshot-api.php:81
+msgid "Invalid image content"
+msgstr ""
+
+#: editor/post.php:501
+msgid "Default"
+msgstr ""
+
+#: languages/texts.php:9
+msgid "START BUILDING YOUR PAGE"
+msgstr ""
+
+#: languages/texts.php:10
+msgid "Press the button above to add blocks"
+msgstr ""
+
+#: languages/texts.php:14
+msgid "SWITCH TO DESKTOP"
+msgstr ""
+
+#: languages/texts.php:15
+msgid "Switch to desktop to add blocks"
+msgstr ""
+
+#: languages/texts.php:21
+msgid "Add a new block"
+msgstr ""
+
+#: languages/texts.php:22
+msgid "Press the button to add blocks"
+msgstr ""
+
+#: languages/texts.php:29
+msgid "Add Elements"
+msgstr ""
+
+#: languages/texts.php:30
+msgid "Text"
+msgstr ""
+
+#: languages/texts.php:31
+msgid "Button"
+msgstr ""
+
+#: languages/texts.php:32
+msgid "Icon"
+msgstr ""
+
+#: languages/texts.php:33
+msgid "Image"
+msgstr ""
+
+#: languages/texts.php:34
+msgid "Video"
+msgstr ""
+
+#: languages/texts.php:35
+msgid "Spacer"
+msgstr ""
+
+#: languages/texts.php:36
+msgid "Line"
+msgstr ""
+
+#: languages/texts.php:37
+msgid "Map"
+msgstr ""
+
+#: languages/texts.php:38
+msgid "Embed"
+msgstr ""
+
+#: languages/texts.php:39
+msgid "Form"
+msgstr ""
+
+#: languages/texts.php:40
+msgid "Icon Box"
+msgstr ""
+
+#: languages/texts.php:41
+msgid "SndCloud"
+msgstr ""
+
+#: languages/texts.php:42
+msgid "Counter"
+msgstr ""
+
+#: languages/texts.php:43
+msgid "Countdown"
+msgstr ""
+
+#: languages/texts.php:44
+msgid "Tabs"
+msgstr ""
+
+#: languages/texts.php:45
+msgid "Progress"
+msgstr ""
+
+#: languages/texts.php:46
+msgid "Accordion"
+msgstr ""
+
+#: languages/texts.php:47
+msgid "Row"
+msgstr ""
+
+#: languages/texts.php:48
+msgid "Column"
+msgstr ""
+
+#: languages/texts.php:49
+msgid "Rows"
+msgstr ""
+
+#: languages/texts.php:50
+msgid "Columns"
+msgstr ""
+
+#: languages/texts.php:51
+msgid "Add to cart"
+msgstr ""
+
+#: languages/texts.php:52
+msgid "Categories"
+msgstr ""
+
+#: languages/texts.php:53
+msgid "Layouts"
+msgstr ""
+
+#: languages/texts.php:54
+#: languages/texts.php:443
+msgid "layouts"
+msgstr ""
+
+#: languages/texts.php:55
+msgid "layout"
+msgstr ""
+
+#: languages/texts.php:57
+msgid "Products"
+msgstr ""
+
+#: languages/texts.php:58
+msgid "Shortcode"
+msgstr ""
+
+#: languages/texts.php:59
+msgid "Menu"
+msgstr ""
+
+#: languages/texts.php:60
+msgid "WP Menu"
+msgstr ""
+
+#: languages/texts.php:61
+msgid "Posts"
+msgstr ""
+
+#: languages/texts.php:62
+msgid "Archives"
+msgstr ""
+
+#: languages/texts.php:63
+msgid "Taxonomy"
+msgstr ""
+
+#: languages/texts.php:64
+msgid "Pagination"
+msgstr ""
+
+#: languages/texts.php:65
+msgid "Sidebar"
+msgstr ""
+
+#: languages/texts.php:67
+msgid "Reorder Blocks"
+msgstr ""
+
+#: languages/texts.php:68
+msgid "Drag to reorder"
+msgstr ""
+
+#: languages/texts.php:70
+msgid "Styling"
+msgstr ""
+
+#: languages/texts.php:71
+msgid "Add New Google Font"
+msgstr ""
+
+#: languages/texts.php:72
+msgid "Type font name"
+msgstr ""
+
+#: languages/texts.php:73
+msgid "Add new option"
+msgstr ""
+
+#: languages/texts.php:75
+msgid "New Style #%s"
+msgstr ""
+
+#: languages/texts.php:76
+msgid "Copy"
+msgstr ""
+
+#: languages/texts.php:77
+msgid "Paste"
+msgstr ""
+
+#: languages/texts.php:78
+msgid "Paste Styles"
+msgstr ""
+
+#: languages/texts.php:80
+msgid "Mobile view"
+msgstr ""
+
+#: languages/texts.php:81
+msgid "Tablet view"
+msgstr ""
+
+#: languages/texts.php:82
+msgid "Desktop"
+msgstr ""
+
+#: languages/texts.php:83
+msgid "Tablet"
+msgstr ""
+
+#: languages/texts.php:84
+msgid "Mobile"
+msgstr ""
+
+#: languages/texts.php:86
+msgid "More"
+msgstr ""
+
+#: languages/texts.php:87
+msgid "About Brizy"
+msgstr ""
+
+#: languages/texts.php:88
+msgid "Back to Brizy"
+msgstr ""
+
+#: languages/texts.php:89
+msgid "Plugin Settings"
+msgstr ""
+
+#: languages/texts.php:90
+msgid "Back to WordPress"
+msgstr ""
+
+#: languages/texts.php:91
+msgid "Featured Image"
+msgstr ""
+
+#: languages/texts.php:92
+msgid "Submit an Issue"
+msgstr ""
+
+#: languages/texts.php:93
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: languages/texts.php:96
+msgid "Save HTML"
+msgstr ""
+
+#: languages/texts.php:97
+msgid "Update"
+msgstr ""
+
+#: languages/texts.php:98
+msgid "Publish"
+msgstr ""
+
+#: languages/texts.php:101
+msgid "More Settings"
+msgstr ""
+
+#: languages/texts.php:102
+msgid "Advanced"
+msgstr ""
+
+#: languages/texts.php:103
+msgid "Show on Desktop"
+msgstr ""
+
+#: languages/texts.php:104
+msgid "Disable on Mobile"
+msgstr ""
+
+#: languages/texts.php:105
+msgid "Disable on Tablet"
+msgstr ""
+
+#: languages/texts.php:106
+msgid "Enable on Mobile"
+msgstr ""
+
+#: languages/texts.php:107
+msgid "Enable on Tablet"
+msgstr ""
+
+#: languages/texts.php:108
+msgid "Write your CSS here..."
+msgstr ""
+
+#: languages/texts.php:109
+msgid "Z-index"
+msgstr ""
+
+#: languages/texts.php:110
+msgid "Anchor Name"
+msgstr ""
+
+#: languages/texts.php:111
+msgid "CSS Class"
+msgstr ""
+
+#: languages/texts.php:112
+msgid "Custom CSS"
+msgstr ""
+
+#: languages/texts.php:116
+msgid "Slider"
+msgstr ""
+
+#: languages/texts.php:118
+msgid "Make it a Slider"
+msgstr ""
+
+#: languages/texts.php:119
+msgid "Auto Play"
+msgstr ""
+
+#: languages/texts.php:120
+msgid "Speed"
+msgstr ""
+
+#: languages/texts.php:121
+msgid "Navigation"
+msgstr ""
+
+#: languages/texts.php:122
+msgid "Dots"
+msgstr ""
+
+#: languages/texts.php:123
+msgid "None"
+msgstr ""
+
+#: languages/texts.php:124
+msgid "Circle"
+msgstr ""
+
+#: languages/texts.php:125
+msgid "Diamond"
+msgstr ""
+
+#: languages/texts.php:126
+msgid "Square"
+msgstr ""
+
+#: languages/texts.php:127
+msgid "Arrows"
+msgstr ""
+
+#: languages/texts.php:128
+msgid "Arrows Spacing"
+msgstr ""
+
+#: languages/texts.php:129
+msgid "Thin"
+msgstr ""
+
+#: languages/texts.php:130
+msgid "Heavy"
+msgstr ""
+
+#: languages/texts.php:131
+msgid "Tail"
+msgstr ""
+
+#: languages/texts.php:132
+msgid "Round"
+msgstr ""
+
+#: languages/texts.php:133
+msgid "Outline"
+msgstr ""
+
+#: languages/texts.php:135
+msgid "Full Height"
+msgstr ""
+
+#: languages/texts.php:136
+msgid "Width"
+msgstr ""
+
+#: languages/texts.php:137
+msgid "Height"
+msgstr ""
+
+#: languages/texts.php:138
+msgid "Boxed"
+msgstr ""
+
+#: languages/texts.php:139
+msgid "Auto"
+msgstr ""
+
+#: languages/texts.php:141
+msgid "Full"
+msgstr ""
+
+#: languages/texts.php:142
+msgid "Hover Transition"
+msgstr ""
+
+#: languages/texts.php:144
+msgid "Carousel"
+msgstr ""
+
+#: languages/texts.php:145
+msgid "Swipe"
+msgstr ""
+
+#: languages/texts.php:148
+msgid "Missing Element"
+msgstr ""
+
+#: languages/texts.php:149
+msgid "Could not find"
+msgstr ""
+
+#: languages/texts.php:150
+msgid "component"
+msgstr ""
+
+#: languages/texts.php:153
+msgid "Add New Column"
+msgstr ""
+
+#: languages/texts.php:155
+msgid "Background"
+msgstr ""
+
+#: languages/texts.php:156
+msgid "Bg Size"
+msgstr ""
+
+#: languages/texts.php:157
+msgid "Parallax"
+msgstr ""
+
+#: languages/texts.php:158
+msgid "Fixed"
+msgstr ""
+
+#: languages/texts.php:159
+msgid "Animated"
+msgstr ""
+
+#: languages/texts.php:160
+msgid "Sticky"
+msgstr ""
+
+#: languages/texts.php:161
+msgid "URL"
+msgstr ""
+
+#: languages/texts.php:162
+msgid "YouTube or Vimeo"
+msgstr ""
+
+#: languages/texts.php:163
+msgid "Quality"
+msgstr ""
+
+#: languages/texts.php:164
+msgid "1080p"
+msgstr ""
+
+#: languages/texts.php:165
+msgid "720p"
+msgstr ""
+
+#: languages/texts.php:166
+msgid "Loop"
+msgstr ""
+
+#: languages/texts.php:167
+msgid "Address"
+msgstr ""
+
+#: languages/texts.php:168
+msgid "Enter address"
+msgstr ""
+
+#: languages/texts.php:169
+msgid "Zoom"
+msgstr ""
+
+#: languages/texts.php:171
+msgid "Colors"
+msgstr ""
+
+#: languages/texts.php:172
+msgid "Color"
+msgstr ""
+
+#: languages/texts.php:173
+msgid "Overlay"
+msgstr ""
+
+#: languages/texts.php:174
+msgid "Border"
+msgstr ""
+
+#: languages/texts.php:175
+msgid "Solid"
+msgstr ""
+
+#: languages/texts.php:176
+msgid "Gradient"
+msgstr ""
+
+#: languages/texts.php:177
+msgid "Linear"
+msgstr ""
+
+#: languages/texts.php:178
+msgid "Radial"
+msgstr ""
+
+#: languages/texts.php:180
+msgid "Dynamic Content"
+msgstr ""
+
+#: languages/texts.php:183
+msgid "Duplicate"
+msgstr ""
+
+#: languages/texts.php:184
+msgid "Delete"
+msgstr ""
+
+#: languages/texts.php:186
+msgid "Entrance Animation"
+msgstr ""
+
+#: languages/texts.php:187
+msgid "Duration"
+msgstr ""
+
+#: languages/texts.php:188
+msgid "Delay"
+msgstr ""
+
+#: languages/texts.php:189
+msgid "Bounce"
+msgstr ""
+
+#: languages/texts.php:190
+msgid "Flash"
+msgstr ""
+
+#: languages/texts.php:191
+msgid "Pulse"
+msgstr ""
+
+#: languages/texts.php:192
+msgid "RubberBand"
+msgstr ""
+
+#: languages/texts.php:193
+msgid "Shake"
+msgstr ""
+
+#: languages/texts.php:194
+msgid "Swing"
+msgstr ""
+
+#: languages/texts.php:195
+msgid "Tada"
+msgstr ""
+
+#: languages/texts.php:196
+msgid "Wobble"
+msgstr ""
+
+#: languages/texts.php:197
+msgid "Jello"
+msgstr ""
+
+#: languages/texts.php:198
+msgid "BounceIn"
+msgstr ""
+
+#: languages/texts.php:199
+msgid "BounceInDown"
+msgstr ""
+
+#: languages/texts.php:200
+msgid "BounceInLeft"
+msgstr ""
+
+#: languages/texts.php:201
+msgid "BounceInRight"
+msgstr ""
+
+#: languages/texts.php:202
+msgid "BounceInUp"
+msgstr ""
+
+#: languages/texts.php:203
+msgid "BounceOut"
+msgstr ""
+
+#: languages/texts.php:204
+msgid "BounceOutDown"
+msgstr ""
+
+#: languages/texts.php:205
+msgid "BounceOutLeft"
+msgstr ""
+
+#: languages/texts.php:206
+msgid "BounceOutRight"
+msgstr ""
+
+#: languages/texts.php:207
+msgid "BounceOutUp"
+msgstr ""
+
+#: languages/texts.php:208
+msgid "FadeIn"
+msgstr ""
+
+#: languages/texts.php:209
+msgid "FadeInDown"
+msgstr ""
+
+#: languages/texts.php:210
+msgid "FadeInDownBig"
+msgstr ""
+
+#: languages/texts.php:211
+msgid "FadeInLeft"
+msgstr ""
+
+#: languages/texts.php:212
+msgid "FadeInLeftBig"
+msgstr ""
+
+#: languages/texts.php:213
+msgid "FadeInRight"
+msgstr ""
+
+#: languages/texts.php:214
+msgid "FadeInRightBig"
+msgstr ""
+
+#: languages/texts.php:215
+msgid "FadeInUp"
+msgstr ""
+
+#: languages/texts.php:216
+msgid "FadeInUpBig"
+msgstr ""
+
+#: languages/texts.php:217
+msgid "FadeOut"
+msgstr ""
+
+#: languages/texts.php:218
+msgid "FadeOutDown"
+msgstr ""
+
+#: languages/texts.php:219
+msgid "FadeOutDownBig"
+msgstr ""
+
+#: languages/texts.php:220
+msgid "FadeOutLeft"
+msgstr ""
+
+#: languages/texts.php:221
+msgid "FadeOutLeftBig"
+msgstr ""
+
+#: languages/texts.php:222
+msgid "FadeOutRight"
+msgstr ""
+
+#: languages/texts.php:223
+msgid "FadeOutRightBig"
+msgstr ""
+
+#: languages/texts.php:224
+msgid "FadeOutUp"
+msgstr ""
+
+#: languages/texts.php:225
+msgid "FadeOutUpBig"
+msgstr ""
+
+#: languages/texts.php:226
+msgid "Flip"
+msgstr ""
+
+#: languages/texts.php:227
+msgid "FlipInX"
+msgstr ""
+
+#: languages/texts.php:228
+msgid "FlipInY"
+msgstr ""
+
+#: languages/texts.php:229
+msgid "FlipOutX"
+msgstr ""
+
+#: languages/texts.php:230
+msgid "FlipOutY"
+msgstr ""
+
+#: languages/texts.php:231
+msgid "LightSpeedIn"
+msgstr ""
+
+#: languages/texts.php:232
+msgid "RotateIn"
+msgstr ""
+
+#: languages/texts.php:233
+msgid "RotateInDownLeft"
+msgstr ""
+
+#: languages/texts.php:234
+msgid "RotateInDownRight"
+msgstr ""
+
+#: languages/texts.php:235
+msgid "RotateInUpLeft"
+msgstr ""
+
+#: languages/texts.php:236
+msgid "RotateInUpRight"
+msgstr ""
+
+#: languages/texts.php:237
+msgid "RotateOut"
+msgstr ""
+
+#: languages/texts.php:238
+msgid "RotateOutDownLeft"
+msgstr ""
+
+#: languages/texts.php:239
+msgid "RotateOutDownRight"
+msgstr ""
+
+#: languages/texts.php:240
+msgid "RotateOutUpLeft"
+msgstr ""
+
+#: languages/texts.php:241
+msgid "RotateOutUpRight"
+msgstr ""
+
+#: languages/texts.php:242
+msgid "SlideInUp"
+msgstr ""
+
+#: languages/texts.php:243
+msgid "SlideInDown"
+msgstr ""
+
+#: languages/texts.php:244
+msgid "SlideInLeft"
+msgstr ""
+
+#: languages/texts.php:245
+msgid "SlideInRight"
+msgstr ""
+
+#: languages/texts.php:246
+msgid "SlideOutUp"
+msgstr ""
+
+#: languages/texts.php:247
+msgid "SlideOutDown"
+msgstr ""
+
+#: languages/texts.php:248
+msgid "SlideOutLeft"
+msgstr ""
+
+#: languages/texts.php:249
+msgid "SlideOutRight"
+msgstr ""
+
+#: languages/texts.php:250
+msgid "ZoomIn"
+msgstr ""
+
+#: languages/texts.php:251
+msgid "ZoomInDown"
+msgstr ""
+
+#: languages/texts.php:252
+msgid "ZoomInLeft"
+msgstr ""
+
+#: languages/texts.php:253
+msgid "ZoomInRight"
+msgstr ""
+
+#: languages/texts.php:254
+msgid "ZoomInUp"
+msgstr ""
+
+#: languages/texts.php:255
+msgid "ZoomOut"
+msgstr ""
+
+#: languages/texts.php:256
+msgid "ZoomOutDown"
+msgstr ""
+
+#: languages/texts.php:257
+msgid "ZoomOutLeft"
+msgstr ""
+
+#: languages/texts.php:258
+msgid "ZoomOutRight"
+msgstr ""
+
+#: languages/texts.php:259
+msgid "ZoomOutUp"
+msgstr ""
+
+#: languages/texts.php:260
+msgid "Hinge"
+msgstr ""
+
+#: languages/texts.php:261
+msgid "JackInTheBox"
+msgstr ""
+
+#: languages/texts.php:262
+msgid "RollIn"
+msgstr ""
+
+#: languages/texts.php:263
+msgid "RollOut"
+msgstr ""
+
+#: languages/texts.php:265
+msgid "Content"
+msgstr ""
+
+#: languages/texts.php:266
+msgid "Align"
+msgstr ""
+
+#: languages/texts.php:267
+msgid "Position"
+msgstr ""
+
+#: languages/texts.php:269
+msgid "Typography"
+msgstr ""
+
+#: languages/texts.php:270
+msgid "Font Family"
+msgstr ""
+
+#: languages/texts.php:271
+msgid "Size"
+msgstr ""
+
+#: languages/texts.php:272
+msgid "Line Hgt."
+msgstr ""
+
+#: languages/texts.php:273
+msgid "Letter Sp."
+msgstr ""
+
+#: languages/texts.php:274
+msgid "List"
+msgstr ""
+
+#: languages/texts.php:275
+msgid "Bold"
+msgstr ""
+
+#: languages/texts.php:276
+msgid "Italic"
+msgstr ""
+
+#: languages/texts.php:277
+msgid "Gap Above"
+msgstr ""
+
+#: languages/texts.php:278
+msgid "Gap Below"
+msgstr ""
+
+#: languages/texts.php:279
+msgid "HTML Tag"
+msgstr ""
+
+#: languages/texts.php:280
+msgid "P"
+msgstr ""
+
+#: languages/texts.php:281
+msgid "H1"
+msgstr ""
+
+#: languages/texts.php:282
+msgid "H2"
+msgstr ""
+
+#: languages/texts.php:283
+msgid "H3"
+msgstr ""
+
+#: languages/texts.php:284
+msgid "H4"
+msgstr ""
+
+#: languages/texts.php:285
+msgid "H5"
+msgstr ""
+
+#: languages/texts.php:286
+msgid "H6"
+msgstr ""
+
+#: languages/texts.php:287
+msgid "PRE"
+msgstr ""
+
+#: languages/texts.php:288
+msgid "Editable Text"
+msgstr ""
+
+#: languages/texts.php:290
+msgid "Link"
+msgstr ""
+
+#: languages/texts.php:291
+msgid "Anchor"
+msgstr ""
+
+#: languages/texts.php:292
+msgid "Link to"
+msgstr ""
+
+#: languages/texts.php:293
+msgid "Open In New Tab"
+msgstr ""
+
+#: languages/texts.php:296
+msgid "Padding"
+msgstr ""
+
+#: languages/texts.php:297
+msgid "Margin"
+msgstr ""
+
+#: languages/texts.php:298
+msgid "Corner"
+msgstr ""
+
+#: languages/texts.php:299
+msgid "Fill"
+msgstr ""
+
+#: languages/texts.php:300
+msgid "Spacing"
+msgstr ""
+
+#: languages/texts.php:303
+msgid "Shadow"
+msgstr ""
+
+#: languages/texts.php:306
+msgid "Normal"
+msgstr ""
+
+#: languages/texts.php:307
+msgid "Hover"
+msgstr ""
+
+#: languages/texts.php:310
+msgid "Reverse Columns"
+msgstr ""
+
+#: languages/texts.php:315
+msgid "Hour"
+msgstr ""
+
+#: languages/texts.php:316
+msgid "Minutes"
+msgstr ""
+
+#: languages/texts.php:317
+msgid "Time Zone"
+msgstr ""
+
+#: languages/texts.php:318
+msgid "- 11:00 (Niue)"
+msgstr ""
+
+#: languages/texts.php:319
+msgid "- 10:00 (Honolulu, Papeete)"
+msgstr ""
+
+#: languages/texts.php:320
+msgid "- 9:00 (Anchorage)"
+msgstr ""
+
+#: languages/texts.php:321
+msgid "- 8:00 (Los Angeles)"
+msgstr ""
+
+#: languages/texts.php:322
+msgid "- 7:00 (Denver, Phoenix)"
+msgstr ""
+
+#: languages/texts.php:323
+msgid "- 6:00 (Chicago, Dallas)"
+msgstr ""
+
+#: languages/texts.php:324
+msgid "- 5:00 (New York, Miami)"
+msgstr ""
+
+#: languages/texts.php:325
+msgid "- 4:00 (Halifax, Manaus)"
+msgstr ""
+
+#: languages/texts.php:326
+msgid "- 3:00 (Brasilia, Santiago)"
+msgstr ""
+
+#: languages/texts.php:327
+msgid "- 2:00 (Noronha)"
+msgstr ""
+
+#: languages/texts.php:328
+msgid "- 1:00 (Cape Verde)"
+msgstr ""
+
+#: languages/texts.php:329
+msgid "00:00 (London, Dublin)"
+msgstr ""
+
+#: languages/texts.php:330
+msgid "+ 1:00 (Berlin, Paris)"
+msgstr ""
+
+#: languages/texts.php:331
+msgid "+ 2:00 (Athens, Istanbul)"
+msgstr ""
+
+#: languages/texts.php:332
+msgid "+ 3:00 (Moscow, Baghdad)"
+msgstr ""
+
+#: languages/texts.php:333
+msgid "+ 4:00 (Dubai, Baku)"
+msgstr ""
+
+#: languages/texts.php:334
+msgid "+ 5:00 (Yekaterinburg)"
+msgstr ""
+
+#: languages/texts.php:335
+msgid "+ 6:00 (Astana)"
+msgstr ""
+
+#: languages/texts.php:336
+msgid "+ 7:00 (Bangkok, Jakarta)"
+msgstr ""
+
+#: languages/texts.php:337
+msgid "+ 8:00 (Singapore, Beijing)"
+msgstr ""
+
+#: languages/texts.php:338
+msgid "+ 9:00 (Tokyo, Seoul)"
+msgstr ""
+
+#: languages/texts.php:339
+msgid "+ 10:00 (Sidney, Melbourne)"
+msgstr ""
+
+#: languages/texts.php:340
+msgid "+ 11:00 (Ponape)"
+msgstr ""
+
+#: languages/texts.php:341
+msgid "+ 12:00 (Auckland)"
+msgstr ""
+
+#: languages/texts.php:342
+msgid "Language"
+msgstr ""
+
+#: languages/texts.php:343
+msgid "German"
+msgstr ""
+
+#: languages/texts.php:344
+msgid "English"
+msgstr ""
+
+#: languages/texts.php:345
+msgid "Spanish"
+msgstr ""
+
+#: languages/texts.php:346
+msgid "French"
+msgstr ""
+
+#: languages/texts.php:347
+msgid "Italian"
+msgstr ""
+
+#: languages/texts.php:348
+msgid "Dutch"
+msgstr ""
+
+#: languages/texts.php:349
+msgid "Russian"
+msgstr ""
+
+#: languages/texts.php:351
+msgid "Start"
+msgstr ""
+
+#: languages/texts.php:352
+msgid "End"
+msgstr ""
+
+#: languages/texts.php:354
+msgid "Paste your code here..."
+msgstr ""
+
+#: languages/texts.php:356
+msgid "Field"
+msgstr ""
+
+#: languages/texts.php:357
+msgid "Field Type"
+msgstr ""
+
+#: languages/texts.php:358
+msgid "Label"
+msgstr ""
+
+#: languages/texts.php:359
+msgid "Message"
+msgstr ""
+
+#: languages/texts.php:360
+msgid "Success"
+msgstr ""
+
+#: languages/texts.php:361
+msgid "Error"
+msgstr ""
+
+#: languages/texts.php:362
+msgid "Message sent"
+msgstr ""
+
+#: languages/texts.php:363
+msgid "Message not sent"
+msgstr ""
+
+#: languages/texts.php:364
+msgid "Redirect"
+msgstr ""
+
+#: languages/texts.php:365
+msgid "Go to"
+msgstr ""
+
+#: languages/texts.php:366
+msgid "Required"
+msgstr ""
+
+#: languages/texts.php:367
+msgid "Email"
+msgstr ""
+
+#: languages/texts.php:368
+msgid "Number"
+msgstr ""
+
+#: languages/texts.php:369
+msgid "Paragraph"
+msgstr ""
+
+#: languages/texts.php:370
+msgid "Select"
+msgstr ""
+
+#: languages/texts.php:373
+msgid "Style"
+msgstr ""
+
+#: languages/texts.php:374
+msgid "Opacity"
+msgstr ""
+
+#: languages/texts.php:375
+msgid "Contrast"
+msgstr ""
+
+#: languages/texts.php:376
+msgid "Hue"
+msgstr ""
+
+#: languages/texts.php:377
+msgid "Brightness"
+msgstr ""
+
+#: languages/texts.php:378
+msgid "Saturation"
+msgstr ""
+
+#: languages/texts.php:380
+msgid "LightBox"
+msgstr ""
+
+#: languages/texts.php:381
+msgid "Open in Lightbox"
+msgstr ""
+
+#: languages/texts.php:383
+msgid "Gallery"
+msgstr ""
+
+#: languages/texts.php:385
+msgid "Percentage"
+msgstr ""
+
+#: languages/texts.php:386
+msgid "Show Percentage"
+msgstr ""
+
+#: languages/texts.php:387
+msgid "Bar"
+msgstr ""
+
+#: languages/texts.php:389
+msgid "SoundCloud"
+msgstr ""
+
+#: languages/texts.php:390
+msgid "SoundCloud Link"
+msgstr ""
+
+#: languages/texts.php:392
+msgid "Video Link"
+msgstr ""
+
+#: languages/texts.php:393
+msgid "Ratio"
+msgstr ""
+
+#: languages/texts.php:394
+msgid "Controls"
+msgstr ""
+
+#: languages/texts.php:395
+msgid "Cover"
+msgstr ""
+
+#: languages/texts.php:396
+msgid "Play"
+msgstr ""
+
+#: languages/texts.php:399
+msgid "Header"
+msgstr ""
+
+#: languages/texts.php:402
+msgid "Footer"
+msgstr ""
+
+#: languages/texts.php:403
+msgid "MultiPage"
+msgstr ""
+
+#: languages/texts.php:406
+msgid "Type"
+msgstr ""
+
+#: languages/texts.php:407
+msgid "Static"
+msgstr ""
+
+#: languages/texts.php:410
+msgid "No matches found"
+msgstr ""
+
+#: languages/texts.php:413
+msgid "Popup"
+msgstr ""
+
+#: languages/texts.php:414
+msgid "Close"
+msgstr ""
+
+#: languages/texts.php:417
+msgid "Comments"
+msgstr ""
+
+#: languages/texts.php:418
+msgid "Like"
+msgstr ""
+
+#: languages/texts.php:419
+msgid "Recommend"
+msgstr ""
+
+#: languages/texts.php:420
+msgid "Include Share Button"
+msgstr ""
+
+#: languages/texts.php:421
+msgid "Show Friends' Faces"
+msgstr ""
+
+#: languages/texts.php:422
+msgid "Show Button Counter"
+msgstr ""
+
+#: languages/texts.php:423
+msgid "Dark Scheme"
+msgstr ""
+
+#: languages/texts.php:424
+msgid "Target URL"
+msgstr ""
+
+#: languages/texts.php:425
+msgid "Current Page"
+msgstr ""
+
+#: languages/texts.php:426
+msgid "Custom Page"
+msgstr ""
+
+#: languages/texts.php:427
+msgid "Include Full Post"
+msgstr ""
+
+#: languages/texts.php:428
+msgid "Full Screen"
+msgstr ""
+
+#: languages/texts.php:429
+msgid "AutoPlay"
+msgstr ""
+
+#: languages/texts.php:430
+msgid "Captions"
+msgstr ""
+
+#: languages/texts.php:431
+msgid "Timeline"
+msgstr ""
+
+#: languages/texts.php:432
+msgid "Events"
+msgstr ""
+
+#: languages/texts.php:433
+msgid "Messages"
+msgstr ""
+
+#: languages/texts.php:434
+msgid "Use Small Header"
+msgstr ""
+
+#: languages/texts.php:435
+msgid "Hide Cover Photo"
+msgstr ""
+
+#: languages/texts.php:436
+msgid "Show Friend's Faces"
+msgstr ""
+
+#: languages/texts.php:437
+msgid "Facebook Button"
+msgstr ""
+
+#: languages/texts.php:438
+msgid "Facebook Comments"
+msgstr ""
+
+#: languages/texts.php:439
+msgid "Facebook Embed"
+msgstr ""
+
+#: languages/texts.php:440
+msgid "Facebook Page"
+msgstr ""
+
+#: languages/texts.php:442
+msgid "Back to Layouts"
+msgstr ""
+
+#: languages/texts.php:444
+msgid "Import This Layout"
+msgstr ""
+
+#: languages/texts.php:445
+msgid "Nothing here yet, save a block first."
+msgstr ""
+
+#: languages/texts.php:446
+msgid "Nothing here yet, make a global block first."
+msgstr ""
+
+#: languages/texts.php:448
+msgid "Query"
+msgstr ""
+
+#: languages/texts.php:449
+msgid "Product ID"
+msgstr ""
+
+#: languages/texts.php:450
+msgid "Product ID or SKU"
+msgstr ""
+
+#: languages/texts.php:451
+msgid "Products Count"
+msgstr ""
+
+#: languages/texts.php:452
+msgid "Layout"
+msgstr ""
+
+#: languages/texts.php:453
+msgid "Style Add to Cart"
+msgstr ""
+
+#: languages/texts.php:454
+msgid "Categories Count"
+msgstr ""
+
+#: languages/texts.php:455
+msgid "Order"
+msgstr ""
+
+#: languages/texts.php:456
+msgid "Asc"
+msgstr ""
+
+#: languages/texts.php:457
+msgid "Desc"
+msgstr ""
+
+#: languages/texts.php:458
+msgid "Order By"
+msgstr ""
+
+#: languages/texts.php:459
+msgid "Name"
+msgstr ""
+
+#: languages/texts.php:460
+msgid "Slug"
+msgstr ""
+
+#: languages/texts.php:461
+msgid "Description"
+msgstr ""
+
+#: languages/texts.php:462
+msgid "Count"
+msgstr ""
+
+#: languages/texts.php:463
+msgid "Page"
+msgstr ""
+
+#: languages/texts.php:464
+msgid "Cart"
+msgstr ""
+
+#: languages/texts.php:465
+msgid "Checkout"
+msgstr ""
+
+#: languages/texts.php:466
+msgid "My Account"
+msgstr ""
+
+#: languages/texts.php:467
+msgid "Order Tracking"
+msgstr ""
+
+#: languages/texts.php:468
+msgid "Filter"
+msgstr ""
+
+#: languages/texts.php:469
+msgid "Title"
+msgstr ""
+
+#: languages/texts.php:470
+msgid "Rating"
+msgstr ""
+
+#: languages/texts.php:471
+msgid "Popularity"
+msgstr ""
+
+#: languages/texts.php:472
+msgid "Menu Order"
+msgstr ""
+
+#: languages/texts.php:473
+msgid "Random"
+msgstr ""
+
+#: languages/texts.php:474
+msgid "ID"
+msgstr ""
+
+#: languages/texts.php:475
+msgid "Paste your wordpress shortcode here..."
+msgstr ""
+
+#: languages/texts.php:476
+msgid "Weight"
+msgstr ""
+
+#: languages/texts.php:477
+msgid "Post Type"
+msgstr ""
+
+#: languages/texts.php:478
+msgid "Post"
+msgstr ""
+
+#: languages/texts.php:479
+msgid "Number posts"
+msgstr ""
+
+#: languages/texts.php:480
+msgid "Category"
+msgstr ""
+
+#: languages/texts.php:481
+msgid "Author"
+msgstr ""
+
+#: languages/texts.php:482
+msgid "Include"
+msgstr ""
+
+#: languages/texts.php:483
+msgid "Exclude"
+msgstr ""
+
+#: languages/texts.php:484
+msgid "Status"
+msgstr ""
+
+#: languages/texts.php:485
+msgid "Future"
+msgstr ""
+
+#: languages/texts.php:486
+msgid "Draft"
+msgstr ""
+
+#: languages/texts.php:487
+msgid "Pending"
+msgstr ""
+
+#: languages/texts.php:488
+msgid "Private"
+msgstr ""
+
+#: languages/texts.php:489
+msgid "Trash"
+msgstr ""
+
+#: languages/texts.php:490
+msgid "Auto-Draft"
+msgstr ""
+
+#: languages/texts.php:491
+msgid "Inherit"
+msgstr ""
+
+#: languages/texts.php:492
+msgid "Meta Key"
+msgstr ""
+
+#: languages/texts.php:493
+msgid "Meta Value"
+msgstr ""
+
+#: languages/texts.php:494
+msgid "Modified"
+msgstr ""
+
+#: languages/texts.php:495
+msgid "Parent"
+msgstr ""
+
+#: languages/texts.php:496
+msgid "Comment Count"
+msgstr ""
+
+#: languages/texts.php:497
+msgid "Filter By"
+msgstr ""
+
+#: languages/texts.php:498
+msgid "Block"
+msgstr ""
+
+#: languages/texts.php:499
+msgid "Make it Global"
+msgstr ""
+
+#: languages/texts.php:500
+msgid "Save"
+msgstr ""
+
+#: languages/texts.php:501
+msgid "Blocks"
+msgstr ""
+
+#: languages/texts.php:502
+msgid "Saved Blocks"
+msgstr ""
+
+#: languages/texts.php:503
+msgid "Global Blocks"
+msgstr ""
+
+#: languages/texts.php:504
+msgid "Light"
+msgstr ""
+
+#: languages/texts.php:505
+msgid "Dark"
+msgstr ""
+
+#: languages/texts.php:506
+msgid "All Categories"
+msgstr ""
+
+#: languages/texts.php:507
+msgid "Enter Search Keyword"
+msgstr ""
+
+#: languages/texts.php:508
+msgid "Type to search"
+msgstr ""
+
+#: languages/texts.php:509
+msgid "Add a blank block"
+msgstr ""
+
+#: languages/texts.php:510
+msgid "An error happened while trying to display this block"
+msgstr ""
+
+#: languages/texts.php:511
+msgid "You can"
+msgstr ""
+
+#: languages/texts.php:512
+msgid "open an issue"
+msgstr ""
+
+#: languages/texts.php:513
+msgid "or"
+msgstr ""
+
+#: languages/texts.php:514
+msgid "remove this block"
+msgstr ""
+
+#: languages/texts.php:515
+msgid "Page Template"
+msgstr ""
+
+#: languages/texts.php:516
+msgid "Toggle Menu"
+msgstr ""
+
+#: languages/texts.php:517
+msgid "Make it Nofollow"
+msgstr ""
+
+#: languages/texts.php:518
+msgid "Dividers"
+msgstr ""
+
+#: languages/texts.php:519
+msgid "Arrangement"
+msgstr ""
+
+#: languages/texts.php:520
+msgid "Repeat"
+msgstr ""
+
+#: languages/texts.php:521
+msgid "Make it Hamburger"
+msgstr ""
+
+#: languages/texts.php:522
+msgid "Add a Menu"
+msgstr ""
+
+#: languages/texts.php:523
+msgid "Please select a menu"
+msgstr ""
+
+#: languages/texts.php:524
+msgid "Select a Menu"
+msgstr ""
+
+#: languages/texts.php:525
+msgid "in your WordPress admin"
+msgstr ""
+
+#: languages/texts.php:526
+msgid "Drawer Position"
+msgstr ""
+
+#: languages/texts.php:527
+msgid "anchor-name"
+msgstr ""
+
+#: languages/texts.php:528
+msgid "APPS"
+msgstr ""
+
+#: languages/texts.php:529
+msgid "It's a sample"
+msgstr ""
+
+#: maintenance-mode.php:110
+msgid "Maintenance Mode ON"
+msgstr ""
+
+#: maintenance-mode.php:117
+msgid "Edit Page"
+msgstr ""
