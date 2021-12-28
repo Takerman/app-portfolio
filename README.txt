@@ -1,5 +1,4 @@
- UP4VN 4.0 - EXCLUSIVE SCRIPTS, PLUGINS, MOBILE APPS, TEMPLATES , GAMES,.. - DAILY  UPDATED RELEASES!
-
- Visit here:   https://up4vn.com
- 
- WELCOME ALL...!!!
+Остават ми:
+- Началното лого. Картинка на мен със някакви логота.
+- Контактната форма да работи.
+- Портфолиото със проекти, които са били не през работно време.
