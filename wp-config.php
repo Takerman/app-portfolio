@@ -12,7 +12,7 @@
 
 define('DB_NAME', 'dbs6nibju2kcuj');
 define('DB_USER', 'um7kwb8zorzrm');
-define('DB_PASSWORD', 'um7kwb8zorzrm!');
+define('DB_PASSWORD', 'um7kwb8zorzrm');
 define('DB_HOST', 'tanyoivanov.net');
 define('DB_CHARSET', 'utf8mb4');
 define('DB_COLLATE', '');
