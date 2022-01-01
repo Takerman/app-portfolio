@@ -1,0 +1,218 @@
+# Translation of Plugins - SiteGround Optimizer - Development (trunk) in Bulgarian
+# This file is distributed under the same license as the Plugins - SiteGround Optimizer - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-11-08 14:15:48+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: bg\n"
+"Project-Id-Version: Plugins - SiteGround Optimizer - Development (trunk)\n"
+
+#: helpers/manual-translations.php:10
+msgid "Speed Test"
+msgstr "Тест за скорост"
+
+#: helpers/sg-cachepress-react-strings.php:187
+msgid "Disable WebP"
+msgstr "Деактивиране на WebP"
+
+#: helpers/sg-cachepress-react-strings.php:22
+msgid "SiteGround Optimizer - Media"
+msgstr "SiteGround Optimizer - Медия"
+
+#: helpers/sg-cachepress-react-strings.php:68
+msgid "Rate Us"
+msgstr "Оценете ни"
+
+#: helpers/sg-cachepress-react-strings.php:216
+msgid "This field is required."
+msgstr "Това поле е задължително."
+
+#: helpers/sg-cachepress-react-strings.php:196
+msgid "CSS Optimizations"
+msgstr "CSS Оптимизации"
+
+#: helpers/sg-cachepress-react-strings.php:197
+msgid "JavaScript Optimizations"
+msgstr "JavaScript Оптимизации"
+
+#: helpers/sg-cachepress-react-strings.php:198
+msgid "General Optimizations"
+msgstr "Генерални Оптимизации"
+
+#: helpers/sg-cachepress-react-strings.php:200
+msgid "Optimize Resources"
+msgstr "Оптимизиране на ресурси"
+
+#: helpers/sg-cachepress-react-strings.php:169
+msgid "Select Image"
+msgstr "Избери изображение"
+
+#: helpers/sg-cachepress-react-strings.php:163
+msgid "Preview"
+msgstr "Преглед"
+
+#: helpers/sg-cachepress-react-strings.php:154
+#: helpers/sg-cachepress-react-strings.php:177
+msgid "Compression Level"
+msgstr "Ниво на компресия"
+
+#: helpers/sg-cachepress-react-strings.php:99
+msgid "Are you sure you wish to proceed?"
+msgstr "Сигурни ли сте, че искате да продължите?"
+
+#: helpers/sg-cachepress-react-strings.php:79
+msgid "Posts and Pages"
+msgstr "Публикации и страници"
+
+#: helpers/sg-cachepress-react-strings.php:87
+msgid "This functionality will clean up your database {{strong}}once a week{{/strong}} to keep it small and optimized by performing the following tasks:"
+msgstr "Тази функционалност ще изчиства базата ви от данни {{strong}}веднъж седмично{{/strong}} за да я поддържа оптимизирана за следните задачи:"
+
+#: helpers/sg-cachepress-react-strings.php:67
+msgid "Important Notifications"
+msgstr "Важни Известия"
+
+#: helpers/sg-cachepress-react-strings.php:59
+msgid "Do you wish to proceed?"
+msgstr "Искате ли да продължите?"
+
+#: helpers/sg-cachepress-react-strings.php:49
+#: helpers/sg-cachepress-react-strings.php:217
+msgid "Invalid URL"
+msgstr "Невалиден адрес"
+
+#: helpers/sg-cachepress-react-strings.php:27
+msgid "Caching Types"
+msgstr "Типове кеш"
+
+#: helpers/sg-cachepress-react-strings.php:8
+msgid "Recommended"
+msgstr "Препоръчано"
+
+#: helpers/sg-cachepress-react-strings.php:24
+msgid "Error"
+msgstr "Грешка"
+
+#: helpers/sg-cachepress-react-strings.php:7
+msgid "Enable"
+msgstr "Активиране"
+
+#: core/Rest/Rest_Helper_Options.php:246
+msgid "Missing ID param!"
+msgstr "Липсващ ID параметър!"
+
+#: core/Install_Service/Install_5_5_0.php:47
+#: core/Install_Service/Install_5_7_0.php:34
+#: core/Install_Service/Install_5_7_0.php:47
+msgid "Enable Now"
+msgstr "Включване"
+
+#: core/Install_Service/Install_5_5_0.php:41
+#: core/Message_Service/Message_Service.php:35
+msgid "JavaScript Files Combination"
+msgstr "Комбиниране на JavaScript файлове"
+
+#: helpers/sg-cachepress-react-strings.php:138
+#: helpers/sg-cachepress-react-strings.php:140
+msgid "Exclude from JavaScript Combination"
+msgstr "Изкличване от JavaScript комбинация"
+
+#: helpers/sg-cachepress-react-strings.php:131
+msgid "Combine JavaScript Files"
+msgstr "Комбиниране на JavaScript файлове"
+
+#: helpers/sg-cachepress-react-strings.php:194
+msgid "URL"
+msgstr "Адрес"
+
+#: core/Message_Service/Message_Service.php:25
+#: helpers/sg-cachepress-react-strings.php:28
+msgid "Memcached"
+msgstr "Memcached"
+
+#: helpers/sg-cachepress-react-strings.php:195
+msgid "Analyze"
+msgstr "Анализиране"
+
+#: helpers/sg-cachepress-react-strings.php:47
+msgid "Test"
+msgstr "Тест"
+
+#: core/Analysis/Analysis.php:399 core/Analysis/Analysis.php:429
+#: helpers/sg-cachepress-react-strings.php:61
+msgid "Dynamic Caching"
+msgstr "Динамичен кеш"
+
+#: helpers/sg-cachepress-react-strings.php:5
+#: helpers/sg-cachepress-react-strings.php:11
+msgid "Confirm"
+msgstr "Потвърди"
+
+#: helpers/sg-cachepress-react-strings.php:4
+#: helpers/sg-cachepress-react-strings.php:10
+msgid "Cancel"
+msgstr "Отказ"
+
+#: core/Message_Service/Message_Service.php:34
+msgid "CSS Combination"
+msgstr "CSS комбинация"
+
+#: core/Message_Service/Message_Service.php:23
+msgid "Autoflush"
+msgstr "Автоматично изчистване"
+
+#: core/Rest/Rest_Helper_Cache.php:332
+msgid "Could Not Disable Memcache!"
+msgstr "Не можахме да изключим Memcached!"
+
+#: core/Rest/Rest_Helper_Cache.php:289
+msgid "Could Not Enable Memcache!"
+msgstr "Не можахме да включим Memcached!"
+
+#: core/Rest/Rest_Helper_Cache.php:273
+msgid "Memcached Enabled"
+msgstr "Memcached включено"
+
+#: core/Message_Service/Message_Service.php:29
+msgid "Browser Caching"
+msgstr "Браузър кеш"
+
+#: core/Message_Service/Message_Service.php:26
+msgid "HTTPS"
+msgstr "HTTPS"
+
+#: core/Message_Service/Message_Service.php:33
+msgid "CSS Minification"
+msgstr "CSS минификация"
+
+#: core/Message_Service/Message_Service.php:28
+msgid "GZIP Compression"
+msgstr "GZIP компресия"
+
+#: helpers/manual-translations.php:6
+msgid "Performance Test"
+msgstr "Тест на скоростта"
+
+#: core/Admin/Admin.php:237
+msgid "SG Optimizer"
+msgstr "SG Optimizer"
+
+#: core/Admin/Admin_Bar.php:59
+msgid "Purge SG Cache"
+msgstr "Изчисти SG кеша"
+
+#: core/Message_Service/Message_Service.php:22
+msgid "Dynamic Cache"
+msgstr "Динамичен кеш"
+
+#: helpers/sg-cachepress-react-strings.php:36
+msgid "Purge Cache"
+msgstr "Изчистване на кеша"
+
+#. Author of the plugin
+msgid "SiteGround"
+msgstr "SiteGround"

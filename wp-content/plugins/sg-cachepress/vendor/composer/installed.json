@@ -1,0 +1,196 @@
+{
+    "packages": [
+        {
+            "name": "a5hleyrich/wp-background-processing",
+            "version": "1.0.1",
+            "version_normalized": "1.0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/A5hleyRich/wp-background-processing.git",
+                "reference": "1f070aab5058dbaf45d5435a343033ddd8a641b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/A5hleyRich/wp-background-processing/zipball/1f070aab5058dbaf45d5435a343033ddd8a641b1",
+                "reference": "1f070aab5058dbaf45d5435a343033ddd8a641b1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "time": "2018-02-12T09:24:05+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "classmap": [
+                    "classes/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "Ashley Rich",
+                    "email": "hello@ashleyrich.com"
+                }
+            ],
+            "description": "WP Background Processing can be used to fire off non-blocking asynchronous requests or as a background processing tool, allowing you to queue tasks.",
+            "install-path": "../a5hleyrich/wp-background-processing"
+        },
+        {
+            "name": "charles-rumley/php-po-to-json",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/charles-rumley/php-po-to-json.git",
+                "reference": "c2d228fbbb69b90b6c331141b89c4faf985e6152"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/charles-rumley/php-po-to-json/zipball/c2d228fbbb69b90b6c331141b89c4faf985e6152",
+                "reference": "c2d228fbbb69b90b6c331141b89c4faf985e6152",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "sepia/po-parser": "^4.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "time": "2016-09-08T12:53:20+00:00",
+            "type": "package",
+            "installation-source": "source",
+            "autoload": {
+                "psr-4": {
+                    "CharlesRumley\\": "src/",
+                    "CharlesRumley\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Charles Rumley",
+                    "email": "charles.rumley@gmail.com"
+                }
+            ],
+            "keywords": [
+                "i18n",
+                "jed",
+                "json",
+                "php",
+                "translation"
+            ],
+            "install-path": "../charles-rumley/php-po-to-json"
+        },
+        {
+            "name": "pear/net_dns2",
+            "version": "v1.5.2",
+            "version_normalized": "1.5.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mikepultz/netdns2.git",
+                "reference": "d5dbae0b0c0567923d25b3ae5e2bf1e9cbcedf76"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mikepultz/netdns2/zipball/d5dbae0b0c0567923d25b3ae5e2bf1e9cbcedf76",
+                "reference": "d5dbae0b0c0567923d25b3ae5e2bf1e9cbcedf76",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9"
+            },
+            "time": "2020-10-11T17:33:54+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "Net_DNS2": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Mike Pultz",
+                    "email": "mike@mikepultz.com",
+                    "homepage": "https://mikepultz.com/",
+                    "role": "lead"
+                }
+            ],
+            "description": "Native PHP DNS Resolver and Updater Library",
+            "homepage": "https://netdns2.com/",
+            "keywords": [
+                "PEAR",
+                "dns",
+                "network"
+            ],
+            "install-path": "../pear/net_dns2"
+        },
+        {
+            "name": "sepia/po-parser",
+            "version": "4.2.2",
+            "version_normalized": "4.2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/raulferras/PHP-po-parser.git",
+                "reference": "8a6bbcd4a231b19e1b052c1c46b0fe2935331afe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/raulferras/PHP-po-parser/zipball/8a6bbcd4a231b19e1b052c1c46b0fe2935331afe",
+                "reference": "8a6bbcd4a231b19e1b052c1c46b0fe2935331afe",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*",
+                "squizlabs/php_codesniffer": "1.5.*"
+            },
+            "time": "2017-09-15T10:55:43+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "Sepia": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Raúl Ferràs",
+                    "email": "raul.ferras@gmail.com",
+                    "role": "developer"
+                }
+            ],
+            "description": "Gettext *.PO file parser for PHP.",
+            "homepage": "https://github.com/raulferras/PHP-po-parser",
+            "keywords": [
+                "gettext",
+                "i10n",
+                "i18n",
+                "po"
+            ],
+            "install-path": "../sepia/po-parser"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}
