@@ -22,7 +22,7 @@ define('LOGGED_IN_SALT',   'i-P5|nAs#sUZJIu|U}sI+7}ryc5EsoGXv%.w_#^8-bBhf!Opk`&@
 define('NONCE_SALT',       'Z}G}Q?Ysp1f+m5`QUT#w#8Bya0|<|xRl>lK,H-wM>A}gT6:Y,-j=v<7W%c-}]r-8');
 define('WP_CACHE_KEY_SALT', 'Ge4~%O1,L1y6liy[/J*5PfB)b4wY{5.nw]qOvqc~C}k!L6/TG}eUJ@EqgFCP{0+?');
 
-$table_prefix = 'wp_';
+$table_prefix = 'tan_';
 define('WP_DEBUG', true);
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
