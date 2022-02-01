@@ -4,7 +4,7 @@ define('WP_SITEURL', 'http://tanyo');
 
 define('DB_NAME', 'takerman_tanyo');
 define('DB_USER', 'root');
-define('DB_PASSWORD', 'Hakerman91!');
+define('DB_PASSWORD', '');
 define('DB_HOST', 'localhost');
 
 // define('DB_NAME', 'dbs6nibju2kcuj');
