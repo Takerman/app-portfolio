@@ -1,0 +1,15 @@
+{
+    "name": "siteground/siteground-data",
+    "autoload": {
+        "psr-4": {
+            "SiteGround_Data\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Stanimir Stoyanov",
+            "email": "stanimir.stoyanov@siteground.com"
+        }
+    ],
+    "require": {}
+}
