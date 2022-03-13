@@ -1,4 +1,6 @@
 <?php
+define( 'WP_CACHE', false ); // By SiteGround Optimizer
+
 /**
  * The base configuration for WordPress
  *
