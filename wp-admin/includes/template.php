@@ -96,8 +96,13 @@ function wp_terms_checklist( $post_id = 0, $args = array() ) {
 	 *
 	 * @see wp_terms_checklist()
 	 *
+<<<<<<< HEAD
 	 * @param array|string $args    An array or string of arguments.
 	 * @param int          $post_id The post ID.
+=======
+	 * @param array $args    An array of arguments.
+	 * @param int   $post_id The post ID.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	$params = apply_filters( 'wp_terms_checklist_args', $args, $post_id );
 
@@ -2031,7 +2036,11 @@ function iframe_header( $title = '', $deprecated = false ) {
 	wp_enqueue_style( 'colors' );
 	?>
 <script type="text/javascript">
+<<<<<<< HEAD
 addLoadEvent = function(func){if(typeof jQuery!=='undefined')jQuery(function(){func();});else if(typeof wpOnload!=='function'){wpOnload=func;}else{var oldonload=wpOnload;wpOnload=function(){oldonload();func();}}};
+=======
+addLoadEvent = function(func){if(typeof jQuery!=='undefined')jQuery(document).ready(func);else if(typeof wpOnload!=='function'){wpOnload=func;}else{var oldonload=wpOnload;wpOnload=function(){oldonload();func();}}};
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 function tb_close(){var win=window.dialogArguments||opener||parent||top;win.tb_remove();}
 var ajaxurl = '<?php echo esc_js( admin_url( 'admin-ajax.php', 'relative' ) ); ?>',
 	pagenow = '<?php echo esc_js( $current_screen->id ); ?>',
@@ -2145,15 +2154,23 @@ function _post_states( $post, $echo = true ) {
 
 	if ( ! empty( $post_states ) ) {
 		$state_count = count( $post_states );
+<<<<<<< HEAD
 
 		$i = 0;
+=======
+		$i           = 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		$post_states_string .= ' &mdash; ';
 
 		foreach ( $post_states as $state ) {
+<<<<<<< HEAD
 			++$i;
 
 			$sep = ( $i < $state_count ) ? ', ' : '';
+=======
+			$sep = ( ++$i === $state_count ) ? '' : ', ';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 			$post_states_string .= "<span class='post-state'>$state$sep</span>";
 		}
@@ -2258,15 +2275,23 @@ function _media_states( $post, $echo = true ) {
 
 	if ( ! empty( $media_states ) ) {
 		$state_count = count( $media_states );
+<<<<<<< HEAD
 
 		$i = 0;
+=======
+		$i           = 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		$media_states_string .= ' &mdash; ';
 
 		foreach ( $media_states as $state ) {
+<<<<<<< HEAD
 			++$i;
 
 			$sep = ( $i < $state_count ) ? ', ' : '';
+=======
+			$sep = ( ++$i === $state_count ) ? '' : ', ';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 			$media_states_string .= "<span class='post-state'>$state$sep</span>";
 		}

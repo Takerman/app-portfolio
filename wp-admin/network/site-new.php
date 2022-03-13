@@ -56,7 +56,11 @@ if ( isset( $_REQUEST['action'] ) && 'add-site' === $_REQUEST['action'] ) {
 			wp_die(
 				sprintf(
 					/* translators: %s: Reserved names list. */
+<<<<<<< HEAD
 					__( 'The following words are reserved for use by WordPress functions and cannot be used as site names: %s' ),
+=======
+					__( 'The following words are reserved for use by WordPress functions and cannot be used as blog names: %s' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'<code>' . implode( '</code>, <code>', $subdirectory_reserved_names ) . '</code>'
 				)
 			);
@@ -174,7 +178,10 @@ if ( isset( $_GET['update'] ) ) {
 	}
 }
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 $title       = __( 'Add New Site' );
 $parent_file = 'sites.php';
 

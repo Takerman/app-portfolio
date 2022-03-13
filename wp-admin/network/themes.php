@@ -81,7 +81,10 @@ if ( $action ) {
 				$themes = array();
 			}
 
+<<<<<<< HEAD
 			// Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$title       = __( 'Update Themes' );
 			$parent_file = 'themes.php';
 
@@ -334,7 +337,10 @@ get_current_screen()->set_screen_reader_content(
 	)
 );
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 $title       = __( 'Themes' );
 $parent_file = 'themes.php';
 

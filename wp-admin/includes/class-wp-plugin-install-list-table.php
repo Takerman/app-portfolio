@@ -225,8 +225,11 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 		 *  - `install_plugins_table_api_args_popular`
 		 *  - `install_plugins_table_api_args_recommended`
 		 *  - `install_plugins_table_api_args_upload`
+<<<<<<< HEAD
 		 *  - `install_plugins_table_api_args_search`
 		 *  - `install_plugins_table_api_args_beta`
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 *
 		 * @since 3.7.0
 		 *
@@ -588,6 +591,7 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 								_x( 'Active', 'plugin' )
 							);
 						} elseif ( current_user_can( 'activate_plugin', $status['file'] ) ) {
+<<<<<<< HEAD
 							if ( $compatible_php && $compatible_wp ) {
 								$button_text = __( 'Activate' );
 								/* translators: %s: Plugin name. */
@@ -620,6 +624,33 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 									_x( 'Cannot Activate', 'plugin' )
 								);
 							}
+=======
+							$button_text = __( 'Activate' );
+							/* translators: %s: Plugin name. */
+							$button_label = _x( 'Activate %s', 'plugin' );
+							$activate_url = add_query_arg(
+								array(
+									'_wpnonce' => wp_create_nonce( 'activate-plugin_' . $status['file'] ),
+									'action'   => 'activate',
+									'plugin'   => $status['file'],
+								),
+								network_admin_url( 'plugins.php' )
+							);
+
+							if ( is_network_admin() ) {
+								$button_text = __( 'Network Activate' );
+								/* translators: %s: Plugin name. */
+								$button_label = _x( 'Network Activate %s', 'plugin' );
+								$activate_url = add_query_arg( array( 'networkwide' => 1 ), $activate_url );
+							}
+
+							$action_links[] = sprintf(
+								'<a href="%1$s" class="button activate-now" aria-label="%2$s">%3$s</a>',
+								esc_url( $activate_url ),
+								esc_attr( sprintf( $button_label, $plugin['name'] ) ),
+								$button_text
+							);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						} else {
 							$action_links[] = sprintf(
 								'<button type="button" class="button button-disabled" disabled="disabled">%s</button>',

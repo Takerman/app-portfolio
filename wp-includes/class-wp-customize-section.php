@@ -56,7 +56,11 @@ class WP_Customize_Section {
 	 * Priority of the section which informs load order of sections.
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 * @var int
+=======
+	 * @var integer
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public $priority = 160;
 
@@ -298,7 +302,11 @@ class WP_Customize_Section {
 		 *
 		 * @since 3.4.0
 		 *
+<<<<<<< HEAD
 		 * @param WP_Customize_Section $section WP_Customize_Section instance.
+=======
+		 * @param WP_Customize_Section $this WP_Customize_Section instance.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		do_action( 'customize_render_section', $this );
 		/**

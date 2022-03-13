@@ -99,7 +99,11 @@ function wp_apply_colors_support( $block_type, $block_attributes ) {
 		}
 		// Apply color class or inline style.
 		if ( $has_named_text_color ) {
+<<<<<<< HEAD
 			$classes[] = sprintf( 'has-%s-color', _wp_to_kebab_case( $block_attributes['textColor'] ) );
+=======
+			$classes[] = sprintf( 'has-%s-color', $block_attributes['textColor'] );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		} elseif ( $has_custom_text_color ) {
 			$styles[] = sprintf( 'color: %s;', $block_attributes['style']['color']['text'] );
 		}
@@ -116,7 +120,11 @@ function wp_apply_colors_support( $block_type, $block_attributes ) {
 		}
 		// Apply background color classes or styles.
 		if ( $has_named_background_color ) {
+<<<<<<< HEAD
 			$classes[] = sprintf( 'has-%s-background-color', _wp_to_kebab_case( $block_attributes['backgroundColor'] ) );
+=======
+			$classes[] = sprintf( 'has-%s-background-color', $block_attributes['backgroundColor'] );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		} elseif ( $has_custom_background_color ) {
 			$styles[] = sprintf( 'background-color: %s;', $block_attributes['style']['color']['background'] );
 		}
@@ -132,7 +140,11 @@ function wp_apply_colors_support( $block_type, $block_attributes ) {
 		}
 		// Apply required background class.
 		if ( $has_named_gradient ) {
+<<<<<<< HEAD
 			$classes[] = sprintf( 'has-%s-gradient-background', _wp_to_kebab_case( $block_attributes['gradient'] ) );
+=======
+			$classes[] = sprintf( 'has-%s-gradient-background', $block_attributes['gradient'] );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		} elseif ( $has_custom_gradient ) {
 			$styles[] = sprintf( 'background: %s;', $block_attributes['style']['color']['gradient'] );
 		}

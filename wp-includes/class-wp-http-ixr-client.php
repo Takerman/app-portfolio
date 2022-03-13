@@ -97,7 +97,11 @@ class WP_HTTP_IXR_Client extends IXR_Client {
 			return false;
 		}
 
+<<<<<<< HEAD
 		if ( 200 !== wp_remote_retrieve_response_code( $response ) ) {
+=======
+		if ( 200 != wp_remote_retrieve_response_code( $response ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$this->error = new IXR_Error( -32301, 'transport error - HTTP status code was not 200 (' . wp_remote_retrieve_response_code( $response ) . ')' );
 			return false;
 		}

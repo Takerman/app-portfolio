@@ -24,7 +24,10 @@ if ( ! current_theme_supports( 'widgets' ) ) {
 	wp_die( __( 'The theme you are currently using isn&#8217;t widget-aware, meaning that it has no sidebars that you are able to change. For information on making your theme widget-aware, please <a href="https://developer.wordpress.org/themes/functionality/widgets/">follow these instructions</a>.' ) );
 }
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 $title       = __( 'Widgets' );
 $parent_file = 'themes.php';
 

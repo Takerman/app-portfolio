@@ -242,7 +242,11 @@ function _wp_dashboard_control_callback( $dashboard, $meta_box ) {
 	wp_dashboard_trigger_widget_control( $meta_box['id'] );
 	wp_nonce_field( 'edit-dashboard-widget_' . $meta_box['id'], 'dashboard-widget-nonce' );
 	echo '<input type="hidden" name="widget_id" value="' . esc_attr( $meta_box['id'] ) . '" />';
+<<<<<<< HEAD
 	submit_button( __( 'Save Changes' ) );
+=======
+	submit_button( __( 'Submit' ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	echo '</form>';
 }
 
@@ -1350,9 +1354,14 @@ function wp_print_community_events_markup() {
 			<p>
 				<span id="community-events-location-message"></span>
 
+<<<<<<< HEAD
 				<button class="button-link community-events-toggle-location" aria-expanded="false">
 					<span class="dashicons dashicons-location" aria-hidden="true"></span>
 					<span class="community-events-location-edit"><?php _e( 'Select location' ); ?></span>
+=======
+				<button class="button-link community-events-toggle-location" aria-label="<?php esc_attr_e( 'Edit city' ); ?>" aria-expanded="false">
+					<span class="dashicons dashicons-edit"></span>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				</button>
 			</p>
 
@@ -1727,9 +1736,14 @@ function wp_dashboard_browser_nag() {
 	 *
 	 * @since 3.2.0
 	 *
+<<<<<<< HEAD
 	 * @param string      $notice   The notice content.
 	 * @param array|false $response An array containing web browser information, or
 	 *                              false on failure. See `wp_check_browser_version()`.
+=======
+	 * @param string $notice   The notice content.
+	 * @param array  $response An array containing web browser information. See `wp_check_browser_version()`.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	echo apply_filters( 'browse-happy-notice', $notice, $response ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 }
@@ -1987,6 +2001,7 @@ function wp_dashboard_empty() {}
  * Displays a welcome panel to introduce users to WordPress.
  *
  * @since 3.3.0
+<<<<<<< HEAD
  * @since 5.9.0 Send users to the Site Editor if the current theme is block-based.
  */
 function wp_welcome_panel() {
@@ -2045,6 +2060,64 @@ function wp_welcome_panel() {
 			<?php endif; ?>
 			</div>
 		</div>
+=======
+ */
+function wp_welcome_panel() {
+	?>
+	<div class="welcome-panel-content">
+	<h2><?php _e( 'Welcome to WordPress!' ); ?></h2>
+	<p class="about-description"><?php _e( 'We&#8217;ve assembled some links to get you started:' ); ?></p>
+	<div class="welcome-panel-column-container">
+	<div class="welcome-panel-column">
+		<?php if ( current_user_can( 'customize' ) ) : ?>
+			<h3><?php _e( 'Get Started' ); ?></h3>
+			<a class="button button-primary button-hero load-customize hide-if-no-customize" href="<?php echo wp_customize_url(); ?>"><?php _e( 'Customize Your Site' ); ?></a>
+		<?php endif; ?>
+		<a class="button button-primary button-hero hide-if-customize" href="<?php echo esc_url( admin_url( 'themes.php' ) ); ?>"><?php _e( 'Customize Your Site' ); ?></a>
+		<?php if ( current_user_can( 'install_themes' ) || ( current_user_can( 'switch_themes' ) && count( wp_get_themes( array( 'allowed' => true ) ) ) > 1 ) ) : ?>
+			<?php $themes_link = current_user_can( 'customize' ) ? add_query_arg( 'autofocus[panel]', 'themes', admin_url( 'customize.php' ) ) : admin_url( 'themes.php' ); ?>
+			<p class="hide-if-no-customize">
+				<?php
+					/* translators: %s: URL to Themes panel in Customizer or Themes screen. */
+					printf( __( 'or, <a href="%s">change your theme completely</a>' ), $themes_link );
+				?>
+			</p>
+		<?php endif; ?>
+	</div>
+	<div class="welcome-panel-column">
+		<h3><?php _e( 'Next Steps' ); ?></h3>
+		<ul>
+		<?php if ( 'page' === get_option( 'show_on_front' ) && ! get_option( 'page_for_posts' ) ) : ?>
+			<li><?php printf( '<a href="%s" class="welcome-icon welcome-edit-page">' . __( 'Edit your front page' ) . '</a>', get_edit_post_link( get_option( 'page_on_front' ) ) ); ?></li>
+			<li><?php printf( '<a href="%s" class="welcome-icon welcome-add-page">' . __( 'Add additional pages' ) . '</a>', admin_url( 'post-new.php?post_type=page' ) ); ?></li>
+		<?php elseif ( 'page' === get_option( 'show_on_front' ) ) : ?>
+			<li><?php printf( '<a href="%s" class="welcome-icon welcome-edit-page">' . __( 'Edit your front page' ) . '</a>', get_edit_post_link( get_option( 'page_on_front' ) ) ); ?></li>
+			<li><?php printf( '<a href="%s" class="welcome-icon welcome-add-page">' . __( 'Add additional pages' ) . '</a>', admin_url( 'post-new.php?post_type=page' ) ); ?></li>
+			<li><?php printf( '<a href="%s" class="welcome-icon welcome-write-blog">' . __( 'Add a blog post' ) . '</a>', admin_url( 'post-new.php' ) ); ?></li>
+		<?php else : ?>
+			<li><?php printf( '<a href="%s" class="welcome-icon welcome-write-blog">' . __( 'Write your first blog post' ) . '</a>', admin_url( 'post-new.php' ) ); ?></li>
+			<li><?php printf( '<a href="%s" class="welcome-icon welcome-add-page">' . __( 'Add an About page' ) . '</a>', admin_url( 'post-new.php?post_type=page' ) ); ?></li>
+			<li><?php printf( '<a href="%s" class="welcome-icon welcome-setup-home">' . __( 'Set up your homepage' ) . '</a>', current_user_can( 'customize' ) ? add_query_arg( 'autofocus[section]', 'static_front_page', admin_url( 'customize.php' ) ) : admin_url( 'options-reading.php' ) ); ?></li>
+		<?php endif; ?>
+			<li><?php printf( '<a href="%s" class="welcome-icon welcome-view-site">' . __( 'View your site' ) . '</a>', home_url( '/' ) ); ?></li>
+		</ul>
+	</div>
+	<div class="welcome-panel-column welcome-panel-last">
+		<h3><?php _e( 'More Actions' ); ?></h3>
+		<ul>
+		<?php if ( current_theme_supports( 'widgets' ) ) : ?>
+			<li><?php printf( '<a href="%s" class="welcome-icon welcome-widgets">' . __( 'Manage widgets' ) . '</a>', admin_url( 'widgets.php' ) ); ?></li>
+		<?php endif; ?>
+		<?php if ( current_theme_supports( 'menus' ) ) : ?>
+			<li><?php printf( '<a href="%s" class="welcome-icon welcome-menus">' . __( 'Manage menus' ) . '</a>', admin_url( 'nav-menus.php' ) ); ?></li>
+		<?php endif; ?>
+		<?php if ( current_user_can( 'manage_options' ) ) : ?>
+			<li><?php printf( '<a href="%s" class="welcome-icon welcome-comments">' . __( 'Turn comments on or off' ) . '</a>', admin_url( 'options-discussion.php' ) ); ?></li>
+		<?php endif; ?>
+			<li><?php printf( '<a href="%s" class="welcome-icon welcome-learn-more">' . __( 'Learn more about getting started' ) . '</a>', __( 'https://wordpress.org/support/article/first-steps-with-wordpress/' ) ); ?></li>
+		</ul>
+	</div>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	</div>
 	</div>
 	<?php

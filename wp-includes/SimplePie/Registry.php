@@ -208,8 +208,12 @@ class SimplePie_Registry
 			{
 				case 'Cache':
 					// For backwards compatibility with old non-static
+<<<<<<< HEAD
 					// Cache::create() methods in PHP < 8.0.
 					// No longer supported as of PHP 8.0.
+=======
+					// Cache::create() methods
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					if ($method === 'get_handler')
 					{
 						$result = @call_user_func_array(array($class, 'create'), $parameters);

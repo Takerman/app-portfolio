@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * jQuery UI Effects Bounce 1.13.1
+=======
+ * jQuery UI Effects Bounce 1.12.1
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -14,8 +18,11 @@
 //>>demos: http://jqueryui.com/effect/
 
 ( function( factory ) {
+<<<<<<< HEAD
 	"use strict";
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -28,8 +35,12 @@
 		// Browser globals
 		factory( jQuery );
 	}
+<<<<<<< HEAD
 } )( function( $ ) {
 "use strict";
+=======
+}( function( $ ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 return $.effects.define( "bounce", function( options, done ) {
 	var upAnim, downAnim, refValue,
@@ -109,4 +120,8 @@ return $.effects.define( "bounce", function( options, done ) {
 	$.effects.unshift( element, queuelen, anims + 1 );
 } );
 
+<<<<<<< HEAD
 } );
+=======
+} ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

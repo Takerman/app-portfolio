@@ -92,7 +92,11 @@ if ( ! class_exists( 'Twenty_Twenty_One_Customize' ) ) {
 				array(
 					'capability'        => 'edit_theme_options',
 					'default'           => 'excerpt',
+<<<<<<< HEAD
 					'sanitize_callback' => static function( $value ) {
+=======
+					'sanitize_callback' => function( $value ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						return 'excerpt' === $value || 'full' === $value ? $value : 'excerpt';
 					},
 				)

@@ -356,7 +356,11 @@ class WP_REST_Application_Passwords_Controller extends WP_REST_Controller {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Checks if a given request has access to delete all application passwords for a user.
+=======
+	 * Checks if a given request has access to delete all application passwords.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.6.0
 	 *
@@ -382,7 +386,11 @@ class WP_REST_Application_Passwords_Controller extends WP_REST_Controller {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Deletes all application passwords for a user.
+=======
+	 * Deletes all application passwords.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.6.0
 	 *
@@ -411,7 +419,11 @@ class WP_REST_Application_Passwords_Controller extends WP_REST_Controller {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Checks if a given request has access to delete a specific application password for a user.
+=======
+	 * Checks if a given request has access to delete a specific application password.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.6.0
 	 *
@@ -437,7 +449,11 @@ class WP_REST_Application_Passwords_Controller extends WP_REST_Controller {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Deletes an application password for a user.
+=======
+	 * Deletes one application password.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.6.0
 	 *
@@ -474,7 +490,11 @@ class WP_REST_Application_Passwords_Controller extends WP_REST_Controller {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Checks if a given request has access to get the currently used application password for a user.
+=======
+	 * Checks if a given request has access to get the currently used application password.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.7.0
 	 *
@@ -491,7 +511,11 @@ class WP_REST_Application_Passwords_Controller extends WP_REST_Controller {
 		if ( get_current_user_id() !== $user->ID ) {
 			return new WP_Error(
 				'rest_cannot_introspect_app_password_for_non_authenticated_user',
+<<<<<<< HEAD
 				__( 'The authenticated application password can only be introspected for the current user.' ),
+=======
+				__( 'The authenticated Application Password can only be introspected for the current user.' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				array( 'status' => rest_authorization_required_code() )
 			);
 		}
@@ -500,7 +524,11 @@ class WP_REST_Application_Passwords_Controller extends WP_REST_Controller {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Retrieves the application password being currently used for authentication of a user.
+=======
+	 * Retrieves the application password being currently used for authentication.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.7.0
 	 *
@@ -519,7 +547,11 @@ class WP_REST_Application_Passwords_Controller extends WP_REST_Controller {
 		if ( ! $uuid ) {
 			return new WP_Error(
 				'rest_no_authenticated_app_password',
+<<<<<<< HEAD
 				__( 'Cannot introspect application password.' ),
+=======
+				__( 'Cannot introspect Application Password.' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				array( 'status' => 404 )
 			);
 		}
@@ -723,7 +755,11 @@ class WP_REST_Application_Passwords_Controller extends WP_REST_Controller {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Gets the requested application password for a user.
+=======
+	 * Gets the requested application password.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.6.0
 	 *
@@ -788,7 +824,11 @@ class WP_REST_Application_Passwords_Controller extends WP_REST_Controller {
 					'readonly'    => true,
 				),
 				'app_id'    => array(
+<<<<<<< HEAD
 					'description' => __( 'A UUID provided by the application to uniquely identify it. It is recommended to use an UUID v5 with the URL or DNS namespace.' ),
+=======
+					'description' => __( 'A uuid provided by the application to uniquely identify it. It is recommended to use an UUID v5 with the URL or DNS namespace.' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'type'        => 'string',
 					'format'      => 'uuid',
 					'context'     => array( 'view', 'edit', 'embed' ),

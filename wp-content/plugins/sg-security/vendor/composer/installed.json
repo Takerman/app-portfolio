@@ -1,0 +1,286 @@
+{
+    "packages": [
+        {
+            "name": "charles-rumley/php-po-to-json",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/charles-rumley/php-po-to-json.git",
+                "reference": "c2d228fbbb69b90b6c331141b89c4faf985e6152"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/charles-rumley/php-po-to-json/zipball/c2d228fbbb69b90b6c331141b89c4faf985e6152",
+                "reference": "c2d228fbbb69b90b6c331141b89c4faf985e6152",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "sepia/po-parser": "^4.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "time": "2016-09-08T12:53:20+00:00",
+            "type": "package",
+            "installation-source": "source",
+            "autoload": {
+                "psr-4": {
+                    "CharlesRumley\\": "src/",
+                    "CharlesRumley\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Charles Rumley",
+                    "email": "charles.rumley@gmail.com"
+                }
+            ],
+            "keywords": [
+                "i18n",
+                "jed",
+                "json",
+                "php",
+                "translation"
+            ],
+            "install-path": "../charles-rumley/php-po-to-json"
+        },
+        {
+            "name": "phpgangsta/googleauthenticator",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPGangsta/GoogleAuthenticator.git",
+                "reference": "505c2af8337b559b33557f37cda38e5f843f3768"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPGangsta/GoogleAuthenticator/zipball/505c2af8337b559b33557f37cda38e5f843f3768",
+                "reference": "505c2af8337b559b33557f37cda38e5f843f3768",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "time": "2019-03-20T00:55:58+00:00",
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "classmap": [
+                    "PHPGangsta/GoogleAuthenticator.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-4-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Kliewe",
+                    "email": "info@phpgangsta.de",
+                    "homepage": "http://www.phpgangsta.de/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Google Authenticator 2-factor authentication",
+            "keywords": [
+                "googleauthenticator",
+                "rfc6238",
+                "totp"
+            ],
+            "install-path": "../phpgangsta/googleauthenticator"
+        },
+        {
+            "name": "pragmarx/random",
+            "version": "v0.2.2",
+            "version_normalized": "0.2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/antonioribeiro/random.git",
+                "reference": "daf08a189c5d2d40d1a827db46364d3a741a51b7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/antonioribeiro/random/zipball/daf08a189c5d2d40d1a827db46364d3a741a51b7",
+                "reference": "daf08a189c5d2d40d1a827db46364d3a741a51b7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "~1.7",
+                "phpunit/phpunit": "~6.4",
+                "pragmarx/trivia": "~0.1",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "suggest": {
+                "fzaninotto/faker": "Allows you to get dozens of randomized types",
+                "pragmarx/trivia": "For the trivia database"
+            },
+            "time": "2017-11-21T05:26:22+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "PragmaRX\\Random\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Antonio Carlos Ribeiro",
+                    "email": "acr@antoniocarlosribeiro.com",
+                    "homepage": "https://antoniocarlosribeiro.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Create random chars, numbers, strings",
+            "homepage": "https://github.com/antonioribeiro/random",
+            "keywords": [
+                "Randomize",
+                "faker",
+                "pragmarx",
+                "random",
+                "random number",
+                "random pattern",
+                "random string"
+            ],
+            "install-path": "../pragmarx/random"
+        },
+        {
+            "name": "pragmarx/recovery",
+            "version": "v0.2.0",
+            "version_normalized": "0.2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/antonioribeiro/recovery.git",
+                "reference": "03db473434ce84212b8991020929b162fe15f01f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/antonioribeiro/recovery/zipball/03db473434ce84212b8991020929b162fe15f01f",
+                "reference": "03db473434ce84212b8991020929b162fe15f01f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0",
+                "pragmarx/random": "~0.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=5.4.3",
+                "squizlabs/php_codesniffer": "^2.3",
+                "tightenco/collect": "^5.0"
+            },
+            "suggest": {
+                "tightenco/collect": "Allows to generate recovery codes as collections"
+            },
+            "time": "2021-03-23T22:57:38+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "PragmaRX\\Recovery\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Antonio Carlos Ribeiro",
+                    "email": "acr@antoniocarlosribeiro.com",
+                    "homepage": "https://antoniocarlosribeiro.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Create recovery codes for two factor auth",
+            "homepage": "https://github.com/antonioribeiro/recovery",
+            "keywords": [
+                "2fa",
+                "account recovery",
+                "auth",
+                "backup codes",
+                "google2fa",
+                "pragmarx",
+                "recovery",
+                "recovery codes",
+                "two factor auth"
+            ],
+            "install-path": "../pragmarx/recovery"
+        },
+        {
+            "name": "sepia/po-parser",
+            "version": "4.2.2",
+            "version_normalized": "4.2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/raulferras/PHP-po-parser.git",
+                "reference": "8a6bbcd4a231b19e1b052c1c46b0fe2935331afe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/raulferras/PHP-po-parser/zipball/8a6bbcd4a231b19e1b052c1c46b0fe2935331afe",
+                "reference": "8a6bbcd4a231b19e1b052c1c46b0fe2935331afe",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*",
+                "squizlabs/php_codesniffer": "1.5.*"
+            },
+            "time": "2017-09-15T10:55:43+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "Sepia": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Raúl Ferràs",
+                    "email": "raul.ferras@gmail.com",
+                    "role": "developer"
+                }
+            ],
+            "description": "Gettext *.PO file parser for PHP.",
+            "homepage": "https://github.com/raulferras/PHP-po-parser",
+            "keywords": [
+                "gettext",
+                "i10n",
+                "i18n",
+                "po"
+            ],
+            "install-path": "../sepia/po-parser"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

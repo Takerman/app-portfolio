@@ -42,16 +42,22 @@ function generate_block_asset_handle( $block_name, $field_name ) {
 		if ( 0 === strpos( $field_name, 'editor' ) ) {
 			$asset_handle .= '-editor';
 		}
+<<<<<<< HEAD
 		if ( 0 === strpos( $field_name, 'view' ) ) {
 			$asset_handle .= '-view';
 		}
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		return $asset_handle;
 	}
 
 	$field_mappings = array(
 		'editorScript' => 'editor-script',
 		'script'       => 'script',
+<<<<<<< HEAD
 		'viewScript'   => 'view-script',
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		'editorStyle'  => 'editor-style',
 		'style'        => 'style',
 	);
@@ -83,11 +89,17 @@ function register_block_script_handle( $metadata, $field_name ) {
 	}
 
 	$script_handle     = generate_block_asset_handle( $metadata['name'], $field_name );
+<<<<<<< HEAD
 	$script_asset_path = wp_normalize_path(
 		realpath(
 			dirname( $metadata['file'] ) . '/' .
 			substr_replace( $script_path, '.asset.php', - strlen( '.js' ) )
 		)
+=======
+	$script_asset_path = realpath(
+		dirname( $metadata['file'] ) . '/' .
+		substr_replace( $script_path, '.asset.php', - strlen( '.js' ) )
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	);
 	if ( ! file_exists( $script_asset_path ) ) {
 		_doing_it_wrong(
@@ -102,6 +114,7 @@ function register_block_script_handle( $metadata, $field_name ) {
 		);
 		return false;
 	}
+<<<<<<< HEAD
 	// Path needs to be normalized to work in Windows env.
 	$wpinc_path_norm  = wp_normalize_path( ABSPATH . WPINC );
 	$script_path_norm = wp_normalize_path( realpath( dirname( $metadata['file'] ) . '/' . $script_path ) );
@@ -117,12 +130,24 @@ function register_block_script_handle( $metadata, $field_name ) {
 		$script_uri,
 		$script_dependencies,
 		isset( $script_asset['version'] ) ? $script_asset['version'] : false
+=======
+	$script_asset = require $script_asset_path;
+	$result       = wp_register_script(
+		$script_handle,
+		plugins_url( $script_path, $metadata['file'] ),
+		$script_asset['dependencies'],
+		$script_asset['version']
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	);
 	if ( ! $result ) {
 		return false;
 	}
 
+<<<<<<< HEAD
 	if ( ! empty( $metadata['textdomain'] ) && in_array( 'wp-i18n', $script_dependencies, true ) ) {
+=======
+	if ( ! empty( $metadata['textdomain'] ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		wp_set_script_translations( $script_handle, $metadata['textdomain'] );
 	}
 
@@ -145,8 +170,12 @@ function register_block_style_handle( $metadata, $field_name ) {
 	if ( empty( $metadata[ $field_name ] ) ) {
 		return false;
 	}
+<<<<<<< HEAD
 	$wpinc_path_norm = wp_normalize_path( ABSPATH . WPINC );
 	$is_core_block   = isset( $metadata['file'] ) && 0 === strpos( $metadata['file'], $wpinc_path_norm );
+=======
+	$is_core_block = isset( $metadata['file'] ) && 0 === strpos( $metadata['file'], ABSPATH . WPINC );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( $is_core_block && ! wp_should_load_separate_core_block_assets() ) {
 		return false;
 	}
@@ -195,6 +224,7 @@ function register_block_style_handle( $metadata, $field_name ) {
 }
 
 /**
+<<<<<<< HEAD
  * Gets i18n schema for block's metadata read from `block.json` file.
  *
  * @since 5.9.0
@@ -221,6 +251,14 @@ function get_block_metadata_i18n_schema() {
  * @param string $file_or_folder Path to the JSON file with metadata definition for
  *                               the block or path to the folder where the `block.json` file is located.
  *                               If providing the path to a JSON file, the filename must end with `block.json`.
+=======
+ * Registers a block type from the metadata stored in the `block.json` file.
+ *
+ * @since 5.5.0
+ *
+ * @param string $file_or_folder Path to the JSON file with metadata definition for
+ *                               the block or path to the folder where the `block.json` file is located.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @param array  $args           Optional. Array of block type arguments. Accepts any public property
  *                               of `WP_Block_Type`. See WP_Block_Type::__construct() for information
  *                               on accepted arguments. Default empty array.
@@ -235,11 +273,19 @@ function register_block_type_from_metadata( $file_or_folder, $args = array() ) {
 		return false;
 	}
 
+<<<<<<< HEAD
 	$metadata = wp_json_file_decode( $metadata_file, array( 'associative' => true ) );
 	if ( ! is_array( $metadata ) || empty( $metadata['name'] ) ) {
 		return false;
 	}
 	$metadata['file'] = wp_normalize_path( $metadata_file );
+=======
+	$metadata = json_decode( file_get_contents( $metadata_file ), true );
+	if ( ! is_array( $metadata ) || empty( $metadata['name'] ) ) {
+		return false;
+	}
+	$metadata['file'] = $metadata_file;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	/**
 	 * Filters the metadata provided for registering a block type.
@@ -264,7 +310,10 @@ function register_block_type_from_metadata( $file_or_folder, $args = array() ) {
 
 	$settings          = array();
 	$property_mappings = array(
+<<<<<<< HEAD
 		'apiVersion'      => 'api_version',
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		'title'           => 'title',
 		'category'        => 'category',
 		'parent'          => 'parent',
@@ -276,6 +325,7 @@ function register_block_type_from_metadata( $file_or_folder, $args = array() ) {
 		'usesContext'     => 'uses_context',
 		'supports'        => 'supports',
 		'styles'          => 'styles',
+<<<<<<< HEAD
 		'variations'      => 'variations',
 		'example'         => 'example',
 	);
@@ -287,6 +337,55 @@ function register_block_type_from_metadata( $file_or_folder, $args = array() ) {
 			$settings[ $mapped_key ] = $metadata[ $key ];
 			if ( $textdomain && isset( $i18n_schema->$key ) ) {
 				$settings[ $mapped_key ] = translate_settings_using_i18n_schema( $i18n_schema->$key, $settings[ $key ], $textdomain );
+=======
+		'example'         => 'example',
+		'apiVersion'      => 'api_version',
+	);
+
+	foreach ( $property_mappings as $key => $mapped_key ) {
+		if ( isset( $metadata[ $key ] ) ) {
+			$value = $metadata[ $key ];
+			if ( empty( $metadata['textdomain'] ) ) {
+				$settings[ $mapped_key ] = $value;
+				continue;
+			}
+			$textdomain = $metadata['textdomain'];
+			switch ( $key ) {
+				case 'title':
+				case 'description':
+					// phpcs:ignore WordPress.WP.I18n.LowLevelTranslationFunction,WordPress.WP.I18n.NonSingularStringLiteralText,WordPress.WP.I18n.NonSingularStringLiteralContext,WordPress.WP.I18n.NonSingularStringLiteralDomain
+					$settings[ $mapped_key ] = translate_with_gettext_context( $value, sprintf( 'block %s', $key ), $textdomain );
+					break;
+				case 'keywords':
+					$settings[ $mapped_key ] = array();
+					if ( ! is_array( $value ) ) {
+						continue 2;
+					}
+
+					foreach ( $value as $keyword ) {
+						// phpcs:ignore WordPress.WP.I18n.LowLevelTranslationFunction,WordPress.WP.I18n.NonSingularStringLiteralText,WordPress.WP.I18n.NonSingularStringLiteralDomain
+						$settings[ $mapped_key ][] = translate_with_gettext_context( $keyword, 'block keyword', $textdomain );
+					}
+
+					break;
+				case 'styles':
+					$settings[ $mapped_key ] = array();
+					if ( ! is_array( $value ) ) {
+						continue 2;
+					}
+
+					foreach ( $value as $style ) {
+						if ( ! empty( $style['label'] ) ) {
+							// phpcs:ignore WordPress.WP.I18n.LowLevelTranslationFunction,WordPress.WP.I18n.NonSingularStringLiteralText,WordPress.WP.I18n.NonSingularStringLiteralDomain
+							$style['label'] = translate_with_gettext_context( $style['label'], 'block style label', $textdomain );
+						}
+						$settings[ $mapped_key ][] = $style;
+					}
+
+					break;
+				default:
+					$settings[ $mapped_key ] = $value;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			}
 		}
 	}
@@ -305,6 +404,7 @@ function register_block_type_from_metadata( $file_or_folder, $args = array() ) {
 		);
 	}
 
+<<<<<<< HEAD
 	if ( ! empty( $metadata['viewScript'] ) ) {
 		$settings['view_script'] = register_block_script_handle(
 			$metadata,
@@ -312,6 +412,8 @@ function register_block_type_from_metadata( $file_or_folder, $args = array() ) {
 		);
 	}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( ! empty( $metadata['editorStyle'] ) ) {
 		$settings['editor_style'] = register_block_style_handle(
 			$metadata,
@@ -354,7 +456,11 @@ function register_block_type_from_metadata( $file_or_folder, $args = array() ) {
  * the metadata stored in the `block.json` file.
  *
  * @since 5.0.0
+<<<<<<< HEAD
  * @since 5.8.0 First parameter now accepts a path to the `block.json` file.
+=======
+ * @since 5.8.0 First param accepts a path to the `block.json` file.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @param string|WP_Block_Type $block_type Block type name including namespace, or alternatively
  *                                         a path to the JSON file with metadata definition for the block,
@@ -734,7 +840,11 @@ function excerpt_remove_blocks( $content ) {
 	 *
 	 * @since 5.8.0
 	 *
+<<<<<<< HEAD
 	 * @param string[] $allowed_wrapper_blocks The list of names of allowed wrapper blocks.
+=======
+	 * @param array $allowed_wrapper_blocks The list of allowed wrapper blocks.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	$allowed_wrapper_blocks = apply_filters( 'excerpt_allowed_wrapper_blocks', $allowed_wrapper_blocks );
 
@@ -748,7 +858,11 @@ function excerpt_remove_blocks( $content ) {
 	 *
 	 * @since 5.0.0
 	 *
+<<<<<<< HEAD
 	 * @param string[] $allowed_blocks The list of names of allowed blocks.
+=======
+	 * @param array $allowed_blocks The list of allowed blocks.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	$allowed_blocks = apply_filters( 'excerpt_allowed_blocks', $allowed_blocks );
 	$blocks         = parse_blocks( $content );
@@ -784,7 +898,11 @@ function excerpt_remove_blocks( $content ) {
  * Render inner blocks from the allowed wrapper blocks
  * for generating an excerpt.
  *
+<<<<<<< HEAD
  * @since 5.8.0
+=======
+ * @since 5.8
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @access private
  *
  * @param array $parsed_block   The parsed block.
@@ -821,12 +939,16 @@ function _excerpt_render_inner_blocks( $parsed_block, $allowed_blocks ) {
  */
 function render_block( $parsed_block ) {
 	global $post;
+<<<<<<< HEAD
 	$parent_block = null;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	/**
 	 * Allows render_block() to be short-circuited, by returning a non-null value.
 	 *
 	 * @since 5.1.0
+<<<<<<< HEAD
 	 * @since 5.9.0 The `$parent_block` parameter was added.
 	 *
 	 * @param string|null   $pre_render   The pre-rendered content. Default null.
@@ -834,6 +956,13 @@ function render_block( $parsed_block ) {
 	 * @param WP_Block|null $parent_block If this is a nested block, a reference to the parent block.
 	 */
 	$pre_render = apply_filters( 'pre_render_block', null, $parsed_block, $parent_block );
+=======
+	 *
+	 * @param string|null $pre_render   The pre-rendered content. Default null.
+	 * @param array       $parsed_block The block being rendered.
+	 */
+	$pre_render = apply_filters( 'pre_render_block', null, $parsed_block );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( ! is_null( $pre_render ) ) {
 		return $pre_render;
 	}
@@ -844,6 +973,7 @@ function render_block( $parsed_block ) {
 	 * Filters the block being rendered in render_block(), before it's processed.
 	 *
 	 * @since 5.1.0
+<<<<<<< HEAD
 	 * @since 5.9.0 The `$parent_block` parameter was added.
 	 *
 	 * @param array         $parsed_block The block being rendered.
@@ -851,6 +981,13 @@ function render_block( $parsed_block ) {
 	 * @param WP_Block|null $parent_block If this is a nested block, a reference to the parent block.
 	 */
 	$parsed_block = apply_filters( 'render_block_data', $parsed_block, $source_block, $parent_block );
+=======
+	 *
+	 * @param array $parsed_block The block being rendered.
+	 * @param array $source_block An un-modified copy of $parsed_block, as it appeared in the source content.
+	 */
+	$parsed_block = apply_filters( 'render_block_data', $parsed_block, $source_block );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	$context = array();
 
@@ -870,6 +1007,7 @@ function render_block( $parsed_block ) {
 	 * Filters the default context provided to a rendered block.
 	 *
 	 * @since 5.5.0
+<<<<<<< HEAD
 	 * @since 5.9.0 The `$parent_block` parameter was added.
 	 *
 	 * @param array         $context      Default context.
@@ -877,6 +1015,13 @@ function render_block( $parsed_block ) {
 	 * @param WP_Block|null $parent_block If this is a nested block, a reference to the parent block.
 	 */
 	$context = apply_filters( 'render_block_context', $context, $parsed_block, $parent_block );
+=======
+	 *
+	 * @param array $context      Default context.
+	 * @param array $parsed_block Block being rendered, filtered by `render_block_data`.
+	 */
+	$context = apply_filters( 'render_block_context', $context, $parsed_block );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	$block = new WP_Block( $parsed_block, $context );
 
@@ -1000,8 +1145,14 @@ function unregister_block_style( $block_name, $block_style_name ) {
  *
  * @param WP_Block_Type $block_type Block type to check for support.
  * @param string        $feature    Name of the feature to check support for.
+<<<<<<< HEAD
  * @param mixed         $default    Optional. Fallback value for feature support. Default false.
  * @return bool Whether the feature is supported.
+=======
+ * @param mixed         $default    Fallback value for feature support, defaults to false.
+ *
+ * @return boolean                  Whether or not the feature is supported.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function block_has_support( $block_type, $feature, $default = false ) {
 	$block_support = $default;
@@ -1153,6 +1304,7 @@ function build_query_vars_from_query_block( $block, $page ) {
 	}
 	return $query;
 }
+<<<<<<< HEAD
 
 /**
  * Helper function that returns the proper pagination arrow html for
@@ -1328,3 +1480,5 @@ function _wp_multiple_block_styles( $metadata ) {
 	return $metadata;
 }
 add_filter( 'block_type_metadata', '_wp_multiple_block_styles' );
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

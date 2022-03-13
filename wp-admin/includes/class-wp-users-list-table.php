@@ -362,7 +362,11 @@ class WP_Users_List_Table extends WP_List_Table {
 			'name'     => __( 'Name' ),
 			'email'    => __( 'Email' ),
 			'role'     => __( 'Role' ),
+<<<<<<< HEAD
 			'posts'    => _x( 'Posts', 'post type general name' ),
+=======
+			'posts'    => __( 'Posts' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		);
 
 		if ( $this->is_site_users ) {
@@ -615,12 +619,20 @@ class WP_Users_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Returns an array of translated user role names for a given user object.
+=======
+	 * Returns an array of user roles for a given user object.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 4.4.0
 	 *
 	 * @param WP_User $user_object The WP_User object.
+<<<<<<< HEAD
 	 * @return string[] An array of user role names keyed by role.
+=======
+	 * @return string[] An array of user roles.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	protected function get_role_list( $user_object ) {
 		$wp_roles = wp_roles();
@@ -638,11 +650,19 @@ class WP_Users_List_Table extends WP_List_Table {
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Filters the returned array of translated role names for a user.
 		 *
 		 * @since 4.4.0
 		 *
 		 * @param string[] $role_list   An array of translated user role names keyed by role.
+=======
+		 * Filters the returned array of roles for a user.
+		 *
+		 * @since 4.4.0
+		 *
+		 * @param string[] $role_list   An array of user roles.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 * @param WP_User  $user_object A WP_User object.
 		 */
 		return apply_filters( 'get_role_list', $role_list, $user_object );

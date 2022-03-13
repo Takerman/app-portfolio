@@ -146,7 +146,11 @@ function get_page_templates( $post = null, $post_type = 'page' ) {
 }
 
 /**
+<<<<<<< HEAD
  * Tidies a filename for url display by the theme file editor.
+=======
+ * Tidies a filename for url display by the theme editor.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since 2.9.0
  * @access private
@@ -521,7 +525,11 @@ function themes_api( $action, $args = array() ) {
 	/**
 	 * Filters whether to override the WordPress.org Themes API.
 	 *
+<<<<<<< HEAD
 	 * Returning a non-false value will effectively short-circuit the WordPress.org API request.
+=======
+	 * Passing a non-false value will effectively short-circuit the WordPress.org API request.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * If `$action` is 'query_themes', 'theme_information', or 'feature_list', an object MUST
 	 * be passed. If `$action` is 'hot_tags', an array should be passed.
@@ -602,6 +610,7 @@ function themes_api( $action, $args = array() ) {
 			}
 		}
 
+<<<<<<< HEAD
 		if ( ! is_wp_error( $res ) ) {
 			// Back-compat for info/1.2 API, upgrade the theme objects in query_themes to objects.
 			if ( 'query_themes' === $action ) {
@@ -615,6 +624,18 @@ function themes_api( $action, $args = array() ) {
 				$res = (array) $res;
 			}
 		}
+=======
+		// Back-compat for info/1.2 API, upgrade the theme objects in query_themes to objects.
+		if ( 'query_themes' === $action ) {
+			foreach ( $res->themes as $i => $theme ) {
+				$res->themes[ $i ] = (object) $theme;
+			}
+		}
+		// Back-compat for info/1.2 API, downgrade the feature_list result back to an array.
+		if ( 'feature_list' === $action ) {
+			$res = (array) $res;
+		}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	/**
@@ -622,10 +643,17 @@ function themes_api( $action, $args = array() ) {
 	 *
 	 * @since 2.8.0
 	 *
+<<<<<<< HEAD
 	 * @param array|stdClass|WP_Error $res    WordPress.org Themes API response.
 	 * @param string                  $action Requested action. Likely values are 'theme_information',
 	 *                                        'feature_list', or 'query_themes'.
 	 * @param stdClass                $args   Arguments used to query for installer pages from the WordPress.org Themes API.
+=======
+	 * @param array|object|WP_Error $res    WordPress.org Themes API response.
+	 * @param string                $action Requested action. Likely values are 'theme_information',
+	 *                                      'feature_list', or 'query_themes'.
+	 * @param object                $args   Arguments used to query for installer pages from the WordPress.org Themes API.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	return apply_filters( 'themes_api_result', $res, $action, $args );
 }
@@ -701,6 +729,7 @@ function wp_prepare_themes_for_js( $themes = null ) {
 		}
 
 		$customize_action = null;
+<<<<<<< HEAD
 
 		$can_edit_theme_options = current_user_can( 'edit_theme_options' );
 		$can_customize          = current_user_can( 'customize' );
@@ -709,6 +738,9 @@ function wp_prepare_themes_for_js( $themes = null ) {
 		if ( $is_block_theme && $can_edit_theme_options ) {
 			$customize_action = esc_url( admin_url( 'site-editor.php' ) );
 		} elseif ( ! $is_block_theme && $can_customize && $can_edit_theme_options ) {
+=======
+		if ( current_user_can( 'edit_theme_options' ) && current_user_can( 'customize' ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$customize_action = esc_url(
 				add_query_arg(
 					array(
@@ -782,7 +814,10 @@ function wp_prepare_themes_for_js( $themes = null ) {
 					? wp_nonce_url( admin_url( 'themes.php?action=' . $auto_update_action . '&amp;stylesheet=' . $encoded_slug ), 'updates' )
 					: null,
 			),
+<<<<<<< HEAD
 			'blockTheme'     => $theme->is_block_theme(),
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		);
 	}
 
@@ -1005,6 +1040,7 @@ function customize_themes_print_templates() {
 								?>
 							<# } #>
 						</p></div>
+<<<<<<< HEAD
 					<# } else if ( ! data.active && data.blockTheme ) { #>
 						<div class="notice notice-error notice-alt notice-large"><p>
 						<?php
@@ -1020,6 +1056,8 @@ function customize_themes_print_templates() {
 							?>
 						<# } #>
 						</p></div>
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					<# } #>
 
 					<p class="theme-description">{{{ data.description }}}</p>
@@ -1040,6 +1078,7 @@ function customize_themes_print_templates() {
 						<# } #>
 					<?php } ?>
 
+<<<<<<< HEAD
 					<# if ( data.blockTheme ) { #>
 						<?php
 							/* translators: %s: Theme name. */
@@ -1054,6 +1093,12 @@ function customize_themes_print_templates() {
 						<# } else { #>
 							<button class="button button-primary disabled"><?php _e( 'Live Preview' ); ?></button>
 						<# } #>
+=======
+					<# if ( data.compatibleWP && data.compatiblePHP ) { #>
+						<button type="button" class="button button-primary preview-theme" data-slug="{{ data.id }}"><?php _e( 'Live Preview' ); ?></button>
+					<# } else { #>
+						<button class="button button-primary disabled"><?php _e( 'Live Preview' ); ?></button>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					<# } #>
 				<# } else { #>
 					<# if ( data.compatibleWP && data.compatiblePHP ) { #>

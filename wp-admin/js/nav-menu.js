@@ -311,8 +311,12 @@
 				nextItemDepth = parseInt( nextItem.menuItemDepth(), 10 ) + 1,
 				prevItem = thisItem.prev(),
 				prevItemDepth = parseInt( prevItem.menuItemDepth(), 10 ),
+<<<<<<< HEAD
 				prevItemId = prevItem.getItemData()['menu-item-db-id'],
 				a11ySpeech = menus[ 'moved' + dir.charAt(0).toUpperCase() + dir.slice(1) ];
+=======
+				prevItemId = prevItem.getItemData()['menu-item-db-id'];
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 			switch ( dir ) {
 			case 'up':
@@ -400,10 +404,13 @@
 			api.registerChange();
 			api.refreshKeyboardAccessibility();
 			api.refreshAdvancedAccessibility();
+<<<<<<< HEAD
 
 			if ( a11ySpeech ) {
 				wp.a11y.speak( a11ySpeech );
 			}
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		},
 
 		initAccessibility : function() {
@@ -1229,7 +1236,10 @@
 			$menuMarkup.hideAdvancedMenuItemFields().appendTo( api.targetList );
 			api.refreshKeyboardAccessibility();
 			api.refreshAdvancedAccessibility();
+<<<<<<< HEAD
 			wp.a11y.speak( menus.itemAdded );
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$( document ).trigger( 'menu-item-added', [ $menuMarkup ] );
 		},
 
@@ -1245,7 +1255,10 @@
 			$menuMarkup.hideAdvancedMenuItemFields().prependTo( api.targetList );
 			api.refreshKeyboardAccessibility();
 			api.refreshAdvancedAccessibility();
+<<<<<<< HEAD
 			wp.a11y.speak( menus.itemAdded );
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$( document ).trigger( 'menu-item-added', [ $menuMarkup ] );
 		},
 
@@ -1520,7 +1533,10 @@
 						ins.removeClass( 'menu-instructions-inactive' );
 					}
 					api.refreshAdvancedAccessibility();
+<<<<<<< HEAD
 					wp.a11y.speak( menus.itemRemoved );
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				});
 		},
 

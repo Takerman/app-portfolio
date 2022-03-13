@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * jQuery UI Droppable 1.13.1
+=======
+ * jQuery UI Droppable 1.12.1
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -14,8 +18,11 @@
 //>>demos: http://jqueryui.com/droppable/
 
 ( function( factory ) {
+<<<<<<< HEAD
 	"use strict";
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -30,11 +37,18 @@
 		// Browser globals
 		factory( jQuery );
 	}
+<<<<<<< HEAD
 } )( function( $ ) {
 "use strict";
 
 $.widget( "ui.droppable", {
 	version: "1.13.1",
+=======
+}( function( $ ) {
+
+$.widget( "ui.droppable", {
+	version: "1.12.1",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	widgetEventPrefix: "drop",
 	options: {
 		accept: "*",
@@ -59,7 +73,11 @@ $.widget( "ui.droppable", {
 		this.isover = false;
 		this.isout = true;
 
+<<<<<<< HEAD
 		this.accept = typeof accept === "function" ? accept : function( d ) {
+=======
+		this.accept = $.isFunction( accept ) ? accept : function( d ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return d.is( accept );
 		};
 
@@ -82,9 +100,13 @@ $.widget( "ui.droppable", {
 
 		this._addToManager( o.scope );
 
+<<<<<<< HEAD
 		if ( o.addClasses ) {
 			this._addClass( "ui-droppable" );
 		}
+=======
+		o.addClasses && this._addClass( "ui-droppable" );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	},
 
@@ -113,7 +135,11 @@ $.widget( "ui.droppable", {
 	_setOption: function( key, value ) {
 
 		if ( key === "accept" ) {
+<<<<<<< HEAD
 			this.accept = typeof value === "function" ? value : function( d ) {
+=======
+			this.accept = $.isFunction( value ) ? value : function( d ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				return d.is( value );
 			};
 		} else if ( key === "scope" ) {
@@ -150,12 +176,20 @@ $.widget( "ui.droppable", {
 
 		// Bail if draggable and droppable are same element
 		if ( !draggable || ( draggable.currentItem ||
+<<<<<<< HEAD
 			draggable.element )[ 0 ] === this.element[ 0 ] ) {
+=======
+				draggable.element )[ 0 ] === this.element[ 0 ] ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return;
 		}
 
 		if ( this.accept.call( this.element[ 0 ], ( draggable.currentItem ||
+<<<<<<< HEAD
 			draggable.element ) ) ) {
+=======
+				draggable.element ) ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			this._addHoverClass();
 			this._trigger( "over", event, this.ui( draggable ) );
 		}
@@ -168,12 +202,20 @@ $.widget( "ui.droppable", {
 
 		// Bail if draggable and droppable are same element
 		if ( !draggable || ( draggable.currentItem ||
+<<<<<<< HEAD
 			draggable.element )[ 0 ] === this.element[ 0 ] ) {
+=======
+				draggable.element )[ 0 ] === this.element[ 0 ] ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return;
 		}
 
 		if ( this.accept.call( this.element[ 0 ], ( draggable.currentItem ||
+<<<<<<< HEAD
 			draggable.element ) ) ) {
+=======
+				draggable.element ) ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			this._removeHoverClass();
 			this._trigger( "out", event, this.ui( draggable ) );
 		}
@@ -187,7 +229,11 @@ $.widget( "ui.droppable", {
 
 		// Bail if draggable and droppable are same element
 		if ( !draggable || ( draggable.currentItem ||
+<<<<<<< HEAD
 			draggable.element )[ 0 ] === this.element[ 0 ] ) {
+=======
+				draggable.element )[ 0 ] === this.element[ 0 ] ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return false;
 		}
 
@@ -203,22 +249,34 @@ $.widget( "ui.droppable", {
 					inst.accept.call(
 						inst.element[ 0 ], ( draggable.currentItem || draggable.element )
 					) &&
+<<<<<<< HEAD
 					$.ui.intersect(
+=======
+					intersect(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						draggable,
 						$.extend( inst, { offset: inst.element.offset() } ),
 						inst.options.tolerance, event
 					)
 				) {
 					childrenIntersection = true;
+<<<<<<< HEAD
 					return false;
 				}
+=======
+					return false; }
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			} );
 		if ( childrenIntersection ) {
 			return false;
 		}
 
 		if ( this.accept.call( this.element[ 0 ],
+<<<<<<< HEAD
 			( draggable.currentItem || draggable.element ) ) ) {
+=======
+				( draggable.currentItem || draggable.element ) ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			this._removeActiveClass();
 			this._removeHoverClass();
 
@@ -240,7 +298,11 @@ $.widget( "ui.droppable", {
 	},
 
 	// Extension points just to make backcompat sane and avoid duplicating logic
+<<<<<<< HEAD
 	// TODO: Remove in 1.14 along with call to it below
+=======
+	// TODO: Remove in 1.13 along with call to it below
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	_addHoverClass: function() {
 		this._addClass( "ui-droppable-hover" );
 	},
@@ -258,7 +320,11 @@ $.widget( "ui.droppable", {
 	}
 } );
 
+<<<<<<< HEAD
 $.ui.intersect = ( function() {
+=======
+var intersect = $.ui.intersect = ( function() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	function isOverAxis( x, reference, size ) {
 		return ( x >= reference ) && ( x < ( reference + size ) );
 	}
@@ -281,6 +347,7 @@ $.ui.intersect = ( function() {
 			b = t + droppable.proportions().height;
 
 		switch ( toleranceMode ) {
+<<<<<<< HEAD
 			case "fit":
 				return ( l <= x1 && x2 <= r && t <= y1 && y2 <= b );
 			case "intersect":
@@ -303,6 +370,30 @@ $.ui.intersect = ( function() {
 				);
 			default:
 				return false;
+=======
+		case "fit":
+			return ( l <= x1 && x2 <= r && t <= y1 && y2 <= b );
+		case "intersect":
+			return ( l < x1 + ( draggable.helperProportions.width / 2 ) && // Right Half
+				x2 - ( draggable.helperProportions.width / 2 ) < r && // Left Half
+				t < y1 + ( draggable.helperProportions.height / 2 ) && // Bottom Half
+				y2 - ( draggable.helperProportions.height / 2 ) < b ); // Top Half
+		case "pointer":
+			return isOverAxis( event.pageY, t, droppable.proportions().height ) &&
+				isOverAxis( event.pageX, l, droppable.proportions().width );
+		case "touch":
+			return (
+				( y1 >= t && y1 <= b ) || // Top edge touching
+				( y2 >= t && y2 <= b ) || // Bottom edge touching
+				( y1 < t && y2 > b ) // Surrounded vertically
+			) && (
+				( x1 >= l && x1 <= r ) || // Left edge touching
+				( x2 >= l && x2 <= r ) || // Right edge touching
+				( x1 < l && x2 > r ) // Surrounded horizontally
+			);
+		default:
+			return false;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	};
 } )();
@@ -324,7 +415,11 @@ $.ui.ddmanager = {
 
 			// No disabled and non-accepted
 			if ( m[ i ].options.disabled || ( t && !m[ i ].accept.call( m[ i ].element[ 0 ],
+<<<<<<< HEAD
 				( t.currentItem || t.element ) ) ) ) {
+=======
+					( t.currentItem || t.element ) ) ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				continue;
 			}
 
@@ -366,12 +461,20 @@ $.ui.ddmanager = {
 				return;
 			}
 			if ( !this.options.disabled && this.visible &&
+<<<<<<< HEAD
 				$.ui.intersect( draggable, this, this.options.tolerance, event ) ) {
+=======
+					intersect( draggable, this, this.options.tolerance, event ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				dropped = this._drop.call( this, event ) || dropped;
 			}
 
 			if ( !this.options.disabled && this.visible && this.accept.call( this.element[ 0 ],
+<<<<<<< HEAD
 				( draggable.currentItem || draggable.element ) ) ) {
+=======
+					( draggable.currentItem || draggable.element ) ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				this.isout = true;
 				this.isover = false;
 				this._deactivate.call( this, event );
@@ -407,7 +510,11 @@ $.ui.ddmanager = {
 			}
 
 			var parentInstance, scope, parent,
+<<<<<<< HEAD
 				intersects = $.ui.intersect( draggable, this, this.options.tolerance, event ),
+=======
+				intersects = intersect( draggable, this, this.options.tolerance, event ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				c = !intersects && this.isover ?
 					"isout" :
 					( intersects && !this.isover ? "isover" : null );
@@ -499,4 +606,8 @@ if ( $.uiBackCompat !== false ) {
 
 return $.ui.droppable;
 
+<<<<<<< HEAD
 } );
+=======
+} ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

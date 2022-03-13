@@ -154,7 +154,11 @@ function wp_credits_section_list( $credits = array(), $slug = '' ) {
 				$data2x = get_avatar_data( $person_data[1] . '@md5.gravatar.com', array( 'size' => $size * 2 ) );
 				echo '<span class="wp-person-avatar"><img src="' . esc_url( $data['url'] ) . '" srcset="' . esc_url( $data2x['url'] ) . ' 2x" class="gravatar" alt="" /></span>' . "\n";
 				echo esc_html( $person_data[0] ) . "</a>\n\t";
+<<<<<<< HEAD
 				if ( ! $compact && ! empty( $person_data[3] ) ) {
+=======
+				if ( ! $compact ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					// phpcs:ignore WordPress.WP.I18n.LowLevelTranslationFunction,WordPress.WP.I18n.NonSingularStringLiteralText
 					echo '<span class="title">' . translate( $person_data[3] ) . "</span>\n";
 				}

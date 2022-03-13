@@ -99,14 +99,21 @@ class WP_Meta_Query {
 	 *
 	 * @since 3.2.0
 	 * @since 4.2.0 Introduced support for naming query clauses by associative array keys.
+<<<<<<< HEAD
 	 * @since 5.1.0 Introduced `$compare_key` clause parameter, which enables LIKE key matches.
 	 * @since 5.3.0 Increased the number of operators available to `$compare_key`. Introduced `$type_key`,
 	 *              which enables the `$key` to be cast to a new data type for comparisons.
+=======
+	 * @since 5.1.0 Introduced $compare_key clause parameter, which enables LIKE key matches.
+	 * @since 5.3.0 Increased the number of operators available to $compare_key. Introduced $type_key,
+	 *              which enables the $key to be cast to a new data type for comparisons.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @param array $meta_query {
 	 *     Array of meta query clauses. When first-order clauses or sub-clauses use strings as
 	 *     their array keys, they may be referenced in the 'orderby' parameter of the parent query.
 	 *
+<<<<<<< HEAD
 	 *     @type string $relation Optional. The MySQL keyword used to join the clauses of the query.
 	 *                            Accepts 'AND' or 'OR'. Default 'AND'.
 	 *     @type array  ...$0 {
@@ -161,6 +168,31 @@ class WP_Meta_Query {
 	 *                                            - 'TIME'
 	 *                                            - 'UNSIGNED'
 	 *                                            Default is 'CHAR'.
+=======
+	 *     @type string $relation Optional. The MySQL keyword used to join
+	 *                            the clauses of the query. Accepts 'AND', or 'OR'. Default 'AND'.
+	 *     @type array  ...$0 {
+	 *         Optional. An array of first-order clause parameters, or another fully-formed meta query.
+	 *
+	 *         @type string $key         Meta key to filter by.
+	 *         @type string $compare_key MySQL operator used for comparing the $key. Accepts '=', '!='
+	 *                                   'LIKE', 'NOT LIKE', 'IN', 'NOT IN', 'REGEXP', 'NOT REGEXP', 'RLIKE',
+	 *                                   'EXISTS' (alias of '=') or 'NOT EXISTS' (alias of '!=').
+	 *                                   Default is 'IN' when `$key` is an array, '=' otherwise.
+	 *         @type string $type_key    MySQL data type that the meta_key column will be CAST to for
+	 *                                   comparisons. Accepts 'BINARY' for case-sensitive regular expression
+	 *                                   comparisons. Default is ''.
+	 *         @type string $value       Meta value to filter by.
+	 *         @type string $compare     MySQL operator used for comparing the $value. Accepts '=',
+	 *                                   '!=', '>', '>=', '<', '<=', 'LIKE', 'NOT LIKE',
+	 *                                   'IN', 'NOT IN', 'BETWEEN', 'NOT BETWEEN', 'REGEXP',
+	 *                                   'NOT REGEXP', 'RLIKE', 'EXISTS' or 'NOT EXISTS'.
+	 *                                   Default is 'IN' when `$value` is an array, '=' otherwise.
+	 *         @type string $type        MySQL data type that the meta_value column will be CAST to for
+	 *                                   comparisons. Accepts 'NUMERIC', 'BINARY', 'CHAR', 'DATE',
+	 *                                   'DATETIME', 'DECIMAL', 'SIGNED', 'TIME', or 'UNSIGNED'.
+	 *                                   Default is 'CHAR'.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *     }
 	 * }
 	 */
@@ -338,6 +370,7 @@ class WP_Meta_Query {
 	 *
 	 * @since 3.2.0
 	 *
+<<<<<<< HEAD
 	 * @param string $type              Type of meta. Possible values include but are not limited
 	 *                                  to 'post', 'comment', 'blog', 'term', and 'user'.
 	 * @param string $primary_table     Database table where the object being filtered is stored (eg wp_users).
@@ -347,6 +380,14 @@ class WP_Meta_Query {
 	 * @return string[]|false {
 	 *     Array containing JOIN and WHERE SQL clauses to append to the main query,
 	 *     or false if no table exists for the requested meta type.
+=======
+	 * @param string $type              Type of meta, eg 'user', 'post'.
+	 * @param string $primary_table     Database table where the object being filtered is stored (eg wp_users).
+	 * @param string $primary_id_column ID column for the filtered object in $primary_table.
+	 * @param object $context           Optional. The main query object.
+	 * @return array|false {
+	 *     Array containing JOIN and WHERE SQL clauses to append to the main query.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 *     @type string $join  SQL fragment to append to the main JOIN clause.
 	 *     @type string $where SQL fragment to append to the main WHERE clause.
@@ -381,6 +422,7 @@ class WP_Meta_Query {
 		 *
 		 * @since 3.1.0
 		 *
+<<<<<<< HEAD
 		 * @param string[] $sql               Array containing the query's JOIN and WHERE clauses.
 		 * @param array    $queries           Array of meta queries.
 		 * @param string   $type              Type of meta. Possible values include but are not limited
@@ -389,6 +431,14 @@ class WP_Meta_Query {
 		 * @param string   $primary_id_column Primary column ID.
 		 * @param object   $context           The main query object that corresponds to the type, for
 		 *                                    example a `WP_Query`, `WP_User_Query`, or `WP_Site_Query`.
+=======
+		 * @param array  $sql               Array containing the query's JOIN and WHERE clauses.
+		 * @param array  $queries           Array of meta queries.
+		 * @param string $type              Type of meta.
+		 * @param string $primary_table     Primary table.
+		 * @param string $primary_id_column Primary column ID.
+		 * @param object $context           The main query object.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		return apply_filters_ref_array( 'get_meta_sql', array( $sql, $this->queries, $type, $primary_table, $primary_id_column, $context ) );
 	}
@@ -401,7 +451,11 @@ class WP_Meta_Query {
 	 *
 	 * @since 4.1.0
 	 *
+<<<<<<< HEAD
 	 * @return string[] {
+=======
+	 * @return array {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *     Array containing JOIN and WHERE SQL clauses to append to the main query.
 	 *
 	 *     @type string $join  SQL fragment to append to the main JOIN clause.
@@ -434,7 +488,11 @@ class WP_Meta_Query {
 	 * @param array $query Query to parse (passed by reference).
 	 * @param int   $depth Optional. Number of tree levels deep we currently are.
 	 *                     Used to calculate indentation. Default 0.
+<<<<<<< HEAD
 	 * @return string[] {
+=======
+	 * @return array {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *     Array containing JOIN and WHERE SQL clauses to append to a single query array.
 	 *
 	 *     @type string $join  SQL fragment to append to the main JOIN clause.
@@ -520,7 +578,11 @@ class WP_Meta_Query {
 	 * @param array  $parent_query Parent query array.
 	 * @param string $clause_key   Optional. The array key used to name the clause in the original `$meta_query`
 	 *                             parameters. If not provided, a key will be generated automatically.
+<<<<<<< HEAD
 	 * @return string[] {
+=======
+	 * @return array {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *     Array containing JOIN and WHERE SQL clauses to append to a first-order query.
 	 *
 	 *     @type string $join  SQL fragment to append to the main JOIN clause.
@@ -727,7 +789,11 @@ class WP_Meta_Query {
 				if ( ! is_array( $meta_value ) ) {
 					$meta_value = preg_split( '/[,\s]+/', $meta_value );
 				}
+<<<<<<< HEAD
 			} elseif ( is_string( $meta_value ) ) {
+=======
+			} else {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				$meta_value = trim( $meta_value );
 			}
 
@@ -848,7 +914,11 @@ class WP_Meta_Query {
 			$clause_compare  = strtoupper( $clause['compare'] );
 			$sibling_compare = strtoupper( $sibling['compare'] );
 			if ( in_array( $clause_compare, $compatible_compares, true ) && in_array( $sibling_compare, $compatible_compares, true ) ) {
+<<<<<<< HEAD
 				$alias = preg_replace( '/\W/', '_', $sibling['alias'] );
+=======
+				$alias = $sibling['alias'];
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				break;
 			}
 		}
@@ -861,7 +931,11 @@ class WP_Meta_Query {
 		 * @param string|false  $alias        Table alias, or false if none was found.
 		 * @param array         $clause       First-order query clause.
 		 * @param array         $parent_query Parent of $clause.
+<<<<<<< HEAD
 		 * @param WP_Meta_Query $query        WP_Meta_Query object.
+=======
+		 * @param WP_Meta_Query $this         WP_Meta_Query object.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		return apply_filters( 'meta_query_find_compatible_table_alias', $alias, $clause, $parent_query, $this );
 	}

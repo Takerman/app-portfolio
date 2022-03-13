@@ -335,7 +335,11 @@ final class WP_Customize_Selective_Refresh {
 		 *
 		 * @since 4.5.0
 		 *
+<<<<<<< HEAD
 		 * @param WP_Customize_Selective_Refresh $refresh  Selective refresh component.
+=======
+		 * @param WP_Customize_Selective_Refresh $this     Selective refresh component.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 * @param array                          $partials Placements' context data for the partials rendered in the request.
 		 *                                                 The array is keyed by partial ID, with each item being an array of
 		 *                                                 the placements' context data.
@@ -384,7 +388,11 @@ final class WP_Customize_Selective_Refresh {
 		 *
 		 * @since 4.5.0
 		 *
+<<<<<<< HEAD
 		 * @param WP_Customize_Selective_Refresh $refresh  Selective refresh component.
+=======
+		 * @param WP_Customize_Selective_Refresh $this     Selective refresh component.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 * @param array                          $partials Placements' context data for the partials rendered in the request.
 		 *                                                 The array is keyed by partial ID, with each item being an array of
 		 *                                                 the placements' context data.

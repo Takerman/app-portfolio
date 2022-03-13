@@ -87,6 +87,7 @@ this["wp"] = this["wp"] || {}; this["wp"]["warning"] =
 /************************************************************************/
 /******/ ({
 
+<<<<<<< HEAD
 /***/ "3iIG":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -103,6 +104,8 @@ const logged = new Set();
 
 /***/ }),
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /***/ "8oxB":
 /***/ (function(module, exports) {
 
@@ -300,12 +303,15 @@ process.umask = function() { return 0; };
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return warning; });
+<<<<<<< HEAD
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("3iIG");
 /**
  * Internal dependencies
  */
 
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 function isDev() {
   return typeof process !== 'undefined' && process.env && "production" !== 'production';
 }
@@ -331,11 +337,14 @@ function isDev() {
 function warning(message) {
   if (!isDev()) {
     return;
+<<<<<<< HEAD
   } // Skip if already logged.
 
 
   if (_utils__WEBPACK_IMPORTED_MODULE_0__[/* logged */ "a"].has(message)) {
     return;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   } // eslint-disable-next-line no-console
 
 
@@ -347,8 +356,11 @@ function warning(message) {
     throw Error(message);
   } catch (x) {// do nothing
   }
+<<<<<<< HEAD
 
   _utils__WEBPACK_IMPORTED_MODULE_0__[/* logged */ "a"].add(message);
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("8oxB")))

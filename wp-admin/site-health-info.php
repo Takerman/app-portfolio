@@ -75,10 +75,14 @@ $health_check_site_status = WP_Site_Health::get_instance();
 						<?php
 
 						if ( isset( $details['show_count'] ) && $details['show_count'] ) {
+<<<<<<< HEAD
 							printf(
 								'(%s)',
 								number_format_i18n( count( $details['fields'] ) )
 							);
+=======
+							printf( '(%d)', count( $details['fields'] ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						}
 
 						?>

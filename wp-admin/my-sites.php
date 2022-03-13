@@ -34,7 +34,10 @@ if ( 'updateblogsettings' === $action && isset( $_POST['primary_blog'] ) ) {
 	}
 }
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 $title       = __( 'My Sites' );
 $parent_file = 'index.php';
 

@@ -41,12 +41,15 @@
  * These variables do not appear to be used anywhere else.
  */
 /**
+<<<<<<< HEAD
 *  Converts a hex value into the rgb equivalent.
 *
 * @param {string} hex - the hexadecimal value to convert
 * @return {string} comma separated rgb values
 */
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Breakpoint mixins
  */
 /**
@@ -75,14 +78,32 @@
  * Reset the WP Admin page styles for Gutenberg-like pages.
  */
 .wp-block[data-align=center] > .wp-block-site-logo {
+<<<<<<< HEAD
   display: table;
   margin-right: auto;
   margin-left: auto;
+=======
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .wp-block-site-logo a {
   pointer-events: none;
 }
+<<<<<<< HEAD
+=======
+.wp-block-site-logo:not(.is-default-size) {
+  display: table;
+}
+.wp-block-site-logo.is-default-size {
+  width: 120px;
+}
+.wp-block-site-logo.is-default-size img {
+  width: 100%;
+}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 .wp-block-site-logo .custom-logo-link {
   cursor: inherit;
 }
@@ -94,6 +115,7 @@
 }
 .wp-block-site-logo img {
   display: block;
+<<<<<<< HEAD
   height: auto;
   max-width: 100%;
 }
@@ -122,6 +144,28 @@
   display: none;
 }
 .wp-block-site-logo.wp-block-site-logo .components-placeholder .components-placeholder__preview {
+=======
+  max-width: 100%;
+}
+.wp-block-site-logo .components-placeholder {
+  justify-content: flex-start;
+  min-height: auto;
+  height: 120px;
+  padding: 12px;
+}
+.wp-block-site-logo .components-placeholder .components-placeholder__label {
+  margin-top: 12px;
+  white-space: nowrap;
+}
+.wp-block-site-logo .components-placeholder .components-placeholder__label .block-editor-block-icon,
+.wp-block-site-logo .components-placeholder .components-placeholder__label > svg {
+  margin-left: 4px;
+}
+.wp-block-site-logo .components-placeholder .components-form-file-upload {
+  display: none;
+}
+.wp-block-site-logo .components-placeholder .components-placeholder__preview {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   position: absolute;
   top: 4px;
   left: 4px;
@@ -132,6 +176,7 @@
   align-items: center;
   justify-content: center;
 }
+<<<<<<< HEAD
 .wp-block-site-logo.wp-block-site-logo .components-placeholder .components-drop-zone__content-text {
   display: none;
 }
@@ -193,4 +238,8 @@
   color: #fff;
   opacity: 1;
   visibility: visible;
+=======
+.wp-block-site-logo .components-placeholder .components-drop-zone__content-text {
+  display: none;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }

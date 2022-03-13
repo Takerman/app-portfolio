@@ -45,6 +45,10 @@
  *
  * @param mixed $n   Number of unknown type.
  * @param int   $max Upper value of the range to bound to.
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @return float Value in the range [0, 1].
  */
 function wp_tinycolor_bound01( $n, $max ) {
@@ -69,6 +73,7 @@ function wp_tinycolor_bound01( $n, $max ) {
 }
 
 /**
+<<<<<<< HEAD
  * Direct port of tinycolor's boundAlpha function to maintain consistency with
  * how tinycolor works.
  *
@@ -92,6 +97,9 @@ function _wp_tinycolor_bound_alpha( $n ) {
 
 /**
  * Rounds and converts values of an RGB object.
+=======
+ * Round and convert values of an RGB object.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * Direct port of TinyColor's function, lightly simplified to maintain
  * consistency with TinyColor.
@@ -102,6 +110,10 @@ function _wp_tinycolor_bound_alpha( $n ) {
  * @access private
  *
  * @param array $rgb_color RGB object.
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @return array Rounded and converted RGB object.
  */
 function wp_tinycolor_rgb_to_rgb( $rgb_color ) {
@@ -126,6 +138,10 @@ function wp_tinycolor_rgb_to_rgb( $rgb_color ) {
  * @param float $p first component.
  * @param float $q second component.
  * @param float $t third component.
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @return float R, G, or B component.
  */
 function wp_tinycolor_hue_to_rgb( $p, $q, $t ) {
@@ -148,7 +164,11 @@ function wp_tinycolor_hue_to_rgb( $p, $q, $t ) {
 }
 
 /**
+<<<<<<< HEAD
  * Converts an HSL object to an RGB object with converted and rounded values.
+=======
+ * Convert an HSL object to an RGB object with converted and rounded values.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * Direct port of TinyColor's function, lightly simplified to maintain
  * consistency with TinyColor.
@@ -159,6 +179,10 @@ function wp_tinycolor_hue_to_rgb( $p, $q, $t ) {
  * @access private
  *
  * @param array $hsl_color HSL object.
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @return array Rounded and converted RGB object.
  */
 function wp_tinycolor_hsl_to_rgb( $hsl_color ) {
@@ -188,7 +212,12 @@ function wp_tinycolor_hsl_to_rgb( $hsl_color ) {
 
 /**
  * Parses hex, hsl, and rgb CSS strings using the same regex as TinyColor v1.4.2
+<<<<<<< HEAD
  * used in the JavaScript. Only colors output from react-color are implemented.
+=======
+ * used in the JavaScript. Only colors output from react-color are implemented
+ * and the alpha value is ignored as it is not used in duotone.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * Direct port of TinyColor's function, lightly simplified to maintain
  * consistency with TinyColor.
@@ -197,10 +226,17 @@ function wp_tinycolor_hsl_to_rgb( $hsl_color ) {
  * @see https://github.com/casesandberg/react-color/
  *
  * @since 5.8.0
+<<<<<<< HEAD
  * @since 5.9.0 Added alpha processing.
  * @access private
  *
  * @param string $color_str CSS color string.
+=======
+ * @access private
+ *
+ * @param string $color_str CSS color string.
+ *
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @return array RGB object.
  */
 function wp_tinycolor_string_to_rgb( $color_str ) {
@@ -216,122 +252,176 @@ function wp_tinycolor_string_to_rgb( $color_str ) {
 
 	$rgb_regexp = '/^rgb' . $permissive_match3 . '$/';
 	if ( preg_match( $rgb_regexp, $color_str, $match ) ) {
+<<<<<<< HEAD
 		$rgb = wp_tinycolor_rgb_to_rgb(
+=======
+		return wp_tinycolor_rgb_to_rgb(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			array(
 				'r' => $match[1],
 				'g' => $match[2],
 				'b' => $match[3],
 			)
 		);
+<<<<<<< HEAD
 
 		$rgb['a'] = 1;
 
 		return $rgb;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	$rgba_regexp = '/^rgba' . $permissive_match4 . '$/';
 	if ( preg_match( $rgba_regexp, $color_str, $match ) ) {
+<<<<<<< HEAD
 		$rgb = wp_tinycolor_rgb_to_rgb(
+=======
+		return wp_tinycolor_rgb_to_rgb(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			array(
 				'r' => $match[1],
 				'g' => $match[2],
 				'b' => $match[3],
 			)
 		);
+<<<<<<< HEAD
 
 		$rgb['a'] = _wp_tinycolor_bound_alpha( $match[4] );
 
 		return $rgb;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	$hsl_regexp = '/^hsl' . $permissive_match3 . '$/';
 	if ( preg_match( $hsl_regexp, $color_str, $match ) ) {
+<<<<<<< HEAD
 		$rgb = wp_tinycolor_hsl_to_rgb(
+=======
+		return wp_tinycolor_hsl_to_rgb(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			array(
 				'h' => $match[1],
 				's' => $match[2],
 				'l' => $match[3],
 			)
 		);
+<<<<<<< HEAD
 
 		$rgb['a'] = 1;
 
 		return $rgb;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	$hsla_regexp = '/^hsla' . $permissive_match4 . '$/';
 	if ( preg_match( $hsla_regexp, $color_str, $match ) ) {
+<<<<<<< HEAD
 		$rgb = wp_tinycolor_hsl_to_rgb(
+=======
+		return wp_tinycolor_hsl_to_rgb(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			array(
 				'h' => $match[1],
 				's' => $match[2],
 				'l' => $match[3],
 			)
 		);
+<<<<<<< HEAD
 
 		$rgb['a'] = _wp_tinycolor_bound_alpha( $match[4] );
 
 		return $rgb;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	$hex8_regexp = '/^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/';
 	if ( preg_match( $hex8_regexp, $color_str, $match ) ) {
+<<<<<<< HEAD
 		$rgb = wp_tinycolor_rgb_to_rgb(
+=======
+		return wp_tinycolor_rgb_to_rgb(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			array(
 				'r' => base_convert( $match[1], 16, 10 ),
 				'g' => base_convert( $match[2], 16, 10 ),
 				'b' => base_convert( $match[3], 16, 10 ),
 			)
 		);
+<<<<<<< HEAD
 
 		$rgb['a'] = _wp_tinycolor_bound_alpha(
 			base_convert( $match[4], 16, 10 ) / 255
 		);
 
 		return $rgb;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	$hex6_regexp = '/^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/';
 	if ( preg_match( $hex6_regexp, $color_str, $match ) ) {
+<<<<<<< HEAD
 		$rgb = wp_tinycolor_rgb_to_rgb(
+=======
+		return wp_tinycolor_rgb_to_rgb(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			array(
 				'r' => base_convert( $match[1], 16, 10 ),
 				'g' => base_convert( $match[2], 16, 10 ),
 				'b' => base_convert( $match[3], 16, 10 ),
 			)
 		);
+<<<<<<< HEAD
 
 		$rgb['a'] = 1;
 
 		return $rgb;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	$hex4_regexp = '/^#?([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/';
 	if ( preg_match( $hex4_regexp, $color_str, $match ) ) {
+<<<<<<< HEAD
 		$rgb = wp_tinycolor_rgb_to_rgb(
+=======
+		return wp_tinycolor_rgb_to_rgb(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			array(
 				'r' => base_convert( $match[1] . $match[1], 16, 10 ),
 				'g' => base_convert( $match[2] . $match[2], 16, 10 ),
 				'b' => base_convert( $match[3] . $match[3], 16, 10 ),
 			)
 		);
+<<<<<<< HEAD
 
 		$rgb['a'] = _wp_tinycolor_bound_alpha(
 			base_convert( $match[4] . $match[4], 16, 10 ) / 255
 		);
 
 		return $rgb;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	$hex3_regexp = '/^#?([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/';
 	if ( preg_match( $hex3_regexp, $color_str, $match ) ) {
+<<<<<<< HEAD
 		$rgb = wp_tinycolor_rgb_to_rgb(
+=======
+		return wp_tinycolor_rgb_to_rgb(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			array(
 				'r' => base_convert( $match[1] . $match[1], 16, 10 ),
 				'g' => base_convert( $match[2] . $match[2], 16, 10 ),
 				'b' => base_convert( $match[3] . $match[3], 16, 10 ),
 			)
 		);
+<<<<<<< HEAD
 
 		$rgb['a'] = 1;
 
@@ -464,6 +554,11 @@ function wp_get_duotone_filter_svg( $preset ) {
 
 	return $svg;
 }
+=======
+	}
+}
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 /**
  * Registers the style and colors block attributes for block types that support it.
@@ -500,6 +595,10 @@ function wp_register_duotone_support( $block_type ) {
  *
  * @param string $block_content Rendered block content.
  * @param array  $block         Block object.
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @return string Filtered block content.
  */
 function wp_render_duotone_support( $block_content, $block ) {
@@ -519,6 +618,7 @@ function wp_render_duotone_support( $block_content, $block ) {
 		return $block_content;
 	}
 
+<<<<<<< HEAD
 	$filter_preset   = array(
 		'slug'   => uniqid(),
 		'colors' => $block['attrs']['style']['color']['duotone'],
@@ -574,6 +674,86 @@ function wp_render_duotone_support( $block_content, $block ) {
 		$block_content,
 		1
 	);
+=======
+	$duotone_colors = $block['attrs']['style']['color']['duotone'];
+
+	$duotone_values = array(
+		'r' => array(),
+		'g' => array(),
+		'b' => array(),
+	);
+	foreach ( $duotone_colors as $color_str ) {
+		$color = wp_tinycolor_string_to_rgb( $color_str );
+
+		$duotone_values['r'][] = $color['r'] / 255;
+		$duotone_values['g'][] = $color['g'] / 255;
+		$duotone_values['b'][] = $color['b'] / 255;
+	}
+
+	$duotone_id = 'wp-duotone-filter-' . uniqid();
+
+	$selectors        = explode( ',', $duotone_support );
+	$selectors_scoped = array_map(
+		function ( $selector ) use ( $duotone_id ) {
+			return '.' . $duotone_id . ' ' . trim( $selector );
+		},
+		$selectors
+	);
+	$selectors_group  = implode( ', ', $selectors_scoped );
+
+	ob_start();
+
+	?>
+
+	<style>
+		<?php echo $selectors_group; ?> {
+			filter: url( <?php echo esc_url( '#' . $duotone_id ); ?> );
+		}
+	</style>
+
+	<svg
+		xmlns:xlink="http://www.w3.org/1999/xlink"
+		viewBox="0 0 0 0"
+		width="0"
+		height="0"
+		focusable="false"
+		role="none"
+		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"
+	>
+		<defs>
+			<filter id="<?php echo esc_attr( $duotone_id ); ?>">
+				<feColorMatrix
+					type="matrix"
+					<?php // phpcs:disable Generic.WhiteSpace.DisallowSpaceIndent ?>
+					values=".299 .587 .114 0 0
+							.299 .587 .114 0 0
+							.299 .587 .114 0 0
+							0 0 0 1 0"
+					<?php // phpcs:enable Generic.WhiteSpace.DisallowSpaceIndent ?>
+				/>
+				<feComponentTransfer color-interpolation-filters="sRGB" >
+					<feFuncR type="table" tableValues="<?php echo esc_attr( implode( ' ', $duotone_values['r'] ) ); ?>" />
+					<feFuncG type="table" tableValues="<?php echo esc_attr( implode( ' ', $duotone_values['g'] ) ); ?>" />
+					<feFuncB type="table" tableValues="<?php echo esc_attr( implode( ' ', $duotone_values['b'] ) ); ?>" />
+				</feComponentTransfer>
+			</filter>
+		</defs>
+	</svg>
+
+	<?php
+
+	$duotone = ob_get_clean();
+
+	// Like the layout hook, this assumes the hook only applies to blocks with a single wrapper.
+	$content = preg_replace(
+		'/' . preg_quote( 'class="', '/' ) . '/',
+		'class="' . $duotone_id . ' ',
+		$block_content,
+		1
+	);
+
+	return $content . $duotone;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 // Register the block support.

@@ -2260,6 +2260,7 @@ function embed_wmedia(width, height, link) {
 	{
 		// No-op
 	}
+<<<<<<< HEAD
 
 	/**
 	 * Sanitize a URL by removing HTTP credentials.
@@ -2270,4 +2271,6 @@ function embed_wmedia(width, height, link) {
 	{
 		return preg_replace('#^(https?://)[^/:@]+:[^/:@]+@#i', '$1', $url);
 	}
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }

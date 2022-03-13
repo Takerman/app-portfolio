@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * jQuery UI Progressbar 1.13.1
+=======
+ * jQuery UI Progressbar 1.12.1
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -9,9 +13,15 @@
 
 //>>label: Progressbar
 //>>group: Widgets
+<<<<<<< HEAD
 /* eslint-disable max-len */
 //>>description: Displays a status indicator for loading state, standard percentage, and other progress indicators.
 /* eslint-enable max-len */
+=======
+// jscs:disable maximumLineLength
+//>>description: Displays a status indicator for loading state, standard percentage, and other progress indicators.
+// jscs:enable maximumLineLength
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 //>>docs: http://api.jqueryui.com/progressbar/
 //>>demos: http://jqueryui.com/progressbar/
 //>>css.structure: ../../themes/base/core.css
@@ -19,8 +29,11 @@
 //>>css.theme: ../../themes/base/theme.css
 
 ( function( factory ) {
+<<<<<<< HEAD
 	"use strict";
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -33,11 +46,18 @@
 		// Browser globals
 		factory( jQuery );
 	}
+<<<<<<< HEAD
 } )( function( $ ) {
 "use strict";
 
 return $.widget( "ui.progressbar", {
 	version: "1.13.1",
+=======
+}( function( $ ) {
+
+return $.widget( "ui.progressbar", {
+	version: "1.12.1",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	options: {
 		classes: {
 			"ui-progressbar": "ui-corner-all",
@@ -177,4 +197,8 @@ return $.widget( "ui.progressbar", {
 	}
 } );
 
+<<<<<<< HEAD
 } );
+=======
+} ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

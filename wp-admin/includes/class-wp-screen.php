@@ -1008,10 +1008,20 @@ final class WP_Screen {
 		/**
 		 * Filters the screen settings text displayed in the Screen Options tab.
 		 *
+<<<<<<< HEAD
 		 * @since 3.0.0
 		 *
 		 * @param string    $screen_settings Screen settings.
 		 * @param WP_Screen $screen          WP_Screen object.
+=======
+		 * This filter is currently only used on the Widgets screen to enable
+		 * accessibility mode.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @param string    $screen_settings Screen settings.
+		 * @param WP_Screen $this            WP_Screen object.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$this->_screen_settings = apply_filters( 'screen_settings', $this->_screen_settings, $this );
 
@@ -1026,7 +1036,11 @@ final class WP_Screen {
 		 *
 		 * @param bool      $show_screen Whether to show Screen Options tab.
 		 *                               Default true.
+<<<<<<< HEAD
 		 * @param WP_Screen $screen      Current WP_Screen instance.
+=======
+		 * @param WP_Screen $this        Current WP_Screen instance.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$this->_show_screen_options = apply_filters( 'screen_options_show_screen', $show_screen, $this );
 		return $this->_show_screen_options;

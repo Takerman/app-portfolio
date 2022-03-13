@@ -16,7 +16,11 @@ if ( ! class_exists( 'Translation_Entry', false ) ) :
 		/**
 		 * Whether the entry contains a string and its plural form, default is false
 		 *
+<<<<<<< HEAD
 		 * @var bool
+=======
+		 * @var boolean
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		public $is_plural = false;
 
@@ -30,6 +34,7 @@ if ( ! class_exists( 'Translation_Entry', false ) ) :
 		public $flags               = array();
 
 		/**
+<<<<<<< HEAD
 		 * @param array $args {
 		 *     Arguments array, supports the following keys:
 		 *
@@ -49,6 +54,19 @@ if ( ! class_exists( 'Translation_Entry', false ) ) :
 		 * }
 		 */
 		public function __construct( $args = array() ) {
+=======
+		 * @param array $args associative array, support following keys:
+		 *  - singular (string) -- the string to translate, if omitted and empty entry will be created
+		 *  - plural (string) -- the plural form of the string, setting this will set {@link $is_plural} to true
+		 *  - translations (array) -- translations of the string and possibly -- its plural forms
+		 *  - context (string) -- a string differentiating two equal strings used in different contexts
+		 *  - translator_comments (string) -- comments left by translators
+		 *  - extracted_comments (string) -- comments left by developers
+		 *  - references (array) -- places in the code this strings is used, in relative_to_root_path/file.php:linenum form
+		 *  - flags (array) -- flags like php-format
+		 */
+		function __construct( $args = array() ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			// If no singular -- empty object.
 			if ( ! isset( $args['singular'] ) ) {
 				return;
@@ -88,7 +106,11 @@ if ( ! class_exists( 'Translation_Entry', false ) ) :
 		 *
 		 * @return string|bool the key or false if the entry is empty
 		 */
+<<<<<<< HEAD
 		public function key() {
+=======
+		function key() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( null === $this->singular || '' === $this->singular ) {
 				return false;
 			}
@@ -104,7 +126,11 @@ if ( ! class_exists( 'Translation_Entry', false ) ) :
 		/**
 		 * @param object $other
 		 */
+<<<<<<< HEAD
 		public function merge_with( &$other ) {
+=======
+		function merge_with( &$other ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$this->flags      = array_unique( array_merge( $this->flags, $other->flags ) );
 			$this->references = array_unique( array_merge( $this->references, $other->references ) );
 			if ( $this->extracted_comments != $other->extracted_comments ) {

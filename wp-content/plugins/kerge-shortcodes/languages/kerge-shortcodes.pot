@@ -1,0 +1,1013 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Kerge Shortcodes 2.1.1\n"
+"POT-Creation-Date: 2021-04-02 10:19+0400\n"
+"PO-Revision-Date: 2017-09-26 16:45+0400\n"
+"Last-Translator: \n"
+"Language-Team: LMPixels linar@lmpixels.com\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext;_n;__ngettext_noop;_n_noop;_x;_nx;"
+"_nx_noop;_ex;esc_attr__;esc_attr_e;esc_attr_x;esc_html__;esc_html_e;"
+"esc_html_x;_c;_nc\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: extensions/kerge-shortcodes/shortcodes/block-title/config.php:5
+msgid "Block Title"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/block-title/config.php:6
+msgid "Block title"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/block-title/config.php:7
+#: extensions/kerge-shortcodes/shortcodes/blog-posts-2/config.php:7
+#: extensions/kerge-shortcodes/shortcodes/blog-posts/config.php:7
+#: extensions/kerge-shortcodes/shortcodes/client/config.php:8
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/config.php:10
+#: extensions/kerge-shortcodes/shortcodes/contact-2/config.php:7
+#: extensions/kerge-shortcodes/shortcodes/contact/config.php:7
+#: extensions/kerge-shortcodes/shortcodes/info-block/config.php:7
+#: extensions/kerge-shortcodes/shortcodes/info-list-2/config.php:10
+#: extensions/kerge-shortcodes/shortcodes/info-list/config.php:10
+#: extensions/kerge-shortcodes/shortcodes/portfolio/config.php:8
+#: extensions/kerge-shortcodes/shortcodes/quote/config.php:9
+#: extensions/kerge-shortcodes/shortcodes/service/config.php:8
+#: extensions/kerge-shortcodes/shortcodes/skills/config.php:10
+#: extensions/kerge-shortcodes/shortcodes/social/config.php:10
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/config.php:10
+#: extensions/kerge-shortcodes/shortcodes/timeline/config.php:10
+#: extensions/kerge-shortcodes/shortcodes/title/config.php:7
+msgid "Kerge Elements"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/block-title/options.php:5
+msgid "ID"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/block-title/options.php:6
+msgid ""
+"Optional field. You can add an ID for this block, for example for the Scroll "
+"to ID functionality. There should be no spaces in this field. Example ID: "
+"test_id."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/block-title/options.php:10
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:20
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:7
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:34
+#: extensions/kerge-shortcodes/shortcodes/image-slider/options.php:22
+#: extensions/kerge-shortcodes/shortcodes/info-block/options.php:13
+#: extensions/kerge-shortcodes/shortcodes/info-list-2/options.php:7
+#: extensions/kerge-shortcodes/shortcodes/info-list-2/options.php:24
+#: extensions/kerge-shortcodes/shortcodes/info-list/options.php:7
+#: extensions/kerge-shortcodes/shortcodes/info-list/options.php:19
+#: extensions/kerge-shortcodes/shortcodes/skills/options.php:7
+#: extensions/kerge-shortcodes/shortcodes/skills/options.php:32
+#: extensions/kerge-shortcodes/shortcodes/social/options.php:7
+#: extensions/kerge-shortcodes/shortcodes/social/options.php:23
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:8
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:7
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:35
+#: extensions/kerge-shortcodes/shortcodes/title/options.php:5
+#: kerge-shortcodes.php:49 kerge-shortcodes.php:280
+msgid "Title"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/block-title/options.php:11
+#: extensions/kerge-shortcodes/shortcodes/block-title/options.php:16
+#: extensions/kerge-shortcodes/shortcodes/title/options.php:6
+#: extensions/kerge-shortcodes/shortcodes/title/options.php:11
+msgid "Write some text"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/block-title/options.php:15
+msgid "Color Part of Title"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/block-title/options.php:20
+msgid "Short Description"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/block-title/options.php:21
+msgid "Optional field. Add a brief description of the block."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/blog-posts-2/config.php:5
+msgid "Blog Posts 2"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/blog-posts-2/config.php:6
+msgid "Blog posts grid without images"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/blog-posts-2/options.php:6
+#: extensions/kerge-shortcodes/shortcodes/blog-posts/options.php:6
+#: extensions/kerge-shortcodes/shortcodes/portfolio/options.php:6
+msgid "Layout"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/blog-posts-2/options.php:7
+#: extensions/kerge-shortcodes/shortcodes/blog-posts/options.php:7
+#: extensions/kerge-shortcodes/shortcodes/portfolio/options.php:7
+msgid "Choose the layout type"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/blog-posts-2/options.php:11
+#: extensions/kerge-shortcodes/shortcodes/blog-posts/options.php:11
+msgid "1 Column"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/blog-posts-2/options.php:12
+#: extensions/kerge-shortcodes/shortcodes/blog-posts/options.php:12
+#: extensions/kerge-shortcodes/shortcodes/portfolio/options.php:11
+msgid "2 Columns"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/blog-posts-2/options.php:13
+#: extensions/kerge-shortcodes/shortcodes/blog-posts/options.php:13
+#: extensions/kerge-shortcodes/shortcodes/portfolio/options.php:12
+msgid "3 Columns"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/blog-posts-2/options.php:17
+#: extensions/kerge-shortcodes/shortcodes/blog-posts/options.php:17
+msgid "Number of posts to show"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/blog-posts-2/views/view.php:52
+#: extensions/kerge-shortcodes/shortcodes/blog-posts/views/view.php:51
+#: extensions/kerge-shortcodes/shortcodes/blog-posts/views/view.php:94
+#, php-format
+msgid "View all posts in %s"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/blog-posts-2/views/view.php:80
+#: extensions/kerge-shortcodes/shortcodes/blog-posts-2/views/view.php:90
+#: extensions/kerge-shortcodes/shortcodes/blog-posts/views/view.php:143
+#: extensions/kerge-shortcodes/shortcodes/blog-posts/views/view.php:153
+msgid "See All Posts"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/blog-posts/config.php:5
+msgid "Blog Posts"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/blog-posts/config.php:6
+msgid "Blog posts grid"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/blog-posts/options.php:24
+msgid "Show only posts with featured image"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/blog-posts/options.php:27
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:74
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:91
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:107
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:138
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:100
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:117
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:133
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:164
+msgid "Off"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/blog-posts/options.php:31
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:70
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:87
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:103
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:134
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:96
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:113
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:129
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:160
+msgid "On"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/blog-posts/views/view.php:109
+#: extensions/kerge-shortcodes/shortcodes/portfolio/views/view.php:130
+#: extensions/kerge-shortcodes/shortcodes/timeline/views/view.php:35
+#: extensions/kerge-shortcodes/shortcodes/timeline/views/view.php:47
+msgid "image"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/client/config.php:6
+msgid "Client"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/client/config.php:7
+msgid "Add an Client"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/client/options.php:8
+msgid "Choose Logo Image"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/client/options.php:9
+msgid ""
+"Either upload a new, or choose an existing logo image from your media library"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/client/options.php:16
+msgid "Width"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/client/options.php:17
+msgid "Set image width"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/client/options.php:22
+msgid "Height"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/client/options.php:23
+msgid "Set image height"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/client/options.php:33
+msgid "Logo Image Link"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/client/options.php:34
+msgid "Where should your logo image link to?"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/client/options.php:38
+#: extensions/kerge-shortcodes/shortcodes/info-list/options.php:35
+#: extensions/kerge-shortcodes/shortcodes/social/options.php:34
+msgid "Open Link in New Window"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/client/options.php:39
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:32
+#: extensions/kerge-shortcodes/shortcodes/info-list/options.php:36
+#: extensions/kerge-shortcodes/shortcodes/social/options.php:35
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:58
+msgid "Select here if you want to open the linked page in a new window"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/client/options.php:42
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:36
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:58
+#: extensions/kerge-shortcodes/shortcodes/contact/options.php:50
+#: extensions/kerge-shortcodes/shortcodes/info-list/options.php:39
+#: extensions/kerge-shortcodes/shortcodes/social/options.php:38
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:62
+msgid "Yes"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/client/options.php:46
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:40
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:54
+#: extensions/kerge-shortcodes/shortcodes/contact/options.php:46
+#: extensions/kerge-shortcodes/shortcodes/info-list/options.php:43
+#: extensions/kerge-shortcodes/shortcodes/social/options.php:42
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:66
+msgid "No"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/config.php:8
+msgid "Clients Slider"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/config.php:9
+msgid "Add some Clients logos"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:8
+msgid "Clients"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:9
+msgid "Add/Edit Client Item"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:10
+msgid "Here you can add, remove and edit Clients."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:15
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:51
+msgid "Logo"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:16
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:37
+msgid ""
+"Either upload a new, or choose an existing image from your media library"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:21
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:26
+msgid "Link to the Clients website"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:25
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:51
+msgid "Website Link"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:31
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:57
+msgid "Open Website Link in New Tab"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:46
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:72
+msgid "Items on the front: Desktop"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:47
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:53
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:59
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:73
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:79
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:85
+msgid "Example: 2"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:52
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:78
+msgid "Items on the front: Tablet"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:58
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:84
+msgid "Items on the front: Mobile"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:65
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:91
+msgid "Infinity Loop"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:66
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:92
+msgid "Duplicate last and first items to get loop illusion."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:83
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:109
+msgid "Autoplay"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:99
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:125
+msgid "Autoplay only on Tablets and Mobiles"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:112
+msgid "Autoplay Timeout"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:113
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:139
+msgid "Example: 5000."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:118
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:144
+msgid "Autoplay Smart Speed"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:119
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:145
+msgid "Example: 1500."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:129
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:155
+msgid "Slide by Page"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/clients-slider/options.php:130
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:156
+msgid "Items will slide by page."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/config.php:5
+#: extensions/kerge-shortcodes/shortcodes/contact-2/config.php:6
+msgid "Contact Form 2"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:8
+msgid "Option Contact Form 2 Title"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:12
+msgid "Contact Form Elements"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:13
+msgid "Add/Edit Contact Form Elements"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:14
+msgid "Here you can add, remove and edit your Contact Form 2 elements."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:22
+msgid "Element Type"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:23
+msgid "The type of the form element."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:25
+msgid "Text Input"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:26
+msgid "Textarea"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:27
+msgid "E-Mail"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:28
+msgid "Phone"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:29
+msgid "Checkbox"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:35
+#: extensions/kerge-shortcodes/shortcodes/info-list/options.php:20
+#: extensions/kerge-shortcodes/shortcodes/skills/options.php:33
+#: extensions/kerge-shortcodes/shortcodes/social/options.php:24
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:36
+msgid "Enter the title"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:40
+#: extensions/kerge-shortcodes/shortcodes/info-block/options.php:9
+#: extensions/kerge-shortcodes/shortcodes/info-list-2/options.php:21
+#: extensions/kerge-shortcodes/shortcodes/service/options.php:8
+#: extensions/kerge-shortcodes/shortcodes/social/options.php:20
+msgid "Choose an Icon"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:43
+msgid "Error Message"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:44
+msgid "Enter the error message"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:51
+#: extensions/kerge-shortcodes/shortcodes/contact/options.php:43
+msgid "Mandatory"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:64
+msgid "Submit Button Text"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact-2/options.php:66
+msgid "Submit"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact/config.php:5
+#: extensions/kerge-shortcodes/shortcodes/contact/config.php:6
+msgid "Contact Form"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact/options.php:12
+msgid "Show the Checkbox"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact/options.php:16
+msgid "on"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact/options.php:20
+msgid "off"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact/options.php:28
+msgid "Checkbox Text"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact/options.php:29
+msgid ""
+"Checkbox text. In this field you can use HTML tags, for example, you can add "
+"a link to any page."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact/options.php:34
+msgid "Checkbox Error Text"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact/options.php:35
+msgid "Checkbox error text."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact/views/view.php:20
+msgid "Full Name"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact/views/view.php:20
+msgid "Name is required."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact/views/view.php:26
+msgid "Email Address"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact/views/view.php:26
+msgid "Valid email is required."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact/views/view.php:32
+msgid "Subject"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact/views/view.php:32
+msgid "Subject is required."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact/views/view.php:39
+msgid "Message"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact/views/view.php:39
+msgid "Please, leave me a message."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/contact/views/view.php:70
+msgid "Send message"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/image-slider/config.php:8
+#: extensions/kerge-shortcodes/shortcodes/image-slider/options.php:7
+msgid "Image Slider"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/image-slider/config.php:9
+msgid "Add Image Slider"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/image-slider/config.php:10
+msgid "Kerge Media Elements"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/image-slider/options.php:8
+msgid "Add/Edit Image Slider Item"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/image-slider/options.php:9
+msgid "Here you can add, remove and edit your Image Slider."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/image-slider/options.php:18
+msgid "Add Image"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/info-block/config.php:6
+msgid "Info Block"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/info-block/options.php:17
+msgid "Highlighted Content"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/info-block/options.php:21
+#: extensions/kerge-shortcodes/shortcodes/info-list-2/options.php:28
+#: extensions/kerge-shortcodes/shortcodes/info-list/options.php:24
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:37
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:45
+msgid "Text"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/info-block/options.php:25
+msgid "Box Style"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/info-block/options.php:27
+msgid "Default Background"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/info-block/options.php:28
+msgid "Gray Background"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/info-block/options.php:36
+#: extensions/kerge-shortcodes/shortcodes/info-list-2/options.php:36
+msgid "Icon Color"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/info-list-2/config.php:8
+msgid "Info List 2"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/info-list-2/config.php:9
+#: extensions/kerge-shortcodes/shortcodes/info-list/config.php:9
+msgid "Add some Information"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/info-list-2/options.php:8
+#: extensions/kerge-shortcodes/shortcodes/info-list/options.php:8
+msgid "Option Info List Title"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/info-list-2/options.php:12
+#: extensions/kerge-shortcodes/shortcodes/info-list/config.php:8
+#: extensions/kerge-shortcodes/shortcodes/info-list/options.php:12
+msgid "Info List"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/info-list-2/options.php:13
+#: extensions/kerge-shortcodes/shortcodes/info-list/options.php:13
+msgid "Add/Edit Info List Item"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/info-list-2/options.php:14
+#: extensions/kerge-shortcodes/shortcodes/info-list/options.php:14
+msgid "Here you can add, remove and edit your Info List."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/info-list/options.php:25
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:46
+msgid "Enter the some text"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/info-list/options.php:30
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:52
+#: extensions/kerge-shortcodes/shortcodes/social/options.php:29
+msgid "Link"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/info-list/options.php:31
+#: extensions/kerge-shortcodes/shortcodes/social/options.php:30
+msgid "Where should your link to?"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/portfolio/config.php:6
+msgid "Portfolio"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/portfolio/config.php:7
+msgid "Portfolio grid"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/portfolio/options.php:13
+msgid "4 Columns"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/portfolio/options.php:14
+msgid "5 Columns"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/portfolio/options.php:21
+msgid "Categories"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/portfolio/options.php:22
+msgid ""
+"Select the categories from which the projects will be displayed. If this "
+"field is empty, then projects will be displayed from all categories."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/portfolio/views/view.php:63
+msgid "All"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/config.php:7
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:31
+msgid "Quote"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/config.php:8
+msgid "Add a Quote"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:8
+msgid "Text Alignment"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:9
+msgid "Select the prefered text alignment"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:17
+msgid "Left"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:24
+msgid "Center"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:31
+msgid "Right"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:38
+msgid "Enter quote text"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:46
+msgid "Author"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:47
+msgid "Enter the quote author"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:53
+msgid "Enter the author link"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:60
+msgid "Font Size"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:61
+msgid "Select font size"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:66
+msgid "Small"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:67
+msgid "Medium"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:68
+msgid "Large"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:72
+msgid "Custom Class"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:73
+msgid "Enter custom CSS class"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/quote/options.php:76
+msgid ""
+"You can use this class to further style this shortcode by adding your custom "
+"CSS."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/service/config.php:6
+msgid "Service"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/service/config.php:7
+msgid "Add an Service block"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/service/options.php:12
+msgid "Title of the Service"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/service/options.php:16
+msgid "Content"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/service/options.php:17
+msgid "Enter the desired content"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/skills/config.php:8
+msgid "Skills"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/skills/config.php:9
+msgid "Skills block"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/skills/options.php:8
+msgid "Option Skills Title"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/skills/options.php:12
+msgid "Skills Style"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/skills/options.php:13
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:13
+msgid "Choose the style"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/skills/options.php:17
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:17
+msgid "1 Style"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/skills/options.php:18
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:18
+msgid "2 Style"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/skills/options.php:22
+msgid "Skill"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/skills/options.php:23
+msgid "Add/Edit Skill"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/skills/options.php:24
+msgid "Here you can add, remove and edit your skill."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/skills/options.php:37
+msgid "Value"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/skills/options.php:38
+msgid "Enter the value (%)"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/skills/options.php:42
+msgid "Skill Color"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/skills/options.php:46
+msgid "Select main color."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/social/config.php:8
+msgid "Social Links"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/social/config.php:9
+msgid "Add social links"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/social/options.php:8
+msgid "Option Social Title"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/social/options.php:12
+msgid "Social Icons"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/social/options.php:13
+msgid "Add/Edit Social Icons"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/social/options.php:14
+msgid "Here you can add, remove and edit your Social Icons."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/config.php:8
+msgid "Testimonials Slider"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/config.php:9
+msgid "Add some Testimonials"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:9
+msgid "Option Testimonials Title"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:16
+msgid "Testimonials Style"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:18
+msgid "Style 1"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:19
+msgid "Style 2"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:24
+msgid "Testimonials"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:25
+msgid "Add/Edit Testimonial"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:26
+msgid "Here you can add, remove and edit your Testimonials."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:32
+msgid "Enter the testimonial here"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:36
+msgid "Image"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:41
+msgid "Name"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:42
+msgid "Enter the Name of the Person to quote"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:46
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:40
+msgid "Company"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:47
+msgid "Enter the Company Name"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:52
+msgid "Link to the Persons website"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/testimonials-slider/options.php:138
+msgid "Atoplay Timeout"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/timeline/config.php:8
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:22
+msgid "Timeline"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/timeline/config.php:9
+msgid "Timeline Information (Education, Experience...)"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:8
+msgid "Option Timeline Title"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:12
+msgid "Timeline Style"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:23
+msgid "Add/Edit Timeline"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:24
+msgid "Here you can add, remove and edit timeline."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:30
+msgid "Period"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:31
+msgid "Enter the period"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:41
+msgid "Enter the company name"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:52
+msgid "Upload a logo image."
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:60
+msgid "Period BG Color"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/timeline/options.php:61
+msgid "This setting applies only to the first style"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/title/config.php:5
+msgid "Page Title"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/title/config.php:6
+msgid "Section title"
+msgstr ""
+
+#: extensions/kerge-shortcodes/shortcodes/title/options.php:10
+#: kerge-shortcodes.php:286
+msgid "Subtitle"
+msgstr ""
+
+#: kerge-shortcodes.php:37
+msgid "+ Kerge Theme &#151; Start Page"
+msgstr ""
+
+#: kerge-shortcodes.php:38 kerge-shortcodes.php:268
+msgid "About Me, Resume etc."
+msgstr ""
+
+#: kerge-shortcodes.php:55 kerge-shortcodes.php:292
+msgid "Select A Page"
+msgstr ""
+
+#: kerge-shortcodes.php:267
+msgid "+ Kerge Theme &#151; Custom Page"
+msgstr ""

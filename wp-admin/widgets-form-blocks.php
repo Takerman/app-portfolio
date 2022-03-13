@@ -18,7 +18,11 @@ $current_screen->is_block_editor( true );
 $block_editor_context = new WP_Block_Editor_Context();
 
 $preload_paths = array(
+<<<<<<< HEAD
 	array( rest_get_route_for_post_type_items( 'attachment' ), 'OPTIONS' ),
+=======
+	array( '/wp/v2/media', 'OPTIONS' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	'/wp/v2/sidebars?context=edit&per_page=-1',
 	'/wp/v2/widgets?context=edit&per_page=-1&_embed=about',
 );

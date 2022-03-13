@@ -265,14 +265,20 @@ class WP_REST_Plugins_Controller extends WP_REST_Controller {
 	 *
 	 * @since 5.5.0
 	 *
+<<<<<<< HEAD
 	 * @global WP_Filesystem_Base $wp_filesystem WordPress filesystem subclass.
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @param WP_REST_Request $request Full details about the request.
 	 * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
 	 */
 	public function create_item( $request ) {
+<<<<<<< HEAD
 		global $wp_filesystem;
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		require_once ABSPATH . 'wp-admin/includes/file.php';
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
@@ -333,6 +339,7 @@ class WP_REST_Plugins_Controller extends WP_REST_Controller {
 		}
 
 		if ( is_null( $result ) ) {
+<<<<<<< HEAD
 			// Pass through the error from WP_Filesystem if one was raised.
 			if ( $wp_filesystem instanceof WP_Filesystem_Base
 				&& is_wp_error( $wp_filesystem->errors ) && $wp_filesystem->errors->has_errors()
@@ -349,16 +356,29 @@ class WP_REST_Plugins_Controller extends WP_REST_Controller {
 				__( 'Unable to connect to the filesystem. Please confirm your credentials.' ),
 				array( 'status' => 500 )
 			);
+=======
+			global $wp_filesystem;
+			// Pass through the error from WP_Filesystem if one was raised.
+			if ( $wp_filesystem instanceof WP_Filesystem_Base && is_wp_error( $wp_filesystem->errors ) && $wp_filesystem->errors->has_errors() ) {
+				return new WP_Error( 'unable_to_connect_to_filesystem', $wp_filesystem->errors->get_error_message(), array( 'status' => 500 ) );
+			}
+
+			return new WP_Error( 'unable_to_connect_to_filesystem', __( 'Unable to connect to the filesystem. Please confirm your credentials.' ), array( 'status' => 500 ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		$file = $upgrader->plugin_info();
 
 		if ( ! $file ) {
+<<<<<<< HEAD
 			return new WP_Error(
 				'unable_to_determine_installed_plugin',
 				__( 'Unable to determine what plugin was installed.' ),
 				array( 'status' => 500 )
 			);
+=======
+			return new WP_Error( 'unable_to_determine_installed_plugin', __( 'Unable to determine what plugin was installed.' ), array( 'status' => 500 ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		if ( 'inactive' !== $request['status'] ) {
@@ -381,7 +401,11 @@ class WP_REST_Plugins_Controller extends WP_REST_Controller {
 		$installed_locales = apply_filters( 'plugins_update_check_locales', $installed_locales );
 
 		$language_packs = array_map(
+<<<<<<< HEAD
 			static function( $item ) {
+=======
+			function( $item ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				return (object) $item;
 			},
 			$api->language_packs
@@ -389,7 +413,11 @@ class WP_REST_Plugins_Controller extends WP_REST_Controller {
 
 		$language_packs = array_filter(
 			$language_packs,
+<<<<<<< HEAD
 			static function( $pack ) use ( $installed_locales ) {
+=======
+			function( $pack ) use ( $installed_locales ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				return in_array( $pack->language, $installed_locales, true );
 			}
 		);

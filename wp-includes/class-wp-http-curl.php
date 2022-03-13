@@ -115,7 +115,11 @@ class WP_Http_Curl {
 			/** This filter is documented in wp-includes/class-wp-http-streams.php */
 			$ssl_verify = apply_filters( 'https_local_ssl_verify', $ssl_verify, $url );
 		} elseif ( ! $is_local ) {
+<<<<<<< HEAD
 			/** This filter is documented in wp-includes/class-wp-http.php */
+=======
+			/** This filter is documented in wp-includes/class-http.php */
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$ssl_verify = apply_filters( 'https_ssl_verify', $ssl_verify, $url );
 		}
 
@@ -256,8 +260,12 @@ class WP_Http_Curl {
 		}
 
 		curl_exec( $handle );
+<<<<<<< HEAD
 
 		$processed_headers   = WP_Http::processHeaders( $this->headers, $url );
+=======
+		$theHeaders          = WP_Http::processHeaders( $this->headers, $url );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$theBody             = $this->body;
 		$bytes_written_total = $this->bytes_written_total;
 
@@ -268,7 +276,11 @@ class WP_Http_Curl {
 		$curl_error = curl_errno( $handle );
 
 		// If an error occurred, or, no response.
+<<<<<<< HEAD
 		if ( $curl_error || ( 0 == strlen( $theBody ) && empty( $processed_headers['headers'] ) ) ) {
+=======
+		if ( $curl_error || ( 0 == strlen( $theBody ) && empty( $theHeaders['headers'] ) ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( CURLE_WRITE_ERROR /* 23 */ == $curl_error ) {
 				if ( ! $this->max_body_length || $this->max_body_length != $bytes_written_total ) {
 					if ( $parsed_args['stream'] ) {
@@ -300,22 +312,37 @@ class WP_Http_Curl {
 		}
 
 		$response = array(
+<<<<<<< HEAD
 			'headers'  => $processed_headers['headers'],
 			'body'     => null,
 			'response' => $processed_headers['response'],
 			'cookies'  => $processed_headers['cookies'],
+=======
+			'headers'  => $theHeaders['headers'],
+			'body'     => null,
+			'response' => $theHeaders['response'],
+			'cookies'  => $theHeaders['cookies'],
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			'filename' => $parsed_args['filename'],
 		);
 
 		// Handle redirects.
+<<<<<<< HEAD
 		$redirect_response = WP_Http::handle_redirects( $url, $parsed_args, $response );
+=======
+		$redirect_response = WP_HTTP::handle_redirects( $url, $parsed_args, $response );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( false !== $redirect_response ) {
 			return $redirect_response;
 		}
 
+<<<<<<< HEAD
 		if ( true === $parsed_args['decompress']
 			&& true === WP_Http_Encoding::should_decode( $processed_headers['headers'] )
 		) {
+=======
+		if ( true === $parsed_args['decompress'] && true === WP_Http_Encoding::should_decode( $theHeaders['headers'] ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$theBody = WP_Http_Encoding::decompress( $theBody );
 		}
 

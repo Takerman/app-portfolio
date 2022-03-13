@@ -149,7 +149,11 @@ function prepareMediaItemInit( fileObj ) {
 	jQuery( '.filename.original', item ).replaceWith( jQuery( '.filename.new', item ) );
 
 	// Bind Ajax to the new Delete button.
+<<<<<<< HEAD
 	jQuery( 'a.delete', item ).on( 'click', function(){
+=======
+	jQuery( 'a.delete', item ).click( function(){
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		// Tell the server to delete it. TODO: Handle exceptions.
 		jQuery.ajax({
 			url: ajaxurl,
@@ -167,7 +171,11 @@ function prepareMediaItemInit( fileObj ) {
 	});
 
 	// Bind Ajax to the new Undo button.
+<<<<<<< HEAD
 	jQuery( 'a.undo', item ).on( 'click', function(){
+=======
+	jQuery( 'a.undo', item ).click( function(){
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		// Tell the server to untrash it. TODO: Handle exceptions.
 		jQuery.ajax({
 			url: ajaxurl,

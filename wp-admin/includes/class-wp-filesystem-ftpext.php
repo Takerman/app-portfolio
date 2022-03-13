@@ -696,14 +696,22 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	 *
 	 *     @type string $name        Name of the file or directory.
 	 *     @type string $perms       *nix representation of permissions.
+<<<<<<< HEAD
 	 *     @type string $permsn      Octal representation of permissions.
+=======
+	 *     @type int    $permsn      Octal representation of permissions.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *     @type string $owner       Owner name or ID.
 	 *     @type int    $size        Size of file in bytes.
 	 *     @type int    $lastmodunix Last modified unix timestamp.
 	 *     @type mixed  $lastmod     Last modified month (3 letter) and day (without leading 0).
 	 *     @type int    $time        Last modified time.
 	 *     @type string $type        Type of resource. 'f' for file, 'd' for directory.
+<<<<<<< HEAD
 	 *     @type mixed  $files       If a directory and `$recursive` is true, contains another array of files.
+=======
+	 *     @type mixed  $files       If a directory and $recursive is true, contains another array of files.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * }
 	 */
 	public function dirlist( $path = '.', $include_hidden = true, $recursive = false ) {

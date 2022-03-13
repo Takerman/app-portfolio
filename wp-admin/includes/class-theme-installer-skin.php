@@ -115,7 +115,11 @@ class Theme_Installer_Skin extends WP_Upgrader_Skin {
 
 		$install_actions = array();
 
+<<<<<<< HEAD
 		if ( current_user_can( 'edit_theme_options' ) && current_user_can( 'customize' ) && ! $theme_info->is_block_theme() ) {
+=======
+		if ( current_user_can( 'edit_theme_options' ) && current_user_can( 'customize' ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$customize_url = add_query_arg(
 				array(
 					'theme'  => urlencode( $stylesheet ),
@@ -282,9 +286,15 @@ class Theme_Installer_Skin extends WP_Upgrader_Skin {
 		 *
 		 * @since 5.5.0
 		 *
+<<<<<<< HEAD
 		 * @param string   $table              The output table with Name, Version, Author, RequiresWP, and RequiresPHP info.
 		 * @param WP_Theme $current_theme_data Current theme data.
 		 * @param array    $new_theme_data     Array with uploaded theme data.
+=======
+		 * @param string $table              The output table with Name, Version, Author, RequiresWP, and RequiresPHP info.
+		 * @param array  $current_theme_data Array with current theme data.
+		 * @param array  $new_theme_data     Array with uploaded theme data.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		echo apply_filters( 'install_theme_overwrite_comparison', $table, $current_theme_data, $new_theme_data );
 

@@ -128,7 +128,10 @@ __webpack_require__.d(__webpack_exports__, "useConstrainedTabbing", function() {
 __webpack_require__.d(__webpack_exports__, "useCopyOnClick", function() { return /* reexport */ useCopyOnClick; });
 __webpack_require__.d(__webpack_exports__, "useCopyToClipboard", function() { return /* reexport */ useCopyToClipboard; });
 __webpack_require__.d(__webpack_exports__, "__experimentalUseDialog", function() { return /* reexport */ use_dialog; });
+<<<<<<< HEAD
 __webpack_require__.d(__webpack_exports__, "__experimentalUseDisabled", function() { return /* reexport */ useDisabled; });
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 __webpack_require__.d(__webpack_exports__, "__experimentalUseDragging", function() { return /* reexport */ useDragging; });
 __webpack_require__.d(__webpack_exports__, "useFocusOnMount", function() { return /* reexport */ useFocusOnMount; });
 __webpack_require__.d(__webpack_exports__, "__experimentalUseFocusOutside", function() { return /* reexport */ useFocusOutside; });
@@ -148,8 +151,11 @@ __webpack_require__.d(__webpack_exports__, "useThrottle", function() { return /*
 __webpack_require__.d(__webpack_exports__, "useMergeRefs", function() { return /* reexport */ useMergeRefs; });
 __webpack_require__.d(__webpack_exports__, "useRefEffect", function() { return /* reexport */ useRefEffect; });
 __webpack_require__.d(__webpack_exports__, "__experimentalUseDropZone", function() { return /* reexport */ useDropZone; });
+<<<<<<< HEAD
 __webpack_require__.d(__webpack_exports__, "useFocusableIframe", function() { return /* reexport */ useFocusableIframe; });
 __webpack_require__.d(__webpack_exports__, "__experimentalUseFixedWindowList", function() { return /* reexport */ useFixedWindowList; });
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 // EXTERNAL MODULE: external "lodash"
 var external_lodash_ = __webpack_require__("YLtl");
@@ -164,8 +170,13 @@ var external_lodash_ = __webpack_require__("YLtl");
  * Given a function mapping a component to an enhanced component and modifier
  * name, returns the enhanced component augmented with a generated displayName.
  *
+<<<<<<< HEAD
  * @param  mapComponentToEnhancedComponent Function mapping component to enhanced component.
  * @param  modifierName                    Seed name from which to generated display name.
+=======
+ * @param mapComponentToEnhancedComponent Function mapping component to enhanced component.
+ * @param modifierName                    Seed name from which to generated display name.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return Component class with generated display name assigned.
  */
@@ -189,9 +200,15 @@ function createHigherOrderComponent(mapComponent, modifierName) {
  * Composes multiple higher-order components into a single higher-order component. Performs right-to-left function
  * composition, where each successive invocation is supplied the return value of the previous.
  *
+<<<<<<< HEAD
  * This is just a re-export of `lodash`'s `flowRight` function.
  *
  * @see https://docs-lodash.com/v4/flow-right/
+=======
+ * @param {...Function} hocs The HOC functions to invoke.
+ *
+ * @return {Function} Returns the new composite function.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 /* harmony default export */ var compose = (external_lodash_["flowRight"]);
@@ -205,7 +222,11 @@ var external_wp_element_ = __webpack_require__("GRId");
 /**
  * Internal dependencies
  */
+<<<<<<< HEAD
 
+=======
+ // eslint-disable-next-line no-duplicate-imports
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 /**
  * Higher-order component creator, creating a new component which renders if
@@ -220,7 +241,11 @@ var external_wp_element_ = __webpack_require__("GRId");
  * <ConditionalComponent foo="bar" />; // => <div>bar</div>;
  * ```
  *
+<<<<<<< HEAD
  * @param  predicate Function to test condition.
+=======
+ * @param predicate Function to test condition.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return Higher-order component.
  */
@@ -250,7 +275,11 @@ var external_wp_isShallowEqual_default = /*#__PURE__*/__webpack_require__.n(exte
  * Internal dependencies
  */
 
+<<<<<<< HEAD
 
+=======
+ // eslint-disable-next-line no-duplicate-imports
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 /**
  * Given a component returns the enhanced component augmented with a component
@@ -299,16 +328,23 @@ var external_wp_deprecated_default = /*#__PURE__*/__webpack_require__.n(external
 
 class listener_Listener {
   constructor() {
+<<<<<<< HEAD
     /** @type {any} */
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     this.listeners = {};
     this.handleEvent = this.handleEvent.bind(this);
   }
 
+<<<<<<< HEAD
   add(
   /** @type {any} */
   eventType,
   /** @type {any} */
   instance) {
+=======
+  add(eventType, instance) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     if (!this.listeners[eventType]) {
       // Adding first listener for this type, so bind event.
       window.addEventListener(eventType, this.handleEvent);
@@ -318,11 +354,15 @@ class listener_Listener {
     this.listeners[eventType].push(instance);
   }
 
+<<<<<<< HEAD
   remove(
   /** @type {any} */
   eventType,
   /** @type {any} */
   instance) {
+=======
+  remove(eventType, instance) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     this.listeners[eventType] = Object(external_lodash_["without"])(this.listeners[eventType], instance);
 
     if (!this.listeners[eventType].length) {
@@ -332,9 +372,13 @@ class listener_Listener {
     }
   }
 
+<<<<<<< HEAD
   handleEvent(
   /** @type {any} */
   event) {
+=======
+  handleEvent(event) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     Object(external_lodash_["forEach"])(this.listeners[event.type], instance => {
       instance.handleEvent(event);
     });
@@ -366,11 +410,19 @@ class listener_Listener {
 
 /**
  * Listener instance responsible for managing document event handling.
+<<<<<<< HEAD
  */
 
 const with_global_events_listener = new listener();
 /* eslint-disable jsdoc/no-undefined-types */
 
+=======
+ *
+ * @type {Listener}
+ */
+
+const with_global_events_listener = new listener();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /**
  * Higher-order component creator which, given an object of DOM event types and
  * values corresponding to a callback function name on the component, will
@@ -381,6 +433,7 @@ const with_global_events_listener = new listener();
  *
  * @deprecated
  *
+<<<<<<< HEAD
  * @param {Record<keyof GlobalEventHandlersEventMap, string>} eventTypesToHandlers Object with keys of DOM
  *                                                                                 event type, the value a
  *                                                                                 name of the function on
@@ -389,6 +442,16 @@ const with_global_events_listener = new listener();
  *                                                                                 the event.
  *
  * @return {any} Higher-order component.
+=======
+ * @param {Object<string,string>} eventTypesToHandlers Object with keys of DOM
+ *                                                     event type, the value a
+ *                                                     name of the function on
+ *                                                     the original component's
+ *                                                     instance which handles
+ *                                                     the event.
+ *
+ * @return {Function} Higher-order component.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 function withGlobalEvents(eventTypesToHandlers) {
@@ -398,26 +461,40 @@ function withGlobalEvents(eventTypesToHandlers) {
   });
   return create_higher_order_component(WrappedComponent => {
     class Wrapper extends external_wp_element_["Component"] {
+<<<<<<< HEAD
       constructor(
       /** @type {any} */
       props) {
         super(props);
+=======
+      constructor() {
+        super(...arguments);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         this.handleEvent = this.handleEvent.bind(this);
         this.handleRef = this.handleRef.bind(this);
       }
 
       componentDidMount() {
+<<<<<<< HEAD
         Object(external_lodash_["forEach"])(eventTypesToHandlers, (_, eventType) => {
+=======
+        Object(external_lodash_["forEach"])(eventTypesToHandlers, (handler, eventType) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
           with_global_events_listener.add(eventType, this);
         });
       }
 
       componentWillUnmount() {
+<<<<<<< HEAD
         Object(external_lodash_["forEach"])(eventTypesToHandlers, (_, eventType) => {
+=======
+        Object(external_lodash_["forEach"])(eventTypesToHandlers, (handler, eventType) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
           with_global_events_listener.remove(eventType, this);
         });
       }
 
+<<<<<<< HEAD
       handleEvent(
       /** @type {any} */
       event) {
@@ -426,15 +503,23 @@ function withGlobalEvents(eventTypesToHandlers) {
         event.type
         /* eslint-enable jsdoc/no-undefined-types */
         ];
+=======
+      handleEvent(event) {
+        const handler = eventTypesToHandlers[event.type];
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
         if (typeof this.wrappedRef[handler] === 'function') {
           this.wrappedRef[handler](event);
         }
       }
 
+<<<<<<< HEAD
       handleRef(
       /** @type {any} */
       el) {
+=======
+      handleRef(el) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         this.wrappedRef = el; // Any component using `withGlobalEvents` that is not setting a `ref`
         // will cause `this.props.forwardedRef` to be `null`, so we need this
         // check.
@@ -491,15 +576,25 @@ function createId(object) {
 /**
  * Provides a unique instance ID.
  *
+<<<<<<< HEAD
  * @param {object}          object           Object reference to create an id for.
  * @param {string}          [prefix]         Prefix for the unique id.
  * @param {string | number} [preferredId=''] Default ID to use.
+=======
+ * @param {object} object Object reference to create an id for.
+ * @param {string} [prefix] Prefix for the unique id.
+ * @param {string} [preferredId=''] Default ID to use.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @return {string | number} The unique instance id.
  */
 
 
+<<<<<<< HEAD
 function useInstanceId(object, prefix) {
   let preferredId = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+=======
+function useInstanceId(object, prefix, preferredId = '') {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   return Object(external_wp_element_["useMemo"])(() => {
     if (preferredId) return preferredId;
     const id = createId(object);
@@ -520,6 +615,10 @@ function useInstanceId(object, prefix) {
 /**
  * Internal dependencies
  */
+<<<<<<< HEAD
+=======
+ // eslint-disable-next-line no-duplicate-imports
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 
 /**
@@ -540,20 +639,32 @@ const withInstanceId = create_higher_order_component(WrappedComponent => {
 // CONCATENATED MODULE: ./node_modules/@wordpress/compose/build-module/higher-order/with-safe-timeout/index.js
 
 
+<<<<<<< HEAD
 /**
  * External dependencies
  */
  // eslint-disable-next-line no-restricted-imports
+=======
+
+/**
+ * External dependencies
+ */
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 /**
  * WordPress dependencies
  */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /**
  * Internal dependencies
  */
 
 
+<<<<<<< HEAD
 
 /**
  * A higher-order component used to provide and manage delayed function calls
@@ -563,6 +674,21 @@ const withSafeTimeout = create_higher_order_component(OriginalComponent => {
   return class WrappedComponent extends external_wp_element_["Component"] {
     constructor(props) {
       super(props);
+=======
+/**
+ * A higher-order component used to provide and manage delayed function calls
+ * that ought to be bound to a component's lifecycle.
+ *
+ * @param {WPComponent} OriginalComponent Component requiring setTimeout
+ *
+ * @return {WPComponent} Wrapped component.
+ */
+
+const withSafeTimeout = create_higher_order_component(OriginalComponent => {
+  return class WrappedComponent extends external_wp_element_["Component"] {
+    constructor() {
+      super(...arguments);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       this.timeouts = [];
       this.setTimeout = this.setTimeout.bind(this);
       this.clearTimeout = this.clearTimeout.bind(this);
@@ -587,11 +713,18 @@ const withSafeTimeout = create_higher_order_component(OriginalComponent => {
     }
 
     render() {
+<<<<<<< HEAD
       const props = { ...this.props,
         setTimeout: this.setTimeout,
         clearTimeout: this.clearTimeout
       };
       return Object(external_wp_element_["createElement"])(OriginalComponent, props);
+=======
+      return Object(external_wp_element_["createElement"])(OriginalComponent, Object(esm_extends["a" /* default */])({}, this.props, {
+        setTimeout: this.setTimeout,
+        clearTimeout: this.clearTimeout
+      }));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     }
 
   };
@@ -606,7 +739,10 @@ const withSafeTimeout = create_higher_order_component(OriginalComponent => {
  * WordPress dependencies
  */
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /**
  * Internal dependencies
  */
@@ -616,6 +752,7 @@ const withSafeTimeout = create_higher_order_component(OriginalComponent => {
  * A Higher Order Component used to provide and manage internal component state
  * via props.
  *
+<<<<<<< HEAD
  * @deprecated Use `useState` instead.
  *
  * @param {any} initialState Optional initial state of the component.
@@ -634,6 +771,18 @@ function withState() {
       /** @type {any} */
       props) {
         super(props);
+=======
+ * @param {?Object} initialState Optional initial state of the component.
+ *
+ * @return {WPComponent} Wrapped component.
+ */
+
+function withState(initialState = {}) {
+  return create_higher_order_component(OriginalComponent => {
+    return class WrappedComponent extends external_wp_element_["Component"] {
+      constructor() {
+        super(...arguments);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         this.setState = this.setState.bind(this);
         this.state = initialState;
       }
@@ -654,6 +803,7 @@ var external_wp_keycodes_ = __webpack_require__("RxS6");
 // EXTERNAL MODULE: external ["wp","dom"]
 var external_wp_dom_ = __webpack_require__("1CF3");
 
+<<<<<<< HEAD
 // CONCATENATED MODULE: ./node_modules/@wordpress/compose/build-module/hooks/use-ref-effect/index.js
 /**
  * External dependencies
@@ -695,22 +845,31 @@ function useRefEffect(callback, dependencies) {
   }, dependencies);
 }
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 // CONCATENATED MODULE: ./node_modules/@wordpress/compose/build-module/hooks/use-constrained-tabbing/index.js
 /**
  * WordPress dependencies
  */
 
 
+<<<<<<< HEAD
 /**
  * Internal dependencies
  */
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 /**
  * In Dialogs/modals, the tabbing must be constrained to the content of
  * the wrapper element. This hook adds the behavior to the returned ref.
  *
+<<<<<<< HEAD
  * @return {import('react').RefCallback<Element>} Element Ref.
+=======
+ * @return {Object|Function} Element Ref.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @example
  * ```js
@@ -729,6 +888,7 @@ function useRefEffect(callback, dependencies) {
  */
 
 function useConstrainedTabbing() {
+<<<<<<< HEAD
   return useRefEffect((
   /** @type {HTMLElement} */
   node) => {
@@ -778,6 +938,60 @@ function useConstrainedTabbing() {
       clearTimeout(timeoutId);
     };
   }, []);
+=======
+  const ref = Object(external_wp_element_["useCallback"])(
+  /** @type {Element} */
+  node => {
+    if (!node) {
+      return;
+    }
+
+    node.addEventListener('keydown',
+    /** @type {Event} */
+    event => {
+      if (!(event instanceof window.KeyboardEvent)) {
+        return;
+      }
+
+      if (event.keyCode !== external_wp_keycodes_["TAB"]) {
+        return;
+      }
+
+      const tabbables = external_wp_dom_["focus"].tabbable.find(node);
+
+      if (!tabbables.length) {
+        return;
+      }
+
+      const firstTabbable = tabbables[0];
+      const lastTabbable = tabbables[tabbables.length - 1];
+
+      if (event.shiftKey && event.target === firstTabbable) {
+        event.preventDefault();
+        /** @type {HTMLElement} */
+
+        lastTabbable.focus();
+      } else if (!event.shiftKey && event.target === lastTabbable) {
+        event.preventDefault();
+        /** @type {HTMLElement} */
+
+        firstTabbable.focus();
+        /*
+         * When pressing Tab and none of the tabbables has focus, the keydown
+         * event happens on the wrapper div: move focus on the first tabbable.
+         */
+      } else if (!tabbables.includes(
+      /** @type {Element} */
+      event.target)) {
+        event.preventDefault();
+        /** @type {HTMLElement} */
+
+        firstTabbable.focus();
+      }
+    });
+  }, []);
+  return ref;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 /* harmony default export */ var use_constrained_tabbing = (useConstrainedTabbing);
@@ -797,31 +1011,46 @@ var clipboard_default = /*#__PURE__*/__webpack_require__.n(dist_clipboard);
 
 
 
+<<<<<<< HEAD
 /* eslint-disable jsdoc/no-undefined-types */
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /**
  * Copies the text to the clipboard when the element is clicked.
  *
  * @deprecated
  *
+<<<<<<< HEAD
  * @param {import('react').RefObject<string | Element | NodeListOf<Element>>} ref       Reference with the element.
  * @param {string|Function}                                                   text      The text to copy.
  * @param {number}                                                            [timeout] Optional timeout to reset the returned
  *                                                                                      state. 4 seconds by default.
+=======
+ * @param {Object}          ref     Reference with the element.
+ * @param {string|Function} text    The text to copy.
+ * @param {number}          timeout Optional timeout to reset the returned
+ *                                  state. 4 seconds by default.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {boolean} Whether or not the text has been copied. Resets after the
  *                   timeout.
  */
 
+<<<<<<< HEAD
 function useCopyOnClick(ref, text) {
   let timeout = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 4000;
 
   /* eslint-enable jsdoc/no-undefined-types */
+=======
+function useCopyOnClick(ref, text, timeout = 4000) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   external_wp_deprecated_default()('wp.compose.useCopyOnClick', {
     since: '10.3',
     plugin: 'Gutenberg',
     alternative: 'wp.compose.useCopyToClipboard'
   });
+<<<<<<< HEAD
   /** @type {import('react').MutableRefObject<Clipboard | undefined>} */
 
   const clipboard = Object(external_wp_element_["useRef"])();
@@ -834,22 +1063,38 @@ function useCopyOnClick(ref, text) {
       return;
     } // Clipboard listens to click events.
 
+=======
+  const clipboard = Object(external_wp_element_["useRef"])();
+  const [hasCopied, setHasCopied] = Object(external_wp_element_["useState"])(false);
+  Object(external_wp_element_["useEffect"])(() => {
+    let timeoutId; // Clipboard listens to click events.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
     clipboard.current = new clipboard_default.a(ref.current, {
       text: () => typeof text === 'function' ? text() : text
     });
+<<<<<<< HEAD
     clipboard.current.on('success', _ref => {
       let {
         clearSelection,
         trigger
       } = _ref;
+=======
+    clipboard.current.on('success', ({
+      clearSelection,
+      trigger
+    }) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       // Clearing selection will move focus back to the triggering button,
       // ensuring that it is not reset to the body, and further that it is
       // kept within the rendered node.
       clearSelection(); // Handle ClipboardJS focus bug, see https://github.com/zenorocha/clipboard.js/issues/680
 
       if (trigger) {
+<<<<<<< HEAD
         /** @type {HTMLElement} */
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         trigger.focus();
       }
 
@@ -860,16 +1105,59 @@ function useCopyOnClick(ref, text) {
       }
     });
     return () => {
+<<<<<<< HEAD
       if (clipboard.current) {
         clipboard.current.destroy();
       }
 
+=======
+      clipboard.current.destroy();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       clearTimeout(timeoutId);
     };
   }, [text, timeout, setHasCopied]);
   return hasCopied;
 }
 
+<<<<<<< HEAD
+=======
+// CONCATENATED MODULE: ./node_modules/@wordpress/compose/build-module/hooks/use-ref-effect/index.js
+/**
+ * WordPress dependencies
+ */
+
+/**
+ * Effect-like ref callback. Just like with `useEffect`, this allows you to
+ * return a cleanup function to be run if the ref changes or one of the
+ * dependencies changes. The ref is provided as an argument to the callback
+ * functions. The main difference between this and `useEffect` is that
+ * the `useEffect` callback is not called when the ref changes, but this is.
+ * Pass the returned ref callback as the component's ref and merge multiple refs
+ * with `useMergeRefs`.
+ *
+ * It's worth noting that if the dependencies array is empty, there's not
+ * strictly a need to clean up event handlers for example, because the node is
+ * to be removed. It *is* necessary if you add dependencies because the ref
+ * callback will be called multiple times for the same node.
+ *
+ * @param {Function} callback     Callback with ref as argument.
+ * @param {Array}    dependencies Dependencies of the callback.
+ *
+ * @return {Function} Ref callback.
+ */
+
+function useRefEffect(callback, dependencies) {
+  const cleanup = Object(external_wp_element_["useRef"])();
+  return Object(external_wp_element_["useCallback"])(node => {
+    if (node) {
+      cleanup.current = callback(node);
+    } else if (cleanup.current) {
+      cleanup.current();
+    }
+  }, dependencies);
+}
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 // CONCATENATED MODULE: ./node_modules/@wordpress/compose/build-module/hooks/use-copy-to-clipboard/index.js
 /**
  * External dependencies
@@ -885,11 +1173,15 @@ function useCopyOnClick(ref, text) {
  */
 
 
+<<<<<<< HEAD
 /**
  * @template T
  * @param {T} value
  * @return {import('react').RefObject<T>} The updated ref
  */
+=======
+/** @typedef {import('@wordpress/element').RefObject} RefObject */
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 function useUpdatedRef(value) {
   const ref = Object(external_wp_element_["useRef"])(value);
@@ -899,12 +1191,20 @@ function useUpdatedRef(value) {
 /**
  * Copies the given text to the clipboard when the element is clicked.
  *
+<<<<<<< HEAD
  * @template {HTMLElement} TElementType
  * @param {string | (() => string)} text      The text to copy. Use a function if not
  *                                            already available and expensive to compute.
  * @param {Function}                onSuccess Called when to text is copied.
  *
  * @return {import('react').Ref<TElementType>} A ref to assign to the target element.
+=======
+ * @param {text|Function} text      The text to copy. Use a function if not
+ *                                  already available and expensive to compute.
+ * @param {Function}      onSuccess Called when to text is copied.
+ *
+ * @return {RefObject} A ref to assign to the target element.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 
@@ -912,11 +1212,16 @@ function useCopyToClipboard(text, onSuccess) {
   // Store the dependencies as refs and continuesly update them so they're
   // fresh when the callback is called.
   const textRef = useUpdatedRef(text);
+<<<<<<< HEAD
   const onSuccessRef = useUpdatedRef(onSuccess);
+=======
+  const onSuccesRef = useUpdatedRef(onSuccess);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   return useRefEffect(node => {
     // Clipboard listens to click events.
     const clipboard = new clipboard_default.a(node, {
       text() {
+<<<<<<< HEAD
         return typeof textRef.current === 'function' ? textRef.current() : textRef.current || '';
       }
 
@@ -925,6 +1230,15 @@ function useCopyToClipboard(text, onSuccess) {
       let {
         clearSelection
       } = _ref;
+=======
+        return typeof textRef.current === 'function' ? textRef.current() : textRef.current;
+      }
+
+    });
+    clipboard.on('success', ({
+      clearSelection
+    }) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       // Clearing selection will move focus back to the triggering
       // button, ensuring that it is not reset to the body, and
       // further that it is kept within the rendered node.
@@ -933,8 +1247,13 @@ function useCopyToClipboard(text, onSuccess) {
 
       node.focus();
 
+<<<<<<< HEAD
       if (onSuccessRef.current) {
         onSuccessRef.current();
+=======
+      if (onSuccesRef.current) {
+        onSuccesRef.current();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       }
     });
     return () => {
@@ -952,8 +1271,13 @@ function useCopyToClipboard(text, onSuccess) {
 /**
  * Hook used to focus the first tabbable element on mount.
  *
+<<<<<<< HEAD
  * @param {boolean | 'firstElement'} focusOnMount Focus on mount mode.
  * @return {import('react').RefCallback<HTMLElement>} Ref callback.
+=======
+ * @param {boolean|string} focusOnMount Focus on mount mode.
+ * @return {Function} Ref callback.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @example
  * ```js
@@ -971,20 +1295,31 @@ function useCopyToClipboard(text, onSuccess) {
  * ```
  */
 
+<<<<<<< HEAD
 function useFocusOnMount() {
   let focusOnMount = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'firstElement';
+=======
+function useFocusOnMount(focusOnMount = 'firstElement') {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const focusOnMountRef = Object(external_wp_element_["useRef"])(focusOnMount);
   Object(external_wp_element_["useEffect"])(() => {
     focusOnMountRef.current = focusOnMount;
   }, [focusOnMount]);
   return Object(external_wp_element_["useCallback"])(node => {
+<<<<<<< HEAD
     var _node$ownerDocument$a, _node$ownerDocument;
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     if (!node || focusOnMountRef.current === false) {
       return;
     }
 
+<<<<<<< HEAD
     if (node.contains((_node$ownerDocument$a = (_node$ownerDocument = node.ownerDocument) === null || _node$ownerDocument === void 0 ? void 0 : _node$ownerDocument.activeElement) !== null && _node$ownerDocument$a !== void 0 ? _node$ownerDocument$a : null)) {
+=======
+    if (node.contains(node.ownerDocument.activeElement)) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       return;
     }
 
@@ -994,9 +1329,13 @@ function useFocusOnMount() {
       const firstTabbable = external_wp_dom_["focus"].tabbable.find(node)[0];
 
       if (firstTabbable) {
+<<<<<<< HEAD
         target =
         /** @type {HTMLElement} */
         firstTabbable;
+=======
+        target = firstTabbable;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       }
     }
 
@@ -1015,8 +1354,13 @@ function useFocusOnMount() {
  * previously focused element when closed.
  * The current hook implements the returning behavior.
  *
+<<<<<<< HEAD
  * @param {() => void} [onFocusReturn] Overrides the default return behavior.
  * @return {import('react').RefCallback<HTMLElement>} Element Ref.
+=======
+ * @param {Function?} onFocusReturn Overrides the default return behavior.
+ * @return {Function} Element Ref.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @example
  * ```js
@@ -1035,11 +1379,16 @@ function useFocusOnMount() {
  */
 
 function useFocusReturn(onFocusReturn) {
+<<<<<<< HEAD
   /** @type {import('react').MutableRefObject<null | HTMLElement>} */
   const ref = Object(external_wp_element_["useRef"])(null);
   /** @type {import('react').MutableRefObject<null | Element>} */
 
   const focusedBeforeMount = Object(external_wp_element_["useRef"])(null);
+=======
+  const ref = Object(external_wp_element_["useRef"])();
+  const focusedBeforeMount = Object(external_wp_element_["useRef"])();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const onFocusReturnRef = Object(external_wp_element_["useRef"])(onFocusReturn);
   Object(external_wp_element_["useEffect"])(() => {
     onFocusReturnRef.current = onFocusReturn;
@@ -1055,11 +1404,17 @@ function useFocusReturn(onFocusReturn) {
 
       focusedBeforeMount.current = node.ownerDocument.activeElement;
     } else if (focusedBeforeMount.current) {
+<<<<<<< HEAD
       var _ref$current, _ref$current2, _ref$current3;
 
       const isFocused = (_ref$current = ref.current) === null || _ref$current === void 0 ? void 0 : _ref$current.contains((_ref$current2 = ref.current) === null || _ref$current2 === void 0 ? void 0 : _ref$current2.ownerDocument.activeElement);
 
       if ((_ref$current3 = ref.current) !== null && _ref$current3 !== void 0 && _ref$current3.isConnected && !isFocused) {
+=======
+      const isFocused = ref.current.contains(ref.current.ownerDocument.activeElement);
+
+      if (ref.current.isConnected && !isFocused) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         return;
       } // Defer to the component's own explicit focus return behavior, if
       // specified. This allows for support that the `onFocusReturn`
@@ -1070,10 +1425,14 @@ function useFocusReturn(onFocusReturn) {
       if (onFocusReturnRef.current) {
         onFocusReturnRef.current();
       } else {
+<<<<<<< HEAD
         var _focusedBeforeMount$c;
 
         /** @type {null | HTMLElement} */
         (_focusedBeforeMount$c = focusedBeforeMount.current) === null || _focusedBeforeMount$c === void 0 ? void 0 : _focusedBeforeMount$c.focus();
+=======
+        focusedBeforeMount.current.focus();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       }
     }
   }, []);
@@ -1169,8 +1528,13 @@ function isFocusNormalizedButton(eventTarget) {
  * A react hook that can be used to check whether focus has moved outside the
  * element the event handlers are bound to.
  *
+<<<<<<< HEAD
  * @param {EventCallback} onFocusOutside A callback triggered when focus moves outside
  *                                       the element the event handlers are bound to.
+=======
+ * @param {EventCallback} onFocusOutside        A callback triggered when focus moves outside
+ *                                              the element the event handlers are bound to.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {FocusOutsideReturnValue} An object containing event handlers. Bind the event handlers
  *                                   to a wrapping element element to capture when focus moves
@@ -1280,6 +1644,7 @@ function useFocusOutside(onFocusOutside) {
  * WordPress dependencies
  */
 
+<<<<<<< HEAD
 /* eslint-disable jsdoc/valid-types */
 
 /**
@@ -1294,11 +1659,17 @@ function useFocusOutside(onFocusOutside) {
  * @param {import('react').Ref<T>} ref
  * @param {T}                      value
  */
+=======
+/** @typedef {import('@wordpress/element').RefObject} RefObject */
+
+/** @typedef {import('@wordpress/element').RefCallback} RefCallback */
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 function assignRef(ref, value) {
   if (typeof ref === 'function') {
     ref(value);
   } else if (ref && ref.hasOwnProperty('current')) {
+<<<<<<< HEAD
     /* eslint-disable jsdoc/no-undefined-types */
 
     /** @type {import('react').MutableRefObject<T>} */
@@ -1348,18 +1719,38 @@ function assignRef(ref, value) {
  * @param {Array<TRef>} refs The refs to be merged.
  *
  * @return {import('react').RefCallback<TypeFromRef<TRef>>} The merged ref callback.
+=======
+    ref.current = value;
+  }
+}
+/**
+ * Merges refs into one ref callback. Ensures the merged ref callbacks are only
+ * called when it changes (as a result of a `useCallback` dependency update) or
+ * when the ref value changes. If you don't wish a ref callback to be called on
+ * every render, wrap it with `useCallback( ref, [] )`.
+ * Dependencies can be added, but when a dependency changes, the old ref
+ * callback will be called with `null` and the new ref callback will be called
+ * with the same node.
+ *
+ * @param {Array<RefObject|RefCallback>} refs The refs to be merged.
+ *
+ * @return {RefCallback} The merged ref callback.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 
 function useMergeRefs(refs) {
   const element = Object(external_wp_element_["useRef"])();
   const didElementChange = Object(external_wp_element_["useRef"])(false);
+<<<<<<< HEAD
   /* eslint-disable jsdoc/no-undefined-types */
 
   /** @type {import('react').MutableRefObject<TRef[]>} */
 
   /* eslint-enable jsdoc/no-undefined-types */
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const previousRefs = Object(external_wp_element_["useRef"])([]);
   const currentRefs = Object(external_wp_element_["useRef"])(refs); // Update on render before the ref callback is called, so the ref callback
   // always has access to the current refs.
@@ -1419,6 +1810,7 @@ function useMergeRefs(refs) {
 
 
 
+<<<<<<< HEAD
 /* eslint-disable jsdoc/valid-types */
 
 /**
@@ -1429,6 +1821,8 @@ function useMergeRefs(refs) {
 
 /* eslint-enable jsdoc/valid-types */
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /**
  * Returns a ref and props to apply to a dialog wrapper to enable the following behaviors:
  *  - constrained tabbing.
@@ -1436,6 +1830,7 @@ function useMergeRefs(refs) {
  *  - return focus on unmount.
  *  - focus outside.
  *
+<<<<<<< HEAD
  * @param {DialogOptions} options Dialog Options.
  */
 
@@ -1463,11 +1858,26 @@ function useDialog(options) {
       currentOptions.current.onClose();
     }
   });
+=======
+ * @param {Object} options Dialog Options.
+ */
+
+function useDialog(options) {
+  const onClose = Object(external_wp_element_["useRef"])();
+  Object(external_wp_element_["useEffect"])(() => {
+    onClose.current = options.onClose;
+  }, [options.onClose]);
+  const constrainedTabbingRef = use_constrained_tabbing();
+  const focusOnMountRef = useFocusOnMount();
+  const focusReturnRef = use_focus_return();
+  const focusOutsideProps = useFocusOutside(options.onClose);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const closeOnEscapeRef = Object(external_wp_element_["useCallback"])(node => {
     if (!node) {
       return;
     }
 
+<<<<<<< HEAD
     node.addEventListener('keydown', (
     /** @type {KeyboardEvent} */
     event) => {
@@ -1481,12 +1891,24 @@ function useDialog(options) {
     });
   }, []);
   return [useMergeRefs([options.focusOnMount !== false ? constrainedTabbingRef : null, options.focusOnMount !== false ? focusReturnRef : null, options.focusOnMount !== false ? focusOnMountRef : null, closeOnEscapeRef]), { ...focusOutsideProps,
+=======
+    node.addEventListener('keydown', event => {
+      // Close on escape
+      if (event.keyCode === external_wp_keycodes_["ESCAPE"] && onClose.current) {
+        event.stopPropagation();
+        onClose.current();
+      }
+    });
+  }, []);
+  return [useMergeRefs([constrainedTabbingRef, focusReturnRef, focusOnMountRef, closeOnEscapeRef]), { ...focusOutsideProps,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     tabIndex: '-1'
   }];
 }
 
 /* harmony default export */ var use_dialog = (useDialog);
 
+<<<<<<< HEAD
 // CONCATENATED MODULE: ./node_modules/@wordpress/compose/build-module/hooks/use-disabled/index.js
 /**
  * External dependencies
@@ -1592,6 +2014,8 @@ function useDisabled() {
   return node;
 }
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 // CONCATENATED MODULE: ./node_modules/@wordpress/compose/build-module/hooks/use-isomorphic-layout-effect/index.js
 /**
  * WordPress dependencies
@@ -1616,6 +2040,7 @@ const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? external_wp_el
  */
 
 
+<<<<<<< HEAD
 /**
  * @param {Object}                  props
  * @param {(e: MouseEvent) => void} props.onDragStart
@@ -1629,6 +2054,13 @@ function useDragging(_ref) {
     onDragMove,
     onDragEnd
   } = _ref;
+=======
+function useDragging({
+  onDragStart,
+  onDragMove,
+  onDragEnd
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const [isDragging, setIsDragging] = Object(external_wp_element_["useState"])(false);
   const eventsRef = Object(external_wp_element_["useRef"])({
     onDragStart,
@@ -1640,6 +2072,7 @@ function useDragging(_ref) {
     eventsRef.current.onDragMove = onDragMove;
     eventsRef.current.onDragEnd = onDragEnd;
   }, [onDragStart, onDragMove, onDragEnd]);
+<<<<<<< HEAD
   const onMouseMove = Object(external_wp_element_["useCallback"])((
   /** @type {MouseEvent} */
   event) => eventsRef.current.onDragMove && eventsRef.current.onDragMove(event), []);
@@ -1648,17 +2081,29 @@ function useDragging(_ref) {
   event) => {
     if (eventsRef.current.onDragEnd) {
       eventsRef.current.onDragEnd(event);
+=======
+  const onMouseMove = Object(external_wp_element_["useCallback"])((...args) => eventsRef.current.onDragMove && eventsRef.current.onDragMove(...args), []);
+  const endDrag = Object(external_wp_element_["useCallback"])((...args) => {
+    if (eventsRef.current.onDragEnd) {
+      eventsRef.current.onDragEnd(...args);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     }
 
     document.removeEventListener('mousemove', onMouseMove);
     document.removeEventListener('mouseup', endDrag);
     setIsDragging(false);
   }, []);
+<<<<<<< HEAD
   const startDrag = Object(external_wp_element_["useCallback"])((
   /** @type {MouseEvent} */
   event) => {
     if (eventsRef.current.onDragStart) {
       eventsRef.current.onDragStart(event);
+=======
+  const startDrag = Object(external_wp_element_["useCallback"])((...args) => {
+    if (eventsRef.current.onDragStart) {
+      eventsRef.current.onDragStart(...args);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     }
 
     document.addEventListener('mousemove', onMouseMove);
@@ -1705,28 +2150,44 @@ var mousetrap_global_bind = __webpack_require__("VcSt");
  *
  * @typedef {Object} WPKeyboardShortcutConfig
  *
+<<<<<<< HEAD
  * @property {boolean}                                [bindGlobal] Handle keyboard events anywhere including inside textarea/input fields.
  * @property {string}                                 [eventName]  Event name used to trigger the handler, defaults to keydown.
  * @property {boolean}                                [isDisabled] Disables the keyboard handler if the value is true.
  * @property {import('react').RefObject<HTMLElement>} [target]     React reference to the DOM element used to catch the keyboard event.
+=======
+ * @property {boolean} [bindGlobal]  Handle keyboard events anywhere including inside textarea/input fields.
+ * @property {string}  [eventName]   Event name used to trigger the handler, defaults to keydown.
+ * @property {boolean} [isDisabled]  Disables the keyboard handler if the value is true.
+ * @property {Object}  [target]      React reference to the DOM element used to catch the keyboard event.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 /**
  * Return true if platform is MacOS.
  *
+<<<<<<< HEAD
  * @param {Window} [_window] window object by default; used for DI testing.
+=======
+ * @param {Object} _window   window object by default; used for DI testing.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {boolean} True if MacOS; false otherwise.
  */
 
+<<<<<<< HEAD
 function isAppleOS() {
   let _window = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window;
 
+=======
+function isAppleOS(_window = window) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const {
     platform
   } = _window.navigator;
   return platform.indexOf('Mac') !== -1 || Object(external_lodash_["includes"])(['iPad', 'iPhone'], platform);
 }
+<<<<<<< HEAD
 /* eslint-disable jsdoc/valid-types */
 
 /**
@@ -1750,6 +2211,24 @@ shortcuts, callback) {
     // This is important for performance considerations.
     target
   } = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+=======
+/**
+ * Attach a keyboard shortcut handler.
+ *
+ * @param {string[]|string}         shortcuts  Keyboard Shortcuts.
+ * @param {Function}                callback   Shortcut callback.
+ * @param {WPKeyboardShortcutConfig} options    Shortcut options.
+ */
+
+
+function useKeyboardShortcut(shortcuts, callback, {
+  bindGlobal = false,
+  eventName = 'keydown',
+  isDisabled = false,
+  // This is important for performance considerations.
+  target
+} = {}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const currentCallback = Object(external_wp_element_["useRef"])(callback);
   Object(external_wp_element_["useEffect"])(() => {
     currentCallback.current = callback;
@@ -1759,6 +2238,7 @@ shortcuts, callback) {
       return;
     }
 
+<<<<<<< HEAD
     const mousetrap = new mousetrap_default.a(target && target.current ? target.current : // We were passing `document` here previously, so to successfully cast it to Element we must cast it first to `unknown`.
     // Not sure if this is a mistake but it was the behavior previous to the addition of types so we're just doing what's
     // necessary to maintain the existing behavior
@@ -1767,6 +2247,9 @@ shortcuts, callback) {
 
     /** @type {unknown} */
     document);
+=======
+    const mousetrap = new mousetrap_default.a(target ? target.current : document);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     Object(external_lodash_["castArray"])(shortcuts).forEach(shortcut => {
       const keys = shortcut.split('+'); // Determines whether a key is a modifier by the length of the string.
       // E.g. if I add a pass a shortcut Shift+Cmd+M, it'll determine that
@@ -1780,6 +2263,7 @@ shortcuts, callback) {
         throw new Error(`Cannot bind ${shortcut}. Alt and Shift+Alt modifiers are reserved for character input.`);
       }
 
+<<<<<<< HEAD
       const bindFn = bindGlobal ? 'bindGlobal' : 'bind'; // @ts-ignore `bindGlobal` is an undocumented property
 
       mousetrap[bindFn](shortcut, function () {
@@ -1788,6 +2272,10 @@ shortcuts, callback) {
           currentCallback.current(...arguments)
         );
       }, eventName);
+=======
+      const bindFn = bindGlobal ? 'bindGlobal' : 'bind';
+      mousetrap[bindFn](shortcut, (...args) => currentCallback.current(...args), eventName);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     });
     return () => {
       mousetrap.reset();
@@ -1825,7 +2313,11 @@ function useMediaQuery(query) {
       list.removeListener(updateMatch);
     };
   }, [query]);
+<<<<<<< HEAD
   return !!query && match;
+=======
+  return query && match;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/compose/build-module/hooks/use-previous/index.js
@@ -1837,6 +2329,7 @@ function useMediaQuery(query) {
  * Use something's value from the previous render.
  * Based on https://usehooks.com/usePrevious/.
  *
+<<<<<<< HEAD
  * @param  value The value to track.
  *
  * @return The value from the previous render.
@@ -1844,6 +2337,26 @@ function useMediaQuery(query) {
 
 function usePrevious(value) {
   const ref = Object(external_wp_element_["useRef"])(); // Store current value in ref.
+=======
+ * @template T
+ *
+ * @param {T} value The value to track.
+ *
+ * @return {T|undefined} The value from the previous render.
+ */
+
+function usePrevious(value) {
+  // Disable reason: without an explicit type detail, the type of ref will be
+  // inferred based on the initial useRef argument, which is undefined.
+  // https://github.com/WordPress/gutenberg/pull/22597#issuecomment-633588366
+
+  /* eslint-disable jsdoc/no-undefined-types */
+  const ref = Object(external_wp_element_["useRef"])(
+  /** @type {T|undefined} */
+  undefined);
+  /* eslint-enable jsdoc/no-undefined-types */
+  // Store current value in ref.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
   Object(external_wp_element_["useEffect"])(() => {
     ref.current = value;
@@ -1859,13 +2372,27 @@ function usePrevious(value) {
  */
 
 /**
+<<<<<<< HEAD
+=======
+ * Whether or not the user agent is Internet Explorer.
+ *
+ * @type {boolean}
+ */
+
+const IS_IE = typeof window !== 'undefined' && window.navigator.userAgent.indexOf('Trident') >= 0;
+/**
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Hook returning whether the user has a preference for reduced motion.
  *
  * @return {boolean} Reduced motion preference value.
  */
 
+<<<<<<< HEAD
 const useReducedMotion = () => useMediaQuery('(prefers-reduced-motion: reduce)');
 
+=======
+const useReducedMotion = undefined || IS_IE ? () => true : () => useMediaQuery('(prefers-reduced-motion: reduce)');
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /* harmony default export */ var use_reduced_motion = (useReducedMotion);
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/compose/build-module/hooks/use-viewport-match/index.js
@@ -1879,7 +2406,11 @@ const useReducedMotion = () => useMediaQuery('(prefers-reduced-motion: reduce)')
 
 
 /**
+<<<<<<< HEAD
  * @typedef {"huge" | "wide" | "large" | "medium" | "small" | "mobile"} WPBreakpoint
+=======
+ * @typedef {"huge"|"wide"|"large"|"medium"|"small"|"mobile"} WPBreakpoint
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 /**
@@ -1887,7 +2418,11 @@ const useReducedMotion = () => useMediaQuery('(prefers-reduced-motion: reduce)')
  *
  * @see _breakpoints.scss
  *
+<<<<<<< HEAD
  * @type {Record<WPBreakpoint, number>}
+=======
+ * @type {Object<WPBreakpoint,number>}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 const BREAKPOINTS = {
@@ -1899,13 +2434,21 @@ const BREAKPOINTS = {
   mobile: 480
 };
 /**
+<<<<<<< HEAD
  * @typedef {">=" | "<"} WPViewportOperator
+=======
+ * @typedef {">="|"<"} WPViewportOperator
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 /**
  * Object mapping media query operators to the condition to be used.
  *
+<<<<<<< HEAD
  * @type {Record<WPViewportOperator, string>}
+=======
+ * @type {Object<WPViewportOperator,string>}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 const CONDITIONS = {
@@ -1915,16 +2458,24 @@ const CONDITIONS = {
 /**
  * Object mapping media query operators to a function that given a breakpointValue and a width evaluates if the operator matches the values.
  *
+<<<<<<< HEAD
  * @type {Record<WPViewportOperator, (breakpointValue: number, width: number) => boolean>}
+=======
+ * @type {Object<WPViewportOperator,Function>}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 const OPERATOR_EVALUATORS = {
   '>=': (breakpointValue, width) => width >= breakpointValue,
   '<': (breakpointValue, width) => width < breakpointValue
 };
+<<<<<<< HEAD
 const ViewportMatchWidthContext = Object(external_wp_element_["createContext"])(
 /** @type {null | number} */
 null);
+=======
+const ViewportMatchWidthContext = Object(external_wp_element_["createContext"])(null);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /**
  * Returns true if the viewport matches the given query, or false otherwise.
  *
@@ -1941,11 +2492,18 @@ null);
  * @return {boolean} Whether viewport matches query.
  */
 
+<<<<<<< HEAD
 const useViewportMatch = function (breakpoint) {
   let operator = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '>=';
   const simulatedWidth = Object(external_wp_element_["useContext"])(ViewportMatchWidthContext);
   const mediaQuery = !simulatedWidth && `(${CONDITIONS[operator]}: ${BREAKPOINTS[breakpoint]}px)`;
   const mediaQueryResult = useMediaQuery(mediaQuery || undefined);
+=======
+const useViewportMatch = (breakpoint, operator = '>=') => {
+  const simulatedWidth = Object(external_wp_element_["useContext"])(ViewportMatchWidthContext);
+  const mediaQuery = !simulatedWidth && `(${CONDITIONS[operator]}: ${BREAKPOINTS[breakpoint]}px)`;
+  const mediaQueryResult = useMediaQuery(mediaQuery);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
   if (simulatedWidth) {
     return OPERATOR_EVALUATORS[operator](BREAKPOINTS[breakpoint], simulatedWidth);
@@ -1970,10 +2528,14 @@ var dist_default = /*#__PURE__*/__webpack_require__.n(dist);
  * Hook which allows to listen the resize event of any target element when it changes sizes.
  * _Note: `useResizeObserver` will report `null` until after first render_
  *
+<<<<<<< HEAD
  * Simply a re-export of `react-resize-aware` so refer to its documentation <https://github.com/FezVrasta/react-resize-aware>
  * for more details.
  *
  * @see https://github.com/FezVrasta/react-resize-aware
+=======
+ * @return {Array} An array of {Element} `resizeListener` and {?Object} `sizes` with properties `width` and `height`
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @example
  *
@@ -2003,6 +2565,7 @@ var external_wp_priorityQueue_ = __webpack_require__("XI5e");
  */
 
 
+<<<<<<< HEAD
 
 /**
  * Returns the first items from list that are present on state.
@@ -2011,6 +2574,16 @@ var external_wp_priorityQueue_ = __webpack_require__("XI5e");
  * @param  state Current state.
  * @return First items present iin state.
  */
+=======
+/**
+ * Returns the first items from list that are present on state.
+ *
+ * @param list  New array.
+ * @param state Current state.
+ * @return First items present iin state.
+ */
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 function getFirstItemsPresentInState(list, state) {
   const firstItems = [];
 
@@ -2030,14 +2603,19 @@ function getFirstItemsPresentInState(list, state) {
  * React hook returns an array which items get asynchronously appended from a source array.
  * This behavior is useful if we want to render a list of items asynchronously for performance reasons.
  *
+<<<<<<< HEAD
  * @param  list   Source array.
  * @param  config Configuration object.
  *
+=======
+ * @param list Source array.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @return Async array.
  */
 
 
 function useAsyncList(list) {
+<<<<<<< HEAD
   let config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
     step: 1
   };
@@ -2068,6 +2646,25 @@ function useAsyncList(list) {
     };
 
     asyncQueue.add({}, append);
+=======
+  const [current, setCurrent] = Object(external_wp_element_["useState"])([]);
+  Object(external_wp_element_["useEffect"])(() => {
+    // On reset, we keep the first items that were previously rendered.
+    const firstItems = getFirstItemsPresentInState(list, current);
+    setCurrent(firstItems);
+    const asyncQueue = Object(external_wp_priorityQueue_["createQueue"])();
+
+    const append = index => () => {
+      if (list.length <= index) {
+        return;
+      }
+
+      setCurrent(state => [...state, list[index]]);
+      asyncQueue.add({}, append(index + 1));
+    };
+
+    asyncQueue.add({}, append(firstItems.length));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return () => asyncQueue.reset();
   }, [list]);
   return current;
@@ -2079,10 +2676,13 @@ function useAsyncList(list) {
 /**
  * Internal dependencies
  */
+<<<<<<< HEAD
  // Disable reason: Object and object are distinctly different types in TypeScript and we mean the lowercase object in thise case
 // but eslint wants to force us to use `Object`. See https://stackoverflow.com/questions/49464634/difference-between-object-and-object-in-typescript
 
 /* eslint-disable jsdoc/check-types */
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 /**
  * Hook that performs a shallow comparison between the preview value of an object
@@ -2099,6 +2699,7 @@ function useAsyncList(list) {
  * }
  * ```
  *
+<<<<<<< HEAD
  * @param {object} object Object which changes to compare.
  * @param {string} prefix Just a prefix to show when console logging.
  */
@@ -2118,6 +2719,18 @@ function useWarnOnChange(object) {
       key]
       /* eslint-enable jsdoc/check-types */
       );
+=======
+ * @param {Object} object Object which changes to compare.
+ * @param {string} prefix Just a prefix to show when console logging.
+ */
+
+function useWarnOnChange(object, prefix = 'Change detection') {
+  const previousValues = usePrevious(object);
+  Object.entries(previousValues !== null && previousValues !== void 0 ? previousValues : []).forEach(([key, value]) => {
+    if (value !== object[key]) {
+      // eslint-disable-next-line no-console
+      console.warn(`${prefix}: ${key} key changed:`, value, object[key]);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     }
   });
 }
@@ -2138,14 +2751,18 @@ var use_memo_one_esm = __webpack_require__("mHlH");
  */
 
 
+<<<<<<< HEAD
 /* eslint-disable jsdoc/valid-types */
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /**
  * Debounces a function with Lodash's `debounce`. A new debounced function will
  * be returned and any scheduled calls cancelled if any of the arguments change,
  * including the function to debounce, so please wrap functions created on
  * render in components in `useCallback`.
  *
+<<<<<<< HEAD
  * @see https://docs-lodash.com/v4/debounce/
  *
  * @template {(...args: any[]) => void} TFunc
@@ -2159,6 +2776,15 @@ var use_memo_one_esm = __webpack_require__("mHlH");
 function useDebounce(fn, wait, options) {
   /* eslint-enable jsdoc/valid-types */
   const debounced = Object(use_memo_one_esm["a" /* useMemoOne */])(() => Object(external_lodash_["debounce"])(fn, wait, options), [fn, wait, options]);
+=======
+ * @param {...any} args Arguments passed to Lodash's `debounce`.
+ *
+ * @return {Function} Debounced function.
+ */
+
+function useDebounce(...args) {
+  const debounced = Object(use_memo_one_esm["a" /* useMemoOne */])(() => Object(external_lodash_["debounce"])(...args), args);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   Object(external_wp_element_["useEffect"])(() => () => debounced.cancel(), [debounced]);
   return debounced;
 }
@@ -2180,6 +2806,7 @@ function useDebounce(fn, wait, options) {
  * including the function to throttle, so please wrap functions created on
  * render in components in `useCallback`.
  *
+<<<<<<< HEAD
  * @see https://docs-lodash.com/v4/throttle/
  *
  * @template {(...args: any[]) => void} TFunc
@@ -2192,6 +2819,15 @@ function useDebounce(fn, wait, options) {
 
 function useThrottle(fn, wait, options) {
   const throttled = Object(use_memo_one_esm["a" /* useMemoOne */])(() => Object(external_lodash_["throttle"])(fn, wait, options), [fn, wait, options]);
+=======
+ * @param {...any} args Arguments passed to Lodash's `throttle`.
+ *
+ * @return {Function} Throttled function.
+ */
+
+function useThrottle(...args) {
+  const throttled = Object(use_memo_one_esm["a" /* useMemoOne */])(() => Object(external_lodash_["throttle"])(...args), args);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   Object(external_wp_element_["useEffect"])(() => () => throttled.cancel(), [throttled]);
   return throttled;
 }
@@ -2206,6 +2842,7 @@ function useThrottle(fn, wait, options) {
  */
 
 
+<<<<<<< HEAD
 /* eslint-disable jsdoc/valid-types */
 
 /**
@@ -2228,6 +2865,11 @@ function useFreshRef(value) {
   // it's easier to just ts-ignore this specific line that's complaining about
   // undefined not being part of T.
   // @ts-ignore
+=======
+/** @typedef {import('@wordpress/element').RefCallback} RefCallback */
+
+function useFreshRef(value) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const ref = Object(external_wp_element_["useRef"])();
   ref.current = value;
   return ref;
@@ -2235,6 +2877,7 @@ function useFreshRef(value) {
 /**
  * A hook to facilitate drag and drop handling.
  *
+<<<<<<< HEAD
  * @param {Object}                  props             Named parameters.
  * @param {boolean}                 props.isDisabled  Whether or not to disable the drop zone.
  * @param {(e: DragEvent) => void}  props.onDragStart Called when dragging has started.
@@ -2258,6 +2901,30 @@ function useDropZone(_ref) {
     onDragEnd: _onDragEnd,
     onDragOver: _onDragOver
   } = _ref;
+=======
+ * @param {Object}     $1             Named parameters.
+ * @param {boolean}    $1.isDisabled  Whether or not to disable the drop zone.
+ * @param {DragEvent}  $1.onDragStart Called when dragging has started.
+ * @param {DragEvent}  $1.onDragEnter Called when the zone is entered.
+ * @param {DragEvent}  $1.onDragOver  Called when the zone is moved within.
+ * @param {DragEvent}  $1.onDragLeave Called when the zone is left.
+ * @param {MouseEvent} $1.onDragEnd   Called when dragging has ended.
+ * @param {DragEvent}  $1.onDrop      Called when dropping in the zone.
+ *
+ * @return {RefCallback} Ref callback to be passed to the drop zone element.
+ */
+
+
+function useDropZone({
+  isDisabled,
+  onDrop: _onDrop,
+  onDragStart: _onDragStart,
+  onDragEnter: _onDragEnter,
+  onDragLeave: _onDragLeave,
+  onDragEnd: _onDragEnd,
+  onDragOver: _onDragOver
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const onDropRef = useFreshRef(_onDrop);
   const onDragStartRef = useFreshRef(_onDragStart);
   const onDragEnterRef = useFreshRef(_onDragEnter);
@@ -2276,11 +2943,16 @@ function useDropZone(_ref) {
     /**
      * Checks if an element is in the drop zone.
      *
+<<<<<<< HEAD
      * @param {EventTarget|null} targetToCheck
+=======
+     * @param {HTMLElement|null} elementToCheck
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
      *
      * @return {boolean} True if in drop zone, false if not.
      */
 
+<<<<<<< HEAD
     function isElementInZone(targetToCheck) {
       const {
         defaultView
@@ -2293,6 +2965,12 @@ function useDropZone(_ref) {
 
 
       let elementToCheck = targetToCheck;
+=======
+    function isElementInZone(elementToCheck) {
+      if (!elementToCheck || !element.contains(elementToCheck)) {
+        return false;
+      }
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
       do {
         if (elementToCheck.dataset.isDropZone) {
@@ -2324,17 +3002,25 @@ function useDropZone(_ref) {
       }
     }
 
+<<<<<<< HEAD
     function onDragEnter(
     /** @type {DragEvent} */
     event) {
+=======
+    function onDragEnter(event) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       event.preventDefault(); // The `dragenter` event will also fire when entering child
       // elements, but we only want to call `onDragEnter` when
       // entering the drop zone, which means the `relatedTarget`
       // (element that has been left) should be outside the drop zone.
 
+<<<<<<< HEAD
       if (element.contains(
       /** @type {Node} */
       event.relatedTarget)) {
+=======
+      if (element.contains(event.relatedTarget)) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         return;
       }
 
@@ -2343,9 +3029,13 @@ function useDropZone(_ref) {
       }
     }
 
+<<<<<<< HEAD
     function onDragOver(
     /** @type {DragEvent} */
     event) {
+=======
+    function onDragOver(event) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       // Only call onDragOver for the innermost hovered drop zones.
       if (!event.defaultPrevented && onDragOverRef.current) {
         onDragOverRef.current(event);
@@ -2356,9 +3046,13 @@ function useDropZone(_ref) {
       event.preventDefault();
     }
 
+<<<<<<< HEAD
     function onDragLeave(
     /** @type {DragEvent} */
     event) {
+=======
+    function onDragLeave(event) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       // The `dragleave` event will also fire when leaving child
       // elements, but we only want to call `onDragLeave` when
       // leaving the drop zone, which means the `relatedTarget`
@@ -2373,9 +3067,13 @@ function useDropZone(_ref) {
       }
     }
 
+<<<<<<< HEAD
     function onDrop(
     /** @type {DragEvent} */
     event) {
+=======
+    function onDrop(event) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       // Don't handle drop if an inner drop zone already handled it.
       if (event.defaultPrevented) {
         return;
@@ -2397,9 +3095,13 @@ function useDropZone(_ref) {
       maybeDragEnd(event);
     }
 
+<<<<<<< HEAD
     function maybeDragEnd(
     /** @type {MouseEvent} */
     event) {
+=======
+    function maybeDragEnd(event) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       if (!isDragging) {
         return;
       }
@@ -2435,6 +3137,7 @@ function useDropZone(_ref) {
   }, [isDisabled]);
 }
 
+<<<<<<< HEAD
 // CONCATENATED MODULE: ./node_modules/@wordpress/compose/build-module/hooks/use-focusable-iframe/index.js
 /**
  * Internal dependencies
@@ -2641,6 +3344,8 @@ function useFixedWindowList(elementRef, itemHeight, totalItems, options) {
   return [fixedListWindow, setFixedListWindow];
 }
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 // CONCATENATED MODULE: ./node_modules/@wordpress/compose/build-module/index.js
 // Utils
  // Compose helper (aliased flowRight from Lodash)
@@ -2679,9 +3384,12 @@ function useFixedWindowList(elementRef, itemHeight, totalItems, options) {
 
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /***/ }),
 
 /***/ "RxS6":

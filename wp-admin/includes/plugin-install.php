@@ -136,7 +136,11 @@ function plugins_api( $action, $args = array() ) {
 	/**
 	 * Filters the response for the current WordPress.org Plugin Installation API request.
 	 *
+<<<<<<< HEAD
 	 * Returning a non-false value will effectively short-circuit the WordPress.org API request.
+=======
+	 * Passing a non-false value will effectively short-circuit the WordPress.org API request.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * If `$action` is 'query_plugins' or 'plugin_information', an object MUST be passed.
 	 * If `$action` is 'hot_tags' or 'hot_categories', an array should be passed.
@@ -697,7 +701,11 @@ function install_plugin_information() {
 				?>
 				</li>
 			<?php } if ( ! empty( $api->slug ) && empty( $api->external ) ) { ?>
+<<<<<<< HEAD
 				<li><a target="_blank" href="<?php echo esc_url( __( 'https://wordpress.org/plugins/' ) . $api->slug ); ?>/"><?php _e( 'WordPress.org Plugin Page &#187;' ); ?></a></li>
+=======
+				<li><a target="_blank" href="<?php echo __( 'https://wordpress.org/plugins/' ) . $api->slug; ?>/"><?php _e( 'WordPress.org Plugin Page &#187;' ); ?></a></li>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			<?php } if ( ! empty( $api->homepage ) ) { ?>
 				<li><a target="_blank" href="<?php echo esc_url( $api->homepage ); ?>"><?php _e( 'Plugin Homepage &#187;' ); ?></a></li>
 			<?php } if ( ! empty( $api->donate_link ) && empty( $api->contributors ) ) { ?>

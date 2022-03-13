@@ -259,18 +259,28 @@ abstract class WP_Widget_Media extends WP_Widget {
 	 * Sanitizes the widget form values as they are saved.
 	 *
 	 * @since 4.8.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$instance` to `$old_instance` to match parent class
 	 *              for PHP 8 named parameter support.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @see WP_Widget::update()
 	 * @see WP_REST_Request::has_valid_params()
 	 * @see WP_REST_Request::sanitize_params()
 	 *
 	 * @param array $new_instance Values just sent to be saved.
+<<<<<<< HEAD
 	 * @param array $old_instance Previously saved values from database.
 	 * @return array Updated safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
+=======
+	 * @param array $instance     Previously saved values from database.
+	 * @return array Updated safe values to be saved.
+	 */
+	public function update( $new_instance, $instance ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		$schema = $this->get_instance_schema();
 		foreach ( $schema as $field => $field_schema ) {
@@ -305,10 +315,17 @@ abstract class WP_Widget_Media extends WP_Widget {
 			if ( is_wp_error( $value ) ) {
 				continue;
 			}
+<<<<<<< HEAD
 			$old_instance[ $field ] = $value;
 		}
 
 		return $old_instance;
+=======
+			$instance[ $field ] = $value;
+		}
+
+		return $instance;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	/**
@@ -317,6 +334,10 @@ abstract class WP_Widget_Media extends WP_Widget {
 	 * @since 4.8.0
 	 *
 	 * @param array $instance Widget instance props.
+<<<<<<< HEAD
+=======
+	 * @return string
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	abstract public function render_media( $instance );
 

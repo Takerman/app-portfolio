@@ -98,6 +98,7 @@ class WP_Customize_Nav_Menus_Panel extends WP_Customize_Panel {
 		<li class="customize-control-title customize-section-title-nav_menus-heading"><?php _e( 'Menus' ); ?></li>
 		<?php
 	}
+<<<<<<< HEAD
 
 	/**
 	 * Checks required user capabilities and whether the theme has the
@@ -121,4 +122,6 @@ class WP_Customize_Nav_Menus_Panel extends WP_Customize_Panel {
 
 		return parent::check_capabilities();
 	}
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }

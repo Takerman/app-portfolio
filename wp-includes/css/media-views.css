@@ -1394,7 +1394,11 @@
 	top: 50%;
 	left: 15%;
 	width: 70%;
+<<<<<<< HEAD
 	margin: -5px 0 0;
+=======
+	margin: -5px 0 0 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .media-uploader-status {
@@ -1437,10 +1441,42 @@
 }
 
 .media-uploader-status .upload-dismiss-errors {
+<<<<<<< HEAD
+=======
+	position: absolute;
+	top: -3px;
+	right: -5px;
+	padding: 5px;
+	border-radius: 50%;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	transition: none;
 	text-decoration: none;
 }
 
+<<<<<<< HEAD
+=======
+.uploader-inline .media-uploader-status .upload-dismiss-errors {
+	top: 2px;
+	right: 2px;
+}
+
+.media-uploader-status .upload-dismiss-errors::before {
+	content: "\f153";
+	display: block;
+	font: normal 16px/1 dashicons;
+	color: #787c82;
+}
+
+.uploader-inline .errors.media-uploader-status .upload-dismiss-errors::before {
+	color: #646970;
+}
+
+.errors.media-uploader-status .upload-dismiss-errors:hover::before,
+.errors.media-uploader-status .upload-dismiss-errors:focus::before {
+	color: #d63638;
+}
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 .upload-errors .upload-error {
 	padding: 12px;
 	margin-bottom: 12px;
@@ -1950,7 +1986,11 @@
 }
 
 .media-modal .imgedit-wrap .imgedit-panel-content {
+<<<<<<< HEAD
 	padding: 16px 16px 0;
+=======
+	padding: 16px 16px 0 16px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	position: absolute;
 	top: 0;
 	right: 282px;
@@ -2114,7 +2154,11 @@
 .embed-link-settings,
 .embed-media-settings {
 	position: absolute;
+<<<<<<< HEAD
 	top: 82px;
+=======
+	top: 70px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	left: 0;
 	right: 0;
 	bottom: 0;
@@ -2122,10 +2166,13 @@
 	overflow: auto;
 }
 
+<<<<<<< HEAD
 .media-embed .embed-link-settings .link-text {
 	margin-top: 0;
 }
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /*
  * Implementation of bottom padding in overflow content differs across browsers.
  * We need a different method. See https://github.com/w3c/csswg-drafts/issues/129
@@ -2267,7 +2314,11 @@
 
 .image-details .custom-size .sep {
 	float: left;
+<<<<<<< HEAD
 	margin: 26px 6px 0;
+=======
+	margin: 26px 6px 0 6px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .image-details .custom-size .description {
@@ -2406,7 +2457,11 @@
 	float: left;
 	width: 25%;
 	text-align: right;
+<<<<<<< HEAD
 	margin: 8px 1% 0;
+=======
+	margin: 8px 1% 0 1%;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	line-height: 1.1;
 }
 
@@ -2603,7 +2658,11 @@
 
 	.media-sidebar .setting,
 	.attachment-details .setting {
+<<<<<<< HEAD
 		margin: 6px 0;
+=======
+		margin: 6px 0px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	.media-sidebar .setting input,
@@ -2897,7 +2956,11 @@
 
 	/* Change margin direction on load more button in responsive views. */
 	.load-more-wrapper .load-more-jump {
+<<<<<<< HEAD
 		margin: 12px 0 0;
+=======
+		margin: 12px 0 0 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 }
@@ -2911,7 +2974,11 @@
 
 	/* Change margin direction on load more button in responsive views. */
 	.load-more-wrapper .load-more-jump {
+<<<<<<< HEAD
 		margin: 12px 0 0;
+=======
+		margin: 12px 0 0 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 }

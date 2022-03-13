@@ -236,6 +236,7 @@ class WP_REST_Block_Types_Controller extends WP_REST_Controller {
 	 * Prepares a block type object for serialization.
 	 *
 	 * @since 5.5.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$block_type` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param WP_Block_Type   $item    Block type data.
@@ -247,6 +248,17 @@ class WP_REST_Block_Types_Controller extends WP_REST_Controller {
 		$block_type = $item;
 		$fields     = $this->get_fields_for_response( $request );
 		$data       = array();
+=======
+	 *
+	 * @param WP_Block_Type   $block_type Block type data.
+	 * @param WP_REST_Request $request    Full details about the request.
+	 * @return WP_REST_Response Block type data.
+	 */
+	public function prepare_item_for_response( $block_type, $request ) {
+
+		$fields = $this->get_fields_for_response( $request );
+		$data   = array();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		if ( rest_is_field_included( 'attributes', $fields ) ) {
 			$data['attributes'] = $block_type->get_attributes();
@@ -274,7 +286,10 @@ class WP_REST_Block_Types_Controller extends WP_REST_Controller {
 			'example',
 			'editor_script',
 			'script',
+<<<<<<< HEAD
 			'view_script',
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			'editor_style',
 			'style',
 			'variations',
@@ -520,6 +535,7 @@ class WP_REST_Block_Types_Controller extends WP_REST_Controller {
 					'readonly'    => true,
 				),
 				'script'           => array(
+<<<<<<< HEAD
 					'description' => __( 'Public facing and editor script handle.' ),
 					'type'        => array( 'string', 'null' ),
 					'default'     => null,
@@ -527,6 +543,8 @@ class WP_REST_Block_Types_Controller extends WP_REST_Controller {
 					'readonly'    => true,
 				),
 				'view_script'      => array(
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'Public facing script handle.' ),
 					'type'        => array( 'string', 'null' ),
 					'default'     => null,
@@ -541,7 +559,11 @@ class WP_REST_Block_Types_Controller extends WP_REST_Controller {
 					'readonly'    => true,
 				),
 				'style'            => array(
+<<<<<<< HEAD
 					'description' => __( 'Public facing and editor style handle.' ),
+=======
+					'description' => __( 'Public facing style handle.' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'type'        => array( 'string', 'null' ),
 					'default'     => null,
 					'context'     => array( 'embed', 'view', 'edit' ),

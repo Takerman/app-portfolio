@@ -625,4 +625,7 @@ Reference material:
 * http://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/Nikon.html
 * http://www.codeproject.com/Articles/8295/MPEG-Audio-Frame-Header
 * http://dsd-guide.com/sites/default/files/white-papers/DSFFileFormatSpec_E.pdf
+<<<<<<< HEAD
 * https://fileformats.fandom.com/wiki/Torrent_file
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

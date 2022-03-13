@@ -74,7 +74,11 @@ if ( ! function_exists( 'twenty_twenty_one_setup' ) ) {
 		register_nav_menus(
 			array(
 				'primary' => esc_html__( 'Primary menu', 'twentytwentyone' ),
+<<<<<<< HEAD
 				'footer'  => esc_html__( 'Secondary menu', 'twentytwentyone' ),
+=======
+				'footer'  => __( 'Secondary menu', 'twentytwentyone' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			)
 		);
 
@@ -338,9 +342,12 @@ if ( ! function_exists( 'twenty_twenty_one_setup' ) ) {
 		// Add support for custom units.
 		// This was removed in WordPress 5.6 but is still required to properly support WP 5.5.
 		add_theme_support( 'custom-units' );
+<<<<<<< HEAD
 
 		// Remove feed icon link from legacy RSS widget.
 		add_filter( 'rss_widget_feed_link', '__return_false' );
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 }
 add_action( 'after_setup_theme', 'twenty_twenty_one_setup' );
@@ -499,6 +506,7 @@ function twenty_twenty_one_skip_link_focus_fix() {
 		echo '<script>';
 		include get_template_directory() . '/assets/js/skip-link-focus-fix.js';
 		echo '</script>';
+<<<<<<< HEAD
 	} else {
 		// The following is minified via `npx terser --compress --mangle -- assets/js/skip-link-focus-fix.js`.
 		?>
@@ -507,6 +515,16 @@ function twenty_twenty_one_skip_link_focus_fix() {
 		</script>
 		<?php
 	}
+=======
+	}
+
+	// The following is minified via `npx terser --compress --mangle -- assets/js/skip-link-focus-fix.js`.
+	?>
+	<script>
+	/(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",(function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())}),!1);
+	</script>
+	<?php
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 add_action( 'wp_print_footer_scripts', 'twenty_twenty_one_skip_link_focus_fix' );
 

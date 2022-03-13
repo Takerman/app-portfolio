@@ -407,7 +407,11 @@ class WP_Customize_Nav_Menu_Setting extends WP_Customize_Setting {
 	 *
 	 * @since 4.3.0
 	 *
+<<<<<<< HEAD
 	 * @param array $value The menu value to sanitize.
+=======
+	 * @param array $value The value to sanitize.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @return array|false|null Null if an input isn't valid. False if it is marked for deletion.
 	 *                          Otherwise the sanitized value.
 	 */

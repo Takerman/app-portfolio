@@ -474,7 +474,11 @@ class WP_Community_Events {
 
 		$future_wordcamps = array_filter(
 			$future_events,
+<<<<<<< HEAD
 			static function( $wordcamp ) {
+=======
+			function( $wordcamp ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				return 'wordcamp' === $wordcamp['type'];
 			}
 		);

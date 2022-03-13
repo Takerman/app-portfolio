@@ -33,9 +33,15 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 	 */
 	public function __construct( $post_type ) {
 		$this->post_type = $post_type;
+<<<<<<< HEAD
 		$obj             = get_post_type_object( $post_type );
 		$this->rest_base = ! empty( $obj->rest_base ) ? $obj->rest_base : $obj->name;
 		$this->namespace = ! empty( $obj->rest_namespace ) ? $obj->rest_namespace : 'wp/v2';
+=======
+		$this->namespace = 'wp/v2';
+		$obj             = get_post_type_object( $post_type );
+		$this->rest_base = ! empty( $obj->rest_base ) ? $obj->rest_base : $obj->name;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	/**
@@ -68,6 +74,7 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 		// Lists/updates a single template based on the given id.
 		register_rest_route(
 			$this->namespace,
+<<<<<<< HEAD
 			// The route.
 			sprintf(
 				'/%s/(?P<id>%s%s)',
@@ -86,12 +93,23 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 						'sanitize_callback' => array( $this, '_sanitize_template_id' ),
 					),
 				),
+=======
+			'/' . $this->rest_base . '/(?P<id>[\/\w-]+)',
+			array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				array(
 					'methods'             => WP_REST_Server::READABLE,
 					'callback'            => array( $this, 'get_item' ),
 					'permission_callback' => array( $this, 'get_item_permissions_check' ),
 					'args'                => array(
+<<<<<<< HEAD
 						'context' => $this->get_context_param( array( 'default' => 'view' ) ),
+=======
+						'id' => array(
+							'description' => __( 'The id of a template' ),
+							'type'        => 'string',
+						),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					),
 				),
 				array(
@@ -142,6 +160,7 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Requesting this endpoint for a template like 'twentytwentytwo//home'
 	 * requires using a path like /wp/v2/templates/twentytwentytwo//home. There
 	 * are special cases when WordPress routing corrects the name to contain
@@ -177,6 +196,8 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 	}
 
 	/**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * Checks if a given request has access to read templates.
 	 *
 	 * @since 5.8.0
@@ -204,9 +225,12 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 		if ( isset( $request['area'] ) ) {
 			$query['area'] = $request['area'];
 		}
+<<<<<<< HEAD
 		if ( isset( $request['post_type'] ) ) {
 			$query['post_type'] = $request['post_type'];
 		}
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		$templates = array();
 		foreach ( get_block_templates( $query, $this->post_type ) as $template ) {
@@ -238,11 +262,15 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 	 * @return WP_REST_Response|WP_Error
 	 */
 	public function get_item( $request ) {
+<<<<<<< HEAD
 		if ( isset( $request['source'] ) && 'theme' === $request['source'] ) {
 			$template = get_block_file_template( $request['id'], $this->post_type );
 		} else {
 			$template = get_block_template( $request['id'], $this->post_type );
 		}
+=======
+		$template = get_block_template( $request['id'], $this->post_type );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		if ( ! $template ) {
 			return new WP_Error( 'rest_template_not_found', __( 'No templates exist with that id.' ), array( 'status' => 404 ) );
@@ -277,6 +305,7 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 			return new WP_Error( 'rest_template_not_found', __( 'No templates exist with that id.' ), array( 'status' => 404 ) );
 		}
 
+<<<<<<< HEAD
 		$post_before = get_post( $template->wp_id );
 
 		if ( isset( $request['source'] ) && 'theme' === $request['source'] ) {
@@ -310,6 +339,16 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 			} else {
 				$result->add_data( array( 'status' => 400 ) );
 			}
+=======
+		$changes = $this->prepare_item_for_database( $request );
+
+		if ( 'custom' === $template->source ) {
+			$result = wp_update_post( wp_slash( (array) $changes ), true );
+		} else {
+			$result = wp_insert_post( wp_slash( (array) $changes ), true );
+		}
+		if ( is_wp_error( $result ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return $result;
 		}
 
@@ -319,6 +358,7 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 			return $fields_update;
 		}
 
+<<<<<<< HEAD
 		$request->set_param( 'context', 'edit' );
 
 		$post = get_post( $template->wp_id );
@@ -330,6 +370,12 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 		$response = $this->prepare_item_for_response( $template, $request );
 
 		return rest_ensure_response( $response );
+=======
+		return $this->prepare_item_for_response(
+			get_block_template( $request['id'], $this->post_type ),
+			$request
+		);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	/**
@@ -353,6 +399,7 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 	 * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
 	 */
 	public function create_item( $request ) {
+<<<<<<< HEAD
 		$prepared_post = $this->prepare_item_for_database( $request );
 
 		if ( is_wp_error( $prepared_post ) ) {
@@ -376,12 +423,26 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 		}
 		$id            = $posts[0]->id;
 		$post          = get_post( $post_id );
+=======
+		$changes            = $this->prepare_item_for_database( $request );
+		$changes->post_name = $request['slug'];
+		$result             = wp_insert_post( wp_slash( (array) $changes ), true );
+		if ( is_wp_error( $result ) ) {
+			return $result;
+		}
+		$posts = get_block_templates( array( 'wp_id' => $result ), $this->post_type );
+		if ( ! count( $posts ) ) {
+			return new WP_Error( 'rest_template_insert_error', __( 'No templates exist with that id.' ) );
+		}
+		$id            = $posts[0]->id;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$template      = get_block_template( $id, $this->post_type );
 		$fields_update = $this->update_additional_fields_for_object( $template, $request );
 		if ( is_wp_error( $fields_update ) ) {
 			return $fields_update;
 		}
 
+<<<<<<< HEAD
 		/** This action is documented in wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php */
 		do_action( "rest_after_insert_{$this->post_type}", $post, $request, true );
 
@@ -394,6 +455,12 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 		$response->header( 'Location', rest_url( sprintf( '%s/%s/%s', $this->namespace, $this->rest_base, $template->id ) ) );
 
 		return $response;
+=======
+		return $this->prepare_item_for_response(
+			get_block_template( $id, $this->post_type ),
+			$request
+		);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	/**
@@ -428,12 +495,19 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 		$id    = $template->wp_id;
 		$force = (bool) $request['force'];
 
+<<<<<<< HEAD
 		$request->set_param( 'context', 'edit' );
 
 		// If we're forcing, then delete permanently.
 		if ( $force ) {
 			$previous = $this->prepare_item_for_response( $template, $request );
 			$result   = wp_delete_post( $id, true );
+=======
+		// If we're forcing, then delete permanently.
+		if ( $force ) {
+			$previous = $this->prepare_item_for_response( $template, $request );
+			wp_delete_post( $id, true );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$response = new WP_REST_Response();
 			$response->set_data(
 				array(
@@ -441,6 +515,7 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 					'previous' => $previous->get_data(),
 				)
 			);
+<<<<<<< HEAD
 		} else {
 			// Otherwise, only trash if we haven't already.
 			if ( 'trash' === $template->status ) {
@@ -467,6 +542,24 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 		}
 
 		return $response;
+=======
+
+			return $response;
+		}
+
+		// Otherwise, only trash if we haven't already.
+		if ( 'trash' === $template->status ) {
+			return new WP_Error(
+				'rest_template_already_trashed',
+				__( 'The template has already been deleted.' ),
+				array( 'status' => 410 )
+			);
+		}
+
+		wp_trash_post( $id );
+		$template->status = 'trash';
+		return $this->prepare_item_for_response( $template, $request );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	/**
@@ -493,29 +586,40 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 			$changes->tax_input   = array(
 				'wp_theme' => $template->theme,
 			);
+<<<<<<< HEAD
 			$changes->meta_input  = array(
 				'origin' => $template->source,
 			);
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		} else {
 			$changes->post_name   = $template->slug;
 			$changes->ID          = $template->wp_id;
 			$changes->post_status = 'publish';
 		}
 		if ( isset( $request['content'] ) ) {
+<<<<<<< HEAD
 			if ( is_string( $request['content'] ) ) {
 				$changes->post_content = $request['content'];
 			} elseif ( isset( $request['content']['raw'] ) ) {
 				$changes->post_content = $request['content']['raw'];
 			}
+=======
+			$changes->post_content = $request['content'];
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		} elseif ( null !== $template && 'custom' !== $template->source ) {
 			$changes->post_content = $template->content;
 		}
 		if ( isset( $request['title'] ) ) {
+<<<<<<< HEAD
 			if ( is_string( $request['title'] ) ) {
 				$changes->post_title = $request['title'];
 			} elseif ( ! empty( $request['title']['raw'] ) ) {
 				$changes->post_title = $request['title']['raw'];
 			}
+=======
+			$changes->post_title = $request['title'];
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		} elseif ( null !== $template && 'custom' !== $template->source ) {
 			$changes->post_title = $template->title;
 		}
@@ -525,6 +629,7 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 			$changes->post_excerpt = $template->description;
 		}
 
+<<<<<<< HEAD
 		if ( 'wp_template_part' === $this->post_type ) {
 			if ( isset( $request['area'] ) ) {
 				$changes->tax_input['wp_template_part_area'] = _filter_block_template_part_area( $request['area'] );
@@ -553,6 +658,8 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 			$changes->post_author = $post_author;
 		}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		return $changes;
 	}
 
@@ -560,6 +667,7 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 	 * Prepare a single template output for response
 	 *
 	 * @since 5.8.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$template` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param WP_Block_Template $item    Template instance.
@@ -663,6 +771,39 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 		$response = rest_ensure_response( $data );
 
 		$links = $this->prepare_links( $template->id );
+=======
+	 *
+	 * @param WP_Block_Template $template Template instance.
+	 * @param WP_REST_Request   $request Request object.
+	 * @return WP_REST_Response $data
+	 */
+	public function prepare_item_for_response( $template, $request ) { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+		$result = array(
+			'id'             => $template->id,
+			'theme'          => $template->theme,
+			'content'        => array( 'raw' => $template->content ),
+			'slug'           => $template->slug,
+			'source'         => $template->source,
+			'type'           => $template->type,
+			'description'    => $template->description,
+			'title'          => array(
+				'raw'      => $template->title,
+				'rendered' => $template->title,
+			),
+			'status'         => $template->status,
+			'wp_id'          => $template->wp_id,
+			'has_theme_file' => $template->has_theme_file,
+		);
+
+		if ( 'wp_template_part' === $template->type ) {
+			$result['area'] = $template->area;
+		}
+
+		$result = $this->add_additional_fields_to_object( $result, $request );
+
+		$response = rest_ensure_response( $result );
+		$links    = $this->prepare_links( $template->id );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$response->add_links( $links );
 		if ( ! empty( $links['self']['href'] ) ) {
 			$actions = $this->get_available_actions();
@@ -707,7 +848,11 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 	 *
 	 * @since 5.8.0
 	 *
+<<<<<<< HEAD
 	 * @return string[] List of link relations.
+=======
+	 * @return array List of link relations.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	protected function get_available_actions() {
 		$rels = array();
@@ -729,12 +874,16 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 	 * Retrieves the query params for the posts collection.
 	 *
 	 * @since 5.8.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Added `'area'` and `'post_type'`.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @return array Collection parameters.
 	 */
 	public function get_collection_params() {
 		return array(
+<<<<<<< HEAD
 			'context'   => $this->get_context_param( array( 'default' => 'view' ) ),
 			'wp_id'     => array(
 				'description' => __( 'Limit to the specified post id.' ),
@@ -748,6 +897,13 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 				'description' => __( 'Post type to get the templates for.' ),
 				'type'        => 'string',
 			),
+=======
+			'context' => $this->get_context_param(),
+			'wp_id'   => array(
+				'description' => __( 'Limit to the specified post id.' ),
+				'type'        => 'integer',
+			),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		);
 	}
 
@@ -755,7 +911,10 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 	 * Retrieves the block type' schema, conforming to JSON Schema.
 	 *
 	 * @since 5.8.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Added `'area'`.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @return array Item schema data.
 	 */
@@ -781,35 +940,46 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 					'context'     => array( 'embed', 'view', 'edit' ),
 					'required'    => true,
 					'minLength'   => 1,
+<<<<<<< HEAD
 					'pattern'     => '[a-zA-Z0-9_\-]+',
+=======
+					'pattern'     => '[a-zA-Z_\-]+',
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				),
 				'theme'          => array(
 					'description' => __( 'Theme identifier for the template.' ),
 					'type'        => 'string',
 					'context'     => array( 'embed', 'view', 'edit' ),
 				),
+<<<<<<< HEAD
 				'type'           => array(
 					'description' => __( 'Type of template.' ),
 					'type'        => 'string',
 					'context'     => array( 'embed', 'view', 'edit' ),
 				),
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				'source'         => array(
 					'description' => __( 'Source of template' ),
 					'type'        => 'string',
 					'context'     => array( 'embed', 'view', 'edit' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'origin'         => array(
 					'description' => __( 'Source of a customized template' ),
 					'type'        => 'string',
 					'context'     => array( 'embed', 'view', 'edit' ),
 					'readonly'    => true,
 				),
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				'content'        => array(
 					'description' => __( 'Content of template.' ),
 					'type'        => array( 'object', 'string' ),
 					'default'     => '',
 					'context'     => array( 'embed', 'view', 'edit' ),
+<<<<<<< HEAD
 					'properties'  => array(
 						'raw'           => array(
 							'description' => __( 'Content for the template, as it exists in the database.' ),
@@ -823,12 +993,15 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 							'readonly'    => true,
 						),
 					),
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				),
 				'title'          => array(
 					'description' => __( 'Title of template.' ),
 					'type'        => array( 'object', 'string' ),
 					'default'     => '',
 					'context'     => array( 'embed', 'view', 'edit' ),
+<<<<<<< HEAD
 					'properties'  => array(
 						'raw'      => array(
 							'description' => __( 'Title for the template, as it exists in the database.' ),
@@ -842,6 +1015,8 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 							'readonly'    => true,
 						),
 					),
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				),
 				'description'    => array(
 					'description' => __( 'Description of template.' ),
@@ -852,7 +1027,10 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 				'status'         => array(
 					'description' => __( 'Status of template.' ),
 					'type'        => 'string',
+<<<<<<< HEAD
 					'enum'        => array_keys( get_post_stati( array( 'internal' => false ) ) ),
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'default'     => 'publish',
 					'context'     => array( 'embed', 'view', 'edit' ),
 				),
@@ -868,6 +1046,7 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 					'context'     => array( 'embed', 'view', 'edit' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'author'         => array(
 					'description' => __( 'The ID for the author of the template.' ),
 					'type'        => 'integer',
@@ -893,6 +1072,11 @@ class WP_REST_Templates_Controller extends WP_REST_Controller {
 			);
 		}
 
+=======
+			),
+		);
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$this->schema = $schema;
 
 		return $this->add_additional_fields_schema( $this->schema );

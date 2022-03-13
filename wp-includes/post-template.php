@@ -1005,9 +1005,15 @@ function wp_link_pages( $args = '' ) {
 	 *
 	 * @since 3.6.0
 	 *
+<<<<<<< HEAD
 	 * @param string       $output HTML output of paginated posts' page links.
 	 * @param array|string $args   An array or query string of arguments. See wp_link_pages()
 	 *                             for information on accepted arguments.
+=======
+	 * @param string $output HTML output of paginated posts' page links.
+	 * @param array  $args   An array of arguments. See wp_link_pages()
+	 *                       for information on accepted arguments.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	$html = apply_filters( 'wp_link_pages', $output, $args );
 
@@ -1646,7 +1652,11 @@ function wp_get_attachment_link( $id = 0, $size = 'thumbnail', $permalink = fals
 	 * @since 5.1.0 Added the `$attr` parameter.
 	 *
 	 * @param string       $link_html The page link HTML output.
+<<<<<<< HEAD
 	 * @param int|WP_Post  $id        Post ID or object. Can be 0 for the current global post.
+=======
+	 * @param int          $id        Post ID.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @param string|int[] $size      Requested image size. Can be any registered image size name, or
 	 *                                an array of width and height values in pixels (in that order).
 	 * @param bool         $permalink Whether to add permalink to image. Default false.

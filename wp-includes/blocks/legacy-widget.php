@@ -108,6 +108,7 @@ function handle_legacy_widget_preview_iframe() {
 				padding: 0 !important;
 				margin: 0 !important;
 			}
+<<<<<<< HEAD
 
 			/* Hide root level text nodes */
 			body {
@@ -135,6 +136,8 @@ function handle_legacy_widget_preview_iframe() {
 			.widget {
 				font-size: var(--global--font-size-base);
 			}
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		</style>
 	</head>
 	<body <?php body_class(); ?>>

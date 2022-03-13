@@ -7,7 +7,11 @@
 
 if ( 'POST' !== $_SERVER['REQUEST_METHOD'] ) {
 	$protocol = $_SERVER['SERVER_PROTOCOL'];
+<<<<<<< HEAD
 	if ( ! in_array( $protocol, array( 'HTTP/1.1', 'HTTP/2', 'HTTP/2.0', 'HTTP/3' ), true ) ) {
+=======
+	if ( ! in_array( $protocol, array( 'HTTP/1.1', 'HTTP/2', 'HTTP/2.0' ), true ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$protocol = 'HTTP/1.0';
 	}
 

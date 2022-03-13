@@ -28,6 +28,10 @@ $twenty_twenty_one_comment_count = get_comments_number();
 
 	<?php
 	if ( have_comments() ) :
+<<<<<<< HEAD
+=======
+		;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		?>
 		<h2 class="comments-title">
 			<?php if ( '1' === $twenty_twenty_one_comment_count ) : ?>
@@ -82,6 +86,10 @@ $twenty_twenty_one_comment_count = get_comments_number();
 	<?php
 	comment_form(
 		array(
+<<<<<<< HEAD
+=======
+			'logged_in_as'       => null,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			'title_reply'        => esc_html__( 'Leave a comment', 'twentytwentyone' ),
 			'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title">',
 			'title_reply_after'  => '</h2>',

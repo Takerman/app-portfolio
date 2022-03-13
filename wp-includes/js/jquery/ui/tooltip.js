@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * jQuery UI Tooltip 1.13.1
+=======
+ * jQuery UI Tooltip 1.12.1
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -17,8 +21,11 @@
 //>>css.theme: ../../themes/base/theme.css
 
 ( function( factory ) {
+<<<<<<< HEAD
 	"use strict";
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -31,17 +38,31 @@
 		// Browser globals
 		factory( jQuery );
 	}
+<<<<<<< HEAD
 } )( function( $ ) {
 "use strict";
 
 $.widget( "ui.tooltip", {
 	version: "1.13.1",
+=======
+}( function( $ ) {
+
+$.widget( "ui.tooltip", {
+	version: "1.12.1",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	options: {
 		classes: {
 			"ui-tooltip": "ui-corner-all ui-widget-shadow"
 		},
 		content: function() {
+<<<<<<< HEAD
 			var title = $( this ).attr( "title" );
+=======
+
+			// support: IE<9, Opera in jQuery <1.7
+			// .text() can't accept undefined, so coerce to a string
+			var title = $( this ).attr( "title" ) || "";
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 			// Escape title, since we're going from an attribute to raw HTML
 			return $( "<a>" ).text( title ).html();
@@ -68,7 +89,11 @@ $.widget( "ui.tooltip", {
 		describedby.push( id );
 		elem
 			.data( "ui-tooltip-id", id )
+<<<<<<< HEAD
 			.attr( "aria-describedby", String.prototype.trim.call( describedby.join( " " ) ) );
+=======
+			.attr( "aria-describedby", $.trim( describedby.join( " " ) ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	},
 
 	_removeDescribedBy: function( elem ) {
@@ -81,7 +106,11 @@ $.widget( "ui.tooltip", {
 		}
 
 		elem.removeData( "ui-tooltip-id" );
+<<<<<<< HEAD
 		describedby = String.prototype.trim.call( describedby.join( " " ) );
+=======
+		describedby = $.trim( describedby.join( " " ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( describedby ) {
 			elem.attr( "aria-describedby", describedby );
 		} else {
@@ -217,7 +246,11 @@ $.widget( "ui.tooltip", {
 			eventType = event ? event.type : null;
 
 		if ( typeof contentOption === "string" || contentOption.nodeType ||
+<<<<<<< HEAD
 			contentOption.jquery ) {
+=======
+				contentOption.jquery ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return this._open( event, target, contentOption );
 		}
 
@@ -327,7 +360,11 @@ $.widget( "ui.tooltip", {
 					position( positionOption.of );
 					clearInterval( delayedShow );
 				}
+<<<<<<< HEAD
 			}, 13 );
+=======
+			}, $.fx.interval );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		this._trigger( "open", event, { tooltip: tooltip } );
@@ -348,10 +385,14 @@ $.widget( "ui.tooltip", {
 		// tooltips will handle this in destroy.
 		if ( target[ 0 ] !== this.element[ 0 ] ) {
 			events.remove = function() {
+<<<<<<< HEAD
 				var targetElement = this._find( target );
 				if ( targetElement ) {
 					this._removeTooltip( targetElement.tooltip );
 				}
+=======
+				this._removeTooltip( this._find( target ).tooltip );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			};
 		}
 
@@ -451,10 +492,13 @@ $.widget( "ui.tooltip", {
 	},
 
 	_removeTooltip: function( tooltip ) {
+<<<<<<< HEAD
 
 		// Clear the interval for delayed tracking tooltips
 		clearInterval( this.delayedShow );
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		tooltip.remove();
 		delete this.tooltips[ tooltip.attr( "id" ) ];
 	},
@@ -520,4 +564,8 @@ if ( $.uiBackCompat !== false ) {
 
 return $.ui.tooltip;
 
+<<<<<<< HEAD
 } );
+=======
+} ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

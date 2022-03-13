@@ -38,7 +38,10 @@ class Ai1wm_Recursive_Extension_Filter extends RecursiveFilterIterator {
 		}
 	}
 
+<<<<<<< HEAD
 	#[\ReturnTypeWillChange]
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function accept() {
 		if ( $this->getInnerIterator()->isFile() ) {
 			if ( ! in_array( pathinfo( $this->getInnerIterator()->getFilename(), PATHINFO_EXTENSION ), $this->include ) ) {
@@ -49,7 +52,10 @@ class Ai1wm_Recursive_Extension_Filter extends RecursiveFilterIterator {
 		return true;
 	}
 
+<<<<<<< HEAD
 	#[\ReturnTypeWillChange]
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function getChildren() {
 		return new self( $this->getInnerIterator()->getChildren(), $this->include );
 	}

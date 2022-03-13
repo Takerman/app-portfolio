@@ -17,6 +17,10 @@ do_action( 'rss_tag_pre', 'atom' );
 	xmlns="http://www.w3.org/2005/Atom"
 	xmlns:thr="http://purl.org/syndication/thread/1.0"
 	xml:lang="<?php bloginfo_rss( 'language' ); ?>"
+<<<<<<< HEAD
+=======
+	xml:base="<?php bloginfo_rss( 'url' ); ?>/wp-atom.php"
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	<?php
 	/**
 	 * Fires at end of the Atom feed root to add namespaces.

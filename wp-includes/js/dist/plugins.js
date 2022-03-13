@@ -87,6 +87,7 @@ this["wp"] = this["wp"] || {}; this["wp"]["plugins"] =
 /************************************************************************/
 /******/ ({
 
+<<<<<<< HEAD
 /***/ "0Ene":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -112,6 +113,8 @@ const plugins = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createEl
 
 /***/ }),
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /***/ "4eJC":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -374,8 +377,28 @@ const withPluginContext = mapContextToProps => Object(external_wp_compose_["crea
   return props => Object(external_wp_element_["createElement"])(Consumer, null, context => Object(external_wp_element_["createElement"])(OriginalComponent, Object(esm_extends["a" /* default */])({}, props, mapContextToProps(context, props))));
 }, 'withPluginContext');
 
+<<<<<<< HEAD
 // EXTERNAL MODULE: ./node_modules/@wordpress/icons/build-module/library/plugins.js
 var plugins = __webpack_require__("0Ene");
+=======
+// EXTERNAL MODULE: external ["wp","primitives"]
+var external_wp_primitives_ = __webpack_require__("Tqx9");
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/icons/build-module/library/plugins.js
+
+
+/**
+ * WordPress dependencies
+ */
+
+const plugins = Object(external_wp_element_["createElement"])(external_wp_primitives_["SVG"], {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, Object(external_wp_element_["createElement"])(external_wp_primitives_["Path"], {
+  d: "M10.5 4v4h3V4H15v4h1.5a1 1 0 011 1v4l-3 4v2a1 1 0 01-1 1h-3a1 1 0 01-1-1v-2l-3-4V9a1 1 0 011-1H9V4h1.5zm.5 12.5v2h2v-2l3-4v-3H8v3l3 4z"
+}));
+/* harmony default export */ var library_plugins = (plugins);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/plugins/build-module/api/index.js
 /* eslint no-console: [ 'error', { allow: [ 'error' ] } ] */
@@ -537,7 +560,11 @@ function registerPlugin(name, settings) {
 
   api_plugins[name] = {
     name,
+<<<<<<< HEAD
     icon: plugins["a" /* default */],
+=======
+    icon: library_plugins,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     ...settings
   };
   Object(external_wp_hooks_["doAction"])('plugins.pluginRegistered', settings, name);
@@ -673,12 +700,20 @@ class plugin_area_PluginArea extends external_wp_element_["Component"] {
 
   getCurrentPluginsState() {
     return {
+<<<<<<< HEAD
       plugins: Object(external_lodash_["map"])(getPlugins(this.props.scope), _ref => {
         let {
           icon,
           name,
           render
         } = _ref;
+=======
+      plugins: Object(external_lodash_["map"])(getPlugins(this.props.scope), ({
+        icon,
+        name,
+        render
+      }) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         return {
           Plugin: render,
           context: this.memoizedContext(name, icon)
@@ -706,6 +741,7 @@ class plugin_area_PluginArea extends external_wp_element_["Component"] {
       style: {
         display: 'none'
       }
+<<<<<<< HEAD
     }, Object(external_lodash_["map"])(this.state.plugins, _ref2 => {
       let {
         context,
@@ -716,6 +752,15 @@ class plugin_area_PluginArea extends external_wp_element_["Component"] {
         value: context
       }, Object(external_wp_element_["createElement"])(Plugin, null));
     }));
+=======
+    }, Object(external_lodash_["map"])(this.state.plugins, ({
+      context,
+      Plugin
+    }) => Object(external_wp_element_["createElement"])(Provider, {
+      key: context.name,
+      value: context
+    }, Object(external_wp_element_["createElement"])(Plugin, null))));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   }
 
 }

@@ -1028,6 +1028,7 @@ class WP_REST_Comments_Controller extends WP_REST_Controller {
 	 * Prepares a single comment output for response.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$comment` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param WP_Comment      $item    Comment object.
@@ -1039,6 +1040,17 @@ class WP_REST_Comments_Controller extends WP_REST_Controller {
 		$comment = $item;
 		$fields  = $this->get_fields_for_response( $request );
 		$data    = array();
+=======
+	 *
+	 * @param WP_Comment      $comment Comment object.
+	 * @param WP_REST_Request $request Request object.
+	 * @return WP_REST_Response Response object.
+	 */
+	public function prepare_item_for_response( $comment, $request ) {
+
+		$fields = $this->get_fields_for_response( $request );
+		$data   = array();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		if ( in_array( 'id', $fields, true ) ) {
 			$data['id'] = (int) $comment->comment_ID;

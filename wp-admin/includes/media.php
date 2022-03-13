@@ -282,7 +282,11 @@ function media_send_to_editor( $html ) {
  *
  * @since 2.5.0
  *
+<<<<<<< HEAD
  * @param string $file_id   Index of the `$_FILES` array that the file was sent.
+=======
+ * @param string $file_id   Index of the `$_FILES` array that the file was sent. Required.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @param int    $post_id   The post ID of a post to attach the media item to. Required, but can
  *                          be set to 0, creating a media item that has no relationship to a post.
  * @param array  $post_data Optional. Overwrite some of the attachment.
@@ -533,7 +537,11 @@ function wp_iframe( $content_func, ...$args ) {
 
 	?>
 	<script type="text/javascript">
+<<<<<<< HEAD
 	addLoadEvent = function(func){if(typeof jQuery!=='undefined')jQuery(function(){func();});else if(typeof wpOnload!=='function'){wpOnload=func;}else{var oldonload=wpOnload;wpOnload=function(){oldonload();func();}}};
+=======
+	addLoadEvent = function(func){if(typeof jQuery!=='undefined')jQuery(document).ready(func);else if(typeof wpOnload!=='function'){wpOnload=func;}else{var oldonload=wpOnload;wpOnload=function(){oldonload();func();}}};
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	var ajaxurl = '<?php echo esc_js( admin_url( 'admin-ajax.php', 'relative' ) ); ?>', pagenow = 'media-upload-popup', adminpage = 'media-upload-popup',
 	isRtl = <?php echo (int) is_rtl(); ?>;
 	</script>
@@ -577,8 +585,15 @@ function wp_iframe( $content_func, ...$args ) {
 		 * Fires in the admin header for each specific form tab in the legacy
 		 * (pre-3.5.0) media upload popup.
 		 *
+<<<<<<< HEAD
 		 * The dynamic portion of the hook name, `$content_func`, refers to the form
 		 * callback for the media upload type.
+=======
+		 * The dynamic portion of the hook, `$content_func`, refers to the form
+		 * callback for the media upload type. Possible values include
+		 * 'media_upload_type_form', 'media_upload_type_url_form', and
+		 * 'media_upload_library_form'.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 *
 		 * @since 2.5.0
 		 */
@@ -713,7 +728,11 @@ function get_upload_iframe_src( $type = null, $post_id = null, $tab = null ) {
  *
  * @since 2.5.0
  *
+<<<<<<< HEAD
  * @return null|array|void Array of error messages keyed by attachment ID, null or void on success.
+=======
+ * @return mixed void|object WP_Error on failure
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function media_upload_form_handler() {
 	check_admin_referer( 'media-form' );
@@ -1521,7 +1540,11 @@ function get_attachment_fields_to_edit( $post, $errors = null ) {
  *
  * @global WP_Query $wp_the_query WordPress Query object.
  *
+<<<<<<< HEAD
  * @param int   $post_id Post ID.
+=======
+ * @param int   $post_id Optional. Post ID.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @param array $errors  Errors for attachment, if any.
  * @return string
  */
@@ -2501,11 +2524,19 @@ function media_upload_type_url_form( $type = null, $errors = null, $id = null ) 
 	}
 	};
 
+<<<<<<< HEAD
 	jQuery( function($) {
 		$('.media-types input').click( function() {
 			$('table.describe').toggleClass('not-image', $('#not-image').prop('checked') );
 		});
 	} );
+=======
+	jQuery(document).ready( function($) {
+		$('.media-types input').click( function() {
+			$('table.describe').toggleClass('not-image', $('#not-image').prop('checked') );
+		});
+	});
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	</script>
 
 	<div id="media-items">
@@ -2577,6 +2608,10 @@ function media_upload_gallery_form( $errors ) {
 	</div>
 	<form enctype="multipart/form-data" method="post" action="<?php echo esc_url( $form_action_url ); ?>" class="<?php echo $form_class; ?>" id="gallery-form">
 		<?php wp_nonce_field( 'media-form' ); ?>
+<<<<<<< HEAD
+=======
+		<?php // media_upload_form( $errors ); ?>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	<table class="widefat">
 	<thead><tr>
 	<th><?php _e( 'Media' ); ?></th>
@@ -2878,6 +2913,10 @@ function media_upload_library_form( $errors ) {
 
 	<form enctype="multipart/form-data" method="post" action="<?php echo esc_url( $form_action_url ); ?>" class="<?php echo $form_class; ?>" id="library-form">
 	<?php wp_nonce_field( 'media-form' ); ?>
+<<<<<<< HEAD
+=======
+	<?php // media_upload_form( $errors ); ?>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	<script type="text/javascript">
 	jQuery(function($){
@@ -3228,7 +3267,11 @@ function edit_form_image_editor( $post ) {
 
 		printf(
 			/* translators: 1: Link to tutorial, 2: Additional link attributes, 3: Accessibility text. */
+<<<<<<< HEAD
 			__( '<a href="%1$s" %2$s>Learn how to describe the purpose of the image%3$s</a>. Leave empty if the image is purely decorative.' ),
+=======
+			__( '<a href="%1$s" %2$s>Describe the purpose of the image%3$s</a>. Leave empty if the image is purely decorative.' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			esc_url( 'https://www.w3.org/WAI/tutorials/images/decision-tree' ),
 			'target="_blank" rel="noopener"',
 			sprintf(
@@ -3558,10 +3601,14 @@ function wp_read_video_metadata( $file ) {
 		require ABSPATH . WPINC . '/ID3/getid3.php';
 	}
 
+<<<<<<< HEAD
 	$id3 = new getID3();
 	// Required to get the `created_timestamp` value.
 	$id3->options_audiovideo_quicktime_ReturnAtomData = true; // phpcs:ignore WordPress.NamingConventions.ValidVariableName
 
+=======
+	$id3  = new getID3();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$data = $id3->analyze( $file );
 
 	if ( isset( $data['video']['lossless'] ) ) {
@@ -3644,7 +3691,11 @@ function wp_read_video_metadata( $file ) {
 	 * @param array  $metadata       Filtered Video metadata.
 	 * @param string $file           Path to video file.
 	 * @param string $file_format    File format of video, as analyzed by getID3.
+<<<<<<< HEAD
 	 * @param array  $data           Raw metadata from getID3.
+=======
+	 * @param string $data           Raw metadata from getID3.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	return apply_filters( 'wp_read_video_metadata', $metadata, $file, $file_format, $data );
 }
@@ -3672,10 +3723,14 @@ function wp_read_audio_metadata( $file ) {
 		require ABSPATH . WPINC . '/ID3/getid3.php';
 	}
 
+<<<<<<< HEAD
 	$id3 = new getID3();
 	// Required to get the `created_timestamp` value.
 	$id3->options_audiovideo_quicktime_ReturnAtomData = true; // phpcs:ignore WordPress.NamingConventions.ValidVariableName
 
+=======
+	$id3  = new getID3();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$data = $id3->analyze( $file );
 
 	if ( ! empty( $data['audio'] ) ) {
@@ -3746,17 +3801,29 @@ function wp_get_media_creation_timestamp( $metadata ) {
 
 		case 'matroska':
 		case 'webm':
+<<<<<<< HEAD
 			if ( isset( $metadata['matroska']['comments']['creation_time'][0] ) ) {
 				$creation_date = strtotime( $metadata['matroska']['comments']['creation_time'][0] );
 			} elseif ( isset( $metadata['matroska']['info'][0]['DateUTC_unix'] ) ) {
 				$creation_date = (int) $metadata['matroska']['info'][0]['DateUTC_unix'];
+=======
+			if ( isset( $metadata['matroska']['comments']['creation_time']['0'] ) ) {
+				$creation_date = strtotime( $metadata['matroska']['comments']['creation_time']['0'] );
+			} elseif ( isset( $metadata['matroska']['info']['0']['DateUTC_unix'] ) ) {
+				$creation_date = (int) $metadata['matroska']['info']['0']['DateUTC_unix'];
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			}
 			break;
 
 		case 'quicktime':
 		case 'mp4':
+<<<<<<< HEAD
 			if ( isset( $metadata['quicktime']['moov']['subatoms'][0]['creation_time_unix'] ) ) {
 				$creation_date = (int) $metadata['quicktime']['moov']['subatoms'][0]['creation_time_unix'];
+=======
+			if ( isset( $metadata['quicktime']['moov']['subatoms']['0']['creation_time_unix'] ) ) {
+				$creation_date = (int) $metadata['quicktime']['moov']['subatoms']['0']['creation_time_unix'];
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			}
 			break;
 	}

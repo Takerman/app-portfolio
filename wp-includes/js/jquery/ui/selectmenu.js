@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * jQuery UI Selectmenu 1.13.1
+=======
+ * jQuery UI Selectmenu 1.12.1
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -9,9 +13,15 @@
 
 //>>label: Selectmenu
 //>>group: Widgets
+<<<<<<< HEAD
 /* eslint-disable max-len */
 //>>description: Duplicates and extends the functionality of a native HTML select element, allowing it to be customizable in behavior and appearance far beyond the limitations of a native select.
 /* eslint-enable max-len */
+=======
+// jscs:disable maximumLineLength
+//>>description: Duplicates and extends the functionality of a native HTML select element, allowing it to be customizable in behavior and appearance far beyond the limitations of a native select.
+// jscs:enable maximumLineLength
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 //>>docs: http://api.jqueryui.com/selectmenu/
 //>>demos: http://jqueryui.com/selectmenu/
 //>>css.structure: ../../themes/base/core.css
@@ -19,8 +29,11 @@
 //>>css.theme: ../../themes/base/theme.css
 
 ( function( factory ) {
+<<<<<<< HEAD
 	"use strict";
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -34,11 +47,18 @@
 		// Browser globals
 		factory( jQuery );
 	}
+<<<<<<< HEAD
 } )( function( $ ) {
 "use strict";
 
 return $.widget( "ui.selectmenu", [ $.ui.formResetMixin, {
 	version: "1.13.1",
+=======
+}( function( $ ) {
+
+return $.widget( "ui.selectmenu", [ $.ui.formResetMixin, {
+	version: "1.12.1",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	defaultElement: "<select>",
 	options: {
 		appendTo: null,
@@ -93,7 +113,11 @@ return $.widget( "ui.selectmenu", [ $.ui.formResetMixin, {
 		this.labels = this.element.labels().attr( "for", this.ids.button );
 		this._on( this.labels, {
 			click: function( event ) {
+<<<<<<< HEAD
 				this.button.trigger( "focus" );
+=======
+				this.button.focus();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				event.preventDefault();
 			}
 		} );
@@ -227,7 +251,11 @@ return $.widget( "ui.selectmenu", [ $.ui.formResetMixin, {
 		this.menuInstance.refresh();
 		this.menuItems = this.menu.find( "li" )
 			.not( ".ui-selectmenu-optgroup" )
+<<<<<<< HEAD
 			.find( ".ui-menu-item-wrapper" );
+=======
+				.find( ".ui-menu-item-wrapper" );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		this._rendered = true;
 
@@ -403,7 +431,11 @@ return $.widget( "ui.selectmenu", [ $.ui.formResetMixin, {
 			selection.removeAllRanges();
 			selection.addRange( this.range );
 
+<<<<<<< HEAD
 			// Support: IE8
+=======
+		// Support: IE8
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		} else {
 			this.range.select();
 		}
@@ -421,7 +453,11 @@ return $.widget( "ui.selectmenu", [ $.ui.formResetMixin, {
 			}
 
 			if ( !$( event.target ).closest( ".ui-selectmenu-menu, #" +
+<<<<<<< HEAD
 				$.escapeSelector( this.ids.button ) ).length ) {
+=======
+					$.ui.escapeSelector( this.ids.button ) ).length ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				this.close( event );
 			}
 		}
@@ -439,7 +475,11 @@ return $.widget( "ui.selectmenu", [ $.ui.formResetMixin, {
 					this.range = selection.getRangeAt( 0 );
 				}
 
+<<<<<<< HEAD
 				// Support: IE8
+=======
+			// Support: IE8
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			} else {
 				this.range = document.selection.createRange();
 			}
@@ -453,6 +493,7 @@ return $.widget( "ui.selectmenu", [ $.ui.formResetMixin, {
 		keydown: function( event ) {
 			var preventDefault = true;
 			switch ( event.keyCode ) {
+<<<<<<< HEAD
 				case $.ui.keyCode.TAB:
 				case $.ui.keyCode.ESCAPE:
 					this.close( event );
@@ -501,6 +542,56 @@ return $.widget( "ui.selectmenu", [ $.ui.formResetMixin, {
 				default:
 					this.menu.trigger( event );
 					preventDefault = false;
+=======
+			case $.ui.keyCode.TAB:
+			case $.ui.keyCode.ESCAPE:
+				this.close( event );
+				preventDefault = false;
+				break;
+			case $.ui.keyCode.ENTER:
+				if ( this.isOpen ) {
+					this._selectFocusedItem( event );
+				}
+				break;
+			case $.ui.keyCode.UP:
+				if ( event.altKey ) {
+					this._toggle( event );
+				} else {
+					this._move( "prev", event );
+				}
+				break;
+			case $.ui.keyCode.DOWN:
+				if ( event.altKey ) {
+					this._toggle( event );
+				} else {
+					this._move( "next", event );
+				}
+				break;
+			case $.ui.keyCode.SPACE:
+				if ( this.isOpen ) {
+					this._selectFocusedItem( event );
+				} else {
+					this._toggle( event );
+				}
+				break;
+			case $.ui.keyCode.LEFT:
+				this._move( "prev", event );
+				break;
+			case $.ui.keyCode.RIGHT:
+				this._move( "next", event );
+				break;
+			case $.ui.keyCode.HOME:
+			case $.ui.keyCode.PAGE_UP:
+				this._move( "first", event );
+				break;
+			case $.ui.keyCode.END:
+			case $.ui.keyCode.PAGE_DOWN:
+				this._move( "last", event );
+				break;
+			default:
+				this.menu.trigger( event );
+				preventDefault = false;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			}
 
 			if ( preventDefault ) {
@@ -652,10 +743,13 @@ return $.widget( "ui.selectmenu", [ $.ui.formResetMixin, {
 		var that = this,
 			data = [];
 		options.each( function( index, item ) {
+<<<<<<< HEAD
 			if ( item.hidden ) {
 				return;
 			}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			data.push( that._parseOption( $( item ), index ) );
 		} );
 		this.items = data;
@@ -684,4 +778,8 @@ return $.widget( "ui.selectmenu", [ $.ui.formResetMixin, {
 	}
 } ] );
 
+<<<<<<< HEAD
 } );
+=======
+} ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

@@ -13,11 +13,15 @@
 		"width": {
 			"type": "string"
 		},
+<<<<<<< HEAD
 		"allowedBlocks": {
 			"type": "array"
 		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
+=======
+		"templateLock": {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			"enum": [ "all", "insert", false ]
 		}
 	},
@@ -30,10 +34,14 @@
 			"link": true
 		},
 		"spacing": {
+<<<<<<< HEAD
 			"padding": true,
 			"__experimentalDefaultControls": {
 				"padding": true
 			}
+=======
+			"padding": true
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	}
 }

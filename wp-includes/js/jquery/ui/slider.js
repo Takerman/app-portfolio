@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * jQuery UI Slider 1.13.1
+=======
+ * jQuery UI Slider 1.12.1
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -17,8 +21,11 @@
 //>>css.theme: ../../themes/base/theme.css
 
 ( function( factory ) {
+<<<<<<< HEAD
 	"use strict";
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -32,11 +39,18 @@
 		// Browser globals
 		factory( jQuery );
 	}
+<<<<<<< HEAD
 } )( function( $ ) {
 "use strict";
 
 return $.widget( "ui.slider", $.ui.mouse, {
 	version: "1.13.1",
+=======
+}( function( $ ) {
+
+return $.widget( "ui.slider", $.ui.mouse, {
+	version: "1.12.1",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	widgetEventPrefix: "slide",
 
 	options: {
@@ -133,7 +147,11 @@ return $.widget( "ui.slider", $.ui.mouse, {
 					options.values = [ this._valueMin(), this._valueMin() ];
 				} else if ( options.values.length && options.values.length !== 2 ) {
 					options.values = [ options.values[ 0 ], options.values[ 0 ] ];
+<<<<<<< HEAD
 				} else if ( Array.isArray( options.values ) ) {
+=======
+				} else if ( $.isArray( options.values ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					options.values = options.values.slice( 0 );
 				}
 			}
@@ -396,7 +414,11 @@ return $.widget( "ui.slider", $.ui.mouse, {
 		}
 
 		if ( arguments.length ) {
+<<<<<<< HEAD
 			if ( Array.isArray( arguments[ 0 ] ) ) {
+=======
+			if ( $.isArray( arguments[ 0 ] ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				vals = this.options.values;
 				newValues = arguments[ 0 ];
 				for ( i = 0; i < vals.length; i += 1 ) {
@@ -430,7 +452,11 @@ return $.widget( "ui.slider", $.ui.mouse, {
 			}
 		}
 
+<<<<<<< HEAD
 		if ( Array.isArray( this.options.values ) ) {
+=======
+		if ( $.isArray( this.options.values ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			valsLength = this.options.values.length;
 		}
 
@@ -642,8 +668,13 @@ return $.widget( "ui.slider", $.ui.mouse, {
 			valueMin = this._valueMin();
 			valueMax = this._valueMax();
 			valPercent = ( valueMax !== valueMin ) ?
+<<<<<<< HEAD
 				( value - valueMin ) / ( valueMax - valueMin ) * 100 :
 				0;
+=======
+					( value - valueMin ) / ( valueMax - valueMin ) * 100 :
+					0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			_set[ this.orientation === "horizontal" ? "left" : "bottom" ] = valPercent + "%";
 			this.handle.stop( 1, 1 )[ animate ? "animate" : "css" ]( _set, o.animate );
 
@@ -750,4 +781,8 @@ return $.widget( "ui.slider", $.ui.mouse, {
 	}
 } );
 
+<<<<<<< HEAD
 } );
+=======
+} ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

@@ -1315,7 +1315,11 @@ class WP_Rewrite {
 		/**
 		 * Filters rewrite rules used for date archives.
 		 *
+<<<<<<< HEAD
 		 * Likely date archives would include `/yyyy/`, `/yyyy/mm/`, and `/yyyy/mm/dd/`.
+=======
+		 * Likely date archives would include /yyyy/, /yyyy/mm/, and /yyyy/mm/dd/.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 *
 		 * @since 1.5.0
 		 *
@@ -1330,7 +1334,11 @@ class WP_Rewrite {
 		 * Filters rewrite rules used for root-level archives.
 		 *
 		 * Likely root-level archives would include pagination rules for the homepage
+<<<<<<< HEAD
 		 * as well as site-wide post feeds (e.g. `/feed/`, and `/feed/atom/`).
+=======
+		 * as well as site-wide post feeds (e.g. /feed/, and /feed/atom/).
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 *
 		 * @since 1.5.0
 		 *
@@ -1344,7 +1352,11 @@ class WP_Rewrite {
 		/**
 		 * Filters rewrite rules used for comment feed archives.
 		 *
+<<<<<<< HEAD
 		 * Likely comments feed archives include `/comments/feed/` and `/comments/feed/atom/`.
+=======
+		 * Likely comments feed archives include /comments/feed/, and /comments/feed/atom/.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 *
 		 * @since 1.5.0
 		 *
@@ -1359,7 +1371,11 @@ class WP_Rewrite {
 		/**
 		 * Filters rewrite rules used for search archives.
 		 *
+<<<<<<< HEAD
 		 * Likely search-related archives include `/search/search+query/` as well as
+=======
+		 * Likely search-related archives include /search/search+query/ as well as
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 * pagination and feed paths for a search.
 		 *
 		 * @since 1.5.0
@@ -1374,7 +1390,11 @@ class WP_Rewrite {
 		/**
 		 * Filters rewrite rules used for author archives.
 		 *
+<<<<<<< HEAD
 		 * Likely author archives would include `/author/author-name/`, as well as
+=======
+		 * Likely author archives would include /author/author-name/, as well as
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 * pagination and feed paths for author archives.
 		 *
 		 * @since 1.5.0
@@ -1411,6 +1431,7 @@ class WP_Rewrite {
 			 * Filters rewrite rules used for individual permastructs.
 			 *
 			 * The dynamic portion of the hook name, `$permastructname`, refers
+<<<<<<< HEAD
 			 * to the name of the registered permastruct.
 			 *
 			 * Possible hook names include:
@@ -1418,6 +1439,10 @@ class WP_Rewrite {
 			 *  - `category_rewrite_rules`
 			 *  - `post_format_rewrite_rules`
 			 *  - `post_tag_rewrite_rules`
+=======
+			 * to the name of the registered permastruct, e.g. 'post_tag' (tags),
+			 * 'category' (categories), etc.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			 *
 			 * @since 3.1.0
 			 *
@@ -1453,7 +1478,11 @@ class WP_Rewrite {
 		 *
 		 * @since 1.5.0
 		 *
+<<<<<<< HEAD
 		 * @param WP_Rewrite $wp_rewrite Current WP_Rewrite instance (passed by reference).
+=======
+		 * @param WP_Rewrite $this Current WP_Rewrite instance (passed by reference).
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		do_action_ref_array( 'generate_rewrite_rules', array( &$this ) );
 

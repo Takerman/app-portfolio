@@ -186,7 +186,11 @@ class wp_xmlrpc_server extends IXR_Server {
 	private function set_is_enabled() {
 		/*
 		 * Respect old get_option() filters left for back-compat when the 'enable_xmlrpc'
+<<<<<<< HEAD
 		 * option was deprecated in 3.5.0. Use the {@see 'xmlrpc_enabled'} hook instead.
+=======
+		 * option was deprecated in 3.5.0. Use the 'xmlrpc_enabled' hook instead.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$is_enabled = apply_filters( 'pre_option_enable_xmlrpc', false );
 		if ( false === $is_enabled ) {
@@ -6399,7 +6403,11 @@ class wp_xmlrpc_server extends IXR_Server {
 		/**
 		 * Filters whether to preempt the XML-RPC media upload.
 		 *
+<<<<<<< HEAD
 		 * Returning a truthy value will effectively short-circuit the media upload,
+=======
+		 * Passing a truthy value will effectively short-circuit the media upload,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 * returning that value as a 500 error instead.
 		 *
 		 * @since 2.1.0
@@ -6923,7 +6931,11 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$remote_ip = preg_replace( '/[^0-9a-fA-F:., ]/', '', $_SERVER['REMOTE_ADDR'] );
 
+<<<<<<< HEAD
 		/** This filter is documented in wp-includes/class-wp-http.php */
+=======
+		/** This filter is documented in wp-includes/class-http.php */
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$user_agent = apply_filters( 'http_headers_useragent', 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' ), $pagelinkedfrom );
 
 		// Let's check the remote site.

@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * jQuery UI Controlgroup 1.13.1
+=======
+ * jQuery UI Controlgroup 1.12.1
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -17,8 +21,11 @@
 //>>css.theme: ../../themes/base/theme.css
 
 ( function( factory ) {
+<<<<<<< HEAD
 	"use strict";
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -31,6 +38,7 @@
 		// Browser globals
 		factory( jQuery );
 	}
+<<<<<<< HEAD
 } )( function( $ ) {
 "use strict";
 
@@ -38,6 +46,13 @@ var controlgroupCornerRegex = /ui-corner-([a-z]){2,6}/g;
 
 return $.widget( "ui.controlgroup", {
 	version: "1.13.1",
+=======
+}( function( $ ) {
+var controlgroupCornerRegex = /ui-corner-([a-z]){2,6}/g;
+
+return $.widget( "ui.controlgroup", {
+	version: "1.12.1",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	defaultElement: "<div>",
 	options: {
 		direction: "horizontal",
@@ -154,7 +169,11 @@ return $.widget( "ui.controlgroup", {
 				} );
 		} );
 
+<<<<<<< HEAD
 		this.childWidgets = $( $.uniqueSort( childWidgets ) );
+=======
+		this.childWidgets = $( $.unique( childWidgets ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		this._addClass( this.childWidgets, "ui-controlgroup-item" );
 	},
 
@@ -238,7 +257,11 @@ return $.widget( "ui.controlgroup", {
 		var result = {};
 		$.each( classes, function( key ) {
 			var current = instance.options.classes[ key ] || "";
+<<<<<<< HEAD
 			current = String.prototype.trim.call( current.replace( controlgroupCornerRegex, "" ) );
+=======
+			current = $.trim( current.replace( controlgroupCornerRegex, "" ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			result[ key ] = ( current + " " + classes[ key ] ).replace( /\s+/g, " " );
 		} );
 		return result;
@@ -299,4 +322,8 @@ return $.widget( "ui.controlgroup", {
 		}
 	}
 } );
+<<<<<<< HEAD
 } );
+=======
+} ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

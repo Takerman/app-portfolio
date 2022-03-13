@@ -41,12 +41,15 @@
  * These variables do not appear to be used anywhere else.
  */
 /**
+<<<<<<< HEAD
 *  Converts a hex value into the rgb equivalent.
 *
 * @param {string} hex - the hexadecimal value to convert
 * @return {string} comma separated rgb values
 */
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Breakpoint mixins
  */
 /**
@@ -74,9 +77,21 @@
 /**
  * Reset the WP Admin page styles for Gutenberg-like pages.
  */
+<<<<<<< HEAD
 .wp-block-query-pagination > .wp-block-query-pagination-next,
 .wp-block-query-pagination > .wp-block-query-pagination-previous,
 .wp-block-query-pagination > .wp-block-query-pagination-numbers {
+=======
+.wp-block-query-pagination {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.wp-block-query-pagination > .wp-block-query-pagination-next,
+.wp-block-query-pagination > .wp-block-query-pagination-previous,
+.wp-block-query-pagination > .wp-block-query-pagination-numbers {
+  display: inline-block;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   /*rtl:ignore*/
   margin-right: 0.5em;
   margin-bottom: 0.5em;
@@ -86,6 +101,7 @@
 .wp-block-query-pagination > .wp-block-query-pagination-numbers:last-child {
   /*rtl:ignore*/
   margin-right: 0;
+<<<<<<< HEAD
 }
 .wp-block-query-pagination .wp-block-query-pagination-previous-arrow {
   margin-right: 1ch;
@@ -103,4 +119,6 @@
 }
 .wp-block-query-pagination.aligncenter {
   justify-content: center;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }

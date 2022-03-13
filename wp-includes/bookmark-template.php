@@ -102,6 +102,7 @@ function _walk_bookmarks( $bookmarks, $args = '' ) {
 			$title = ' title="' . $title . '"';
 		}
 		$rel = $bookmark->link_rel;
+<<<<<<< HEAD
 
 		$target = $bookmark->link_target;
 		if ( '' !== $target ) {
@@ -120,6 +121,15 @@ function _walk_bookmarks( $bookmarks, $args = '' ) {
 			$rel = ' rel="' . esc_attr( $rel ) . '"';
 		}
 
+=======
+		if ( '' !== $rel ) {
+			$rel = ' rel="' . esc_attr( $rel ) . '"';
+		}
+		$target = $bookmark->link_target;
+		if ( '' !== $target ) {
+			$target = ' target="' . $target . '"';
+		}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$output .= '<a href="' . $the_link . '"' . $rel . $title . $target . '>';
 
 		$output .= $parsed_args['link_before'];

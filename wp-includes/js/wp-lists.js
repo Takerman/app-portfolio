@@ -218,7 +218,11 @@ wpList = {
 	 * Example 1: data-wp-lists="delete:the-comment-list:comment-{comment_ID}:66cc66:unspam=1"
 	 * Example 2: data-wp-lists="dim:the-comment-list:comment-{comment_ID}:unapproved:e7e7d3:e7e7d3:new=approved"
 	 *
+<<<<<<< HEAD
 	 * Returns an unassociative array with the following data:
+=======
+	 * Returns an unassociated array with the following data:
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * data[0] - Data identifier: 'list', 'add', 'delete', or 'dim'.
 	 * data[1] - ID of the corresponding list. If data[0] is 'list', the type of list ('comment', 'category', etc).
 	 * data[2] - ID of the parent element of all inputs necessary for the request.

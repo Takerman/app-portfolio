@@ -345,7 +345,11 @@ class getid3_id3v2 extends getid3_handler
 				}
 				if (($frame_size <= strlen($framedata)) && ($this->IsValidID3v2FrameName($frame_name, $id3v2_majorversion))) {
 
+<<<<<<< HEAD
 					$parsedFrame                    = array();
+=======
+					unset($parsedFrame);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					$parsedFrame['frame_name']      = $frame_name;
 					$parsedFrame['frame_flags_raw'] = $frame_flags;
 					$parsedFrame['data']            = substr($framedata, 0, $frame_size);
@@ -978,7 +982,11 @@ class getid3_id3v2 extends getid3_handler
 
 
 		} elseif ((($id3v2_majorversion >= 3) && ($parsedFrame['frame_name'] == 'USLT')) || // 4.8   USLT Unsynchronised lyric/text transcription
+<<<<<<< HEAD
 				(($id3v2_majorversion == 2) && ($parsedFrame['frame_name'] == 'ULT'))) {    // 4.9   ULT  Unsynchronised lyric/text transcription
+=======
+				(($id3v2_majorversion == 2) && ($parsedFrame['frame_name'] == 'ULT'))) {     // 4.9   ULT  Unsynchronised lyric/text transcription
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			//   There may be more than one 'Unsynchronised lyrics/text transcription' frame
 			//   in each tag, but only one with the same language and content descriptor.
 			// <Header for 'Unsynchronised lyrics/text transcription', ID: 'USLT'>
@@ -994,6 +1002,7 @@ class getid3_id3v2 extends getid3_handler
 				$this->warning('Invalid text encoding byte ('.$frame_textencoding.') in frame "'.$parsedFrame['frame_name'].'" - defaulting to ISO-8859-1 encoding');
 				$frame_textencoding_terminator = "\x00";
 			}
+<<<<<<< HEAD
 			if (strlen($parsedFrame['data']) >= (4 + strlen($frame_textencoding_terminator))) {  // shouldn't be an issue but badly-written files have been spotted in the wild with not only no contents but also missing the required language field, see https://github.com/JamesHeinrich/getID3/issues/315
 				$frame_language = substr($parsedFrame['data'], $frame_offset, 3);
 				$frame_offset += 3;
@@ -1016,6 +1025,26 @@ class getid3_id3v2 extends getid3_handler
 				}
 			} else {
 				$this->warning('Invalid data in frame "'.$parsedFrame['frame_name'].'" at offset '.$parsedFrame['dataoffset']);
+=======
+			$frame_language = substr($parsedFrame['data'], $frame_offset, 3);
+			$frame_offset += 3;
+			$frame_terminatorpos = strpos($parsedFrame['data'], $frame_textencoding_terminator, $frame_offset);
+			if (ord(substr($parsedFrame['data'], $frame_terminatorpos + strlen($frame_textencoding_terminator), 1)) === 0) {
+				$frame_terminatorpos++; // strpos() fooled because 2nd byte of Unicode chars are often 0x00
+			}
+			$parsedFrame['description'] = substr($parsedFrame['data'], $frame_offset, $frame_terminatorpos - $frame_offset);
+			$parsedFrame['description'] = $this->MakeUTF16emptyStringEmpty($parsedFrame['description']);
+			$parsedFrame['data'] = substr($parsedFrame['data'], $frame_terminatorpos + strlen($frame_textencoding_terminator));
+			$parsedFrame['data'] = $this->RemoveStringTerminator($parsedFrame['data'], $frame_textencoding_terminator);
+
+			$parsedFrame['encodingid']   = $frame_textencoding;
+			$parsedFrame['encoding']     = $this->TextEncodingNameLookup($frame_textencoding);
+
+			$parsedFrame['language']     = $frame_language;
+			$parsedFrame['languagename'] = $this->LanguageLookup($frame_language, false);
+			if (!empty($parsedFrame['framenameshort']) && !empty($parsedFrame['data'])) {
+				$info['id3v2']['comments'][$parsedFrame['framenameshort']][] = getid3_lib::iconv_fallback($parsedFrame['encoding'], $info['id3v2']['encoding'], $parsedFrame['data']);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			}
 			unset($parsedFrame['data']);
 
@@ -1374,8 +1403,11 @@ class getid3_id3v2 extends getid3_handler
 				$frame_textencoding_terminator = "\x00";
 			}
 
+<<<<<<< HEAD
 			$frame_imagetype = null;
 			$frame_mimetype = null;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ($id3v2_majorversion == 2 && strlen($parsedFrame['data']) > $frame_offset) {
 				$frame_imagetype = substr($parsedFrame['data'], $frame_offset, 3);
 				if (strtolower($frame_imagetype) == 'ima') {
@@ -1962,6 +1994,7 @@ class getid3_id3v2 extends getid3_handler
 			$frame_offset = 0;
 			$parsedFrame['peakamplitude'] = getid3_lib::BigEndian2Float(substr($parsedFrame['data'], $frame_offset, 4));
 			$frame_offset += 4;
+<<<<<<< HEAD
 			foreach (array('track','album') as $rgad_entry_type) {
 				$rg_adjustment_word = getid3_lib::BigEndian2Int(substr($parsedFrame['data'], $frame_offset, 2));
 				$frame_offset += 2;
@@ -1970,6 +2003,20 @@ class getid3_id3v2 extends getid3_handler
 				$parsedFrame['raw'][$rgad_entry_type]['signbit']    = ($rg_adjustment_word & 0x0200) >>  9;
 				$parsedFrame['raw'][$rgad_entry_type]['adjustment'] = ($rg_adjustment_word & 0x0100);
 			}
+=======
+			$rg_track_adjustment = getid3_lib::Dec2Bin(substr($parsedFrame['data'], $frame_offset, 2));
+			$frame_offset += 2;
+			$rg_album_adjustment = getid3_lib::Dec2Bin(substr($parsedFrame['data'], $frame_offset, 2));
+			$frame_offset += 2;
+			$parsedFrame['raw']['track']['name']       = getid3_lib::Bin2Dec(substr($rg_track_adjustment, 0, 3));
+			$parsedFrame['raw']['track']['originator'] = getid3_lib::Bin2Dec(substr($rg_track_adjustment, 3, 3));
+			$parsedFrame['raw']['track']['signbit']    = getid3_lib::Bin2Dec(substr($rg_track_adjustment, 6, 1));
+			$parsedFrame['raw']['track']['adjustment'] = getid3_lib::Bin2Dec(substr($rg_track_adjustment, 7, 9));
+			$parsedFrame['raw']['album']['name']       = getid3_lib::Bin2Dec(substr($rg_album_adjustment, 0, 3));
+			$parsedFrame['raw']['album']['originator'] = getid3_lib::Bin2Dec(substr($rg_album_adjustment, 3, 3));
+			$parsedFrame['raw']['album']['signbit']    = getid3_lib::Bin2Dec(substr($rg_album_adjustment, 6, 1));
+			$parsedFrame['raw']['album']['adjustment'] = getid3_lib::Bin2Dec(substr($rg_album_adjustment, 7, 9));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$parsedFrame['track']['name']       = getid3_lib::RGADnameLookup($parsedFrame['raw']['track']['name']);
 			$parsedFrame['track']['originator'] = getid3_lib::RGADoriginatorLookup($parsedFrame['raw']['track']['originator']);
 			$parsedFrame['track']['adjustment'] = getid3_lib::RGADadjustmentLookup($parsedFrame['raw']['track']['adjustment'], $parsedFrame['raw']['track']['signbit']);
@@ -2446,8 +2493,12 @@ class getid3_id3v2 extends getid3_handler
 			TMM	Manats
 			TND	Dinars
 			TOP	Pa'anga
+<<<<<<< HEAD
 			TRL	Liras (old)
 			TRY	Liras
+=======
+			TRL	Liras
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			TTD	Dollars
 			TVD	Tuvalu Dollars
 			TWD	New Dollars
@@ -2648,7 +2699,10 @@ class getid3_id3v2 extends getid3_handler
 			TND	Tunisia
 			TOP	Tonga
 			TRL	Turkey
+<<<<<<< HEAD
 			TRY	Turkey
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			TTD	Trinidad and Tobago
 			TVD	Tuvalu
 			TWD	Taiwan

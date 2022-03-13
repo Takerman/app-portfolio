@@ -31,6 +31,7 @@ class getid3_id3v1 extends getid3_handler
 			return false;
 		}
 
+<<<<<<< HEAD
 		if($info['filesize'] < 256) {
 			$this->fseek(-128, SEEK_END);
 			$preid3v1 = '';
@@ -41,12 +42,20 @@ class getid3_id3v1 extends getid3_handler
 			$id3v1tag = $this->fread(128);
 		}
 
+=======
+		$this->fseek(-256, SEEK_END);
+		$preid3v1 = $this->fread(128);
+		$id3v1tag = $this->fread(128);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		if (substr($id3v1tag, 0, 3) == 'TAG') {
 
 			$info['avdataend'] = $info['filesize'] - 128;
 
+<<<<<<< HEAD
 			$ParsedID3v1            = array();
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$ParsedID3v1['title']   = $this->cutfield(substr($id3v1tag,   3, 30));
 			$ParsedID3v1['artist']  = $this->cutfield(substr($id3v1tag,  33, 30));
 			$ParsedID3v1['album']   = $this->cutfield(substr($id3v1tag,  63, 30));
@@ -305,6 +314,7 @@ class getid3_id3v1 extends getid3_handler
 			145  => 'Anime',
 			146  => 'JPop',
 			147  => 'Synthpop',
+<<<<<<< HEAD
 			148 => 'Abstract',
 			149 => 'Art Rock',
 			150 => 'Baroque',
@@ -349,6 +359,8 @@ class getid3_id3v1 extends getid3_handler
 			189 => 'Dubstep',
 			190 => 'Garage Rock',
 			191 => 'Psybient',
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 			255  => 'Unknown',
 

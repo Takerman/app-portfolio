@@ -41,12 +41,15 @@
  * These variables do not appear to be used anywhere else.
  */
 /**
+<<<<<<< HEAD
 *  Converts a hex value into the rgb equivalent.
 *
 * @param {string} hex - the hexadecimal value to convert
 * @return {string} comma separated rgb values
 */
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Breakpoint mixins
  */
 /**
@@ -88,7 +91,11 @@
     flex-wrap: nowrap;
   }
 }
+<<<<<<< HEAD
 .wp-block-columns:where(.has-background) {
+=======
+.wp-block-columns.has-background {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   padding: 1.25em 2.375em;
 }
 .wp-block-columns.are-vertically-aligned-top {
@@ -100,12 +107,28 @@
 .wp-block-columns.are-vertically-aligned-bottom {
   align-items: flex-end;
 }
+<<<<<<< HEAD
 @media (max-width: 599px) {
   .wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column {
+=======
+
+.wp-block-column {
+  flex-grow: 1;
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  /**
+  * Individual Column Alignment
+  */
+}
+@media (max-width: 599px) {
+  .wp-block-column {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     flex-basis: 100% !important;
   }
 }
 @media (min-width: 600px) and (max-width: 781px) {
+<<<<<<< HEAD
   .wp-block-columns:not(.is-not-stacked-on-mobile) > .wp-block-column:not(:only-child) {
     flex-basis: calc(50% - calc(var(--wp--style--block-gap, 2em) / 2)) !important;
     flex-grow: 0;
@@ -149,6 +172,28 @@
   * Individual Column Alignment
   */
 }
+=======
+  .wp-block-column:not(:only-child) {
+    flex-basis: calc(50% - 1em) !important;
+    flex-grow: 0;
+  }
+  .wp-block-column:nth-child(even) {
+    margin-left: 2em;
+  }
+}
+@media (min-width: 782px) {
+  .wp-block-column {
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+  .wp-block-column[style*=flex-basis] {
+    flex-grow: 0;
+  }
+  .wp-block-column:not(:first-child) {
+    margin-left: 2em;
+  }
+}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 .wp-block-column.is-vertically-aligned-top {
   align-self: flex-start;
 }

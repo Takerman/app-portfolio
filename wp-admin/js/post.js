@@ -135,6 +135,7 @@ window.wp = window.wp || {};
 	 * @global
 	 */
 	window.WPRemoveThumbnail = function(nonce){
+<<<<<<< HEAD
 		$.post(
 			ajaxurl, {
 				action: 'set-post-thumbnail',
@@ -143,18 +144,32 @@ window.wp = window.wp || {};
 				_ajax_nonce: nonce,
 				cookie: encodeURIComponent( document.cookie )
 			},
+=======
+		$.post(ajaxurl, {
+			action: 'set-post-thumbnail', post_id: $( '#post_ID' ).val(), thumbnail_id: -1, _ajax_nonce: nonce, cookie: encodeURIComponent( document.cookie )
+		},
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			/**
 			 * Handle server response
 			 *
 			 * @param {string} str Response, will be '0' when an error occurred otherwise contains link to add Featured Image.
 			 */
 			function(str){
+<<<<<<< HEAD
 				if ( str == '0' ) {
 					alert( __( 'Could not set that as the thumbnail image. Try a different attachment.' ) );
 				} else {
 					WPSetThumbnailHTML(str);
 				}
 			}
+=======
+			if ( str == '0' ) {
+				alert( __( 'Could not set that as the thumbnail image. Try a different attachment.' ) );
+			} else {
+				WPSetThumbnailHTML(str);
+			}
+		}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		);
 	};
 
@@ -212,9 +227,13 @@ window.wp = window.wp || {};
 							height: 64,
 							alt: '',
 							src: received.lock_error.avatar_src,
+<<<<<<< HEAD
 							srcset: received.lock_error.avatar_src_2x ?
 								received.lock_error.avatar_src_2x + ' 2x' :
 								undefined
+=======
+							srcset: received.lock_error.avatar_src_2x ? received.lock_error.avatar_src_2x + ' 2x' : undefined
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						} );
 						wrap.find('div.post-locked-avatar').empty().append( avatar );
 					}
@@ -673,6 +692,7 @@ jQuery( function($) {
 		});
 
 		// Sync checked items between "All {taxonomy}" and "Most used" lists.
+<<<<<<< HEAD
 		$('#' + taxonomy + 'checklist, #' + taxonomy + 'checklist-pop').on(
 			'click',
 			'li.popular-category > label input[type="checkbox"]',
@@ -682,6 +702,13 @@ jQuery( function($) {
 					$('#in-' + taxonomy + '-' + id + ', #in-popular-' + taxonomy + '-' + id).prop( 'checked', c );
 			}
 		);
+=======
+		$('#' + taxonomy + 'checklist, #' + taxonomy + 'checklist-pop').on( 'click', 'li.popular-category > label input[type="checkbox"]', function() {
+			var t = $(this), c = t.is(':checked'), id = t.val();
+			if ( id && t.parents('#taxonomy-'+taxonomy).length )
+				$('#in-' + taxonomy + '-' + id + ', #in-popular-' + taxonomy + '-' + id).prop( 'checked', c );
+		});
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	}); // End cats.
 
@@ -760,6 +787,7 @@ jQuery( function($) {
 				mm = $('#mm').val(), jj = $('#jj').val(), hh = $('#hh').val(), mn = $('#mn').val();
 
 			attemptedDate = new Date( aa, mm - 1, jj, hh, mn );
+<<<<<<< HEAD
 			originalDate = new Date(
 				$('#hidden_aa').val(),
 				$('#hidden_mm').val() -1,
@@ -782,6 +810,13 @@ jQuery( function($) {
 				attemptedDate.getDate() != jj ||
 				attemptedDate.getMinutes() != mn
 			) {
+=======
+			originalDate = new Date( $('#hidden_aa').val(), $('#hidden_mm').val() -1, $('#hidden_jj').val(), $('#hidden_hh').val(), $('#hidden_mn').val() );
+			currentDate = new Date( $('#cur_aa').val(), $('#cur_mm').val() -1, $('#cur_jj').val(), $('#cur_hh').val(), $('#cur_mn').val() );
+
+			// Catch unexpected date problems.
+			if ( attemptedDate.getFullYear() != aa || (1 + attemptedDate.getMonth()) != mm || attemptedDate.getDate() != jj || attemptedDate.getMinutes() != mn ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				$timestampdiv.find('.timestamp-wrap').addClass('form-invalid');
 				return false;
 			} else {
@@ -848,10 +883,14 @@ jQuery( function($) {
 			);
 
 			// Show or hide the "Save Draft" button.
+<<<<<<< HEAD
 			if (
 				$('option:selected', postStatus).val() == 'private' ||
 				$('option:selected', postStatus).val() == 'publish'
 			) {
+=======
+			if ( $('option:selected', postStatus).val() == 'private' || $('option:selected', postStatus).val() == 'publish' ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				$('#save-post').hide();
 			} else {
 				$('#save-post').show();
@@ -1003,7 +1042,11 @@ jQuery( function($) {
 	 * @return {void}
 	 */
 	function editPermalink() {
+<<<<<<< HEAD
 		var i, slug_value, slug_label,
+=======
+		var i, slug_value,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$el, revert_e,
 			c = 0,
 			real_slug = $('#post_name'),
@@ -1025,10 +1068,14 @@ jQuery( function($) {
 		$el = $( '#editable-post-name' );
 		revert_e = $el.html();
 
+<<<<<<< HEAD
 		buttons.html(
 			'<button type="button" class="save button button-small">' + __( 'OK' ) + '</button> ' +
 			'<button type="button" class="cancel button-link">' + __( 'Cancel' ) + '</button>'
 		);
+=======
+		buttons.html( '<button type="button" class="save button button-small">' + __( 'OK' ) + '</button> <button type="button" class="cancel button-link">' + __( 'Cancel' ) + '</button>' );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		// Save permalink changes.
 		buttons.children( '.save' ).on( 'click', function() {
@@ -1082,12 +1129,17 @@ jQuery( function($) {
 				c++;
 		}
 		slug_value = ( c > full.length / 4 ) ? '' : full;
+<<<<<<< HEAD
 		slug_label = __( 'URL Slug' );
 
 		$el.html(
 			'<label for="new-post-slug" class="screen-reader-text">' + slug_label + '</label>' +
 			'<input type="text" id="new-post-slug" value="' + slug_value + '" autocomplete="off" spellcheck="false" />'
 		).children( 'input' ).on( 'keydown', function( e ) {
+=======
+
+		$el.html( '<input type="text" id="new-post-slug" value="' + slug_value + '" autocomplete="off" />' ).children( 'input' ).on( 'keydown', function( e ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			var key = e.which;
 			// On [Enter], just save the new slug, don't save the post.
 			if ( 13 === key ) {
@@ -1261,12 +1313,16 @@ jQuery( function($) {
 	$textarea.on( 'keydown.wp-autosave', function( event ) {
 		// Key [S] has code 83.
 		if ( event.which === 83 ) {
+<<<<<<< HEAD
 			if (
 				event.shiftKey ||
 				event.altKey ||
 				( isMac && ( ! event.metaKey || event.ctrlKey ) ) ||
 				( ! isMac && ! event.ctrlKey )
 			) {
+=======
+			if ( event.shiftKey || event.altKey || ( isMac && ( ! event.metaKey || event.ctrlKey ) ) || ( ! isMac && ! event.ctrlKey ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				return;
 			}
 

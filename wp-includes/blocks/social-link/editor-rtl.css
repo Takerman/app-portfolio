@@ -41,12 +41,15 @@
  * These variables do not appear to be used anywhere else.
  */
 /**
+<<<<<<< HEAD
 *  Converts a hex value into the rgb equivalent.
 *
 * @param {string} hex - the hexadecimal value to convert
 * @return {string} comma separated rgb values
 */
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Breakpoint mixins
  */
 /**
@@ -88,8 +91,11 @@
 .wp-block-social-links.is-style-pill-shape .wp-social-link button {
   padding-right: calc((2/3) * 1em);
   padding-left: calc((2/3) * 1em);
+<<<<<<< HEAD
 }
 
 .wp-block-social-links.is-style-logos-only .wp-social-link button {
   padding: 0;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }

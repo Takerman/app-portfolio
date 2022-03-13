@@ -227,6 +227,7 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 	 * Handles the checkbox column output.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$user` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param WP_User $item The current WP_User object.
@@ -235,6 +236,12 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 		// Restores the more descriptive, specific name for use within this method.
 		$user = $item;
 
+=======
+	 *
+	 * @param WP_User $user The current WP_User object.
+	 */
+	public function column_cb( $user ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( is_super_admin( $user->ID ) ) {
 			return;
 		}
@@ -446,6 +453,7 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 	 * Handles the default column output.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$user` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param WP_User $item        The current WP_User object.
@@ -459,6 +467,15 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 			$column_name,
 			$item->ID // User ID.
 		);
+=======
+	 *
+	 * @param WP_User $user        The current WP_User object.
+	 * @param string  $column_name The current column name.
+	 */
+	public function column_default( $user, $column_name ) {
+		/** This filter is documented in wp-admin/includes/class-wp-users-list-table.php */
+		echo apply_filters( 'manage_users_custom_column', '', $column_name, $user->ID );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	public function display_rows() {
@@ -499,21 +516,33 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 	 * Generates and displays row action links.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$user` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param WP_User $item        User being acted upon.
+=======
+	 *
+	 * @param WP_User $user        User being acted upon.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @param string  $column_name Current column name.
 	 * @param string  $primary     Primary column name.
 	 * @return string Row actions output for users in Multisite, or an empty string
 	 *                if the current column is not the primary column.
 	 */
+<<<<<<< HEAD
 	protected function handle_row_actions( $item, $column_name, $primary ) {
+=======
+	protected function handle_row_actions( $user, $column_name, $primary ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( $primary !== $column_name ) {
 			return '';
 		}
 
+<<<<<<< HEAD
 		// Restores the more descriptive, specific name for use within this method.
 		$user         = $item;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$super_admins = get_super_admins();
 
 		$actions = array();

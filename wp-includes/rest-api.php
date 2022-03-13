@@ -118,8 +118,13 @@ function register_rest_route( $namespace, $route, $args = array(), $override = f
  * @global array $wp_rest_additional_fields Holds registered fields, organized
  *                                          by object type.
  *
+<<<<<<< HEAD
  * @param string|array $object_type Object(s) the field is being registered to,
  *                                  "post"|"term"|"comment" etc.
+=======
+ * @param string|array $object_type Object(s) the field is being registered
+ *                                  to, "post"|"term"|"comment" etc.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @param string       $attribute   The attribute name.
  * @param array        $args {
  *     Optional. An array of arguments used to handle the registered field.
@@ -135,8 +140,11 @@ function register_rest_route( $namespace, $route, $args = array(), $override = f
  * }
  */
 function register_rest_field( $object_type, $attribute, $args = array() ) {
+<<<<<<< HEAD
 	global $wp_rest_additional_fields;
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$defaults = array(
 		'get_callback'    => null,
 		'update_callback' => null,
@@ -145,6 +153,11 @@ function register_rest_field( $object_type, $attribute, $args = array() ) {
 
 	$args = wp_parse_args( $args, $defaults );
 
+<<<<<<< HEAD
+=======
+	global $wp_rest_additional_fields;
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$object_types = (array) $object_type;
 
 	foreach ( $object_types as $object_type ) {
@@ -294,17 +307,24 @@ function create_initial_rest_routes() {
 	$controller->register_routes();
 
 	// Block Renderer.
+<<<<<<< HEAD
 	$controller = new WP_REST_Block_Renderer_Controller();
+=======
+	$controller = new WP_REST_Block_Renderer_Controller;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$controller->register_routes();
 
 	// Block Types.
 	$controller = new WP_REST_Block_Types_Controller();
 	$controller->register_routes();
 
+<<<<<<< HEAD
 	// Global Styles.
 	$controller = new WP_REST_Global_Styles_Controller;
 	$controller->register_routes();
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	// Settings.
 	$controller = new WP_REST_Settings_Controller;
 	$controller->register_routes();
@@ -341,6 +361,7 @@ function create_initial_rest_routes() {
 	$site_health = WP_Site_Health::get_instance();
 	$controller  = new WP_REST_Site_Health_Controller( $site_health );
 	$controller->register_routes();
+<<<<<<< HEAD
 
 	// URL Details.
 	$controller = new WP_REST_URL_Details_Controller();
@@ -353,6 +374,8 @@ function create_initial_rest_routes() {
 	// Site Editor Export.
 	$controller = new WP_REST_Edit_Site_Export_Controller();
 	$controller->register_routes();
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 /**
@@ -1107,7 +1130,11 @@ function rest_application_password_collect_status( $user_or_error, $app_password
  *
  * @global string|null $wp_rest_application_password_uuid
  *
+<<<<<<< HEAD
  * @return string|null The Application Password UUID, or null if Application Passwords was not used.
+=======
+ * @return string|null The App Password UUID, or null if Application Passwords was not used.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function rest_get_authenticated_app_password() {
 	global $wp_rest_application_password_uuid;
@@ -2651,7 +2678,10 @@ function rest_validate_integer_value_from_schema( $value, $args, $param ) {
  * @since 4.7.0
  * @since 5.5.0 Added the `$param` parameter.
  * @since 5.6.0 Support the "anyOf" and "oneOf" keywords.
+<<<<<<< HEAD
  * @since 5.9.0 Added `text-field` and `textarea-field` formats.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @param mixed  $value The value to sanitize.
  * @param array  $args  Schema array to use for sanitization.
@@ -2794,12 +2824,15 @@ function rest_sanitize_value_from_schema( $value, $args, $param = '' ) {
 
 			case 'uuid':
 				return sanitize_text_field( $value );
+<<<<<<< HEAD
 
 			case 'text-field':
 				return sanitize_text_field( $value );
 
 			case 'textarea-field':
 				return sanitize_textarea_field( $value );
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	}
 
@@ -2841,11 +2874,14 @@ function rest_preload_api_request( $memo, $path ) {
 		}
 	}
 
+<<<<<<< HEAD
 	$path = untrailingslashit( $path );
 	if ( empty( $path ) ) {
 		$path = '/';
 	}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$path_parts = parse_url( $path );
 	if ( false === $path_parts ) {
 		return $memo;
@@ -3056,8 +3092,12 @@ function rest_default_additional_properties_to_false( $schema ) {
  * @since 5.5.0
  *
  * @param int|WP_Post $post Post ID or post object.
+<<<<<<< HEAD
  * @return string The route path with a leading slash for the given post,
  *                or an empty string if there is not a route.
+=======
+ * @return string The route path with a leading slash for the given post, or an empty string if there is not a route.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function rest_get_route_for_post( $post ) {
 	$post = get_post( $post );
@@ -3066,12 +3106,33 @@ function rest_get_route_for_post( $post ) {
 		return '';
 	}
 
+<<<<<<< HEAD
 	$post_type_route = rest_get_route_for_post_type_items( $post->post_type );
 	if ( ! $post_type_route ) {
 		return '';
 	}
 
 	$route = sprintf( '%s/%d', $post_type_route, $post->ID );
+=======
+	$post_type = get_post_type_object( $post->post_type );
+	if ( ! $post_type ) {
+		return '';
+	}
+
+	$controller = $post_type->get_rest_controller();
+	if ( ! $controller ) {
+		return '';
+	}
+
+	$route = '';
+
+	// The only two controllers that we can detect are the Attachments and Posts controllers.
+	if ( in_array( get_class( $controller ), array( 'WP_REST_Attachments_Controller', 'WP_REST_Posts_Controller' ), true ) ) {
+		$namespace = 'wp/v2';
+		$rest_base = ! empty( $post_type->rest_base ) ? $post_type->rest_base : $post_type->name;
+		$route     = sprintf( '/%s/%s/%d', $namespace, $rest_base, $post->ID );
+	}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	/**
 	 * Filters the REST API route for a post.
@@ -3085,6 +3146,7 @@ function rest_get_route_for_post( $post ) {
 }
 
 /**
+<<<<<<< HEAD
  * Gets the REST API route for a post type.
  *
  * @since 5.9.0
@@ -3119,13 +3181,19 @@ function rest_get_route_for_post_type_items( $post_type ) {
 }
 
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Gets the REST API route for a term.
  *
  * @since 5.5.0
  *
  * @param int|WP_Term $term Term ID or term object.
+<<<<<<< HEAD
  * @return string The route path with a leading slash for the given term,
  *                or an empty string if there is not a route.
+=======
+ * @return string The route path with a leading slash for the given term, or an empty string if there is not a route.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function rest_get_route_for_term( $term ) {
 	$term = get_term( $term );
@@ -3134,12 +3202,33 @@ function rest_get_route_for_term( $term ) {
 		return '';
 	}
 
+<<<<<<< HEAD
 	$taxonomy_route = rest_get_route_for_taxonomy_items( $term->taxonomy );
 	if ( ! $taxonomy_route ) {
 		return '';
 	}
 
 	$route = sprintf( '%s/%d', $taxonomy_route, $term->term_id );
+=======
+	$taxonomy = get_taxonomy( $term->taxonomy );
+	if ( ! $taxonomy ) {
+		return '';
+	}
+
+	$controller = $taxonomy->get_rest_controller();
+	if ( ! $controller ) {
+		return '';
+	}
+
+	$route = '';
+
+	// The only controller that works is the Terms controller.
+	if ( $controller instanceof WP_REST_Terms_Controller ) {
+		$namespace = 'wp/v2';
+		$rest_base = ! empty( $taxonomy->rest_base ) ? $taxonomy->rest_base : $taxonomy->name;
+		$route     = sprintf( '/%s/%s/%d', $namespace, $rest_base, $term->term_id );
+	}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	/**
 	 * Filters the REST API route for a term.
@@ -3153,6 +3242,7 @@ function rest_get_route_for_term( $term ) {
 }
 
 /**
+<<<<<<< HEAD
  * Gets the REST API route for a taxonomy.
  *
  * @since 5.9.0
@@ -3186,6 +3276,8 @@ function rest_get_route_for_taxonomy_items( $taxonomy ) {
 }
 
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Gets the REST route for the currently queried object.
  *
  * @since 5.5.0
@@ -3295,7 +3387,11 @@ function rest_get_endpoint_args_for_schema( $schema, $method = WP_REST_Server::C
 function rest_convert_error_to_response( $error ) {
 	$status = array_reduce(
 		$error->get_all_error_data(),
+<<<<<<< HEAD
 		static function ( $status, $error_data ) {
+=======
+		function ( $status, $error_data ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return is_array( $error_data ) && isset( $error_data['status'] ) ? $error_data['status'] : $status;
 		},
 		500

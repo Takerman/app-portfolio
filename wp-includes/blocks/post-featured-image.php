@@ -23,11 +23,16 @@ function render_block_core_post_featured_image( $attributes, $content, $block ) 
 	if ( ! $featured_image ) {
 		return '';
 	}
+<<<<<<< HEAD
 	$wrapper_attributes = get_block_wrapper_attributes();
+=======
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( isset( $attributes['isLink'] ) && $attributes['isLink'] ) {
 		$featured_image = sprintf( '<a href="%1s">%2s</a>', get_the_permalink( $post_ID ), $featured_image );
 	}
 
+<<<<<<< HEAD
 	$has_width  = ! empty( $attributes['width'] );
 	$has_height = ! empty( $attributes['height'] );
 	if ( ! $has_height && ! $has_width ) {
@@ -47,6 +52,11 @@ function render_block_core_post_featured_image( $attributes, $content, $block ) 
 	}
 
 	return "<figure $wrapper_attributes>$featured_image</figure>";
+=======
+	$wrapper_attributes = get_block_wrapper_attributes();
+
+	return '<figure ' . $wrapper_attributes . '>' . $featured_image . '</figure>';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 /**

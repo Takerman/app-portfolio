@@ -168,6 +168,7 @@ class WP_REST_Post_Types_Controller extends WP_REST_Controller {
 	 * Prepares a post type object for serialization.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$post_type` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param WP_Post_Type    $item    Post type object.
@@ -181,6 +182,17 @@ class WP_REST_Post_Types_Controller extends WP_REST_Controller {
 		$taxonomies = wp_list_pluck( $taxonomies, 'name' );
 		$base       = ! empty( $post_type->rest_base ) ? $post_type->rest_base : $post_type->name;
 		$namespace  = ! empty( $post_type->rest_namespace ) ? $post_type->rest_namespace : 'wp/v2';
+=======
+	 *
+	 * @param WP_Post_Type    $post_type Post type object.
+	 * @param WP_REST_Request $request   Full details about the request.
+	 * @return WP_REST_Response Response object.
+	 */
+	public function prepare_item_for_response( $post_type, $request ) {
+		$taxonomies = wp_list_filter( get_object_taxonomies( $post_type->name, 'objects' ), array( 'show_in_rest' => true ) );
+		$taxonomies = wp_list_pluck( $taxonomies, 'name' );
+		$base       = ! empty( $post_type->rest_base ) ? $post_type->rest_base : $post_type->name;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$supports   = get_all_post_type_supports( $post_type->name );
 
 		$fields = $this->get_fields_for_response( $request );
@@ -198,6 +210,7 @@ class WP_REST_Post_Types_Controller extends WP_REST_Controller {
 			$data['hierarchical'] = $post_type->hierarchical;
 		}
 
+<<<<<<< HEAD
 		if ( in_array( 'visibility', $fields, true ) ) {
 			$data['visibility'] = array(
 				'show_in_nav_menus' => (bool) $post_type->show_in_nav_menus,
@@ -205,6 +218,8 @@ class WP_REST_Post_Types_Controller extends WP_REST_Controller {
 			);
 		}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( in_array( 'viewable', $fields, true ) ) {
 			$data['viewable'] = is_post_type_viewable( $post_type );
 		}
@@ -233,10 +248,13 @@ class WP_REST_Post_Types_Controller extends WP_REST_Controller {
 			$data['rest_base'] = $base;
 		}
 
+<<<<<<< HEAD
 		if ( in_array( 'rest_namespace', $fields, true ) ) {
 			$data['rest_namespace'] = $namespace;
 		}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$context = ! empty( $request['context'] ) ? $request['context'] : 'view';
 		$data    = $this->add_additional_fields_to_object( $data, $request );
 		$data    = $this->filter_response_by_context( $data, $context );
@@ -250,7 +268,11 @@ class WP_REST_Post_Types_Controller extends WP_REST_Controller {
 					'href' => rest_url( sprintf( '%s/%s', $this->namespace, $this->rest_base ) ),
 				),
 				'https://api.w.org/items' => array(
+<<<<<<< HEAD
 					'href' => rest_url( rest_get_route_for_post_type_items( $post_type->name ) ),
+=======
+					'href' => rest_url( sprintf( 'wp/v2/%s', $base ) ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				),
 			)
 		);
@@ -273,8 +295,11 @@ class WP_REST_Post_Types_Controller extends WP_REST_Controller {
 	 * Retrieves the post type's schema, conforming to JSON Schema.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @since 4.8.0 The `supports` property was added.
 	 * @since 5.9.0 The `visibility` and `rest_namespace` properties were added.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @return array Item schema data.
 	 */
@@ -288,55 +313,91 @@ class WP_REST_Post_Types_Controller extends WP_REST_Controller {
 			'title'      => 'type',
 			'type'       => 'object',
 			'properties' => array(
+<<<<<<< HEAD
 				'capabilities'   => array(
+=======
+				'capabilities' => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'All capabilities used by the post type.' ),
 					'type'        => 'object',
 					'context'     => array( 'edit' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'description'    => array(
+=======
+				'description'  => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'A human-readable description of the post type.' ),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'hierarchical'   => array(
+=======
+				'hierarchical' => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'Whether or not the post type should have children.' ),
 					'type'        => 'boolean',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'viewable'       => array(
+=======
+				'viewable'     => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'Whether or not the post type can be viewed.' ),
 					'type'        => 'boolean',
 					'context'     => array( 'edit' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'labels'         => array(
+=======
+				'labels'       => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'Human-readable labels for the post type for various contexts.' ),
 					'type'        => 'object',
 					'context'     => array( 'edit' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'name'           => array(
+=======
+				'name'         => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'The title for the post type.' ),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit', 'embed' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'slug'           => array(
+=======
+				'slug'         => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'An alphanumeric identifier for the post type.' ),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit', 'embed' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'supports'       => array(
+=======
+				'supports'     => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'All features, supported by the post type.' ),
 					'type'        => 'object',
 					'context'     => array( 'edit' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'taxonomies'     => array(
+=======
+				'taxonomies'   => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'Taxonomies associated with post type.' ),
 					'type'        => 'array',
 					'items'       => array(
@@ -345,12 +406,17 @@ class WP_REST_Post_Types_Controller extends WP_REST_Controller {
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'rest_base'      => array(
+=======
+				'rest_base'    => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'REST base route for the post type.' ),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit', 'embed' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'rest_namespace' => array(
 					'description' => __( 'REST route\'s namespace for the post type.' ),
 					'type'        => 'string',
@@ -373,6 +439,8 @@ class WP_REST_Post_Types_Controller extends WP_REST_Controller {
 						),
 					),
 				),
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			),
 		);
 

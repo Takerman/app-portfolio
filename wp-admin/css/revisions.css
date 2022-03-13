@@ -186,6 +186,13 @@ body.folded .revisions .loading-indicator {
 	vertical-align: middle;
 }
 
+<<<<<<< HEAD
+=======
+table.diff tbody tr td:nth-child(2) {
+	width: 4%;
+}
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 table.diff {
 	table-layout: fixed;
 	width: 100%;

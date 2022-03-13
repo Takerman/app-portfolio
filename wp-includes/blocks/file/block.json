@@ -13,12 +13,15 @@
 		"href": {
 			"type": "string"
 		},
+<<<<<<< HEAD
 		"fileId": {
 			"type": "string",
 			"source": "attribute",
 			"selector": "a:not([download])",
 			"attribute": "id"
 		},
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		"fileName": {
 			"type": "string",
 			"source": "html",

@@ -87,8 +87,12 @@ function post_submit_meta_box( $post, $args = array() ) {
 		endif;
 
 		/**
+<<<<<<< HEAD
 		 * Fires after the Save Draft (or Save as Pending) and Preview (or Preview Changes) buttons
 		 * in the Publish meta box.
+=======
+		 * Fires before the post time/date setting in the Publish meta box.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 *
 		 * @since 4.4.0
 		 *
@@ -865,7 +869,11 @@ function post_comment_meta_box( $post ) {
 		$hidden = get_hidden_meta_boxes( get_current_screen() );
 		if ( ! in_array( 'commentsdiv', $hidden, true ) ) {
 			?>
+<<<<<<< HEAD
 			<script type="text/javascript">jQuery(function(){commentsBox.get(<?php echo $total; ?>, 10);});</script>
+=======
+			<script type="text/javascript">jQuery(document).ready(function(){commentsBox.get(<?php echo $total; ?>, 10);});</script>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			<?php
 		}
 
@@ -903,14 +911,21 @@ function post_slug_meta_box( $post ) {
  */
 function post_author_meta_box( $post ) {
 	global $user_ID;
+<<<<<<< HEAD
 
 	$post_type_object = get_post_type_object( $post->post_type );
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	?>
 <label class="screen-reader-text" for="post_author_override"><?php _e( 'Author' ); ?></label>
 	<?php
 	wp_dropdown_users(
 		array(
+<<<<<<< HEAD
 			'capability'       => array( $post_type_object->cap->edit_posts ),
+=======
+			'who'              => 'authors',
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			'name'             => 'post_author_override',
 			'selected'         => empty( $post->ID ) ? $user_ID : $post->post_author,
 			'include_selected' => true,
@@ -984,8 +999,13 @@ function page_attributes_meta_box( $post ) {
 		 *
 		 * @since 4.4.0
 		 *
+<<<<<<< HEAD
 		 * @param string|false $template The template used for the current post.
 		 * @param WP_Post      $post     The current post.
+=======
+		 * @param string  $template The template used for the current post.
+		 * @param WP_Post $post     The current post.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		do_action( 'page_attributes_meta_box_template', $template, $post );
 		?>
@@ -1583,6 +1603,7 @@ function register_and_do_post_meta_boxes( $post ) {
 	/**
 	 * Fires after all built-in meta boxes have been added, contextually for the given post type.
 	 *
+<<<<<<< HEAD
 	 * The dynamic portion of the hook name, `$post_type`, refers to the post type of the post.
 	 *
 	 * Possible hook names include:
@@ -1590,6 +1611,9 @@ function register_and_do_post_meta_boxes( $post ) {
 	 *  - `add_meta_boxes_post`
 	 *  - `add_meta_boxes_page`
 	 *  - `add_meta_boxes_attachment`
+=======
+	 * The dynamic portion of the hook, `$post_type`, refers to the post type of the post.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 3.0.0
 	 *

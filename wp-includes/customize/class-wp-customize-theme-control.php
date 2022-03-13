@@ -242,6 +242,7 @@ class WP_Customize_Theme_Control extends WP_Customize_Control {
 				</div>
 				<div class="notice notice-success notice-alt"><p><?php _ex( 'Installed', 'theme' ); ?></p></div>
 			<# } else if ( 'installed' === data.theme.type ) { #>
+<<<<<<< HEAD
 				<# if ( data.theme.blockTheme ) { #>
 					<div class="theme-id-container">
 						<h3 class="theme-name" id="{{ data.section }}-{{ data.theme.id }}-name">{{ data.theme.name }}</h3>
@@ -283,6 +284,19 @@ class WP_Customize_Theme_Control extends WP_Customize_Control {
 					</div>
 					<div class="notice notice-success notice-alt"><p><?php _ex( 'Installed', 'theme' ); ?></p></div>
 				<# } #>
+=======
+				<div class="theme-id-container">
+					<h3 class="theme-name" id="{{ data.section }}-{{ data.theme.id }}-name">{{ data.theme.name }}</h3>
+					<div class="theme-actions">
+						<# if ( data.theme.compatibleWP && data.theme.compatiblePHP ) { #>
+							<button type="button" class="button button-primary preview-theme" aria-label="<?php echo esc_attr( $preview_label ); ?>" data-slug="{{ data.theme.id }}"><?php _e( 'Live Preview' ); ?></button>
+						<# } else { #>
+							<button type="button" class="button button-primary disabled" aria-label="<?php echo esc_attr( $preview_label ); ?>"><?php _e( 'Live Preview' ); ?></button>
+						<# } #>
+					</div>
+				</div>
+				<div class="notice notice-success notice-alt"><p><?php _ex( 'Installed', 'theme' ); ?></p></div>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			<# } else { #>
 				<div class="theme-id-container">
 					<h3 class="theme-name" id="{{ data.section }}-{{ data.theme.id }}-name">{{ data.theme.name }}</h3>

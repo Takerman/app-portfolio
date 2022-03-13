@@ -854,7 +854,11 @@ $( function() {
 		// Reset any compensation for submenus near the bottom of the screen.
 		$('#adminmenu div.wp-submenu').css('margin-top', '');
 
+<<<<<<< HEAD
 		if ( viewportWidth <= 960 ) {
+=======
+		if ( viewportWidth < 960 ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( $body.hasClass('auto-fold') ) {
 				$body.removeClass('auto-fold').removeClass('folded');
 				setUserSetting('unfold', 1);
@@ -1309,7 +1313,11 @@ $( function() {
 	});
 
 	/**
+<<<<<<< HEAD
 	 * Handles tab keypresses in theme and plugin file editor textareas.
+=======
+	 * Handles tab keypresses in theme and plugin editor textareas.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @param {Event} e The event object.
 	 *
@@ -1708,7 +1716,11 @@ $( function() {
 			self.trigger();
 			$document.on( 'wp-window-resized.wp-responsive', this.trigger.bind( this ) );
 
+<<<<<<< HEAD
 			// This needs to run later as UI Sortable may be initialized when the document is ready.
+=======
+			// This needs to run later as UI Sortable may be initialized later on $(document).ready().
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$window.on( 'load.wp-responsive', this.maybeDisableSortables );
 			$document.on( 'postbox-toggled', this.maybeDisableSortables );
 

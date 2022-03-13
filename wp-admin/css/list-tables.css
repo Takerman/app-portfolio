@@ -797,7 +797,11 @@ p.pagenav {
 }
 
 .row-actions {
+<<<<<<< HEAD
 	color: #a7aaad;
+=======
+	color: #dcdcde;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	font-size: 13px;
 	padding: 2px 0 0;
 	position: relative;
@@ -1254,11 +1258,14 @@ ul.cat-checklist {
 	padding: 0 0 5px;
 }
 
+<<<<<<< HEAD
 .plugins .row-actions {
 	white-space: normal;
 	min-width: 12em;
 }
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 .plugins .update .second,
 .plugins .update .row-actions,
 .plugins .updated .second,
@@ -1557,7 +1564,11 @@ div.action-links,
 }
 
 .plugin-card .notice {
+<<<<<<< HEAD
 	margin: 20px 20px 0;
+=======
+	margin: 20px 20px 0 20px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .plugin-icon {
@@ -1648,7 +1659,11 @@ div.action-links,
 	}
 
 	.tablenav.top {
+<<<<<<< HEAD
 		margin: 20px 0 5px;
+=======
+		margin: 20px 0 5px 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	.tablenav.bottom {

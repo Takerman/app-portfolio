@@ -52,6 +52,7 @@ class Language_Pack_Upgrader_Skin extends WP_Upgrader_Skin {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$error` to `$errors` for PHP 8 named parameter support.
 	 *
 	 * @param string|WP_Error $errors Errors.
@@ -59,6 +60,13 @@ class Language_Pack_Upgrader_Skin extends WP_Upgrader_Skin {
 	public function error( $errors ) {
 		echo '<div class="lp-error">';
 		parent::error( $errors );
+=======
+	 * @param string|WP_Error $error
+	 */
+	public function error( $error ) {
+		echo '<div class="lp-error">';
+		parent::error( $error );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		echo '</div>';
 	}
 

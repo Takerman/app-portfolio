@@ -19,14 +19,22 @@ $tabs = array(
 );
 
 /**
+<<<<<<< HEAD
  * An associative array of extra tabs for the Site Health navigation bar.
+=======
+ * An associated array of extra tabs for the Site Health navigation bar.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * Add a custom page to the Site Health screen, based on a tab slug and label.
  * The label you provide will also be used as part of the site title.
  *
  * @since 5.8.0
  *
+<<<<<<< HEAD
  * @param string[] $tabs An associative array of tab labels keyed by their slug.
+=======
+ * @param array $tabs An associated array of tab slugs and their label.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 $tabs = apply_filters( 'site_health_navigation_tabs', $tabs );
 
@@ -74,6 +82,7 @@ if ( 'update_https' === $action ) {
 
 $health_check_site_status = WP_Site_Health::get_instance();
 
+<<<<<<< HEAD
 get_current_screen()->add_help_tab(
 	array(
 		'id'      => 'overview',
@@ -90,6 +99,8 @@ get_current_screen()->set_help_sidebar(
 	'<p>' . __( '<a href="https://wordpress.org/support/article/site-health-screen/">Documentation on Site Health tool</a>' ) . '</p>'
 );
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 // Start by checking if this is a special request checking for the existence of certain filters.
 $health_check_site_status->check_wp_version_check_exists();
 
@@ -216,7 +227,11 @@ if ( isset( $_GET['tab'] ) && ! empty( $_GET['tab'] ) ) {
 <div class="health-check-body health-check-status-tab hide-if-no-js">
 	<div class="site-status-all-clear hide">
 		<p class="icon">
+<<<<<<< HEAD
 			<span class="dashicons dashicons-smiley" aria-hidden="true"></span>
+=======
+			<span class="dashicons dashicons-yes"></span>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		</p>
 
 		<p class="encouragement">

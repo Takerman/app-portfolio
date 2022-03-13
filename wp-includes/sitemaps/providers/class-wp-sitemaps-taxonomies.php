@@ -51,6 +51,7 @@ class WP_Sitemaps_Taxonomies extends WP_Sitemaps_Provider {
 	 * Gets a URL list for a taxonomy sitemap.
 	 *
 	 * @since 5.5.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$taxonomy` to `$object_subtype` to match parent class
 	 *              for PHP 8 named parameter support.
 	 *
@@ -61,6 +62,14 @@ class WP_Sitemaps_Taxonomies extends WP_Sitemaps_Provider {
 	public function get_url_list( $page_num, $object_subtype = '' ) {
 		// Restores the more descriptive, specific name for use within this method.
 		$taxonomy        = $object_subtype;
+=======
+	 *
+	 * @param int    $page_num Page of results.
+	 * @param string $taxonomy Optional. Taxonomy name. Default empty.
+	 * @return array Array of URLs for a sitemap.
+	 */
+	public function get_url_list( $page_num, $taxonomy = '' ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$supported_types = $this->get_object_subtypes();
 
 		// Bail early if the queried taxonomy is not supported.
@@ -71,14 +80,24 @@ class WP_Sitemaps_Taxonomies extends WP_Sitemaps_Provider {
 		/**
 		 * Filters the taxonomies URL list before it is generated.
 		 *
+<<<<<<< HEAD
 		 * Returning a non-null value will effectively short-circuit the generation,
+=======
+		 * Passing a non-null value will effectively short-circuit the generation,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 * returning that value instead.
 		 *
 		 * @since 5.5.0
 		 *
+<<<<<<< HEAD
 		 * @param array[]|null $url_list The URL list. Default null.
 		 * @param string       $taxonomy Taxonomy name.
 		 * @param int          $page_num Page of results.
+=======
+		 * @param array  $url_list The URL list. Default null.
+		 * @param string $taxonomy Taxonomy name.
+		 * @param int    $page_num Page of results.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$url_list = apply_filters(
 			'wp_sitemaps_taxonomies_pre_url_list',
@@ -134,6 +153,7 @@ class WP_Sitemaps_Taxonomies extends WP_Sitemaps_Provider {
 	 * Gets the max number of pages available for the object type.
 	 *
 	 * @since 5.5.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$taxonomy` to `$object_subtype` to match parent class
 	 *              for PHP 8 named parameter support.
 	 *
@@ -150,14 +170,32 @@ class WP_Sitemaps_Taxonomies extends WP_Sitemaps_Provider {
 
 		/**
 		 * Filters the max number of pages for a taxonomy sitemap before it is generated.
+=======
+	 *
+	 * @param string $taxonomy Taxonomy name.
+	 * @return int Total number of pages.
+	 */
+	public function get_max_num_pages( $taxonomy = '' ) {
+		if ( empty( $taxonomy ) ) {
+			return 0;
+		}
+
+		/**
+		 * Filters the max number of pages before it is generated.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 *
 		 * Passing a non-null value will short-circuit the generation,
 		 * returning that value instead.
 		 *
 		 * @since 5.5.0
 		 *
+<<<<<<< HEAD
 		 * @param int|null $max_num_pages The maximum number of pages. Default null.
 		 * @param string   $taxonomy      Taxonomy name.
+=======
+		 * @param int    $max_num_pages The maximum number of pages. Default null.
+		 * @param string $taxonomy      Taxonomy name.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$max_num_pages = apply_filters( 'wp_sitemaps_taxonomies_pre_max_num_pages', null, $taxonomy );
 

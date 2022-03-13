@@ -26,6 +26,7 @@
 		},
 		"typography": {
 			"fontSize": true,
+<<<<<<< HEAD
 			"lineHeight": true,
 			"__experimentalFontFamily": true,
 			"__experimentalFontWeight": true,
@@ -35,6 +36,9 @@
 			"__experimentalDefaultControls": {
 				"fontSize": true
 			}
+=======
+			"lineHeight": true
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	}
 }

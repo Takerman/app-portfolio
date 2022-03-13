@@ -37,7 +37,11 @@ class WP_REST_Autosaves_Controller extends WP_REST_Revisions_Controller {
 	 * Revision controller.
 	 *
 	 * @since 5.0.0
+<<<<<<< HEAD
 	 * @var WP_REST_Revisions_Controller
+=======
+	 * @var WP_REST_Controller
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	private $revisions_controller;
 
@@ -67,8 +71,13 @@ class WP_REST_Autosaves_Controller extends WP_REST_Revisions_Controller {
 
 		$this->parent_controller    = $parent_controller;
 		$this->revisions_controller = new WP_REST_Revisions_Controller( $parent_post_type );
+<<<<<<< HEAD
 		$this->rest_base            = 'autosaves';
 		$this->namespace            = ! empty( $post_type_object->rest_namespace ) ? $post_type_object->rest_namespace : 'wp/v2';
+=======
+		$this->namespace            = 'wp/v2';
+		$this->rest_base            = 'autosaves';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$this->parent_base          = ! empty( $post_type_object->rest_base ) ? $post_type_object->rest_base : $post_type_object->name;
 	}
 
@@ -396,6 +405,7 @@ class WP_REST_Autosaves_Controller extends WP_REST_Revisions_Controller {
 	 * Prepares the revision for the REST response.
 	 *
 	 * @since 5.0.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$post` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param WP_Post         $item    Post revision object.
@@ -405,6 +415,15 @@ class WP_REST_Autosaves_Controller extends WP_REST_Revisions_Controller {
 	public function prepare_item_for_response( $item, $request ) {
 		// Restores the more descriptive, specific name for use within this method.
 		$post     = $item;
+=======
+	 *
+	 * @param WP_Post         $post    Post revision object.
+	 * @param WP_REST_Request $request Request object.
+	 * @return WP_REST_Response Response object.
+	 */
+	public function prepare_item_for_response( $post, $request ) {
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$response = $this->revisions_controller->prepare_item_for_response( $post, $request );
 
 		$fields = $this->get_fields_for_response( $request );

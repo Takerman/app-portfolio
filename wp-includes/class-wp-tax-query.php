@@ -236,7 +236,11 @@ class WP_Tax_Query {
 	 *
 	 * @param string $primary_table     Database table where the object being filtered is stored (eg wp_users).
 	 * @param string $primary_id_column ID column for the filtered object in $primary_table.
+<<<<<<< HEAD
 	 * @return string[] {
+=======
+	 * @return array {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *     Array containing JOIN and WHERE SQL clauses to append to the main query.
 	 *
 	 *     @type string $join  SQL fragment to append to the main JOIN clause.
@@ -258,7 +262,11 @@ class WP_Tax_Query {
 	 *
 	 * @since 4.1.0
 	 *
+<<<<<<< HEAD
 	 * @return string[] {
+=======
+	 * @return array {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *     Array containing JOIN and WHERE SQL clauses to append to the main query.
 	 *
 	 *     @type string $join  SQL fragment to append to the main JOIN clause.
@@ -291,7 +299,11 @@ class WP_Tax_Query {
 	 * @param array $query Query to parse (passed by reference).
 	 * @param int   $depth Optional. Number of tree levels deep we currently are.
 	 *                     Used to calculate indentation. Default 0.
+<<<<<<< HEAD
 	 * @return string[] {
+=======
+	 * @return array {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *     Array containing JOIN and WHERE SQL clauses to append to a single query array.
 	 *
 	 *     @type string $join  SQL fragment to append to the main JOIN clause.
@@ -373,7 +385,11 @@ class WP_Tax_Query {
 	 *
 	 * @param array $clause       Query clause (passed by reference).
 	 * @param array $parent_query Parent query array.
+<<<<<<< HEAD
 	 * @return string[] {
+=======
+	 * @return array {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *     Array containing JOIN and WHERE SQL clauses to append to a first-order query.
 	 *
 	 *     @type string $join  SQL fragment to append to the main JOIN clause.
@@ -527,7 +543,11 @@ class WP_Tax_Query {
 
 			// The sibling must both have compatible operator to share its alias.
 			if ( in_array( strtoupper( $sibling['operator'] ), $compatible_operators, true ) ) {
+<<<<<<< HEAD
 				$alias = preg_replace( '/\W/', '_', $sibling['alias'] );
+=======
+				$alias = $sibling['alias'];
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				break;
 			}
 		}
@@ -556,11 +576,15 @@ class WP_Tax_Query {
 			return;
 		}
 
+<<<<<<< HEAD
 		if ( 'slug' === $query['field'] || 'name' === $query['field'] ) {
 			$query['terms'] = array_unique( (array) $query['terms'] );
 		} else {
 			$query['terms'] = wp_parse_id_list( $query['terms'] );
 		}
+=======
+		$query['terms'] = array_unique( (array) $query['terms'] );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		if ( is_taxonomy_hierarchical( $query['taxonomy'] ) && $query['include_children'] ) {
 			$this->transform_query( $query, 'term_id' );

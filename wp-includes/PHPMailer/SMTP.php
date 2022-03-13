@@ -35,7 +35,11 @@ class SMTP
      *
      * @var string
      */
+<<<<<<< HEAD
     const VERSION = '6.5.3';
+=======
+    const VERSION = '6.5.0';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
     /**
      * SMTP line break constant.
@@ -392,6 +396,10 @@ class SMTP
                 STREAM_CLIENT_CONNECT,
                 $socket_context
             );
+<<<<<<< HEAD
+=======
+            restore_error_handler();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         } else {
             //Fall back to fsockopen which should work in more places, but is missing some features
             $this->edebug(
@@ -406,8 +414,13 @@ class SMTP
                 $errstr,
                 $timeout
             );
+<<<<<<< HEAD
         }
         restore_error_handler();
+=======
+            restore_error_handler();
+        }
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
         //Verify we connected properly
         if (!is_resource($connection)) {
@@ -695,7 +708,11 @@ class SMTP
     /**
      * Send an SMTP DATA command.
      * Issues a data command and sends the msg_data to the server,
+<<<<<<< HEAD
      * finalizing the mail transaction. $msg_data is the message
+=======
+     * finializing the mail transaction. $msg_data is the message
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
      * that is to be send with the headers. Each header needs to be
      * on a single line followed by a <CRLF> with the message headers
      * and the message body being separated by an additional <CRLF>.
@@ -1169,7 +1186,11 @@ class SMTP
         if (!$this->server_caps) {
             $this->setError('No HELO/EHLO was sent');
 
+<<<<<<< HEAD
             return null;
+=======
+            return;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         }
 
         if (!array_key_exists($name, $this->server_caps)) {
@@ -1181,7 +1202,11 @@ class SMTP
             }
             $this->setError('HELO handshake was used; No information about server extensions available');
 
+<<<<<<< HEAD
             return null;
+=======
+            return;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         }
 
         return $this->server_caps[$name];

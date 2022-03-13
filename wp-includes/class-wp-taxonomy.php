@@ -200,6 +200,7 @@ final class WP_Taxonomy {
 	public $rest_base;
 
 	/**
+<<<<<<< HEAD
 	 * The namespace for this taxonomy's REST API endpoints.
 	 *
 	 * @since 5.9.0
@@ -208,6 +209,8 @@ final class WP_Taxonomy {
 	public $rest_namespace;
 
 	/**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * The controller for this taxonomy's REST API endpoints.
 	 *
 	 * Custom controllers must extend WP_REST_Controller.
@@ -327,7 +330,10 @@ final class WP_Taxonomy {
 			'update_count_callback' => '',
 			'show_in_rest'          => false,
 			'rest_base'             => false,
+<<<<<<< HEAD
 			'rest_namespace'        => false,
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			'rest_controller_class' => false,
 			'default_term'          => null,
 			'sort'                  => null,
@@ -393,11 +399,14 @@ final class WP_Taxonomy {
 			$args['show_in_quick_edit'] = $args['show_ui'];
 		}
 
+<<<<<<< HEAD
 		// If not set, default rest_namespace to wp/v2 if show_in_rest is true.
 		if ( false === $args['rest_namespace'] && ! empty( $args['show_in_rest'] ) ) {
 			$args['rest_namespace'] = 'wp/v2';
 		}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$default_caps = array(
 			'manage_terms' => 'manage_categories',
 			'edit_terms'   => 'manage_categories',

@@ -623,7 +623,11 @@ div.mce-path {
 div.mce-menubar {
 	border-color: #dcdcde;
 	background: #fff;
+<<<<<<< HEAD
 	border-width: 0 0 1px;
+=======
+	border-width: 0px 0px 1px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .mce-menubar .mce-menubtn:hover,
@@ -643,7 +647,11 @@ div.mce-menubar {
 div.mce-menu .mce-menu-item-sep,
 .mce-menu-item-sep:hover {
 	border-bottom: 1px solid #dcdcde;
+<<<<<<< HEAD
 	height: 0;
+=======
+	height: 0px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	margin: 5px 0;
 }
 

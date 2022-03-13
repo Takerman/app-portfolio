@@ -22,7 +22,11 @@ get_current_screen()->add_help_tab(
 					'<p>' . __( 'This screen allows you to manage requests for an export of personal data.' ) . '</p>' .
 					'<p>' . __( 'Providing an export of all data that a business or website has collected about an individual is a requirement of many Privacy Laws around the world, and is sometimes referred to as the "Right To Data Portability".' ) . '</p>' .
 					'<p>' . __( 'The tool associates data stored in WordPress by a supplied email address, including profile data and comments.' ) . '</p>' .
+<<<<<<< HEAD
 					'<p><strong>' . __( 'Note: As this tool only gathers data from WordPress and participating plugins, you may need to do more to comply with export requests. You should also send the requestor any data collected by or stored with any 3rd party services used by your business or site.' ) . '</strong></p>',
+=======
+					'<p>' . __( '<strong>Note: As this tool only gathers data from WordPress and participating plugins, you may need to do more to comply with export requests. You should also send the requestor any data collected by or stored with any 3rd party services used by your business or site.</strong>' ) . '</p>',
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	)
 );
 

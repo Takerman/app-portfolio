@@ -131,8 +131,13 @@ function domReady(callback) {
   if (document.readyState === 'complete' || // DOMContentLoaded + Images/Styles/etc loaded, so we call directly.
   document.readyState === 'interactive' // DOMContentLoaded fires at this point, so we call directly.
   ) {
+<<<<<<< HEAD
     return void callback();
   } // DOMContentLoaded has not fired yet, delay callback until then.
+=======
+      return void callback();
+    } // DOMContentLoaded has not fired yet, delay callback until then.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 
   document.addEventListener('DOMContentLoaded', callback);

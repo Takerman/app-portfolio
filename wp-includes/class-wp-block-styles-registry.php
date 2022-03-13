@@ -17,8 +17,12 @@ final class WP_Block_Styles_Registry {
 	 * Registered block styles, as `$block_name => $block_style_name => $block_style_properties` multidimensional arrays.
 	 *
 	 * @since 5.3.0
+<<<<<<< HEAD
 	 *
 	 * @var array[]
+=======
+	 * @var array
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	private $registered_block_styles = array();
 
@@ -26,13 +30,20 @@ final class WP_Block_Styles_Registry {
 	 * Container for the main instance of the class.
 	 *
 	 * @since 5.3.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var WP_Block_Styles_Registry|null
 	 */
 	private static $instance = null;
 
 	/**
+<<<<<<< HEAD
 	 * Registers a block style for the given block type.
+=======
+	 * Registers a block style.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.3.0
 	 *
@@ -62,6 +73,7 @@ final class WP_Block_Styles_Registry {
 			return false;
 		}
 
+<<<<<<< HEAD
 		if ( str_contains( $style_properties['name'], ' ' ) ) {
 			_doing_it_wrong(
 				__METHOD__,
@@ -71,6 +83,8 @@ final class WP_Block_Styles_Registry {
 			return false;
 		}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$block_style_name = $style_properties['name'];
 
 		if ( ! isset( $this->registered_block_styles[ $block_name ] ) ) {
@@ -82,9 +96,13 @@ final class WP_Block_Styles_Registry {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Unregisters a block style of the given block type.
 	 *
 	 * @since 5.3.0
+=======
+	 * Unregisters a block style.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @param string $block_name       Block type name including namespace.
 	 * @param string $block_style_name Block style name.
@@ -107,7 +125,11 @@ final class WP_Block_Styles_Registry {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Retrieves the properties of a registered block style for the given block type.
+=======
+	 * Retrieves an array containing the properties of a registered block style.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.3.0
 	 *
@@ -128,19 +150,32 @@ final class WP_Block_Styles_Registry {
 	 *
 	 * @since 5.3.0
 	 *
+<<<<<<< HEAD
 	 * @return array[] Array of arrays containing the registered block styles properties grouped by block type.
+=======
+	 * @return array Array of arrays containing the registered block styles properties grouped per block,
+	 *               and per style.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public function get_all_registered() {
 		return $this->registered_block_styles;
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Retrieves registered block styles for a specific block type.
+=======
+	 * Retrieves registered block styles for a specific block.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.3.0
 	 *
 	 * @param string $block_name Block type name including namespace.
+<<<<<<< HEAD
 	 * @return array[] Array whose keys are block style names and whose values are block style properties.
+=======
+	 * @return array Array whose keys are block style names and whose value are block style properties.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public function get_registered_styles_for_block( $block_name ) {
 		if ( isset( $this->registered_block_styles[ $block_name ] ) ) {
@@ -150,7 +185,11 @@ final class WP_Block_Styles_Registry {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Checks if a block style is registered for the given block type.
+=======
+	 * Checks if a block style is registered.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.3.0
 	 *

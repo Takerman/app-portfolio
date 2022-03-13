@@ -41,12 +41,16 @@
 	},
 	"supports": {
 		"align": [ "left", "center", "right" ],
+<<<<<<< HEAD
 		"color": {
 			"gradients": true,
 			"__experimentalSkipSerialization": true
 		},
 		"__experimentalBorder": {
 			"color": true,
+=======
+		"__experimentalBorder": {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			"radius": true,
 			"__experimentalSkipSerialization": true
 		},

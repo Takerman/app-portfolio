@@ -16,7 +16,11 @@
  * @param int         $compare_from The revision ID to compare from.
  * @param int         $compare_to   The revision ID to come to.
  * @return array|false Associative array of a post's revisioned fields and their diffs.
+<<<<<<< HEAD
  *                     Or, false on failure.
+=======
+ *                    Or, false on failure.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function wp_get_revision_ui_diff( $post, $compare_from, $compare_to ) {
 	$post = get_post( $post );

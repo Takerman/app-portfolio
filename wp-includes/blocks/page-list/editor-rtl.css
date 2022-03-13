@@ -41,12 +41,15 @@
  * These variables do not appear to be used anywhere else.
  */
 /**
+<<<<<<< HEAD
 *  Converts a hex value into the rgb equivalent.
 *
 * @param {string} hex - the hexadecimal value to convert
 * @return {string} comma separated rgb values
 */
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Breakpoint mixins
  */
 /**
@@ -110,6 +113,7 @@
 }
 .wp-block-page-list-modal-buttons .components-button {
   margin-right: 12px;
+<<<<<<< HEAD
 }
 
 .wp-block-page-list .open-on-click:focus-within > .wp-block-navigation__submenu-container {
@@ -122,4 +126,6 @@
 
 .wp-block-page-list .components-notice {
   margin-right: 0;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }

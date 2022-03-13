@@ -378,8 +378,13 @@ class WP_REST_Request implements ArrayAccess {
 		 *
 		 * @since 4.4.0
 		 *
+<<<<<<< HEAD
 		 * @param string[]        $order   Array of types to check, in order of priority.
 		 * @param WP_REST_Request $request The request object.
+=======
+		 * @param string[]        $order Array of types to check, in order of priority.
+		 * @param WP_REST_Request $this  The request object.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		return apply_filters( 'rest_request_parameter_order', $order, $this );
 	}
@@ -957,7 +962,10 @@ class WP_REST_Request implements ArrayAccess {
 	 * @param string $offset Parameter name.
 	 * @return bool Whether the parameter is set.
 	 */
+<<<<<<< HEAD
 	#[ReturnTypeWillChange]
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function offsetExists( $offset ) {
 		$order = $this->get_parameter_order();
 
@@ -978,7 +986,10 @@ class WP_REST_Request implements ArrayAccess {
 	 * @param string $offset Parameter name.
 	 * @return mixed|null Value if set, null otherwise.
 	 */
+<<<<<<< HEAD
 	#[ReturnTypeWillChange]
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function offsetGet( $offset ) {
 		return $this->get_param( $offset );
 	}
@@ -991,7 +1002,10 @@ class WP_REST_Request implements ArrayAccess {
 	 * @param string $offset Parameter name.
 	 * @param mixed  $value  Parameter value.
 	 */
+<<<<<<< HEAD
 	#[ReturnTypeWillChange]
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function offsetSet( $offset, $value ) {
 		$this->set_param( $offset, $value );
 	}
@@ -1003,7 +1017,10 @@ class WP_REST_Request implements ArrayAccess {
 	 *
 	 * @param string $offset Parameter name.
 	 */
+<<<<<<< HEAD
 	#[ReturnTypeWillChange]
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function offsetUnset( $offset ) {
 		$order = $this->get_parameter_order();
 

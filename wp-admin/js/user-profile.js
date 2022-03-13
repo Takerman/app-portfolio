@@ -43,9 +43,12 @@
 
 		// Once zxcvbn loads, passwords strength is known.
 		$( '#pw-weak-text-label' ).text( __( 'Confirm use of weak password' ) );
+<<<<<<< HEAD
 
 		// Focus the password field.
 		$( $pass1 ).trigger( 'focus' );
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	function bindPass1() {
@@ -98,7 +101,11 @@
 	 * Handle the password reset button. Sets up an ajax callback to trigger sending
 	 * a password reset email.
 	 */
+<<<<<<< HEAD
 	function bindPasswordResetLink() {
+=======
+	function bindPasswordRestLink() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$( '#generate-reset-link' ).on( 'click', function() {
 			var $this  = $(this),
 				data = {
@@ -434,7 +441,11 @@
 		});
 
 		bindPasswordForm();
+<<<<<<< HEAD
 		bindPasswordResetLink();
+=======
+		bindPasswordRestLink();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	});
 
 	$( '#destroy-sessions' ).on( 'click', function( e ) {

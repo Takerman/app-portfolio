@@ -17,6 +17,13 @@ if (!defined('GETID3_OS_ISWINDOWS')) {
 if (!defined('GETID3_INCLUDEPATH')) {
 	define('GETID3_INCLUDEPATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
 }
+<<<<<<< HEAD
+=======
+// Workaround Bug #39923 (https://bugs.php.net/bug.php?id=39923)
+if (!defined('IMG_JPG') && defined('IMAGETYPE_JPEG')) {
+	define('IMG_JPG', IMAGETYPE_JPEG);
+}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 if (!defined('ENT_SUBSTITUTE')) { // PHP5.3 adds ENT_IGNORE, PHP5.4 adds ENT_SUBSTITUTE
 	define('ENT_SUBSTITUTE', (defined('ENT_IGNORE') ? ENT_IGNORE : 8));
 }
@@ -53,7 +60,11 @@ if ($open_basedir) {
 		if (substr($basedir, -1, 1) != DIRECTORY_SEPARATOR) {
 			$basedir .= DIRECTORY_SEPARATOR;
 		}
+<<<<<<< HEAD
 		if (strpos($temp_dir, $basedir) === 0) {
+=======
+		if (preg_match('#^'.preg_quote($basedir).'#', $temp_dir)) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$found_valid_tempdir = true;
 			break;
 		}
@@ -210,6 +221,7 @@ class getID3
 	 */
 	public $option_fread_buffer_size = 32768;
 
+<<<<<<< HEAD
 
 
 	// module-specific options
@@ -344,6 +356,8 @@ class getID3
 
 
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	// Public variables
 
 	/**
@@ -387,7 +401,11 @@ class getID3
 	 */
 	protected $startup_warning = '';
 
+<<<<<<< HEAD
 	const VERSION           = '1.9.21-202109171300';
+=======
+	const VERSION           = '1.9.20-202006061653';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	const FREAD_BUFFER_SIZE = 32768;
 
 	const ATTACHMENTS_NONE   = false;
@@ -767,6 +785,7 @@ class getID3
 				return $this->error('Format not supported, module "'.$determined_format['include'].'" is corrupt.');
 			}
 			$class = new $class_name($this);
+<<<<<<< HEAD
 
 			// set module-specific options
 			foreach (get_object_vars($this) as $getid3_object_vars_key => $getid3_object_vars_value) {
@@ -779,6 +798,8 @@ class getID3
 				}
 			}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$class->Analyze();
 			unset($class);
 
@@ -1497,6 +1518,7 @@ class getID3
 							'fail_ape'  => 'ERROR',
 						),
 
+<<<<<<< HEAD
 				// TORRENT             - .torrent
 				'torrent' => array(
 							'pattern'   => '^(d8\\:announce|d7\\:comment)',
@@ -1507,6 +1529,8 @@ class getID3
 							'fail_ape'  => 'ERROR',
 						),
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				 // CUE  - data       - CUEsheet (index to single-file disc images)
 				 'cue' => array(
 							'pattern'   => '', // empty pattern means cannot be automatically detected, will fall through all other formats and match based on filename and very basic file contents
@@ -1641,7 +1665,11 @@ class getID3
 						if (is_string($value)) {
 							$value = trim($value, " \r\n\t"); // do not trim nulls from $value!! Unicode characters will get mangled if trailing nulls are removed!
 						}
+<<<<<<< HEAD
 						if (isset($value) && $value !== "") {
+=======
+						if ($value) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 							if (!is_numeric($key)) {
 								$this->info['tags'][trim($tag_name)][trim($tag_key)][$key] = $value;
 							} else {
@@ -2248,6 +2276,7 @@ abstract class getid3_handler
 					$this->data_string_position = $this->data_string_length + $bytes;
 					break;
 			}
+<<<<<<< HEAD
 			return 0; // fseek returns 0 on success
 		}
 
@@ -2267,6 +2296,21 @@ abstract class getid3_handler
 			throw new getid3_exception('cannot fseek('.$pos.'). resource/stream does not appear to support seeking', 10);
 		}
 		return $result;
+=======
+			return 0;
+		} else {
+			$pos = $bytes;
+			if ($whence == SEEK_CUR) {
+				$pos = $this->ftell() + $bytes;
+			} elseif ($whence == SEEK_END) {
+				$pos = $this->getid3->info['filesize'] + $bytes;
+			}
+			if (!getid3_lib::intValueSupported($pos)) {
+				throw new getid3_exception('cannot fseek('.$pos.') because beyond PHP filesystem limit', 10);
+			}
+		}
+		return fseek($this->getid3->fp, $bytes, $whence);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	/**
@@ -2382,8 +2426,11 @@ abstract class getid3_handler
 	 * @throws getid3_exception
 	 */
 	public function saveAttachment($name, $offset, $length, $image_mime=null) {
+<<<<<<< HEAD
 		$fp_dest = null;
 		$dest = null;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		try {
 
 			// do not extract at all

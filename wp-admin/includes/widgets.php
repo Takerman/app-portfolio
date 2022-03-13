@@ -226,7 +226,11 @@ function wp_widget_control( $sidebar_args ) {
 	if ( isset( $sidebar_args['_display'] ) && 'template' === $sidebar_args['_display'] && $widget_number ) {
 		// number == -1 implies a template where id numbers are replaced by a generic '__i__'.
 		$control['params'][0]['number'] = -1;
+<<<<<<< HEAD
 		// With id_base widget ID's are constructed like {$id_base}-{$id_number}.
+=======
+		// With id_base widget id's are constructed like {$id_base}-{$id_number}.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( isset( $control['id_base'] ) ) {
 			$id_format = $control['id_base'] . '-__i__';
 		}

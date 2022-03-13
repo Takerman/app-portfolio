@@ -41,12 +41,15 @@
  * These variables do not appear to be used anywhere else.
  */
 /**
+<<<<<<< HEAD
 *  Converts a hex value into the rgb equivalent.
 *
 * @param {string} hex - the hexadecimal value to convert
 * @return {string} comma separated rgb values
 */
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Breakpoint mixins
  */
 /**
@@ -74,8 +77,11 @@
 /**
  * Reset the WP Admin page styles for Gutenberg-like pages.
  */
+<<<<<<< HEAD
 .wp-block-pullquote.has-text-align-left p,
 .wp-block-pullquote.has-text-align-right p,
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 .wp-block[data-align=left] > .wp-block-pullquote p,
 .wp-block[data-align=right] > .wp-block-pullquote p {
   font-size: 20px;

@@ -12,7 +12,10 @@ require_once __DIR__ . '/admin.php';
 
 require_once ABSPATH . WPINC . '/http.php';
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 $title       = __( 'Upgrade Network' );
 $parent_file = 'upgrade.php';
 
@@ -108,7 +111,11 @@ switch ( $action ) {
 			 *
 			 * @since MU (3.0.0)
 			 *
+<<<<<<< HEAD
 			 * @param array $response The upgrade response array.
+=======
+			 * @param array|WP_Error $response The upgrade response array or WP_Error on failure.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			 */
 			do_action( 'after_mu_upgrade', $response );
 

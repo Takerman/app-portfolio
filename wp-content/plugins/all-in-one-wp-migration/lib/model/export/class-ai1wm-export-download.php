@@ -77,8 +77,11 @@ class Ai1wm_Export_Download {
 			);
 		}
 
+<<<<<<< HEAD
 		do_action( 'ai1wm_status_export_done', $params );
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		return $params;
 	}
 }

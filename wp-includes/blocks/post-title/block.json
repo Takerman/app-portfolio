@@ -35,6 +35,7 @@
 			"gradients": true,
 			"link": true
 		},
+<<<<<<< HEAD
 		"spacing": {
 			"margin": true
 		},
@@ -51,6 +52,12 @@
 				"fontAppearance": true,
 				"textTransform": true
 			}
+=======
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	},
 	"style": "wp-block-post-title"

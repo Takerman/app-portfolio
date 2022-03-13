@@ -118,11 +118,15 @@ function wp_schedule_single_event( $timestamp, $hook, $args = array(), $wp_error
 	 * current time) all events scheduled within the next ten minutes
 	 * are considered duplicates.
 	 */
+<<<<<<< HEAD
 	$crons = _get_cron_array();
 	if ( ! is_array( $crons ) ) {
 		$crons = array();
 	}
 
+=======
+	$crons     = (array) _get_cron_array();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$key       = md5( serialize( $event->args ) );
 	$duplicate = false;
 
@@ -306,10 +310,13 @@ function wp_schedule_event( $timestamp, $recurrence, $hook, $args = array(), $wp
 	$key = md5( serialize( $event->args ) );
 
 	$crons = _get_cron_array();
+<<<<<<< HEAD
 	if ( ! is_array( $crons ) ) {
 		$crons = array();
 	}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$crons[ $event->timestamp ][ $event->hook ][ $key ] = array(
 		'schedule' => $event->schedule,
 		'args'     => $event->args,
@@ -1040,7 +1047,11 @@ function _wp_cron() {
  * @since 2.1.0
  * @since 5.4.0 The 'weekly' schedule was added.
  *
+<<<<<<< HEAD
  * @return array[]
+=======
+ * @return array
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function wp_get_schedules() {
 	$schedules = array(
@@ -1067,7 +1078,11 @@ function wp_get_schedules() {
 	 *
 	 * @since 2.1.0
 	 *
+<<<<<<< HEAD
 	 * @param array[] $new_schedules An array of non-default cron schedule arrays. Default empty.
+=======
+	 * @param array $new_schedules An array of non-default cron schedules. Default empty.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	return array_merge( apply_filters( 'cron_schedules', array() ), $schedules );
 }
@@ -1113,7 +1128,11 @@ function wp_get_schedule( $hook, $args = array() ) {
  *
  * @since 5.1.0
  *
+<<<<<<< HEAD
  * @return array[] Array of cron job arrays ready to be run.
+=======
+ * @return array Cron jobs ready to be run.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function wp_get_ready_cron_jobs() {
 	/**
@@ -1124,8 +1143,13 @@ function wp_get_ready_cron_jobs() {
 	 *
 	 * @since 5.1.0
 	 *
+<<<<<<< HEAD
 	 * @param null|array[] $pre Array of ready cron tasks to return instead. Default null
 	 *                          to continue using results from _get_cron_array().
+=======
+	 * @param null|array $pre Array of ready cron tasks to return instead. Default null
+	 *                        to continue using results from _get_cron_array().
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	$pre = apply_filters( 'pre_get_ready_cron_jobs', null );
 	if ( null !== $pre ) {
@@ -1133,7 +1157,12 @@ function wp_get_ready_cron_jobs() {
 	}
 
 	$crons = _get_cron_array();
+<<<<<<< HEAD
 	if ( ! is_array( $crons ) ) {
+=======
+
+	if ( false === $crons ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		return array();
 	}
 
@@ -1164,7 +1193,11 @@ function wp_get_ready_cron_jobs() {
  * @since 2.1.0
  * @access private
  *
+<<<<<<< HEAD
  * @return array[]|false Array of cron info arrays on success, false on failure.
+=======
+ * @return array|false Cron info array on success, false on failure.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function _get_cron_array() {
 	$cron = get_option( 'cron' );
@@ -1190,6 +1223,7 @@ function _get_cron_array() {
  *
  * @access private
  *
+<<<<<<< HEAD
  * @param array[] $cron     Array of cron info arrays from _get_cron_array().
  * @param bool    $wp_error Optional. Whether to return a WP_Error on failure. Default false.
  * @return bool|WP_Error True if cron array updated. False or WP_Error on failure.
@@ -1199,6 +1233,13 @@ function _set_cron_array( $cron, $wp_error = false ) {
 		$cron = array();
 	}
 
+=======
+ * @param array $cron     Cron info array from _get_cron_array().
+ * @param bool  $wp_error Optional. Whether to return a WP_Error on failure. Default false.
+ * @return bool|WP_Error True if cron array updated. False or WP_Error on failure.
+ */
+function _set_cron_array( $cron, $wp_error = false ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$cron['version'] = 2;
 	$result          = update_option( 'cron', $cron );
 

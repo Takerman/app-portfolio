@@ -2,7 +2,11 @@
 	"apiVersion": 2,
 	"name": "core/site-tagline",
 	"title": "Site Tagline",
+<<<<<<< HEAD
 	"category": "theme",
+=======
+	"category": "design",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	"description": "Describe in a few words what the website is about. The tagline can be used in search results or when sharing on social networks even if it's not displayed in the theme design.",
 	"keywords": [ "description" ],
 	"textdomain": "default",
@@ -12,7 +16,10 @@
 		}
 	},
 	"supports": {
+<<<<<<< HEAD
 		"align": [ "wide", "full" ],
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		"html": false,
 		"color": {
 			"gradients": true
@@ -25,6 +32,7 @@
 			"fontSize": true,
 			"lineHeight": true,
 			"__experimentalFontFamily": true,
+<<<<<<< HEAD
 			"__experimentalTextTransform": true,
 			"__experimentalFontStyle": true,
 			"__experimentalFontWeight": true,
@@ -32,6 +40,9 @@
 			"__experimentalDefaultControls": {
 				"fontSize": true
 			}
+=======
+			"__experimentalTextTransform": true
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	},
 	"editorStyle": "wp-block-site-tagline-editor"

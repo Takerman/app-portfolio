@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * jQuery UI Menu 1.13.1
+=======
+ * jQuery UI Menu 1.12.1
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -17,8 +21,11 @@
 //>>css.theme: ../../themes/base/theme.css
 
 ( function( factory ) {
+<<<<<<< HEAD
 	"use strict";
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -31,11 +38,18 @@
 		// Browser globals
 		factory( jQuery );
 	}
+<<<<<<< HEAD
 } )( function( $ ) {
 "use strict";
 
 return $.widget( "ui.menu", {
 	version: "1.13.1",
+=======
+}( function( $ ) {
+
+return $.widget( "ui.menu", {
+	version: "1.12.1",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	defaultElement: "<ul>",
 	delay: 300,
 	options: {
@@ -62,7 +76,10 @@ return $.widget( "ui.menu", {
 		// Flag used to prevent firing of the click handler
 		// as the event bubbles up through nested menus
 		this.mouseHandled = false;
+<<<<<<< HEAD
 		this.lastMousePosition = { x: null, y: null };
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		this.element
 			.uniqueId()
 			.attr( {
@@ -77,8 +94,11 @@ return $.widget( "ui.menu", {
 			// them (focus should always stay on UL during navigation).
 			"mousedown .ui-menu-item": function( event ) {
 				event.preventDefault();
+<<<<<<< HEAD
 
 				this._activateItem( event );
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			},
 			"click .ui-menu-item": function( event ) {
 				var target = $( event.target );
@@ -95,7 +115,11 @@ return $.widget( "ui.menu", {
 					if ( target.has( ".ui-menu" ).length ) {
 						this.expand( event );
 					} else if ( !this.element.is( ":focus" ) &&
+<<<<<<< HEAD
 						active.closest( ".ui-menu" ).length ) {
+=======
+							active.closest( ".ui-menu" ).length ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 						// Redirect focus to the menu
 						this.element.trigger( "focus", [ true ] );
@@ -108,15 +132,45 @@ return $.widget( "ui.menu", {
 					}
 				}
 			},
+<<<<<<< HEAD
 			"mouseenter .ui-menu-item": "_activateItem",
 			"mousemove .ui-menu-item": "_activateItem",
+=======
+			"mouseenter .ui-menu-item": function( event ) {
+
+				// Ignore mouse events while typeahead is active, see #10458.
+				// Prevents focusing the wrong item when typeahead causes a scroll while the mouse
+				// is over an item in the menu
+				if ( this.previousFilter ) {
+					return;
+				}
+
+				var actualTarget = $( event.target ).closest( ".ui-menu-item" ),
+					target = $( event.currentTarget );
+
+				// Ignore bubbled events on parent items, see #11641
+				if ( actualTarget[ 0 ] !== target[ 0 ] ) {
+					return;
+				}
+
+				// Remove ui-state-active class from siblings of the newly focused menu item
+				// to avoid a jump caused by adjacent elements both having a class with a border
+				this._removeClass( target.siblings().children( ".ui-state-active" ),
+					null, "ui-state-active" );
+				this.focus( event, target );
+			},
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			mouseleave: "collapseAll",
 			"mouseleave .ui-menu": "collapseAll",
 			focus: function( event, keepActiveItem ) {
 
 				// If there's already an active item, keep it active
 				// If not, activate the first item
+<<<<<<< HEAD
 				var item = this.active || this._menuItems().first();
+=======
+				var item = this.active || this.element.find( this.options.items ).eq( 0 );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 				if ( !keepActiveItem ) {
 					this.focus( event, item );
@@ -142,7 +196,11 @@ return $.widget( "ui.menu", {
 		this._on( this.document, {
 			click: function( event ) {
 				if ( this._closeOnDocumentClick( event ) ) {
+<<<<<<< HEAD
 					this.collapseAll( event, true );
+=======
+					this.collapseAll( event );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				}
 
 				// Reset the mouseHandled flag
@@ -151,6 +209,7 @@ return $.widget( "ui.menu", {
 		} );
 	},
 
+<<<<<<< HEAD
 	_activateItem: function( event ) {
 
 		// Ignore mouse events while typeahead is active, see #10458.
@@ -191,6 +250,8 @@ return $.widget( "ui.menu", {
 		this.focus( event, target );
 	},
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	_destroy: function() {
 		var items = this.element.find( ".ui-menu-item" )
 				.removeAttr( "role aria-disabled" ),
@@ -202,10 +263,17 @@ return $.widget( "ui.menu", {
 		this.element
 			.removeAttr( "aria-activedescendant" )
 			.find( ".ui-menu" ).addBack()
+<<<<<<< HEAD
 			.removeAttr( "role aria-labelledby aria-expanded aria-hidden aria-disabled " +
 				"tabIndex" )
 			.removeUniqueId()
 			.show();
+=======
+				.removeAttr( "role aria-labelledby aria-expanded aria-hidden aria-disabled " +
+					"tabIndex" )
+				.removeUniqueId()
+				.show();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		submenus.children().each( function() {
 			var elem = $( this );
@@ -220,6 +288,7 @@ return $.widget( "ui.menu", {
 			preventDefault = true;
 
 		switch ( event.keyCode ) {
+<<<<<<< HEAD
 			case $.ui.keyCode.PAGE_UP:
 				this.previousPage( event );
 				break;
@@ -291,6 +360,79 @@ return $.widget( "ui.menu", {
 				} else {
 					delete this.previousFilter;
 				}
+=======
+		case $.ui.keyCode.PAGE_UP:
+			this.previousPage( event );
+			break;
+		case $.ui.keyCode.PAGE_DOWN:
+			this.nextPage( event );
+			break;
+		case $.ui.keyCode.HOME:
+			this._move( "first", "first", event );
+			break;
+		case $.ui.keyCode.END:
+			this._move( "last", "last", event );
+			break;
+		case $.ui.keyCode.UP:
+			this.previous( event );
+			break;
+		case $.ui.keyCode.DOWN:
+			this.next( event );
+			break;
+		case $.ui.keyCode.LEFT:
+			this.collapse( event );
+			break;
+		case $.ui.keyCode.RIGHT:
+			if ( this.active && !this.active.is( ".ui-state-disabled" ) ) {
+				this.expand( event );
+			}
+			break;
+		case $.ui.keyCode.ENTER:
+		case $.ui.keyCode.SPACE:
+			this._activate( event );
+			break;
+		case $.ui.keyCode.ESCAPE:
+			this.collapse( event );
+			break;
+		default:
+			preventDefault = false;
+			prev = this.previousFilter || "";
+			skip = false;
+
+			// Support number pad values
+			character = event.keyCode >= 96 && event.keyCode <= 105 ?
+				( event.keyCode - 96 ).toString() : String.fromCharCode( event.keyCode );
+
+			clearTimeout( this.filterTimer );
+
+			if ( character === prev ) {
+				skip = true;
+			} else {
+				character = prev + character;
+			}
+
+			match = this._filterMenuItems( character );
+			match = skip && match.index( this.active.next() ) !== -1 ?
+				this.active.nextAll( ".ui-menu-item" ) :
+				match;
+
+			// If no matches on the current filter, reset to the last character pressed
+			// to move down the menu to the first item that starts with that character
+			if ( !match.length ) {
+				character = String.fromCharCode( event.keyCode );
+				match = this._filterMenuItems( character );
+			}
+
+			if ( match.length ) {
+				this.focus( event, match );
+				this.previousFilter = character;
+				this.filterTimer = this._delay( function() {
+					delete this.previousFilter;
+				}, 1000 );
+			} else {
+				delete this.previousFilter;
+			}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		if ( preventDefault ) {
@@ -353,11 +495,19 @@ return $.widget( "ui.menu", {
 		newItems = items.not( ".ui-menu-item, .ui-menu-divider" );
 		newWrappers = newItems.children()
 			.not( ".ui-menu" )
+<<<<<<< HEAD
 			.uniqueId()
 			.attr( {
 				tabIndex: -1,
 				role: this._itemRole()
 			} );
+=======
+				.uniqueId()
+				.attr( {
+					tabIndex: -1,
+					role: this._itemRole()
+				} );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		this._addClass( newItems, "ui-menu-item" )
 			._addClass( newWrappers, "ui-menu-item-wrapper" );
 
@@ -413,8 +563,13 @@ return $.widget( "ui.menu", {
 		// Highlight active parent menu item, if any
 		activeParent = this.active
 			.parent()
+<<<<<<< HEAD
 			.closest( ".ui-menu-item" )
 			.children( ".ui-menu-item-wrapper" );
+=======
+				.closest( ".ui-menu-item" )
+					.children( ".ui-menu-item-wrapper" );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		this._addClass( activeParent, null, "ui-state-active" );
 
 		if ( event && event.type === "keydown" ) {
@@ -522,7 +677,11 @@ return $.widget( "ui.menu", {
 			this._removeClass( currentMenu.find( ".ui-state-active" ), null, "ui-state-active" );
 
 			this.activeMenu = currentMenu;
+<<<<<<< HEAD
 		}, all ? 0 : this.delay );
+=======
+		}, this.delay );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	},
 
 	// With no arguments, closes the currently active menu - if nothing is active
@@ -558,7 +717,15 @@ return $.widget( "ui.menu", {
 	},
 
 	expand: function( event ) {
+<<<<<<< HEAD
 		var newItem = this.active && this._menuItems( this.active.children( ".ui-menu" ) ).first();
+=======
+		var newItem = this.active &&
+			this.active
+				.children( ".ui-menu " )
+					.find( this.options.items )
+						.first();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		if ( newItem && newItem.length ) {
 			this._open( newItem.parent() );
@@ -586,18 +753,22 @@ return $.widget( "ui.menu", {
 		return this.active && !this.active.nextAll( ".ui-menu-item" ).length;
 	},
 
+<<<<<<< HEAD
 	_menuItems: function( menu ) {
 		return ( menu || this.element )
 			.find( this.options.items )
 			.filter( ".ui-menu-item" );
 	},
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	_move: function( direction, filter, event ) {
 		var next;
 		if ( this.active ) {
 			if ( direction === "first" || direction === "last" ) {
 				next = this.active
 					[ direction === "first" ? "prevAll" : "nextAll" ]( ".ui-menu-item" )
+<<<<<<< HEAD
 					.last();
 			} else {
 				next = this.active
@@ -607,6 +778,17 @@ return $.widget( "ui.menu", {
 		}
 		if ( !next || !next.length || !this.active ) {
 			next = this._menuItems( this.activeMenu )[ filter ]();
+=======
+					.eq( -1 );
+			} else {
+				next = this.active
+					[ direction + "All" ]( ".ui-menu-item" )
+					.eq( 0 );
+			}
+		}
+		if ( !next || !next.length || !this.active ) {
+			next = this.activeMenu.find( this.options.items )[ filter ]();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		this.focus( event, next );
@@ -624,6 +806,7 @@ return $.widget( "ui.menu", {
 		}
 		if ( this._hasScroll() ) {
 			base = this.active.offset().top;
+<<<<<<< HEAD
 			height = this.element.innerHeight();
 
 			// jQuery 3.2 doesn't include scrollbars in innerHeight, add it back.
@@ -631,6 +814,9 @@ return $.widget( "ui.menu", {
 				height += this.element[ 0 ].offsetHeight - this.element.outerHeight();
 			}
 
+=======
+			height = this.element.height();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			this.active.nextAll( ".ui-menu-item" ).each( function() {
 				item = $( this );
 				return item.offset().top - base - height < 0;
@@ -638,7 +824,11 @@ return $.widget( "ui.menu", {
 
 			this.focus( event, item );
 		} else {
+<<<<<<< HEAD
 			this.focus( event, this._menuItems( this.activeMenu )
+=======
+			this.focus( event, this.activeMenu.find( this.options.items )
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				[ !this.active ? "first" : "last" ]() );
 		}
 	},
@@ -654,6 +844,7 @@ return $.widget( "ui.menu", {
 		}
 		if ( this._hasScroll() ) {
 			base = this.active.offset().top;
+<<<<<<< HEAD
 			height = this.element.innerHeight();
 
 			// jQuery 3.2 doesn't include scrollbars in innerHeight, add it back.
@@ -661,6 +852,9 @@ return $.widget( "ui.menu", {
 				height += this.element[ 0 ].offsetHeight - this.element.outerHeight();
 			}
 
+=======
+			height = this.element.height();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			this.active.prevAll( ".ui-menu-item" ).each( function() {
 				item = $( this );
 				return item.offset().top - base + height > 0;
@@ -668,7 +862,11 @@ return $.widget( "ui.menu", {
 
 			this.focus( event, item );
 		} else {
+<<<<<<< HEAD
 			this.focus( event, this._menuItems( this.activeMenu ).first() );
+=======
+			this.focus( event, this.activeMenu.find( this.options.items ).first() );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	},
 
@@ -695,6 +893,7 @@ return $.widget( "ui.menu", {
 		return this.activeMenu
 			.find( this.options.items )
 
+<<<<<<< HEAD
 			// Only match on items, not dividers or other content (#10571)
 			.filter( ".ui-menu-item" )
 			.filter( function() {
@@ -706,3 +905,15 @@ return $.widget( "ui.menu", {
 } );
 
 } );
+=======
+				// Only match on items, not dividers or other content (#10571)
+				.filter( ".ui-menu-item" )
+					.filter( function() {
+						return regex.test(
+							$.trim( $( this ).children( ".ui-menu-item-wrapper" ).text() ) );
+					} );
+	}
+} );
+
+} ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

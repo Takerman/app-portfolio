@@ -8,7 +8,10 @@
  * @subpackage Multisite
  */
 
+<<<<<<< HEAD
 define( 'MS_FILES_REQUEST', true );
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 define( 'SHORTINIT', true );
 require_once dirname( __DIR__ ) . '/wp-load.php';
 
@@ -18,6 +21,11 @@ if ( ! is_multisite() ) {
 
 ms_file_constants();
 
+<<<<<<< HEAD
+=======
+error_reporting( 0 );
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 if ( '1' == $current_blog->archived || '1' == $current_blog->spam || '1' == $current_blog->deleted ) {
 	status_header( 404 );
 	die( '404 &#8212; File not found.' );

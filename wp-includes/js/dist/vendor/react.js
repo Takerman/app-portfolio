@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /** @license React v17.0.1
+=======
+/** @license React v16.13.1
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * react.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -6,12 +10,19 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+<<<<<<< HEAD
+=======
+
+'use strict';
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
   (global = global || self, factory(global.React = {}));
 }(this, (function (exports) { 'use strict';
 
+<<<<<<< HEAD
   // TODO: this is special because it gets imported during build.
   var ReactVersion = '17.0.1';
 
@@ -65,6 +76,30 @@
     REACT_LEGACY_HIDDEN_TYPE = symbolFor('react.legacy_hidden');
   }
 
+=======
+  var ReactVersion = '16.13.1';
+
+  // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+  // nor polyfill, then a plain number is used for performance.
+  var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+  var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+  var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+  var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+  var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+  var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+  var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+  var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+  var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+  var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+  var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+  var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+  var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+  var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+  var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+  var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+  var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+  var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   var MAYBE_ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
   var FAUX_ITERATOR_SYMBOL = '@@iterator';
   function getIteratorFn(maybeIterable) {
@@ -81,6 +116,7 @@
     return null;
   }
 
+<<<<<<< HEAD
   var hasOwnProperty = Object.prototype.hasOwnProperty;
 
   var _assign = function (to, from) {
@@ -107,6 +143,95 @@
     }
 
     return to;
+=======
+  /*
+  object-assign
+  (c) Sindre Sorhus
+  @license MIT
+  */
+  /* eslint-disable no-unused-vars */
+  var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+  var hasOwnProperty = Object.prototype.hasOwnProperty;
+  var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+  function toObject(val) {
+  	if (val === null || val === undefined) {
+  		throw new TypeError('Object.assign cannot be called with null or undefined');
+  	}
+
+  	return Object(val);
+  }
+
+  function shouldUseNative() {
+  	try {
+  		if (!Object.assign) {
+  			return false;
+  		}
+
+  		// Detect buggy property enumeration order in older V8 versions.
+
+  		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+  		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+  		test1[5] = 'de';
+  		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+  			return false;
+  		}
+
+  		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+  		var test2 = {};
+  		for (var i = 0; i < 10; i++) {
+  			test2['_' + String.fromCharCode(i)] = i;
+  		}
+  		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+  			return test2[n];
+  		});
+  		if (order2.join('') !== '0123456789') {
+  			return false;
+  		}
+
+  		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+  		var test3 = {};
+  		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+  			test3[letter] = letter;
+  		});
+  		if (Object.keys(Object.assign({}, test3)).join('') !==
+  				'abcdefghijklmnopqrst') {
+  			return false;
+  		}
+
+  		return true;
+  	} catch (err) {
+  		// We don't expect any of the above to throw, but better to be safe.
+  		return false;
+  	}
+  }
+
+  var objectAssign = shouldUseNative() ? Object.assign : function (target, source) {
+  	var from;
+  	var to = toObject(target);
+  	var symbols;
+
+  	for (var s = 1; s < arguments.length; s++) {
+  		from = Object(arguments[s]);
+
+  		for (var key in from) {
+  			if (hasOwnProperty.call(from, key)) {
+  				to[key] = from[key];
+  			}
+  		}
+
+  		if (getOwnPropertySymbols) {
+  			symbols = getOwnPropertySymbols(from);
+  			for (var i = 0; i < symbols.length; i++) {
+  				if (propIsEnumerable.call(from, symbols[i])) {
+  					to[symbols[i]] = from[symbols[i]];
+  				}
+  			}
+  		}
+  	}
+
+  	return to;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   };
 
   /**
@@ -125,7 +250,11 @@
    * should suspend for if it needs to.
    */
   var ReactCurrentBatchConfig = {
+<<<<<<< HEAD
     transition: 0
+=======
+    suspense: null
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   };
 
   /**
@@ -142,6 +271,7 @@
     current: null
   };
 
+<<<<<<< HEAD
   var ReactDebugCurrentFrame = {};
   var currentExtraStackFrame = null;
   function setExtraStackFrame(stack) {
@@ -158,13 +288,149 @@
     }; // Stack implementation injected by the current renderer.
 
 
+=======
+  var BEFORE_SLASH_RE = /^(.*)[\\\/]/;
+  function describeComponentFrame (name, source, ownerName) {
+    var sourceInfo = '';
+
+    if (source) {
+      var path = source.fileName;
+      var fileName = path.replace(BEFORE_SLASH_RE, '');
+
+      {
+        // In DEV, include code for a common special case:
+        // prefer "folder/index.js" instead of just "index.js".
+        if (/^index\./.test(fileName)) {
+          var match = path.match(BEFORE_SLASH_RE);
+
+          if (match) {
+            var pathBeforeSlash = match[1];
+
+            if (pathBeforeSlash) {
+              var folderName = pathBeforeSlash.replace(BEFORE_SLASH_RE, '');
+              fileName = folderName + '/' + fileName;
+            }
+          }
+        }
+      }
+
+      sourceInfo = ' (at ' + fileName + ':' + source.lineNumber + ')';
+    } else if (ownerName) {
+      sourceInfo = ' (created by ' + ownerName + ')';
+    }
+
+    return '\n    in ' + (name || 'Unknown') + sourceInfo;
+  }
+
+  var Resolved = 1;
+  function refineResolvedLazyComponent(lazyComponent) {
+    return lazyComponent._status === Resolved ? lazyComponent._result : null;
+  }
+
+  function getWrappedName(outerType, innerType, wrapperName) {
+    var functionName = innerType.displayName || innerType.name || '';
+    return outerType.displayName || (functionName !== '' ? wrapperName + "(" + functionName + ")" : wrapperName);
+  }
+
+  function getComponentName(type) {
+    if (type == null) {
+      // Host root, text node or just invalid type.
+      return null;
+    }
+
+    {
+      if (typeof type.tag === 'number') {
+        error('Received an unexpected object in getComponentName(). ' + 'This is likely a bug in React. Please file an issue.');
+      }
+    }
+
+    if (typeof type === 'function') {
+      return type.displayName || type.name || null;
+    }
+
+    if (typeof type === 'string') {
+      return type;
+    }
+
+    switch (type) {
+      case REACT_FRAGMENT_TYPE:
+        return 'Fragment';
+
+      case REACT_PORTAL_TYPE:
+        return 'Portal';
+
+      case REACT_PROFILER_TYPE:
+        return "Profiler";
+
+      case REACT_STRICT_MODE_TYPE:
+        return 'StrictMode';
+
+      case REACT_SUSPENSE_TYPE:
+        return 'Suspense';
+
+      case REACT_SUSPENSE_LIST_TYPE:
+        return 'SuspenseList';
+    }
+
+    if (typeof type === 'object') {
+      switch (type.$$typeof) {
+        case REACT_CONTEXT_TYPE:
+          return 'Context.Consumer';
+
+        case REACT_PROVIDER_TYPE:
+          return 'Context.Provider';
+
+        case REACT_FORWARD_REF_TYPE:
+          return getWrappedName(type, type.render, 'ForwardRef');
+
+        case REACT_MEMO_TYPE:
+          return getComponentName(type.type);
+
+        case REACT_BLOCK_TYPE:
+          return getComponentName(type.render);
+
+        case REACT_LAZY_TYPE:
+          {
+            var thenable = type;
+            var resolvedThenable = refineResolvedLazyComponent(thenable);
+
+            if (resolvedThenable) {
+              return getComponentName(resolvedThenable);
+            }
+
+            break;
+          }
+      }
+    }
+
+    return null;
+  }
+
+  var ReactDebugCurrentFrame = {};
+  var currentlyValidatingElement = null;
+  function setCurrentlyValidatingElement(element) {
+    {
+      currentlyValidatingElement = element;
+    }
+  }
+
+  {
+    // Stack implementation injected by the current renderer.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     ReactDebugCurrentFrame.getCurrentStack = null;
 
     ReactDebugCurrentFrame.getStackAddendum = function () {
       var stack = ''; // Add an extra top frame while an element is being validated
 
+<<<<<<< HEAD
       if (currentExtraStackFrame) {
         stack += currentExtraStackFrame;
+=======
+      if (currentlyValidatingElement) {
+        var name = getComponentName(currentlyValidatingElement.type);
+        var owner = currentlyValidatingElement._owner;
+        stack += describeComponentFrame(name, currentlyValidatingElement._source, owner && getComponentName(owner.type));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       } // Delegate to the injected renderer-specific implementation
 
 
@@ -191,11 +457,25 @@
     ReactCurrentOwner: ReactCurrentOwner,
     IsSomeRendererActing: IsSomeRendererActing,
     // Used by renderers to avoid bundling object-assign twice in UMD bundles:
+<<<<<<< HEAD
     assign: assign
   };
 
   {
     ReactSharedInternals.ReactDebugCurrentFrame = ReactDebugCurrentFrame;
+=======
+    assign: objectAssign
+  };
+
+  {
+    objectAssign(ReactSharedInternals, {
+      // These should not be included in production.
+      ReactDebugCurrentFrame: ReactDebugCurrentFrame,
+      // Shim for React DOM 16.0.0 which still destructured (but not used) this.
+      // TODO: remove in React 17.0.
+      ReactComponentTreeHook: {}
+    });
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   }
 
   // by calls to these methods by a Babel plugin.
@@ -226,12 +506,25 @@
     // When changing this logic, you might want to also
     // update consoleWithStackDev.www.js as well.
     {
+<<<<<<< HEAD
       var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
       var stack = ReactDebugCurrentFrame.getStackAddendum();
 
       if (stack !== '') {
         format += '%s';
         args = args.concat([stack]);
+=======
+      var hasExistingStack = args.length > 0 && typeof args[args.length - 1] === 'string' && args[args.length - 1].indexOf('\n    in') === 0;
+
+      if (!hasExistingStack) {
+        var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
+        var stack = ReactDebugCurrentFrame.getStackAddendum();
+
+        if (stack !== '') {
+          format += '%s';
+          args = args.concat([stack]);
+        }
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       }
 
       var argsWithFormat = args.map(function (item) {
@@ -243,6 +536,20 @@
       // eslint-disable-next-line react-internal/no-production-logging
 
       Function.prototype.apply.call(console[level], console, argsWithFormat);
+<<<<<<< HEAD
+=======
+
+      try {
+        // --- Welcome to debugging React ---
+        // This error was thrown as a convenience so that you can use this stack
+        // to find the callsite that caused this warning to fire.
+        var argIndex = 0;
+        var message = 'Warning: ' + format.replace(/%s/g, function () {
+          return args[argIndex++];
+        });
+        throw new Error(message);
+      } catch (x) {}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     }
   }
 
@@ -456,7 +763,11 @@
   var pureComponentPrototype = PureComponent.prototype = new ComponentDummy();
   pureComponentPrototype.constructor = PureComponent; // Avoid an extra prototype jump for these methods.
 
+<<<<<<< HEAD
   assign(pureComponentPrototype, Component.prototype);
+=======
+  objectAssign(pureComponentPrototype, Component.prototype);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
   pureComponentPrototype.isPureReactComponent = true;
 
@@ -473,6 +784,7 @@
     return refObject;
   }
 
+<<<<<<< HEAD
   function getWrappedName(outerType, innerType, wrapperName) {
     var functionName = innerType.displayName || innerType.name || '';
     return outerType.displayName || (functionName !== '' ? wrapperName + "(" + functionName + ")" : wrapperName);
@@ -559,6 +871,8 @@
     return null;
   }
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   var hasOwnProperty$1 = Object.prototype.hasOwnProperty;
   var RESERVED_PROPS = {
     key: true,
@@ -606,7 +920,11 @@
         if (!specialPropKeyWarningShown) {
           specialPropKeyWarningShown = true;
 
+<<<<<<< HEAD
           error('%s: `key` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://reactjs.org/link/special-props)', displayName);
+=======
+          error('%s: `key` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', displayName);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         }
       }
     };
@@ -624,7 +942,11 @@
         if (!specialPropRefWarningShown) {
           specialPropRefWarningShown = true;
 
+<<<<<<< HEAD
           error('%s: `ref` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://reactjs.org/link/special-props)', displayName);
+=======
+          error('%s: `ref` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', displayName);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         }
       }
     };
@@ -642,7 +964,11 @@
         var componentName = getComponentName(ReactCurrentOwner.current.type);
 
         if (!didWarnAboutStringRefs[componentName]) {
+<<<<<<< HEAD
           error('Component "%s" contains the string ref "%s". ' + 'Support for string refs will be removed in a future major release. ' + 'This case cannot be automatically converted to an arrow function. ' + 'We ask you to manually fix this case by using useRef() or createRef() instead. ' + 'Learn more about using refs safely here: ' + 'https://reactjs.org/link/strict-mode-string-ref', componentName, config.ref);
+=======
+          error('Component "%s" contains the string ref "%s". ' + 'Support for string refs will be removed in a future major release. ' + 'This case cannot be automatically converted to an arrow function. ' + 'We ask you to manually fix this case by using useRef() or createRef() instead. ' + 'Learn more about using refs safely here: ' + 'https://fb.me/react-strict-mode-string-ref', getComponentName(ReactCurrentOwner.current.type), config.ref);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
           didWarnAboutStringRefs[componentName] = true;
         }
@@ -828,7 +1154,11 @@
 
     var propName; // Original props are copied
 
+<<<<<<< HEAD
     var props = assign({}, element.props); // Reserved names are extracted
+=======
+    var props = objectAssign({}, element.props); // Reserved names are extracted
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 
     var key = element.key;
@@ -917,7 +1247,11 @@
       '=': '=0',
       ':': '=2'
     };
+<<<<<<< HEAD
     var escapedString = key.replace(escapeRegex, function (match) {
+=======
+    var escapedString = ('' + key).replace(escapeRegex, function (match) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       return escaperLookup[match];
     });
     return '$' + escapedString;
@@ -932,6 +1266,7 @@
   var userProvidedKeyEscapeRegex = /\/+/g;
 
   function escapeUserProvidedKey(text) {
+<<<<<<< HEAD
     return text.replace(userProvidedKeyEscapeRegex, '$&/');
   }
   /**
@@ -956,6 +1291,56 @@
   }
 
   function mapIntoArray(children, array, escapedPrefix, nameSoFar, callback) {
+=======
+    return ('' + text).replace(userProvidedKeyEscapeRegex, '$&/');
+  }
+
+  var POOL_SIZE = 10;
+  var traverseContextPool = [];
+
+  function getPooledTraverseContext(mapResult, keyPrefix, mapFunction, mapContext) {
+    if (traverseContextPool.length) {
+      var traverseContext = traverseContextPool.pop();
+      traverseContext.result = mapResult;
+      traverseContext.keyPrefix = keyPrefix;
+      traverseContext.func = mapFunction;
+      traverseContext.context = mapContext;
+      traverseContext.count = 0;
+      return traverseContext;
+    } else {
+      return {
+        result: mapResult,
+        keyPrefix: keyPrefix,
+        func: mapFunction,
+        context: mapContext,
+        count: 0
+      };
+    }
+  }
+
+  function releaseTraverseContext(traverseContext) {
+    traverseContext.result = null;
+    traverseContext.keyPrefix = null;
+    traverseContext.func = null;
+    traverseContext.context = null;
+    traverseContext.count = 0;
+
+    if (traverseContextPool.length < POOL_SIZE) {
+      traverseContextPool.push(traverseContext);
+    }
+  }
+  /**
+   * @param {?*} children Children tree container.
+   * @param {!string} nameSoFar Name of the key path so far.
+   * @param {!function} callback Callback to invoke with each child found.
+   * @param {?*} traverseContext Used to pass information throughout the traversal
+   * process.
+   * @return {!number} The number of children in this subtree.
+   */
+
+
+  function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     var type = typeof children;
 
     if (type === 'undefined' || type === 'boolean') {
@@ -985,6 +1370,7 @@
     }
 
     if (invokeCallback) {
+<<<<<<< HEAD
       var _child = children;
       var mappedChild = callback(_child); // If it's the only child, treat the name as if it was wrapped in an array
       // so that it's consistent if the number of children grows:
@@ -1013,6 +1399,11 @@
         array.push(mappedChild);
       }
 
+=======
+      callback(traverseContext, children, // If it's the only child, treat the name as if it was wrapped in an array
+      // so that it's consistent if the number of children grows.
+      nameSoFar === '' ? SEPARATOR + getComponentKey(children, 0) : nameSoFar);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       return 1;
     }
 
@@ -1025,13 +1416,19 @@
     if (Array.isArray(children)) {
       for (var i = 0; i < children.length; i++) {
         child = children[i];
+<<<<<<< HEAD
         nextName = nextNamePrefix + getElementKey(child, i);
         subtreeCount += mapIntoArray(child, array, escapedPrefix, nextName, callback);
+=======
+        nextName = nextNamePrefix + getComponentKey(child, i);
+        subtreeCount += traverseAllChildrenImpl(child, nextName, callback, traverseContext);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       }
     } else {
       var iteratorFn = getIteratorFn(children);
 
       if (typeof iteratorFn === 'function') {
+<<<<<<< HEAD
         var iterableChildren = children;
 
         {
@@ -1039,27 +1436,56 @@
           if (iteratorFn === iterableChildren.entries) {
             if (!didWarnAboutMaps) {
               warn('Using Maps as children is not supported. ' + 'Use an array of keyed ReactElements instead.');
+=======
+
+        {
+          // Warn about using Maps as children
+          if (iteratorFn === children.entries) {
+            if (!didWarnAboutMaps) {
+              warn('Using Maps as children is deprecated and will be removed in ' + 'a future major release. Consider converting children to ' + 'an array of keyed ReactElements instead.');
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
             }
 
             didWarnAboutMaps = true;
           }
         }
 
+<<<<<<< HEAD
         var iterator = iteratorFn.call(iterableChildren);
+=======
+        var iterator = iteratorFn.call(children);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         var step;
         var ii = 0;
 
         while (!(step = iterator.next()).done) {
           child = step.value;
+<<<<<<< HEAD
           nextName = nextNamePrefix + getElementKey(child, ii++);
           subtreeCount += mapIntoArray(child, array, escapedPrefix, nextName, callback);
         }
       } else if (type === 'object') {
+=======
+          nextName = nextNamePrefix + getComponentKey(child, ii++);
+          subtreeCount += traverseAllChildrenImpl(child, nextName, callback, traverseContext);
+        }
+      } else if (type === 'object') {
+        var addendum = '';
+
+        {
+          addendum = ' If you meant to render a collection of children, use an array ' + 'instead.' + ReactDebugCurrentFrame.getStackAddendum();
+        }
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         var childrenString = '' + children;
 
         {
           {
+<<<<<<< HEAD
             throw Error( "Objects are not valid as a React child (found: " + (childrenString === '[object Object]' ? 'object with keys {' + Object.keys(children).join(', ') + '}' : childrenString) + "). If you meant to render a collection of children, use an array instead." );
+=======
+            throw Error( "Objects are not valid as a React child (found: " + (childrenString === '[object Object]' ? 'object with keys {' + Object.keys(children).join(', ') + '}' : childrenString) + ")." + addendum );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
           }
         }
       }
@@ -1067,13 +1493,128 @@
 
     return subtreeCount;
   }
+<<<<<<< HEAD
 
+=======
+  /**
+   * Traverses children that are typically specified as `props.children`, but
+   * might also be specified through attributes:
+   *
+   * - `traverseAllChildren(this.props.children, ...)`
+   * - `traverseAllChildren(this.props.leftPanelChildren, ...)`
+   *
+   * The `traverseContext` is an optional argument that is passed through the
+   * entire traversal. It can be used to store accumulations or anything else that
+   * the callback might find relevant.
+   *
+   * @param {?*} children Children tree object.
+   * @param {!function} callback To invoke upon traversing each child.
+   * @param {?*} traverseContext Context for traversal.
+   * @return {!number} The number of children in this subtree.
+   */
+
+
+  function traverseAllChildren(children, callback, traverseContext) {
+    if (children == null) {
+      return 0;
+    }
+
+    return traverseAllChildrenImpl(children, '', callback, traverseContext);
+  }
+  /**
+   * Generate a key string that identifies a component within a set.
+   *
+   * @param {*} component A component that could contain a manual key.
+   * @param {number} index Index that is used if a manual key is not provided.
+   * @return {string}
+   */
+
+
+  function getComponentKey(component, index) {
+    // Do some typechecking here since we call this blindly. We want to ensure
+    // that we don't block potential future ES APIs.
+    if (typeof component === 'object' && component !== null && component.key != null) {
+      // Explicit key
+      return escape(component.key);
+    } // Implicit key determined by the index in the set
+
+
+    return index.toString(36);
+  }
+
+  function forEachSingleChild(bookKeeping, child, name) {
+    var func = bookKeeping.func,
+        context = bookKeeping.context;
+    func.call(context, child, bookKeeping.count++);
+  }
+  /**
+   * Iterates through children that are typically specified as `props.children`.
+   *
+   * See https://reactjs.org/docs/react-api.html#reactchildrenforeach
+   *
+   * The provided forEachFunc(child, index) will be called for each
+   * leaf child.
+   *
+   * @param {?*} children Children tree container.
+   * @param {function(*, int)} forEachFunc
+   * @param {*} forEachContext Context for forEachContext.
+   */
+
+
+  function forEachChildren(children, forEachFunc, forEachContext) {
+    if (children == null) {
+      return children;
+    }
+
+    var traverseContext = getPooledTraverseContext(null, null, forEachFunc, forEachContext);
+    traverseAllChildren(children, forEachSingleChild, traverseContext);
+    releaseTraverseContext(traverseContext);
+  }
+
+  function mapSingleChildIntoContext(bookKeeping, child, childKey) {
+    var result = bookKeeping.result,
+        keyPrefix = bookKeeping.keyPrefix,
+        func = bookKeeping.func,
+        context = bookKeeping.context;
+    var mappedChild = func.call(context, child, bookKeeping.count++);
+
+    if (Array.isArray(mappedChild)) {
+      mapIntoWithKeyPrefixInternal(mappedChild, result, childKey, function (c) {
+        return c;
+      });
+    } else if (mappedChild != null) {
+      if (isValidElement(mappedChild)) {
+        mappedChild = cloneAndReplaceKey(mappedChild, // Keep both the (mapped) and old keys if they differ, just as
+        // traverseAllChildren used to do for objects as children
+        keyPrefix + (mappedChild.key && (!child || child.key !== mappedChild.key) ? escapeUserProvidedKey(mappedChild.key) + '/' : '') + childKey);
+      }
+
+      result.push(mappedChild);
+    }
+  }
+
+  function mapIntoWithKeyPrefixInternal(children, array, prefix, func, context) {
+    var escapedPrefix = '';
+
+    if (prefix != null) {
+      escapedPrefix = escapeUserProvidedKey(prefix) + '/';
+    }
+
+    var traverseContext = getPooledTraverseContext(array, escapedPrefix, func, context);
+    traverseAllChildren(children, mapSingleChildIntoContext, traverseContext);
+    releaseTraverseContext(traverseContext);
+  }
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   /**
    * Maps children that are typically specified as `props.children`.
    *
    * See https://reactjs.org/docs/react-api.html#reactchildrenmap
    *
+<<<<<<< HEAD
    * The provided mapFunction(child, index) will be called for each
+=======
+   * The provided mapFunction(child, key, index) will be called for each
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
    * leaf child.
    *
    * @param {?*} children Children tree container.
@@ -1081,16 +1622,25 @@
    * @param {*} context Context for mapFunction.
    * @return {object} Object containing the ordered map of results.
    */
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   function mapChildren(children, func, context) {
     if (children == null) {
       return children;
     }
 
     var result = [];
+<<<<<<< HEAD
     var count = 0;
     mapIntoArray(children, result, '', '', function (child) {
       return func.call(context, child, count++);
     });
+=======
+    mapIntoWithKeyPrefixInternal(children, result, null, func, context);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return result;
   }
   /**
@@ -1105,6 +1655,7 @@
 
 
   function countChildren(children) {
+<<<<<<< HEAD
     var n = 0;
     mapChildren(children, function () {
       n++; // Don't return anything
@@ -1128,6 +1679,11 @@
     mapChildren(children, function () {
       forEachFunc.apply(this, arguments); // Don't return anything.
     }, forEachContext);
+=======
+    return traverseAllChildren(children, function () {
+      return null;
+    }, null);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   }
   /**
    * Flatten a children object (typically specified as `props.children`) and
@@ -1138,9 +1694,17 @@
 
 
   function toArray(children) {
+<<<<<<< HEAD
     return mapChildren(children, function (child) {
       return child;
     }) || [];
+=======
+    var result = [];
+    mapIntoWithKeyPrefixInternal(children, result, null, function (child) {
+      return child;
+    });
+    return result;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   }
   /**
    * Returns the first child in a collection of children and verifies that there
@@ -1202,7 +1766,10 @@
     };
     var hasWarnedAboutUsingNestedContextConsumers = false;
     var hasWarnedAboutUsingConsumerProvider = false;
+<<<<<<< HEAD
     var hasWarnedAboutDisplayNameOnConsumer = false;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
     {
       // A separate object, but proxies back to the original context object for
@@ -1263,6 +1830,7 @@
 
             return context.Consumer;
           }
+<<<<<<< HEAD
         },
         displayName: {
           get: function () {
@@ -1275,6 +1843,8 @@
               hasWarnedAboutDisplayNameOnConsumer = true;
             }
           }
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         }
       }); // $FlowFixMe: Flow complains about missing properties because it doesn't understand defineProperty
 
@@ -1289,6 +1859,7 @@
     return context;
   }
 
+<<<<<<< HEAD
   var Uninitialized = -1;
   var Pending = 0;
   var Resolved = 1;
@@ -1345,13 +1916,26 @@
       $$typeof: REACT_LAZY_TYPE,
       _payload: payload,
       _init: lazyInitializer
+=======
+  function lazy(ctor) {
+    var lazyType = {
+      $$typeof: REACT_LAZY_TYPE,
+      _ctor: ctor,
+      // React uses these fields to store the result.
+      _status: -1,
+      _result: null
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     };
 
     {
       // In production, this would just set it on the object.
       var defaultProps;
+<<<<<<< HEAD
       var propTypes; // $FlowFixMe
 
+=======
+      var propTypes;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       Object.defineProperties(lazyType, {
         defaultProps: {
           configurable: true,
@@ -1362,7 +1946,10 @@
             error('React.lazy(...): It is not supported to assign `defaultProps` to ' + 'a lazy component import. Either specify them where the component ' + 'is defined, or create a wrapping component around it.');
 
             defaultProps = newDefaultProps; // Match production behavior more closely:
+<<<<<<< HEAD
             // $FlowFixMe
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
             Object.defineProperty(lazyType, 'defaultProps', {
               enumerable: true
@@ -1378,7 +1965,10 @@
             error('React.lazy(...): It is not supported to assign `propTypes` to ' + 'a lazy component import. Either specify them where the component ' + 'is defined, or create a wrapping component around it.');
 
             propTypes = newPropTypes; // Match production behavior more closely:
+<<<<<<< HEAD
             // $FlowFixMe
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
             Object.defineProperty(lazyType, 'propTypes', {
               enumerable: true
@@ -1410,6 +2000,7 @@
       }
     }
 
+<<<<<<< HEAD
     var elementType = {
       $$typeof: REACT_FORWARD_REF_TYPE,
       render: render
@@ -1457,6 +2048,17 @@
     }
 
     return false;
+=======
+    return {
+      $$typeof: REACT_FORWARD_REF_TYPE,
+      render: render
+    };
+  }
+
+  function isValidElementType(type) {
+    return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+    type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   }
 
   function memo(type, compare) {
@@ -1466,11 +2068,16 @@
       }
     }
 
+<<<<<<< HEAD
     var elementType = {
+=======
+    return {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       $$typeof: REACT_MEMO_TYPE,
       type: type,
       compare: compare === undefined ? null : compare
     };
+<<<<<<< HEAD
 
     {
       var ownName;
@@ -1491,6 +2098,8 @@
     }
 
     return elementType;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   }
 
   function resolveDispatcher() {
@@ -1498,7 +2107,11 @@
 
     if (!(dispatcher !== null)) {
       {
+<<<<<<< HEAD
         throw Error( "Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:\n1. You might have mismatching versions of React and the renderer (such as React DOM)\n2. You might be breaking the Rules of Hooks\n3. You might have more than one copy of React in the same app\nSee https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem." );
+=======
+        throw Error( "Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:\n1. You might have mismatching versions of React and the renderer (such as React DOM)\n2. You might be breaking the Rules of Hooks\n3. You might have more than one copy of React in the same app\nSee https://fb.me/react-invalid-hook-call for tips about how to debug and fix this problem." );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       }
     }
 
@@ -1510,7 +2123,11 @@
 
     {
       if (unstable_observedBits !== undefined) {
+<<<<<<< HEAD
         error('useContext() second argument is reserved for future ' + 'use in React. Passing it is not supported. ' + 'You passed: %s.%s', unstable_observedBits, typeof unstable_observedBits === 'number' && Array.isArray(arguments[2]) ? '\n\nDid you call array.map(useContext)? ' + 'Calling Hooks inside a loop is not supported. ' + 'Learn more at https://reactjs.org/link/rules-of-hooks' : '');
+=======
+        error('useContext() second argument is reserved for future ' + 'use in React. Passing it is not supported. ' + 'You passed: %s.%s', unstable_observedBits, typeof unstable_observedBits === 'number' && Array.isArray(arguments[2]) ? '\n\nDid you call array.map(useContext)? ' + 'Calling Hooks inside a loop is not supported. ' + 'Learn more at https://fb.me/rules-of-hooks' : '');
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       } // TODO: add a more generic warning for invalid values.
 
 
@@ -1567,6 +2184,7 @@
     }
   }
 
+<<<<<<< HEAD
   // Helpers to patch console.logs to avoid logging during side-effect free
   // replaying on render function. This currently only patches the object
   // lazily which won't cover if the log function was extracted eagerly.
@@ -1929,10 +2547,64 @@
           // fail the render phase where it didn't fail before. So we log it.
           // After these have been cleaned up, we'll let them throw.
 
+=======
+  /**
+   * Copyright (c) 2013-present, Facebook, Inc.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   */
+
+  var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+  var ReactPropTypesSecret_1 = ReactPropTypesSecret;
+
+  var printWarning$1 = function() {};
+
+  {
+    var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
+    var loggedTypeFailures = {};
+    var has = Function.call.bind(Object.prototype.hasOwnProperty);
+
+    printWarning$1 = function(text) {
+      var message = 'Warning: ' + text;
+      if (typeof console !== 'undefined') {
+        console.error(message);
+      }
+      try {
+        // --- Welcome to debugging React ---
+        // This error was thrown as a convenience so that you can use this stack
+        // to find the callsite that caused this warning to fire.
+        throw new Error(message);
+      } catch (x) {}
+    };
+  }
+
+  /**
+   * Assert that the values match with the type specs.
+   * Error messages are memorized and will only be shown once.
+   *
+   * @param {object} typeSpecs Map of name to a ReactPropType
+   * @param {object} values Runtime values that need to be type-checked
+   * @param {string} location e.g. "prop", "context", "child context"
+   * @param {string} componentName Name of the component for error messages.
+   * @param {?Function} getStack Returns the component stack.
+   * @private
+   */
+  function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+    {
+      for (var typeSpecName in typeSpecs) {
+        if (has(typeSpecs, typeSpecName)) {
+          var error;
+          // Prop type validation may throw. In case they do, we don't want to
+          // fail the render phase where it didn't fail before. So we log it.
+          // After these have been cleaned up, we'll let them throw.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
           try {
             // This is intentionally an invariant that gets caught. It's the same
             // behavior as without this statement except with a better message.
             if (typeof typeSpecs[typeSpecName] !== 'function') {
+<<<<<<< HEAD
               var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' + 'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.');
               err.name = 'Invariant Violation';
               throw err;
@@ -1960,12 +2632,46 @@
             error('Failed %s type: %s', location, error$1.message);
 
             setCurrentlyValidatingElement(null);
+=======
+              var err = Error(
+                (componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' +
+                'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.'
+              );
+              err.name = 'Invariant Violation';
+              throw err;
+            }
+            error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret$1);
+          } catch (ex) {
+            error = ex;
+          }
+          if (error && !(error instanceof Error)) {
+            printWarning$1(
+              (componentName || 'React class') + ': type specification of ' +
+              location + ' `' + typeSpecName + '` is invalid; the type checker ' +
+              'function must return `null` or an `Error` but returned a ' + typeof error + '. ' +
+              'You may have forgotten to pass an argument to the type checker ' +
+              'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' +
+              'shape all require an argument).'
+            );
+          }
+          if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+            // Only monitor this failure once because there tends to be a lot of the
+            // same error.
+            loggedTypeFailures[error.message] = true;
+
+            var stack = getStack ? getStack() : '';
+
+            printWarning$1(
+              'Failed ' + location + ' type: ' + error.message + (stack != null ? stack : '')
+            );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
           }
         }
       }
     }
   }
 
+<<<<<<< HEAD
   function setCurrentlyValidatingElement$1(element) {
     {
       if (element) {
@@ -1977,6 +2683,20 @@
       }
     }
   }
+=======
+  /**
+   * Resets warning cache when testing.
+   *
+   * @private
+   */
+  checkPropTypes.resetWarningCache = function() {
+    {
+      loggedTypeFailures = {};
+    }
+  };
+
+  var checkPropTypes_1 = checkPropTypes;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
   var propTypesMisspellWarningShown;
 
@@ -2071,6 +2791,7 @@
       childOwner = " It was passed a child from " + getComponentName(element._owner.type) + ".";
     }
 
+<<<<<<< HEAD
     {
       setCurrentlyValidatingElement$1(element);
 
@@ -2078,6 +2799,15 @@
 
       setCurrentlyValidatingElement$1(null);
     }
+=======
+    setCurrentlyValidatingElement(element);
+
+    {
+      error('Each child in a list should have a unique "key" prop.' + '%s%s See https://fb.me/react-warning-keys for more information.', currentComponentErrorInfo, childOwner);
+    }
+
+    setCurrentlyValidatingElement(null);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   }
   /**
    * Ensure that every element either is passed in a static location, in an
@@ -2143,6 +2873,10 @@
         return;
       }
 
+<<<<<<< HEAD
+=======
+      var name = getComponentName(type);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       var propTypes;
 
       if (typeof type === 'function') {
@@ -2156,6 +2890,7 @@
       }
 
       if (propTypes) {
+<<<<<<< HEAD
         // Intentionally inside to avoid triggering lazy initializers:
         var name = getComponentName(type);
         checkPropTypes(propTypes, element.props, 'prop', name, element);
@@ -2165,6 +2900,15 @@
         var _name = getComponentName(type);
 
         error('Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?', _name || 'Unknown');
+=======
+        setCurrentlyValidatingElement(element);
+        checkPropTypes_1(propTypes, element.props, 'prop', name, ReactDebugCurrentFrame.getStackAddendum);
+        setCurrentlyValidatingElement(null);
+      } else if (type.PropTypes !== undefined && !propTypesMisspellWarningShown) {
+        propTypesMisspellWarningShown = true;
+
+        error('Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?', name || 'Unknown');
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       }
 
       if (typeof type.getDefaultProps === 'function' && !type.getDefaultProps.isReactClassApproved) {
@@ -2180,28 +2924,44 @@
 
   function validateFragmentProps(fragment) {
     {
+<<<<<<< HEAD
+=======
+      setCurrentlyValidatingElement(fragment);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       var keys = Object.keys(fragment.props);
 
       for (var i = 0; i < keys.length; i++) {
         var key = keys[i];
 
         if (key !== 'children' && key !== 'key') {
+<<<<<<< HEAD
           setCurrentlyValidatingElement$1(fragment);
 
           error('Invalid prop `%s` supplied to `React.Fragment`. ' + 'React.Fragment can only have `key` and `children` props.', key);
 
           setCurrentlyValidatingElement$1(null);
+=======
+          error('Invalid prop `%s` supplied to `React.Fragment`. ' + 'React.Fragment can only have `key` and `children` props.', key);
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
           break;
         }
       }
 
       if (fragment.ref !== null) {
+<<<<<<< HEAD
         setCurrentlyValidatingElement$1(fragment);
 
         error('Invalid attribute `ref` supplied to `React.Fragment`.');
 
         setCurrentlyValidatingElement$1(null);
       }
+=======
+        error('Invalid attribute `ref` supplied to `React.Fragment`.');
+      }
+
+      setCurrentlyValidatingElement(null);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     }
   }
   function createElementWithValidation(type, props, children) {
@@ -2259,7 +3019,11 @@
       }
     }
 
+<<<<<<< HEAD
     if (type === exports.Fragment) {
+=======
+    if (type === REACT_FRAGMENT_TYPE) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       validateFragmentProps(element);
     } else {
       validatePropTypes(element);
@@ -2316,6 +3080,7 @@
   var requestPaint;
   var getCurrentTime;
   var forceFrameRate;
+<<<<<<< HEAD
   var hasPerformanceNow = typeof performance === 'object' && typeof performance.now === 'function';
 
   if (hasPerformanceNow) {
@@ -2332,6 +3097,8 @@
       return localDate.now() - initialTime;
     };
   }
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
   if ( // If Scheduler runs in a non-DOM environment, it falls back to a naive
   // implementation using setTimeout.
@@ -2358,6 +3125,15 @@
       }
     };
 
+<<<<<<< HEAD
+=======
+    var initialTime = Date.now();
+
+    getCurrentTime = function () {
+      return Date.now() - initialTime;
+    };
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     requestHostCallback = function (cb) {
       if (_callback !== null) {
         // Protect against re-entrancy.
@@ -2383,6 +3159,11 @@
     requestPaint = forceFrameRate = function () {};
   } else {
     // Capture local references to native APIs, in case a polyfill overrides them.
+<<<<<<< HEAD
+=======
+    var performance = window.performance;
+    var _Date = window.Date;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     var _setTimeout = window.setTimeout;
     var _clearTimeout = window.clearTimeout;
 
@@ -2391,19 +3172,46 @@
       // maybe we want to continue warning if they don't exist, to preserve the
       // option to rely on it in the future?
       var requestAnimationFrame = window.requestAnimationFrame;
+<<<<<<< HEAD
       var cancelAnimationFrame = window.cancelAnimationFrame;
 
       if (typeof requestAnimationFrame !== 'function') {
         // Using console['error'] to evade Babel and ESLint
         console['error']("This browser doesn't support requestAnimationFrame. " + 'Make sure that you load a ' + 'polyfill in older browsers. https://reactjs.org/link/react-polyfills');
+=======
+      var cancelAnimationFrame = window.cancelAnimationFrame; // TODO: Remove fb.me link
+
+      if (typeof requestAnimationFrame !== 'function') {
+        // Using console['error'] to evade Babel and ESLint
+        console['error']("This browser doesn't support requestAnimationFrame. " + 'Make sure that you load a ' + 'polyfill in older browsers. https://fb.me/react-polyfills');
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       }
 
       if (typeof cancelAnimationFrame !== 'function') {
         // Using console['error'] to evade Babel and ESLint
+<<<<<<< HEAD
         console['error']("This browser doesn't support cancelAnimationFrame. " + 'Make sure that you load a ' + 'polyfill in older browsers. https://reactjs.org/link/react-polyfills');
       }
     }
 
+=======
+        console['error']("This browser doesn't support cancelAnimationFrame. " + 'Make sure that you load a ' + 'polyfill in older browsers. https://fb.me/react-polyfills');
+      }
+    }
+
+    if (typeof performance === 'object' && typeof performance.now === 'function') {
+      getCurrentTime = function () {
+        return performance.now();
+      };
+    } else {
+      var _initialTime = _Date.now();
+
+      getCurrentTime = function () {
+        return _Date.now() - _initialTime;
+      };
+    }
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     var isMessageLoopRunning = false;
     var scheduledHostCallback = null;
     var taskTimeoutID = -1; // Scheduler periodically yields in case there is other work on the main
@@ -2428,7 +3236,11 @@
     forceFrameRate = function (fps) {
       if (fps < 0 || fps > 125) {
         // Using console['error'] to evade Babel and ESLint
+<<<<<<< HEAD
         console['error']('forceFrameRate takes a positive int between 0 and 125, ' + 'forcing frame rates higher than 125 fps is not supported');
+=======
+        console['error']('forceFrameRate takes a positive int between 0 and 125, ' + 'forcing framerates higher than 125 fps is not unsupported');
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         return;
       }
 
@@ -2756,11 +3568,19 @@
 
   var IMMEDIATE_PRIORITY_TIMEOUT = -1; // Eventually times out
 
+<<<<<<< HEAD
   var USER_BLOCKING_PRIORITY_TIMEOUT = 250;
   var NORMAL_PRIORITY_TIMEOUT = 5000;
   var LOW_PRIORITY_TIMEOUT = 10000; // Never times out
 
   var IDLE_PRIORITY_TIMEOUT = maxSigned31BitInt; // Tasks are stored on a min heap
+=======
+  var USER_BLOCKING_PRIORITY = 250;
+  var NORMAL_PRIORITY_TIMEOUT = 5000;
+  var LOW_PRIORITY_TIMEOUT = 10000; // Never times out
+
+  var IDLE_PRIORITY = maxSigned31BitInt; // Tasks are stored on a min heap
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
   var taskQueue = [];
   var timerQueue = []; // Incrementing id counter. Used to maintain insertion order.
@@ -2849,7 +3669,11 @@
           throw error;
         }
       } else {
+<<<<<<< HEAD
         // No catch in prod code path.
+=======
+        // No catch in prod codepath.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         return workLoop(hasTimeRemaining, initialTime);
       }
     } finally {
@@ -2878,7 +3702,11 @@
 
       var callback = currentTask.callback;
 
+<<<<<<< HEAD
       if (typeof callback === 'function') {
+=======
+      if (callback !== null) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         currentTask.callback = null;
         currentPriorityLevel = currentTask.priorityLevel;
         var didUserCallbackTimeout = currentTask.expirationTime <= currentTime;
@@ -2987,9 +3815,36 @@
     };
   }
 
+<<<<<<< HEAD
   function unstable_scheduleCallback(priorityLevel, callback, options) {
     var currentTime = getCurrentTime();
     var startTime;
+=======
+  function timeoutForPriorityLevel(priorityLevel) {
+    switch (priorityLevel) {
+      case ImmediatePriority:
+        return IMMEDIATE_PRIORITY_TIMEOUT;
+
+      case UserBlockingPriority:
+        return USER_BLOCKING_PRIORITY;
+
+      case IdlePriority:
+        return IDLE_PRIORITY;
+
+      case LowPriority:
+        return LOW_PRIORITY_TIMEOUT;
+
+      case NormalPriority:
+      default:
+        return NORMAL_PRIORITY_TIMEOUT;
+    }
+  }
+
+  function unstable_scheduleCallback(priorityLevel, callback, options) {
+    var currentTime = getCurrentTime();
+    var startTime;
+    var timeout;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
     if (typeof options === 'object' && options !== null) {
       var delay = options.delay;
@@ -2999,6 +3854,7 @@
       } else {
         startTime = currentTime;
       }
+<<<<<<< HEAD
     } else {
       startTime = currentTime;
     }
@@ -3028,6 +3884,15 @@
         break;
     }
 
+=======
+
+      timeout = typeof options.timeout === 'number' ? options.timeout : timeoutForPriorityLevel(priorityLevel);
+    } else {
+      timeout = timeoutForPriorityLevel(priorityLevel);
+      startTime = currentTime;
+    }
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     var expirationTime = startTime + timeout;
     var newTask = {
       id: taskIdCounter++,
@@ -3113,6 +3978,16 @@
     return currentPriorityLevel;
   }
 
+<<<<<<< HEAD
+=======
+  function unstable_shouldYield() {
+    var currentTime = getCurrentTime();
+    advanceTimers(currentTime);
+    var firstTask = peek(taskQueue);
+    return firstTask !== currentTask && currentTask !== null && firstTask !== null && firstTask.callback !== null && firstTask.startTime <= currentTime && firstTask.expirationTime < currentTask.expirationTime || shouldYieldToHost();
+  }
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   var unstable_requestPaint = requestPaint;
   var unstable_Profiling =  {
     startLoggingProfilingEvents: startLoggingProfilingEvents,
@@ -3135,7 +4010,11 @@
     unstable_cancelCallback: unstable_cancelCallback,
     unstable_wrapCallback: unstable_wrapCallback,
     unstable_getCurrentPriorityLevel: unstable_getCurrentPriorityLevel,
+<<<<<<< HEAD
     get unstable_shouldYield () { return shouldYieldToHost; },
+=======
+    unstable_shouldYield: unstable_shouldYield,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     unstable_requestPaint: unstable_requestPaint,
     unstable_continueExecution: unstable_continueExecution,
     unstable_pauseExecution: unstable_pauseExecution,
@@ -3487,6 +4366,7 @@
     ReactCurrentDispatcher: ReactCurrentDispatcher,
     ReactCurrentOwner: ReactCurrentOwner,
     IsSomeRendererActing: IsSomeRendererActing,
+<<<<<<< HEAD
     ReactCurrentBatchConfig: ReactCurrentBatchConfig,
     // Used by renderers to avoid bundling object-assign twice in UMD bundles:
     assign: assign,
@@ -3502,16 +4382,51 @@
   {
     ReactSharedInternals$1.ReactDebugCurrentFrame = ReactDebugCurrentFrame;
   }
+=======
+    // Used by renderers to avoid bundling object-assign twice in UMD bundles:
+    assign: objectAssign
+  };
+
+  {
+    objectAssign(ReactSharedInternals$1, {
+      // These should not be included in production.
+      ReactDebugCurrentFrame: ReactDebugCurrentFrame,
+      // Shim for React DOM 16.0.0 which still destructured (but not used) this.
+      // TODO: remove in React 17.0.
+      ReactComponentTreeHook: {}
+    });
+  } // Re-export the schedule API(s) for UMD bundles.
+  // This avoids introducing a dependency on a new UMD global in a minor update,
+  // Since that would be a breaking change (e.g. for all existing CodeSandboxes).
+  // This re-export is only required for UMD bundles;
+  // CJS bundles use the shared NPM package.
+
+
+  objectAssign(ReactSharedInternals$1, {
+    Scheduler: Scheduler,
+    SchedulerTracing: SchedulerTracing
+  });
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
   {
 
     try {
       var frozenObject = Object.freeze({});
+<<<<<<< HEAD
       /* eslint-disable no-new */
 
       new Map([[frozenObject, null]]);
       new Set([frozenObject]);
       /* eslint-enable no-new */
+=======
+      var testMap = new Map([[frozenObject, null]]);
+      var testSet = new Set([frozenObject]); // This is necessary for Rollup to not consider these unused.
+      // https://github.com/rollup/rollup/issues/1771
+      // TODO: we can remove these if Rollup fixes the bug.
+
+      testMap.set(0, 0);
+      testSet.add(0);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     } catch (e) {
     }
   }
@@ -3529,7 +4444,15 @@
 
   exports.Children = Children;
   exports.Component = Component;
+<<<<<<< HEAD
   exports.PureComponent = PureComponent;
+=======
+  exports.Fragment = REACT_FRAGMENT_TYPE;
+  exports.Profiler = REACT_PROFILER_TYPE;
+  exports.PureComponent = PureComponent;
+  exports.StrictMode = REACT_STRICT_MODE_TYPE;
+  exports.Suspense = REACT_SUSPENSE_TYPE;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals$1;
   exports.cloneElement = cloneElement$1;
   exports.createContext = createContext;

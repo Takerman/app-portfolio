@@ -36,7 +36,10 @@ class Ai1wm_Recursive_Directory_Iterator extends RecursiveDirectoryIterator {
 		$this->skipdots();
 	}
 
+<<<<<<< HEAD
 	#[\ReturnTypeWillChange]
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function rewind() {
 		parent::rewind();
 
@@ -44,7 +47,10 @@ class Ai1wm_Recursive_Directory_Iterator extends RecursiveDirectoryIterator {
 		$this->skipdots();
 	}
 
+<<<<<<< HEAD
 	#[\ReturnTypeWillChange]
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function next() {
 		parent::next();
 
@@ -60,7 +66,10 @@ class Ai1wm_Recursive_Directory_Iterator extends RecursiveDirectoryIterator {
 	 *
 	 * @return bool
 	 */
+<<<<<<< HEAD
 	#[\ReturnTypeWillChange]
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function hasChildren( $allow_links = true ) {
 		return parent::hasChildren( $allow_links );
 	}

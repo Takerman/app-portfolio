@@ -223,7 +223,11 @@ function wp_get_plugin_file_editable_extensions( $plugin ) {
 	);
 
 	/**
+<<<<<<< HEAD
 	 * Filters the list of file types allowed for editing in the plugin file editor.
+=======
+	 * Filters the list of file types allowed for editing in the plugin editor.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 2.8.0
 	 * @since 4.9.0 Added the `$plugin` parameter.
@@ -282,7 +286,11 @@ function wp_get_theme_file_editable_extensions( $theme ) {
 	);
 
 	/**
+<<<<<<< HEAD
 	 * Filters the list of file types allowed for editing in the theme file editor.
+=======
+	 * Filters the list of file types allowed for editing in the theme editor.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 4.4.0
 	 *
@@ -733,6 +741,7 @@ function validate_file_to_edit( $file, $allowed_files = array() ) {
  *
  * @see wp_handle_upload_error
  *
+<<<<<<< HEAD
  * @param array       $file      {
  *     Reference to a single element from `$_FILES`. Call the function once for each uploaded file.
  *
@@ -743,6 +752,11 @@ function validate_file_to_edit( $file, $allowed_files = array() ) {
  *     @type int    $error    The error code associated with this file upload.
  * }
  * @param array|false $overrides {
+=======
+ * @param string[]       $file      Reference to a single element of `$_FILES`.
+ *                                  Call the function once for each uploaded file.
+ * @param array|false    $overrides {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *     An array of override parameters for this file, or boolean false if none are provided.
  *
  *     @type callable $upload_error_handler     Function to call when there is an error during the upload process.
@@ -756,6 +770,7 @@ function validate_file_to_edit( $file, $allowed_files = array() ) {
  *     @type bool     $test_type                Whether to test that the mime type of the file is as expected.
  *     @type string[] $mimes                    Array of allowed mime types keyed by their file extension regex.
  * }
+<<<<<<< HEAD
  * @param string      $time      Time formatted in 'yyyy/mm'.
  * @param string      $action    Expected value for `$_POST['action']`.
  * @return array {
@@ -767,6 +782,13 @@ function validate_file_to_edit( $file, $allowed_files = array() ) {
  *     @type string $url  URL of the newly-uploaded file.
  *     @type string $type Mime type of the newly-uploaded file.
  * }
+=======
+ * @param string         $time      Time formatted in 'yyyy/mm'.
+ * @param string         $action    Expected value for `$_POST['action']`.
+ * @return string[] On success, returns an associative array of file attributes.
+ *                  On failure, returns `$overrides['upload_error_handler']( &$file, $message )`
+ *                  or `array( 'error' => $message )`.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function _wp_handle_upload( &$file, $overrides, $time, $action ) {
 	// The default error handler.
@@ -789,6 +811,7 @@ function _wp_handle_upload( &$file, $overrides, $time, $action ) {
 	 * @since 2.9.0 as 'wp_handle_upload_prefilter'.
 	 * @since 4.0.0 Converted to a dynamic hook with `$action`.
 	 *
+<<<<<<< HEAD
 	 * @param array $file {
 	 *     Reference to a single element from `$_FILES`.
 	 *
@@ -798,6 +821,9 @@ function _wp_handle_upload( &$file, $overrides, $time, $action ) {
 	 *     @type int    $size     The size, in bytes, of the uploaded file.
 	 *     @type int    $error    The error code associated with this file upload.
 	 * }
+=======
+	 * @param string[] $file An array of data for the file. Reference to a single element of `$_FILES`.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	$file = apply_filters( "{$action}_prefilter", $file );
 
@@ -815,6 +841,7 @@ function _wp_handle_upload( &$file, $overrides, $time, $action ) {
 	 *
 	 * @param array|false $overrides An array of override parameters for this file. Boolean false if none are
 	 *                               provided. @see _wp_handle_upload().
+<<<<<<< HEAD
 	 * @param array       $file      {
 	 *     Reference to a single element from `$_FILES`.
 	 *
@@ -824,6 +851,9 @@ function _wp_handle_upload( &$file, $overrides, $time, $action ) {
 	 *     @type int    $size     The size, in bytes, of the uploaded file.
 	 *     @type int    $error    The error code associated with this file upload.
 	 * }
+=======
+	 * @param string[]    $file      An array of data for the file. Reference to a single element of `$_FILES`.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	$overrides = apply_filters( "{$action}_overrides", $overrides, $file );
 
@@ -931,7 +961,11 @@ function _wp_handle_upload( &$file, $overrides, $time, $action ) {
 		}
 
 		if ( ( ! $type || ! $ext ) && ! current_user_can( 'unfiltered_upload' ) ) {
+<<<<<<< HEAD
 			return call_user_func_array( $upload_error_handler, array( &$file, __( 'Sorry, you are not allowed to upload this file type.' ) ) );
+=======
+			return call_user_func_array( $upload_error_handler, array( &$file, __( 'Sorry, this file type is not permitted for security reasons.' ) ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		if ( ! $type ) {
@@ -964,6 +998,7 @@ function _wp_handle_upload( &$file, $overrides, $time, $action ) {
 	 * @since 4.9.0
 	 *
 	 * @param mixed    $move_new_file If null (default) move the file after the upload.
+<<<<<<< HEAD
 	 * @param array    $file          {
 	 *     Reference to a single element from `$_FILES`.
 	 *
@@ -973,6 +1008,9 @@ function _wp_handle_upload( &$file, $overrides, $time, $action ) {
 	 *     @type int    $size     The size, in bytes, of the uploaded file.
 	 *     @type int    $error    The error code associated with this file upload.
 	 * }
+=======
+	 * @param string[] $file          An array of data for a single file.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @param string   $new_file      Filename of the newly-uploaded file.
 	 * @param string   $type          Mime type of the newly-uploaded file.
 	 */
@@ -1054,12 +1092,21 @@ function _wp_handle_upload( &$file, $overrides, $time, $action ) {
  *
  * @param array       $file      Reference to a single element of `$_FILES`.
  *                               Call the function once for each uploaded file.
+<<<<<<< HEAD
  *                               See _wp_handle_upload() for accepted values.
  * @param array|false $overrides Optional. An associative array of names => values
  *                               to override default variables. Default false.
  *                               See _wp_handle_upload() for accepted values.
  * @param string      $time      Optional. Time formatted in 'yyyy/mm'. Default null.
  * @return array See _wp_handle_upload() for return value.
+=======
+ * @param array|false $overrides Optional. An associative array of names => values
+ *                               to override default variables. Default false.
+ * @param string      $time      Optional. Time formatted in 'yyyy/mm'. Default null.
+ * @return array On success, returns an associative array of file attributes.
+ *               On failure, returns `$overrides['upload_error_handler']( &$file, $message )`
+ *               or `array( 'error' => $message )`.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function wp_handle_upload( &$file, $overrides = false, $time = null ) {
 	/*
@@ -1085,12 +1132,21 @@ function wp_handle_upload( &$file, $overrides = false, $time = null ) {
  *
  * @param array       $file      Reference to a single element of `$_FILES`.
  *                               Call the function once for each uploaded file.
+<<<<<<< HEAD
  *                               See _wp_handle_upload() for accepted values.
  * @param array|false $overrides Optional. An associative array of names => values
  *                               to override default variables. Default false.
  *                               See _wp_handle_upload() for accepted values.
  * @param string      $time      Optional. Time formatted in 'yyyy/mm'. Default null.
  * @return array See _wp_handle_upload() for return value.
+=======
+ * @param array|false $overrides Optional. An associative array of names => values
+ *                               to override default variables. Default false.
+ * @param string      $time      Optional. Time formatted in 'yyyy/mm'. Default null.
+ * @return array On success, returns an associative array of file attributes.
+ *               On failure, returns `$overrides['upload_error_handler']( &$file, $message )`
+ *               or `array( 'error' => $message )`.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function wp_handle_sideload( &$file, $overrides = false, $time = null ) {
 	/*
@@ -1112,7 +1168,10 @@ function wp_handle_sideload( &$file, $overrides = false, $time = null ) {
  *
  * @since 2.5.0
  * @since 5.2.0 Signature Verification with SoftFail was added.
+<<<<<<< HEAD
  * @since 5.9.0 Support for Content-Disposition filename was added.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @param string $url                    The URL of the file to download.
  * @param int    $timeout                The timeout for the request to download the file.
@@ -1127,11 +1186,15 @@ function download_url( $url, $timeout = 300, $signature_verification = false ) {
 		return new WP_Error( 'http_no_url', __( 'Invalid URL Provided.' ) );
 	}
 
+<<<<<<< HEAD
 	$url_path     = parse_url( $url, PHP_URL_PATH );
 	$url_filename = '';
 	if ( is_string( $url_path ) && '' !== $url_path ) {
 		$url_filename = basename( $url_path );
 	}
+=======
+	$url_filename = basename( parse_url( $url, PHP_URL_PATH ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	$tmpfname = wp_tempnam( $url_filename );
 	if ( ! $tmpfname ) {
@@ -1183,6 +1246,7 @@ function download_url( $url, $timeout = 300, $signature_verification = false ) {
 		return new WP_Error( 'http_404', trim( wp_remote_retrieve_response_message( $response ) ), $data );
 	}
 
+<<<<<<< HEAD
 	$content_disposition = wp_remote_retrieve_header( $response, 'content-disposition' );
 
 	if ( $content_disposition ) {
@@ -1210,6 +1274,8 @@ function download_url( $url, $timeout = 300, $signature_verification = false ) {
 		}
 	}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$content_md5 = wp_remote_retrieve_header( $response, 'content-md5' );
 
 	if ( $content_md5 ) {
@@ -1244,8 +1310,14 @@ function download_url( $url, $timeout = 300, $signature_verification = false ) {
 			// WordPress.org stores signatures at $package_url.sig.
 
 			$signature_url = false;
+<<<<<<< HEAD
 
 			if ( is_string( $url_path ) && ( '.zip' === substr( $url_path, -4 ) || '.tar.gz' === substr( $url_path, -7 ) ) ) {
+=======
+			$url_path      = parse_url( $url, PHP_URL_PATH );
+
+			if ( '.zip' === substr( $url_path, -4 ) || '.tar.gz' === substr( $url_path, -7 ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				$signature_url = str_replace( $url_path, $url_path . '.sig', $url );
 			}
 
@@ -1274,7 +1346,11 @@ function download_url( $url, $timeout = 300, $signature_verification = false ) {
 		}
 
 		// Perform the checks.
+<<<<<<< HEAD
 		$signature_verification = verify_file_signature( $tmpfname, $signature, $url_filename );
+=======
+		$signature_verification = verify_file_signature( $tmpfname, $signature, basename( parse_url( $url, PHP_URL_PATH ) ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	if ( is_wp_error( $signature_verification ) ) {
@@ -1386,6 +1462,10 @@ function verify_file_signature( $filename, $signatures, $filename_for_errors = f
 			),
 			array(
 				'php'    => phpversion(),
+<<<<<<< HEAD
+=======
+				// phpcs:ignore PHPCompatibility.Constants.NewConstants.sodium_library_versionFound
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				'sodium' => defined( 'SODIUM_LIBRARY_VERSION' ) ? SODIUM_LIBRARY_VERSION : ( defined( 'ParagonIE_Sodium_Compat::VERSION_STRING' ) ? ParagonIE_Sodium_Compat::VERSION_STRING : false ),
 			)
 		);
@@ -1418,6 +1498,10 @@ function verify_file_signature( $filename, $signatures, $filename_for_errors = f
 				),
 				array(
 					'php'                => phpversion(),
+<<<<<<< HEAD
+=======
+					// phpcs:ignore PHPCompatibility.Constants.NewConstants.sodium_library_versionFound
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'sodium'             => defined( 'SODIUM_LIBRARY_VERSION' ) ? SODIUM_LIBRARY_VERSION : ( defined( 'ParagonIE_Sodium_Compat::VERSION_STRING' ) ? ParagonIE_Sodium_Compat::VERSION_STRING : false ),
 					'polyfill_is_fast'   => false,
 					'max_execution_time' => ini_get( 'max_execution_time' ),
@@ -1491,6 +1575,10 @@ function verify_file_signature( $filename, $signatures, $filename_for_errors = f
 			'skipped_key' => $skipped_key,
 			'skipped_sig' => $skipped_signature,
 			'php'         => phpversion(),
+<<<<<<< HEAD
+=======
+			// phpcs:ignore PHPCompatibility.Constants.NewConstants.sodium_library_versionFound
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			'sodium'      => defined( 'SODIUM_LIBRARY_VERSION' ) ? SODIUM_LIBRARY_VERSION : ( defined( 'ParagonIE_Sodium_Compat::VERSION_STRING' ) ? ParagonIE_Sodium_Compat::VERSION_STRING : false ),
 		)
 	);

@@ -393,7 +393,11 @@ class Custom_Image_Header {
 		}
 	}
 
+<<<<<<< HEAD
 	$( function() {
+=======
+	$(document).ready(function() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		var text_color = $('#text-color');
 		header_text_fields = $('.displaying-header-text');
 		text_color.wpColorPicker({
@@ -408,7 +412,11 @@ class Custom_Image_Header {
 		<?php if ( ! display_header_text() ) : ?>
 		toggle_text();
 		<?php endif; ?>
+<<<<<<< HEAD
 	} );
+=======
+	});
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 })(jQuery);
 </script>
 		<?php
@@ -430,7 +438,11 @@ class Custom_Image_Header {
 		jQuery( '#height' ).val(coords.h);
 	}
 
+<<<<<<< HEAD
 	jQuery( function() {
+=======
+	jQuery(document).ready(function() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		var xinit = <?php echo absint( get_theme_support( 'custom-header', 'width' ) ); ?>;
 		var yinit = <?php echo absint( get_theme_support( 'custom-header', 'height' ) ); ?>;
 		var ratio = xinit / yinit;
@@ -485,7 +497,11 @@ class Custom_Image_Header {
 				jQuery('#height').val(c.height);
 			}
 		});
+<<<<<<< HEAD
 	} );
+=======
+	});
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 </script>
 		<?php
 	}

@@ -47,6 +47,10 @@ function wp_register_border_support( $block_type ) {
  *
  * @param WP_Block_Type $block_type       Block type.
  * @param array         $block_attributes Block attributes.
+<<<<<<< HEAD
+=======
+ *
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @return array Border CSS classes and inline styles.
  */
 function wp_apply_border_support( $block_type, $block_attributes ) {
@@ -62,6 +66,7 @@ function wp_apply_border_support( $block_type, $block_attributes ) {
 		wp_has_border_feature_support( $block_type, 'radius' ) &&
 		isset( $block_attributes['style']['border']['radius'] )
 	) {
+<<<<<<< HEAD
 		$border_radius = $block_attributes['style']['border']['radius'];
 
 		if ( is_array( $border_radius ) ) {
@@ -79,6 +84,10 @@ function wp_apply_border_support( $block_type, $block_attributes ) {
 
 			$styles[] = sprintf( 'border-radius: %s;', $border_radius );
 		}
+=======
+		$border_radius = (int) $block_attributes['style']['border']['radius'];
+		$styles[]      = sprintf( 'border-radius: %dpx;', $border_radius );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	// Border style.
@@ -95,6 +104,7 @@ function wp_apply_border_support( $block_type, $block_attributes ) {
 		wp_has_border_feature_support( $block_type, 'width' ) &&
 		isset( $block_attributes['style']['border']['width'] )
 	) {
+<<<<<<< HEAD
 		$border_width = $block_attributes['style']['border']['width'];
 
 		// This check handles original unitless implementation.
@@ -103,6 +113,10 @@ function wp_apply_border_support( $block_type, $block_attributes ) {
 		}
 
 		$styles[] = sprintf( 'border-width: %s;', $border_width );
+=======
+		$border_width = intval( $block_attributes['style']['border']['width'] );
+		$styles[]     = sprintf( 'border-width: %dpx;', $border_width );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	// Border color.
@@ -144,8 +158,13 @@ function wp_apply_border_support( $block_type, $block_attributes ) {
  * @access private
  *
  * @param WP_Block_Type $block_type Block type.
+<<<<<<< HEAD
  * @return bool Whether serialization of the current block's border properties
  *              should occur.
+=======
+ *
+ * @return boolean
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function wp_skip_border_serialization( $block_type ) {
 	$border_support = _wp_array_get( $block_type->supports, array( '__experimentalBorder' ), false );
@@ -169,7 +188,12 @@ function wp_skip_border_serialization( $block_type ) {
  * @param WP_Block_Type $block_type Block type to check for support.
  * @param string        $feature    Name of the feature to check support for.
  * @param mixed         $default    Fallback value for feature support, defaults to false.
+<<<<<<< HEAD
  * @return bool Whether the feature is supported.
+=======
+ *
+ * @return boolean Whether or not the feature is supported.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function wp_has_border_feature_support( $block_type, $feature, $default = false ) {
 	// Check if all border support features have been opted into via `"__experimentalBorder": true`.

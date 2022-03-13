@@ -117,8 +117,13 @@ final class WP_Post_Type {
 	 * Where to show the post type in the admin menu.
 	 *
 	 * To work, $show_ui must be true. If true, the post type is shown in its own top level menu. If false, no menu is
+<<<<<<< HEAD
 	 * shown. If a string of an existing top level menu ('tools.php' or 'edit.php?post_type=page', for example), the
 	 * post type will be placed as a sub-menu of that.
+=======
+	 * shown. If a string of an existing top level menu (eg. 'tools.php' or 'edit.php?post_type=page'), the post type
+	 * will be placed as a sub-menu of that.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * Default is the value of $show_ui.
 	 *
@@ -359,6 +364,7 @@ final class WP_Post_Type {
 	public $rest_base;
 
 	/**
+<<<<<<< HEAD
 	 * The namespace for this post type's REST API endpoints.
 	 *
 	 * @since 5.9.0
@@ -367,6 +373,8 @@ final class WP_Post_Type {
 	public $rest_namespace;
 
 	/**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * The controller for this post type's REST API endpoints.
 	 *
 	 * Custom controllers must extend WP_REST_Controller.
@@ -460,7 +468,10 @@ final class WP_Post_Type {
 			'delete_with_user'      => null,
 			'show_in_rest'          => false,
 			'rest_base'             => false,
+<<<<<<< HEAD
 			'rest_namespace'        => false,
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			'rest_controller_class' => false,
 			'template'              => array(),
 			'template_lock'         => false,
@@ -482,11 +493,14 @@ final class WP_Post_Type {
 			$args['show_ui'] = $args['public'];
 		}
 
+<<<<<<< HEAD
 		// If not set, default rest_namespace to wp/v2 if show_in_rest is true.
 		if ( false === $args['rest_namespace'] && ! empty( $args['show_in_rest'] ) ) {
 			$args['rest_namespace'] = 'wp/v2';
 		}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		// If not set, default to the setting for 'show_ui'.
 		if ( null === $args['show_in_menu'] || ! $args['show_ui'] ) {
 			$args['show_in_menu'] = $args['show_ui'];

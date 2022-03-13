@@ -220,7 +220,10 @@ function register_sidebars( $number = 1, $args = array() ) {
  *
  * @since 2.2.0
  * @since 5.6.0 Added the `before_sidebar` and `after_sidebar` arguments.
+<<<<<<< HEAD
  * @since 5.9.0 Added the `show_in_rest` argument.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @global array $wp_registered_sidebars Registered sidebars.
  *
@@ -251,8 +254,11 @@ function register_sidebars( $number = 1, $args = array() ) {
  *     @type string $after_sidebar  HTML content to append to the sidebar when displayed.
  *                                  Outputs before the {@see 'dynamic_sidebar_after'} action.
  *                                  Default empty string.
+<<<<<<< HEAD
  *     @type bool $show_in_rest     Whether to show this sidebar publicly in the REST API.
  *                                  Defaults to only showing the sidebar to administrator users.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * }
  * @return string Sidebar ID added to $wp_registered_sidebars global.
  */
@@ -275,7 +281,10 @@ function register_sidebar( $args = array() ) {
 		'after_title'    => "</h2>\n",
 		'before_sidebar' => '',
 		'after_sidebar'  => '',
+<<<<<<< HEAD
 		'show_in_rest'   => false,
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	);
 
 	/**
@@ -489,7 +498,11 @@ function wp_unregister_sidebar_widget( $id ) {
 	 *
 	 * @since 3.0.0
 	 *
+<<<<<<< HEAD
 	 * @param int|string $id The widget ID.
+=======
+	 * @param int $id The widget ID.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	do_action( 'wp_unregister_sidebar_widget', $id );
 
@@ -519,7 +532,11 @@ function wp_unregister_sidebar_widget( $id ) {
  *     @type int        $width   Width of the fully expanded control form (but try hard to use the default width).
  *                               Default 250.
  *     @type int|string $id_base Required for multi-widgets, i.e widgets that allow multiple instances such as the
+<<<<<<< HEAD
  *                               text widget. The widget ID will end up looking like `{$id_base}-{$unique_number}`.
+=======
+ *                               text widget. The widget id will end up looking like `{$id_base}-{$unique_number}`.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * }
  * @param mixed      ...$params        Optional additional parameters to pass to the callback function when it's called.
  */
@@ -1040,6 +1057,7 @@ function wp_get_sidebars_widgets( $deprecated = true ) {
 }
 
 /**
+<<<<<<< HEAD
  * Retrieves the registered sidebar with the given ID.
  *
  * @since 5.9.0
@@ -1069,6 +1087,8 @@ function wp_get_sidebar( $id ) {
 }
 
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Set the sidebar widget option to update sidebars.
  *
  * @since 2.2.0
@@ -1288,6 +1308,7 @@ function _wp_sidebars_changed() {
 }
 
 /**
+<<<<<<< HEAD
  * Validates and remaps any "orphaned" widgets to wp_inactive_widgets sidebar,
  * and saves the widget settings. This has to run at least on each theme change.
  *
@@ -1299,6 +1320,9 @@ function _wp_sidebars_changed() {
  * Despite the word "retrieve" in the name, this function actually updates the database
  * and the global `$sidebars_widgets`. For that reason it should not be run on front end,
  * unless the `$theme_changed` value is 'customize' (to bypass the database write).
+=======
+ * Look for "lost" widgets, this has to run at least on each theme change.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since 2.8.0
  *
@@ -1353,7 +1377,10 @@ function retrieve_widgets( $theme_changed = false ) {
 	$sidebars_widgets['wp_inactive_widgets'] = array_merge( $lost_widgets, (array) $sidebars_widgets['wp_inactive_widgets'] );
 
 	if ( 'customize' !== $theme_changed ) {
+<<<<<<< HEAD
 		// Update the widgets settings in the database.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		wp_set_sidebars_widgets( $sidebars_widgets );
 	}
 
@@ -1772,12 +1799,20 @@ function wp_widget_rss_process( $widget_rss, $check_feed = true ) {
 	$show_summary = isset( $widget_rss['show_summary'] ) ? (int) $widget_rss['show_summary'] : 0;
 	$show_author  = isset( $widget_rss['show_author'] ) ? (int) $widget_rss['show_author'] : 0;
 	$show_date    = isset( $widget_rss['show_date'] ) ? (int) $widget_rss['show_date'] : 0;
+<<<<<<< HEAD
 	$error        = false;
 	$link         = '';
 
 	if ( $check_feed ) {
 		$rss = fetch_feed( $url );
 
+=======
+
+	if ( $check_feed ) {
+		$rss   = fetch_feed( $url );
+		$error = false;
+		$link  = '';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( is_wp_error( $rss ) ) {
 			$error = $rss->get_error_message();
 		} else {
@@ -1873,6 +1908,7 @@ function wp_setup_widgets_block_editor() {
  *
  * @since 5.8.0
  *
+<<<<<<< HEAD
  * @return bool Whether to use the block editor to manage widgets.
  */
 function wp_use_widgets_block_editor() {
@@ -1882,6 +1918,17 @@ function wp_use_widgets_block_editor() {
 	 * @since 5.8.0
 	 *
 	 * @param bool $use_widgets_block_editor Whether to use the block editor to manage widgets.
+=======
+ * @return boolean Whether or not to use the block editor to manage widgets.
+ */
+function wp_use_widgets_block_editor() {
+	/**
+	 * Filters whether or not to use the block editor to manage widgets.
+	 *
+	 * @since 5.8.0
+	 *
+	 * @param boolean $use_widgets_block_editor Whether or not to use the block editor to manage widgets.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	return apply_filters(
 		'use_widgets_block_editor',
@@ -1916,8 +1963,13 @@ function wp_parse_widget_id( $id ) {
  *
  * @since 5.8.0
  *
+<<<<<<< HEAD
  * @param string $widget_id The widget ID to look for.
  * @return string|null The found sidebar's ID, or null if it was not found.
+=======
+ * @param string $widget_id The widget id to look for.
+ * @return string|null The found sidebar's id, or null if it was not found.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function wp_find_widgets_sidebar( $widget_id ) {
 	foreach ( wp_get_sidebars_widgets() as $sidebar_id => $widget_ids ) {
@@ -1936,8 +1988,13 @@ function wp_find_widgets_sidebar( $widget_id ) {
  *
  * @since 5.8.0
  *
+<<<<<<< HEAD
  * @param string $widget_id  The widget ID to assign.
  * @param string $sidebar_id The sidebar ID to assign to. If empty, the widget won't be added to any sidebar.
+=======
+ * @param string $widget_id  The widget id to assign.
+ * @param string $sidebar_id The sidebar id to assign to. If empty, the widget won't be added to any sidebar.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function wp_assign_widget_to_sidebar( $widget_id, $sidebar_id ) {
 	$sidebars = wp_get_sidebars_widgets();
@@ -1946,7 +2003,11 @@ function wp_assign_widget_to_sidebar( $widget_id, $sidebar_id ) {
 		foreach ( $widgets as $i => $maybe_widget_id ) {
 			if ( $widget_id === $maybe_widget_id && $sidebar_id !== $maybe_sidebar_id ) {
 				unset( $sidebars[ $maybe_sidebar_id ][ $i ] );
+<<<<<<< HEAD
 				// We could technically break 2 here, but continue looping in case the ID is duplicated.
+=======
+				// We could technically break 2 here, but continue looping in case the id is duplicated.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				continue 2;
 			}
 		}
@@ -2080,6 +2141,7 @@ function wp_check_widget_editor_deps() {
 		if ( $wp_scripts->query( 'wp-editor', 'enqueued' ) ) {
 			_doing_it_wrong(
 				'wp_enqueue_script()',
+<<<<<<< HEAD
 				sprintf(
 					/* translators: 1: 'wp-editor', 2: 'wp-edit-widgets', 3: 'wp-customize-widgets'. */
 					__( '"%1$s" script should not be enqueued together with the new widgets editor (%2$s or %3$s).' ),
@@ -2087,12 +2149,16 @@ function wp_check_widget_editor_deps() {
 					'wp-edit-widgets',
 					'wp-customize-widgets'
 				),
+=======
+				'"wp-editor" script should not be enqueued together with the new widgets editor (wp-edit-widgets or wp-customize-widgets).',
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				'5.8.0'
 			);
 		}
 		if ( $wp_styles->query( 'wp-edit-post', 'enqueued' ) ) {
 			_doing_it_wrong(
 				'wp_enqueue_style()',
+<<<<<<< HEAD
 				sprintf(
 					/* translators: 1: 'wp-edit-post', 2: 'wp-edit-widgets', 3: 'wp-customize-widgets'. */
 					__( '"%1$s" style should not be enqueued together with the new widgets editor (%2$s or %3$s).' ),
@@ -2100,6 +2166,9 @@ function wp_check_widget_editor_deps() {
 					'wp-edit-widgets',
 					'wp-customize-widgets'
 				),
+=======
+				'"wp-edit-post" style should not be enqueued together with the new widgets editor (wp-edit-widgets or wp-customize-widgets).',
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				'5.8.0'
 			);
 		}

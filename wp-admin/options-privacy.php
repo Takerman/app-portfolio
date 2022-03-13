@@ -20,7 +20,11 @@ if ( isset( $_GET['tab'] ) && 'policyguide' === $_GET['tab'] ) {
 
 add_filter(
 	'admin_body_class',
+<<<<<<< HEAD
 	static function( $body_class ) {
+=======
+	function( $body_class ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$body_class .= ' privacy-settings ';
 
 		return $body_class;
@@ -29,6 +33,7 @@ add_filter(
 
 $action = isset( $_POST['action'] ) ? $_POST['action'] : '';
 
+<<<<<<< HEAD
 get_current_screen()->add_help_tab(
 	array(
 		'id'      => 'overview',
@@ -44,6 +49,8 @@ get_current_screen()->set_help_sidebar(
 	'<p>' . __( '<a href="https://wordpress.org/support/article/settings-privacy-screen/">Documentation on Privacy Settings</a>' ) . '</p>'
 );
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 if ( ! empty( $action ) ) {
 	check_admin_referer( $action );
 

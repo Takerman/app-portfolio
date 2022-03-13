@@ -207,6 +207,7 @@ const createRootURLMiddleware = rootURL => (options, next) => {
 
 /* harmony default export */ var root_url = (createRootURLMiddleware);
 
+<<<<<<< HEAD
 // EXTERNAL MODULE: external ["wp","url"]
 var external_wp_url_ = __webpack_require__("Mmq9");
 
@@ -215,6 +216,35 @@ var external_wp_url_ = __webpack_require__("Mmq9");
  * WordPress dependencies
  */
 
+=======
+// CONCATENATED MODULE: ./node_modules/@wordpress/api-fetch/build-module/middlewares/preloading.js
+/**
+ * Given a path, returns a normalized path where equal query parameter values
+ * will be treated as identical, regardless of order they appear in the original
+ * text.
+ *
+ * @param {string} path Original path.
+ *
+ * @return {string} Normalized path.
+ */
+function getStablePath(path) {
+  const splitted = path.split('?');
+  const query = splitted[1];
+  const base = splitted[0];
+
+  if (!query) {
+    return base;
+  } // 'b=1&c=2&a=5'
+
+
+  return base + '?' + query // [ 'b=1', 'c=2', 'a=5' ]
+  .split('&') // [ [ 'b, '1' ], [ 'c', '2' ], [ 'a', '5' ] ]
+  .map(entry => entry.split('=')) // [ [ 'a', '5' ], [ 'b, '1' ], [ 'c', '2' ] ]
+  .sort((a, b) => a[0].localeCompare(b[0])) // [ 'a=5', 'b=1', 'c=2' ]
+  .map(pair => pair.join('=')) // 'a=5&b=1&c=2'
+  .join('&');
+}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /**
  * @param {Record<string, any>} preloadedData
  * @return {import('../types').APIFetchMiddleware} Preloading middleware.
@@ -222,7 +252,11 @@ var external_wp_url_ = __webpack_require__("Mmq9");
 
 function createPreloadingMiddleware(preloadedData) {
   const cache = Object.keys(preloadedData).reduce((result, path) => {
+<<<<<<< HEAD
     result[Object(external_wp_url_["normalizePath"])(path)] = preloadedData[path];
+=======
+    result[getStablePath(path)] = preloadedData[path];
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return result;
   },
   /** @type {Record<string, any>} */
@@ -231,6 +265,7 @@ function createPreloadingMiddleware(preloadedData) {
     const {
       parse = true
     } = options;
+<<<<<<< HEAD
     /** @type {string | void} */
 
     let rawPath = options.path;
@@ -249,6 +284,15 @@ function createPreloadingMiddleware(preloadedData) {
 
       if ('GET' === method && cache[path]) {
         const cacheData = cache[path]; // Unsetting the cache key ensures that the data is only used a single time
+=======
+
+    if (typeof options.path === 'string') {
+      const method = options.method || 'GET';
+      const path = getStablePath(options.path);
+
+      if ('GET' === method && cache[path]) {
+        const cacheData = cache[path]; // Unsetting the cache key ensures that the data is only preloaded a single time
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
         delete cache[path];
         return Promise.resolve(parse ? cacheData.body : new window.Response(JSON.stringify(cacheData.body), {
@@ -257,10 +301,14 @@ function createPreloadingMiddleware(preloadedData) {
           headers: cacheData.headers
         }));
       } else if ('OPTIONS' === method && cache[method] && cache[method][path]) {
+<<<<<<< HEAD
         const cacheData = cache[method][path]; // Unsetting the cache key ensures that the data is only used a single time
 
         delete cache[method][path];
         return Promise.resolve(parse ? cacheData.body : cacheData);
+=======
+        return Promise.resolve(parse ? cache[method][path].body : cache[method][path]);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       }
     }
 
@@ -270,6 +318,12 @@ function createPreloadingMiddleware(preloadedData) {
 
 /* harmony default export */ var preloading = (createPreloadingMiddleware);
 
+<<<<<<< HEAD
+=======
+// EXTERNAL MODULE: external ["wp","url"]
+var external_wp_url_ = __webpack_require__("Mmq9");
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 // CONCATENATED MODULE: ./node_modules/@wordpress/api-fetch/build-module/middlewares/fetch-all-middleware.js
 /**
  * WordPress dependencies
@@ -284,6 +338,7 @@ function createPreloadingMiddleware(preloadedData) {
  * Apply query arguments to both URL and Path, whichever is present.
  *
  * @param {import('../types').APIFetchOptions} props
+<<<<<<< HEAD
  * @param {Record<string, string | number>}    queryArgs
  * @return {import('../types').APIFetchOptions} The request with the modified query args
  */
@@ -299,6 +354,20 @@ const modifyQuery = (_ref, queryArgs) => {
     path: path && Object(external_wp_url_["addQueryArgs"])(path, queryArgs)
   };
 };
+=======
+ * @param {Record<string, string | number>} queryArgs
+ * @return {import('../types').APIFetchOptions} The request with the modified query args
+ */
+
+const modifyQuery = ({
+  path,
+  url,
+  ...options
+}, queryArgs) => ({ ...options,
+  url: url && Object(external_wp_url_["addQueryArgs"])(url, queryArgs),
+  path: path && Object(external_wp_url_["addQueryArgs"])(path, queryArgs)
+});
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /**
  * Duplicates parsing functionality from apiFetch.
  *
@@ -498,9 +567,13 @@ const userLocaleMiddleware = (options, next) => {
  * @return {Promise<any> | null | Response} Parsed response.
  */
 
+<<<<<<< HEAD
 const response_parseResponse = function (response) {
   let shouldParseResponse = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
+=======
+const response_parseResponse = (response, shouldParseResponse = true) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   if (shouldParseResponse) {
     if (response.status === 204) {
       return null;
@@ -544,14 +617,19 @@ const parseJsonAndNormalizeError = response => {
  */
 
 
+<<<<<<< HEAD
 const parseResponseAndNormalizeError = function (response) {
   let shouldParseResponse = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+=======
+const parseResponseAndNormalizeError = (response, shouldParseResponse = true) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   return Promise.resolve(response_parseResponse(response, shouldParseResponse)).catch(res => parseAndThrowError(res, shouldParseResponse));
 };
 /**
  * Parses a response, throwing an error if parsing the response fails.
  *
  * @param {Response} response
+<<<<<<< HEAD
  * @param {boolean}  shouldParseResponse
  * @return {Promise<any>} Parsed response.
  */
@@ -559,6 +637,13 @@ const parseResponseAndNormalizeError = function (response) {
 function parseAndThrowError(response) {
   let shouldParseResponse = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
+=======
+ * @param {boolean} shouldParseResponse
+ * @return {Promise<any>} Parsed response.
+ */
+
+function parseAndThrowError(response, shouldParseResponse = true) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   if (!shouldParseResponse) {
     throw response;
   }
@@ -583,6 +668,7 @@ function parseAndThrowError(response) {
 
 
 /**
+<<<<<<< HEAD
  * @param {import('../types').APIFetchOptions} options
  * @return {boolean} True if the request is for media upload.
  */
@@ -593,14 +679,23 @@ function isMediaUploadRequest(options) {
   return isMediaEndpoint && isCreateMethod;
 }
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Middleware handling media upload failures and retries.
  *
  * @type {import('../types').APIFetchMiddleware}
  */
 
+<<<<<<< HEAD
 
 const mediaUploadMiddleware = (options, next) => {
   if (!isMediaUploadRequest(options)) {
+=======
+const mediaUploadMiddleware = (options, next) => {
+  const isMediaUploadRequest = options.path && options.path.indexOf('/wp/v2/media') !== -1 || options.url && options.url.indexOf('/wp/v2/media') !== -1;
+
+  if (!isMediaUploadRequest) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return next(options);
   }
 
@@ -768,6 +863,7 @@ const defaultFetchHandler = nextOptions => {
     body,
     headers
   });
+<<<<<<< HEAD
   return responsePromise.then(value => Promise.resolve(value).then(checkStatus).catch(response => parseAndThrowError(response, parse)).then(response => parseResponseAndNormalizeError(response, parse)), err => {
     // Re-throw AbortError for the users to handle it themselves.
     if (err && err.name === 'AbortError') {
@@ -776,6 +872,12 @@ const defaultFetchHandler = nextOptions => {
     // Unfortunately the message might depend on the browser.
 
 
+=======
+  return responsePromise // Return early if fetch errors. If fetch error, there is most likely no
+  // network connection. Unfortunately fetch just throws a TypeError and
+  // the message might depend on the browser.
+  .then(value => Promise.resolve(value).then(checkStatus).catch(response => parseAndThrowError(response, parse)).then(response => parseResponseAndNormalizeError(response, parse)), () => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     throw {
       code: 'fetch_error',
       message: Object(external_wp_i18n_["__"])('You are probably offline.')

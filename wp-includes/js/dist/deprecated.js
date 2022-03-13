@@ -136,8 +136,12 @@ const logged = Object.create(null);
  * ```
  */
 
+<<<<<<< HEAD
 function deprecated(feature) {
   let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+=======
+function deprecated(feature, options = {}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const {
     since,
     version,

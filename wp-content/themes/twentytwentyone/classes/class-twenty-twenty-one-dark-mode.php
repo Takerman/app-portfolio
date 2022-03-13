@@ -153,7 +153,11 @@ class Twenty_Twenty_One_Dark_Mode {
 				array(
 					'section'         => 'colors',
 					'priority'        => 100,
+<<<<<<< HEAD
 					'active_callback' => static function() {
+=======
+					'active_callback' => function() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						return 127 >= Twenty_Twenty_One_Custom_Colors::get_relative_luminance_from_hex( get_theme_mod( 'background_color', 'D1E4DD' ) );
 					},
 				)
@@ -165,7 +169,11 @@ class Twenty_Twenty_One_Dark_Mode {
 			array(
 				'capability'        => 'edit_theme_options',
 				'default'           => false,
+<<<<<<< HEAD
 				'sanitize_callback' => static function( $value ) {
+=======
+				'sanitize_callback' => function( $value ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					return (bool) $value;
 				},
 			)
@@ -178,7 +186,11 @@ class Twenty_Twenty_One_Dark_Mode {
 			esc_url( __( 'https://wordpress.org/support/article/twenty-twenty-one/#dark-mode-support', 'twentytwentyone' ) )
 		);
 		$description .= '</p>';
+<<<<<<< HEAD
 		$description .= '<p>' . __( 'Dark Mode can also be turned on and off with a button that you can find in the bottom corner of the page.', 'twentytwentyone' ) . '</p>';
+=======
+		$description .= '<p>' . __( 'Dark Mode can also be turned on and off with a button that you can find in the bottom right corner of the page.', 'twentytwentyone' ) . '</p>';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		$wp_customize->add_control(
 			'respect_user_color_preference',
@@ -188,7 +200,11 @@ class Twenty_Twenty_One_Dark_Mode {
 				'label'           => esc_html__( 'Dark Mode support', 'twentytwentyone' ),
 				'priority'        => 110,
 				'description'     => $description,
+<<<<<<< HEAD
 				'active_callback' => static function( $value ) {
+=======
+				'active_callback' => function( $value ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					return 127 < Twenty_Twenty_One_Custom_Colors::get_relative_luminance_from_hex( get_theme_mod( 'background_color', 'D1E4DD' ) );
 				},
 			)

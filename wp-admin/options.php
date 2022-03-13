@@ -18,7 +18,10 @@
 /** WordPress Administration Bootstrap */
 require_once __DIR__ . '/admin.php';
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 $title       = __( 'Settings' );
 $this_file   = 'options.php';
 $parent_file = 'options-general.php';
@@ -57,17 +60,24 @@ if ( ! current_user_can( $capability ) ) {
 if ( ! empty( $_GET['adminhash'] ) ) {
 	$new_admin_details = get_option( 'adminhash' );
 	$redirect          = 'options-general.php?updated=false';
+<<<<<<< HEAD
 
 	if ( is_array( $new_admin_details )
 		&& hash_equals( $new_admin_details['hash'], $_GET['adminhash'] )
 		&& ! empty( $new_admin_details['newemail'] )
 	) {
+=======
+	if ( is_array( $new_admin_details ) && hash_equals( $new_admin_details['hash'], $_GET['adminhash'] ) && ! empty( $new_admin_details['newemail'] ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		update_option( 'admin_email', $new_admin_details['newemail'] );
 		delete_option( 'adminhash' );
 		delete_option( 'new_admin_email' );
 		$redirect = 'options-general.php?updated=true';
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	wp_redirect( admin_url( $redirect ) );
 	exit;
 } elseif ( ! empty( $_GET['dismiss'] ) && 'new_admin_email' === $_GET['dismiss'] ) {
@@ -78,7 +88,11 @@ if ( ! empty( $_GET['adminhash'] ) ) {
 	exit;
 }
 
+<<<<<<< HEAD
 if ( is_multisite() && ! current_user_can( 'manage_network_options' ) && 'update' !== $action ) {
+=======
+if ( is_multisite() && ! current_user_can( 'manage_network_options' ) && 'update' != $action ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	wp_die(
 		'<h1>' . __( 'You need a higher level of permission.' ) . '</h1>' .
 		'<p>' . __( 'Sorry, you are not allowed to delete these items.' ) . '</p>',
@@ -188,9 +202,13 @@ if ( ! is_multisite() ) {
 	 * or upload_path is not the default ('wp-content/uploads' or empty),
 	 * they can be edited, otherwise they're locked.
 	 */
+<<<<<<< HEAD
 	if ( get_option( 'upload_url_path' )
 		|| get_option( 'upload_path' ) && 'wp-content/uploads' !== get_option( 'upload_path' )
 	) {
+=======
+	if ( get_option( 'upload_url_path' ) || ( get_option( 'upload_path' ) != 'wp-content/uploads' && get_option( 'upload_path' ) ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$allowed_options['media'][] = 'upload_path';
 		$allowed_options['media'][] = 'upload_url_path';
 	}

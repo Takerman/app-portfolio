@@ -118,8 +118,12 @@ class TokenList {
    *
    * @param {string} initialValue Initial value to assign.
    */
+<<<<<<< HEAD
   constructor() {
     let initialValue = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+=======
+  constructor(initialValue = '') {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     this.value = initialValue; // Disable reason: These are type hints on the class.
 
     /* eslint-disable no-unused-expressions */
@@ -137,32 +141,52 @@ class TokenList {
    */
 
 
+<<<<<<< HEAD
   entries() {
     return this._valueAsArray.entries(...arguments);
+=======
+  entries(...args) {
+    return this._valueAsArray.entries(...args);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   }
   /**
    * @param {Parameters<Array<string>['forEach']>} args
    */
 
 
+<<<<<<< HEAD
   forEach() {
     return this._valueAsArray.forEach(...arguments);
+=======
+  forEach(...args) {
+    return this._valueAsArray.forEach(...args);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   }
   /**
    * @param {Parameters<Array<string>['keys']>} args
    */
 
 
+<<<<<<< HEAD
   keys() {
     return this._valueAsArray.keys(...arguments);
+=======
+  keys(...args) {
+    return this._valueAsArray.keys(...args);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   }
   /**
    * @param {Parameters<Array<string>['values']>} args
    */
 
 
+<<<<<<< HEAD
   values() {
     return this._valueAsArray.values(...arguments);
+=======
+  values(...args) {
+    return this._valueAsArray.values(...args);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   }
   /**
    * Returns the associated set as string.
@@ -264,11 +288,15 @@ class TokenList {
    */
 
 
+<<<<<<< HEAD
   add() {
     for (var _len = arguments.length, items = new Array(_len), _key = 0; _key < _len; _key++) {
       items[_key] = arguments[_key];
     }
 
+=======
+  add(...items) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     this.value += ' ' + items.join(' ');
   }
   /**
@@ -280,11 +308,15 @@ class TokenList {
    */
 
 
+<<<<<<< HEAD
   remove() {
     for (var _len2 = arguments.length, items = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
       items[_key2] = arguments[_key2];
     }
 
+=======
+  remove(...items) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     this.value = Object(lodash__WEBPACK_IMPORTED_MODULE_0__["without"])(this._valueAsArray, ...items).join(' ');
   }
   /**

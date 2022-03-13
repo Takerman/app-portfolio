@@ -14,7 +14,11 @@
  */
 function wp_get_server_protocol() {
 	$protocol = isset( $_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : '';
+<<<<<<< HEAD
 	if ( ! in_array( $protocol, array( 'HTTP/1.1', 'HTTP/2', 'HTTP/2.0', 'HTTP/3' ), true ) ) {
+=======
+	if ( ! in_array( $protocol, array( 'HTTP/1.1', 'HTTP/2', 'HTTP/2.0' ), true ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$protocol = 'HTTP/1.0';
 	}
 	return $protocol;
@@ -76,7 +80,11 @@ function wp_fix_server_vars() {
 	}
 
 	// Fix for Dreamhost and other PHP as CGI hosts.
+<<<<<<< HEAD
 	if ( isset( $_SERVER['SCRIPT_NAME'] ) && ( strpos( $_SERVER['SCRIPT_NAME'], 'php.cgi' ) !== false ) ) {
+=======
+	if ( strpos( $_SERVER['SCRIPT_NAME'], 'php.cgi' ) !== false ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		unset( $_SERVER['PATH_INFO'] );
 	}
 
@@ -191,7 +199,11 @@ function wp_check_php_mysql_versions() {
 function wp_get_environment_type() {
 	static $current_env = '';
 
+<<<<<<< HEAD
 	if ( ! defined( 'WP_RUN_CORE_TESTS' ) && $current_env ) {
+=======
+	if ( $current_env ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		return $current_env;
 	}
 
@@ -415,7 +427,11 @@ function timer_stop( $display = 0, $precision = 3 ) {
  * When `WP_DEBUG_LOG` is true, errors will be logged to `wp-content/debug.log`.
  * When `WP_DEBUG_LOG` is a valid path, errors will be logged to the specified file.
  *
+<<<<<<< HEAD
  * Errors are never displayed for XML-RPC, REST, `ms-files.php`, and Ajax requests.
+=======
+ * Errors are never displayed for XML-RPC, REST, and Ajax requests.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since 3.0.0
  * @since 5.1.0 `WP_DEBUG_LOG` can be a file path.
@@ -426,7 +442,11 @@ function wp_debug_mode() {
 	 * Filters whether to allow the debug mode check to occur.
 	 *
 	 * This filter runs before it can be used by plugins. It is designed for
+<<<<<<< HEAD
 	 * non-web runtimes. Returning false causes the `WP_DEBUG` and related
+=======
+	 * non-web run-times. Returning false causes the `WP_DEBUG` and related
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * constants to not be checked and the default PHP values for errors
 	 * will be used unless you take care to update them yourself.
 	 *
@@ -481,10 +501,14 @@ function wp_debug_mode() {
 		error_reporting( E_CORE_ERROR | E_CORE_WARNING | E_COMPILE_ERROR | E_ERROR | E_WARNING | E_PARSE | E_USER_ERROR | E_USER_WARNING | E_RECOVERABLE_ERROR );
 	}
 
+<<<<<<< HEAD
 	if (
 		defined( 'XMLRPC_REQUEST' ) || defined( 'REST_REQUEST' ) || defined( 'MS_FILES_REQUEST' ) ||
 		( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) ||
 		wp_doing_ajax() || wp_is_json_request() ) {
+=======
+	if ( defined( 'XMLRPC_REQUEST' ) || defined( 'REST_REQUEST' ) || ( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) || wp_doing_ajax() || wp_is_json_request() ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		ini_set( 'display_errors', 0 );
 	}
 }
@@ -673,12 +697,20 @@ function wp_start_object_cache() {
 	 * Filters whether to enable loading of the object-cache.php drop-in.
 	 *
 	 * This filter runs before it can be used by plugins. It is designed for non-web
+<<<<<<< HEAD
 	 * runtimes. If false is returned, object-cache.php will never be loaded.
+=======
+	 * run-times. If false is returned, object-cache.php will never be loaded.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.8.0
 	 *
 	 * @param bool $enable_object_cache Whether to enable loading object-cache.php (if present).
+<<<<<<< HEAD
 	 *                                  Default true.
+=======
+	 *                                    Default true.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	if ( $first_init && apply_filters( 'enable_loading_object_cache_dropin', true ) ) {
 		if ( ! function_exists( 'wp_cache_init' ) ) {

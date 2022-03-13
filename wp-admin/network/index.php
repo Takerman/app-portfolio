@@ -17,7 +17,10 @@ if ( ! current_user_can( 'manage_network' ) ) {
 	wp_die( __( 'Sorry, you are not allowed to access this page.' ), 403 );
 }
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 $title       = __( 'Dashboard' );
 $parent_file = 'index.php';
 

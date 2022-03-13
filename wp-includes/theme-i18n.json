@@ -5,11 +5,14 @@
 					{
 						"name": "Font size name"
 					}
+<<<<<<< HEAD
 				],
 				"fontFamilies": [
 					{
 						"name": "Font family name"
 					}
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				]
 		},
 		"color": {
@@ -36,11 +39,14 @@
 						{
 							"name": "Font size name"
 						}
+<<<<<<< HEAD
 					],
 					"fontFamilies": [
 						{
 							"name": "Font family name"
 						}
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					]
 				},
 				"color": {
@@ -57,6 +63,7 @@
 				}
 			}
 		}
+<<<<<<< HEAD
 	},
 	"customTemplates": [
 		{
@@ -68,4 +75,7 @@
 			"title": "Template part name"
 		}
 	]
+=======
+	}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }

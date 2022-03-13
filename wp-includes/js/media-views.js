@@ -3446,7 +3446,11 @@ Library = wp.media.controller.State.extend(/** @lends wp.media.controller.Librar
 	isImageAttachment: function( attachment ) {
 		// If uploading, we know the filename but not the mime type.
 		if ( attachment.get('uploading') ) {
+<<<<<<< HEAD
 			return /\.(jpe?g|png|gif|webp)$/i.test( attachment.get('filename') );
+=======
+			return /\.(jpe?g|png|gif)$/i.test( attachment.get('filename') );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		return attachment.get('type') === 'image';
@@ -4045,6 +4049,10 @@ FeaturedImage = Library.extend(/** @lends wp.media.controller.FeaturedImage.prot
 	 * @since 3.5.0
 	 */
 	activate: function() {
+<<<<<<< HEAD
+=======
+		this.updateSelection();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		this.frame.on( 'open', this.updateSelection, this );
 
 		Library.prototype.activate.apply( this, arguments );
@@ -7459,12 +7467,17 @@ ReplaceImage = Library.extend(/** @lends wp.media.controller.ReplaceImage.protot
 	 * @since 3.9.0
 	 */
 	activate: function() {
+<<<<<<< HEAD
 		this.frame.on( 'content:render:browse', this.updateSelection, this );
 
+=======
+		this.updateSelection();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		Library.prototype.activate.apply( this, arguments );
 	},
 
 	/**
+<<<<<<< HEAD
 	 * @since 5.9.0
 	 */
 	deactivate: function() {
@@ -7474,6 +7487,8 @@ ReplaceImage = Library.extend(/** @lends wp.media.controller.ReplaceImage.protot
 	},
 
 	/**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @since 3.9.0
 	 */
 	updateSelection: function() {
@@ -8080,8 +8095,13 @@ Modal = wp.media.View.extend(/** @lends wp.media.view.Modal.prototype */{
 		// Enable page scrolling.
 		$( 'body' ).removeClass( 'modal-open' );
 
+<<<<<<< HEAD
 		// Hide the modal element by adding display:none.
 		this.$el.hide();
+=======
+		// Hide modal and remove restricted media modal tab focus once it's closed.
+		this.$el.hide().off( 'keydown' );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		/*
 		 * Make visible again to assistive technologies all body children that

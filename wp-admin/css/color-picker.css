@@ -11,7 +11,11 @@
 /* Needs higher specificiity. */
 .wp-picker-container .wp-color-result.button {
 	min-height: 30px;
+<<<<<<< HEAD
 	margin: 0 6px 6px 0;
+=======
+	margin: 0 6px 6px 0px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	padding: 0 0 0 30px;
 	font-size: 11px;
 }

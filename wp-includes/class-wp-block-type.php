@@ -156,7 +156,11 @@ class WP_Block_Type {
 	public $provides_context = null;
 
 	/**
+<<<<<<< HEAD
 	 * Block type editor only script handle.
+=======
+	 * Block type editor script handle.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.0.0
 	 * @var string|null
@@ -164,7 +168,11 @@ class WP_Block_Type {
 	public $editor_script = null;
 
 	/**
+<<<<<<< HEAD
 	 * Block type front end and editor script handle.
+=======
+	 * Block type front end script handle.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.0.0
 	 * @var string|null
@@ -172,6 +180,7 @@ class WP_Block_Type {
 	public $script = null;
 
 	/**
+<<<<<<< HEAD
 	 * Block type front end only script handle.
 	 *
 	 * @since 5.9.0
@@ -181,6 +190,9 @@ class WP_Block_Type {
 
 	/**
 	 * Block type editor only style handle.
+=======
+	 * Block type editor style handle.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.0.0
 	 * @var string|null
@@ -188,7 +200,11 @@ class WP_Block_Type {
 	public $editor_style = null;
 
 	/**
+<<<<<<< HEAD
 	 * Block type front end and editor style handle.
+=======
+	 * Block type front end style handle.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.0.0
 	 * @var string|null
@@ -206,7 +222,10 @@ class WP_Block_Type {
 	 *              `uses_context`, and `provides_context` properties.
 	 * @since 5.6.0 Added the `api_version` property.
 	 * @since 5.8.0 Added the `variations` property.
+<<<<<<< HEAD
 	 * @since 5.9.0 Added the `view_script` property.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @see register_block_type()
 	 *
@@ -234,11 +253,18 @@ class WP_Block_Type {
 	 *     @type array|null    $attributes       Block type attributes property schemas.
 	 *     @type array         $uses_context     Context values inherited by blocks of this type.
 	 *     @type array|null    $provides_context Context provided by blocks of this type.
+<<<<<<< HEAD
 	 *     @type string|null   $editor_script    Block type editor only script handle.
 	 *     @type string|null   $script           Block type front end and editor script handle.
 	 *     @type string|null   $view_script      Block type front end only script handle.
 	 *     @type string|null   $editor_style     Block type editor only style handle.
 	 *     @type string|null   $style            Block type front end and editor style handle.
+=======
+	 *     @type string|null   $editor_script    Block type editor script handle.
+	 *     @type string|null   $script           Block type front end script handle.
+	 *     @type string|null   $editor_style     Block type editor style handle.
+	 *     @type string|null   $style            Block type front end style handle.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * }
 	 */
 	public function __construct( $block_type, $args = array() ) {

@@ -224,14 +224,22 @@ class getid3_matroska extends getid3_handler
 	 *
 	 * @var bool
 	 */
+<<<<<<< HEAD
 	public $hide_clusters    = true;
+=======
+	public static $hide_clusters    = true;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	/**
 	 * True to parse the whole file, not only header [default: FALSE].
 	 *
 	 * @var bool
 	 */
+<<<<<<< HEAD
 	public $parse_whole_file = false;
+=======
+	public static $parse_whole_file = false;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	/*
 	 * Private parser settings/placeholders.
@@ -586,7 +594,11 @@ class getid3_matroska extends getid3_handler
 					$info['matroska']['segment'][0]['length'] = $top_element['length'];
 
 					while ($this->getEBMLelement($element_data, $top_element['end'])) {
+<<<<<<< HEAD
 						if ($element_data['id'] != EBML_ID_CLUSTER || !$this->hide_clusters) { // collect clusters only if required
+=======
+						if ($element_data['id'] != EBML_ID_CLUSTER || !self::$hide_clusters) { // collect clusters only if required
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 							$info['matroska']['segments'][] = $element_data;
 						}
 						switch ($element_data['id']) {
@@ -618,7 +630,11 @@ class getid3_matroska extends getid3_handler
 												$this->warning('seek_entry[target_id] unexpectedly not set at '.$seek_entry['offset']);
 												break;
 											}
+<<<<<<< HEAD
 											if (($seek_entry['target_id'] != EBML_ID_CLUSTER) || !$this->hide_clusters) { // collect clusters only if required
+=======
+											if (($seek_entry['target_id'] != EBML_ID_CLUSTER) || !self::$hide_clusters) { // collect clusters only if required
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 												$info['matroska']['seek'][] = $seek_entry;
 											}
 											break;
@@ -905,7 +921,11 @@ class getid3_matroska extends getid3_handler
 								break;
 
 							case EBML_ID_CUES: // A top-level element to speed seeking access. All entries are local to the segment. Should be mandatory for non "live" streams.
+<<<<<<< HEAD
 								if ($this->hide_clusters) { // do not parse cues if hide clusters is "ON" till they point to clusters anyway
+=======
+								if (self::$hide_clusters) { // do not parse cues if hide clusters is "ON" till they point to clusters anyway
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 									$this->current_offset = $element_data['end'];
 									break;
 								}
@@ -1246,12 +1266,20 @@ class getid3_matroska extends getid3_handler
 									}
 									$this->current_offset = $subelement['end'];
 								}
+<<<<<<< HEAD
 								if (!$this->hide_clusters) {
+=======
+								if (!self::$hide_clusters) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 									$info['matroska']['cluster'][] = $cluster_entry;
 								}
 
 								// check to see if all the data we need exists already, if so, break out of the loop
+<<<<<<< HEAD
 								if (!$this->parse_whole_file) {
+=======
+								if (!self::$parse_whole_file) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 									if (isset($info['matroska']['info']) && is_array($info['matroska']['info'])) {
 										if (isset($info['matroska']['tracks']['tracks']) && is_array($info['matroska']['tracks']['tracks'])) {
 											if (count($info['matroska']['track_data_offsets']) == count($info['matroska']['tracks']['tracks'])) {

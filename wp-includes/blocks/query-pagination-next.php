@@ -20,6 +20,7 @@ function render_block_core_query_pagination_next( $attributes, $content, $block 
 	$max_page = isset( $block->context['query']['pages'] ) ? (int) $block->context['query']['pages'] : 0;
 
 	$wrapper_attributes = get_block_wrapper_attributes();
+<<<<<<< HEAD
 	$default_label      = __( 'Next Page' );
 	$label              = isset( $attributes['label'] ) && ! empty( $attributes['label'] ) ? $attributes['label'] : $default_label;
 	$pagination_arrow   = get_query_pagination_arrow( $block, true );
@@ -27,6 +28,11 @@ function render_block_core_query_pagination_next( $attributes, $content, $block 
 		$label .= $pagination_arrow;
 	}
 	$content = '';
+=======
+	$default_label      = __( 'Next Page &raquo;' );
+	$label              = isset( $attributes['label'] ) && ! empty( $attributes['label'] ) ? $attributes['label'] : $default_label;
+	$content            = '';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	// Check if the pagination is for Query that inherits the global context.
 	if ( isset( $block->context['query']['inherit'] ) && $block->context['query']['inherit'] ) {
@@ -43,9 +49,14 @@ function render_block_core_query_pagination_next( $attributes, $content, $block 
 		$content = get_next_posts_link( $label, $max_page );
 		remove_filter( 'next_posts_link_attributes', $filter_link_attributes );
 	} elseif ( ! $max_page || $max_page > $page ) {
+<<<<<<< HEAD
 		$custom_query           = new WP_Query( build_query_vars_from_query_block( $block, $page ) );
 		$custom_query_max_pages = (int) $custom_query->max_num_pages;
 		if ( $custom_query_max_pages && $custom_query_max_pages !== $page ) {
+=======
+		$custom_query = new WP_Query( build_query_vars_from_query_block( $block, $page ) );
+		if ( (int) $custom_query->max_num_pages !== $page ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$content = sprintf(
 				'<a href="%1$s" %2$s>%3$s</a>',
 				esc_url( add_query_arg( $page_key, $page + 1 ) ),

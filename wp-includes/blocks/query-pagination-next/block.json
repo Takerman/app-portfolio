@@ -1,7 +1,11 @@
 {
 	"apiVersion": 2,
 	"name": "core/query-pagination-next",
+<<<<<<< HEAD
 	"title": "Next Page",
+=======
+	"title": "Query Pagination Next",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	"category": "design",
 	"parent": [ "core/query-pagination" ],
 	"description": "Displays the next posts page link.",
@@ -11,12 +15,17 @@
 			"type": "string"
 		}
 	},
+<<<<<<< HEAD
 	"usesContext": [ "queryId", "query", "paginationArrow" ],
+=======
+	"usesContext": [ "queryId", "query" ],
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	"supports": {
 		"reusable": false,
 		"html": false,
 		"color": {
 			"gradients": true,
+<<<<<<< HEAD
 			"text": false
 		},
 		"typography": {
@@ -29,6 +38,13 @@
 			"__experimentalDefaultControls": {
 				"fontSize": true
 			}
+=======
+			"link": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	}
 }

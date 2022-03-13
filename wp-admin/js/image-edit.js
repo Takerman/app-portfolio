@@ -893,7 +893,11 @@
 			pop = this.intval( $('#imgedit-undone-' + postid).val() );
 
 		if ( pop < history.length ) {
+<<<<<<< HEAD
 			if ( confirm( $('#imgedit-leaving-' + postid).text() ) ) {
+=======
+			if ( confirm( $('#imgedit-leaving-' + postid).html() ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				return false;
 			}
 			return true;

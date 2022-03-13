@@ -13,7 +13,11 @@ class WP_Debug_Data {
 	 *
 	 * @since 5.2.0
 	 */
+<<<<<<< HEAD
 	public static function check_for_updates() {
+=======
+	static function check_for_updates() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		wp_version_check();
 		wp_update_plugins();
 		wp_update_themes();
@@ -32,7 +36,11 @@ class WP_Debug_Data {
 	 *
 	 * @return array The debug data for the site.
 	 */
+<<<<<<< HEAD
 	public static function debug_data() {
+=======
+	static function debug_data() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		global $wpdb;
 
 		// Save few function calls.
@@ -234,11 +242,21 @@ class WP_Debug_Data {
 			$compress_css_debug = 'undefined';
 		}
 
+<<<<<<< HEAD
 		// Check WP_ENVIRONMENT_TYPE.
 		if ( defined( 'WP_ENVIRONMENT_TYPE' ) ) {
 			$wp_environment_type = WP_ENVIRONMENT_TYPE;
 		} else {
 			$wp_environment_type = __( 'Undefined' );
+=======
+		// Check WP_LOCAL_DEV.
+		if ( defined( 'WP_LOCAL_DEV' ) ) {
+			$wp_local_dev       = WP_LOCAL_DEV ? __( 'Enabled' ) : __( 'Disabled' );
+			$wp_local_dev_debug = WP_LOCAL_DEV ? 'true' : 'false';
+		} else {
+			$wp_local_dev       = __( 'Undefined' );
+			$wp_local_dev_debug = 'undefined';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		$info['wp-constants'] = array(
@@ -316,10 +334,17 @@ class WP_Debug_Data {
 					'value' => $compress_css,
 					'debug' => $compress_css_debug,
 				),
+<<<<<<< HEAD
 				'WP_ENVIRONMENT_TYPE' => array(
 					'label' => 'WP_ENVIRONMENT_TYPE',
 					'value' => $wp_environment_type,
 					'debug' => $wp_environment_type,
+=======
+				'WP_LOCAL_DEV'        => array(
+					'label' => 'WP_LOCAL_DEV',
+					'value' => $wp_local_dev,
+					'debug' => $wp_local_dev_debug,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				),
 				'DB_CHARSET'          => array(
 					'label' => 'DB_CHARSET',
@@ -923,6 +948,7 @@ class WP_Debug_Data {
 			'private' => true,
 		);
 
+<<<<<<< HEAD
 		$info['wp-database']['fields']['max_allowed_packet'] = array(
 			'label' => __( 'Max allowed packet size' ),
 			'value' => self::get_mysql_var( 'max_allowed_packet' ),
@@ -933,6 +959,8 @@ class WP_Debug_Data {
 			'value' => self::get_mysql_var( 'max_connections' ),
 		);
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		// List must use plugins if there are any.
 		$mu_plugins = get_mu_plugins();
 
@@ -1406,6 +1434,7 @@ class WP_Debug_Data {
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Add to or modify the debug information shown on the Tools -> Site Health -> Info screen.
 		 *
 		 * Plugin or themes may wish to introduce their own debug information without creating
@@ -1418,12 +1447,25 @@ class WP_Debug_Data {
 		 *
 		 * All strings are expected to be plain text except `$description` that can contain
 		 * inline HTML tags (see below).
+=======
+		 * Add or modify the debug information.
+		 *
+		 * Plugin or themes may wish to introduce their own debug information without creating additional admin pages
+		 * they can utilize this filter to introduce their own sections or add more data to existing sections.
+		 *
+		 * Array keys for sections added by core are all prefixed with `wp-`, plugins and themes should use their own slug as
+		 * a prefix, both for consistency as well as avoiding key collisions. Note that the array keys are used as labels
+		 * for the copied data.
+		 *
+		 * All strings are expected to be plain text except $description that can contain inline HTML tags (see below).
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 *
 		 * @since 5.2.0
 		 *
 		 * @param array $args {
 		 *     The debug information to be added to the core information page.
 		 *
+<<<<<<< HEAD
 		 *     This is an associative multi-dimensional array, up to three levels deep.
 		 *     The topmost array holds the sections, keyed by section ID.
 		 *
@@ -1462,6 +1504,30 @@ class WP_Debug_Data {
 		 *                                        API keys here. Default false.
 		 *             }
 		 *         }
+=======
+		 *     This is an associative multi-dimensional array, up to three levels deep. The topmost array holds the sections.
+		 *     Each section has a `$fields` associative array (see below), and each `$value` in `$fields` can be
+		 *     another associative array of name/value pairs when there is more structured data to display.
+		 *
+		 *     @type string  $label        The title for this section of the debug output.
+		 *     @type string  $description  Optional. A description for your information section which may contain basic HTML
+		 *                                 markup, inline tags only as it is outputted in a paragraph.
+		 *     @type boolean $show_count   Optional. If set to `true` the amount of fields will be included in the title for
+		 *                                 this section.
+		 *     @type boolean $private      Optional. If set to `true` the section and all associated fields will be excluded
+		 *                                 from the copied data.
+		 *     @type array   $fields {
+		 *         An associative array containing the data to be displayed.
+		 *
+		 *         @type string  $label    The label for this piece of information.
+		 *         @type string  $value    The output that is displayed for this field. Text should be translated. Can be
+		 *                                 an associative array that is displayed as name/value pairs.
+		 *         @type string  $debug    Optional. The output that is used for this field when the user copies the data.
+		 *                                 It should be more concise and not translated. If not set, the content of `$value` is used.
+		 *                                 Note that the array keys are used as labels for the copied data.
+		 *         @type boolean $private  Optional. If set to `true` the field will not be included in the copied data
+		 *                                 allowing you to show, for example, API keys here.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 *     }
 		 * }
 		 */
@@ -1471,6 +1537,7 @@ class WP_Debug_Data {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Returns the value of a MySQL variable.
 	 *
 	 * @since 5.9.0
@@ -1496,6 +1563,8 @@ class WP_Debug_Data {
 	}
 
 	/**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * Format the information gathered for debugging, in a manner suitable for copying to a forum or support ticket.
 	 *
 	 * @since 5.2.0

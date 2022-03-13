@@ -81,7 +81,11 @@
 }
 
 .widget-inside {
+<<<<<<< HEAD
 	padding: 1px 10px 10px;
+=======
+	padding: 1px 10px 10px 10px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	border-top: none;
 	line-height: 1.23076923;
 }

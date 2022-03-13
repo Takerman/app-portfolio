@@ -7,10 +7,13 @@
   16.1 - Manage Themes
 ------------------------------------------------------------------------------*/
 
+<<<<<<< HEAD
 .themes-php {
 	overflow-y: scroll;
 }
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 body.js .theme-browser.search-loading {
 	display: none;
 }
@@ -707,7 +710,11 @@ body.folded .theme-browser ~ .theme-overlay .theme-wrap {
 	font-size: 15px;
 	font-weight: 400;
 	line-height: 1.5;
+<<<<<<< HEAD
 	margin: 30px 0 0;
+=======
+	margin: 30px 0 0 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .theme-overlay .theme-tags {
@@ -715,7 +722,11 @@ body.folded .theme-browser ~ .theme-overlay .theme-wrap {
 	color: #646970;
 	font-size: 13px;
 	font-weight: 400;
+<<<<<<< HEAD
 	margin: 30px 0 0;
+=======
+	margin: 30px 0 0 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	padding-top: 20px;
 }
 
@@ -869,7 +880,11 @@ body.folded .theme-browser ~ .theme-overlay .theme-wrap {
 	}
 
 	.theme-browser .theme .theme-actions {
+<<<<<<< HEAD
 		padding: 5px 10px 4px;
+=======
+		padding: 5px 10px 4px 10px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	.theme-overlay.small-screenshot .theme-screenshots {
@@ -942,7 +957,11 @@ body.folded .theme-browser ~ .theme-overlay .theme-wrap {
 	}
 
 	.theme-overlay .theme-author {
+<<<<<<< HEAD
 		margin: 5px 0 15px;
+=======
+		margin: 5px 0 15px 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	.theme-overlay .current-label {
@@ -955,7 +974,11 @@ body.folded .theme-browser ~ .theme-overlay .theme-wrap {
 		clear: both;
 		left: 0;
 		right: 0;
+<<<<<<< HEAD
 		margin: -5px 0 20px;
+=======
+		margin: -5px 0 20px 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		width: 100%;
 		max-width: 280px;
 	}
@@ -1320,7 +1343,11 @@ div#custom-background-image img {
 }
 
 .background-position-control .button-group:last-child > label:last-child .button {
+<<<<<<< HEAD
 	border-radius: 0 0 3px;
+=======
+	border-radius: 0 0 3px 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .background-position-control .button-group:last-child > label:last-child .dashicons {

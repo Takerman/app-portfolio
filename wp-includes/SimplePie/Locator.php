@@ -64,7 +64,10 @@ class SimplePie_Locator
 	var $max_checked_feeds = 10;
 	var $force_fsockopen = false;
 	var $curl_options = array();
+<<<<<<< HEAD
 	var $dom;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	protected $registry;
 
 	public function __construct(SimplePie_File $file, $timeout = 10, $useragent = null, $max_checked_feeds = 10, $force_fsockopen = false, $curl_options = array())
@@ -76,11 +79,16 @@ class SimplePie_Locator
 		$this->force_fsockopen = $force_fsockopen;
 		$this->curl_options = $curl_options;
 
+<<<<<<< HEAD
 		if (class_exists('DOMDocument') && $this->file->body != '')
+=======
+		if (class_exists('DOMDocument'))
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		{
 			$this->dom = new DOMDocument();
 
 			set_error_handler(array('SimplePie_Misc', 'silence_errors'));
+<<<<<<< HEAD
 			try
 			{
 				$this->dom->loadHTML($this->file->body);
@@ -89,6 +97,9 @@ class SimplePie_Locator
 			{
 				$this->dom = null;
 			}
+=======
+			$this->dom->loadHTML($this->file->body);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			restore_error_handler();
 		}
 		else

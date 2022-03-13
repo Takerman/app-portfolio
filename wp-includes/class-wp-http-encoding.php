@@ -97,6 +97,7 @@ class WP_Http_Encoding {
 	 * @link https://www.php.net/manual/en/function.gzinflate.php#70875
 	 * @link https://www.php.net/manual/en/function.gzinflate.php#77336
 	 *
+<<<<<<< HEAD
 	 * @param string $gz_data String to decompress.
 	 * @return string|false Decompressed string on success, false on failure.
 	 */
@@ -116,19 +117,48 @@ class WP_Http_Encoding {
 				}
 				if ( $flg & 16 ) {
 					$i = strpos( $gz_data, "\0", $i ) + 1;
+=======
+	 * @param string $gzData String to decompress.
+	 * @return string|false Decompressed string on success, false on failure.
+	 */
+	public static function compatible_gzinflate( $gzData ) {
+
+		// Compressed data might contain a full header, if so strip it for gzinflate().
+		if ( "\x1f\x8b\x08" === substr( $gzData, 0, 3 ) ) {
+			$i   = 10;
+			$flg = ord( substr( $gzData, 3, 1 ) );
+			if ( $flg > 0 ) {
+				if ( $flg & 4 ) {
+					list($xlen) = unpack( 'v', substr( $gzData, $i, 2 ) );
+					$i          = $i + 2 + $xlen;
+				}
+				if ( $flg & 8 ) {
+					$i = strpos( $gzData, "\0", $i ) + 1;
+				}
+				if ( $flg & 16 ) {
+					$i = strpos( $gzData, "\0", $i ) + 1;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				}
 				if ( $flg & 2 ) {
 					$i = $i + 2;
 				}
 			}
+<<<<<<< HEAD
 			$decompressed = @gzinflate( substr( $gz_data, $i, -8 ) );
+=======
+			$decompressed = @gzinflate( substr( $gzData, $i, -8 ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( false !== $decompressed ) {
 				return $decompressed;
 			}
 		}
 
 		// Compressed data from java.util.zip.Deflater amongst others.
+<<<<<<< HEAD
 		$decompressed = @gzinflate( substr( $gz_data, 2 ) );
+=======
+		$decompressed = @gzinflate( substr( $gzData, 2 ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( false !== $decompressed ) {
 			return $decompressed;
 		}

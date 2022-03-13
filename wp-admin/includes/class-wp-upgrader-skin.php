@@ -165,7 +165,11 @@ class WP_Upgrader_Skin {
 	/**
 	 * @since 2.8.0
 	 *
+<<<<<<< HEAD
 	 * @param string|WP_Error $errors Errors.
+=======
+	 * @param string|WP_Error $errors
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public function error( $errors ) {
 		if ( ! $this->done_header ) {
@@ -186,6 +190,7 @@ class WP_Upgrader_Skin {
 
 	/**
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$string` (a PHP reserved keyword) to `$feedback` for PHP 8 named parameter support.
 	 *
 	 * @param string $feedback Message data.
@@ -207,6 +212,28 @@ class WP_Upgrader_Skin {
 			return;
 		}
 		show_message( $feedback );
+=======
+	 *
+	 * @param string $string
+	 * @param mixed  ...$args Optional text replacements.
+	 */
+	public function feedback( $string, ...$args ) {
+		if ( isset( $this->upgrader->strings[ $string ] ) ) {
+			$string = $this->upgrader->strings[ $string ];
+		}
+
+		if ( strpos( $string, '%' ) !== false ) {
+			if ( $args ) {
+				$args   = array_map( 'strip_tags', $args );
+				$args   = array_map( 'esc_html', $args );
+				$string = vsprintf( $string, $args );
+			}
+		}
+		if ( empty( $string ) ) {
+			return;
+		}
+		show_message( $string );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	/**

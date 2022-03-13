@@ -101,7 +101,11 @@ th {
 	width: 100%;
 	border: none;
 	text-align: justify;
+<<<<<<< HEAD
 	margin: 0 0 1em;
+=======
+	margin: 0 0 1em 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	padding: 0;
 }
 

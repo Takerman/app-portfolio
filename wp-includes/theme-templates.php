@@ -1,6 +1,7 @@
 <?php
 
 /**
+<<<<<<< HEAD
  * Sets a custom slug when creating auto-draft template parts.
  *
  * This is only needed for auto-drafts created by the regular WP editor.
@@ -32,6 +33,8 @@ function wp_set_unique_slug_on_create_template_part( $post_id ) {
 }
 
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Generates a unique slug for templates.
  *
  * @access private
@@ -45,7 +48,11 @@ function wp_set_unique_slug_on_create_template_part( $post_id ) {
  * @return string The original, desired slug.
  */
 function wp_filter_wp_template_unique_post_slug( $override_slug, $slug, $post_ID, $post_status, $post_type ) {
+<<<<<<< HEAD
 	if ( 'wp_template' !== $post_type && 'wp_template_part' !== $post_type ) {
+=======
+	if ( 'wp_template' !== $post_type ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		return $override_slug;
 	}
 
@@ -99,7 +106,11 @@ function wp_filter_wp_template_unique_post_slug( $override_slug, $slug, $post_ID
 }
 
 /**
+<<<<<<< HEAD
  * Prints the skip-link script & styles.
+=======
+ * Print the skip-link script & styles.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @access private
  * @since 5.8.0
@@ -166,7 +177,11 @@ function the_block_template_skip_link() {
 	<script>
 	( function() {
 		var skipLinkTarget = document.querySelector( 'main' ),
+<<<<<<< HEAD
 			sibling,
+=======
+			parentEl,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			skipLinkTargetID,
 			skipLink;
 
@@ -177,10 +192,17 @@ function the_block_template_skip_link() {
 
 		// Get the site wrapper.
 		// The skip-link will be injected in the beginning of it.
+<<<<<<< HEAD
 		sibling = document.querySelector( '.wp-site-blocks' );
 
 		// Early exit if the root element was not found.
 		if ( ! sibling ) {
+=======
+		parentEl = document.querySelector( '.wp-site-blocks' );
+
+		// Early exit if the root element was not found.
+		if ( ! parentEl ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return;
 		}
 
@@ -198,20 +220,32 @@ function the_block_template_skip_link() {
 		skipLink.innerHTML = '<?php esc_html_e( 'Skip to content' ); ?>';
 
 		// Inject the skip link.
+<<<<<<< HEAD
 		sibling.parentElement.insertBefore( skipLink, sibling );
+=======
+		parentEl.insertAdjacentElement( 'afterbegin', skipLink );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}() );
 	</script>
 	<?php
 }
 
 /**
+<<<<<<< HEAD
  * Enables the block templates (editor mode) for themes with theme.json by default.
+=======
+ * Enable the block templates (editor mode) for themes with theme.json by default.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @access private
  * @since 5.8.0
  */
 function wp_enable_block_templates() {
+<<<<<<< HEAD
 	if ( wp_is_block_theme() || WP_Theme_JSON_Resolver::theme_has_support() ) {
+=======
+	if ( WP_Theme_JSON_Resolver::theme_has_support() ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		add_theme_support( 'block-templates' );
 	}
 }

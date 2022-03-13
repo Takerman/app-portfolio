@@ -283,12 +283,20 @@ const keyboardReturn = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["c
  * @return {JSX.Element}  Icon component
  */
 
+<<<<<<< HEAD
 function Icon(_ref) {
   let {
     icon,
     size = 24,
     ...props
   } = _ref;
+=======
+function Icon({
+  icon,
+  size = 24,
+  ...props
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["cloneElement"])(icon, {
     width: size,
     height: size,
@@ -404,6 +412,7 @@ const bold = {
   tagName: 'strong',
   className: null,
 
+<<<<<<< HEAD
   edit(_ref) {
     let {
       isActive,
@@ -416,13 +425,28 @@ const bold = {
       onChange(Object(external_wp_richText_["toggleFormat"])(value, {
         type: bold_name,
         title
+=======
+  edit({
+    isActive,
+    value,
+    onChange,
+    onFocus
+  }) {
+    function onToggle() {
+      onChange(Object(external_wp_richText_["toggleFormat"])(value, {
+        type: bold_name
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       }));
     }
 
     function onClick() {
+<<<<<<< HEAD
       onChange(Object(external_wp_richText_["toggleFormat"])(value, {
         type: bold_name
       }));
+=======
+      onToggle();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       onFocus();
     }
 
@@ -503,6 +527,7 @@ const code_code = {
     return value;
   },
 
+<<<<<<< HEAD
   edit(_ref) {
     let {
       value,
@@ -515,6 +540,17 @@ const code_code = {
       onChange(Object(external_wp_richText_["toggleFormat"])(value, {
         type: code_name,
         title: code_title
+=======
+  edit({
+    value,
+    onChange,
+    onFocus,
+    isActive
+  }) {
+    function onClick() {
+      onChange(Object(external_wp_richText_["toggleFormat"])(value, {
+        type: code_name
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       }));
       onFocus();
     }
@@ -523,8 +559,12 @@ const code_code = {
       icon: code["a" /* default */],
       title: code_title,
       onClick: onClick,
+<<<<<<< HEAD
       isActive: isActive,
       role: "menuitemcheckbox"
+=======
+      isActive: isActive
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     });
   }
 
@@ -569,6 +609,7 @@ const image_image = {
   edit: Edit
 };
 
+<<<<<<< HEAD
 function InlineUI(_ref) {
   let {
     value,
@@ -576,6 +617,14 @@ function InlineUI(_ref) {
     activeObjectAttributes,
     contentRef
   } = _ref;
+=======
+function InlineUI({
+  value,
+  onChange,
+  activeObjectAttributes,
+  contentRef
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const {
     style
   } = activeObjectAttributes;
@@ -597,7 +646,11 @@ function InlineUI(_ref) {
       newReplacements[value.start] = {
         type: image_name,
         attributes: { ...activeObjectAttributes,
+<<<<<<< HEAD
           style: width ? `width: ${width}px;` : ''
+=======
+          style: `width: ${width}px;`
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         }
       };
       onChange({ ...value,
@@ -619,6 +672,7 @@ function InlineUI(_ref) {
   })));
 }
 
+<<<<<<< HEAD
 function Edit(_ref2) {
   let {
     value,
@@ -628,6 +682,16 @@ function Edit(_ref2) {
     activeObjectAttributes,
     contentRef
   } = _ref2;
+=======
+function Edit({
+  value,
+  onChange,
+  onFocus,
+  isObjectActive,
+  activeObjectAttributes,
+  contentRef
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const [isModalOpen, setIsModalOpen] = Object(external_wp_element_["useState"])(false);
 
   function openModal() {
@@ -650,6 +714,7 @@ function Edit(_ref2) {
     isActive: isObjectActive
   }), isModalOpen && Object(external_wp_element_["createElement"])(external_wp_blockEditor_["MediaUpload"], {
     allowedTypes: ALLOWED_MEDIA_TYPES,
+<<<<<<< HEAD
     onSelect: _ref3 => {
       let {
         id,
@@ -657,6 +722,14 @@ function Edit(_ref2) {
         alt,
         width: imgWidth
       } = _ref3;
+=======
+    onSelect: ({
+      id,
+      url,
+      alt,
+      width: imgWidth
+    }) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       closeModal();
       onChange(Object(external_wp_richText_["insertObject"])(value, {
         type: image_name,
@@ -670,10 +743,16 @@ function Edit(_ref2) {
       onFocus();
     },
     onClose: closeModal,
+<<<<<<< HEAD
     render: _ref4 => {
       let {
         open
       } = _ref4;
+=======
+    render: ({
+      open
+    }) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       open();
       return null;
     }
@@ -720,6 +799,7 @@ const italic = {
   tagName: 'em',
   className: null,
 
+<<<<<<< HEAD
   edit(_ref) {
     let {
       isActive,
@@ -732,13 +812,28 @@ const italic = {
       onChange(Object(external_wp_richText_["toggleFormat"])(value, {
         type: italic_name,
         title: italic_title
+=======
+  edit({
+    isActive,
+    value,
+    onChange,
+    onFocus
+  }) {
+    function onToggle() {
+      onChange(Object(external_wp_richText_["toggleFormat"])(value, {
+        type: italic_name
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       }));
     }
 
     function onClick() {
+<<<<<<< HEAD
       onChange(Object(external_wp_richText_["toggleFormat"])(value, {
         type: italic_name
       }));
+=======
+      onToggle();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       onFocus();
     }
 
@@ -777,9 +872,12 @@ var library_link = __webpack_require__("Bpkj");
 // EXTERNAL MODULE: external ["wp","a11y"]
 var external_wp_a11y_ = __webpack_require__("gdqT");
 
+<<<<<<< HEAD
 // EXTERNAL MODULE: external ["wp","data"]
 var external_wp_data_ = __webpack_require__("1ZqX");
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 // EXTERNAL MODULE: external "lodash"
 var external_lodash_ = __webpack_require__("YLtl");
 
@@ -870,6 +968,7 @@ function isValidHref(href) {
  * @return {Object} The final format object.
  */
 
+<<<<<<< HEAD
 function createLinkFormat(_ref) {
   let {
     url,
@@ -877,6 +976,14 @@ function createLinkFormat(_ref) {
     id,
     opensInNewWindow
   } = _ref;
+=======
+function createLinkFormat({
+  url,
+  type,
+  id,
+  opensInNewWindow
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const format = {
     type: 'core/link',
     attributes: {
@@ -893,6 +1000,7 @@ function createLinkFormat(_ref) {
 
   return format;
 }
+<<<<<<< HEAD
 /* eslint-disable jsdoc/no-undefined-types */
 
 /**
@@ -1038,6 +1146,8 @@ function useLinkInstanceKey(instance) {
 }
 
 /* harmony default export */ var use_link_instance_key = (useLinkInstanceKey);
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/format-library/build-module/link/inline.js
 
@@ -1051,7 +1161,10 @@ function useLinkInstanceKey(instance) {
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /**
  * Internal dependencies
  */
@@ -1059,6 +1172,7 @@ function useLinkInstanceKey(instance) {
 
 
 
+<<<<<<< HEAD
 
 function InlineLinkUI(_ref) {
   let {
@@ -1074,6 +1188,18 @@ function InlineLinkUI(_ref) {
   const richLinkTextValue = getRichTextValueFromSelection(value, isActive); // Get the text content minus any HTML tags.
 
   const richTextText = richLinkTextValue.text;
+=======
+function InlineLinkUI({
+  isActive,
+  activeAttributes,
+  addingLink,
+  value,
+  onChange,
+  speak,
+  stopAddingLink,
+  contentRef
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   /**
    * Pending settings to be applied to the next link. When inserting a new
    * link, toggle values cannot be applied immediately, because there is not
@@ -1082,6 +1208,7 @@ function InlineLinkUI(_ref) {
    *
    * @type {[Object|undefined,Function]}
    */
+<<<<<<< HEAD
 
   const [nextLinkValue, setNextLinkValue] = Object(external_wp_element_["useState"])();
   const {
@@ -1099,11 +1226,15 @@ function InlineLinkUI(_ref) {
       userCanCreatePages: _settings.__experimentalUserCanCreatePages
     };
   }, []);
+=======
+  const [nextLinkValue, setNextLinkValue] = Object(external_wp_element_["useState"])();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const linkValue = {
     url: activeAttributes.url,
     type: activeAttributes.type,
     id: activeAttributes.id,
     opensInNewTab: activeAttributes.target === '_blank',
+<<<<<<< HEAD
     title: richTextText,
     ...nextLinkValue
   };
@@ -1115,6 +1246,11 @@ function InlineLinkUI(_ref) {
     speak(Object(external_wp_i18n_["__"])('Link removed.'), 'assertive');
   }
 
+=======
+    ...nextLinkValue
+  };
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   function onChangeLink(nextValue) {
     // Merge with values from state, both for the purpose of assigning the
     // next state value, and for use in constructing the new link format if
@@ -1137,12 +1273,17 @@ function InlineLinkUI(_ref) {
     }
 
     const newUrl = Object(external_wp_url_["prependHTTP"])(nextValue.url);
+<<<<<<< HEAD
     const linkFormat = createLinkFormat({
+=======
+    const format = createLinkFormat({
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       url: newUrl,
       type: nextValue.type,
       id: nextValue.id !== undefined && nextValue.id !== null ? String(nextValue.id) : undefined,
       opensInNewWindow: nextValue.opensInNewTab
     });
+<<<<<<< HEAD
     const newText = nextValue.title || newUrl;
 
     if (Object(external_wp_richText_["isCollapsed"])(value) && !isActive) {
@@ -1176,6 +1317,17 @@ function InlineLinkUI(_ref) {
         newValue = Object(external_wp_richText_["replace"])(value, richTextText, newValue);
       }
 
+=======
+
+    if (Object(external_wp_richText_["isCollapsed"])(value) && !isActive) {
+      const newText = nextValue.title || newUrl;
+      const toInsert = Object(external_wp_richText_["applyFormat"])(Object(external_wp_richText_["create"])({
+        text: newText
+      }), format, 0, newText.length);
+      onChange(Object(external_wp_richText_["insert"])(value, toInsert));
+    } else {
+      const newValue = Object(external_wp_richText_["applyFormat"])(value, format);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       newValue.start = newValue.end;
       newValue.activeFormats = [];
       onChange(newValue);
@@ -1200,6 +1352,7 @@ function InlineLinkUI(_ref) {
     ref: contentRef,
     value,
     settings: link_link
+<<<<<<< HEAD
   }); // Generate a string based key that is unique to this anchor reference.
   // This is used to force re-mount the LinkControl component to avoid
   // potential stale state bugs caused by the component not being remounted
@@ -1232,12 +1385,19 @@ function InlineLinkUI(_ref) {
     });
   }
 
+=======
+  }); // The focusOnMount prop shouldn't evolve during render of a Popover
+  // otherwise it causes a render of the content.
+
+  const focusOnMount = Object(external_wp_element_["useRef"])(addingLink ? 'firstElement' : false);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   return Object(external_wp_element_["createElement"])(external_wp_components_["Popover"], {
     anchorRef: anchorRef,
     focusOnMount: focusOnMount.current,
     onClose: stopAddingLink,
     position: "bottom center"
   }, Object(external_wp_element_["createElement"])(external_wp_blockEditor_["__experimentalLinkControl"], {
+<<<<<<< HEAD
     key: forceRemountKey,
     value: linkValue,
     onChange: onChangeLink,
@@ -1272,6 +1432,14 @@ function getRichTextValueFromSelection(value, isActive) {
   return Object(external_wp_richText_["slice"])(value, textStart, textEnd);
 }
 
+=======
+    value: linkValue,
+    onChange: onChangeLink,
+    forceIsEditingLink: addingLink
+  }));
+}
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /* harmony default export */ var inline = (Object(external_wp_components_["withSpokenMessages"])(InlineLinkUI));
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/format-library/build-module/link/index.js
@@ -1293,11 +1461,15 @@ function getRichTextValueFromSelection(value, isActive) {
  */
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 const link_name = 'core/link';
 
 const link_title = Object(external_wp_i18n_["__"])('Link');
 
+<<<<<<< HEAD
 function link_Edit(_ref) {
   let {
     isActive,
@@ -1307,12 +1479,26 @@ function link_Edit(_ref) {
     onFocus,
     contentRef
   } = _ref;
+=======
+function link_Edit({
+  isActive,
+  activeAttributes,
+  value,
+  onChange,
+  onFocus,
+  contentRef
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const [addingLink, setAddingLink] = Object(external_wp_element_["useState"])(false);
 
   function addLink() {
     const text = Object(external_wp_richText_["getTextContent"])(Object(external_wp_richText_["slice"])(value));
 
+<<<<<<< HEAD
     if (text && Object(external_wp_url_["isURL"])(text) && isValidHref(text)) {
+=======
+    if (text && Object(external_wp_url_["isURL"])(text)) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       onChange(Object(external_wp_richText_["applyFormat"])(value, {
         type: link_name,
         attributes: {
@@ -1388,12 +1574,19 @@ const link_link = {
     target: 'target'
   },
 
+<<<<<<< HEAD
   __unstablePasteRule(value, _ref2) {
     let {
       html,
       plainText
     } = _ref2;
 
+=======
+  __unstablePasteRule(value, {
+    html,
+    plainText
+  }) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     if (Object(external_wp_richText_["isCollapsed"])(value)) {
       return value;
     }
@@ -1440,6 +1633,7 @@ const strikethrough = {
   tagName: 's',
   className: null,
 
+<<<<<<< HEAD
   edit(_ref) {
     let {
       isActive,
@@ -1452,6 +1646,17 @@ const strikethrough = {
       onChange(Object(external_wp_richText_["toggleFormat"])(value, {
         type: strikethrough_name,
         title: strikethrough_title
+=======
+  edit({
+    isActive,
+    value,
+    onChange,
+    onFocus
+  }) {
+    function onClick() {
+      onChange(Object(external_wp_richText_["toggleFormat"])(value, {
+        type: strikethrough_name
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       }));
       onFocus();
     }
@@ -1460,8 +1665,12 @@ const strikethrough = {
       icon: format_strikethrough["a" /* default */],
       title: strikethrough_title,
       onClick: onClick,
+<<<<<<< HEAD
       isActive: isActive,
       role: "menuitemcheckbox"
+=======
+      isActive: isActive
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     });
   }
 
@@ -1477,31 +1686,48 @@ const strikethrough = {
 
 
 const underline_name = 'core/underline';
+<<<<<<< HEAD
 
 const underline_title = Object(external_wp_i18n_["__"])('Underline');
 
 const underline = {
   name: underline_name,
   title: underline_title,
+=======
+const underline = {
+  name: underline_name,
+  title: Object(external_wp_i18n_["__"])('Underline'),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   tagName: 'span',
   className: null,
   attributes: {
     style: 'style'
   },
 
+<<<<<<< HEAD
   edit(_ref) {
     let {
       value,
       onChange
     } = _ref;
 
+=======
+  edit({
+    value,
+    onChange
+  }) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     const onToggle = () => {
       onChange(Object(external_wp_richText_["toggleFormat"])(value, {
         type: underline_name,
         attributes: {
           style: 'text-decoration: underline;'
+<<<<<<< HEAD
         },
         title: underline_title
+=======
+        }
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       }));
     };
 
@@ -1520,6 +1746,7 @@ const underline = {
 // EXTERNAL MODULE: ./node_modules/@wordpress/icons/build-module/icon/index.js
 var icon = __webpack_require__("iClF");
 
+<<<<<<< HEAD
 // CONCATENATED MODULE: ./node_modules/@wordpress/icons/build-module/library/text-color.js
 
 
@@ -1534,6 +1761,13 @@ const textColor = Object(external_wp_element_["createElement"])(external_wp_prim
   d: "M12.9 6h-2l-4 11h1.9l1.1-3h4.2l1.1 3h1.9L12.9 6zm-2.5 6.5l1.5-4.9 1.7 4.9h-3.2z"
 }));
 /* harmony default export */ var text_color = (textColor);
+=======
+// EXTERNAL MODULE: ./node_modules/@wordpress/icons/build-module/library/text-color.js
+var text_color = __webpack_require__("uGfJ");
+
+// EXTERNAL MODULE: external ["wp","data"]
+var external_wp_data_ = __webpack_require__("1ZqX");
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/format-library/build-module/text-color/inline.js
 
@@ -1550,13 +1784,17 @@ const textColor = Object(external_wp_element_["createElement"])(external_wp_prim
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /**
  * Internal dependencies
  */
 
 
+<<<<<<< HEAD
 
 function parseCSS() {
   let css = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
@@ -1646,11 +1884,40 @@ function ColorPicker(_ref) {
     value,
     onChange
   } = _ref;
+=======
+function getActiveColor(formatName, formatValue, colors) {
+  const activeColorFormat = Object(external_wp_richText_["getActiveFormat"])(formatValue, formatName);
+
+  if (!activeColorFormat) {
+    return;
+  }
+
+  const styleColor = activeColorFormat.attributes.style;
+
+  if (styleColor) {
+    return styleColor.replace(new RegExp(`^color:\\s*`), '');
+  }
+
+  const currentClass = activeColorFormat.attributes.class;
+
+  if (currentClass) {
+    const colorSlug = currentClass.replace(/.*has-([^\s]*)-color.*/, '$1');
+    return Object(external_wp_blockEditor_["getColorObjectByAttributeValues"])(colors, colorSlug).color;
+  }
+}
+
+const ColorPicker = ({
+  name,
+  value,
+  onChange
+}) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const colors = Object(external_wp_data_["useSelect"])(select => {
     const {
       getSettings
     } = select(external_wp_blockEditor_["store"]);
     return Object(external_lodash_["get"])(getSettings(), ['colors'], []);
+<<<<<<< HEAD
   }, []);
   const onColorChange = Object(external_wp_element_["useCallback"])(color => {
     onChange(setColors(value, name, colors, {
@@ -1703,6 +1970,53 @@ function InlineColorUI(_ref2) {
     value: value,
     onChange: onChange
   })));
+=======
+  });
+  const onColorChange = Object(external_wp_element_["useCallback"])(color => {
+    if (color) {
+      const colorObject = Object(external_wp_blockEditor_["getColorObjectByColorValue"])(colors, color);
+      onChange(Object(external_wp_richText_["applyFormat"])(value, {
+        type: name,
+        attributes: colorObject ? {
+          class: Object(external_wp_blockEditor_["getColorClassName"])('color', colorObject.slug)
+        } : {
+          style: `color:${color}`
+        }
+      }));
+    } else {
+      onChange(Object(external_wp_richText_["removeFormat"])(value, name));
+    }
+  }, [colors, onChange]);
+  const activeColor = Object(external_wp_element_["useMemo"])(() => getActiveColor(name, value, colors), [name, value, colors]);
+  return Object(external_wp_element_["createElement"])(external_wp_blockEditor_["ColorPalette"], {
+    value: activeColor,
+    onChange: onColorChange
+  });
+};
+
+function InlineColorUI({
+  name,
+  value,
+  onChange,
+  onClose,
+  contentRef
+}) {
+  const anchorRef = Object(external_wp_richText_["useAnchorRef"])({
+    ref: contentRef,
+    value,
+    settings: textColor
+  });
+  return Object(external_wp_element_["createElement"])(external_wp_blockEditor_["URLPopover"], {
+    value: value,
+    onClose: onClose,
+    className: "components-inline-color-popover",
+    anchorRef: anchorRef
+  }, Object(external_wp_element_["createElement"])(ColorPicker, {
+    name: name,
+    value: value,
+    onChange: onChange
+  }));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/format-library/build-module/text-color/index.js
@@ -1726,6 +2040,7 @@ function InlineColorUI(_ref2) {
  */
 
 
+<<<<<<< HEAD
 const transparentValue = 'rgba(0, 0, 0, 0)';
 const text_color_name = 'core/text-color';
 
@@ -1774,12 +2089,41 @@ function TextColorEdit(_ref2) {
     activeAttributes,
     contentRef
   } = _ref2;
+=======
+const text_color_name = 'core/text-color';
+
+const text_color_title = Object(external_wp_i18n_["__"])('Text color');
+
+const EMPTY_ARRAY = [];
+
+function TextColorEdit({
+  value,
+  onChange,
+  isActive,
+  activeAttributes,
+  contentRef
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const allowCustomControl = Object(external_wp_blockEditor_["useSetting"])('color.custom');
   const colors = Object(external_wp_blockEditor_["useSetting"])('color.palette') || EMPTY_ARRAY;
   const [isAddingColor, setIsAddingColor] = Object(external_wp_element_["useState"])(false);
   const enableIsAddingColor = Object(external_wp_element_["useCallback"])(() => setIsAddingColor(true), [setIsAddingColor]);
   const disableIsAddingColor = Object(external_wp_element_["useCallback"])(() => setIsAddingColor(false), [setIsAddingColor]);
+<<<<<<< HEAD
   const colorIndicatorStyle = Object(external_wp_element_["useMemo"])(() => fillComputedColors(contentRef.current, getActiveColors(value, text_color_name, colors)), [value, colors]);
+=======
+  const colorIndicatorStyle = Object(external_wp_element_["useMemo"])(() => {
+    const activeColor = getActiveColor(text_color_name, value, colors);
+
+    if (!activeColor) {
+      return undefined;
+    }
+
+    return {
+      backgroundColor: activeColor
+    };
+  }, [value, colors]);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const hasColorsToChoose = !Object(external_lodash_["isEmpty"])(colors) || !allowCustomControl;
 
   if (!hasColorsToChoose && !isActive) {
@@ -1787,6 +2131,7 @@ function TextColorEdit(_ref2) {
   }
 
   return Object(external_wp_element_["createElement"])(external_wp_element_["Fragment"], null, Object(external_wp_element_["createElement"])(external_wp_blockEditor_["RichTextToolbarButton"], {
+<<<<<<< HEAD
     className: "format-library-text-color-button",
     isActive: isActive,
     icon: Object(external_wp_element_["createElement"])(icon["a" /* default */], {
@@ -1797,6 +2142,20 @@ function TextColorEdit(_ref2) {
     ,
     onClick: hasColorsToChoose ? enableIsAddingColor : () => onChange(Object(external_wp_richText_["removeFormat"])(value, text_color_name)),
     role: "menuitemcheckbox"
+=======
+    key: isActive ? 'text-color' : 'text-color-not-active',
+    className: "format-library-text-color-button",
+    name: isActive ? 'text-color' : undefined,
+    icon: Object(external_wp_element_["createElement"])(external_wp_element_["Fragment"], null, Object(external_wp_element_["createElement"])(icon["a" /* default */], {
+      icon: text_color["a" /* default */]
+    }), isActive && Object(external_wp_element_["createElement"])("span", {
+      className: "format-library-text-color-button__indicator",
+      style: colorIndicatorStyle
+    })),
+    title: text_color_title // If has no colors to choose but a color is active remove the color onClick
+    ,
+    onClick: hasColorsToChoose ? enableIsAddingColor : () => onChange(Object(external_wp_richText_["removeFormat"])(value, text_color_name))
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   }), isAddingColor && Object(external_wp_element_["createElement"])(InlineColorUI, {
     name: text_color_name,
     onClose: disableIsAddingColor,
@@ -1807,15 +2166,23 @@ function TextColorEdit(_ref2) {
   }));
 }
 
+<<<<<<< HEAD
 const text_color_textColor = {
   name: text_color_name,
   title: text_color_title,
   tagName: 'mark',
+=======
+const textColor = {
+  name: text_color_name,
+  title: text_color_title,
+  tagName: 'span',
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   className: 'has-inline-color',
   attributes: {
     style: 'style',
     class: 'class'
   },
+<<<<<<< HEAD
 
   /*
    * Since this format relies on the <mark> tag, it's important to
@@ -1836,6 +2203,8 @@ const text_color_textColor = {
     return value ? [addedCSS, value].join(';') : addedCSS;
   },
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   edit: TextColorEdit
 };
 
@@ -1874,6 +2243,7 @@ const subscript_subscript = {
   tagName: 'sub',
   className: null,
 
+<<<<<<< HEAD
   edit(_ref) {
     let {
       isActive,
@@ -1886,6 +2256,17 @@ const subscript_subscript = {
       onChange(Object(external_wp_richText_["toggleFormat"])(value, {
         type: subscript_name,
         title: subscript_title
+=======
+  edit({
+    isActive,
+    value,
+    onChange,
+    onFocus
+  }) {
+    function onToggle() {
+      onChange(Object(external_wp_richText_["toggleFormat"])(value, {
+        type: subscript_name
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       }));
     }
 
@@ -1898,8 +2279,12 @@ const subscript_subscript = {
       icon: library_subscript,
       title: subscript_title,
       onClick: onClick,
+<<<<<<< HEAD
       isActive: isActive,
       role: "menuitemcheckbox"
+=======
+      isActive: isActive
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     });
   }
 
@@ -1940,6 +2325,7 @@ const superscript_superscript = {
   tagName: 'sup',
   className: null,
 
+<<<<<<< HEAD
   edit(_ref) {
     let {
       isActive,
@@ -1952,6 +2338,17 @@ const superscript_superscript = {
       onChange(Object(external_wp_richText_["toggleFormat"])(value, {
         type: superscript_name,
         title: superscript_title
+=======
+  edit({
+    isActive,
+    value,
+    onChange,
+    onFocus
+  }) {
+    function onToggle() {
+      onChange(Object(external_wp_richText_["toggleFormat"])(value, {
+        type: superscript_name
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       }));
     }
 
@@ -1964,8 +2361,12 @@ const superscript_superscript = {
       icon: library_superscript,
       title: superscript_title,
       onClick: onClick,
+<<<<<<< HEAD
       isActive: isActive,
       role: "menuitemcheckbox"
+=======
+      isActive: isActive
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     });
   }
 
@@ -1994,6 +2395,7 @@ const keyboard = {
   tagName: 'kbd',
   className: null,
 
+<<<<<<< HEAD
   edit(_ref) {
     let {
       isActive,
@@ -2006,6 +2408,17 @@ const keyboard = {
       onChange(Object(external_wp_richText_["toggleFormat"])(value, {
         type: keyboard_name,
         title: keyboard_title
+=======
+  edit({
+    isActive,
+    value,
+    onChange,
+    onFocus
+  }) {
+    function onToggle() {
+      onChange(Object(external_wp_richText_["toggleFormat"])(value, {
+        type: keyboard_name
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       }));
     }
 
@@ -2018,8 +2431,12 @@ const keyboard = {
       icon: library_button["a" /* default */],
       title: keyboard_title,
       onClick: onClick,
+<<<<<<< HEAD
       isActive: isActive,
       role: "menuitemcheckbox"
+=======
+      isActive: isActive
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     });
   }
 
@@ -2040,7 +2457,11 @@ const keyboard = {
 
 
 
+<<<<<<< HEAD
 /* harmony default export */ var default_formats = ([bold, code_code, image_image, italic, link_link, strikethrough, underline, text_color_textColor, subscript_subscript, superscript_superscript, keyboard]);
+=======
+/* harmony default export */ var default_formats = ([bold, code_code, image_image, italic, link_link, strikethrough, underline, textColor, subscript_subscript, superscript_superscript, keyboard]);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/format-library/build-module/index.js
 /**
@@ -2052,6 +2473,7 @@ const keyboard = {
  */
 
 
+<<<<<<< HEAD
 default_formats.forEach(_ref => {
   let {
     name,
@@ -2059,6 +2481,12 @@ default_formats.forEach(_ref => {
   } = _ref;
   return Object(external_wp_richText_["registerFormatType"])(name, settings);
 });
+=======
+default_formats.forEach(({
+  name,
+  ...settings
+}) => Object(external_wp_richText_["registerFormatType"])(name, settings));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 
 /***/ }),
@@ -2068,6 +2496,34 @@ default_formats.forEach(_ref => {
 
 (function() { module.exports = window["wp"]["components"]; }());
 
+<<<<<<< HEAD
+=======
+/***/ }),
+
+/***/ "uGfJ":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("GRId");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("Tqx9");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+const textColor = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__["SVG"], {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24"
+}, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_1__["Path"], {
+  d: "M12.9 6h-2l-4 11h1.9l1.1-3h4.2l1.1 3h1.9L12.9 6zm-2.5 6.5l1.5-4.9 1.7 4.9h-3.2z"
+}));
+/* harmony default export */ __webpack_exports__["a"] = (textColor);
+
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /***/ })
 
 /******/ });

@@ -23,9 +23,12 @@ function render_block_core_categories( $attributes ) {
 		'show_count'   => ! empty( $attributes['showPostCounts'] ),
 		'title_li'     => '',
 	);
+<<<<<<< HEAD
 	if ( ! empty( $attributes['showOnlyTopLevel'] ) && $attributes['showOnlyTopLevel'] ) {
 		$args['parent'] = 0;
 	}
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	if ( ! empty( $attributes['displayAsDropdown'] ) ) {
 		$id                       = 'wp-block-categories-' . $block_id;

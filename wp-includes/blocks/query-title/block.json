@@ -2,7 +2,11 @@
 	"apiVersion": 2,
 	"name": "core/query-title",
 	"title": "Query Title",
+<<<<<<< HEAD
 	"category": "theme",
+=======
+	"category": "design",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	"description": "Display the query title.",
 	"textdomain": "default",
 	"attributes": {
@@ -23,6 +27,7 @@
 		"color": {
 			"gradients": true
 		},
+<<<<<<< HEAD
 		"spacing": {
 			"margin": true
 		},
@@ -39,6 +44,12 @@
 				"fontAppearance": true,
 				"textTransform": true
 			}
+=======
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	},
 	"editorStyle": "wp-block-query-title-editor"

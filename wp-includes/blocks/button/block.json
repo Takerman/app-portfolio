@@ -63,6 +63,7 @@
 		},
 		"typography": {
 			"fontSize": true,
+<<<<<<< HEAD
 			"__experimentalFontFamily": true,
 			"__experimentalDefaultControls": {
 				"fontSize": true
@@ -76,6 +77,11 @@
 				"padding": true
 			}
 		},
+=======
+			"__experimentalFontFamily": true
+		},
+		"reusable": false,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		"__experimentalBorder": {
 			"radius": true,
 			"__experimentalSkipSerialization": true

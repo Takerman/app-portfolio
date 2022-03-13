@@ -109,6 +109,7 @@ class WP_REST_Block_Directory_Controller extends WP_REST_Controller {
 	 * Parse block metadata for a block, and prepare it for an API repsonse.
 	 *
 	 * @since 5.5.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$plugin` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param array           $item    The plugin metadata.
@@ -119,6 +120,14 @@ class WP_REST_Block_Directory_Controller extends WP_REST_Controller {
 		// Restores the more descriptive, specific name for use within this method.
 		$plugin = $item;
 
+=======
+	 *
+	 * @param array           $plugin  The plugin metadata.
+	 * @param WP_REST_Request $request Request object.
+	 * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
+	 */
+	public function prepare_item_for_response( $plugin, $request ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		// There might be multiple blocks in a plugin. Only the first block is mapped.
 		$block_data = reset( $plugin['blocks'] );
 
@@ -274,7 +283,11 @@ class WP_REST_Block_Directory_Controller extends WP_REST_Controller {
 					'context'     => array( 'view' ),
 				),
 				'last_updated'        => array(
+<<<<<<< HEAD
 					'description' => __( 'The date when the block was last updated.' ),
+=======
+					'description' => __( 'The date when the block was last updated, in fuzzy human readable format.' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'type'        => 'string',
 					'format'      => 'date-time',
 					'context'     => array( 'view' ),

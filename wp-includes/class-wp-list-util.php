@@ -9,7 +9,11 @@
 /**
  * List utility.
  *
+<<<<<<< HEAD
  * Utility class to handle operations on an array of objects or arrays.
+=======
+ * Utility class to handle operations on an array of objects.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since 4.7.0
  */
@@ -102,8 +106,12 @@ class WP_List_Util {
 		$operator = strtoupper( $operator );
 
 		if ( ! in_array( $operator, array( 'AND', 'OR', 'NOT' ), true ) ) {
+<<<<<<< HEAD
 			$this->output = array();
 			return $this->output;
+=======
+			return array();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		$count    = count( $args );
@@ -140,15 +148,24 @@ class WP_List_Util {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Plucks a certain field out of each element in the input array.
+=======
+	 * Plucks a certain field out of each object in the list.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * This has the same functionality and prototype of
 	 * array_column() (PHP 5.5) but also supports objects.
 	 *
 	 * @since 4.7.0
 	 *
+<<<<<<< HEAD
 	 * @param int|string $field     Field to fetch from the object or array.
 	 * @param int|string $index_key Optional. Field from the element to use as keys for the new array.
+=======
+	 * @param int|string $field     Field from the object to place instead of the entire object
+	 * @param int|string $index_key Optional. Field from the object to use as keys for the new array.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *                              Default null.
 	 * @return array Array of found values. If `$index_key` is set, an array of found values with keys
 	 *               corresponding to `$index_key`. If `$index_key` is null, array keys from the original
@@ -201,7 +218,11 @@ class WP_List_Util {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Sorts the input array based on one or more orderby arguments.
+=======
+	 * Sorts the list, based on one or more orderby arguments.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 4.7.0
 	 *
@@ -239,7 +260,11 @@ class WP_List_Util {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Callback to sort an array by specific fields.
+=======
+	 * Callback to sort the list by specific fields.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 4.7.0
 	 *

@@ -18,7 +18,10 @@
  * avoid registering rewrite rules before the {@see 'init'} action.
  *
  * @since 2.8.0
+<<<<<<< HEAD
  * @since 5.9.0 Added `'wp_template_part_area'` taxonomy.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @global WP_Rewrite $wp_rewrite WordPress rewrite component.
  */
@@ -108,6 +111,7 @@ function create_initial_taxonomies() {
 		'nav_menu',
 		'nav_menu_item',
 		array(
+<<<<<<< HEAD
 			'public'                => false,
 			'hierarchical'          => false,
 			'labels'                => array(
@@ -128,6 +132,19 @@ function create_initial_taxonomies() {
 			'show_in_rest'          => true,
 			'rest_base'             => 'menus',
 			'rest_controller_class' => 'WP_REST_Menus_Controller',
+=======
+			'public'            => false,
+			'hierarchical'      => false,
+			'labels'            => array(
+				'name'          => __( 'Navigation Menus' ),
+				'singular_name' => __( 'Navigation Menu' ),
+			),
+			'query_var'         => false,
+			'rewrite'           => false,
+			'show_ui'           => false,
+			'_builtin'          => true,
+			'show_in_nav_menus' => false,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		)
 	);
 
@@ -185,7 +202,11 @@ function create_initial_taxonomies() {
 
 	register_taxonomy(
 		'wp_theme',
+<<<<<<< HEAD
 		array( 'wp_template', 'wp_template_part', 'wp_global_styles' ),
+=======
+		array( 'wp_template' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		array(
 			'public'            => false,
 			'hierarchical'      => false,
@@ -201,6 +222,7 @@ function create_initial_taxonomies() {
 			'show_in_rest'      => false,
 		)
 	);
+<<<<<<< HEAD
 
 	register_taxonomy(
 		'wp_template_part_area',
@@ -220,6 +242,8 @@ function create_initial_taxonomies() {
 			'show_in_rest'      => false,
 		)
 	);
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 /**
@@ -227,7 +251,11 @@ function create_initial_taxonomies() {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @global WP_Taxonomy[] $wp_taxonomies The registered taxonomies.
+=======
+ * @global array $wp_taxonomies The registered taxonomies.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @param array  $args     Optional. An array of `key => value` arguments to match against the taxonomy objects.
  *                         Default empty array.
@@ -260,7 +288,11 @@ function get_taxonomies( $args = array(), $output = 'names', $operator = 'and' )
  *
  * @since 2.3.0
  *
+<<<<<<< HEAD
  * @global WP_Taxonomy[] $wp_taxonomies The registered taxonomies.
+=======
+ * @global array $wp_taxonomies The registered taxonomies.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @param string|string[]|WP_Post $object Name of the type of taxonomy object, or an object (row from posts)
  * @param string                  $output Optional. The type of output to return in the array. Accepts either
@@ -301,7 +333,11 @@ function get_object_taxonomies( $object, $output = 'names' ) {
  *
  * @since 2.3.0
  *
+<<<<<<< HEAD
  * @global WP_Taxonomy[] $wp_taxonomies The registered taxonomies.
+=======
+ * @global array $wp_taxonomies The registered taxonomies.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @param string $taxonomy Name of taxonomy object to return.
  * @return WP_Taxonomy|false The Taxonomy Object or false if $taxonomy doesn't exist.
@@ -327,7 +363,11 @@ function get_taxonomy( $taxonomy ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @global WP_Taxonomy[] $wp_taxonomies The registered taxonomies.
+=======
+ * @global array $wp_taxonomies The registered taxonomies.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @param string $taxonomy Name of taxonomy object.
  * @return bool Whether the taxonomy exists.
@@ -384,9 +424,14 @@ function is_taxonomy_hierarchical( $taxonomy ) {
  * @since 5.1.0 Introduced `meta_box_sanitize_cb` argument.
  * @since 5.4.0 Added the registered taxonomy object as a return value.
  * @since 5.5.0 Introduced `default_term` argument.
+<<<<<<< HEAD
  * @since 5.9.0 Introduced `rest_namespace` argument.
  *
  * @global WP_Taxonomy[] $wp_taxonomies Registered taxonomies.
+=======
+ *
+ * @global array $wp_taxonomies Registered taxonomies.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @param string       $taxonomy    Taxonomy key, must not exceed 32 characters.
  * @param array|string $object_type Object type or array of object types with which the taxonomy should be associated.
@@ -417,7 +462,10 @@ function is_taxonomy_hierarchical( $taxonomy ) {
  *     @type bool          $show_in_rest          Whether to include the taxonomy in the REST API. Set this to true
  *                                                for the taxonomy to be available in the block editor.
  *     @type string        $rest_base             To change the base url of REST API route. Default is $taxonomy.
+<<<<<<< HEAD
  *     @type string        $rest_namespace        To change the namespace URL of REST API route. Default is wp/v2.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *     @type string        $rest_controller_class REST API Controller class name. Default is 'WP_REST_Terms_Controller'.
  *     @type bool          $show_tagcloud         Whether to list the taxonomy in the Tag Cloud Widget controls. If not set,
  *                                                the default is inherited from `$show_ui` (default true).
@@ -538,7 +586,11 @@ function register_taxonomy( $taxonomy, $object_type, $args = array() ) {
  * @since 4.5.0
  *
  * @global WP    $wp            Current WordPress environment instance.
+<<<<<<< HEAD
  * @global WP_Taxonomy[] $wp_taxonomies List of taxonomies.
+=======
+ * @global array $wp_taxonomies List of taxonomies.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @param string $taxonomy Taxonomy name.
  * @return true|WP_Error True on success, WP_Error on failure or if the taxonomy doesn't exist.
@@ -589,8 +641,11 @@ function unregister_taxonomy( $taxonomy ) {
  * @since 4.9.0 Added the `most_used` and `back_to_items` labels.
  * @since 5.7.0 Added the `filter_by_item` label.
  * @since 5.8.0 Added the `item_link` and `item_link_description` labels.
+<<<<<<< HEAD
  * @since 5.9.0 Added the `name_field_description`, `slug_field_description`,
  *              `parent_field_description`, and `desc_field_description` labels.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @param WP_Taxonomy $tax Taxonomy object.
  * @return object {
@@ -607,6 +662,7 @@ function unregister_taxonomy( $taxonomy ) {
  *     @type string $parent_item                This label is only used for hierarchical taxonomies. Default
  *                                              'Parent Category'.
  *     @type string $parent_item_colon          The same as `parent_item`, but with colon `:` in the end.
+<<<<<<< HEAD
  *     @type string $name_field_description     Description for the Name field on Edit Tags screen.
  *                                              Default 'The name is how it appears on your site'.
  *     @type string $slug_field_description     Description for the Slug field on Edit Tags screen.
@@ -620,6 +676,8 @@ function unregister_taxonomy( $taxonomy ) {
  *     @type string $desc_field_description     Description for the Description field on Edit Tags screen.
  *                                              Default 'The description is not prominent by default;
  *                                              however, some themes may show it'.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *     @type string $edit_item                  Default 'Edit Tag'/'Edit Category'.
  *     @type string $view_item                  Default 'View Tag'/'View Category'.
  *     @type string $update_item                Default 'Update Tag'/'Update Category'.
@@ -659,11 +717,14 @@ function get_taxonomy_labels( $tax ) {
 		$tax->labels['not_found'] = $tax->no_tagcloud;
 	}
 
+<<<<<<< HEAD
 	$name_field_description   = __( 'The name is how it appears on your site.' );
 	$slug_field_description   = __( 'The &#8220;slug&#8221; is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens.' );
 	$parent_field_description = __( 'Assign a parent term to create a hierarchy. The term Jazz, for example, would be the parent of Bebop and Big Band.' );
 	$desc_field_description   = __( 'The description is not prominent by default; however, some themes may show it.' );
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$nohier_vs_hier_defaults = array(
 		'name'                       => array( _x( 'Tags', 'taxonomy general name' ), _x( 'Categories', 'taxonomy general name' ) ),
 		'singular_name'              => array( _x( 'Tag', 'taxonomy singular name' ), _x( 'Category', 'taxonomy singular name' ) ),
@@ -672,10 +733,13 @@ function get_taxonomy_labels( $tax ) {
 		'all_items'                  => array( __( 'All Tags' ), __( 'All Categories' ) ),
 		'parent_item'                => array( null, __( 'Parent Category' ) ),
 		'parent_item_colon'          => array( null, __( 'Parent Category:' ) ),
+<<<<<<< HEAD
 		'name_field_description'     => array( $name_field_description, $name_field_description ),
 		'slug_field_description'     => array( $slug_field_description, $slug_field_description ),
 		'parent_field_description'   => array( null, $parent_field_description ),
 		'desc_field_description'     => array( $desc_field_description, $desc_field_description ),
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		'edit_item'                  => array( __( 'Edit Tag' ), __( 'Edit Category' ) ),
 		'view_item'                  => array( __( 'View Tag' ), __( 'View Category' ) ),
 		'update_item'                => array( __( 'Update Tag' ), __( 'Update Category' ) ),
@@ -739,7 +803,11 @@ function get_taxonomy_labels( $tax ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @global WP_Taxonomy[] $wp_taxonomies The registered taxonomies.
+=======
+ * @global array $wp_taxonomies The registered taxonomies.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @param string $taxonomy    Name of taxonomy object.
  * @param string $object_type Name of the object type.
@@ -781,7 +849,11 @@ function register_taxonomy_for_object_type( $taxonomy, $object_type ) {
  *
  * @since 3.7.0
  *
+<<<<<<< HEAD
  * @global WP_Taxonomy[] $wp_taxonomies The registered taxonomies.
+=======
+ * @global array $wp_taxonomies The registered taxonomies.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @param string $taxonomy    Name of taxonomy object.
  * @param string $object_type Name of the object type.
@@ -823,6 +895,7 @@ function unregister_taxonomy_for_object_type( $taxonomy, $object_type ) {
 //
 
 /**
+<<<<<<< HEAD
  * Retrieve object IDs of valid taxonomy and term.
  *
  * The strings of `$taxonomies` must exist before this function will continue.
@@ -833,16 +906,38 @@ function unregister_taxonomy_for_object_type( $taxonomy, $object_type ) {
  *
  * It is possible to change the order that object IDs are returned by using `$args`
  * with either ASC or DESC array. The value should be in the key named 'order'.
+=======
+ * Retrieve object_ids of valid taxonomy and term.
+ *
+ * The strings of $taxonomies must exist before this function will continue.
+ * On failure of finding a valid taxonomy, it will return a WP_Error class,
+ * kind of like Exceptions in PHP 5, except you can't catch them. Even so,
+ * you can still test for the WP_Error class and get the error message.
+ *
+ * The $terms aren't checked the same as $taxonomies, but still need to exist
+ * for $object_ids to be returned.
+ *
+ * It is possible to change the order that object_ids is returned by either
+ * using PHP sort family functions or using the database by using $args with
+ * either ASC or DESC array. The value should be in the key named 'order'.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since 2.3.0
  *
  * @global wpdb $wpdb WordPress database abstraction object.
  *
+<<<<<<< HEAD
  * @param int|int[]       $term_ids   Term ID or array of term IDs of terms that will be used.
  * @param string|string[] $taxonomies String of taxonomy name or Array of string values of taxonomy names.
  * @param array|string    $args       Change the order of the object IDs, either ASC or DESC.
  * @return string[]|WP_Error An array of object IDs as numeric strings on success,
  *                           WP_Error if the taxonomy does not exist.
+=======
+ * @param int|array    $term_ids   Term ID or array of term IDs of terms that will be used.
+ * @param string|array $taxonomies String of taxonomy name or Array of string values of taxonomy names.
+ * @param array|string $args       Change the order of the object_ids, either ASC or DESC.
+ * @return array|WP_Error An array of $object_ids on success, WP_Error if the taxonomy does not exist.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function get_objects_in_term( $term_ids, $taxonomies, $args = array() ) {
 	global $wpdb;
@@ -897,7 +992,11 @@ function get_objects_in_term( $term_ids, $taxonomies, $args = array() ) {
  * @param array  $tax_query         A compact tax query
  * @param string $primary_table
  * @param string $primary_id_column
+<<<<<<< HEAD
  * @return string[]
+=======
+ * @return array
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function get_tax_sql( $tax_query, $primary_table, $primary_id_column ) {
 	$tax_query_obj = new WP_Tax_Query( $tax_query );
@@ -998,6 +1097,7 @@ function get_term( $term, $taxonomy = '', $output = OBJECT, $filter = 'raw' ) {
 	/**
 	 * Filters a taxonomy term object.
 	 *
+<<<<<<< HEAD
 	 * The dynamic portion of the hook name, `$taxonomy`, refers
 	 * to the slug of the term's taxonomy.
 	 *
@@ -1006,6 +1106,11 @@ function get_term( $term, $taxonomy = '', $output = OBJECT, $filter = 'raw' ) {
 	 *  - `get_category`
 	 *  - `get_post_tag`
 	 *
+=======
+	 * The dynamic portion of the filter name, `$taxonomy`, refers
+	 * to the slug of the term's taxonomy.
+	 *
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @since 2.3.0
 	 * @since 4.4.0 `$_term` is now a `WP_Term` object.
 	 *
@@ -1059,7 +1164,11 @@ function get_term( $term, $taxonomy = '', $output = OBJECT, $filter = 'raw' ) {
  *
  * @see sanitize_term_field() The $context param lists the available values for get_term_by() $filter param.
  *
+<<<<<<< HEAD
  * @param string     $field    Either 'slug', 'name', 'term_id' (or 'id', 'ID'), or 'term_taxonomy_id'.
+=======
+ * @param string     $field    Either 'slug', 'name', 'id' or 'ID' (term_id), or 'term_taxonomy_id'.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @param string|int $value    Search for this term value.
  * @param string     $taxonomy Taxonomy name. Optional, if `$field` is 'term_taxonomy_id'.
  * @param string     $output   Optional. The required return type. One of OBJECT, ARRAY_A, or ARRAY_N, which
@@ -1142,8 +1251,13 @@ function get_term_by( $field, $value, $taxonomy = '', $output = OBJECT, $filter 
  *
  * @since 2.3.0
  *
+<<<<<<< HEAD
  * @param int    $term_id  ID of term to get children.
  * @param string $taxonomy Taxonomy name.
+=======
+ * @param int    $term_id  ID of Term to get children.
+ * @param string $taxonomy Taxonomy Name.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @return array|WP_Error List of Term IDs. WP_Error returned if `$taxonomy` does not exist.
  */
 function get_term_children( $term_id, $taxonomy ) {
@@ -1186,7 +1300,11 @@ function get_term_children( $term_id, $taxonomy ) {
  *
  * @param string      $field    Term field to fetch.
  * @param int|WP_Term $term     Term ID or object.
+<<<<<<< HEAD
  * @param string      $taxonomy Optional. Taxonomy name. Default empty.
+=======
+ * @param string      $taxonomy Optional. Taxonomy Name. Default empty.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @param string      $context  Optional. How to sanitize term fields. Look at sanitize_term_field() for available options.
  *                              Default 'display'.
  * @return string|int|null|WP_Error Will return an empty string if $term is not an object or if $field is not set in $term.
@@ -1348,7 +1466,11 @@ function get_terms( $args = array(), $deprecated = '' ) {
 	 * @since 4.6.0 Added the `$term_query` parameter.
 	 *
 	 * @param array         $terms      Array of found terms.
+<<<<<<< HEAD
 	 * @param array|null    $taxonomies An array of taxonomies if known.
+=======
+	 * @param array         $taxonomies An array of taxonomies.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @param array         $args       An array of get_terms() arguments.
 	 * @param WP_Term_Query $term_query The WP_Term_Query object.
 	 */
@@ -1533,10 +1655,13 @@ function unregister_term_meta( $taxonomy, $meta_key ) {
 function term_exists( $term, $taxonomy = '', $parent = null ) {
 	global $wpdb;
 
+<<<<<<< HEAD
 	if ( null === $term ) {
 		return null;
 	}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$select     = "SELECT term_id FROM $wpdb->terms as t WHERE ";
 	$tax_select = "SELECT tt.term_id, tt.term_taxonomy_id FROM $wpdb->terms AS t INNER JOIN $wpdb->term_taxonomy as tt ON tt.term_id = t.term_id WHERE ";
 
@@ -1686,7 +1811,11 @@ function sanitize_term( $term, $taxonomy, $context = 'display' ) {
  * @param string $field    Term field to sanitize.
  * @param string $value    Search for this term value.
  * @param int    $term_id  Term ID.
+<<<<<<< HEAD
  * @param string $taxonomy Taxonomy name.
+=======
+ * @param string $taxonomy Taxonomy Name.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @param string $context  Context in which to sanitize the term field.
  *                         Accepts 'raw', 'edit', 'db', 'display', 'rss',
  *                         'attribute', or 'js'. Default 'display'.
@@ -1712,7 +1841,11 @@ function sanitize_term_field( $field, $value, $term_id, $taxonomy, $context ) {
 		/**
 		 * Filters a term field to edit before it is sanitized.
 		 *
+<<<<<<< HEAD
 		 * The dynamic portion of the hook name, `$field`, refers to the term field.
+=======
+		 * The dynamic portion of the filter name, `$field`, refers to the term field.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 *
 		 * @since 2.3.0
 		 *
@@ -1745,7 +1878,11 @@ function sanitize_term_field( $field, $value, $term_id, $taxonomy, $context ) {
 		/**
 		 * Filters a term field value before it is sanitized.
 		 *
+<<<<<<< HEAD
 		 * The dynamic portion of the hook name, `$field`, refers to the term field.
+=======
+		 * The dynamic portion of the filter name, `$field`, refers to the term field.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 *
 		 * @since 2.3.0
 		 *
@@ -1784,7 +1921,11 @@ function sanitize_term_field( $field, $value, $term_id, $taxonomy, $context ) {
 		/**
 		 * Filters the term field for use in RSS.
 		 *
+<<<<<<< HEAD
 		 * The dynamic portion of the hook name, `$field`, refers to the term field.
+=======
+		 * The dynamic portion of the filter name, `$field`, refers to the term field.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 *
 		 * @since 2.3.0
 		 *
@@ -1810,7 +1951,11 @@ function sanitize_term_field( $field, $value, $term_id, $taxonomy, $context ) {
 		/**
 		 * Filters the term field sanitized for display.
 		 *
+<<<<<<< HEAD
 		 * The dynamic portion of the hook name, `$field`, refers to the term field name.
+=======
+		 * The dynamic portion of the filter name, `$field`, refers to the term field name.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 *
 		 * @since 2.3.0
 		 *
@@ -1909,8 +2054,13 @@ function wp_count_terms( $args = array(), $deprecated = '' ) {
  *
  * @since 2.3.0
  *
+<<<<<<< HEAD
  * @param int          $object_id  The term object ID that refers to the term.
  * @param string|array $taxonomies List of taxonomy names or single taxonomy name.
+=======
+ * @param int          $object_id  The term Object Id that refers to the term.
+ * @param string|array $taxonomies List of Taxonomy Names or single Taxonomy name.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function wp_delete_object_term_relationships( $object_id, $taxonomies ) {
 	$object_id = (int) $object_id;
@@ -1939,7 +2089,11 @@ function wp_delete_object_term_relationships( $object_id, $taxonomies ) {
  * @global wpdb $wpdb WordPress database abstraction object.
  *
  * @param int          $term     Term ID.
+<<<<<<< HEAD
  * @param string       $taxonomy Taxonomy name.
+=======
+ * @param string       $taxonomy Taxonomy Name.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @param array|string $args {
  *     Optional. Array of arguments to override the default term ID. Default empty array.
  *
@@ -2005,7 +2159,11 @@ function wp_delete_term( $term, $taxonomy, $args = array() ) {
 	 * @since 4.1.0
 	 *
 	 * @param int    $term     Term ID.
+<<<<<<< HEAD
 	 * @param string $taxonomy Taxonomy name.
+=======
+	 * @param string $taxonomy Taxonomy Name.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	do_action( 'pre_delete_term', $term, $taxonomy );
 
@@ -2890,7 +3048,11 @@ function wp_add_object_terms( $object_id, $terms, $taxonomy ) {
  *
  * @param int              $object_id The ID of the object from which the terms will be removed.
  * @param string|int|array $terms     The slug(s) or ID(s) of the term(s) to remove.
+<<<<<<< HEAD
  * @param string           $taxonomy  Taxonomy name.
+=======
+ * @param array|string     $taxonomy  Taxonomy name.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @return bool|WP_Error True on success, false or WP_Error on failure.
  */
 function wp_remove_object_terms( $object_id, $terms, $taxonomy ) {
@@ -4634,10 +4796,17 @@ function get_term_link( $term, $taxonomy = '' ) {
  *     Arguments about which post to use and how to format the output. Shares all of the arguments
  *     supported by get_the_taxonomies(), in addition to the following.
  *
+<<<<<<< HEAD
  *     @type int|WP_Post $post   Post ID or object to get taxonomies of. Default current post.
  *     @type string      $before Displays before the taxonomies. Default empty string.
  *     @type string      $sep    Separates each taxonomy. Default is a space.
  *     @type string      $after  Displays after the taxonomies. Default empty string.
+=======
+ *     @type  int|WP_Post $post   Post ID or object to get taxonomies of. Default current post.
+ *     @type  string      $before Displays before the taxonomies. Default empty string.
+ *     @type  string      $sep    Separates each taxonomy. Default is a space.
+ *     @type  string      $after  Displays after the taxonomies. Default empty string.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * }
  */
 function the_taxonomies( $args = array() ) {

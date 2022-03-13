@@ -15,7 +15,10 @@ if ( isset( $_GET['privacy-notice'] ) ) {
 	exit;
 }
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 $title = __( 'Freedoms' );
 
 list( $display_version ) = explode( '-', get_bloginfo( 'version' ) );
@@ -32,7 +35,11 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 		</div>
 
 		<div class="about__header-text">
+<<<<<<< HEAD
 			<?php _e( 'WordPress is free and open source software' ); ?>
+=======
+			<?php _e( 'WordPress is free and open source software, built by a distributed community of mostly volunteer developers from around the world' ); ?>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		</div>
 
 		<nav class="about__header-navigation nav-tab-wrapper wp-clearfix" aria-label="<?php esc_attr_e( 'Secondary menu' ); ?>">
@@ -103,6 +110,11 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 			);
 			?>
 			</p>
+<<<<<<< HEAD
+=======
+
+			<p><?php _e( 'Don&#8217;t you wish all software came with these freedoms? So do we! For more information, check out the <a href="https://www.fsf.org/">Free Software Foundation</a>.' ); ?></p>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		</div>
 	</div>
 

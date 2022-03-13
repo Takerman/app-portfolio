@@ -6,13 +6,17 @@
 	"description": "Display a list of all pages.",
 	"keywords": [ "menu", "navigation" ],
 	"textdomain": "default",
+<<<<<<< HEAD
 	"attributes": {
 	},
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	"usesContext": [
 		"textColor",
 		"customTextColor",
 		"backgroundColor",
 		"customBackgroundColor",
+<<<<<<< HEAD
 		"overlayTextColor",
 		"customOverlayTextColor",
 		"overlayBackgroundColor",
@@ -22,6 +26,12 @@
 		"showSubmenuIcon",
 		"style",
 		"openSubmenusOnClick"
+=======
+		"fontSize",
+		"customFontSize",
+		"showSubmenuIcon",
+		"style"
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	],
 	"supports": {
 		"reusable": false,

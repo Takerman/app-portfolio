@@ -141,7 +141,11 @@
 .wp-pointer-top .wp-pointer-arrow,
 .wp-pointer-undefined .wp-pointer-arrow {
 	top: 0;
+<<<<<<< HEAD
 	border-width: 0 13px 13px;
+=======
+	border-width: 0 13px 13px 13px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	border-bottom-color: #2271b1;
 }
 
@@ -158,7 +162,11 @@
 
 .wp-pointer-bottom .wp-pointer-arrow {
 	bottom: 0;
+<<<<<<< HEAD
 	border-width: 13px 13px 0;
+=======
+	border-width: 13px 13px 0 13px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	border-top-color: #c3c4c7;
 }
 

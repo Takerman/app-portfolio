@@ -28,7 +28,11 @@ class WP_Customize_Date_Time_Control extends WP_Customize_Control {
 	 * Minimum Year.
 	 *
 	 * @since 4.9.0
+<<<<<<< HEAD
 	 * @var int
+=======
+	 * @var integer
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public $min_year = 1000;
 
@@ -36,7 +40,11 @@ class WP_Customize_Date_Time_Control extends WP_Customize_Control {
 	 * Maximum Year.
 	 *
 	 * @since 4.9.0
+<<<<<<< HEAD
 	 * @var int
+=======
+	 * @var integer
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public $max_year = 9999;
 
@@ -44,7 +52,11 @@ class WP_Customize_Date_Time_Control extends WP_Customize_Control {
 	 * Allow past date, if set to false user can only select future date.
 	 *
 	 * @since 4.9.0
+<<<<<<< HEAD
 	 * @var bool
+=======
+	 * @var boolean
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public $allow_past_date = true;
 
@@ -52,7 +64,11 @@ class WP_Customize_Date_Time_Control extends WP_Customize_Control {
 	 * Whether hours, minutes, and meridian should be shown.
 	 *
 	 * @since 4.9.0
+<<<<<<< HEAD
 	 * @var bool
+=======
+	 * @var boolean
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public $include_time = true;
 
@@ -61,7 +77,11 @@ class WP_Customize_Date_Time_Control extends WP_Customize_Control {
 	 * the value will still be saved in Y-m-d H:i:s format.
 	 *
 	 * @since 4.9.0
+<<<<<<< HEAD
 	 * @var bool
+=======
+	 * @var boolean
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public $twelve_hour_format = true;
 
@@ -214,12 +234,16 @@ class WP_Customize_Date_Time_Control extends WP_Customize_Control {
 	 *
 	 * @since 4.9.0
 	 *
+<<<<<<< HEAD
 	 * @return array {
 	 *     Timezone info. All properties are optional.
 	 *
 	 *     @type string $abbr        Timezone abbreviation. Examples: PST or CEST.
 	 *     @type string $description Human-readable timezone description as HTML.
 	 * }
+=======
+	 * @return array abbr and description.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public function get_timezone_info() {
 		$tz_string     = get_option( 'timezone_string' );
@@ -227,7 +251,11 @@ class WP_Customize_Date_Time_Control extends WP_Customize_Control {
 
 		if ( $tz_string ) {
 			try {
+<<<<<<< HEAD
 				$tz = new DateTimeZone( $tz_string );
+=======
+				$tz = new DateTimezone( $tz_string );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			} catch ( Exception $e ) {
 				$tz = '';
 			}

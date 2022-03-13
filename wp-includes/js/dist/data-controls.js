@@ -150,12 +150,20 @@ function apiFetch(request) {
  * @param {Array} args Arguments passed without change to the `@wordpress/data` control.
  */
 
+<<<<<<< HEAD
 function select() {
+=======
+function select(...args) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   _wordpress_deprecated__WEBPACK_IMPORTED_MODULE_2___default()('`select` control in `@wordpress/data-controls`', {
     since: '5.7',
     alternative: 'built-in `resolveSelect` control in `@wordpress/data`'
   });
+<<<<<<< HEAD
   return _wordpress_data__WEBPACK_IMPORTED_MODULE_1__["controls"].resolveSelect(...arguments);
+=======
+  return _wordpress_data__WEBPACK_IMPORTED_MODULE_1__["controls"].resolveSelect(...args);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 /**
  * Control for calling a selector in a registered data store.
@@ -164,12 +172,20 @@ function select() {
  * @param {Array} args Arguments passed without change to the `@wordpress/data` control.
  */
 
+<<<<<<< HEAD
 function syncSelect() {
+=======
+function syncSelect(...args) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   _wordpress_deprecated__WEBPACK_IMPORTED_MODULE_2___default()('`syncSelect` control in `@wordpress/data-controls`', {
     since: '5.7',
     alternative: 'built-in `select` control in `@wordpress/data`'
   });
+<<<<<<< HEAD
   return _wordpress_data__WEBPACK_IMPORTED_MODULE_1__["controls"].select(...arguments);
+=======
+  return _wordpress_data__WEBPACK_IMPORTED_MODULE_1__["controls"].select(...args);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 /**
  * Control for dispatching an action in a registered data store.
@@ -178,12 +194,20 @@ function syncSelect() {
  * @param {Array} args Arguments passed without change to the `@wordpress/data` control.
  */
 
+<<<<<<< HEAD
 function dispatch() {
+=======
+function dispatch(...args) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   _wordpress_deprecated__WEBPACK_IMPORTED_MODULE_2___default()('`dispatch` control in `@wordpress/data-controls`', {
     since: '5.7',
     alternative: 'built-in `dispatch` control in `@wordpress/data`'
   });
+<<<<<<< HEAD
   return _wordpress_data__WEBPACK_IMPORTED_MODULE_1__["controls"].dispatch(...arguments);
+=======
+  return _wordpress_data__WEBPACK_IMPORTED_MODULE_1__["controls"].dispatch(...args);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 /**
  * Dispatches a control action for awaiting on a promise to be resolved.
@@ -240,6 +264,7 @@ const __unstableAwaitPromise = function (promise) {
  */
 
 const controls = {
+<<<<<<< HEAD
   AWAIT_PROMISE: _ref => {
     let {
       promise
@@ -251,6 +276,15 @@ const controls = {
     let {
       request
     } = _ref2;
+=======
+  AWAIT_PROMISE: ({
+    promise
+  }) => promise,
+
+  API_FETCH({
+    request
+  }) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default()(request);
   }
 

@@ -977,7 +977,11 @@ function clean_blog_cache( $blog ) {
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param string  $id              Site ID as a numeric string.
+=======
+	 * @param int     $id              Blog ID.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @param WP_Site $blog            Site object.
 	 * @param string  $domain_path_key md5 hash of domain and path.
 	 */

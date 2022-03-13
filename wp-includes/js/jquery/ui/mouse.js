@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * jQuery UI Mouse 1.13.1
+=======
+ * jQuery UI Mouse 1.12.1
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -13,8 +17,11 @@
 //>>docs: http://api.jqueryui.com/mouse/
 
 ( function( factory ) {
+<<<<<<< HEAD
 	"use strict";
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -27,8 +34,12 @@
 		// Browser globals
 		factory( jQuery );
 	}
+<<<<<<< HEAD
 } )( function( $ ) {
 "use strict";
+=======
+}( function( $ ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 var mouseHandled = false;
 $( document ).on( "mouseup", function() {
@@ -36,7 +47,11 @@ $( document ).on( "mouseup", function() {
 } );
 
 return $.widget( "ui.mouse", {
+<<<<<<< HEAD
 	version: "1.13.1",
+=======
+	version: "1.12.1",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	options: {
 		cancel: "input, textarea, button, select, option",
 		distance: 1,
@@ -81,9 +96,13 @@ return $.widget( "ui.mouse", {
 		this._mouseMoved = false;
 
 		// We may have missed mouseup (out of window)
+<<<<<<< HEAD
 		if ( this._mouseStarted ) {
 			this._mouseUp( event );
 		}
+=======
+		( this._mouseStarted && this._mouseUp( event ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		this._mouseDownEvent = event;
 
@@ -146,17 +165,28 @@ return $.widget( "ui.mouse", {
 
 			// IE mouseup check - mouseup happened when mouse was out of window
 			if ( $.ui.ie && ( !document.documentMode || document.documentMode < 9 ) &&
+<<<<<<< HEAD
 				!event.button ) {
 				return this._mouseUp( event );
 
 				// Iframe mouseup check - mouseup occurred in another document
+=======
+					!event.button ) {
+				return this._mouseUp( event );
+
+			// Iframe mouseup check - mouseup occurred in another document
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			} else if ( !event.which ) {
 
 				// Support: Safari <=8 - 9
 				// Safari sets which to 0 if you press any of the following keys
 				// during a drag (#14461)
 				if ( event.originalEvent.altKey || event.originalEvent.ctrlKey ||
+<<<<<<< HEAD
 					event.originalEvent.metaKey || event.originalEvent.shiftKey ) {
+=======
+						event.originalEvent.metaKey || event.originalEvent.shiftKey ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					this.ignoreMissingWhich = true;
 				} else if ( !this.ignoreMissingWhich ) {
 					return this._mouseUp( event );
@@ -176,11 +206,15 @@ return $.widget( "ui.mouse", {
 		if ( this._mouseDistanceMet( event ) && this._mouseDelayMet( event ) ) {
 			this._mouseStarted =
 				( this._mouseStart( this._mouseDownEvent, event ) !== false );
+<<<<<<< HEAD
 			if ( this._mouseStarted ) {
 				this._mouseDrag( event );
 			} else {
 				this._mouseUp( event );
 			}
+=======
+			( this._mouseStarted ? this._mouseDrag( event ) : this._mouseUp( event ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		return !this._mouseStarted;
@@ -227,9 +261,16 @@ return $.widget( "ui.mouse", {
 	_mouseStart: function( /* event */ ) {},
 	_mouseDrag: function( /* event */ ) {},
 	_mouseStop: function( /* event */ ) {},
+<<<<<<< HEAD
 	_mouseCapture: function( /* event */ ) {
 		return true;
 	}
 } );
 
 } );
+=======
+	_mouseCapture: function( /* event */ ) { return true; }
+} );
+
+} ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

@@ -61,6 +61,7 @@ class Walker_Category_Checklist extends Walker {
 	 * @see Walker::start_el()
 	 *
 	 * @since 2.5.1
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$category` to `$data_object` and `$id` to `$current_object_id`
 	 *              to match parent class for PHP 8 named parameter support.
 	 *
@@ -74,6 +75,16 @@ class Walker_Category_Checklist extends Walker {
 		// Restores the more descriptive, specific name for use within this method.
 		$category = $data_object;
 
+=======
+	 *
+	 * @param string  $output   Used to append additional content (passed by reference).
+	 * @param WP_Term $category The current term object.
+	 * @param int     $depth    Depth of the term in reference to parents. Default 0.
+	 * @param array   $args     An array of arguments. @see wp_terms_checklist()
+	 * @param int     $id       ID of the current term.
+	 */
+	public function start_el( &$output, $category, $depth = 0, $args = array(), $id = 0 ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( empty( $args['taxonomy'] ) ) {
 			$taxonomy = 'category';
 		} else {
@@ -125,6 +136,7 @@ class Walker_Category_Checklist extends Walker {
 	 * @see Walker::end_el()
 	 *
 	 * @since 2.5.1
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$category` to `$data_object` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param string  $output      Used to append additional content (passed by reference).
@@ -133,6 +145,15 @@ class Walker_Category_Checklist extends Walker {
 	 * @param array   $args        An array of arguments. @see wp_terms_checklist()
 	 */
 	public function end_el( &$output, $data_object, $depth = 0, $args = array() ) {
+=======
+	 *
+	 * @param string  $output   Used to append additional content (passed by reference).
+	 * @param WP_Term $category The current term object.
+	 * @param int     $depth    Depth of the term in reference to parents. Default 0.
+	 * @param array   $args     An array of arguments. @see wp_terms_checklist()
+	 */
+	public function end_el( &$output, $category, $depth = 0, $args = array() ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$output .= "</li>\n";
 	}
 }

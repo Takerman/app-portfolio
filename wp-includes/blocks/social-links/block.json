@@ -40,6 +40,7 @@
 	},
 	"supports": {
 		"align": [ "left", "center", "right" ],
+<<<<<<< HEAD
 		"anchor": true,
 		"__experimentalExposeControlsToChildren": true,
 		"__experimentalLayout": {
@@ -63,6 +64,9 @@
 				"blockGap": true
 			}
 		}
+=======
+		"anchor": true
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	},
 	"styles": [
 		{ "name": "default", "label": "Default", "isDefault": true },

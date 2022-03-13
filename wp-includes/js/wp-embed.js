@@ -27,11 +27,14 @@
 		return;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Receive embed message.
 	 *
 	 * @param {MessageEvent} e
 	 */
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	window.wp.receiveEmbedMessage = function( e ) {
 		var data = e.data;
 
@@ -107,11 +110,17 @@
 			iframeClone, i, source, secret;
 
 		for ( i = 0; i < iframes.length; i++ ) {
+<<<<<<< HEAD
 			/** @var {IframeElement} */
 			source = iframes[ i ];
 
 			secret = source.getAttribute( 'data-secret' );
 			if ( ! secret ) {
+=======
+			source = iframes[ i ];
+
+			if ( ! source.getAttribute( 'data-secret' ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				/* Add secret to iframe */
 				secret = Math.random().toString( 36 ).substr( 2, 10 );
 				source.src += '#?secret=' + secret;
@@ -124,6 +133,7 @@
 				iframeClone.removeAttribute( 'security' );
 				source.parentNode.replaceChild( iframeClone, source );
 			}
+<<<<<<< HEAD
 
 			/*
 			 * Let post embed window know that the parent is ready for receiving the height message, in case the iframe
@@ -134,6 +144,8 @@
 				message: 'ready',
 				secret: secret
 			}, '*' );
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	}
 

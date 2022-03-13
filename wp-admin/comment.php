@@ -53,7 +53,10 @@ if ( isset( $_REQUEST['c'] ) ) {
 switch ( $action ) {
 
 	case 'editcomment':
+<<<<<<< HEAD
 		// Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$title = __( 'Edit Comment' );
 
 		get_current_screen()->add_help_tab(
@@ -97,7 +100,10 @@ switch ( $action ) {
 	case 'approve':
 	case 'trash':
 	case 'spam':
+<<<<<<< HEAD
 		// Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$title = __( 'Moderate Comment' );
 
 		if ( ! $comment ) {

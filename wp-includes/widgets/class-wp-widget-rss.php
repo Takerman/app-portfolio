@@ -86,6 +86,7 @@ class WP_Widget_RSS extends WP_Widget {
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 
+<<<<<<< HEAD
 		if ( $title ) {
 			$feed_link = '';
 			$feed_url  = strip_tags( $url );
@@ -111,6 +112,12 @@ class WP_Widget_RSS extends WP_Widget {
 			$feed_link = apply_filters( 'rss_widget_feed_link', $feed_link, $instance );
 
 			$title = $feed_link . '<a class="rsswidget rss-widget-title" href="' . esc_url( $link ) . '">' . esc_html( $title ) . '</a>';
+=======
+		$url  = strip_tags( $url );
+		$icon = includes_url( 'images/rss.png' );
+		if ( $title ) {
+			$title = '<a class="rsswidget" href="' . esc_url( $url ) . '"><img class="rss-widget-icon" style="border:0" width="14" height="14" src="' . esc_url( $icon ) . '" alt="RSS" /></a> <a class="rsswidget" href="' . esc_url( $link ) . '">' . esc_html( $title ) . '</a>';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		echo $args['before_widget'];
@@ -127,7 +134,11 @@ class WP_Widget_RSS extends WP_Widget {
 			// The title may be filtered: Strip out HTML and make sure the aria-label is never empty.
 			$title      = trim( strip_tags( $title ) );
 			$aria_label = $title ? $title : __( 'RSS Feed' );
+<<<<<<< HEAD
 			echo '<nav aria-label="' . esc_attr( $aria_label ) . '">';
+=======
+			echo '<nav role="navigation" aria-label="' . esc_attr( $aria_label ) . '">';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		wp_widget_rss_output( $rss, $instance );

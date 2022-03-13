@@ -37,7 +37,11 @@ if ( ! class_exists( 'MO', false ) ) :
 		 * @param string $filename MO file to load
 		 * @return bool True if the import from file was successful, otherwise false.
 		 */
+<<<<<<< HEAD
 		public function import_from_file( $filename ) {
+=======
+		function import_from_file( $filename ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$reader = new POMO_FileReader( $filename );
 
 			if ( ! $reader->is_resource() ) {
@@ -53,7 +57,11 @@ if ( ! class_exists( 'MO', false ) ) :
 		 * @param string $filename
 		 * @return bool
 		 */
+<<<<<<< HEAD
 		public function export_to_file( $filename ) {
+=======
+		function export_to_file( $filename ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$fh = fopen( $filename, 'wb' );
 			if ( ! $fh ) {
 				return false;
@@ -66,7 +74,11 @@ if ( ! class_exists( 'MO', false ) ) :
 		/**
 		 * @return string|false
 		 */
+<<<<<<< HEAD
 		public function export() {
+=======
+		function export() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$tmp_fh = fopen( 'php://temp', 'r+' );
 			if ( ! $tmp_fh ) {
 				return false;
@@ -80,7 +92,11 @@ if ( ! class_exists( 'MO', false ) ) :
 		 * @param Translation_Entry $entry
 		 * @return bool
 		 */
+<<<<<<< HEAD
 		public function is_entry_good_for_export( $entry ) {
+=======
+		function is_entry_good_for_export( $entry ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( empty( $entry->translations ) ) {
 				return false;
 			}
@@ -96,16 +112,27 @@ if ( ! class_exists( 'MO', false ) ) :
 		 * @param resource $fh
 		 * @return true
 		 */
+<<<<<<< HEAD
 		public function export_to_file_handle( $fh ) {
+=======
+		function export_to_file_handle( $fh ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$entries = array_filter( $this->entries, array( $this, 'is_entry_good_for_export' ) );
 			ksort( $entries );
 			$magic                     = 0x950412de;
 			$revision                  = 0;
 			$total                     = count( $entries ) + 1; // All the headers are one entry.
+<<<<<<< HEAD
 			$originals_lengths_addr    = 28;
 			$translations_lengths_addr = $originals_lengths_addr + 8 * $total;
 			$size_of_hash              = 0;
 			$hash_addr                 = $translations_lengths_addr + 8 * $total;
+=======
+			$originals_lenghts_addr    = 28;
+			$translations_lenghts_addr = $originals_lenghts_addr + 8 * $total;
+			$size_of_hash              = 0;
+			$hash_addr                 = $translations_lenghts_addr + 8 * $total;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$current_addr              = $hash_addr;
 			fwrite(
 				$fh,
@@ -114,13 +141,22 @@ if ( ! class_exists( 'MO', false ) ) :
 					$magic,
 					$revision,
 					$total,
+<<<<<<< HEAD
 					$originals_lengths_addr,
 					$translations_lengths_addr,
+=======
+					$originals_lenghts_addr,
+					$translations_lenghts_addr,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					$size_of_hash,
 					$hash_addr
 				)
 			);
+<<<<<<< HEAD
 			fseek( $fh, $originals_lengths_addr );
+=======
+			fseek( $fh, $originals_lenghts_addr );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 			// Headers' msgid is an empty string.
 			fwrite( $fh, pack( 'VV', 0, $current_addr ) );
@@ -157,7 +193,11 @@ if ( ! class_exists( 'MO', false ) ) :
 		 * @param Translation_Entry $entry
 		 * @return string
 		 */
+<<<<<<< HEAD
 		public function export_original( $entry ) {
+=======
+		function export_original( $entry ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			// TODO: Warnings for control characters.
 			$exported = $entry->singular;
 			if ( $entry->is_plural ) {
@@ -173,7 +213,11 @@ if ( ! class_exists( 'MO', false ) ) :
 		 * @param Translation_Entry $entry
 		 * @return string
 		 */
+<<<<<<< HEAD
 		public function export_translations( $entry ) {
+=======
+		function export_translations( $entry ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			// TODO: Warnings for control characters.
 			return $entry->is_plural ? implode( "\0", $entry->translations ) : $entry->translations[0];
 		}
@@ -181,7 +225,11 @@ if ( ! class_exists( 'MO', false ) ) :
 		/**
 		 * @return string
 		 */
+<<<<<<< HEAD
 		public function export_headers() {
+=======
+		function export_headers() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$exported = '';
 			foreach ( $this->headers as $header => $value ) {
 				$exported .= "$header: $value\n";
@@ -193,7 +241,11 @@ if ( ! class_exists( 'MO', false ) ) :
 		 * @param int $magic
 		 * @return string|false
 		 */
+<<<<<<< HEAD
 		public function get_byteorder( $magic ) {
+=======
+		function get_byteorder( $magic ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			// The magic is 0x950412de.
 
 			// bug in PHP 5.0.2, see https://savannah.nongnu.org/bugs/?func=detailitem&item_id=10565
@@ -214,7 +266,11 @@ if ( ! class_exists( 'MO', false ) ) :
 		 * @param POMO_FileReader $reader
 		 * @return bool True if the import was successful, otherwise false.
 		 */
+<<<<<<< HEAD
 		public function import_from_reader( $reader ) {
+=======
+		function import_from_reader( $reader ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$endian_string = MO::get_byteorder( $reader->readint32() );
 			if ( false === $endian_string ) {
 				return false;
@@ -229,7 +285,11 @@ if ( ! class_exists( 'MO', false ) ) :
 			}
 
 			// Parse header.
+<<<<<<< HEAD
 			$header = unpack( "{$endian}revision/{$endian}total/{$endian}originals_lengths_addr/{$endian}translations_lengths_addr/{$endian}hash_length/{$endian}hash_addr", $header );
+=======
+			$header = unpack( "{$endian}revision/{$endian}total/{$endian}originals_lenghts_addr/{$endian}translations_lenghts_addr/{$endian}hash_length/{$endian}hash_addr", $header );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( ! is_array( $header ) ) {
 				return false;
 			}
@@ -240,10 +300,17 @@ if ( ! class_exists( 'MO', false ) ) :
 			}
 
 			// Seek to data blocks.
+<<<<<<< HEAD
 			$reader->seekto( $header['originals_lengths_addr'] );
 
 			// Read originals' indices.
 			$originals_lengths_length = $header['translations_lengths_addr'] - $header['originals_lengths_addr'];
+=======
+			$reader->seekto( $header['originals_lenghts_addr'] );
+
+			// Read originals' indices.
+			$originals_lengths_length = $header['translations_lenghts_addr'] - $header['originals_lenghts_addr'];
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( $originals_lengths_length != $header['total'] * 8 ) {
 				return false;
 			}
@@ -254,6 +321,7 @@ if ( ! class_exists( 'MO', false ) ) :
 			}
 
 			// Read translations' indices.
+<<<<<<< HEAD
 			$translations_lengths_length = $header['hash_addr'] - $header['translations_lengths_addr'];
 			if ( $translations_lengths_length != $header['total'] * 8 ) {
 				return false;
@@ -261,6 +329,15 @@ if ( ! class_exists( 'MO', false ) ) :
 
 			$translations = $reader->read( $translations_lengths_length );
 			if ( $reader->strlen( $translations ) != $translations_lengths_length ) {
+=======
+			$translations_lenghts_length = $header['hash_addr'] - $header['translations_lenghts_addr'];
+			if ( $translations_lenghts_length != $header['total'] * 8 ) {
+				return false;
+			}
+
+			$translations = $reader->read( $translations_lenghts_length );
+			if ( $reader->strlen( $translations ) != $translations_lenghts_length ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				return false;
 			}
 
@@ -311,7 +388,11 @@ if ( ! class_exists( 'MO', false ) ) :
 		 *  0x00 as a plural translations separator
 		 * @return Translation_Entry Entry instance.
 		 */
+<<<<<<< HEAD
 		public function &make_entry( $original, $translation ) {
+=======
+		function &make_entry( $original, $translation ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$entry = new Translation_Entry();
 			// Look for context, separated by \4.
 			$parts = explode( "\4", $original );
@@ -335,14 +416,22 @@ if ( ! class_exists( 'MO', false ) ) :
 		 * @param int $count
 		 * @return string
 		 */
+<<<<<<< HEAD
 		public function select_plural_form( $count ) {
+=======
+		function select_plural_form( $count ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return $this->gettext_select_plural_form( $count );
 		}
 
 		/**
 		 * @return int
 		 */
+<<<<<<< HEAD
 		public function get_plural_forms_count() {
+=======
+		function get_plural_forms_count() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return $this->_nplurals;
 		}
 	}

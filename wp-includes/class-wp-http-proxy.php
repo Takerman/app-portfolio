@@ -25,7 +25,11 @@
  * <li>WP_PROXY_PASSWORD - Proxy password, if it requires authentication.</li>
  * <li>WP_PROXY_BYPASS_HOSTS - Will prevent the hosts in this list from going through the proxy.
  * You do not need to have localhost and the site host in this list, because they will not be passed
+<<<<<<< HEAD
  * through the proxy. The list should be presented in a comma separated list, wildcards using * are supported. Example: *.wordpress.org</li>
+=======
+ * through the proxy. The list should be presented in a comma separated list, wildcards using * are supported, eg. *.wordpress.org</li>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * </ol>
  *
  * An example can be as seen below.
@@ -44,6 +48,7 @@ class WP_HTTP_Proxy {
 	/**
 	 * Whether proxy connection should be used.
 	 *
+<<<<<<< HEAD
 	 * Constants which control this behaviour:
 	 *
 	 * - `WP_PROXY_HOST`
@@ -51,6 +56,13 @@ class WP_HTTP_Proxy {
 	 *
 	 * @since 2.8.0
 	 *
+=======
+	 * @since 2.8.0
+	 *
+	 * @use WP_PROXY_HOST
+	 * @use WP_PROXY_PORT
+	 *
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @return bool
 	 */
 	public function is_enabled() {
@@ -60,6 +72,7 @@ class WP_HTTP_Proxy {
 	/**
 	 * Whether authentication should be used.
 	 *
+<<<<<<< HEAD
 	 * Constants which control this behaviour:
 	 *
 	 * - `WP_PROXY_USERNAME`
@@ -67,6 +80,13 @@ class WP_HTTP_Proxy {
 	 *
 	 * @since 2.8.0
 	 *
+=======
+	 * @since 2.8.0
+	 *
+	 * @use WP_PROXY_USERNAME
+	 * @use WP_PROXY_PASSWORD
+	 *
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @return bool
 	 */
 	public function use_authentication() {

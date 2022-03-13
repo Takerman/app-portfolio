@@ -89,6 +89,12 @@ $step = isset( $_GET['step'] ) ? (int) $_GET['step'] : -1;
  * @ignore
  * @since 2.3.0
  *
+<<<<<<< HEAD
+=======
+ * @global string    $wp_local_package Locale code of the package.
+ * @global WP_Locale $wp_locale        WordPress date and time locale object.
+ *
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @param string|string[] $body_classes Class attribute values for the body tag.
  */
 function setup_config_display_header( $body_classes = array() ) {
@@ -192,7 +198,11 @@ switch ( $step ) {
 		);
 		?>
 </p>
+<<<<<<< HEAD
 <p><?php _e( 'In all likelihood, these items were supplied to you by your web host. If you don&#8217;t have this information, then you will need to contact them before you can continue. If you&#8217;re all ready&hellip;' ); ?></p>
+=======
+<p><?php _e( 'In all likelihood, these items were supplied to you by your Web Host. If you don&#8217;t have this information, then you will need to contact them before you can continue. If you&#8217;re all ready&hellip;' ); ?></p>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 <p class="step"><a href="<?php echo $step_1; ?>" class="button button-large"><?php _e( 'Let&#8217;s go!' ); ?></a></p>
 		<?php

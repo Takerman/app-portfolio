@@ -38,7 +38,11 @@ class WP_Block_Template {
 	public $slug;
 
 	/**
+<<<<<<< HEAD
 	 * ID.
+=======
+	 * Id.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.8.0
 	 * @var string
@@ -78,6 +82,7 @@ class WP_Block_Template {
 	public $source = 'theme';
 
 	/**
+<<<<<<< HEAD
 	 * Origin of the content when the content has been customized.
 	 * When customized, origin takes on the value of source and source becomes
 	 * 'custom'.
@@ -92,6 +97,12 @@ class WP_Block_Template {
 	 *
 	 * @since 5.8.0
 	 * @var int|null
+=======
+	 * Post Id.
+	 *
+	 * @since 5.8.0
+	 * @var integer|null
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public $wp_id;
 
@@ -107,6 +118,7 @@ class WP_Block_Template {
 	 * Whether a template is, or is based upon, an existing template file.
 	 *
 	 * @since 5.8.0
+<<<<<<< HEAD
 	 * @var bool
 	 */
 	public $has_theme_file;
@@ -145,4 +157,9 @@ class WP_Block_Template {
 	 * @var string
 	 */
 	public $area;
+=======
+	 * @var boolean
+	 */
+	public $has_theme_file;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }

@@ -39,6 +39,7 @@
 		"className": false,
 		"typography": {
 			"fontSize": true,
+<<<<<<< HEAD
 			"__experimentalFontFamily": true,
 			"lineHeight": true,
 			"__experimentalFontStyle": true,
@@ -56,6 +57,15 @@
 		"__unstablePasteTextInline": true,
 		"__experimentalSelector": "ol,ul",
 		"__experimentalSlashInserter": true
+=======
+			"__experimentalFontFamily": true
+		},
+		"color": {
+			"gradients": true
+		},
+		"__unstablePasteTextInline": true,
+		"__experimentalSelector": "ol,ul"
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	},
 	"editorStyle": "wp-block-list-editor",
 	"style": "wp-block-list"

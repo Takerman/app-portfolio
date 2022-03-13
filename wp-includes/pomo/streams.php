@@ -17,7 +17,11 @@ if ( ! class_exists( 'POMO_Reader', false ) ) :
 		/**
 		 * PHP5 constructor.
 		 */
+<<<<<<< HEAD
 		public function __construct() {
+=======
+		function __construct() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( function_exists( 'mb_substr' )
 				&& ( (int) ini_get( 'mbstring.func_overload' ) & 2 ) // phpcs:ignore PHPCompatibility.IniDirectives.RemovedIniDirectives.mbstring_func_overloadDeprecated
 			) {
@@ -46,7 +50,11 @@ if ( ! class_exists( 'POMO_Reader', false ) ) :
 		 *
 		 * @param string $endian Set the endianness of the file. Accepts 'big', or 'little'.
 		 */
+<<<<<<< HEAD
 		public function setEndian( $endian ) { // phpcs:ignore WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid
+=======
+		function setEndian( $endian ) { // phpcs:ignore WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$this->endian = $endian;
 		}
 
@@ -56,7 +64,11 @@ if ( ! class_exists( 'POMO_Reader', false ) ) :
 		 * @return mixed The integer, corresponding to the next 32 bits from
 		 *  the stream of false if there are not enough bytes or on error
 		 */
+<<<<<<< HEAD
 		public function readint32() {
+=======
+		function readint32() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$bytes = $this->read( 4 );
 			if ( 4 != $this->strlen( $bytes ) ) {
 				return false;
@@ -73,7 +85,11 @@ if ( ! class_exists( 'POMO_Reader', false ) ) :
 		 * @return mixed Array of integers or false if there isn't
 		 *  enough data or on error
 		 */
+<<<<<<< HEAD
 		public function readint32array( $count ) {
+=======
+		function readint32array( $count ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$bytes = $this->read( 4 * $count );
 			if ( 4 * $count != $this->strlen( $bytes ) ) {
 				return false;
@@ -88,7 +104,11 @@ if ( ! class_exists( 'POMO_Reader', false ) ) :
 		 * @param int    $length
 		 * @return string
 		 */
+<<<<<<< HEAD
 		public function substr( $string, $start, $length ) {
+=======
+		function substr( $string, $start, $length ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( $this->is_overloaded ) {
 				return mb_substr( $string, $start, $length, 'ascii' );
 			} else {
@@ -100,7 +120,11 @@ if ( ! class_exists( 'POMO_Reader', false ) ) :
 		 * @param string $string
 		 * @return int
 		 */
+<<<<<<< HEAD
 		public function strlen( $string ) {
+=======
+		function strlen( $string ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( $this->is_overloaded ) {
 				return mb_strlen( $string, 'ascii' );
 			} else {
@@ -113,7 +137,11 @@ if ( ! class_exists( 'POMO_Reader', false ) ) :
 		 * @param int    $chunk_size
 		 * @return array
 		 */
+<<<<<<< HEAD
 		public function str_split( $string, $chunk_size ) {
+=======
+		function str_split( $string, $chunk_size ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( ! function_exists( 'str_split' ) ) {
 				$length = $this->strlen( $string );
 				$out    = array();
@@ -129,21 +157,33 @@ if ( ! class_exists( 'POMO_Reader', false ) ) :
 		/**
 		 * @return int
 		 */
+<<<<<<< HEAD
 		public function pos() {
+=======
+		function pos() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return $this->_pos;
 		}
 
 		/**
 		 * @return true
 		 */
+<<<<<<< HEAD
 		public function is_resource() {
+=======
+		function is_resource() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return true;
 		}
 
 		/**
 		 * @return true
 		 */
+<<<<<<< HEAD
 		public function close() {
+=======
+		function close() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return true;
 		}
 	}
@@ -155,7 +195,11 @@ if ( ! class_exists( 'POMO_FileReader', false ) ) :
 		/**
 		 * @param string $filename
 		 */
+<<<<<<< HEAD
 		public function __construct( $filename ) {
+=======
+		function __construct( $filename ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			parent::__construct();
 			$this->_f = fopen( $filename, 'rb' );
 		}
@@ -176,7 +220,11 @@ if ( ! class_exists( 'POMO_FileReader', false ) ) :
 		 * @param int $bytes
 		 * @return string|false Returns read string, otherwise false.
 		 */
+<<<<<<< HEAD
 		public function read( $bytes ) {
+=======
+		function read( $bytes ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return fread( $this->_f, $bytes );
 		}
 
@@ -184,7 +232,11 @@ if ( ! class_exists( 'POMO_FileReader', false ) ) :
 		 * @param int $pos
 		 * @return bool
 		 */
+<<<<<<< HEAD
 		public function seekto( $pos ) {
+=======
+		function seekto( $pos ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( -1 == fseek( $this->_f, $pos, SEEK_SET ) ) {
 				return false;
 			}
@@ -195,28 +247,44 @@ if ( ! class_exists( 'POMO_FileReader', false ) ) :
 		/**
 		 * @return bool
 		 */
+<<<<<<< HEAD
 		public function is_resource() {
+=======
+		function is_resource() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return is_resource( $this->_f );
 		}
 
 		/**
 		 * @return bool
 		 */
+<<<<<<< HEAD
 		public function feof() {
+=======
+		function feof() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return feof( $this->_f );
 		}
 
 		/**
 		 * @return bool
 		 */
+<<<<<<< HEAD
 		public function close() {
+=======
+		function close() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return fclose( $this->_f );
 		}
 
 		/**
 		 * @return string
 		 */
+<<<<<<< HEAD
 		public function read_all() {
+=======
+		function read_all() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$all = '';
 			while ( ! $this->feof() ) {
 				$all .= $this->read( 4096 );
@@ -238,7 +306,11 @@ if ( ! class_exists( 'POMO_StringReader', false ) ) :
 		/**
 		 * PHP5 constructor.
 		 */
+<<<<<<< HEAD
 		public function __construct( $str = '' ) {
+=======
+		function __construct( $str = '' ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			parent::__construct();
 			$this->_str = $str;
 			$this->_pos = 0;
@@ -260,7 +332,11 @@ if ( ! class_exists( 'POMO_StringReader', false ) ) :
 		 * @param string $bytes
 		 * @return string
 		 */
+<<<<<<< HEAD
 		public function read( $bytes ) {
+=======
+		function read( $bytes ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$data        = $this->substr( $this->_str, $this->_pos, $bytes );
 			$this->_pos += $bytes;
 			if ( $this->strlen( $this->_str ) < $this->_pos ) {
@@ -273,7 +349,11 @@ if ( ! class_exists( 'POMO_StringReader', false ) ) :
 		 * @param int $pos
 		 * @return int
 		 */
+<<<<<<< HEAD
 		public function seekto( $pos ) {
+=======
+		function seekto( $pos ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$this->_pos = $pos;
 			if ( $this->strlen( $this->_str ) < $this->_pos ) {
 				$this->_pos = $this->strlen( $this->_str );
@@ -284,14 +364,22 @@ if ( ! class_exists( 'POMO_StringReader', false ) ) :
 		/**
 		 * @return int
 		 */
+<<<<<<< HEAD
 		public function length() {
+=======
+		function length() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return $this->strlen( $this->_str );
 		}
 
 		/**
 		 * @return string
 		 */
+<<<<<<< HEAD
 		public function read_all() {
+=======
+		function read_all() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return $this->substr( $this->_str, $this->_pos, $this->strlen( $this->_str ) );
 		}
 
@@ -306,7 +394,11 @@ if ( ! class_exists( 'POMO_CachedFileReader', false ) ) :
 		/**
 		 * PHP5 constructor.
 		 */
+<<<<<<< HEAD
 		public function __construct( $filename ) {
+=======
+		function __construct( $filename ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			parent::__construct();
 			$this->_str = file_get_contents( $filename );
 			if ( false === $this->_str ) {
@@ -348,7 +440,11 @@ if ( ! class_exists( 'POMO_CachedIntFileReader', false ) ) :
 		 *
 		 * @see POMO_CachedIntFileReader::__construct()
 		 */
+<<<<<<< HEAD
 		public function POMO_CachedIntFileReader( $filename ) {
+=======
+		function POMO_CachedIntFileReader( $filename ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			_deprecated_constructor( self::class, '5.4.0', static::class );
 			self::__construct( $filename );
 		}

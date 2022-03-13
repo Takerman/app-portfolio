@@ -2,8 +2,13 @@
 	"apiVersion": 2,
 	"name": "core/site-title",
 	"title": "Site Title",
+<<<<<<< HEAD
 	"category": "theme",
 	"description": "Displays the name of this site. Update the block, and the changes apply everywhere it’s used. This will also appear in the browser title bar and in search results.",
+=======
+	"category": "design",
+	"description": "Displays and allows editing the name of the site. The site title usually appears in the browser title bar, in search results, and more. Also available in Settings > General.",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	"textdomain": "default",
 	"attributes": {
 		"level": {
@@ -12,6 +17,7 @@
 		},
 		"textAlign": {
 			"type": "string"
+<<<<<<< HEAD
 		},
 		"isLink": {
 			"type": "boolean",
@@ -25,11 +31,19 @@
 	"example": {
 		"viewportWidth": 500
 	},
+=======
+		}
+	},
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	"supports": {
 		"align": [ "wide", "full" ],
 		"html": false,
 		"color": {
 			"gradients": true,
+<<<<<<< HEAD
+=======
+			"text": false,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			"link": true
 		},
 		"spacing": {
@@ -42,6 +56,7 @@
 			"__experimentalFontFamily": true,
 			"__experimentalTextTransform": true,
 			"__experimentalFontStyle": true,
+<<<<<<< HEAD
 			"__experimentalFontWeight": true,
 			"__experimentalLetterSpacing": true,
 			"__experimentalDefaultControls": {
@@ -51,6 +66,9 @@
 				"letterSpacing": true,
 				"textTransform": true
 			}
+=======
+			"__experimentalFontWeight": true
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	},
 	"editorStyle": "wp-block-site-title-editor"

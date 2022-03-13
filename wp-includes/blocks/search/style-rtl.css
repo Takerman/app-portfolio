@@ -41,12 +41,15 @@
  * These variables do not appear to be used anywhere else.
  */
 /**
+<<<<<<< HEAD
 *  Converts a hex value into the rgb equivalent.
 *
 * @param {string} hex - the hexadecimal value to convert
 * @return {string} comma separated rgb values
 */
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Breakpoint mixins
  */
 /**
@@ -74,13 +77,18 @@
 /**
  * Reset the WP Admin page styles for Gutenberg-like pages.
  */
+<<<<<<< HEAD
 .wp-block-search__button {
+=======
+.wp-block-search .wp-block-search__button {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   background: #f7f7f7;
   border: 1px solid #ccc;
   padding: 0.375em 0.625em;
   color: #32373c;
   margin-right: 0.625em;
   word-break: normal;
+<<<<<<< HEAD
   font-size: inherit;
   font-family: inherit;
   line-height: inherit;
@@ -95,11 +103,23 @@
 }
 
 .wp-block-search__inside-wrapper {
+=======
+}
+.wp-block-search .wp-block-search__button.has-icon {
+  line-height: 0;
+}
+.wp-block-search .wp-block-search__button svg {
+  min-width: 1.5em;
+  min-height: 1.5em;
+}
+.wp-block-search .wp-block-search__inside-wrapper {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   display: flex;
   flex: auto;
   flex-wrap: nowrap;
   max-width: 100%;
 }
+<<<<<<< HEAD
 
 .wp-block-search__label {
   width: 100%;
@@ -119,6 +139,19 @@
   margin-right: 0;
 }
 
+=======
+.wp-block-search .wp-block-search__label {
+  width: 100%;
+}
+.wp-block-search .wp-block-search__input {
+  flex-grow: 1;
+  min-width: 3em;
+  border: 1px solid #949494;
+}
+.wp-block-search.wp-block-search__button-only .wp-block-search__button {
+  margin-right: 0;
+}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper {
   padding: 4px;
   border: 1px solid #949494;
@@ -134,7 +167,10 @@
 .wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper .wp-block-search__button {
   padding: 0.125em 0.5em;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 .wp-block-search.aligncenter .wp-block-search__inside-wrapper {
   margin: auto;
 }

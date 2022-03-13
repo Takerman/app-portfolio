@@ -20,12 +20,26 @@
 			"default": "",
 			"__experimentalRole": "content"
 		},
+<<<<<<< HEAD
 		"textAlign": {
+=======
+		"mainColor": {
+			"type": "string"
+		},
+		"customMainColor": {
+			"type": "string"
+		},
+		"textColor": {
+			"type": "string"
+		},
+		"customTextColor": {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			"type": "string"
 		}
 	},
 	"supports": {
 		"anchor": true,
+<<<<<<< HEAD
 		"align": [ "left", "right", "wide", "full" ],
 		"color": {
 			"gradients": true,
@@ -51,6 +65,18 @@
 			"width": true
 		}
 	},
+=======
+		"align": [ "left", "right", "wide", "full" ]
+	},
+	"styles": [
+		{
+			"name": "default",
+			"label": "Default",
+			"isDefault": true
+		},
+		{ "name": "solid-color", "label": "Solid color" }
+	],
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	"editorStyle": "wp-block-pullquote-editor",
 	"style": "wp-block-pullquote"
 }

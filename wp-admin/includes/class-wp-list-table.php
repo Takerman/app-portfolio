@@ -207,14 +207,21 @@ class WP_List_Table {
 	 * @since 4.0.0
 	 *
 	 * @param string $name Property to check if set.
+<<<<<<< HEAD
 	 * @return bool Whether the property is a back-compat property and it is set.
+=======
+	 * @return bool Whether the property is set.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public function __isset( $name ) {
 		if ( in_array( $name, $this->compat_fields, true ) ) {
 			return isset( $this->$name );
 		}
+<<<<<<< HEAD
 
 		return false;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	/**
@@ -315,8 +322,11 @@ class WP_List_Table {
 		if ( isset( $this->_pagination_args[ $key ] ) ) {
 			return $this->_pagination_args[ $key ];
 		}
+<<<<<<< HEAD
 
 		return 0;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	/**
@@ -910,10 +920,22 @@ class WP_List_Table {
 			$disable_first = true;
 			$disable_prev  = true;
 		}
+<<<<<<< HEAD
+=======
+		if ( 2 == $current ) {
+			$disable_first = true;
+		}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( $total_pages == $current ) {
 			$disable_last = true;
 			$disable_next = true;
 		}
+<<<<<<< HEAD
+=======
+		if ( $total_pages - 1 == $current ) {
+			$disable_last = true;
+		}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		if ( $disable_first ) {
 			$page_links[] = '<span class="tablenav-pages-navspan button disabled" aria-hidden="true">&laquo;</span>';

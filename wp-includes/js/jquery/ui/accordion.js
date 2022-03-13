@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * jQuery UI Accordion 1.13.1
+=======
+ * jQuery UI Accordion 1.12.1
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -9,9 +13,15 @@
 
 //>>label: Accordion
 //>>group: Widgets
+<<<<<<< HEAD
 /* eslint-disable max-len */
 //>>description: Displays collapsible content panels for presenting information in a limited amount of space.
 /* eslint-enable max-len */
+=======
+// jscs:disable maximumLineLength
+//>>description: Displays collapsible content panels for presenting information in a limited amount of space.
+// jscs:enable maximumLineLength
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 //>>docs: http://api.jqueryui.com/accordion/
 //>>demos: http://jqueryui.com/accordion/
 //>>css.structure: ../../themes/base/core.css
@@ -19,8 +29,11 @@
 //>>css.theme: ../../themes/base/theme.css
 
 ( function( factory ) {
+<<<<<<< HEAD
 	"use strict";
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -33,11 +46,18 @@
 		// Browser globals
 		factory( jQuery );
 	}
+<<<<<<< HEAD
 } )( function( $ ) {
 "use strict";
 
 return $.widget( "ui.accordion", {
 	version: "1.13.1",
+=======
+}( function( $ ) {
+
+return $.widget( "ui.accordion", {
+	version: "1.12.1",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	options: {
 		active: 0,
 		animate: {},
@@ -48,9 +68,13 @@ return $.widget( "ui.accordion", {
 		},
 		collapsible: false,
 		event: "click",
+<<<<<<< HEAD
 		header: function( elem ) {
 			return elem.find( "> li > :first-child" ).add( elem.find( "> :not(li)" ).even() );
 		},
+=======
+		header: "> li > :first-child, > :not(li):even",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		heightStyle: "auto",
 		icons: {
 			activeHeader: "ui-icon-triangle-1-s",
@@ -204,6 +228,7 @@ return $.widget( "ui.accordion", {
 			toFocus = false;
 
 		switch ( event.keyCode ) {
+<<<<<<< HEAD
 			case keyCode.RIGHT:
 			case keyCode.DOWN:
 				toFocus = this.headers[ ( currentIndex + 1 ) % length ];
@@ -222,6 +247,26 @@ return $.widget( "ui.accordion", {
 			case keyCode.END:
 				toFocus = this.headers[ length - 1 ];
 				break;
+=======
+		case keyCode.RIGHT:
+		case keyCode.DOWN:
+			toFocus = this.headers[ ( currentIndex + 1 ) % length ];
+			break;
+		case keyCode.LEFT:
+		case keyCode.UP:
+			toFocus = this.headers[ ( currentIndex - 1 + length ) % length ];
+			break;
+		case keyCode.SPACE:
+		case keyCode.ENTER:
+			this._eventHandler( event );
+			break;
+		case keyCode.HOME:
+			toFocus = this.headers[ 0 ];
+			break;
+		case keyCode.END:
+			toFocus = this.headers[ length - 1 ];
+			break;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		if ( toFocus ) {
@@ -244,6 +289,7 @@ return $.widget( "ui.accordion", {
 
 		// Was collapsed or no panel
 		if ( ( options.active === false && options.collapsible === true ) ||
+<<<<<<< HEAD
 			!this.headers.length ) {
 			options.active = false;
 			this.active = $();
@@ -253,6 +299,17 @@ return $.widget( "ui.accordion", {
 			this._activate( 0 );
 
 			// was active, but active panel is gone
+=======
+				!this.headers.length ) {
+			options.active = false;
+			this.active = $();
+
+		// active false only when collapsible is true
+		} else if ( options.active === false ) {
+			this._activate( 0 );
+
+		// was active, but active panel is gone
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		} else if ( this.active.length && !$.contains( this.element[ 0 ], this.active[ 0 ] ) ) {
 
 			// all remaining panel are disabled
@@ -260,12 +317,20 @@ return $.widget( "ui.accordion", {
 				options.active = false;
 				this.active = $();
 
+<<<<<<< HEAD
 				// activate previous panel
+=======
+			// activate previous panel
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			} else {
 				this._activate( Math.max( 0, options.active - 1 ) );
 			}
 
+<<<<<<< HEAD
 			// was active, active panel still exists
+=======
+		// was active, active panel still exists
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		} else {
 
 			// make sure active index is correct
@@ -281,11 +346,15 @@ return $.widget( "ui.accordion", {
 		var prevHeaders = this.headers,
 			prevPanels = this.panels;
 
+<<<<<<< HEAD
 		if ( typeof this.options.header === "function" ) {
 			this.headers = this.options.header( this.element );
 		} else {
 			this.headers = this.element.find( this.options.header );
 		}
+=======
+		this.headers = this.element.find( this.options.header );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		this._addClass( this.headers, "ui-accordion-header ui-accordion-header-collapsed",
 			"ui-state-default" );
 
@@ -322,6 +391,7 @@ return $.widget( "ui.accordion", {
 				panel.attr( "aria-labelledby", headerId );
 			} )
 			.next()
+<<<<<<< HEAD
 			.attr( "role", "tabpanel" );
 
 		this.headers
@@ -336,6 +406,22 @@ return $.widget( "ui.accordion", {
 				"aria-hidden": "true"
 			} )
 			.hide();
+=======
+				.attr( "role", "tabpanel" );
+
+		this.headers
+			.not( this.active )
+				.attr( {
+					"aria-selected": "false",
+					"aria-expanded": "false",
+					tabIndex: -1
+				} )
+				.next()
+					.attr( {
+						"aria-hidden": "true"
+					} )
+					.hide();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		// Make sure at least one header is in the tab order
 		if ( !this.active.length ) {
@@ -347,9 +433,15 @@ return $.widget( "ui.accordion", {
 				tabIndex: 0
 			} )
 				.next()
+<<<<<<< HEAD
 				.attr( {
 					"aria-hidden": "false"
 				} );
+=======
+					.attr( {
+						"aria-hidden": "false"
+					} );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		this._createIcons();
@@ -454,11 +546,19 @@ return $.widget( "ui.accordion", {
 
 		if (
 
+<<<<<<< HEAD
 			// click on active header, but not collapsible
 			( clickedIsActive && !options.collapsible ) ||
 
 			// allow canceling activation
 			( this._trigger( "beforeActivate", event, eventData ) === false ) ) {
+=======
+				// click on active header, but not collapsible
+				( clickedIsActive && !options.collapsible ) ||
+
+				// allow canceling activation
+				( this._trigger( "beforeActivate", event, eventData ) === false ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return;
 		}
 
@@ -534,11 +634,19 @@ return $.widget( "ui.accordion", {
 		toShow
 			.attr( "aria-hidden", "false" )
 			.prev()
+<<<<<<< HEAD
 			.attr( {
 				"aria-selected": "true",
 				"aria-expanded": "true",
 				tabIndex: 0
 			} );
+=======
+				.attr( {
+					"aria-selected": "true",
+					"aria-expanded": "true",
+					tabIndex: 0
+				} );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	},
 
 	_animate: function( toShow, toHide, data ) {
@@ -616,4 +724,8 @@ return $.widget( "ui.accordion", {
 	}
 } );
 
+<<<<<<< HEAD
 } );
+=======
+} ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

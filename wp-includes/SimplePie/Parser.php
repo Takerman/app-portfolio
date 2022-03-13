@@ -164,6 +164,7 @@ class SimplePie_Parser
 			xml_set_element_handler($xml, 'tag_open', 'tag_close');
 
 			// Parse!
+<<<<<<< HEAD
 			$wrapper = @is_writable(sys_get_temp_dir()) ? 'php://temp' : 'php://memory';
 			if (($stream = fopen($wrapper, 'r+')) &&
 				fwrite($stream, $data) &&
@@ -188,6 +189,14 @@ class SimplePie_Parser
 				$return = false;
 			}
 
+=======
+			if (!xml_parse($xml, $data, true))
+			{
+				$this->error_code = xml_get_error_code($xml);
+				$this->error_string = xml_error_string($this->error_code);
+				$return = false;
+			}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$this->current_line = xml_get_current_line_number($xml);
 			$this->current_column = xml_get_current_column_number($xml);
 			$this->current_byte = xml_get_current_byte_index($xml);

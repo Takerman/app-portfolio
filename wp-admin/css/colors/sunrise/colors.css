@@ -702,6 +702,7 @@ div#wp-responsive-toggle a:before {
 .wp-core-ui.wp-customizer .theme-overlay .theme-header .close:focus, .wp-core-ui.wp-customizer .theme-overlay .theme-header .close:hover, .wp-core-ui.wp-customizer .theme-overlay .theme-header .right:focus, .wp-core-ui.wp-customizer .theme-overlay .theme-header .right:hover, .wp-core-ui.wp-customizer .theme-overlay .theme-header .left:focus, .wp-core-ui.wp-customizer .theme-overlay .theme-header .left:hover {
   border-bottom-color: #dd823b;
   color: #0073aa;
+<<<<<<< HEAD
 }
 
 /* Welcome Panel */
@@ -711,4 +712,6 @@ div#wp-responsive-toggle a:before {
 
 [class*=welcome-panel-icon] {
   background-color: #cf4944;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }

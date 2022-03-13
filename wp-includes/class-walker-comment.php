@@ -157,14 +157,18 @@ class Walker_Comment extends Walker {
 	 * Starts the element output.
 	 *
 	 * @since 2.7.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$comment` to `$data_object` and `$id` to `$current_object_id`
 	 *              to match parent class for PHP 8 named parameter support.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @see Walker::start_el()
 	 * @see wp_list_comments()
 	 * @global int        $comment_depth
 	 * @global WP_Comment $comment       Global comment object.
 	 *
+<<<<<<< HEAD
 	 * @param string     $output            Used to append additional content. Passed by reference.
 	 * @param WP_Comment $data_object       Comment data object.
 	 * @param int        $depth             Optional. Depth of the current comment in reference to parents. Default 0.
@@ -175,6 +179,15 @@ class Walker_Comment extends Walker {
 		// Restores the more descriptive, specific name for use within this method.
 		$comment = $data_object;
 
+=======
+	 * @param string     $output  Used to append additional content. Passed by reference.
+	 * @param WP_Comment $comment Comment data object.
+	 * @param int        $depth   Optional. Depth of the current comment in reference to parents. Default 0.
+	 * @param array      $args    Optional. An array of arguments. Default empty array.
+	 * @param int        $id      Optional. ID of the current comment. Default 0 (unused).
+	 */
+	public function start_el( &$output, $comment, $depth = 0, $args = array(), $id = 0 ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$depth++;
 		$GLOBALS['comment_depth'] = $depth;
 		$GLOBALS['comment']       = $comment;
@@ -213,11 +226,15 @@ class Walker_Comment extends Walker {
 	 * Ends the element output, if needed.
 	 *
 	 * @since 2.7.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$comment` to `$data_object` to match parent class for PHP 8 named parameter support.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @see Walker::end_el()
 	 * @see wp_list_comments()
 	 *
+<<<<<<< HEAD
 	 * @param string     $output      Used to append additional content. Passed by reference.
 	 * @param WP_Comment $data_object Comment data object.
 	 * @param int        $depth       Optional. Depth of the current comment. Default 0.
@@ -232,6 +249,17 @@ class Walker_Comment extends Walker {
 				$args,
 				$depth
 			);
+=======
+	 * @param string     $output  Used to append additional content. Passed by reference.
+	 * @param WP_Comment $comment The current comment object. Default current comment.
+	 * @param int        $depth   Optional. Depth of the current comment. Default 0.
+	 * @param array      $args    Optional. An array of arguments. Default empty array.
+	 */
+	public function end_el( &$output, $comment, $depth = 0, $args = array() ) {
+		if ( ! empty( $args['end-callback'] ) ) {
+			ob_start();
+			call_user_func( $args['end-callback'], $comment, $args, $depth );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$output .= ob_get_clean();
 			return;
 		}

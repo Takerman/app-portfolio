@@ -1,0 +1,12 @@
+.fw-accordion {
+    border: 1px solid #444;
+}
+
+.fw-accordion .fw-accordion-title {
+    background: #444;
+    border-top: 1px solid #444;
+}
+
+.fw-accordion .fw-accordion-title.ui-state-active {
+    background-color: #222;
+}

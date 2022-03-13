@@ -106,7 +106,10 @@ __webpack_require__.d(__webpack_exports__, "MoveToWidgetArea", function() { retu
 __webpack_require__.d(__webpack_exports__, "getWidgetIdFromBlock", function() { return /* reexport */ getWidgetIdFromBlock; });
 __webpack_require__.d(__webpack_exports__, "addWidgetIdToBlock", function() { return /* reexport */ addWidgetIdToBlock; });
 __webpack_require__.d(__webpack_exports__, "registerLegacyWidgetBlock", function() { return /* binding */ registerLegacyWidgetBlock; });
+<<<<<<< HEAD
 __webpack_require__.d(__webpack_exports__, "registerWidgetGroupBlock", function() { return /* binding */ registerWidgetGroupBlock; });
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 __webpack_require__.d(__webpack_exports__, "registerLegacyWidgetVariations", function() { return /* reexport */ registerLegacyWidgetVariations; });
 
 // NAMESPACE OBJECT: ./node_modules/@wordpress/widgets/build-module/blocks/legacy-widget/index.js
@@ -116,6 +119,7 @@ __webpack_require__.d(legacy_widget_namespaceObject, "metadata", function() { re
 __webpack_require__.d(legacy_widget_namespaceObject, "name", function() { return legacy_widget_name; });
 __webpack_require__.d(legacy_widget_namespaceObject, "settings", function() { return legacy_widget_settings; });
 
+<<<<<<< HEAD
 // NAMESPACE OBJECT: ./node_modules/@wordpress/widgets/build-module/blocks/widget-group/index.js
 var widget_group_namespaceObject = {};
 __webpack_require__.r(widget_group_namespaceObject);
@@ -123,6 +127,8 @@ __webpack_require__.d(widget_group_namespaceObject, "metadata", function() { ret
 __webpack_require__.d(widget_group_namespaceObject, "name", function() { return widget_group_name; });
 __webpack_require__.d(widget_group_namespaceObject, "settings", function() { return widget_group_settings; });
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 // EXTERNAL MODULE: external ["wp","blocks"]
 var external_wp_blocks_ = __webpack_require__("HSyU");
 
@@ -192,11 +198,18 @@ var external_wp_coreData_ = __webpack_require__("jZUy");
 
 
 
+<<<<<<< HEAD
 function WidgetTypeSelector(_ref) {
   let {
     selectedId,
     onSelect
   } = _ref;
+=======
+function WidgetTypeSelector({
+  selectedId,
+  onSelect
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const widgetTypes = Object(external_wp_data_["useSelect"])(select => {
     var _select$getSettings$w, _select$getSettings, _select$getWidgetType;
 
@@ -242,11 +255,18 @@ function WidgetTypeSelector(_ref) {
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/widgets/build-module/blocks/legacy-widget/edit/inspector-card.js
 
+<<<<<<< HEAD
 function InspectorCard(_ref) {
   let {
     name,
     description
   } = _ref;
+=======
+function InspectorCard({
+  name,
+  description
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   return Object(external_wp_element_["createElement"])("div", {
     className: "wp-block-legacy-widget-inspector-card"
   }, Object(external_wp_element_["createElement"])("h3", {
@@ -293,14 +313,22 @@ class control_Control {
    * Creates and loads a new control.
    *
    * @access public
+<<<<<<< HEAD
    * @param {Object}   params
    * @param {string}   params.id
    * @param {string}   params.idBase
    * @param {Object}   params.instance
+=======
+   * @param {Object} params
+   * @param {string} params.id
+   * @param {string} params.idBase
+   * @param {Object} params.instance
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
    * @param {Function} params.onChangeInstance
    * @param {Function} params.onChangeHasPreview
    * @param {Function} params.onError
    */
+<<<<<<< HEAD
   constructor(_ref) {
     let {
       id,
@@ -310,6 +338,16 @@ class control_Control {
       onChangeHasPreview,
       onError
     } = _ref;
+=======
+  constructor({
+    id,
+    idBase,
+    instance,
+    onChangeInstance,
+    onChangeHasPreview,
+    onError
+  }) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     this.id = id;
     this.idBase = idBase;
     this._instance = instance;
@@ -607,9 +645,13 @@ class control_Control {
 }
 let lastNumber = 0;
 
+<<<<<<< HEAD
 function el(tagName) {
   let attributes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   let content = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+=======
+function el(tagName, attributes = {}, content = null) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const element = document.createElement(tagName);
 
   for (const [attribute, value] of Object.entries(attributes)) {
@@ -629,8 +671,12 @@ function el(tagName) {
   return element;
 }
 
+<<<<<<< HEAD
 async function saveWidget(id) {
   let formData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+=======
+async function saveWidget(id, formData = null) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   let widget;
 
   if (formData) {
@@ -653,6 +699,7 @@ async function saveWidget(id) {
   };
 }
 
+<<<<<<< HEAD
 async function encodeWidget(_ref2) {
   let {
     idBase,
@@ -660,6 +707,14 @@ async function encodeWidget(_ref2) {
     number,
     formData = null
   } = _ref2;
+=======
+async function encodeWidget({
+  idBase,
+  instance,
+  number,
+  formData = null
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const response = await external_wp_apiFetch_default()({
     path: `/wp/v2/widget-types/${idBase}/encode`,
     method: 'POST',
@@ -734,6 +789,7 @@ function serializeForm(form) {
  */
 
 
+<<<<<<< HEAD
 function Form(_ref) {
   let {
     title,
@@ -745,6 +801,18 @@ function Form(_ref) {
     onChangeInstance,
     onChangeHasPreview
   } = _ref;
+=======
+function Form({
+  title,
+  isVisible,
+  id,
+  idBase,
+  instance,
+  isWide,
+  onChangeInstance,
+  onChangeHasPreview
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const ref = Object(external_wp_element_["useRef"])();
   const isMediumLargeViewport = Object(external_wp_compose_["useViewportMatch"])('small'); // We only want to remount the control when the instance changes
   // *externally*. For example, if the user performs an undo. To do this, we
@@ -821,6 +889,12 @@ function Form(_ref) {
   }, title));
 }
 
+<<<<<<< HEAD
+=======
+// EXTERNAL MODULE: external ["wp","url"]
+var external_wp_url_ = __webpack_require__("Mmq9");
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 // CONCATENATED MODULE: ./node_modules/@wordpress/widgets/build-module/blocks/legacy-widget/edit/preview.js
 
 
@@ -837,6 +911,7 @@ function Form(_ref) {
 
 
 
+<<<<<<< HEAD
 function Preview(_ref) {
   let {
     idBase,
@@ -872,10 +947,19 @@ function Preview(_ref) {
     });
     return () => abortController === null || abortController === void 0 ? void 0 : abortController.abort();
   }, [idBase, instance]); // Resize the iframe on either the load event, or when the iframe becomes visible.
+=======
+function Preview({
+  idBase,
+  instance,
+  isVisible
+}) {
+  const [isLoaded, setIsLoaded] = Object(external_wp_element_["useState"])(false); // Resize the iframe on either the load event, or when the iframe becomes visible.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
   const ref = Object(external_wp_compose_["useRefEffect"])(iframe => {
     // Only set height if the iframe is loaded,
     // or it will grow to an unexpected large height in Safari if it's hidden initially.
+<<<<<<< HEAD
     if (!isLoaded) {
       return;
     } // If the preview frame has another origin then this won't work.
@@ -909,6 +993,37 @@ function Preview(_ref) {
       intersectionObserver.disconnect();
       iframe.removeEventListener('load', setHeight);
     };
+=======
+    if (isLoaded) {
+      // If the preview frame has another origin then this won't work.
+      // One possible solution is to add custom script to call `postMessage` in the preview frame.
+      // Or, better yet, we migrate away from iframe.
+      function setHeight() {
+        // Pick the maximum of these two values to account for margin collapsing.
+        const height = Math.max(iframe.contentDocument.documentElement.offsetHeight, iframe.contentDocument.body.offsetHeight);
+        iframe.style.height = `${height}px`;
+      }
+
+      const {
+        IntersectionObserver
+      } = iframe.ownerDocument.defaultView; // Observe for intersections that might cause a change in the height of
+      // the iframe, e.g. a Widget Area becoming expanded.
+
+      const intersectionObserver = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          setHeight();
+        }
+      }, {
+        threshold: 1
+      });
+      intersectionObserver.observe(iframe);
+      iframe.addEventListener('load', setHeight);
+      return () => {
+        intersectionObserver.disconnect();
+        iframe.removeEventListener('load', setHeight);
+      };
+    }
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   }, [isLoaded]);
   return Object(external_wp_element_["createElement"])(external_wp_element_["Fragment"], null, isVisible && !isLoaded && Object(external_wp_element_["createElement"])(external_wp_components_["Placeholder"], null, Object(external_wp_element_["createElement"])(external_wp_components_["Spinner"], null)), Object(external_wp_element_["createElement"])("div", {
     className: classnames_default()('wp-block-legacy-widget__edit-preview', {
@@ -917,9 +1032,22 @@ function Preview(_ref) {
   }, Object(external_wp_element_["createElement"])(external_wp_components_["Disabled"], null, Object(external_wp_element_["createElement"])("iframe", {
     ref: ref,
     className: "wp-block-legacy-widget__edit-preview-iframe",
+<<<<<<< HEAD
     tabIndex: "-1",
     title: Object(external_wp_i18n_["__"])('Legacy Widget Preview'),
     srcDoc: srcDoc,
+=======
+    title: Object(external_wp_i18n_["__"])('Legacy Widget Preview') // TODO: This chokes when the query param is too big.
+    // Ideally, we'd render a <ServerSideRender>. Maybe by
+    // rendering one in an iframe via a portal.
+    ,
+    src: Object(external_wp_url_["addQueryArgs"])('widgets.php', {
+      'legacy-widget-preview': {
+        idBase,
+        instance
+      }
+    }),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     onLoad: event => {
       // To hide the scrollbars of the preview frame for some edge cases,
       // such as negative margins in the Gallery Legacy Widget.
@@ -939,10 +1067,16 @@ function Preview(_ref) {
  * WordPress dependencies
  */
 
+<<<<<<< HEAD
 function NoPreview(_ref) {
   let {
     name
   } = _ref;
+=======
+function NoPreview({
+  name
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   return Object(external_wp_element_["createElement"])("div", {
     className: "wp-block-legacy-widget__edit-no-preview"
   }, name && Object(external_wp_element_["createElement"])("h3", null, name), Object(external_wp_element_["createElement"])("p", null, Object(external_wp_i18n_["__"])('No preview available.')));
@@ -959,11 +1093,18 @@ function NoPreview(_ref) {
 
 
 
+<<<<<<< HEAD
 function ConvertToBlocksButton(_ref) {
   let {
     clientId,
     rawInstance
   } = _ref;
+=======
+function ConvertToBlocksButton({
+  clientId,
+  rawInstance
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const {
     replaceBlocks
   } = Object(external_wp_data_["useDispatch"])(external_wp_blockEditor_["store"]);
@@ -1028,6 +1169,7 @@ function Edit(props) {
   return Object(external_wp_element_["createElement"])("div", blockProps, !id && !idBase ? Object(external_wp_element_["createElement"])(Empty, props) : Object(external_wp_element_["createElement"])(NotEmpty, props));
 }
 
+<<<<<<< HEAD
 function Empty(_ref) {
   let {
     attributes: {
@@ -1036,6 +1178,15 @@ function Empty(_ref) {
     },
     setAttributes
   } = _ref;
+=======
+function Empty({
+  attributes: {
+    id,
+    idBase
+  },
+  setAttributes
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   return Object(external_wp_element_["createElement"])(external_wp_components_["Placeholder"], {
     icon: Object(external_wp_element_["createElement"])(external_wp_blockEditor_["BlockIcon"], {
       icon: library_brush
@@ -1043,12 +1194,19 @@ function Empty(_ref) {
     label: Object(external_wp_i18n_["__"])('Legacy Widget')
   }, Object(external_wp_element_["createElement"])(WidgetTypeSelector, {
     selectedId: id !== null && id !== void 0 ? id : idBase,
+<<<<<<< HEAD
     onSelect: _ref2 => {
       let {
         selectedId,
         isMulti
       } = _ref2;
 
+=======
+    onSelect: ({
+      selectedId,
+      isMulti
+    }) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       if (!selectedId) {
         setAttributes({
           id: null,
@@ -1072,6 +1230,7 @@ function Empty(_ref) {
   }));
 }
 
+<<<<<<< HEAD
 function NotEmpty(_ref3) {
   let {
     attributes: {
@@ -1084,6 +1243,19 @@ function NotEmpty(_ref3) {
     isSelected,
     isWide = false
   } = _ref3;
+=======
+function NotEmpty({
+  attributes: {
+    id,
+    idBase,
+    instance
+  },
+  setAttributes,
+  clientId,
+  isSelected,
+  isWide = false
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const [hasPreview, setHasPreview] = Object(external_wp_element_["useState"])(null);
   const {
     widgetType,
@@ -1157,6 +1329,7 @@ const legacyWidgetTransforms = [{
 }, {
   block: 'core/html',
   widget: 'custom_html',
+<<<<<<< HEAD
   transform: _ref => {
     let {
       content
@@ -1173,6 +1346,20 @@ const legacyWidgetTransforms = [{
       count,
       dropdown
     } = _ref2;
+=======
+  transform: ({
+    content
+  }) => ({
+    content
+  })
+}, {
+  block: 'core/archives',
+  widget: 'archives',
+  transform: ({
+    count,
+    dropdown
+  }) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return {
       displayAsDropdown: !!dropdown,
       showPostCounts: !!count
@@ -1181,11 +1368,18 @@ const legacyWidgetTransforms = [{
 }, {
   block: 'core/latest-posts',
   widget: 'recent-posts',
+<<<<<<< HEAD
   transform: _ref3 => {
     let {
       show_date: displayPostDate,
       number
     } = _ref3;
+=======
+  transform: ({
+    show_date: displayPostDate,
+    number
+  }) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return {
       displayPostDate: !!displayPostDate,
       postsToShow: number
@@ -1194,10 +1388,16 @@ const legacyWidgetTransforms = [{
 }, {
   block: 'core/latest-comments',
   widget: 'recent-comments',
+<<<<<<< HEAD
   transform: _ref4 => {
     let {
       number
     } = _ref4;
+=======
+  transform: ({
+    number
+  }) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return {
       commentsToShow: number
     };
@@ -1205,11 +1405,18 @@ const legacyWidgetTransforms = [{
 }, {
   block: 'core/tag-cloud',
   widget: 'tag_cloud',
+<<<<<<< HEAD
   transform: _ref5 => {
     let {
       taxonomy,
       count
     } = _ref5;
+=======
+  transform: ({
+    taxonomy,
+    count
+  }) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return {
       showTagCounts: !!count,
       taxonomy
@@ -1218,12 +1425,20 @@ const legacyWidgetTransforms = [{
 }, {
   block: 'core/categories',
   widget: 'categories',
+<<<<<<< HEAD
   transform: _ref6 => {
     let {
       count,
       dropdown,
       hierarchical
     } = _ref6;
+=======
+  transform: ({
+    count,
+    dropdown,
+    hierarchical
+  }) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return {
       displayAsDropdown: !!dropdown,
       showPostCounts: !!count,
@@ -1233,6 +1448,7 @@ const legacyWidgetTransforms = [{
 }, {
   block: 'core/audio',
   widget: 'media_audio',
+<<<<<<< HEAD
   transform: _ref7 => {
     let {
       url,
@@ -1240,6 +1456,14 @@ const legacyWidgetTransforms = [{
       loop,
       attachment_id: id
     } = _ref7;
+=======
+  transform: ({
+    url,
+    preload,
+    loop,
+    attachment_id: id
+  }) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return {
       src: url,
       id,
@@ -1250,6 +1474,7 @@ const legacyWidgetTransforms = [{
 }, {
   block: 'core/video',
   widget: 'media_video',
+<<<<<<< HEAD
   transform: _ref8 => {
     let {
       url,
@@ -1257,6 +1482,14 @@ const legacyWidgetTransforms = [{
       loop,
       attachment_id: id
     } = _ref8;
+=======
+  transform: ({
+    url,
+    preload,
+    loop,
+    attachment_id: id
+  }) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return {
       src: url,
       id,
@@ -1267,6 +1500,7 @@ const legacyWidgetTransforms = [{
 }, {
   block: 'core/image',
   widget: 'media_image',
+<<<<<<< HEAD
   transform: _ref9 => {
     let {
       alt,
@@ -1282,6 +1516,22 @@ const legacyWidgetTransforms = [{
       url,
       width
     } = _ref9;
+=======
+  transform: ({
+    alt,
+    attachment_id: id,
+    caption,
+    height,
+    link_classes: linkClass,
+    link_rel: rel,
+    link_target_blank: targetBlack,
+    link_type: linkDestination,
+    link_url: link,
+    size: sizeSlug,
+    url,
+    width
+  }) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return {
       alt,
       caption,
@@ -1300,6 +1550,7 @@ const legacyWidgetTransforms = [{
 }, {
   block: 'core/gallery',
   widget: 'media_gallery',
+<<<<<<< HEAD
   transform: _ref10 => {
     let {
       ids,
@@ -1307,6 +1558,14 @@ const legacyWidgetTransforms = [{
       size,
       number
     } = _ref10;
+=======
+  transform: ({
+    ids,
+    link_type: linkTo,
+    size,
+    number
+  }) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return {
       ids,
       columns: number,
@@ -1320,6 +1579,7 @@ const legacyWidgetTransforms = [{
 }, {
   block: 'core/rss',
   widget: 'rss',
+<<<<<<< HEAD
   transform: _ref11 => {
     let {
       url,
@@ -1328,6 +1588,15 @@ const legacyWidgetTransforms = [{
       show_summary: displayExcerpt,
       items
     } = _ref11;
+=======
+  transform: ({
+    url,
+    show_author: displayAuthor,
+    show_date: displayDate,
+    show_summary: displayExcerpt,
+    items
+  }) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return {
       feedURL: url,
       displayAuthor: !!displayAuthor,
@@ -1336,6 +1605,7 @@ const legacyWidgetTransforms = [{
       itemsToShow: items
     };
   }
+<<<<<<< HEAD
 }].map(_ref12 => {
   let {
     block,
@@ -1358,6 +1628,27 @@ const legacyWidgetTransforms = [{
       let {
         instance
       } = _ref14;
+=======
+}].map(({
+  block,
+  widget,
+  transform
+}) => {
+  return {
+    type: 'block',
+    blocks: [block],
+    isMatch: ({
+      idBase,
+      instance
+    }) => {
+      return idBase === widget && !!(instance !== null && instance !== void 0 && instance.raw);
+    },
+    transform: ({
+      instance
+    }) => {
+      var _instance$raw;
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       const transformedBlock = Object(external_wp_blocks_["createBlock"])(block, transform ? transform(instance.raw) : undefined);
 
       if (!((_instance$raw = instance.raw) !== null && _instance$raw !== void 0 && _instance$raw.title)) {
@@ -1424,6 +1715,7 @@ const legacy_widget_settings = {
   transforms: legacy_widget_transforms
 };
 
+<<<<<<< HEAD
 // EXTERNAL MODULE: ./node_modules/@wordpress/icons/build-module/library/group.js
 var group = __webpack_require__("u6za");
 
@@ -1583,6 +1875,8 @@ const widget_group_settings = {
   }
 };
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 // CONCATENATED MODULE: ./node_modules/@wordpress/icons/build-module/library/move-to.js
 
 
@@ -1607,16 +1901,25 @@ const moveTo = Object(external_wp_element_["createElement"])(external_wp_primiti
 
 
 
+<<<<<<< HEAD
 function MoveToWidgetArea(_ref) {
   let {
     currentWidgetAreaId,
     widgetAreas,
     onSelect
   } = _ref;
+=======
+function MoveToWidgetArea({
+  currentWidgetAreaId,
+  widgetAreas,
+  onSelect
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   return Object(external_wp_element_["createElement"])(external_wp_components_["ToolbarGroup"], null, Object(external_wp_element_["createElement"])(external_wp_components_["ToolbarItem"], null, toggleProps => Object(external_wp_element_["createElement"])(external_wp_components_["DropdownMenu"], {
     icon: move_to,
     label: Object(external_wp_i18n_["__"])('Move to widget area'),
     toggleProps: toggleProps
+<<<<<<< HEAD
   }, _ref2 => {
     let {
       onClose
@@ -1636,6 +1939,24 @@ function MoveToWidgetArea(_ref) {
       }
     }));
   })));
+=======
+  }, ({
+    onClose
+  }) => Object(external_wp_element_["createElement"])(external_wp_components_["MenuGroup"], {
+    label: Object(external_wp_i18n_["__"])('Move to')
+  }, Object(external_wp_element_["createElement"])(external_wp_components_["MenuItemsChoice"], {
+    choices: widgetAreas.map(widgetArea => ({
+      value: widgetArea.id,
+      label: widgetArea.name,
+      info: widgetArea.description
+    })),
+    value: currentWidgetAreaId,
+    onSelect: value => {
+      onSelect(value);
+      onClose();
+    }
+  })))));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/widgets/build-module/components/index.js
@@ -1648,11 +1969,19 @@ function MoveToWidgetArea(_ref) {
  * Get the internal widget id from block.
  *
  * @typedef  {Object} Attributes
+<<<<<<< HEAD
  * @property {string}     __internalWidgetId The internal widget id.
  * @typedef  {Object} Block
  * @property {Attributes} attributes         The attributes of the block.
  *
  * @param    {Block}      block              The block.
+=======
+ * @property {string} __internalWidgetId The internal widget id.
+ * @typedef  {Object} Block
+ * @property {Attributes} attributes The attributes of the block.
+ *
+ * @param {Block} block The block.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @return {string} The internal widget id.
  */
 function getWidgetIdFromBlock(block) {
@@ -1661,7 +1990,11 @@ function getWidgetIdFromBlock(block) {
 /**
  * Add internal widget id to block's attributes.
  *
+<<<<<<< HEAD
  * @param {Block}  block    The block.
+=======
+ * @param {Block} block The block.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @param {string} widgetId The widget id.
  * @return {Block} The updated block.
  */
@@ -1719,7 +2052,10 @@ function registerLegacyWidgetVariations(settings) {
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /**
  * Registers the Legacy Widget block.
  *
@@ -1740,6 +2076,7 @@ function registerLegacyWidgetBlock() {
     ...metadata
   }, settings);
 }
+<<<<<<< HEAD
 /**
  * Registers the Widget Group block.
  */
@@ -1755,6 +2092,8 @@ function registerWidgetGroupBlock() {
     ...metadata
   }, settings);
 }
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 
 
@@ -1781,6 +2120,16 @@ function registerWidgetGroupBlock() {
 
 /***/ }),
 
+<<<<<<< HEAD
+=======
+/***/ "Mmq9":
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["url"]; }());
+
+/***/ }),
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /***/ "TSYQ":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1894,6 +2243,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "u6za":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1919,6 +2269,8 @@ const group = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElem
 
 /***/ }),
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /***/ "ywyh":
 /***/ (function(module, exports) {
 

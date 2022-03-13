@@ -34,19 +34,32 @@ class WP_Sitemaps_Users extends WP_Sitemaps_Provider {
 	 * @param string $object_subtype Optional. Not applicable for Users but
 	 *                               required for compatibility with the parent
 	 *                               provider class. Default empty.
+<<<<<<< HEAD
 	 * @return array[] Array of URL information for a sitemap.
+=======
+	 * @return array Array of URLs for a sitemap.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public function get_url_list( $page_num, $object_subtype = '' ) {
 		/**
 		 * Filters the users URL list before it is generated.
 		 *
+<<<<<<< HEAD
 		 * Returning a non-null value will effectively short-circuit the generation,
+=======
+		 * Passing a non-null value will effectively short-circuit the generation,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 * returning that value instead.
 		 *
 		 * @since 5.5.0
 		 *
+<<<<<<< HEAD
 		 * @param array[]|null $url_list The URL list. Default null.
 		 * @param int        $page_num Page of results.
+=======
+		 * @param array  $url_list The URL list. Default null.
+		 * @param int    $page_num Page of results.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$url_list = apply_filters(
 			'wp_sitemaps_users_pre_url_list',
@@ -99,14 +112,24 @@ class WP_Sitemaps_Users extends WP_Sitemaps_Provider {
 	 */
 	public function get_max_num_pages( $object_subtype = '' ) {
 		/**
+<<<<<<< HEAD
 		 * Filters the max number of pages for a user sitemap before it is generated.
 		 *
 		 * Returning a non-null value will effectively short-circuit the generation,
+=======
+		 * Filters the max number of pages before it is generated.
+		 *
+		 * Passing a non-null value will effectively short-circuit the generation,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 * returning that value instead.
 		 *
 		 * @since 5.5.0
 		 *
+<<<<<<< HEAD
 		 * @param int|null $max_num_pages The maximum number of pages. Default null.
+=======
+		 * @param int $max_num_pages The maximum number of pages. Default null.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$max_num_pages = apply_filters( 'wp_sitemaps_users_pre_max_num_pages', null );
 

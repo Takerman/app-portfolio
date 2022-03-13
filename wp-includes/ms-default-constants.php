@@ -68,8 +68,12 @@ function ms_cookie_constants() {
 	 * @since 2.6.0
 	 */
 	if ( ! defined( 'ADMIN_COOKIE_PATH' ) ) {
+<<<<<<< HEAD
 		$site_path = parse_url( get_option( 'siteurl' ), PHP_URL_PATH );
 		if ( ! is_subdomain_install() || is_string( $site_path ) && trim( $site_path, '/' ) ) {
+=======
+		if ( ! is_subdomain_install() || trim( parse_url( get_option( 'siteurl' ), PHP_URL_PATH ), '/' ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			define( 'ADMIN_COOKIE_PATH', SITECOOKIEPATH );
 		} else {
 			define( 'ADMIN_COOKIE_PATH', SITECOOKIEPATH . 'wp-admin' );

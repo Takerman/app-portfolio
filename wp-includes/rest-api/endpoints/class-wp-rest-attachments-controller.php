@@ -17,6 +17,7 @@
 class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 
 	/**
+<<<<<<< HEAD
 	 * Whether the controller supports batching.
 	 *
 	 * @since 5.9.0
@@ -25,6 +26,8 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	protected $allow_batch = false;
 
 	/**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * Registers the routes for attachments.
 	 *
 	 * @since 5.3.0
@@ -715,6 +718,7 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	 * Prepares a single attachment output for response.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$post` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param WP_Post         $item    Attachment object.
@@ -724,6 +728,14 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	public function prepare_item_for_response( $item, $request ) {
 		// Restores the more descriptive, specific name for use within this method.
 		$post     = $item;
+=======
+	 *
+	 * @param WP_Post         $post    Attachment object.
+	 * @param WP_REST_Request $request Request object.
+	 * @return WP_REST_Response Response object.
+	 */
+	public function prepare_item_for_response( $post, $request ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$response = parent::prepare_item_for_response( $post, $request );
 		$fields   = $this->get_fields_for_response( $request );
 		$data     = $response->get_data();

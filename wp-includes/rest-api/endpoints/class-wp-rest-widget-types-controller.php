@@ -85,7 +85,11 @@ class WP_REST_Widget_Types_Controller extends WP_REST_Controller {
 					'form_data' => array(
 						'description'       => __( 'Serialized widget form data to encode into instance settings.' ),
 						'type'              => 'string',
+<<<<<<< HEAD
 						'sanitize_callback' => static function( $string ) {
+=======
+						'sanitize_callback' => function( $string ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 							$array = array();
 							wp_parse_str( $string, $array );
 							return $array;
@@ -99,6 +103,7 @@ class WP_REST_Widget_Types_Controller extends WP_REST_Controller {
 				),
 			)
 		);
+<<<<<<< HEAD
 
 		register_rest_route(
 			$this->namespace,
@@ -122,6 +127,8 @@ class WP_REST_Widget_Types_Controller extends WP_REST_Controller {
 				),
 			)
 		);
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	/**
@@ -260,8 +267,11 @@ class WP_REST_Widget_Types_Controller extends WP_REST_Controller {
 			$widgets[ $widget['id'] ] = $widget;
 		}
 
+<<<<<<< HEAD
 		ksort( $widgets );
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		return $widgets;
 	}
 
@@ -288,6 +298,7 @@ class WP_REST_Widget_Types_Controller extends WP_REST_Controller {
 	 * Prepares a widget type object for serialization.
 	 *
 	 * @since 5.8.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$widget_type` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param array           $item    Widget type data.
@@ -299,6 +310,16 @@ class WP_REST_Widget_Types_Controller extends WP_REST_Controller {
 		$widget_type = $item;
 		$fields      = $this->get_fields_for_response( $request );
 		$data        = array(
+=======
+	 *
+	 * @param array           $widget_type Widget type data.
+	 * @param WP_REST_Request $request    Full details about the request.
+	 * @return WP_REST_Response Widget type data.
+	 */
+	public function prepare_item_for_response( $widget_type, $request ) {
+		$fields = $this->get_fields_for_response( $request );
+		$data   = array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			'id' => $widget_type['id'],
 		);
 
@@ -583,6 +604,7 @@ class WP_REST_Widget_Types_Controller extends WP_REST_Controller {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Renders a single Legacy Widget and wraps it in a JSON-encodable array.
 	 *
 	 * @since 5.9.0
@@ -655,6 +677,8 @@ class WP_REST_Widget_Types_Controller extends WP_REST_Controller {
 	}
 
 	/**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * Retrieves the query params for collections.
 	 *
 	 * @since 5.8.0

@@ -373,11 +373,19 @@ function wp_save_image_file( $filename, $image, $mime_type, $post_id ) {
 		 * @since 2.9.0
 		 * @deprecated 3.5.0 Use {@see 'wp_save_image_editor_file'} instead.
 		 *
+<<<<<<< HEAD
 		 * @param bool|null        $override  Value to return instead of saving. Default null.
 		 * @param string           $filename  Name of the file to be saved.
 		 * @param resource|GdImage $image     Image resource or GdImage instance.
 		 * @param string           $mime_type The mime type of the image.
 		 * @param int              $post_id   Attachment post ID.
+=======
+		 * @param mixed           $override  Value to return instead of saving. Default null.
+		 * @param string          $filename  Name of the file to be saved.
+		 * @param WP_Image_Editor $image     The image editor instance.
+		 * @param string          $mime_type The mime type of the image.
+		 * @param int             $post_id   Attachment post ID.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$saved = apply_filters_deprecated(
 			'wp_save_image_file',

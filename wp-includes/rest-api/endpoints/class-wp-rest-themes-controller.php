@@ -17,12 +17,15 @@
 class WP_REST_Themes_Controller extends WP_REST_Controller {
 
 	/**
+<<<<<<< HEAD
 	 * Matches theme's directory: `/themes/<subdirectory>/<theme>/` or `/themes/<theme>/`.
 	 * Excludes invalid directory name characters: `/:<>*?"|`.
 	 */
 	const PATTERN = '[^\/:<>\*\?"\|]+(?:\/[^\/:<>\*\?"\|]+)?';
 
 	/**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * Constructor.
 	 *
 	 * @since 5.0.0
@@ -56,6 +59,7 @@ class WP_REST_Themes_Controller extends WP_REST_Controller {
 
 		register_rest_route(
 			$this->namespace,
+<<<<<<< HEAD
 			sprintf( '/%s/(?P<stylesheet>%s)', $this->rest_base, self::PATTERN ),
 			array(
 				'args'   => array(
@@ -63,6 +67,14 @@ class WP_REST_Themes_Controller extends WP_REST_Controller {
 						'description'       => __( "The theme's stylesheet. This uniquely identifies the theme." ),
 						'type'              => 'string',
 						'sanitize_callback' => array( $this, '_sanitize_stylesheet_callback' ),
+=======
+			'/' . $this->rest_base . '/(?P<stylesheet>[\w-]+)',
+			array(
+				'args'   => array(
+					'stylesheet' => array(
+						'description' => __( "The theme's stylesheet. This uniquely identifies the theme." ),
+						'type'        => 'string',
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					),
 				),
 				array(
@@ -76,6 +88,7 @@ class WP_REST_Themes_Controller extends WP_REST_Controller {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Sanitize the stylesheet to decode endpoint.
 	 *
 	 * @since 5.9.0
@@ -88,6 +101,8 @@ class WP_REST_Themes_Controller extends WP_REST_Controller {
 	}
 
 	/**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * Checks if a given request has access to read the theme.
 	 *
 	 * @since 5.0.0
@@ -223,6 +238,7 @@ class WP_REST_Themes_Controller extends WP_REST_Controller {
 	 * Prepares a single theme output for response.
 	 *
 	 * @since 5.0.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$theme` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param WP_Theme        $item    Theme object.
@@ -232,6 +248,14 @@ class WP_REST_Themes_Controller extends WP_REST_Controller {
 	public function prepare_item_for_response( $item, $request ) {
 		// Restores the more descriptive, specific name for use within this method.
 		$theme  = $item;
+=======
+	 *
+	 * @param WP_Theme        $theme   Theme object.
+	 * @param WP_REST_Request $request Request object.
+	 * @return WP_REST_Response Response object.
+	 */
+	public function prepare_item_for_response( $theme, $request ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$data   = array();
 		$fields = $this->get_fields_for_response( $request );
 
@@ -333,6 +357,7 @@ class WP_REST_Themes_Controller extends WP_REST_Controller {
 
 		$response->add_links( $this->prepare_links( $theme ) );
 
+<<<<<<< HEAD
 		if ( $theme->get_stylesheet() === wp_get_theme()->get_stylesheet() ) {
 			// This creates a record for the current theme if not existent.
 			$id = WP_Theme_JSON_Resolver::get_user_global_styles_post_id();
@@ -348,6 +373,8 @@ class WP_REST_Themes_Controller extends WP_REST_Controller {
 			);
 		}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		/**
 		 * Filters theme data returned from the REST API.
 		 *

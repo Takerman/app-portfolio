@@ -301,7 +301,11 @@ p.wp-embed-share-description {
 	width: 100%;
 	border: none;
 	height: 28px;
+<<<<<<< HEAD
 	margin: 0 0 10px;
+=======
+	margin: 0 0 10px 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	padding: 0 5px;
 	font-size: 14px;
 	font-weight: 400;

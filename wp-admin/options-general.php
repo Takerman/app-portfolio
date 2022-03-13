@@ -16,7 +16,10 @@ if ( ! current_user_can( 'manage_options' ) ) {
 	wp_die( __( 'Sorry, you are not allowed to manage options for this site.' ) );
 }
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 $title       = __( 'General Settings' );
 $parent_file = 'options-general.php';
 /* translators: Date and time format for exact current time, mainly about timezones, see https://www.php.net/manual/datetime.format.php */

@@ -83,7 +83,10 @@ function get_block_categories( $post_or_block_editor_context ) {
 	 * @param WP_Block_Editor_Context $block_editor_context The current block editor context.
 	 */
 	$block_categories = apply_filters( 'block_categories_all', $block_categories, $block_editor_context );
+<<<<<<< HEAD
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( ! empty( $block_editor_context->post ) ) {
 		$post = $block_editor_context->post;
 
@@ -124,7 +127,10 @@ function get_allowed_block_types( $block_editor_context ) {
 	 * @param WP_Block_Editor_Context $block_editor_context The current block editor context.
 	 */
 	$allowed_block_types = apply_filters( 'allowed_block_types_all', $allowed_block_types, $block_editor_context );
+<<<<<<< HEAD
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( ! empty( $block_editor_context->post ) ) {
 		$post = $block_editor_context->post;
 
@@ -189,6 +195,7 @@ function get_default_block_editor_settings() {
 		}
 	}
 
+<<<<<<< HEAD
 	// These styles are used if the "no theme styles" options is triggered or on
 	// themes without their own editor styles.
 	$default_editor_styles_file = ABSPATH . WPINC . '/css/dist/block-editor/default-editor-styles.css';
@@ -220,6 +227,25 @@ function get_default_block_editor_settings() {
 		'maxUploadFileSize'                => $max_upload_size,
 		// The following flag is required to enable the new Gallery block format on the mobile apps in 5.9.
 		'__unstableGalleryWithImageBlocks' => true,
+=======
+	$editor_settings = array(
+		'alignWide'              => get_theme_support( 'align-wide' ),
+		'allowedBlockTypes'      => true,
+		'allowedMimeTypes'       => get_allowed_mime_types(),
+		'blockCategories'        => get_default_block_categories(),
+		'disableCustomColors'    => get_theme_support( 'disable-custom-colors' ),
+		'disableCustomFontSizes' => get_theme_support( 'disable-custom-font-sizes' ),
+		'disableCustomGradients' => get_theme_support( 'disable-custom-gradients' ),
+		'enableCustomLineHeight' => get_theme_support( 'custom-line-height' ),
+		'enableCustomSpacing'    => get_theme_support( 'custom-spacing' ),
+		'enableCustomUnits'      => get_theme_support( 'custom-units' ),
+		'isRTL'                  => is_rtl(),
+		'imageDefaultSize'       => $image_default_size,
+		'imageDimensions'        => $image_dimensions,
+		'imageEditing'           => true,
+		'imageSizes'             => $available_image_sizes,
+		'maxUploadFileSize'      => $max_upload_size,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	);
 
 	// Theme settings.
@@ -260,7 +286,11 @@ function get_legacy_widget_block_editor_settings() {
 	 *
 	 * @since 5.8.0
 	 *
+<<<<<<< HEAD
 	 * @param string[] $widgets An array of excluded widget-type IDs.
+=======
+	 * @param array $widgets An array of excluded widget-type IDs.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	$editor_settings['widgetTypesToHideFromLegacyWidgetBlock'] = apply_filters(
 		'widget_types_to_hide_from_legacy_widget_block',
@@ -307,6 +337,7 @@ function get_block_editor_settings( array $custom_settings, $block_editor_contex
 		$custom_settings
 	);
 
+<<<<<<< HEAD
 	$global_styles = array();
 	$presets       = array(
 		array(
@@ -349,24 +380,65 @@ function get_block_editor_settings( array $custom_settings, $block_editor_contex
 				isset( $colors_by_origin['theme'] ) ?
 					$colors_by_origin['theme'] :
 					$colors_by_origin['default']
+=======
+	$theme_json = WP_Theme_JSON_Resolver::get_merged_data( $editor_settings );
+
+	if ( WP_Theme_JSON_Resolver::theme_has_support() ) {
+		$editor_settings['styles'][] = array(
+			'css'            => $theme_json->get_stylesheet( 'block_styles' ),
+			'__unstableType' => 'globalStyles',
+		);
+		$editor_settings['styles'][] = array(
+			'css'                     => $theme_json->get_stylesheet( 'css_variables' ),
+			'__experimentalNoWrapper' => true,
+			'__unstableType'          => 'globalStyles',
+		);
+	}
+
+	$editor_settings['__experimentalFeatures'] = $theme_json->get_settings();
+	// These settings may need to be updated based on data coming from theme.json sources.
+	if ( isset( $editor_settings['__experimentalFeatures']['color']['palette'] ) ) {
+		$colors_by_origin          = $editor_settings['__experimentalFeatures']['color']['palette'];
+		$editor_settings['colors'] = isset( $colors_by_origin['user'] ) ?
+			$colors_by_origin['user'] : (
+				isset( $colors_by_origin['theme'] ) ?
+					$colors_by_origin['theme'] :
+					$colors_by_origin['core']
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			);
 	}
 	if ( isset( $editor_settings['__experimentalFeatures']['color']['gradients'] ) ) {
 		$gradients_by_origin          = $editor_settings['__experimentalFeatures']['color']['gradients'];
+<<<<<<< HEAD
 		$editor_settings['gradients'] = isset( $gradients_by_origin['custom'] ) ?
 			$gradients_by_origin['custom'] : (
 				isset( $gradients_by_origin['theme'] ) ?
 					$gradients_by_origin['theme'] :
 					$gradients_by_origin['default']
+=======
+		$editor_settings['gradients'] = isset( $gradients_by_origin['user'] ) ?
+			$gradients_by_origin['user'] : (
+				isset( $gradients_by_origin['theme'] ) ?
+					$gradients_by_origin['theme'] :
+					$gradients_by_origin['core']
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			);
 	}
 	if ( isset( $editor_settings['__experimentalFeatures']['typography']['fontSizes'] ) ) {
 		$font_sizes_by_origin         = $editor_settings['__experimentalFeatures']['typography']['fontSizes'];
+<<<<<<< HEAD
 		$editor_settings['fontSizes'] = isset( $font_sizes_by_origin['custom'] ) ?
 			$font_sizes_by_origin['custom'] : (
 				isset( $font_sizes_by_origin['theme'] ) ?
 					$font_sizes_by_origin['theme'] :
 					$font_sizes_by_origin['default']
+=======
+		$editor_settings['fontSizes'] = isset( $font_sizes_by_origin['user'] ) ?
+			$font_sizes_by_origin['user'] : (
+				isset( $font_sizes_by_origin['theme'] ) ?
+					$font_sizes_by_origin['theme'] :
+					$font_sizes_by_origin['core']
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			);
 	}
 	if ( isset( $editor_settings['__experimentalFeatures']['color']['custom'] ) ) {
@@ -381,17 +453,29 @@ function get_block_editor_settings( array $custom_settings, $block_editor_contex
 		$editor_settings['disableCustomFontSizes'] = ! $editor_settings['__experimentalFeatures']['typography']['customFontSize'];
 		unset( $editor_settings['__experimentalFeatures']['typography']['customFontSize'] );
 	}
+<<<<<<< HEAD
 	if ( isset( $editor_settings['__experimentalFeatures']['typography']['lineHeight'] ) ) {
 		$editor_settings['enableCustomLineHeight'] = $editor_settings['__experimentalFeatures']['typography']['lineHeight'];
 		unset( $editor_settings['__experimentalFeatures']['typography']['lineHeight'] );
+=======
+	if ( isset( $editor_settings['__experimentalFeatures']['typography']['customLineHeight'] ) ) {
+		$editor_settings['enableCustomLineHeight'] = $editor_settings['__experimentalFeatures']['typography']['customLineHeight'];
+		unset( $editor_settings['__experimentalFeatures']['typography']['customLineHeight'] );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 	if ( isset( $editor_settings['__experimentalFeatures']['spacing']['units'] ) ) {
 		$editor_settings['enableCustomUnits'] = $editor_settings['__experimentalFeatures']['spacing']['units'];
 		unset( $editor_settings['__experimentalFeatures']['spacing']['units'] );
 	}
+<<<<<<< HEAD
 	if ( isset( $editor_settings['__experimentalFeatures']['spacing']['padding'] ) ) {
 		$editor_settings['enableCustomSpacing'] = $editor_settings['__experimentalFeatures']['spacing']['padding'];
 		unset( $editor_settings['__experimentalFeatures']['spacing']['padding'] );
+=======
+	if ( isset( $editor_settings['__experimentalFeatures']['spacing']['customPadding'] ) ) {
+		$editor_settings['enableCustomSpacing'] = $editor_settings['__experimentalFeatures']['spacing']['customPadding'];
+		unset( $editor_settings['__experimentalFeatures']['spacing']['customPadding'] );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	/**
@@ -403,7 +487,10 @@ function get_block_editor_settings( array $custom_settings, $block_editor_contex
 	 * @param WP_Block_Editor_Context $block_editor_context The current block editor context.
 	 */
 	$editor_settings = apply_filters( 'block_editor_settings_all', $editor_settings, $block_editor_context );
+<<<<<<< HEAD
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( ! empty( $block_editor_context->post ) ) {
 		$post = $block_editor_context->post;
 
@@ -428,28 +515,44 @@ function get_block_editor_settings( array $custom_settings, $block_editor_contex
  *
  * @since 5.8.0
  *
+<<<<<<< HEAD
  * @global WP_Post    $post       Global post object.
  * @global WP_Scripts $wp_scripts The WP_Scripts object for printing scripts.
  * @global WP_Styles  $wp_styles  The WP_Styles object for printing styles.
  *
  * @param string[]                $preload_paths        List of paths to preload.
+=======
+ * @global WP_Post $post Global post object.
+ *
+ * @param array                   $preload_paths        List of paths to preload.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @param WP_Block_Editor_Context $block_editor_context The current block editor context.
  *
  * @return void
  */
 function block_editor_rest_api_preload( array $preload_paths, $block_editor_context ) {
+<<<<<<< HEAD
 	global $post, $wp_scripts, $wp_styles;
+=======
+	global $post;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	/**
 	 * Filters the array of REST API paths that will be used to preloaded common data for the block editor.
 	 *
 	 * @since 5.8.0
 	 *
+<<<<<<< HEAD
 	 * @param string[]                $preload_paths        Array of paths to preload.
 	 * @param WP_Block_Editor_Context $block_editor_context The current block editor context.
 	 */
 	$preload_paths = apply_filters( 'block_editor_rest_api_preload_paths', $preload_paths, $block_editor_context );
 
+=======
+	 * @param string[] $preload_paths Array of paths to preload.
+	 */
+	$preload_paths = apply_filters( 'block_editor_rest_api_preload_paths', $preload_paths, $block_editor_context );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( ! empty( $block_editor_context->post ) ) {
 		$selected_post = $block_editor_context->post;
 
@@ -472,6 +575,7 @@ function block_editor_rest_api_preload( array $preload_paths, $block_editor_cont
 	}
 
 	/*
+<<<<<<< HEAD
 	 * Ensure the global $post, $wp_scripts, and $wp_styles remain the same after
 	 * API data is preloaded.
 	 * Because API preloading can call the_content and other filters, plugins
@@ -494,6 +598,13 @@ function block_editor_rest_api_preload( array $preload_paths, $block_editor_cont
 	}
 
 	unset( $path );
+=======
+	 * Ensure the global $post remains the same after API data is preloaded.
+	 * Because API preloading can call the_content and other filters, plugins
+	 * can unexpectedly modify $post.
+	 */
+	$backup_global_post = ! empty( $post ) ? clone $post : $post;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	$preload_data = array_reduce(
 		$preload_paths,
@@ -501,10 +612,15 @@ function block_editor_rest_api_preload( array $preload_paths, $block_editor_cont
 		array()
 	);
 
+<<<<<<< HEAD
 	// Restore the global $post, $wp_scripts, and $wp_styles as they were before API preloading.
 	$post       = $backup_global_post;
 	$wp_scripts = $backup_wp_scripts;
 	$wp_styles  = $backup_wp_styles;
+=======
+	// Restore the global $post as it was before API preloading.
+	$post = $backup_global_post;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	wp_add_inline_script(
 		'wp-api-fetch',
@@ -523,12 +639,30 @@ function block_editor_rest_api_preload( array $preload_paths, $block_editor_cont
  *
  * @global array $editor_styles
  *
+<<<<<<< HEAD
  * @return array An array of theme styles for the block editor.
+=======
+ * @return array An array of theme styles for the block editor. Includes default font family
+ *               style and theme stylesheets.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function get_block_editor_theme_styles() {
 	global $editor_styles;
 
+<<<<<<< HEAD
 	$styles = array();
+=======
+	if ( ! WP_Theme_JSON_Resolver::theme_has_support() ) {
+		$styles = array(
+			array(
+				'css'            => 'body { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif }',
+				'__unstableType' => 'core',
+			),
+		);
+	} else {
+		$styles = array();
+	}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	if ( $editor_styles && current_theme_supports( 'editor-styles' ) ) {
 		foreach ( $editor_styles as $style ) {

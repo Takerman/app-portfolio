@@ -249,11 +249,14 @@ if ( ! function_exists( 'wp_install_defaults' ) ) :
 				'post_content_filtered' => '',
 			)
 		);
+<<<<<<< HEAD
 
 		if ( is_multisite() ) {
 			update_posts_count();
 		}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$wpdb->insert(
 			$wpdb->term_relationships,
 			array(
@@ -837,10 +840,13 @@ function upgrade_all() {
 		upgrade_560();
 	}
 
+<<<<<<< HEAD
 	if ( $wp_current_db_version < 51917 ) {
 		upgrade_590();
 	}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	maybe_disable_link_manager();
 
 	maybe_disable_automattic_widgets();
@@ -1621,8 +1627,13 @@ function upgrade_280() {
 		$start = 0;
 		while ( $rows = $wpdb->get_results( "SELECT option_name, option_value FROM $wpdb->options ORDER BY option_id LIMIT $start, 20" ) ) {
 			foreach ( $rows as $row ) {
+<<<<<<< HEAD
 				$value = maybe_unserialize( $row->option_value );
 				if ( $value === $row->option_value ) {
+=======
+				$value = $row->option_value;
+				if ( ! @unserialize( $value ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					$value = stripslashes( $value );
 				}
 				if ( $value !== $row->option_value ) {
@@ -1883,6 +1894,10 @@ function upgrade_370() {
  *
  * @ignore
  * @since 3.7.2
+<<<<<<< HEAD
+=======
+ * @since 3.8.0
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @global int $wp_current_db_version The old (current) database version.
  */
@@ -2257,6 +2272,7 @@ function upgrade_560() {
 }
 
 /**
+<<<<<<< HEAD
  * Executes changes made in WordPress 5.9.0.
  *
  * @ignore
@@ -2279,6 +2295,8 @@ function upgrade_590() {
 }
 
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Executes network-level upgrade routines.
  *
  * @since 3.0.0

@@ -86,6 +86,7 @@ class Ai1wm_Backups {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Count all backup files
 	 *
 	 * @return integer
@@ -95,6 +96,8 @@ class Ai1wm_Backups {
 	}
 
 	/**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * Delete backup file
 	 *
 	 * @param  string  $file File name

@@ -19,7 +19,11 @@ if ( ! class_exists( 'WP_Privacy_Policy_Content' ) ) {
 
 add_filter(
 	'admin_body_class',
+<<<<<<< HEAD
 	static function( $body_class ) {
+=======
+	function( $body_class ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$body_class .= ' privacy-settings ';
 
 		return $body_class;

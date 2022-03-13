@@ -15,8 +15,11 @@ if ( ! current_user_can( 'export' ) ) {
 
 /** Load WordPress export API */
 require_once ABSPATH . 'wp-admin/includes/export.php';
+<<<<<<< HEAD
 
 // Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 $title = __( 'Export' );
 
 /**
@@ -27,7 +30,11 @@ $title = __( 'Export' );
 function export_add_js() {
 	?>
 <script type="text/javascript">
+<<<<<<< HEAD
 	jQuery( function($) {
+=======
+	jQuery(document).ready(function($){
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		var form = $('#export-filters'),
 			filters = form.find('.export-filters');
 		filters.hide();
@@ -39,7 +46,11 @@ function export_add_js() {
 				case 'pages': $('#page-filters').slideDown(); break;
 			}
 		});
+<<<<<<< HEAD
 	} );
+=======
+	});
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 </script>
 	<?php
 }

@@ -1102,6 +1102,7 @@ function wp_ajax_add_tag() {
 	$wp_list_table->single_row( $tag );
 	$parents = ob_get_clean();
 
+<<<<<<< HEAD
 	require ABSPATH . 'wp-admin/includes/edit-tag-messages.php';
 
 	$message = '';
@@ -1115,6 +1116,11 @@ function wp_ajax_add_tag() {
 		array(
 			'what'         => 'taxonomy',
 			'data'         => $message,
+=======
+	$x->add(
+		array(
+			'what'         => 'taxonomy',
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			'supplemental' => compact( 'parents', 'noparents' ),
 		)
 	);

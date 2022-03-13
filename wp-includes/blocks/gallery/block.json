@@ -58,6 +58,7 @@
 			},
 			"default": []
 		},
+<<<<<<< HEAD
 		"shortCodeTransforms": {
 			"type": "array",
 			"default": [],
@@ -65,6 +66,8 @@
 				"type": "object"
 			}
 		},
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		"columns": {
 			"type": "number",
 			"minimum": 1,
@@ -79,6 +82,7 @@
 			"type": "boolean",
 			"default": true
 		},
+<<<<<<< HEAD
 		"fixedHeight": {
 			"type": "boolean",
 			"default": true
@@ -86,12 +90,15 @@
 		"linkTarget": {
 			"type": "string"
 		},
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		"linkTo": {
 			"type": "string"
 		},
 		"sizeSlug": {
 			"type": "string",
 			"default": "large"
+<<<<<<< HEAD
 		},
 		"allowResize": {
 			"type": "boolean",
@@ -103,6 +110,10 @@
 		"imageCrop": "imageCrop",
 		"fixedHeight": "fixedHeight"
 	},
+=======
+		}
+	},
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	"supports": {
 		"anchor": true,
 		"align": true

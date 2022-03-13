@@ -58,6 +58,7 @@ class WP_Block {
 	protected $available_context;
 
 	/**
+<<<<<<< HEAD
 	 * Block type registry.
 	 *
 	 * @since 5.9.0
@@ -71,6 +72,12 @@ class WP_Block {
 	 *
 	 * @since 5.5.0
 	 * @var WP_Block_List
+=======
+	 * List of inner blocks (of this same class)
+	 *
+	 * @since 5.5.0
+	 * @var WP_Block[]
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public $inner_blocks = array();
 
@@ -124,8 +131,11 @@ class WP_Block {
 			$registry = WP_Block_Type_Registry::get_instance();
 		}
 
+<<<<<<< HEAD
 		$this->registry = $registry;
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$this->block_type = $registry->get_registered( $this->name );
 
 		$this->available_context = $available_context;
@@ -196,9 +206,15 @@ class WP_Block {
 	 * @since 5.5.0
 	 *
 	 * @param array $options {
+<<<<<<< HEAD
 	 *     Optional options object.
 	 *
 	 *     @type bool $dynamic Defaults to 'true'. Optionally set to false to avoid using the block's render_callback.
+=======
+	 *   Optional options object.
+	 *
+	 *   @type bool $dynamic Defaults to 'true'. Optionally set to false to avoid using the block's render_callback.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * }
 	 * @return string Rendered block output.
 	 */
@@ -216,6 +232,7 @@ class WP_Block {
 
 		if ( ! $options['dynamic'] || empty( $this->block_type->skip_inner_blocks ) ) {
 			$index = 0;
+<<<<<<< HEAD
 
 			foreach ( $this->inner_content as $chunk ) {
 				if ( is_string( $chunk ) ) {
@@ -243,6 +260,12 @@ class WP_Block {
 
 					$index++;
 				}
+=======
+			foreach ( $this->inner_content as $chunk ) {
+				$block_content .= is_string( $chunk ) ?
+					$chunk :
+					$this->inner_blocks[ $index++ ]->render();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			}
 		}
 
@@ -263,10 +286,13 @@ class WP_Block {
 			wp_enqueue_script( $this->block_type->script );
 		}
 
+<<<<<<< HEAD
 		if ( ! empty( $this->block_type->view_script ) && empty( $this->block_type->render_callback ) ) {
 			wp_enqueue_script( $this->block_type->view_script );
 		}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( ! empty( $this->block_type->style ) ) {
 			wp_enqueue_style( $this->block_type->style );
 		}
@@ -275,6 +301,7 @@ class WP_Block {
 		 * Filters the content of a single block.
 		 *
 		 * @since 5.0.0
+<<<<<<< HEAD
 		 * @since 5.9.0 The `$instance` parameter was added.
 		 *
 		 * @param string   $block_content The block content about to be appended.
@@ -282,6 +309,13 @@ class WP_Block {
 		 * @param WP_Block $instance      The block instance.
 		 */
 		$block_content = apply_filters( 'render_block', $block_content, $this->parsed_block, $this );
+=======
+		 *
+		 * @param string $block_content The block content about to be appended.
+		 * @param array  $block         The full block, including name and attributes.
+		 */
+		$block_content = apply_filters( 'render_block', $block_content, $this->parsed_block );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		/**
 		 * Filters the content of a single block.
@@ -290,6 +324,7 @@ class WP_Block {
 		 * the block name, e.g. "core/paragraph".
 		 *
 		 * @since 5.7.0
+<<<<<<< HEAD
 		 * @since 5.9.0 The `$instance` parameter was added.
 		 *
 		 * @param string   $block_content The block content about to be appended.
@@ -297,6 +332,13 @@ class WP_Block {
 		 * @param WP_Block $instance      The block instance.
 		 */
 		$block_content = apply_filters( "render_block_{$this->name}", $block_content, $this->parsed_block, $this );
+=======
+		 *
+		 * @param string $block_content The block content about to be appended.
+		 * @param array  $block         The full block, including name and attributes.
+		 */
+		$block_content = apply_filters( "render_block_{$this->name}", $block_content, $this->parsed_block );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		return $block_content;
 	}

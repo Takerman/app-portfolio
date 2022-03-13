@@ -21,6 +21,7 @@
 			"gradients": true
 		},
 		"typography": {
+<<<<<<< HEAD
 			"fontSize": true,
 			"lineHeight": true,
 			"__experimentalFontStyle": true,
@@ -30,6 +31,9 @@
 			"__experimentalDefaultControls": {
 				"fontSize": true
 			}
+=======
+			"fontSize": true
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	},
 	"style": "wp-block-preformatted"

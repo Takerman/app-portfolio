@@ -20,9 +20,15 @@ if ( ! function_exists( 'wp_set_current_user' ) ) :
 	 *
 	 * @global WP_User $current_user The current user object which holds the user data.
 	 *
+<<<<<<< HEAD
 	 * @param int|null $id   User ID.
 	 * @param string   $name User's username.
 	 * @return WP_User Current user User object.
+=======
+	 * @param int    $id   User ID
+	 * @param string $name User's username
+	 * @return WP_User Current user User object
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	function wp_set_current_user( $id, $name = '' ) {
 		global $current_user;
@@ -537,6 +543,7 @@ if ( ! function_exists( 'wp_mail' ) ) :
 		 */
 		do_action_ref_array( 'phpmailer_init', array( &$phpmailer ) );
 
+<<<<<<< HEAD
 		$mail_data = compact( 'to', 'subject', 'message', 'headers', 'attachments' );
 
 		// Send!
@@ -559,6 +566,15 @@ if ( ! function_exists( 'wp_mail' ) ) :
 			return $send;
 		} catch ( PHPMailer\PHPMailer\Exception $e ) {
 			$mail_data['phpmailer_exception_code'] = $e->getCode();
+=======
+		// Send!
+		try {
+			return $phpmailer->send();
+		} catch ( PHPMailer\PHPMailer\Exception $e ) {
+
+			$mail_error_data                             = compact( 'to', 'subject', 'message', 'headers', 'attachments' );
+			$mail_error_data['phpmailer_exception_code'] = $e->getCode();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 			/**
 			 * Fires after a PHPMailer\PHPMailer\Exception is caught.
@@ -568,7 +584,11 @@ if ( ! function_exists( 'wp_mail' ) ) :
 			 * @param WP_Error $error A WP_Error object with the PHPMailer\PHPMailer\Exception message, and an array
 			 *                        containing the mail recipient, subject, message, headers, and attachments.
 			 */
+<<<<<<< HEAD
 			do_action( 'wp_mail_failed', new WP_Error( 'wp_mail_failed', $e->getMessage(), $mail_data ) );
+=======
+			do_action( 'wp_mail_failed', new WP_Error( 'wp_mail_failed', $e->getMessage(), $mail_error_data ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 			return false;
 		}
@@ -1584,7 +1604,11 @@ if ( ! function_exists( 'wp_notify_postauthor' ) ) :
 		 * @since 3.7.0
 		 *
 		 * @param string[] $emails     An array of email addresses to receive a comment notification.
+<<<<<<< HEAD
 		 * @param string   $comment_id The comment ID as a numeric string.
+=======
+		 * @param int      $comment_id The comment ID.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$emails = apply_filters( 'comment_notification_recipients', $emails, $comment->comment_ID );
 		$emails = array_filter( $emails );
@@ -1605,9 +1629,15 @@ if ( ! function_exists( 'wp_notify_postauthor' ) ) :
 		 *
 		 * @since 3.8.0
 		 *
+<<<<<<< HEAD
 		 * @param bool   $notify     Whether to notify the post author of their own comment.
 		 *                           Default false.
 		 * @param string $comment_id The comment ID as a numeric string.
+=======
+		 * @param bool $notify     Whether to notify the post author of their own comment.
+		 *                         Default false.
+		 * @param int  $comment_id The comment ID.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$notify_author = apply_filters( 'comment_notification_notify_author', false, $comment->comment_ID );
 
@@ -1740,7 +1770,11 @@ if ( ! function_exists( 'wp_notify_postauthor' ) ) :
 		 * @since 1.5.2
 		 *
 		 * @param string $notify_message The comment notification email text.
+<<<<<<< HEAD
 		 * @param string $comment_id     Comment ID as a numeric string.
+=======
+		 * @param int    $comment_id     Comment ID.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$notify_message = apply_filters( 'comment_notification_text', $notify_message, $comment->comment_ID );
 
@@ -1750,7 +1784,11 @@ if ( ! function_exists( 'wp_notify_postauthor' ) ) :
 		 * @since 1.5.2
 		 *
 		 * @param string $subject    The comment notification email subject.
+<<<<<<< HEAD
 		 * @param string $comment_id Comment ID as a numeric string.
+=======
+		 * @param int    $comment_id Comment ID.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$subject = apply_filters( 'comment_notification_subject', $subject, $comment->comment_ID );
 
@@ -1760,7 +1798,11 @@ if ( ! function_exists( 'wp_notify_postauthor' ) ) :
 		 * @since 1.5.2
 		 *
 		 * @param string $message_headers Headers for the comment notification email.
+<<<<<<< HEAD
 		 * @param string $comment_id      Comment ID as a numeric string.
+=======
+		 * @param int    $comment_id      Comment ID.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$message_headers = apply_filters( 'comment_notification_headers', $message_headers, $comment->comment_ID );
 
@@ -2693,7 +2735,11 @@ if ( ! function_exists( 'get_avatar' ) ) :
 		);
 
 		if ( wp_lazy_loading_enabled( 'img', 'get_avatar' ) ) {
+<<<<<<< HEAD
 			$defaults['loading'] = wp_get_loading_attr_default( 'get_avatar' );
+=======
+			$defaults['loading'] = 'lazy';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		if ( empty( $args ) ) {
@@ -2720,7 +2766,11 @@ if ( ! function_exists( 'get_avatar' ) ) :
 		/**
 		 * Allows the HTML for a user's avatar to be returned early.
 		 *
+<<<<<<< HEAD
 		 * Returning a non-null value will effectively short-circuit get_avatar(), passing
+=======
+		 * Passing a non-null value will effectively short-circuit get_avatar(), passing
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 * the value through the {@see 'get_avatar'} filter and returning early.
 		 *
 		 * @since 4.2.0
@@ -2800,7 +2850,12 @@ if ( ! function_exists( 'get_avatar' ) ) :
 		 * @param int    $size        Square avatar width and height in pixels to retrieve.
 		 * @param string $default     URL for the default image or a default type. Accepts '404', 'retro', 'monsterid',
 		 *                            'wavatar', 'indenticon', 'mystery', 'mm', 'mysteryman', 'blank', or 'gravatar_default'.
+<<<<<<< HEAD
 		 * @param string $alt         Alternative text to use in the avatar image tag.
+=======
+		 *                            Default is the value of the 'avatar_default' option, with a fallback of 'mystery'.
+		 * @param string $alt         Alternative text to use in the avatar image tag. Default empty.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 * @param array  $args        Arguments passed to get_avatar_data(), after processing.
 		 */
 		return apply_filters( 'get_avatar', $avatar, $id_or_email, $args['size'], $args['default'], $args['alt'], $args );

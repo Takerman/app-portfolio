@@ -125,8 +125,11 @@ final class WP_Privacy_Policy_Content {
 	 * Output a warning when some privacy info has changed.
 	 *
 	 * @since 4.9.6
+<<<<<<< HEAD
 	 *
 	 * @global WP_Post $post Global post object.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public static function policy_text_changed_notice() {
 		global $post;
@@ -305,8 +308,11 @@ final class WP_Privacy_Policy_Content {
 	 * @since 4.9.6
 	 * @since 5.0.0 The `$post` parameter was made optional.
 	 *
+<<<<<<< HEAD
 	 * @global WP_Post $post Global post object.
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @param WP_Post|null $post The currently edited post. Default null.
 	 */
 	public static function notice( $post = null ) {

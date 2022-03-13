@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * jQuery UI Selectable 1.13.1
+=======
+ * jQuery UI Selectable 1.12.1
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -15,8 +19,11 @@
 //>>css.structure: ../../themes/base/selectable.css
 
 ( function( factory ) {
+<<<<<<< HEAD
 	"use strict";
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -30,11 +37,18 @@
 		// Browser globals
 		factory( jQuery );
 	}
+<<<<<<< HEAD
 } )( function( $ ) {
 "use strict";
 
 return $.widget( "ui.selectable", $.ui.mouse, {
 	version: "1.13.1",
+=======
+}( function( $ ) {
+
+return $.widget( "ui.selectable", $.ui.mouse, {
+	version: "1.12.1",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	options: {
 		appendTo: "body",
 		autoRefresh: true,
@@ -185,12 +199,17 @@ return $.widget( "ui.selectable", $.ui.mouse, {
 			x2 = event.pageX,
 			y2 = event.pageY;
 
+<<<<<<< HEAD
 		if ( x1 > x2 ) {
 			tmp = x2; x2 = x1; x1 = tmp;
 		}
 		if ( y1 > y2 ) {
 			tmp = y2; y2 = y1; y1 = tmp;
 		}
+=======
+		if ( x1 > x2 ) { tmp = x2; x2 = x1; x1 = tmp; }
+		if ( y1 > y2 ) { tmp = y2; y2 = y1; y1 = tmp; }
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		this.helper.css( { left: x1, top: y1, width: x2 - x1, height: y2 - y1 } );
 
 		this.selectees.each( function() {
@@ -210,10 +229,17 @@ return $.widget( "ui.selectable", $.ui.mouse, {
 
 			if ( options.tolerance === "touch" ) {
 				hit = ( !( offset.left > x2 || offset.right < x1 || offset.top > y2 ||
+<<<<<<< HEAD
 					offset.bottom < y1 ) );
 			} else if ( options.tolerance === "fit" ) {
 				hit = ( offset.left > x1 && offset.right < x2 && offset.top > y1 &&
 					offset.bottom < y2 );
+=======
+                    offset.bottom < y1 ) );
+			} else if ( options.tolerance === "fit" ) {
+				hit = ( offset.left > x1 && offset.right < x2 && offset.top > y1 &&
+                    offset.bottom < y2 );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			}
 
 			if ( hit ) {
@@ -313,4 +339,8 @@ return $.widget( "ui.selectable", $.ui.mouse, {
 
 } );
 
+<<<<<<< HEAD
 } );
+=======
+} ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

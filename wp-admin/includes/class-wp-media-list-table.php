@@ -78,6 +78,7 @@ class WP_Media_List_Table extends WP_List_Table {
 		 */
 		$not_in = array();
 
+<<<<<<< HEAD
 		$crons = _get_cron_array();
 
 		if ( is_array( $crons ) ) {
@@ -88,6 +89,14 @@ class WP_Media_List_Table extends WP_List_Table {
 					if ( ! empty( $details['args'][0] ) ) {
 						$not_in[] = (int) $details['args'][0];
 					}
+=======
+		foreach ( _get_cron_array() as $cron ) {
+			if ( isset( $cron['upgrader_scheduled_cleanup'] ) ) {
+				$details = reset( $cron['upgrader_scheduled_cleanup'] );
+
+				if ( ! empty( $details['args'][0] ) ) {
+					$not_in[] = (int) $details['args'][0];
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				}
 			}
 		}
@@ -151,7 +160,11 @@ class WP_Media_List_Table extends WP_List_Table {
 			);
 		}
 
+<<<<<<< HEAD
 		$type_links['detached'] = '<option value="detached"' . ( $this->detached ? ' selected="selected"' : '' ) . '>' . _x( 'Unattached', 'media items' ) . '</option>';
+=======
+		$type_links['detached'] = '<option value="detached"' . ( $this->detached ? ' selected="selected"' : '' ) . '>' . __( 'Unattached' ) . '</option>';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		$type_links['mine'] = sprintf(
 			'<option value="mine"%s>%s</option>',
@@ -387,6 +400,7 @@ class WP_Media_List_Table extends WP_List_Table {
 	 * Handles the checkbox column output.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$post` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param WP_Post $item The current WP_Post object.
@@ -395,6 +409,12 @@ class WP_Media_List_Table extends WP_List_Table {
 		// Restores the more descriptive, specific name for use within this method.
 		$post = $item;
 
+=======
+	 *
+	 * @param WP_Post $post The current WP_Post object.
+	 */
+	public function column_cb( $post ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( current_user_can( 'edit_post', $post->ID ) ) {
 			?>
 			<label class="screen-reader-text" for="cb-select-<?php echo $post->ID; ?>">
@@ -598,6 +618,7 @@ class WP_Media_List_Table extends WP_List_Table {
 	 * Handles output for the default column.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$post` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param WP_Post $item        The current WP_Post object.
@@ -607,6 +628,13 @@ class WP_Media_List_Table extends WP_List_Table {
 		// Restores the more descriptive, specific name for use within this method.
 		$post = $item;
 
+=======
+	 *
+	 * @param WP_Post $post        The current WP_Post object.
+	 * @param string  $column_name Current column name.
+	 */
+	public function column_default( $post, $column_name ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( 'categories' === $column_name ) {
 			$taxonomy = 'category';
 		} elseif ( 'tags' === $column_name ) {
@@ -827,25 +855,39 @@ class WP_Media_List_Table extends WP_List_Table {
 	 * Generates and displays row action links.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$post` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param WP_Post $item        Attachment being acted upon.
+=======
+	 *
+	 * @param WP_Post $post        Attachment being acted upon.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @param string  $column_name Current column name.
 	 * @param string  $primary     Primary column name.
 	 * @return string Row actions output for media attachments, or an empty string
 	 *                if the current column is not the primary column.
 	 */
+<<<<<<< HEAD
 	protected function handle_row_actions( $item, $column_name, $primary ) {
+=======
+	protected function handle_row_actions( $post, $column_name, $primary ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( $primary !== $column_name ) {
 			return '';
 		}
 
 		$att_title = _draft_or_post_title();
+<<<<<<< HEAD
 		$actions   = $this->_get_row_actions(
 			$item, // WP_Post object for an attachment.
 			$att_title
 		);
 
 		return $this->row_actions( $actions );
+=======
+
+		return $this->row_actions( $this->_get_row_actions( $post, $att_title ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 }

@@ -158,6 +158,7 @@ __webpack_require__.d(tabbable_namespaceObject, "findNext", function() { return 
  * AREA elements associated with an IMG:
  *  - https://w3c.github.io/html/editing.html#data-model
  */
+<<<<<<< HEAD
 
 /**
  * Returns a CSS selector used to query for focusable elements.
@@ -173,6 +174,9 @@ __webpack_require__.d(tabbable_namespaceObject, "findNext", function() { return 
 function buildSelector(sequential) {
   return [sequential ? '[tabindex]:not([tabindex^="-"])' : '[tabindex]', 'a[href]', 'button:not([disabled])', 'input:not([type="hidden"]):not([disabled])', 'select:not([disabled])', 'textarea:not([disabled])', 'iframe:not([tabindex^="-"])', 'object', 'embed', 'area[href]', '[contenteditable]:not([contenteditable=false])'].join(',');
 }
+=======
+const SELECTOR = ['[tabindex]', 'a[href]', 'button:not([disabled])', 'input:not([type="hidden"]):not([disabled])', 'select:not([disabled])', 'textarea:not([disabled])', 'iframe', 'object', 'embed', 'area[href]', '[contenteditable]:not([contenteditable=false])'].join(',');
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /**
  * Returns true if the specified element is visible (i.e. neither display: none
  * nor visibility: hidden).
@@ -182,11 +186,30 @@ function buildSelector(sequential) {
  * @return {boolean} Whether element is visible.
  */
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 function isVisible(element) {
   return element.offsetWidth > 0 || element.offsetHeight > 0 || element.getClientRects().length > 0;
 }
 /**
+<<<<<<< HEAD
+=======
+ * Returns true if the specified element should be skipped from focusable elements.
+ * For now it rather specific for `iframes` and  if tabindex attribute is set to -1.
+ *
+ * @param {Element} element DOM element to test.
+ *
+ * @return {boolean} Whether element should be skipped from focusable elements.
+ */
+
+
+function skipFocus(element) {
+  return element.nodeName.toLowerCase() === 'iframe' && element.getAttribute('tabindex') === '-1';
+}
+/**
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Returns true if the specified area element is a valid focusable element, or
  * false otherwise. Area is only focusable if within a map where a named map
  * referenced by an image somewhere in the document.
@@ -213,6 +236,7 @@ function isValidFocusableArea(element) {
 /**
  * Returns all focusable elements within a given context.
  *
+<<<<<<< HEAD
  * @param {Element} context              Element in which to search.
  * @param {Object}  [options]
  * @param {boolean} [options.sequential] If set, only return elements that are
@@ -221,24 +245,36 @@ function isValidFocusableArea(element) {
  *                                       negative `tabindex` are focusable but
  *                                       not sequentially focusable.
  *                                       https://html.spec.whatwg.org/multipage/interaction.html#the-tabindex-attribute
+=======
+ * @param {Element} context Element in which to search.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {Element[]} Focusable elements.
  */
 
 
 function find(context) {
+<<<<<<< HEAD
   let {
     sequential = false
   } = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   /* eslint-disable jsdoc/no-undefined-types */
 
   /** @type {NodeListOf<HTMLElement>} */
 
   /* eslint-enable jsdoc/no-undefined-types */
+<<<<<<< HEAD
   const elements = context.querySelectorAll(buildSelector(sequential));
   return Array.from(elements).filter(element => {
     if (!isVisible(element)) {
+=======
+  const elements = context.querySelectorAll(SELECTOR);
+  return Array.from(elements).filter(element => {
+    if (!isVisible(element) || skipFocus(element)) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       return false;
     }
 
@@ -446,9 +482,15 @@ function findPrevious(element) {
 
 function findNext(element) {
   const focusables = find(element.ownerDocument.body);
+<<<<<<< HEAD
   const index = focusables.indexOf(element); // Remove all focusables before and including `element`.
 
   const remaining = focusables.slice(index + 1);
+=======
+  const index = focusables.indexOf(element); // Remove all focusables before and inside `element`.
+
+  const remaining = focusables.slice(index + 1).filter(node => !element.contains(node));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   return Object(external_lodash_["first"])(filterTabbable(remaining));
 }
 
@@ -482,12 +524,18 @@ function getRectangleFromRange(range) {
     } // Ignore tiny selection at the edge of a range.
 
 
+<<<<<<< HEAD
     const filteredRects = rects.filter(_ref => {
       let {
         width
       } = _ref;
       return width > 1;
     }); // If it's full of tiny selections, return browser default.
+=======
+    const filteredRects = rects.filter(({
+      width
+    }) => width > 1); // If it's full of tiny selections, return browser default.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
     if (filteredRects.length === 0) {
       return range.getBoundingClientRect();
@@ -593,7 +641,11 @@ function computeCaretRect(win) {
 
 /**
  * Check whether the current document has selected text. This applies to ranges
+<<<<<<< HEAD
  * of text in the document, and not selection inside `<input>` and `<textarea>`
+=======
+ * of text in the document, and not selection inside <input> and <textarea>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * elements.
  *
  * See: https://developer.mozilla.org/en-US/docs/Web/API/Window/getSelection#Related_objects.
@@ -723,8 +775,13 @@ function inputFieldHasUncollapsedSelection(element) {
 
 /**
  * Check whether the current document has any sort of selection. This includes
+<<<<<<< HEAD
  * ranges of text across elements and any selection inside `<input>` and
  * `<textarea>` elements.
+=======
+ * ranges of text across elements and any selection inside <input> and
+ * <textarea> elements.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @param {Document} doc The document to check.
  *
@@ -931,9 +988,15 @@ function isEntirelySelected(element) {
  * Check whether the contents of the element have been entirely selected.
  * Returns true if there is no possibility of selection.
  *
+<<<<<<< HEAD
  * @param {HTMLElement|Node}         query     The element to check.
  * @param {HTMLElement}              container The container that we suspect "query" may be a first or last child of.
  * @param {"firstChild"|"lastChild"} propName  "firstChild" or "lastChild"
+=======
+ * @param {HTMLElement|Node} query The element to check.
+ * @param {HTMLElement} container The container that we suspect "query" may be a first or last child of.
+ * @param {"firstChild"|"lastChild"} propName "firstChild" or "lastChild"
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {boolean} True if query is a deep first/last child of container, false otherwise.
  */
@@ -985,6 +1048,7 @@ function getRangeHeight(range) {
     return;
   }
 
+<<<<<<< HEAD
   const highestTop = Math.min(...rects.map(_ref => {
     let {
       top
@@ -997,6 +1061,14 @@ function getRangeHeight(range) {
     } = _ref2;
     return bottom;
   }));
+=======
+  const highestTop = Math.min(...rects.map(({
+    top
+  }) => top));
+  const lowestBottom = Math.max(...rects.map(({
+    bottom
+  }) => bottom));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   return lowestBottom - highestTop;
 }
 
@@ -1059,9 +1131,15 @@ function isSelectionForward(selection) {
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/caretRangeFromPoint
  *
+<<<<<<< HEAD
  * @param {DocumentMaybeWithCaretPositionFromPoint} doc The document of the range.
  * @param {number}                                  x   Horizontal position within the current viewport.
  * @param {number}                                  y   Vertical position within the current viewport.
+=======
+ * @param {Document} doc  The document of the range.
+ * @param {number}   x    Horizontal position within the current viewport.
+ * @param {number}   y    Vertical position within the current viewport.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {Range | null} The best range for the given point.
  */
@@ -1086,10 +1164,13 @@ function caretRangeFromPoint(doc, x, y) {
   range.collapse(true);
   return range;
 }
+<<<<<<< HEAD
 /**
  * @typedef {{caretPositionFromPoint?: (x: number, y: number)=> CaretPosition | null} & Document } DocumentMaybeWithCaretPositionFromPoint
  * @typedef {{ readonly offset: number; readonly offsetNode: Node; getClientRect(): DOMRect | null; }} CaretPosition
  */
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/dom/build-module/dom/hidden-caret-range-from-point.js
 /**
@@ -1102,10 +1183,17 @@ function caretRangeFromPoint(doc, x, y) {
  * Gives the container a temporary high z-index (above any UI).
  * This is preferred over getting the UI nodes and set styles there.
  *
+<<<<<<< HEAD
  * @param {Document}    doc       The document of the range.
  * @param {number}      x         Horizontal position within the current viewport.
  * @param {number}      y         Vertical position within the current viewport.
  * @param {HTMLElement} container Container in which the range is expected to be found.
+=======
+ * @param {Document} doc       The document of the range.
+ * @param {number}    x         Horizontal position within the current viewport.
+ * @param {number}    y         Vertical position within the current viewport.
+ * @param {HTMLElement}  container Container in which the range is expected to be found.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {?Range} The best range for the given point.
  */
@@ -1144,17 +1232,27 @@ function hiddenCaretRangeFromPoint(doc, x, y, container) {
  * horizontal position by default. Set `onlyVertical` to true to check only
  * vertically.
  *
+<<<<<<< HEAD
  * @param {Element} container            Focusable element.
  * @param {boolean} isReverse            Set to true to check left, false to check right.
+=======
+ * @param {Element} container Focusable element.
+ * @param {boolean} isReverse Set to true to check left, false to check right.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @param {boolean} [onlyVertical=false] Set to true to check only vertical position.
  *
  * @return {boolean} True if at the edge, false if not.
  */
 
+<<<<<<< HEAD
 function isEdge(container, isReverse) {
   let onlyVertical = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
   if (isInputOrTextArea(container) && typeof container.selectionStart === 'number') {
+=======
+function isEdge(container, isReverse, onlyVertical = false) {
+  if (isInputOrTextArea(container)) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     if (container.selectionStart !== container.selectionEnd) {
       return false;
     }
@@ -1285,7 +1383,15 @@ function isVerticalEdge(container, isReverse) {
   return isEdge(container, isReverse, true);
 }
 
+<<<<<<< HEAD
 // CONCATENATED MODULE: ./node_modules/@wordpress/dom/build-module/dom/place-caret-at-edge.js
+=======
+// CONCATENATED MODULE: ./node_modules/@wordpress/dom/build-module/dom/place-caret-at-horizontal-edge.js
+/**
+ * Internal dependencies
+ */
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /**
  * Internal dependencies
  */
@@ -1296,14 +1402,23 @@ function isVerticalEdge(container, isReverse) {
 /**
  * Gets the range to place.
  *
+<<<<<<< HEAD
  * @param {HTMLElement}      container Focusable element.
  * @param {boolean}          isReverse True for end, false for start.
  * @param {number|undefined} x         X coordinate to vertically position.
+=======
+ * @param {HTMLElement} container Focusable element.
+ * @param {boolean}     isReverse True for end, false for start.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {Range|null} The range to place.
  */
 
+<<<<<<< HEAD
 function getRange(container, isReverse, x) {
+=======
+function getRange(container, isReverse) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const {
     ownerDocument
   } = container; // In the case of RTL scripts, the horizontal edge is at the opposite side.
@@ -1312,16 +1427,21 @@ function getRange(container, isReverse, x) {
   const containerRect = container.getBoundingClientRect(); // When placing at the end (isReverse), find the closest range to the bottom
   // right corner. When placing at the start, to the top left corner.
 
+<<<<<<< HEAD
   if (x === undefined) {
     x = isReverse ? containerRect.right - 1 : containerRect.left + 1;
   }
 
+=======
+  const x = isReverse ? containerRect.right - 1 : containerRect.left + 1;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const y = isReverseDir ? containerRect.bottom - 1 : containerRect.top + 1;
   return hiddenCaretRangeFromPoint(ownerDocument, x, y, container);
 }
 /**
  * Places the caret at start or end of a given element.
  *
+<<<<<<< HEAD
  * @param {HTMLElement}      container Focusable element.
  * @param {boolean}          isReverse True for end, false for start.
  * @param {number|undefined} x         X coordinate to vertically position.
@@ -1329,6 +1449,14 @@ function getRange(container, isReverse, x) {
 
 
 function placeCaretAtEdge(container, isReverse, x) {
+=======
+ * @param {HTMLElement} container Focusable element.
+ * @param {boolean}     isReverse True for end, false for start.
+ */
+
+
+function placeCaretAtHorizontalEdge(container, isReverse) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   if (!container) {
     return;
   }
@@ -1356,12 +1484,20 @@ function placeCaretAtEdge(container, isReverse, x) {
     return;
   }
 
+<<<<<<< HEAD
   let range = getRange(container, isReverse, x); // If no range range can be created or it is outside the container, the
+=======
+  let range = getRange(container, isReverse); // If no range range can be created or it is outside the container, the
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   // element may be out of view.
 
   if (!range || !range.startContainer || !container.contains(range.startContainer)) {
     container.scrollIntoView(isReverse);
+<<<<<<< HEAD
     range = range = getRange(container, isReverse, x);
+=======
+    range = getRange(container, isReverse);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
     if (!range || !range.startContainer || !container.contains(range.startContainer)) {
       return;
@@ -1381,11 +1517,16 @@ function placeCaretAtEdge(container, isReverse, x) {
   selection.addRange(range);
 }
 
+<<<<<<< HEAD
 // CONCATENATED MODULE: ./node_modules/@wordpress/dom/build-module/dom/place-caret-at-horizontal-edge.js
+=======
+// CONCATENATED MODULE: ./node_modules/@wordpress/dom/build-module/dom/place-caret-at-vertical-edge.js
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /**
  * Internal dependencies
  */
 
+<<<<<<< HEAD
 /**
  * Places the caret at start or end of a given element.
  *
@@ -1401,10 +1542,14 @@ function placeCaretAtHorizontalEdge(container, isReverse) {
 /**
  * Internal dependencies
  */
+=======
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 /**
  * Places the caret at the top or bottom of a given element.
  *
+<<<<<<< HEAD
  * @param {HTMLElement} container Focusable element.
  * @param {boolean}     isReverse True for bottom, false for top.
  * @param {DOMRect}     [rect]    The rectangle to position the caret with.
@@ -1412,6 +1557,61 @@ function placeCaretAtHorizontalEdge(container, isReverse) {
 
 function placeCaretAtVerticalEdge(container, isReverse, rect) {
   return placeCaretAtEdge(container, isReverse, rect === null || rect === void 0 ? void 0 : rect.left);
+=======
+ * @param {HTMLElement} container           Focusable element.
+ * @param {boolean} isReverse           True for bottom, false for top.
+ * @param {DOMRect} [rect]              The rectangle to position the caret with.
+ * @param {boolean} [mayUseScroll=true] True to allow scrolling, false to disallow.
+ */
+
+function placeCaretAtVerticalEdge(container, isReverse, rect, mayUseScroll = true) {
+  if (!container) {
+    return;
+  }
+
+  if (!rect || !container.isContentEditable) {
+    placeCaretAtHorizontalEdge(container, isReverse);
+    return;
+  }
+
+  container.focus(); // Offset by a buffer half the height of the caret rect. This is needed
+  // because caretRangeFromPoint may default to the end of the selection if
+  // offset is too close to the edge. It's unclear how to precisely calculate
+  // this threshold; it may be the padded area of some combination of line
+  // height, caret height, and font size. The buffer offset is effectively
+  // equivalent to a point at half the height of a line of text.
+
+  const buffer = rect.height / 2;
+  const editableRect = container.getBoundingClientRect();
+  const x = rect.left;
+  const y = isReverse ? editableRect.bottom - buffer : editableRect.top + buffer;
+  const {
+    ownerDocument
+  } = container;
+  const {
+    defaultView
+  } = ownerDocument;
+  const range = hiddenCaretRangeFromPoint(ownerDocument, x, y, container);
+
+  if (!range || !container.contains(range.startContainer)) {
+    if (mayUseScroll && (!range || !range.startContainer || !range.startContainer.contains(container))) {
+      // Might be out of view.
+      // Easier than attempting to calculate manually.
+      container.scrollIntoView(isReverse);
+      placeCaretAtVerticalEdge(container, isReverse, rect, false);
+      return;
+    }
+
+    placeCaretAtHorizontalEdge(container, isReverse);
+    return;
+  }
+
+  assertIsDefined(defaultView, 'defaultView');
+  const selection = defaultView.getSelection();
+  assertIsDefined(selection, 'selection');
+  selection.removeAllRanges();
+  selection.addRange(range);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/dom/build-module/dom/insert-after.js
@@ -1503,8 +1703,13 @@ function unwrap(node) {
 /**
  * Replaces the given node with a new node with the given tag name.
  *
+<<<<<<< HEAD
  * @param {Element} node    The node to replace
  * @param {string}  tagName The new tag name.
+=======
+ * @param {Element}  node    The node to replace
+ * @param {string}   tagName The new tag name.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {Element} The new node.
  */
@@ -1539,6 +1744,7 @@ function wrap(newNode, referenceNode) {
   newNode.appendChild(referenceNode);
 }
 
+<<<<<<< HEAD
 // CONCATENATED MODULE: ./node_modules/@wordpress/dom/build-module/dom/safe-html.js
 /**
  * Internal dependencies
@@ -1589,12 +1795,17 @@ function safeHTML(html) {
  */
 
 /**
+=======
+// CONCATENATED MODULE: ./node_modules/@wordpress/dom/build-module/dom/strip-html.js
+/**
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Removes any HTML tags from the provided string.
  *
  * @param {string} html The string containing html.
  *
  * @return {string} The text content with any html removed.
  */
+<<<<<<< HEAD
 
 function stripHTML(html) {
   // Remove any script tags or on* attributes otherwise their *contents* will be left
@@ -1603,6 +1814,11 @@ function stripHTML(html) {
   const doc = document.implementation.createHTMLDocument('');
   doc.body.innerHTML = html;
   return doc.body.textContent || '';
+=======
+function stripHTML(html) {
+  const document = new window.DOMParser().parseFromString(html, 'text/html');
+  return document.body.textContent || '';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/dom/build-module/dom/is-empty.js
@@ -1655,8 +1871,13 @@ function isEmpty(element) {
 
 /**
  * @typedef SemanticElementDefinition
+<<<<<<< HEAD
  * @property {string[]}      [attributes] Content attributes
  * @property {ContentSchema} [children]   Content attributes
+=======
+ * @property {string[]} [attributes] Content attributes
+ * @property {ContentSchema} [children] Content attributes
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 /**
@@ -1674,7 +1895,11 @@ const textContentSchema = {
   del: {},
   ins: {},
   a: {
+<<<<<<< HEAD
     attributes: ['href', 'target', 'rel', 'id']
+=======
+    attributes: ['href', 'target', 'rel']
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   },
   code: {},
   abbr: {
@@ -1766,7 +1991,11 @@ const phrasingContentSchema = { ...textContentSchema,
  * @see https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content
  *
  * @param {string} [context] Set to "paste" to exclude invisible elements and
+<<<<<<< HEAD
  *                           sensitive data.
+=======
+ *                         sensitive data.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {Partial<ContentSchema>} Schema.
  */
@@ -1849,12 +2078,21 @@ function isElement(node) {
 
 /**
  * @typedef SchemaItem
+<<<<<<< HEAD
  * @property {string[]}                            [attributes] Attributes.
  * @property {(string | RegExp)[]}                 [classes]    Classnames or RegExp to test against.
  * @property {'*' | { [tag: string]: SchemaItem }} [children]   Child schemas.
  * @property {string[]}                            [require]    Selectors to test required children against. Leave empty or undefined if there are no requirements.
  * @property {boolean}                             allowEmpty   Whether to allow nodes without children.
  * @property {(node: Node) => boolean}             [isMatch]    Function to test whether a node is a match. If left undefined any node will be assumed to match.
+=======
+ * @property {string[]} [attributes] Attributes.
+ * @property {(string | RegExp)[]} [classes] Classnames or RegExp to test against.
+ * @property {'*' | { [tag: string]: SchemaItem }} [children] Child schemas.
+ * @property {string[]} [require] Selectors to test required children against. Leave empty or undefined if there are no requirements.
+ * @property {boolean} allowEmpty Whether to allow nodes without children.
+ * @property {(node: Node) => boolean} [isMatch] Function to test whether a node is a match. If left undefined any node will be assumed to match.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 /** @typedef {{ [tag: string]: SchemaItem }} Schema */
@@ -1872,9 +2110,15 @@ function isElement(node) {
  */
 
 function cleanNodeList(nodeList, doc, schema, inline) {
+<<<<<<< HEAD
   Array.from(nodeList).forEach((
   /** @type {Node & { nextElementSibling?: unknown }} */
   node) => {
+=======
+  Array.from(nodeList).forEach(
+  /** @type {Node & { nextElementSibling?: unknown }} */
+  node => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     var _schema$tag$isMatch, _schema$tag;
 
     const tag = node.nodeName.toLowerCase(); // It's a valid child, if the tag exists in the schema without an isMatch
@@ -1898,11 +2142,17 @@ function cleanNodeList(nodeList, doc, schema, inline) {
 
         if (node.hasAttributes()) {
           // Strip invalid attributes.
+<<<<<<< HEAD
           Array.from(node.attributes).forEach(_ref => {
             let {
               name
             } = _ref;
 
+=======
+          Array.from(node.attributes).forEach(({
+            name
+          }) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
             if (name !== 'class' && !Object(external_lodash_["includes"])(attributes, name)) {
               node.removeAttribute(name);
             }
@@ -1914,12 +2164,23 @@ function cleanNodeList(nodeList, doc, schema, inline) {
             const mattchers = classes.map(item => {
               if (typeof item === 'string') {
                 return (
+<<<<<<< HEAD
                 /** @type {string} */
                 className) => className === item;
               } else if (item instanceof RegExp) {
                 return (
                 /** @type {string} */
                 className) => item.test(className);
+=======
+                  /** @type {string} */
+                  className => className === item
+                );
+              } else if (item instanceof RegExp) {
+                return (
+                  /** @type {string} */
+                  className => item.test(className)
+                );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
               }
 
               return external_lodash_["noop"];
@@ -1990,9 +2251,15 @@ function cleanNodeList(nodeList, doc, schema, inline) {
 /**
  * Given a schema, unwraps or removes nodes, attributes and classes on HTML.
  *
+<<<<<<< HEAD
  * @param {string}                             HTML   The HTML to clean up.
  * @param {import('./clean-node-list').Schema} schema Schema for the HTML.
  * @param {boolean}                            inline Whether to clean for inline mode.
+=======
+ * @param {string} HTML   The HTML to clean up.
+ * @param {import('./clean-node-list').Schema} schema Schema for the HTML.
+ * @param {boolean} inline Whether to clean for inline mode.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {string} The cleaned up HTML.
  */
@@ -2004,6 +2271,53 @@ function removeInvalidHTML(HTML, schema, inline) {
   return doc.body.innerHTML;
 }
 
+<<<<<<< HEAD
+=======
+// CONCATENATED MODULE: ./node_modules/@wordpress/dom/build-module/dom/safe-html.js
+/**
+ * Internal dependencies
+ */
+
+/**
+ * Strips scripts and on* attributes from HTML.
+ *
+ * @param {string} html HTML to sanitize.
+ *
+ * @return {string} The sanitized HTML.
+ */
+
+function safeHTML(html) {
+  const {
+    body
+  } = document.implementation.createHTMLDocument('');
+  body.innerHTML = html;
+  const elements = body.getElementsByTagName('*');
+  let elementIndex = elements.length;
+
+  while (elementIndex--) {
+    const element = elements[elementIndex];
+
+    if (element.tagName === 'SCRIPT') {
+      remove(element);
+    } else {
+      let attributeIndex = element.attributes.length;
+
+      while (attributeIndex--) {
+        const {
+          name: key
+        } = element.attributes[attributeIndex];
+
+        if (key.startsWith('on')) {
+          element.removeAttribute(key);
+        }
+      }
+    }
+  }
+
+  return body.innerHTML;
+}
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 // CONCATENATED MODULE: ./node_modules/@wordpress/dom/build-module/dom/index.js
 
 
@@ -2044,6 +2358,7 @@ function getFilesFromDataTransfer(dataTransfer) {
   Array.from(dataTransfer.items).forEach(item => {
     const file = item.getAsFile();
 
+<<<<<<< HEAD
     if (file && !files.find(_ref => {
       let {
         name,
@@ -2052,6 +2367,13 @@ function getFilesFromDataTransfer(dataTransfer) {
       } = _ref;
       return name === file.name && type === file.type && size === file.size;
     })) {
+=======
+    if (file && !files.find(({
+      name,
+      type,
+      size
+    }) => name === file.name && type === file.type && size === file.size)) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       files.push(file);
     }
   });

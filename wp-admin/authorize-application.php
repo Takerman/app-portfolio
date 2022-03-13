@@ -62,7 +62,10 @@ if ( isset( $_POST['action'] ) && 'authorize_application_password' === $_POST['a
 	}
 }
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 $title = __( 'Authorize Application' );
 
 $app_name    = ! empty( $_REQUEST['app_name'] ) ? $_REQUEST['app_name'] : '';
@@ -91,7 +94,11 @@ if ( is_wp_error( $is_valid ) ) {
 
 if ( wp_is_site_protected_by_basic_auth( 'front' ) ) {
 	wp_die(
+<<<<<<< HEAD
 		__( 'Your website appears to use Basic Authentication, which is not currently compatible with application passwords.' ),
+=======
+		__( 'Your website appears to use Basic Authentication, which is not currently compatible with Application Passwords.' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		__( 'Cannot Authorize Application' ),
 		array(
 			'response'  => 501,
@@ -148,13 +155,21 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 				<?php
 				printf(
 					/* translators: %s: Application name. */
+<<<<<<< HEAD
 					__( 'Would you like to give the application identifying itself as %s access to your account? You should only do this if you trust the application in question.' ),
+=======
+					__( 'Would you like to give the application identifying itself as %s access to your account? You should only do this if you trust the app in question.' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'<strong>' . esc_html( $app_name ) . '</strong>'
 				);
 				?>
 			</p>
 		<?php else : ?>
+<<<<<<< HEAD
 			<p><?php _e( 'Would you like to give this application access to your account? You should only do this if you trust the application in question.' ); ?></p>
+=======
+			<p><?php _e( 'Would you like to give this application access to your account? You should only do this if you trust the app in question.' ); ?></p>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		<?php endif; ?>
 
 		<?php
@@ -225,7 +240,11 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 
 				<div class="form-field">
 					<label for="app_name"><?php _e( 'New Application Password Name' ); ?></label>
+<<<<<<< HEAD
 					<input type="text" id="app_name" name="app_name" value="<?php echo esc_attr( $app_name ); ?>" required />
+=======
+					<input type="text" id="app_name" name="app_name" value="<?php echo esc_attr( $app_name ); ?>" placeholder="<?php esc_attr_e( 'WordPress App on My Phone' ); ?>" required />
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				</div>
 
 				<?php
@@ -248,7 +267,11 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 
 				<?php
 				submit_button(
+<<<<<<< HEAD
 					__( 'Yes, I approve of this connection' ),
+=======
+					__( 'Yes, I approve of this connection.' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'primary',
 					'approve',
 					false,
@@ -263,7 +286,11 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 						printf(
 							/* translators: %s: The URL the user is being redirected to. */
 							__( 'You will be sent to %s' ),
+<<<<<<< HEAD
 							'<strong><code>' . esc_html(
+=======
+							'<strong><kbd>' . esc_html(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 								add_query_arg(
 									array(
 										'site_url'   => site_url(),
@@ -272,7 +299,11 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 									),
 									$success_url
 								)
+<<<<<<< HEAD
 							) . '</code></strong>'
+=======
+							) . '</kbd></strong>'
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						);
 					} else {
 						_e( 'You will be given a password to manually enter into the application in question.' );
@@ -282,7 +313,11 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 
 				<?php
 				submit_button(
+<<<<<<< HEAD
 					__( 'No, I do not approve of this connection' ),
+=======
+					__( 'No, I do not approve of this connection.' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'secondary',
 					'reject',
 					false,
@@ -297,7 +332,11 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 						printf(
 							/* translators: %s: The URL the user is being redirected to. */
 							__( 'You will be sent to %s' ),
+<<<<<<< HEAD
 							'<strong><code>' . esc_html( $reject_url ) . '</code></strong>'
+=======
+							'<strong><kbd>' . esc_html( $reject_url ) . '</kbd></strong>'
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						);
 					} else {
 						_e( 'You will be returned to the WordPress Dashboard, and no changes will be made.' );

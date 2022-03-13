@@ -2024,6 +2024,25 @@ function get_link( $bookmark_id, $output = OBJECT, $filter = 'raw' ) {
 }
 
 /**
+<<<<<<< HEAD
+=======
+ * Performs esc_url() for database or redirect usage.
+ *
+ * @since 2.3.1
+ * @deprecated 2.8.0 Use esc_url_raw()
+ * @see esc_url_raw()
+ *
+ * @param string $url The URL to be cleaned.
+ * @param array $protocols An array of acceptable protocols.
+ * @return string The cleaned URL.
+ */
+function sanitize_url( $url, $protocols = null ) {
+	_deprecated_function( __FUNCTION__, '2.8.0', 'esc_url_raw()' );
+	return esc_url_raw( $url, $protocols );
+}
+
+/**
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Checks and cleans a URL.
  *
  * A number of characters are removed from the URL. If the URL is for displaying
@@ -3325,7 +3344,11 @@ function gd_edit_image_support($mime_type) {
 			case 'image/gif':
 				return (imagetypes() & IMG_GIF) != 0;
 			case 'image/webp':
+<<<<<<< HEAD
 				return (imagetypes() & IMG_WEBP) != 0;
+=======
+				return (imagetypes() & IMG_WEBP) != 0; // phpcs:ignore PHPCompatibility.Constants.NewConstants.img_webpFound
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	} else {
 		switch( $mime_type ) {
@@ -4208,6 +4231,7 @@ function _excerpt_render_inner_columns_blocks( $columns, $allowed_blocks ) {
 	_deprecated_function( __FUNCTION__, '5.8.0', '_excerpt_render_inner_blocks()' );
 	return _excerpt_render_inner_blocks( $columns, $allowed_blocks );
 }
+<<<<<<< HEAD
 
 /**
  * Renders the duotone filter SVG and returns the CSS filter property to
@@ -4225,3 +4249,5 @@ function wp_render_duotone_filter_preset( $preset ) {
 	_deprecated_function( __FUNCTION__, '5.9.1', 'wp_get_duotone_filter_property()' );
 	return wp_get_duotone_filter_property( $preset );
 }
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

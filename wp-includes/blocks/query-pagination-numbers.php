@@ -45,6 +45,7 @@ function render_block_core_query_pagination_numbers( $attributes, $content, $blo
 			'total'     => $total,
 			'prev_next' => false,
 		);
+<<<<<<< HEAD
 		if ( 1 !== $page ) {
 			/**
 			 * `paginate_links` doesn't use the provided `format` when the page is `1`.
@@ -67,6 +68,8 @@ function render_block_core_query_pagination_numbers( $attributes, $content, $blo
 			 */
 			$paginate_args['add_args'] = array( 'cst' => '' );
 		}
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		// We still need to preserve `paged` query param if exists, as is used
 		// for Queries that inherit from global context.
 		$paged = empty( $_GET['paged'] ) ? null : (int) $_GET['paged'];

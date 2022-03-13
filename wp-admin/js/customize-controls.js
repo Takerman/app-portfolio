@@ -6,12 +6,15 @@
 (function( exports, $ ){
 	var Container, focus, normalizedTransitionendEventName, api = wp.customize;
 
+<<<<<<< HEAD
 	var reducedMotionMediaQuery = window.matchMedia( '(prefers-reduced-motion: reduce)' );
 	var isReducedMotion = reducedMotionMediaQuery.matches;
 	reducedMotionMediaQuery.addEventListener( 'change' , function handleReducedMotionChange( event ) {
 		isReducedMotion = event.matches;
 	});
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	api.OverlayNotification = api.Notification.extend(/** @lends wp.customize.OverlayNotification.prototype */{
 
 		/**
@@ -695,6 +698,7 @@
 	 * @param {Function} [params.completeCallback]
 	 */
 	focus = function ( params ) {
+<<<<<<< HEAD
 		var construct, completeCallback, focus, focusElement, sections;
 		construct = this;
 		params = params || {};
@@ -711,6 +715,12 @@
 				}
 			}
 
+=======
+		var construct, completeCallback, focus, focusElement;
+		construct = this;
+		params = params || {};
+		focus = function () {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			var focusContainer;
 			if ( ( construct.extended( api.Panel ) || construct.extended( api.Section ) ) && construct.expanded && construct.expanded() ) {
 				focusContainer = construct.contentContainer;
@@ -1282,6 +1292,7 @@
 		 * @return {void}
 		 */
 		_animateChangeExpanded: function( completeCallback ) {
+<<<<<<< HEAD
 			// Return if CSS transitions are not supported or if reduced motion is enabled.
 			if ( ! normalizedTransitionendEventName || isReducedMotion ) {
 				// Schedule the callback until the next tick to prevent focus loss.
@@ -1290,6 +1301,13 @@
 						completeCallback();
 					}
 				} );
+=======
+			// Return if CSS transitions are not supported.
+			if ( ! normalizedTransitionendEventName ) {
+				if ( completeCallback ) {
+					completeCallback();
+				}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				return;
 			}
 

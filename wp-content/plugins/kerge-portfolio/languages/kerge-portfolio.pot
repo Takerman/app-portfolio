@@ -1,0 +1,51 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Kerge Portfolio 1.3.0\n"
+"POT-Creation-Date: 2020-12-25 12:45+0400\n"
+"PO-Revision-Date: 2017-06-26 14:29+0400\n"
+"Last-Translator: \n"
+"Language-Team: LMPixels linar@lmpixels.com\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext;_n;__ngettext_noop;_x;_nx;_nx_noop;"
+"_ex;esc_attr__;esc_attr_e;esc_attr_x;esc_html__;esc_html_e;esc_html_x;_c;"
+"_nc\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: extensions/portfolio/hooks.php:84 extensions/portfolio/views/single.php:78
+#: extensions/portfolio/views/single.php:108
+#: extensions/portfolio/views/single.php:115
+#: extensions/portfolio/views/single.php:118
+#: extensions/portfolio/views/single.php:121
+msgid "image"
+msgstr ""
+
+#: extensions/portfolio/views/archive.php:34
+msgid "My Works"
+msgstr ""
+
+#: extensions/portfolio/views/archive.php:44
+msgid "All"
+msgstr ""
+
+#: extensions/portfolio/views/archive.php:86
+msgid "no image"
+msgstr ""
+
+#: extensions/portfolio/views/single.php:171
+msgid "Description"
+msgstr ""
+
+#: extensions/portfolio/views/single.php:214
+msgid "Technology"
+msgstr ""
+
+#: extensions/portfolio/views/single.php:235
+msgid "Share"
+msgstr ""

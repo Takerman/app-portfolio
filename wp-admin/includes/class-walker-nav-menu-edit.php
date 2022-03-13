@@ -46,6 +46,7 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 	 *
 	 * @see Walker_Nav_Menu::start_el()
 	 * @since 3.0.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$item` to `$data_object` and `$id` to `$current_object_id`
 	 *              to match parent class for PHP 8 named parameter support.
 	 *
@@ -66,6 +67,23 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 
 		ob_start();
 		$item_id      = esc_attr( $menu_item->ID );
+=======
+	 *
+	 * @global int $_wp_nav_menu_max_depth
+	 *
+	 * @param string   $output Used to append additional content (passed by reference).
+	 * @param WP_Post  $item   Menu item data object.
+	 * @param int      $depth  Depth of menu item. Used for padding.
+	 * @param stdClass $args   Not used.
+	 * @param int      $id     Not used.
+	 */
+	public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+		global $_wp_nav_menu_max_depth;
+		$_wp_nav_menu_max_depth = $depth > $_wp_nav_menu_max_depth ? $depth : $_wp_nav_menu_max_depth;
+
+		ob_start();
+		$item_id      = esc_attr( $item->ID );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$removed_args = array(
 			'action',
 			'customlink-tab',
@@ -77,6 +95,7 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 
 		$original_title = false;
 
+<<<<<<< HEAD
 		if ( 'taxonomy' === $menu_item->type ) {
 			$original_object = get_term( (int) $menu_item->object_id, $menu_item->object );
 			if ( $original_object && ! is_wp_error( $original_object ) ) {
@@ -89,6 +108,20 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 			}
 		} elseif ( 'post_type_archive' === $menu_item->type ) {
 			$original_object = get_post_type_object( $menu_item->object );
+=======
+		if ( 'taxonomy' === $item->type ) {
+			$original_object = get_term( (int) $item->object_id, $item->object );
+			if ( $original_object && ! is_wp_error( $original_object ) ) {
+				$original_title = $original_object->name;
+			}
+		} elseif ( 'post_type' === $item->type ) {
+			$original_object = get_post( $item->object_id );
+			if ( $original_object ) {
+				$original_title = get_the_title( $original_object->ID );
+			}
+		} elseif ( 'post_type_archive' === $item->type ) {
+			$original_object = get_post_type_object( $item->object );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( $original_object ) {
 				$original_title = $original_object->labels->archives;
 			}
@@ -96,6 +129,7 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 
 		$classes = array(
 			'menu-item menu-item-depth-' . $depth,
+<<<<<<< HEAD
 			'menu-item-' . esc_attr( $menu_item->object ),
 			'menu-item-edit-' . ( ( isset( $_GET['edit-menu-item'] ) && $item_id === $_GET['edit-menu-item'] ) ? 'active' : 'inactive' ),
 		);
@@ -113,6 +147,25 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 		}
 
 		$title = ( ! isset( $menu_item->label ) || '' === $menu_item->label ) ? $title : $menu_item->label;
+=======
+			'menu-item-' . esc_attr( $item->object ),
+			'menu-item-edit-' . ( ( isset( $_GET['edit-menu-item'] ) && $item_id === $_GET['edit-menu-item'] ) ? 'active' : 'inactive' ),
+		);
+
+		$title = $item->title;
+
+		if ( ! empty( $item->_invalid ) ) {
+			$classes[] = 'menu-item-invalid';
+			/* translators: %s: Title of an invalid menu item. */
+			$title = sprintf( __( '%s (Invalid)' ), $item->title );
+		} elseif ( isset( $item->post_status ) && 'draft' === $item->post_status ) {
+			$classes[] = 'pending';
+			/* translators: %s: Title of a menu item in draft status. */
+			$title = sprintf( __( '%s (Pending)' ), $item->title );
+		}
+
+		$title = ( ! isset( $item->label ) || '' === $item->label ) ? $title : $item->label;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		$submenu_text = '';
 		if ( 0 === $depth ) {
@@ -129,7 +182,11 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 						<span class="is-submenu" <?php echo $submenu_text; ?>><?php _e( 'sub item' ); ?></span>
 					</label>
 					<span class="item-controls">
+<<<<<<< HEAD
 						<span class="item-type"><?php echo esc_html( $menu_item->type_label ); ?></span>
+=======
+						<span class="item-type"><?php echo esc_html( $item->type_label ); ?></span>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						<span class="item-order hide-if-js">
 							<?php
 							printf(
@@ -190,48 +247,80 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 			</div>
 
 			<div class="menu-item-settings wp-clearfix" id="menu-item-settings-<?php echo $item_id; ?>">
+<<<<<<< HEAD
 				<?php if ( 'custom' === $menu_item->type ) : ?>
 					<p class="field-url description description-wide">
 						<label for="edit-menu-item-url-<?php echo $item_id; ?>">
 							<?php _e( 'URL' ); ?><br />
 							<input type="text" id="edit-menu-item-url-<?php echo $item_id; ?>" class="widefat code edit-menu-item-url" name="menu-item-url[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $menu_item->url ); ?>" />
+=======
+				<?php if ( 'custom' === $item->type ) : ?>
+					<p class="field-url description description-wide">
+						<label for="edit-menu-item-url-<?php echo $item_id; ?>">
+							<?php _e( 'URL' ); ?><br />
+							<input type="text" id="edit-menu-item-url-<?php echo $item_id; ?>" class="widefat code edit-menu-item-url" name="menu-item-url[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->url ); ?>" />
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						</label>
 					</p>
 				<?php endif; ?>
 				<p class="description description-wide">
 					<label for="edit-menu-item-title-<?php echo $item_id; ?>">
 						<?php _e( 'Navigation Label' ); ?><br />
+<<<<<<< HEAD
 						<input type="text" id="edit-menu-item-title-<?php echo $item_id; ?>" class="widefat edit-menu-item-title" name="menu-item-title[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $menu_item->title ); ?>" />
+=======
+						<input type="text" id="edit-menu-item-title-<?php echo $item_id; ?>" class="widefat edit-menu-item-title" name="menu-item-title[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->title ); ?>" />
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					</label>
 				</p>
 				<p class="field-title-attribute field-attr-title description description-wide">
 					<label for="edit-menu-item-attr-title-<?php echo $item_id; ?>">
 						<?php _e( 'Title Attribute' ); ?><br />
+<<<<<<< HEAD
 						<input type="text" id="edit-menu-item-attr-title-<?php echo $item_id; ?>" class="widefat edit-menu-item-attr-title" name="menu-item-attr-title[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $menu_item->post_excerpt ); ?>" />
+=======
+						<input type="text" id="edit-menu-item-attr-title-<?php echo $item_id; ?>" class="widefat edit-menu-item-attr-title" name="menu-item-attr-title[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->post_excerpt ); ?>" />
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					</label>
 				</p>
 				<p class="field-link-target description">
 					<label for="edit-menu-item-target-<?php echo $item_id; ?>">
+<<<<<<< HEAD
 						<input type="checkbox" id="edit-menu-item-target-<?php echo $item_id; ?>" value="_blank" name="menu-item-target[<?php echo $item_id; ?>]"<?php checked( $menu_item->target, '_blank' ); ?> />
+=======
+						<input type="checkbox" id="edit-menu-item-target-<?php echo $item_id; ?>" value="_blank" name="menu-item-target[<?php echo $item_id; ?>]"<?php checked( $item->target, '_blank' ); ?> />
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						<?php _e( 'Open link in a new tab' ); ?>
 					</label>
 				</p>
 				<p class="field-css-classes description description-thin">
 					<label for="edit-menu-item-classes-<?php echo $item_id; ?>">
 						<?php _e( 'CSS Classes (optional)' ); ?><br />
+<<<<<<< HEAD
 						<input type="text" id="edit-menu-item-classes-<?php echo $item_id; ?>" class="widefat code edit-menu-item-classes" name="menu-item-classes[<?php echo $item_id; ?>]" value="<?php echo esc_attr( implode( ' ', $menu_item->classes ) ); ?>" />
+=======
+						<input type="text" id="edit-menu-item-classes-<?php echo $item_id; ?>" class="widefat code edit-menu-item-classes" name="menu-item-classes[<?php echo $item_id; ?>]" value="<?php echo esc_attr( implode( ' ', $item->classes ) ); ?>" />
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					</label>
 				</p>
 				<p class="field-xfn description description-thin">
 					<label for="edit-menu-item-xfn-<?php echo $item_id; ?>">
 						<?php _e( 'Link Relationship (XFN)' ); ?><br />
+<<<<<<< HEAD
 						<input type="text" id="edit-menu-item-xfn-<?php echo $item_id; ?>" class="widefat code edit-menu-item-xfn" name="menu-item-xfn[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $menu_item->xfn ); ?>" />
+=======
+						<input type="text" id="edit-menu-item-xfn-<?php echo $item_id; ?>" class="widefat code edit-menu-item-xfn" name="menu-item-xfn[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->xfn ); ?>" />
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					</label>
 				</p>
 				<p class="field-description description description-wide">
 					<label for="edit-menu-item-description-<?php echo $item_id; ?>">
 						<?php _e( 'Description' ); ?><br />
+<<<<<<< HEAD
 						<textarea id="edit-menu-item-description-<?php echo $item_id; ?>" class="widefat edit-menu-item-description" rows="3" cols="20" name="menu-item-description[<?php echo $item_id; ?>]"><?php echo esc_html( $menu_item->description ); // textarea_escaped ?></textarea>
+=======
+						<textarea id="edit-menu-item-description-<?php echo $item_id; ?>" class="widefat edit-menu-item-description" rows="3" cols="20" name="menu-item-description[<?php echo $item_id; ?>]"><?php echo esc_html( $item->description ); // textarea_escaped ?></textarea>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						<span class="description"><?php _e( 'The description will be displayed in the menu if the current theme supports it.' ); ?></span>
 					</label>
 				</p>
@@ -242,6 +331,7 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 				 *
 				 * @since 5.4.0
 				 *
+<<<<<<< HEAD
 				 * @param string        $item_id           Menu item ID as a numeric string.
 				 * @param WP_Post       $menu_item         Menu item data object.
 				 * @param int           $depth             Depth of menu item. Used for padding.
@@ -249,6 +339,15 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 				 * @param int           $current_object_id Nav menu ID.
 				 */
 				do_action( 'wp_nav_menu_item_custom_fields', $item_id, $menu_item, $depth, $args, $current_object_id );
+=======
+				 * @param int      $item_id Menu item ID.
+				 * @param WP_Post  $item    Menu item data object.
+				 * @param int      $depth   Depth of menu item. Used for padding.
+				 * @param stdClass $args    An object of menu item arguments.
+				 * @param int      $id      Nav menu ID.
+				 */
+				do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args, $id );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				?>
 
 				<fieldset class="field-move hide-if-no-js description description-wide">
@@ -261,11 +360,19 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 				</fieldset>
 
 				<div class="menu-item-actions description-wide submitbox">
+<<<<<<< HEAD
 					<?php if ( 'custom' !== $menu_item->type && false !== $original_title ) : ?>
 						<p class="link-to-original">
 							<?php
 							/* translators: %s: Link to menu item's original object. */
 							printf( __( 'Original: %s' ), '<a href="' . esc_attr( $menu_item->url ) . '">' . esc_html( $original_title ) . '</a>' );
+=======
+					<?php if ( 'custom' !== $item->type && false !== $original_title ) : ?>
+						<p class="link-to-original">
+							<?php
+							/* translators: %s: Link to menu item's original object. */
+							printf( __( 'Original: %s' ), '<a href="' . esc_attr( $item->url ) . '">' . esc_html( $original_title ) . '</a>' );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 							?>
 						</p>
 					<?php endif; ?>
@@ -308,11 +415,19 @@ class Walker_Nav_Menu_Edit extends Walker_Nav_Menu {
 				</div>
 
 				<input class="menu-item-data-db-id" type="hidden" name="menu-item-db-id[<?php echo $item_id; ?>]" value="<?php echo $item_id; ?>" />
+<<<<<<< HEAD
 				<input class="menu-item-data-object-id" type="hidden" name="menu-item-object-id[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $menu_item->object_id ); ?>" />
 				<input class="menu-item-data-object" type="hidden" name="menu-item-object[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $menu_item->object ); ?>" />
 				<input class="menu-item-data-parent-id" type="hidden" name="menu-item-parent-id[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $menu_item->menu_item_parent ); ?>" />
 				<input class="menu-item-data-position" type="hidden" name="menu-item-position[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $menu_item->menu_order ); ?>" />
 				<input class="menu-item-data-type" type="hidden" name="menu-item-type[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $menu_item->type ); ?>" />
+=======
+				<input class="menu-item-data-object-id" type="hidden" name="menu-item-object-id[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->object_id ); ?>" />
+				<input class="menu-item-data-object" type="hidden" name="menu-item-object[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->object ); ?>" />
+				<input class="menu-item-data-parent-id" type="hidden" name="menu-item-parent-id[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->menu_item_parent ); ?>" />
+				<input class="menu-item-data-position" type="hidden" name="menu-item-position[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->menu_order ); ?>" />
+				<input class="menu-item-data-type" type="hidden" name="menu-item-type[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->type ); ?>" />
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			</div><!-- .menu-item-settings-->
 			<ul class="menu-item-transport"></ul>
 		<?php

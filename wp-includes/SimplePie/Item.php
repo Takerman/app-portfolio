@@ -1803,7 +1803,11 @@ class SimplePie_Item
 							}
 							if (isset($content['attribs']['']['fileSize']))
 							{
+<<<<<<< HEAD
 								$length = intval($content['attribs']['']['fileSize']);
+=======
+								$length = ceil($content['attribs']['']['fileSize']);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 							}
 							if (isset($content['attribs']['']['medium']))
 							{
@@ -2425,7 +2429,11 @@ class SimplePie_Item
 						}
 						if (isset($content['attribs']['']['fileSize']))
 						{
+<<<<<<< HEAD
 							$length = intval($content['attribs']['']['fileSize']);
+=======
+							$length = ceil($content['attribs']['']['fileSize']);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						}
 						if (isset($content['attribs']['']['medium']))
 						{
@@ -2790,7 +2798,11 @@ class SimplePie_Item
 					}
 					if (isset($link['attribs']['']['length']))
 					{
+<<<<<<< HEAD
 						$length = intval($link['attribs']['']['length']);
+=======
+						$length = ceil($link['attribs']['']['length']);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					}
 					if (isset($link['attribs']['']['title']))
 					{
@@ -2833,7 +2845,11 @@ class SimplePie_Item
 					}
 					if (isset($link['attribs']['']['length']))
 					{
+<<<<<<< HEAD
 						$length = intval($link['attribs']['']['length']);
+=======
+						$length = ceil($link['attribs']['']['length']);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					}
 
 					// Since we don't have group or content for these, we'll just pass the '*_parent' variables directly to the constructor
@@ -2862,14 +2878,21 @@ class SimplePie_Item
 					$width = null;
 
 					$url = $this->sanitize($enclosure[0]['attribs']['']['url'], SIMPLEPIE_CONSTRUCT_IRI, $this->get_base($enclosure[0]));
+<<<<<<< HEAD
 					$url = $this->feed->sanitize->https_url($url);
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					if (isset($enclosure[0]['attribs']['']['type']))
 					{
 						$type = $this->sanitize($enclosure[0]['attribs']['']['type'], SIMPLEPIE_CONSTRUCT_TEXT);
 					}
 					if (isset($enclosure[0]['attribs']['']['length']))
 					{
+<<<<<<< HEAD
 						$length = intval($enclosure[0]['attribs']['']['length']);
+=======
+						$length = ceil($enclosure[0]['attribs']['']['length']);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					}
 
 					// Since we don't have group or content for these, we'll just pass the '*_parent' variables directly to the constructor

@@ -38,7 +38,11 @@ function render_block_core_loginout( $attributes ) {
 }
 
 /**
+<<<<<<< HEAD
  * Registers the `core/loginout` block on server.
+=======
+ * Registers the `core/latest-posts` block on server.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function register_block_core_loginout() {
 	register_block_type_from_metadata(

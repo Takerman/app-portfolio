@@ -77,8 +77,13 @@ abstract class WP_Image_Editor {
 	 * @since 3.5.0
 	 * @abstract
 	 *
+<<<<<<< HEAD
 	 * @param string $destfilename Optional. Destination filename. Default null.
 	 * @param string $mime_type    Optional. The mime-type. Default null.
+=======
+	 * @param string $destfilename
+	 * @param string $mime_type
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @return array|WP_Error {'path'=>string, 'file'=>string, 'width'=>int, 'height'=>int, 'mime-type'=>string}
 	 */
 	abstract public function save( $destfilename = null, $mime_type = null );
@@ -175,7 +180,11 @@ abstract class WP_Image_Editor {
 	 *
 	 * @since 3.5.0
 	 *
+<<<<<<< HEAD
 	 * @return int[] {
+=======
+	 * @return array {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *     Dimensions of the image.
 	 *
 	 *     @type int $width  The image width.
@@ -363,6 +372,10 @@ abstract class WP_Image_Editor {
 		 * }
 		 * @param string $filename  Path to the image.
 		 * @param string $mime_type The source image mime type.
+<<<<<<< HEAD
+=======
+		 * }
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$output_format = apply_filters( 'image_editor_output_format', array(), $filename, $mime_type );
 
@@ -548,9 +561,15 @@ abstract class WP_Image_Editor {
 	 *
 	 * @since 3.5.0
 	 *
+<<<<<<< HEAD
 	 * @param string   $filename
 	 * @param callable $function
 	 * @param array    $arguments
+=======
+	 * @param string|stream $filename
+	 * @param callable      $function
+	 * @param array         $arguments
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @return bool
 	 */
 	protected function make_image( $filename, $function, $arguments ) {

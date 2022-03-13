@@ -138,9 +138,13 @@ enqueue_comment_hotkeys_js();
 if ( $post_id ) {
 	$comments_count      = wp_count_comments( $post_id );
 	$draft_or_post_title = wp_html_excerpt( _draft_or_post_title( $post_id ), 50, '&hellip;' );
+<<<<<<< HEAD
 
 	if ( $comments_count->moderated > 0 ) {
 		// Used in the HTML title tag.
+=======
+	if ( $comments_count->moderated > 0 ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$title = sprintf(
 			/* translators: 1: Comments count, 2: Post title. */
 			__( 'Comments (%1$s) on &#8220;%2$s&#8221;' ),
@@ -148,7 +152,10 @@ if ( $post_id ) {
 			$draft_or_post_title
 		);
 	} else {
+<<<<<<< HEAD
 		// Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$title = sprintf(
 			/* translators: %s: Post title. */
 			__( 'Comments on &#8220;%s&#8221;' ),
@@ -157,16 +164,23 @@ if ( $post_id ) {
 	}
 } else {
 	$comments_count = wp_count_comments();
+<<<<<<< HEAD
 
 	if ( $comments_count->moderated > 0 ) {
 		// Used in the HTML title tag.
+=======
+	if ( $comments_count->moderated > 0 ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$title = sprintf(
 			/* translators: %s: Comments count. */
 			__( 'Comments (%s)' ),
 			number_format_i18n( $comments_count->moderated )
 		);
 	} else {
+<<<<<<< HEAD
 		// Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$title = __( 'Comments' );
 	}
 }
@@ -251,7 +265,11 @@ if ( isset( $_REQUEST['s'] ) && strlen( $_REQUEST['s'] ) ) {
 	printf(
 		/* translators: %s: Search query. */
 		__( 'Search results for: %s' ),
+<<<<<<< HEAD
 		'<strong>' . esc_html( wp_unslash( $_REQUEST['s'] ) ) . '</strong>'
+=======
+		'<strong>' . wp_html_excerpt( esc_html( wp_unslash( $_REQUEST['s'] ) ), 50, '&hellip;' ) . '</strong>'
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	);
 	echo '</span>';
 }

@@ -48,6 +48,7 @@ function _register_core_block_patterns_and_categories() {
  * Register Core's official patterns from wordpress.org/patterns.
  *
  * @since 5.8.0
+<<<<<<< HEAD
  * @since 5.9.0 The $current_screen argument was removed.
  *
  * @param WP_Screen $deprecated Unused. Formerly the screen that the current request was triggered from.
@@ -59,6 +60,14 @@ function _load_remote_block_patterns( $deprecated = null ) {
 		if ( ! $current_screen->is_block_editor ) {
 			return;
 		}
+=======
+ *
+ * @param WP_Screen $current_screen The screen that the current request was triggered from.
+ */
+function _load_remote_block_patterns( $current_screen ) {
+	if ( ! $current_screen->is_block_editor ) {
+		return;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	$supports_core_patterns = get_theme_support( 'core-block-patterns' );
@@ -88,6 +97,7 @@ function _load_remote_block_patterns( $deprecated = null ) {
 		}
 	}
 }
+<<<<<<< HEAD
 
 /**
  * Register `Featured` (category) patterns from wordpress.org/patterns.
@@ -127,3 +137,5 @@ function _load_remote_featured_patterns() {
 		}
 	}
 }
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

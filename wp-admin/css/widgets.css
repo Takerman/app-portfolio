@@ -42,7 +42,11 @@
 
 .widgets-holder-wrap .widget-inside {
 	border-top: none;
+<<<<<<< HEAD
 	padding: 1px 15px 15px;
+=======
+	padding: 1px 15px 15px 15px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	line-height: 1.23076923;
 }
 
@@ -346,8 +350,12 @@
 	margin: 0;
 	padding: 8px 10px;
 	overflow: hidden;
+<<<<<<< HEAD
 	white-space: normal;
 	line-height: 1.5;
+=======
+	white-space: nowrap;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .widgets-holder-wrap .description {
@@ -437,7 +445,11 @@ div#widgets-left .widget-holder {
 	width: 100%;
 	background: transparent;
 	padding: 0;
+<<<<<<< HEAD
 	margin: 0 0 20px;
+=======
+	margin: 0 0 20px 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	border: none;
 	box-shadow: none;
 }
@@ -472,7 +484,11 @@ div#widgets-right .sidebars-column-2 {
 }
 
 div#widgets-right .widgets-holder-wrap {
+<<<<<<< HEAD
 	margin: 10px 0 0;
+=======
+	margin: 10px 0 0 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 div#widgets-right .sidebar-description {
@@ -482,7 +498,11 @@ div#widgets-right .sidebar-description {
 
 div#widgets-right .sidebar-name h2,
 div#widgets-right .sidebar-name h3 {
+<<<<<<< HEAD
 	padding: 15px 15px 15px 7px;
+=======
+	padding: 15px 7px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 div#widgets-right .widget-top {
@@ -509,12 +529,15 @@ div#widgets-right .closed .widgets-sortables {
 	margin: -5px 5px;
 }
 
+<<<<<<< HEAD
 .sidebar-name .spinner {
 	position: absolute;
 	top: 18px;
 	right: 30px;
 }
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /* Dragging a widget over a closed sidebar */
 #widgets-right .widgets-holder-wrap.widget-hover {
 	border-color: #787c82;
@@ -741,7 +764,11 @@ div#widgets-right .widget-top:hover,
 }
 
 .widgets-chooser .widgets-chooser-actions {
+<<<<<<< HEAD
 	padding: 10px 0 12px;
+=======
+	padding: 10px 0 12px 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	text-align: center;
 }
 
@@ -833,7 +860,11 @@ ul.CodeMirror-hints {
 
 	.widget-access-link {
 		float: none;
+<<<<<<< HEAD
 		margin: 15px 0 0;
+=======
+		margin: 15px 0 0 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 }
 

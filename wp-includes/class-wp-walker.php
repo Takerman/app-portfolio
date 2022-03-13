@@ -83,6 +83,7 @@ class Walker {
 	 * class methods. Includes the element output also.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$object` (a PHP reserved keyword) to `$data_object` for PHP 8 named parameter support.
 	 * @abstract
 	 *
@@ -93,6 +94,17 @@ class Walker {
 	 * @param int    $current_object_id Optional. ID of the current item. Default 0.
 	 */
 	public function start_el( &$output, $data_object, $depth = 0, $args = array(), $current_object_id = 0 ) {}
+=======
+	 * @abstract
+	 *
+	 * @param string $output            Used to append additional content (passed by reference).
+	 * @param object $object            The data object.
+	 * @param int    $depth             Depth of the item.
+	 * @param array  $args              An array of additional arguments.
+	 * @param int    $current_object_id ID of the current item.
+	 */
+	public function start_el( &$output, $object, $depth = 0, $args = array(), $current_object_id = 0 ) {}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	/**
 	 * Ends the element output, if needed.
@@ -100,6 +112,7 @@ class Walker {
 	 * The $args parameter holds additional values that may be used with the child class methods.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$object` (a PHP reserved keyword) to `$data_object` for PHP 8 named parameter support.
 	 * @abstract
 	 *
@@ -109,6 +122,16 @@ class Walker {
 	 * @param array  $args        An array of additional arguments.
 	 */
 	public function end_el( &$output, $data_object, $depth = 0, $args = array() ) {}
+=======
+	 * @abstract
+	 *
+	 * @param string $output Used to append additional content (passed by reference).
+	 * @param object $object The data object.
+	 * @param int    $depth  Depth of the item.
+	 * @param array  $args   An array of additional arguments.
+	 */
+	public function end_el( &$output, $object, $depth = 0, $args = array() ) {}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	/**
 	 * Traverse elements to create list from elements.
@@ -209,7 +232,11 @@ class Walker {
 		/*
 		 * Need to display in hierarchical order.
 		 * Separate elements into two buckets: top level and children elements.
+<<<<<<< HEAD
 		 * Children_elements is two dimensional array. Example:
+=======
+		 * Children_elements is two dimensional array, eg.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 * Children_elements[10][] contains all sub-elements whose parent is 10.
 		 */
 		$top_level_elements = array();

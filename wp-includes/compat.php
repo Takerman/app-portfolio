@@ -79,10 +79,13 @@ endif;
  * @return string Extracted substring.
  */
 function _mb_substr( $str, $start, $length = null, $encoding = null ) {
+<<<<<<< HEAD
 	if ( null === $str ) {
 		return '';
 	}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( null === $encoding ) {
 		$encoding = get_option( 'blog_charset' );
 	}
@@ -375,6 +378,7 @@ if ( ! function_exists( 'is_iterable' ) ) {
 	}
 }
 
+<<<<<<< HEAD
 if ( ! function_exists( 'array_key_first' ) ) {
 	/**
 	 * Polyfill for array_key_first() function added in PHP 7.3.
@@ -478,6 +482,8 @@ if ( ! function_exists( 'str_ends_with' ) ) {
 	}
 }
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 // IMAGETYPE_WEBP constant is only defined in PHP 7.1 or later.
 if ( ! defined( 'IMAGETYPE_WEBP' ) ) {
 	define( 'IMAGETYPE_WEBP', 18 );
@@ -485,5 +491,9 @@ if ( ! defined( 'IMAGETYPE_WEBP' ) ) {
 
 // IMG_WEBP constant is only defined in PHP 7.0.10 or later.
 if ( ! defined( 'IMG_WEBP' ) ) {
+<<<<<<< HEAD
 	define( 'IMG_WEBP', IMAGETYPE_WEBP );
+=======
+	define( 'IMG_WEBP', IMAGETYPE_WEBP ); // phpcs:ignore PHPCompatibility.Constants.NewConstants.imagetype_webpFound
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }

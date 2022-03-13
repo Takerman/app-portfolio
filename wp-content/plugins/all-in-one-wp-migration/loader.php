@@ -93,6 +93,7 @@ require_once AI1WM_VENDOR_PATH .
 			DIRECTORY_SEPARATOR .
 			'servmask' .
 			DIRECTORY_SEPARATOR .
+<<<<<<< HEAD
 			'filesystem' .
 			DIRECTORY_SEPARATOR .
 			'class-ai1wm-file-robots.php';
@@ -101,6 +102,8 @@ require_once AI1WM_VENDOR_PATH .
 			DIRECTORY_SEPARATOR .
 			'servmask' .
 			DIRECTORY_SEPARATOR .
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			'cron' .
 			DIRECTORY_SEPARATOR .
 			'class-ai1wm-cron.php';

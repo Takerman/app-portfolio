@@ -21,7 +21,11 @@ if ( ! class_exists( 'Translations', false ) ) :
 		 * @param array|Translation_Entry $entry
 		 * @return bool true on success, false if the entry doesn't have a key
 		 */
+<<<<<<< HEAD
 		public function add_entry( $entry ) {
+=======
+		function add_entry( $entry ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( is_array( $entry ) ) {
 				$entry = new Translation_Entry( $entry );
 			}
@@ -37,7 +41,11 @@ if ( ! class_exists( 'Translations', false ) ) :
 		 * @param array|Translation_Entry $entry
 		 * @return bool
 		 */
+<<<<<<< HEAD
 		public function add_entry_or_merge( $entry ) {
+=======
+		function add_entry_or_merge( $entry ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( is_array( $entry ) ) {
 				$entry = new Translation_Entry( $entry );
 			}
@@ -63,14 +71,22 @@ if ( ! class_exists( 'Translations', false ) ) :
 		 * @param string $header header name, without trailing :
 		 * @param string $value header value, without trailing \n
 		 */
+<<<<<<< HEAD
 		public function set_header( $header, $value ) {
+=======
+		function set_header( $header, $value ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$this->headers[ $header ] = $value;
 		}
 
 		/**
 		 * @param array $headers
 		 */
+<<<<<<< HEAD
 		public function set_headers( $headers ) {
+=======
+		function set_headers( $headers ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			foreach ( $headers as $header => $value ) {
 				$this->set_header( $header, $value );
 			}
@@ -79,14 +95,22 @@ if ( ! class_exists( 'Translations', false ) ) :
 		/**
 		 * @param string $header
 		 */
+<<<<<<< HEAD
 		public function get_header( $header ) {
+=======
+		function get_header( $header ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return isset( $this->headers[ $header ] ) ? $this->headers[ $header ] : false;
 		}
 
 		/**
 		 * @param Translation_Entry $entry
 		 */
+<<<<<<< HEAD
 		public function translate_entry( &$entry ) {
+=======
+		function translate_entry( &$entry ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$key = $entry->key();
 			return isset( $this->entries[ $key ] ) ? $this->entries[ $key ] : false;
 		}
@@ -96,7 +120,11 @@ if ( ! class_exists( 'Translations', false ) ) :
 		 * @param string $context
 		 * @return string
 		 */
+<<<<<<< HEAD
 		public function translate( $singular, $context = null ) {
+=======
+		function translate( $singular, $context = null ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$entry      = new Translation_Entry(
 				array(
 					'singular' => $singular,
@@ -118,14 +146,22 @@ if ( ! class_exists( 'Translations', false ) ) :
 		 *
 		 * @param int $count number of items
 		 */
+<<<<<<< HEAD
 		public function select_plural_form( $count ) {
+=======
+		function select_plural_form( $count ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return 1 == $count ? 0 : 1;
 		}
 
 		/**
 		 * @return int
 		 */
+<<<<<<< HEAD
 		public function get_plural_forms_count() {
+=======
+		function get_plural_forms_count() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return 2;
 		}
 
@@ -135,7 +171,11 @@ if ( ! class_exists( 'Translations', false ) ) :
 		 * @param int    $count
 		 * @param string $context
 		 */
+<<<<<<< HEAD
 		public function translate_plural( $singular, $plural, $count, $context = null ) {
+=======
+		function translate_plural( $singular, $plural, $count, $context = null ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$entry              = new Translation_Entry(
 				array(
 					'singular' => $singular,
@@ -161,7 +201,11 @@ if ( ! class_exists( 'Translations', false ) ) :
 		 * @param Object $other Another Translation object, whose translations will be merged in this one (passed by reference).
 		 * @return void
 		 */
+<<<<<<< HEAD
 		public function merge_with( &$other ) {
+=======
+		function merge_with( &$other ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			foreach ( $other->entries as $entry ) {
 				$this->entries[ $entry->key() ] = $entry;
 			}
@@ -170,7 +214,11 @@ if ( ! class_exists( 'Translations', false ) ) :
 		/**
 		 * @param object $other
 		 */
+<<<<<<< HEAD
 		public function merge_originals_with( &$other ) {
+=======
+		function merge_originals_with( &$other ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			foreach ( $other->entries as $entry ) {
 				if ( ! isset( $this->entries[ $entry->key() ] ) ) {
 					$this->entries[ $entry->key() ] = $entry;
@@ -190,7 +238,11 @@ if ( ! class_exists( 'Translations', false ) ) :
 		 *
 		 * @param int $count
 		 */
+<<<<<<< HEAD
 		public function gettext_select_plural_form( $count ) {
+=======
+		function gettext_select_plural_form( $count ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( ! isset( $this->_gettext_select_plural_form ) || is_null( $this->_gettext_select_plural_form ) ) {
 				list( $nplurals, $expression )     = $this->nplurals_and_expression_from_header( $this->get_header( 'Plural-Forms' ) );
 				$this->_nplurals                   = $nplurals;
@@ -203,7 +255,11 @@ if ( ! class_exists( 'Translations', false ) ) :
 		 * @param string $header
 		 * @return array
 		 */
+<<<<<<< HEAD
 		public function nplurals_and_expression_from_header( $header ) {
+=======
+		function nplurals_and_expression_from_header( $header ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( preg_match( '/^\s*nplurals\s*=\s*(\d+)\s*;\s+plural\s*=\s*(.+)$/', $header, $matches ) ) {
 				$nplurals   = (int) $matches[1];
 				$expression = trim( $matches[2] );
@@ -220,7 +276,11 @@ if ( ! class_exists( 'Translations', false ) ) :
 		 * @param int    $nplurals
 		 * @param string $expression
 		 */
+<<<<<<< HEAD
 		public function make_plural_form_function( $nplurals, $expression ) {
+=======
+		function make_plural_form_function( $nplurals, $expression ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			try {
 				$handler = new Plural_Forms( rtrim( $expression, ';' ) );
 				return array( $handler, 'get' );
@@ -237,7 +297,11 @@ if ( ! class_exists( 'Translations', false ) ) :
 		 * @param string $expression the expression without parentheses
 		 * @return string the expression with parentheses added
 		 */
+<<<<<<< HEAD
 		public function parenthesize_plural_exression( $expression ) {
+=======
+		function parenthesize_plural_exression( $expression ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$expression .= ';';
 			$res         = '';
 			$depth       = 0;
@@ -266,7 +330,11 @@ if ( ! class_exists( 'Translations', false ) ) :
 		 * @param string $translation
 		 * @return array
 		 */
+<<<<<<< HEAD
 		public function make_headers( $translation ) {
+=======
+		function make_headers( $translation ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$headers = array();
 			// Sometimes \n's are used instead of real new lines.
 			$translation = str_replace( '\n', "\n", $translation );
@@ -285,7 +353,11 @@ if ( ! class_exists( 'Translations', false ) ) :
 		 * @param string $header
 		 * @param string $value
 		 */
+<<<<<<< HEAD
 		public function set_header( $header, $value ) {
+=======
+		function set_header( $header, $value ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			parent::set_header( $header, $value );
 			if ( 'Plural-Forms' === $header ) {
 				list( $nplurals, $expression )     = $this->nplurals_and_expression_from_header( $this->get_header( 'Plural-Forms' ) );
@@ -304,7 +376,11 @@ if ( ! class_exists( 'NOOP_Translations', false ) ) :
 		public $entries = array();
 		public $headers = array();
 
+<<<<<<< HEAD
 		public function add_entry( $entry ) {
+=======
+		function add_entry( $entry ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return true;
 		}
 
@@ -312,20 +388,32 @@ if ( ! class_exists( 'NOOP_Translations', false ) ) :
 		 * @param string $header
 		 * @param string $value
 		 */
+<<<<<<< HEAD
 		public function set_header( $header, $value ) {
+=======
+		function set_header( $header, $value ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		/**
 		 * @param array $headers
 		 */
+<<<<<<< HEAD
 		public function set_headers( $headers ) {
+=======
+		function set_headers( $headers ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		/**
 		 * @param string $header
 		 * @return false
 		 */
+<<<<<<< HEAD
 		public function get_header( $header ) {
+=======
+		function get_header( $header ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return false;
 		}
 
@@ -333,7 +421,11 @@ if ( ! class_exists( 'NOOP_Translations', false ) ) :
 		 * @param Translation_Entry $entry
 		 * @return false
 		 */
+<<<<<<< HEAD
 		public function translate_entry( &$entry ) {
+=======
+		function translate_entry( &$entry ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return false;
 		}
 
@@ -341,7 +433,11 @@ if ( ! class_exists( 'NOOP_Translations', false ) ) :
 		 * @param string $singular
 		 * @param string $context
 		 */
+<<<<<<< HEAD
 		public function translate( $singular, $context = null ) {
+=======
+		function translate( $singular, $context = null ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return $singular;
 		}
 
@@ -349,14 +445,22 @@ if ( ! class_exists( 'NOOP_Translations', false ) ) :
 		 * @param int $count
 		 * @return bool
 		 */
+<<<<<<< HEAD
 		public function select_plural_form( $count ) {
+=======
+		function select_plural_form( $count ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return 1 == $count ? 0 : 1;
 		}
 
 		/**
 		 * @return int
 		 */
+<<<<<<< HEAD
 		public function get_plural_forms_count() {
+=======
+		function get_plural_forms_count() {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return 2;
 		}
 
@@ -366,14 +470,22 @@ if ( ! class_exists( 'NOOP_Translations', false ) ) :
 		 * @param int    $count
 		 * @param string $context
 		 */
+<<<<<<< HEAD
 		public function translate_plural( $singular, $plural, $count, $context = null ) {
+=======
+		function translate_plural( $singular, $plural, $count, $context = null ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return 1 == $count ? $singular : $plural;
 		}
 
 		/**
 		 * @param object $other
 		 */
+<<<<<<< HEAD
 		public function merge_with( &$other ) {
+=======
+		function merge_with( &$other ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	}
 endif;

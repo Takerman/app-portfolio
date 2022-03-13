@@ -34,7 +34,10 @@
  * @property string $locale
  * @property string $rich_editing
  * @property string $syntax_highlighting
+<<<<<<< HEAD
  * @property string $use_ssl
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 class WP_User {
 	/**

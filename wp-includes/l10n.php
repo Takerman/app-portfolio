@@ -144,6 +144,7 @@ function determine_locale() {
 		$determined_locale = get_user_locale();
 	}
 
+<<<<<<< HEAD
 	$wp_lang = '';
 
 	if ( ! empty( $_GET['wp_lang'] ) ) {
@@ -154,6 +155,10 @@ function determine_locale() {
 
 	if ( ! empty( $wp_lang ) && ! empty( $GLOBALS['pagenow'] ) && 'wp-login.php' === $GLOBALS['pagenow'] ) {
 		$determined_locale = $wp_lang;
+=======
+	if ( ! empty( $_GET['wp_lang'] ) && ! empty( $GLOBALS['pagenow'] ) && 'wp-login.php' === $GLOBALS['pagenow'] ) {
+		$determined_locale = sanitize_text_field( $_GET['wp_lang'] );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	/**
@@ -199,7 +204,11 @@ function translate( $text, $domain = 'default' ) {
 	/**
 	 * Filters text with its translation for a domain.
 	 *
+<<<<<<< HEAD
 	 * The dynamic portion of the hook name, `$domain`, refers to the text domain.
+=======
+	 * The dynamic portion of the hook, `$domain`, refers to the text domain.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.5.0
 	 *
@@ -267,7 +276,11 @@ function translate_with_gettext_context( $text, $context, $domain = 'default' ) 
 	/**
 	 * Filters text with its translation based on context information for a domain.
 	 *
+<<<<<<< HEAD
 	 * The dynamic portion of the hook name, `$domain`, refers to the text domain.
+=======
+	 * The dynamic portion of the hook, `$domain`, refers to the text domain.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.5.0
 	 *
@@ -409,6 +422,10 @@ function _x( $text, $context, $domain = 'default' ) {
  * @param string $context Context information for the translators.
  * @param string $domain  Optional. Text domain. Unique identifier for retrieving translated strings.
  *                        Default 'default'.
+<<<<<<< HEAD
+=======
+ * @return string Translated context string without pipe.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function _ex( $text, $context, $domain = 'default' ) {
 	echo _x( $text, $context, $domain );
@@ -490,7 +507,11 @@ function _n( $single, $plural, $number, $domain = 'default' ) {
 	/**
 	 * Filters the singular or plural form of a string for a domain.
 	 *
+<<<<<<< HEAD
 	 * The dynamic portion of the hook name, `$domain`, refers to the text domain.
+=======
+	 * The dynamic portion of the hook, `$domain`, refers to the text domain.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.5.0
 	 *
@@ -550,7 +571,11 @@ function _nx( $single, $plural, $number, $context, $domain = 'default' ) {
 	/**
 	 * Filters the singular or plural form of a string with gettext context for a domain.
 	 *
+<<<<<<< HEAD
 	 * The dynamic portion of the hook name, `$domain`, refers to the text domain.
+=======
+	 * The dynamic portion of the hook, `$domain`, refers to the text domain.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.5.0
 	 *
@@ -632,6 +657,7 @@ function _n_noop( $singular, $plural, $domain = null ) {
  * @return array {
  *     Array of translation information for the strings.
  *
+<<<<<<< HEAD
  *     @type string      $0        Singular form to be localized. No longer used.
  *     @type string      $1        Plural form to be localized. No longer used.
  *     @type string      $2        Context information for the translators. No longer used.
@@ -639,6 +665,15 @@ function _n_noop( $singular, $plural, $domain = null ) {
  *     @type string      $plural   Plural form to be localized.
  *     @type string      $context  Context information for the translators.
  *     @type string|null $domain   Text domain.
+=======
+ *     @type string $0        Singular form to be localized. No longer used.
+ *     @type string $1        Plural form to be localized. No longer used.
+ *     @type string $2        Context information for the translators. No longer used.
+ *     @type string $singular Singular form to be localized.
+ *     @type string $plural   Plural form to be localized.
+ *     @type string $context  Context information for the translators.
+ *     @type string $domain   Text domain.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * }
  */
 function _nx_noop( $singular, $plural, $context, $domain = null ) {
@@ -1488,7 +1523,10 @@ function wp_get_pomo_file_data( $po_file ) {
  * @since 4.3.0 Introduced the `echo` argument.
  * @since 4.7.0 Introduced the `show_option_site_default` argument.
  * @since 5.1.0 Introduced the `show_option_en_us` argument.
+<<<<<<< HEAD
  * @since 5.9.0 Introduced the `explicit_option_en_us` argument.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @see get_available_languages()
  * @see wp_get_available_translations()
@@ -1508,8 +1546,11 @@ function wp_get_pomo_file_data( $po_file ) {
  *     @type bool     $show_available_translations  Whether to show available translations. Default true.
  *     @type bool     $show_option_site_default     Whether to show an option to fall back to the site's locale. Default false.
  *     @type bool     $show_option_en_us            Whether to show an option for English (United States). Default true.
+<<<<<<< HEAD
  *     @type bool     $explicit_option_en_us        Whether the English (United States) option uses an explicit value of en_US
  *                                                  instead of an empty value. Default false.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * }
  * @return string HTML dropdown list of languages.
  */
@@ -1527,7 +1568,10 @@ function wp_dropdown_languages( $args = array() ) {
 			'show_available_translations' => true,
 			'show_option_site_default'    => false,
 			'show_option_en_us'           => true,
+<<<<<<< HEAD
 			'explicit_option_en_us'       => false,
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		)
 	);
 
@@ -1537,7 +1581,11 @@ function wp_dropdown_languages( $args = array() ) {
 	}
 
 	// English (United States) uses an empty string for the value attribute.
+<<<<<<< HEAD
 	if ( 'en_US' === $parsed_args['selected'] && ! $parsed_args['explicit_option_en_us'] ) {
+=======
+	if ( 'en_US' === $parsed_args['selected'] ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$parsed_args['selected'] = '';
 	}
 
@@ -1592,10 +1640,15 @@ function wp_dropdown_languages( $args = array() ) {
 	}
 
 	if ( $parsed_args['show_option_en_us'] ) {
+<<<<<<< HEAD
 		$value       = ( $parsed_args['explicit_option_en_us'] ) ? 'en_US' : '';
 		$structure[] = sprintf(
 			'<option value="%s" lang="en" data-installed="1"%s>English (United States)</option>',
 			esc_attr( $value ),
+=======
+		$structure[] = sprintf(
+			'<option value="" lang="en" data-installed="1"%s>English (United States)</option>',
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			selected( '', $parsed_args['selected'], false )
 		);
 	}
@@ -1726,6 +1779,7 @@ function is_locale_switched() {
 
 	return $wp_locale_switcher->is_switched();
 }
+<<<<<<< HEAD
 
 /**
  * Translates the provided settings value using its i18n schema.
@@ -1770,3 +1824,5 @@ function translate_settings_using_i18n_schema( $i18n_schema, $settings, $textdom
 	}
 	return $settings;
 }
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

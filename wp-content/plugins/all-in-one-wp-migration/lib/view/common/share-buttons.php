@@ -30,6 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0&appId=597242117012725" nonce="xH3McWON"></script>
+<<<<<<< HEAD
 <script async defer src="https://apis.google.com/js/platform.js"></script>
 <script>
 window.twttr = (function(d, s, id) {
@@ -48,6 +49,22 @@ window.twttr = (function(d, s, id) {
 
 	return t;
 }(document, "script", "twitter-wjs"));
+=======
+<script src="https://apis.google.com/js/platform.js"></script>
+<script>
+	!function (d,s,id) {
+		var js,
+			fjs = d.getElementsByTagName(s)[0],
+			p   = /^http:/.test(d.location) ? 'http' : 'https';
+
+		if (!d.getElementById(id)) {
+			js = d.createElement(s);
+			js.id = id;
+			js.src = p+'://platform.twitter.com/widgets.js';
+			fjs.parentNode.insertBefore(js, fjs);
+		}
+	}(document, 'script', 'twitter-wjs');
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 </script>
 
 <div class="ai1wm-share-button-container">

@@ -418,7 +418,11 @@ code {
 
 kbd,
 code {
+<<<<<<< HEAD
 	padding: 3px 5px 2px;
+=======
+	padding: 3px 5px 2px 5px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	margin: 0 1px;
 	background: #f0f0f1;
 	background: rgba(0, 0, 0, 0.07);
@@ -583,7 +587,11 @@ code {
 	font-size: 23px;
 	font-weight: 400;
 	margin: 0;
+<<<<<<< HEAD
 	padding: 9px 0 4px;
+=======
+	padding: 9px 0 4px 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	line-height: 1.3;
 }
 
@@ -824,6 +832,11 @@ img.emoji {
 	outline: 0;
 }
 
+<<<<<<< HEAD
+=======
+.welcome-panel .welcome-panel-close:hover:before,
+.welcome-panel .welcome-panel-close:focus:before,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 .tagchecklist .ntdelbutton:hover .remove-tag-icon:before,
 .tagchecklist .ntdelbutton:focus .remove-tag-icon:before,
 #bulk-titles div a:hover:before,
@@ -882,8 +895,12 @@ hr {
 #media-items a.delete-permanently,
 #nav-menu-footer .menu-delete,
 #delete-link a.delete,
+<<<<<<< HEAD
 a#remove-post-thumbnail,
 .privacy_requests .remove-personal-data .remove-personal-data-handle {
+=======
+a#remove-post-thumbnail {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	color: #b32d2e;
 }
 
@@ -901,8 +918,12 @@ span.required,
 #media-items a.delete-permanently:hover,
 #nav-menu-footer .menu-delete:hover,
 #delete-link a.delete:hover,
+<<<<<<< HEAD
 a#remove-post-thumbnail:hover,
 .privacy_requests .remove-personal-data .remove-personal-data-handle:hover {
+=======
+a#remove-post-thumbnail:hover {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	color: #b32d2e;
 	border: none;
 }
@@ -958,7 +979,11 @@ a#remove-post-thumbnail:hover,
 }
 
 #minor-publishing-actions {
+<<<<<<< HEAD
 	padding: 10px 10px 0;
+=======
+	padding: 10px 10px 0 10px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	text-align: left;
 }
 
@@ -1233,7 +1258,11 @@ th.action-links {
 
 .filter-group .filter-group-feature label {
 	display: block;
+<<<<<<< HEAD
 	margin: 14px 23px 14px 0;
+=======
+	margin: 14px 23px 14px 0px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .filter-drawer .buttons {
@@ -1610,7 +1639,11 @@ form.upgrade {
 form.upgrade .hint {
 	font-style: italic;
 	font-size: 85%;
+<<<<<<< HEAD
 	margin: -0.5em 0 2em;
+=======
+	margin: -0.5em 0 2em 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .update-php .spinner {
@@ -1708,7 +1741,11 @@ p.auto-update-status {
 /* screen options and help tabs revert */
 #screen-meta {
 	display: none;
+<<<<<<< HEAD
 	margin: 0 0 -1px 20px;
+=======
+	margin: 0 0px -1px 20px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	position: relative;
 	background-color: #fff;
 	border: 1px solid #c3c4c7;
@@ -3144,7 +3181,11 @@ img {
 	width: 300px;
 }
 
+<<<<<<< HEAD
 /* Theme/Plugin file editor */
+=======
+/* Theme/Plugin Editor */
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 .alignleft h2 {
 	margin: 0;
 }
@@ -3197,7 +3238,11 @@ img {
 }
 
 /*
+<<<<<<< HEAD
  * Styles for Theme and Plugin file editors.
+=======
+ * Styles for Theme and Plugin editors.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 /* Hide collapsed items. */
@@ -3286,7 +3331,11 @@ img {
 .tree-folder > .current-file::before {
 	right: 4px;
 	height: 15px;
+<<<<<<< HEAD
 	width: 0;
+=======
+	width: 0px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	border-right: none;
 	top: 3px;
 }
@@ -3381,7 +3430,11 @@ img {
 }
 
 #templateside li.howto {
+<<<<<<< HEAD
 	padding: 6px 12px 12px;
+=======
+	padding: 6px 12px 12px 12px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .theme-editor-php .highlight {
@@ -3433,7 +3486,11 @@ img {
 }
 
 .widget-top .widget-action .toggle-indicator:before {
+<<<<<<< HEAD
 	padding: 1px 0 1px 2px;
+=======
+	padding: 1px 0px 1px 2px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	border-radius: 50%;
 }
 
@@ -3828,7 +3885,11 @@ img {
 	.wrap div.updated,
 	.wrap div.error,
 	.media-upload-form div.error {
+<<<<<<< HEAD
 		margin: 20px 0 10px;
+=======
+		margin: 20px 0 10px 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		padding: 5px 10px;
 		font-size: 14px;
 		line-height: 175%;
@@ -3938,7 +3999,11 @@ img {
 		right: -8px;
 	}
 	.tree-folder > li::before {
+<<<<<<< HEAD
 		top: 0;
+=======
+		top: 0px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		height: 13px;
 	}
 	.tree-folder > .current-file::before {

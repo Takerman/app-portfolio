@@ -13,7 +13,10 @@ if ( ! current_user_can( 'manage_options' ) ) {
 	wp_die( __( 'Sorry, you are not allowed to manage options for this site.' ) );
 }
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 $title       = __( 'Permalink Settings' );
 $parent_file = 'options-general.php';
 
@@ -56,6 +59,7 @@ get_current_screen()->add_help_tab(
 	)
 );
 
+<<<<<<< HEAD
 $help_sidebar_content = '<p><strong>' . __( 'For more information:' ) . '</strong></p>' .
 						'<p>' . __( '<a href="https://wordpress.org/support/article/settings-permalinks-screen/">Documentation on Permalinks Settings</a>' ) . '</p>' .
 						'<p>' . __( '<a href="https://wordpress.org/support/article/using-permalinks/">Documentation on Using Permalinks</a>' ) . '</p>';
@@ -68,6 +72,14 @@ $help_sidebar_content .= '<p>' . __( '<a href="https://wordpress.org/support/">S
 
 get_current_screen()->set_help_sidebar( $help_sidebar_content );
 unset( $help_sidebar_content );
+=======
+get_current_screen()->set_help_sidebar(
+	'<p><strong>' . __( 'For more information:' ) . '</strong></p>' .
+	'<p>' . __( '<a href="https://wordpress.org/support/article/settings-permalinks-screen/">Documentation on Permalinks Settings</a>' ) . '</p>' .
+	'<p>' . __( '<a href="https://wordpress.org/support/article/using-permalinks/">Documentation on Using Permalinks</a>' ) . '</p>' .
+	'<p>' . __( '<a href="https://wordpress.org/support/">Support</a>' ) . '</p>'
+);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 $home_path           = get_home_path();
 $iis7_permalinks     = iis7_supports_permalinks();
@@ -416,7 +428,13 @@ printf( __( 'If you like, you may enter custom structures for your category and 
 </p>
 		<?php endif; ?>
 	<?php endif; ?>
+<<<<<<< HEAD
 		<?php
+=======
+<?php elseif ( $is_nginx ) : ?>
+	<p><?php _e( '<a href="https://wordpress.org/support/article/nginx/">Documentation on Nginx configuration</a>.' ); ?></p>
+	<?php
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 else :
 	if ( $permalink_structure && ! $using_index_permalinks && ! $writable && $htaccess_update_required ) :
 		?>

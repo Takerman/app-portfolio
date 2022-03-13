@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * jQuery UI Button 1.13.1
+=======
+ * jQuery UI Button 1.12.1
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -17,8 +21,11 @@
 //>>css.theme: ../../themes/base/theme.css
 
 ( function( factory ) {
+<<<<<<< HEAD
 	"use strict";
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -37,11 +44,18 @@
 		// Browser globals
 		factory( jQuery );
 	}
+<<<<<<< HEAD
 } )( function( $ ) {
 "use strict";
 
 $.widget( "ui.button", {
 	version: "1.13.1",
+=======
+}( function( $ ) {
+
+$.widget( "ui.button", {
+	version: "1.12.1",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	defaultElement: "<button>",
 	options: {
 		classes: {
@@ -240,8 +254,13 @@ $.widget( "ui.button", {
 
 		// Make sure we can't end up with a button that has neither text nor icon
 		if ( key === "showLabel" ) {
+<<<<<<< HEAD
 			this._toggleClass( "ui-button-icon-only", null, !value );
 			this._updateTooltip();
+=======
+				this._toggleClass( "ui-button-icon-only", null, !value );
+				this._updateTooltip();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		if ( key === "label" ) {
@@ -265,7 +284,11 @@ $.widget( "ui.button", {
 			this._toggleClass( null, "ui-state-disabled", value );
 			this.element[ 0 ].disabled = value;
 			if ( value ) {
+<<<<<<< HEAD
 				this.element.trigger( "blur" );
+=======
+				this.element.blur();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			}
 		}
 	},
@@ -306,7 +329,11 @@ if ( $.uiBackCompat !== false ) {
 				this.options.text = this.options.showLabel;
 			}
 			if ( !this.options.icon && ( this.options.icons.primary ||
+<<<<<<< HEAD
 				this.options.icons.secondary ) ) {
+=======
+					this.options.icons.secondary ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				if ( this.options.icons.primary ) {
 					this.options.icon = this.options.icons.primary;
 				} else {
@@ -344,6 +371,7 @@ if ( $.uiBackCompat !== false ) {
 	} );
 
 	$.fn.button = ( function( orig ) {
+<<<<<<< HEAD
 		return function( options ) {
 			var isMethodCall = typeof options === "string";
 			var args = Array.prototype.slice.call( arguments, 1 );
@@ -420,6 +448,24 @@ if ( $.uiBackCompat !== false ) {
 			}
 
 			return returnValue;
+=======
+		return function() {
+			if ( !this.length || ( this.length && this[ 0 ].tagName !== "INPUT" ) ||
+					( this.length && this[ 0 ].tagName === "INPUT" && (
+						this.attr( "type" ) !== "checkbox" && this.attr( "type" ) !== "radio"
+					) ) ) {
+				return orig.apply( this, arguments );
+			}
+			if ( !$.ui.checkboxradio ) {
+				$.error( "Checkboxradio widget missing" );
+			}
+			if ( arguments.length === 0 ) {
+				return this.checkboxradio( {
+					"icon": false
+				} );
+			}
+			return this.checkboxradio.apply( this, arguments );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		};
 	} )( $.fn.button );
 
@@ -445,4 +491,8 @@ if ( $.uiBackCompat !== false ) {
 
 return $.ui.button;
 
+<<<<<<< HEAD
 } );
+=======
+} ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

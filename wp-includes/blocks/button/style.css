@@ -41,12 +41,15 @@
  * These variables do not appear to be used anywhere else.
  */
 /**
+<<<<<<< HEAD
 *  Converts a hex value into the rgb equivalent.
 *
 * @param {string} hex - the hexadecimal value to convert
 * @return {string} comma separated rgb values
 */
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Breakpoint mixins
  */
 /**
@@ -85,7 +88,11 @@
   padding: calc(0.667em + 2px) calc(1.333em + 2px);
   text-align: center;
   text-decoration: none;
+<<<<<<< HEAD
   word-break: break-word;
+=======
+  overflow-wrap: break-word;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   box-sizing: border-box;
 }
 .wp-block-button__link:hover, .wp-block-button__link:focus, .wp-block-button__link:active, .wp-block-button__link:visited {
@@ -109,6 +116,7 @@
   font-size: inherit;
 }
 .wp-block-buttons > .wp-block-button.wp-block-button__width-25 {
+<<<<<<< HEAD
   width: calc(25% - (var(--wp--style--block-gap, 0.5em) * 0.75));
 }
 .wp-block-buttons > .wp-block-button.wp-block-button__width-50 {
@@ -132,6 +140,43 @@
   width: 75%;
 }
 
+=======
+  width: calc(25% - 0.5em);
+}
+.wp-block-buttons > .wp-block-button.wp-block-button__width-50 {
+  width: calc(50% - 0.5em);
+}
+.wp-block-buttons > .wp-block-button.wp-block-button__width-75 {
+  width: calc(75% - 0.5em);
+}
+.wp-block-buttons > .wp-block-button.wp-block-button__width-100 {
+  width: calc(100% - 0.5em);
+}
+.wp-block-buttons > .wp-block-button.wp-block-button__width-100:only-child {
+  margin-right: 0;
+  width: 100%;
+}
+
+@supports (column-gap: 0.5em) {
+  .wp-block-buttons > .wp-block-button.wp-block-button, .wp-block-buttons.is-content-justification-right > .wp-block-button.wp-block-button {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .wp-block-buttons > .wp-block-button.wp-block-button__width-25 {
+    width: calc(25% - 0.375em);
+  }
+  .wp-block-buttons > .wp-block-button.wp-block-button__width-50 {
+    width: calc(50% - 0.25em);
+  }
+  .wp-block-buttons > .wp-block-button.wp-block-button__width-75 {
+    width: calc(75% - 0.125em);
+  }
+  .wp-block-buttons > .wp-block-button.wp-block-button__width-100 {
+    width: auto;
+    flex-basis: 100%;
+  }
+}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 .wp-block-button.is-style-squared,
 .wp-block-button__link.wp-block-button.is-style-squared {
   border-radius: 0;
@@ -142,8 +187,13 @@
   border-radius: 0 !important;
 }
 
+<<<<<<< HEAD
 .is-style-outline > :where(.wp-block-button__link),
 :where(.wp-block-button__link).is-style-outline {
+=======
+.is-style-outline > .wp-block-button__link,
+.wp-block-button__link.is-style-outline {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   border: 2px solid currentColor;
   padding: 0.667em 1.333em;
 }

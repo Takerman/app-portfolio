@@ -15,6 +15,7 @@
 function render_block_core_calendar( $attributes ) {
 	global $monthnum, $year;
 
+<<<<<<< HEAD
 	// Calendar shouldn't be rendered
 	// when there are no published posts on the site.
 	if ( ! block_core_calendar_has_published_posts() ) {
@@ -24,6 +25,8 @@ function render_block_core_calendar( $attributes ) {
 		return '';
 	}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$previous_monthnum = $monthnum;
 	$previous_year     = $year;
 
@@ -68,6 +71,7 @@ function register_block_core_calendar() {
 }
 
 add_action( 'init', 'register_block_core_calendar' );
+<<<<<<< HEAD
 
 /**
  * Returns whether or not there are any published posts.
@@ -155,3 +159,5 @@ function block_core_calendar_update_has_published_post_on_transition_post_status
 
 add_action( 'delete_post', 'block_core_calendar_update_has_published_post_on_delete' );
 add_action( 'transition_post_status', 'block_core_calendar_update_has_published_post_on_transition_post_status', 10, 3 );
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

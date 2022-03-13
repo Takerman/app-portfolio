@@ -49,11 +49,17 @@ if ( ! network_domain_check() && ( ! defined( 'WP_ALLOW_MULTISITE' ) || ! WP_ALL
 }
 
 if ( is_network_admin() ) {
+<<<<<<< HEAD
 	// Used in the HTML title tag.
 	$title       = __( 'Network Setup' );
 	$parent_file = 'settings.php';
 } else {
 	// Used in the HTML title tag.
+=======
+	$title       = __( 'Network Setup' );
+	$parent_file = 'settings.php';
+} else {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$title       = __( 'Create a Network of WordPress Sites' );
 	$parent_file = 'tools.php';
 }

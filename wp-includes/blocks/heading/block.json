@@ -32,6 +32,7 @@
 		"color": {
 			"link": true
 		},
+<<<<<<< HEAD
 		"spacing": {
 			"margin": true
 		},
@@ -51,6 +52,15 @@
 		"__experimentalSelector": "h1,h2,h3,h4,h5,h6",
 		"__unstablePasteTextInline": true,
 		"__experimentalSlashInserter": true
+=======
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontWeight": true
+		},
+		"__experimentalSelector": "h1,h2,h3,h4,h5,h6",
+		"__unstablePasteTextInline": true
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	},
 	"editorStyle": "wp-block-heading-editor",
 	"style": "wp-block-heading"

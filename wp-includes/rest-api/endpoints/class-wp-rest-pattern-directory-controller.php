@@ -51,7 +51,11 @@ class WP_REST_Pattern_Directory_Controller extends WP_REST_Controller {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Checks whether a given request has permission to view the local block pattern directory.
+=======
+	 * Checks whether a given request has permission to view the local pattern directory.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.8.0
 	 *
@@ -196,6 +200,7 @@ class WP_REST_Pattern_Directory_Controller extends WP_REST_Controller {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Prepare a raw block pattern before it gets output in a REST API response.
 	 *
 	 * @since 5.8.0
@@ -208,6 +213,17 @@ class WP_REST_Pattern_Directory_Controller extends WP_REST_Controller {
 	public function prepare_item_for_response( $item, $request ) {
 		// Restores the more descriptive, specific name for use within this method.
 		$raw_pattern      = $item;
+=======
+	 * Prepare a raw pattern before it's output in an API response.
+	 *
+	 * @since 5.8.0
+	 *
+	 * @param object          $raw_pattern A pattern from api.wordpress.org, before any changes.
+	 * @param WP_REST_Request $request     Request object.
+	 * @return WP_REST_Response
+	 */
+	public function prepare_item_for_response( $raw_pattern, $request ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$prepared_pattern = array(
 			'id'             => absint( $raw_pattern->id ),
 			'title'          => sanitize_text_field( $raw_pattern->title->rendered ),
@@ -223,19 +239,31 @@ class WP_REST_Pattern_Directory_Controller extends WP_REST_Controller {
 		$response = new WP_REST_Response( $prepared_pattern );
 
 		/**
+<<<<<<< HEAD
 		 * Filters the REST API response for a block pattern.
+=======
+		 * Filters the REST API response for a pattern.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 *
 		 * @since 5.8.0
 		 *
 		 * @param WP_REST_Response $response    The response object.
+<<<<<<< HEAD
 		 * @param object           $raw_pattern The unprepared block pattern.
+=======
+		 * @param object           $raw_pattern The unprepared pattern.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 * @param WP_REST_Request  $request     The request object.
 		 */
 		return apply_filters( 'rest_prepare_block_pattern', $response, $raw_pattern, $request );
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Retrieves the block pattern's schema, conforming to JSON Schema.
+=======
+	 * Retrieves the pattern's schema, conforming to JSON Schema.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.8.0
 	 *
@@ -307,7 +335,11 @@ class WP_REST_Pattern_Directory_Controller extends WP_REST_Controller {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Retrieves the search parameters for the block pattern's collection.
+=======
+	 * Retrieves the search params for the patterns collection.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.8.0
 	 *
@@ -336,7 +368,11 @@ class WP_REST_Pattern_Directory_Controller extends WP_REST_Controller {
 		);
 
 		/**
+<<<<<<< HEAD
 		 * Filter collection parameters for the block pattern directory controller.
+=======
+		 * Filter collection parameters for the pattern directory controller.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 *
 		 * @since 5.8.0
 		 *

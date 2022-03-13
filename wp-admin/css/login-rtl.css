@@ -51,7 +51,10 @@ p {
 	margin-bottom: 20px;
 	background-color: #fff;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+<<<<<<< HEAD
 	word-wrap: break-word;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .login .success {
@@ -283,23 +286,39 @@ p {
 
 #login {
 	width: 320px;
+<<<<<<< HEAD
 	padding: 5% 0 0;
+=======
+	padding: 8% 0 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	margin: auto;
 }
 
 .login #nav,
 .login #backtoblog {
 	font-size: 13px;
+<<<<<<< HEAD
 	padding: 0 24px;
 }
 
 .login #nav {
 	margin: 24px 0 0;
+=======
+	padding: 0 24px 0;
+}
+
+.login #nav {
+	margin: 24px 0 0 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 #backtoblog {
 	margin: 16px 0;
+<<<<<<< HEAD
 	word-wrap: break-word;
+=======
+	word-break: break-word;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .login #nav a,
@@ -323,7 +342,11 @@ p {
 .login .privacy-policy-page-link {
 	text-align: center;
 	width: 100%;
+<<<<<<< HEAD
 	margin: 3em 0 2em;
+=======
+	margin: 5em 0 2em;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .login form .input,
@@ -411,6 +434,7 @@ input::-ms-reveal {
 	display: none;
 }
 
+<<<<<<< HEAD
 #language-switcher {
 	padding: 0;
 	overflow: visible;
@@ -443,14 +467,19 @@ input::-ms-reveal {
 	margin-bottom: 0;
 }
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 @media screen and (max-height: 550px) {
 	#login {
 		padding: 20px 0;
 	}
+<<<<<<< HEAD
 
 	#language-switcher {
 		margin-top: 0;
 	}
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 
@@ -465,6 +494,7 @@ input::-ms-reveal {
 		height: 1.3125rem;
 		margin: -0.1875rem -0.25rem 0 0;
 	}
+<<<<<<< HEAD
 
 	#language-switcher label,
 	#language-switcher select {
@@ -477,4 +507,6 @@ input::-ms-reveal {
 		display: block;
 		margin: 5px auto 0;
 	}
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }

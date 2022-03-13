@@ -59,7 +59,10 @@ if ( isset( $_GET['action'] ) ) {
 
 		check_admin_referer( 'upgrade-plugin_' . $plugin );
 
+<<<<<<< HEAD
 		// Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$title        = __( 'Update Plugin' );
 		$parent_file  = 'plugins.php';
 		$submenu_file = 'plugins.php';
@@ -124,11 +127,17 @@ if ( isset( $_GET['action'] ) ) {
 			wp_die( $api );
 		}
 
+<<<<<<< HEAD
 		// Used in the HTML title tag.
 		$title        = __( 'Plugin Installation' );
 		$parent_file  = 'plugins.php';
 		$submenu_file = 'plugin-install.php';
 
+=======
+		$title        = __( 'Plugin Installation' );
+		$parent_file  = 'plugins.php';
+		$submenu_file = 'plugin-install.php';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		require_once ABSPATH . 'wp-admin/admin-header.php';
 
 		/* translators: %s: Plugin name and version. */
@@ -156,11 +165,17 @@ if ( isset( $_GET['action'] ) ) {
 
 		$file_upload = new File_Upload_Upgrader( 'pluginzip', 'package' );
 
+<<<<<<< HEAD
 		// Used in the HTML title tag.
 		$title        = __( 'Upload Plugin' );
 		$parent_file  = 'plugins.php';
 		$submenu_file = 'plugin-install.php';
 
+=======
+		$title        = __( 'Upload Plugin' );
+		$parent_file  = 'plugins.php';
+		$submenu_file = 'plugin-install.php';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		require_once ABSPATH . 'wp-admin/admin-header.php';
 
 		/* translators: %s: File name. */
@@ -211,11 +226,17 @@ if ( isset( $_GET['action'] ) ) {
 
 		wp_enqueue_script( 'updates' );
 
+<<<<<<< HEAD
 		// Used in the HTML title tag.
 		$title        = __( 'Update Theme' );
 		$parent_file  = 'themes.php';
 		$submenu_file = 'themes.php';
 
+=======
+		$title        = __( 'Update Theme' );
+		$parent_file  = 'themes.php';
+		$submenu_file = 'themes.php';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		require_once ABSPATH . 'wp-admin/admin-header.php';
 
 		$nonce = 'upgrade-theme_' . $theme;
@@ -276,11 +297,17 @@ if ( isset( $_GET['action'] ) ) {
 			wp_die( $api );
 		}
 
+<<<<<<< HEAD
 		// Used in the HTML title tag.
 		$title        = __( 'Install Themes' );
 		$parent_file  = 'themes.php';
 		$submenu_file = 'themes.php';
 
+=======
+		$title        = __( 'Install Themes' );
+		$parent_file  = 'themes.php';
+		$submenu_file = 'themes.php';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		require_once ABSPATH . 'wp-admin/admin-header.php';
 
 		/* translators: %s: Theme name and version. */
@@ -304,7 +331,10 @@ if ( isset( $_GET['action'] ) ) {
 
 		$file_upload = new File_Upload_Upgrader( 'themezip', 'package' );
 
+<<<<<<< HEAD
 		// Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$title        = __( 'Upload Theme' );
 		$parent_file  = 'themes.php';
 		$submenu_file = 'theme-install.php';

@@ -146,8 +146,12 @@ __webpack_require__.r(__webpack_exports__);
  * @return {?WPShortcodeMatch} Matched information.
  */
 
+<<<<<<< HEAD
 function next(tag, text) {
   let index = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+=======
+function next(tag, text, index = 0) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const re = regexp(tag);
   re.lastIndex = index;
   const match = re.exec(text);

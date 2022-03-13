@@ -409,7 +409,11 @@ function wp_templating_constants() {
 	 * @see WP_Theme::get_core_default_theme()
 	 */
 	if ( ! defined( 'WP_DEFAULT_THEME' ) ) {
+<<<<<<< HEAD
 		define( 'WP_DEFAULT_THEME', 'twentytwentytwo' );
+=======
+		define( 'WP_DEFAULT_THEME', 'twentytwentyone' );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 }

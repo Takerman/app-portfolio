@@ -402,7 +402,10 @@ class getid3_flac extends getid3_handler
 	public function parsePICTURE() {
 		$info = &$this->getid3->info;
 
+<<<<<<< HEAD
 		$picture = array();
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$picture['typeid']         = getid3_lib::BigEndian2Int($this->fread(4));
 		$picture['picturetype']    = self::pictureTypeLookup($picture['typeid']);
 		$picture['image_mime']     = $this->fread(getid3_lib::BigEndian2Int($this->fread(4)));

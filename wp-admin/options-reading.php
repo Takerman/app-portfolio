@@ -13,7 +13,10 @@ if ( ! current_user_can( 'manage_options' ) ) {
 	wp_die( __( 'Sorry, you are not allowed to manage options for this site.' ) );
 }
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 $title       = __( 'Reading Settings' );
 $parent_file = 'options-general.php';
 
@@ -73,7 +76,11 @@ if ( ! in_array( get_option( 'blog_charset' ), array( 'utf8', 'utf-8', 'UTF8', '
 <input name="show_on_front" type="hidden" value="posts" />
 <table class="form-table" role="presentation">
 	<?php
+<<<<<<< HEAD
 	if ( 'posts' !== get_option( 'show_on_front' ) ) :
+=======
+	if ( 'posts' != get_option( 'show_on_front' ) ) :
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		update_option( 'show_on_front', 'posts' );
 	endif;
 
@@ -191,7 +198,10 @@ else :
 	 *
 	 * By default the privacy options form displays a single checkbox to 'discourage' search
 	 * engines from indexing the site. Hooking to this action serves a dual purpose:
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * 1. Disable the single checkbox in favor of a multiple-choice list of radio buttons.
 	 * 2. Open the door to adding additional radio button choices to the list.
 	 *

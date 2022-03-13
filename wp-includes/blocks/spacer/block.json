@@ -7,11 +7,19 @@
 	"textdomain": "default",
 	"attributes": {
 		"height": {
+<<<<<<< HEAD
 			"type": "string",
 			"default": "100px"
 		},
 		"width": {
 			"type": "string"
+=======
+			"type": "number",
+			"default": 100
+		},
+		"width": {
+			"type": "number"
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	},
 	"usesContext": [ "orientation" ],

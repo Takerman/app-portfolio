@@ -11,7 +11,11 @@
 #customize-theme-controls .customize-section-title-nav_menus-heading,
 #customize-theme-controls .customize-section-title-menu_locations-heading,
 #customize-theme-controls .customize-section-title-menu_locations-description {
+<<<<<<< HEAD
 	padding: 0 12px;
+=======
+	padding: 0 12px 0 12px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 #customize-theme-controls .customize-control-description.customize-section-title-menu_locations-description {
@@ -100,7 +104,11 @@
 .wp-customizer .menu-item-settings .description-thin {
 	width: 100%;
 	height: auto;
+<<<<<<< HEAD
 	margin: 0 0 8px;
+=======
+	margin: 0 0 8px 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .wp-customizer .menu-item-settings input[type="text"] {
@@ -185,7 +193,11 @@
 }
 
 .wp-customizer .menu-settings dl {
+<<<<<<< HEAD
 	margin: 12px 0 0;
+=======
+	margin: 12px 0 0 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	padding: 0;
 }
 
@@ -322,7 +334,11 @@
 #available-menu-items .accordion-section-title .toggle-indicator:before {
 	content: "\f140";
 	display: block;
+<<<<<<< HEAD
 	padding: 1px 2px 1px 0;
+=======
+	padding: 1px 2px 1px 0px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	speak: never;
 	border-radius: 50%;
 	color: #787c82;
@@ -581,8 +597,13 @@
 }
 
 #available-menu-items .accordion-section-content .available-menu-items-list {
+<<<<<<< HEAD
 	margin: 0 0 45px;
 	padding: 1px 15px 15px;
+=======
+	margin: 0 0 45px 0;
+	padding: 1px 15px 15px 15px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 #available-menu-items .accordion-section-content .available-menu-items-list:only-child { /* Types that do not support new items for the current user */
@@ -590,7 +611,11 @@
 }
 
 #new-custom-menu-item .accordion-section-content {
+<<<<<<< HEAD
 	padding: 0 15px 15px;
+=======
+	padding: 0 15px 15px 15px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 #available-menu-items .menu-item-tpl {
@@ -690,7 +715,11 @@
 	position: absolute;
 	left: 0;
 	top: 60px; /* below title div / search input */
+<<<<<<< HEAD
 	bottom: 0; /* 100% height that still triggers lazy load */
+=======
+	bottom: 0px; /* 100% height that still triggers lazy load */
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	max-height: none;
 	width: 100%;
 	padding: 1px 15px 15px;
@@ -795,7 +824,11 @@ body.adding-menu-items #customize-preview iframe {
 
 #create-new-menu-submit {
 	float: right;
+<<<<<<< HEAD
 	margin: 0 0 12px;
+=======
+	margin: 0 0 12px 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .menu-delete-item {
@@ -805,7 +838,11 @@ body.adding-menu-items #customize-preview iframe {
 }
 
 .assigned-menu-locations-title p {
+<<<<<<< HEAD
 	margin: 0 0 8px;
+=======
+	margin: 0 0 8px 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 li.assigned-to-menu-location .menu-delete-item {

@@ -15,7 +15,10 @@ if ( ! current_user_can( 'import' ) ) {
 	wp_die( __( 'Sorry, you are not allowed to import content into this site.' ) );
 }
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 $title = __( 'Import' );
 
 get_current_screen()->add_help_tab(

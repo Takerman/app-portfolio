@@ -651,18 +651,29 @@ class WP_Comments_List_Table extends WP_List_Table {
 	 * Generate and display row actions links.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$comment` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @global string $comment_status Status for the current listed comments.
 	 *
 	 * @param WP_Comment $item        The comment object.
+=======
+	 *
+	 * @global string $comment_status Status for the current listed comments.
+	 *
+	 * @param WP_Comment $comment     The comment object.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @param string     $column_name Current column name.
 	 * @param string     $primary     Primary column name.
 	 * @return string Row actions output for comments. An empty string
 	 *                if the current column is not the primary column,
 	 *                or if the current user cannot edit the comment.
 	 */
+<<<<<<< HEAD
 	protected function handle_row_actions( $item, $column_name, $primary ) {
+=======
+	protected function handle_row_actions( $comment, $column_name, $primary ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		global $comment_status;
 
 		if ( $primary !== $column_name ) {
@@ -673,8 +684,11 @@ class WP_Comments_List_Table extends WP_List_Table {
 			return '';
 		}
 
+<<<<<<< HEAD
 		// Restores the more descriptive, specific name for use within this method.
 		$comment            = $item;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$the_comment_status = wp_get_comment_status( $comment );
 
 		$out = '';
@@ -871,6 +885,7 @@ class WP_Comments_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$comment` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param WP_Comment $item The comment object.
@@ -879,6 +894,11 @@ class WP_Comments_List_Table extends WP_List_Table {
 		// Restores the more descriptive, specific name for use within this method.
 		$comment = $item;
 
+=======
+	 * @param WP_Comment $comment The comment object.
+	 */
+	public function column_cb( $comment ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( $this->user_can ) {
 			?>
 		<label class="screen-reader-text" for="cb-select-<?php echo $comment->comment_ID; ?>"><?php _e( 'Select comment' ); ?></label>
@@ -947,12 +967,16 @@ class WP_Comments_List_Table extends WP_List_Table {
 		echo '</strong><br />';
 
 		if ( ! empty( $author_url_display ) ) {
+<<<<<<< HEAD
 			// Print link to author URL, and disallow referrer information (without using target="_blank").
 			printf(
 				'<a href="%s" rel="noopener noreferrer">%s</a><br />',
 				esc_url( $author_url ),
 				esc_html( $author_url_display )
 			);
+=======
+			printf( '<a href="%s">%s</a><br />', esc_url( $author_url ), esc_html( $author_url_display ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		if ( $this->user_can ) {
@@ -1060,20 +1084,33 @@ class WP_Comments_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$comment` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param WP_Comment $item        The comment object.
 	 * @param string     $column_name The custom column's name.
 	 */
 	public function column_default( $item, $column_name ) {
+=======
+	 * @param WP_Comment $comment     The comment object.
+	 * @param string     $column_name The custom column's name.
+	 */
+	public function column_default( $comment, $column_name ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		/**
 		 * Fires when the default column output is displayed for a single row.
 		 *
 		 * @since 2.8.0
 		 *
 		 * @param string $column_name The custom column's name.
+<<<<<<< HEAD
 		 * @param string $comment_id  The comment ID as a numeric string.
 		 */
 		do_action( 'manage_comments_custom_column', $column_name, $item->comment_ID );
+=======
+		 * @param int    $comment_id  The custom column's unique ID number.
+		 */
+		do_action( 'manage_comments_custom_column', $column_name, $comment->comment_ID );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 }

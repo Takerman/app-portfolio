@@ -662,8 +662,13 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 *
 	 * @since 3.5.0
 	 *
+<<<<<<< HEAD
 	 * @param string $destfilename Optional. Destination filename. Default null.
 	 * @param string $mime_type    Optional. The mime-type. Default null.
+=======
+	 * @param string $destfilename
+	 * @param string $mime_type
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @return array|WP_Error {'path'=>string, 'file'=>string, 'width'=>int, 'height'=>int, 'mime-type'=>string}
 	 */
 	public function save( $destfilename = null, $mime_type = null ) {
@@ -901,7 +906,11 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 *
 	 * @since 5.6.0
 	 *
+<<<<<<< HEAD
 	 * @return true|WP_Error
+=======
+	 * @return true|WP_error
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	protected function pdf_load_source() {
 		$filename = $this->pdf_setup();

@@ -70,7 +70,11 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 			case 'image/gif':
 				return ( $image_types & IMG_GIF ) != 0;
 			case 'image/webp':
+<<<<<<< HEAD
 				return ( $image_types & IMG_WEBP ) != 0;
+=======
+				return ( $image_types & IMG_WEBP ) != 0; // phpcs:ignore PHPCompatibility.Constants.NewConstants.img_webpFound
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		return false;
@@ -423,6 +427,7 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 * Saves current in-memory image to file.
 	 *
 	 * @since 3.5.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$filename` to `$destfilename` to match parent class
 	 *              for PHP 8 named parameter support.
 	 *
@@ -432,6 +437,15 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 */
 	public function save( $destfilename = null, $mime_type = null ) {
 		$saved = $this->_save( $this->image, $destfilename, $mime_type );
+=======
+	 *
+	 * @param string|null $filename
+	 * @param string|null $mime_type
+	 * @return array|WP_Error {'path'=>string, 'file'=>string, 'width'=>int, 'height'=>int, 'mime-type'=>string}
+	 */
+	public function save( $filename = null, $mime_type = null ) {
+		$saved = $this->_save( $this->image, $filename, $mime_type );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		if ( ! is_wp_error( $saved ) ) {
 			$this->file      = $saved['path'];
@@ -535,9 +549,15 @@ class WP_Image_Editor_GD extends WP_Image_Editor {
 	 *
 	 * @since 3.5.0
 	 *
+<<<<<<< HEAD
 	 * @param string   $filename
 	 * @param callable $function
 	 * @param array    $arguments
+=======
+	 * @param string|stream $filename
+	 * @param callable      $function
+	 * @param array         $arguments
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @return bool
 	 */
 	protected function make_image( $filename, $function, $arguments ) {

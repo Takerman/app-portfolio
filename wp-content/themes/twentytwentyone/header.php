@@ -29,4 +29,8 @@
 
 	<div id="content" class="site-content">
 		<div id="primary" class="content-area">
+<<<<<<< HEAD
 			<main id="main" class="site-main">
+=======
+			<main id="main" class="site-main" role="main">
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

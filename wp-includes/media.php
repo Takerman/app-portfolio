@@ -882,8 +882,12 @@ function get_intermediate_image_sizes() {
  * @uses wp_get_additional_image_sizes()
  * @uses get_intermediate_image_sizes()
  *
+<<<<<<< HEAD
  * @return array[] Associative array of arrays of image sub-size information,
  *                 keyed by image size name.
+=======
+ * @return array Associative array of the registered image sub-sizes.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function wp_get_registered_image_subsizes() {
 	$additional_sizes = wp_get_additional_image_sizes();
@@ -1047,7 +1051,11 @@ function wp_get_attachment_image( $attachment_id, $size = 'thumbnail', $icon = f
 
 		// Add `loading` attribute.
 		if ( wp_lazy_loading_enabled( 'img', 'wp_get_attachment_image' ) ) {
+<<<<<<< HEAD
 			$default_attr['loading'] = wp_get_loading_attr_default( 'wp_get_attachment_image' );
+=======
+			$default_attr['loading'] = 'lazy';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		$attr = wp_parse_args( $attr, $default_attr );
@@ -1130,7 +1138,11 @@ function wp_get_attachment_image( $attachment_id, $size = 'thumbnail', $icon = f
  */
 function wp_get_attachment_image_url( $attachment_id, $size = 'thumbnail', $icon = false ) {
 	$image = wp_get_attachment_image_src( $attachment_id, $size, $icon );
+<<<<<<< HEAD
 	return isset( $image[0] ) ? $image[0] : false;
+=======
+	return isset( $image['0'] ) ? $image['0'] : false;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 /**
@@ -1821,6 +1833,7 @@ function wp_filter_content_tags( $content, $context = null ) {
 		_prime_post_caches( $attachment_ids, false, true );
 	}
 
+<<<<<<< HEAD
 	// Iterate through the matches in order of occurrence as it is relevant for whether or not to lazy-load.
 	foreach ( $matches as $match ) {
 		// Filter an image match.
@@ -1860,6 +1873,41 @@ function wp_filter_content_tags( $content, $context = null ) {
 			if ( $filtered_iframe !== $match[0] ) {
 				$content = str_replace( $match[0], $filtered_iframe, $content );
 			}
+=======
+	foreach ( $images as $image => $attachment_id ) {
+		$filtered_image = $image;
+
+		// Add 'width' and 'height' attributes if applicable.
+		if ( $attachment_id > 0 && false === strpos( $filtered_image, ' width=' ) && false === strpos( $filtered_image, ' height=' ) ) {
+			$filtered_image = wp_img_tag_add_width_and_height_attr( $filtered_image, $context, $attachment_id );
+		}
+
+		// Add 'srcset' and 'sizes' attributes if applicable.
+		if ( $attachment_id > 0 && false === strpos( $filtered_image, ' srcset=' ) ) {
+			$filtered_image = wp_img_tag_add_srcset_and_sizes_attr( $filtered_image, $context, $attachment_id );
+		}
+
+		// Add 'loading' attribute if applicable.
+		if ( $add_img_loading_attr && false === strpos( $filtered_image, ' loading=' ) ) {
+			$filtered_image = wp_img_tag_add_loading_attr( $filtered_image, $context );
+		}
+
+		if ( $filtered_image !== $image ) {
+			$content = str_replace( $image, $filtered_image, $content );
+		}
+	}
+
+	foreach ( $iframes as $iframe => $attachment_id ) {
+		$filtered_iframe = $iframe;
+
+		// Add 'loading' attribute if applicable.
+		if ( $add_iframe_loading_attr && false === strpos( $filtered_iframe, ' loading=' ) ) {
+			$filtered_iframe = wp_iframe_tag_add_loading_attr( $filtered_iframe, $context );
+		}
+
+		if ( $filtered_iframe !== $iframe ) {
+			$content = str_replace( $iframe, $filtered_iframe, $content );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	}
 
@@ -1876,10 +1924,13 @@ function wp_filter_content_tags( $content, $context = null ) {
  * @return string Converted `img` tag with `loading` attribute added.
  */
 function wp_img_tag_add_loading_attr( $image, $context ) {
+<<<<<<< HEAD
 	// Get loading attribute value to use. This must occur before the conditional check below so that even images that
 	// are ineligible for being lazy-loaded are considered.
 	$value = wp_get_loading_attr_default( $context );
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	// Images should have source and dimension attributes for the `loading` attribute to be added.
 	if ( false === strpos( $image, ' src="' ) || false === strpos( $image, ' width="' ) || false === strpos( $image, ' height="' ) ) {
 		return $image;
@@ -1894,11 +1945,19 @@ function wp_img_tag_add_loading_attr( $image, $context ) {
 	 * @since 5.5.0
 	 *
 	 * @param string|bool $value   The `loading` attribute value. Returning a falsey value will result in
+<<<<<<< HEAD
 	 *                             the attribute being omitted for the image.
 	 * @param string      $image   The HTML `img` tag to be filtered.
 	 * @param string      $context Additional context about how the function was called or where the img tag is.
 	 */
 	$value = apply_filters( 'wp_img_tag_add_loading_attr', $value, $image, $context );
+=======
+	 *                             the attribute being omitted for the image. Default 'lazy'.
+	 * @param string      $image   The HTML `img` tag to be filtered.
+	 * @param string      $context Additional context about how the function was called or where the img tag is.
+	 */
+	$value = apply_filters( 'wp_img_tag_add_loading_attr', 'lazy', $image, $context );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	if ( $value ) {
 		if ( ! in_array( $value, array( 'lazy', 'eager' ), true ) ) {
@@ -2006,10 +2065,13 @@ function wp_iframe_tag_add_loading_attr( $iframe, $context ) {
 		return $iframe;
 	}
 
+<<<<<<< HEAD
 	// Get loading attribute value to use. This must occur before the conditional check below so that even iframes that
 	// are ineligible for being lazy-loaded are considered.
 	$value = wp_get_loading_attr_default( $context );
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	// Iframes should have source and dimension attributes for the `loading` attribute to be added.
 	if ( false === strpos( $iframe, ' src="' ) || false === strpos( $iframe, ' width="' ) || false === strpos( $iframe, ' height="' ) ) {
 		return $iframe;
@@ -2024,11 +2086,19 @@ function wp_iframe_tag_add_loading_attr( $iframe, $context ) {
 	 * @since 5.7.0
 	 *
 	 * @param string|bool $value   The `loading` attribute value. Returning a falsey value will result in
+<<<<<<< HEAD
 	 *                             the attribute being omitted for the iframe.
 	 * @param string      $iframe  The HTML `iframe` tag to be filtered.
 	 * @param string      $context Additional context about how the function was called or where the iframe tag is.
 	 */
 	$value = apply_filters( 'wp_iframe_tag_add_loading_attr', $value, $iframe, $context );
+=======
+	 *                             the attribute being omitted for the iframe. Default 'lazy'.
+	 * @param string      $iframe  The HTML `iframe` tag to be filtered.
+	 * @param string      $context Additional context about how the function was called or where the iframe tag is.
+	 */
+	$value = apply_filters( 'wp_iframe_tag_add_loading_attr', 'lazy', $iframe, $context );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	if ( $value ) {
 		if ( ! in_array( $value, array( 'lazy', 'eager' ), true ) ) {
@@ -2100,7 +2170,10 @@ add_shortcode( 'caption', 'img_caption_shortcode' );
  * @since 2.6.0
  * @since 3.9.0 The `class` attribute was added.
  * @since 5.1.0 The `caption_id` attribute was added.
+<<<<<<< HEAD
  * @since 5.9.0 The `$content` parameter default value changed from `null` to `''`.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @param array  $attr {
  *     Attributes of the caption shortcode.
@@ -2113,10 +2186,17 @@ add_shortcode( 'caption', 'img_caption_shortcode' );
  *     @type string $caption    The caption text.
  *     @type string $class      Additional class name(s) added to the caption container.
  * }
+<<<<<<< HEAD
  * @param string $content Optional. Shortcode content. Default empty string.
  * @return string HTML content to display the caption.
  */
 function img_caption_shortcode( $attr, $content = '' ) {
+=======
+ * @param string $content Shortcode content.
+ * @return string HTML content to display the caption.
+ */
+function img_caption_shortcode( $attr, $content = null ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	// New-style shortcode with the caption inside the shortcode with the link and image tags.
 	if ( ! isset( $attr['caption'] ) ) {
 		if ( preg_match( '#((?:<a [^>]+>\s*)?<img [^>]+>(?:\s*</a>)?)(.*)#is', $content, $matches ) ) {
@@ -4225,7 +4305,11 @@ function wp_prepare_attachment_for_js( $attachment ) {
  * @param array $args {
  *     Arguments for enqueuing media scripts.
  *
+<<<<<<< HEAD
  *     @type int|WP_Post $post A post object or ID.
+=======
+ *     @type int|WP_Post A post object or ID.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * }
  */
 function wp_enqueue_media( $args = array() ) {
@@ -4471,7 +4555,11 @@ function wp_enqueue_media( $args = array() ) {
 		'allDates'                    => __( 'All dates' ),
 		'noItemsFound'                => __( 'No items found.' ),
 		'insertIntoPost'              => $post_type_object->labels->insert_into_item,
+<<<<<<< HEAD
 		'unattached'                  => _x( 'Unattached', 'media items' ),
+=======
+		'unattached'                  => __( 'Unattached' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		'mine'                        => _x( 'Mine', 'media items' ),
 		'trash'                       => _x( 'Trash', 'noun' ),
 		'uploadedToThisPost'          => $post_type_object->labels->uploaded_to_this_item,
@@ -4726,7 +4814,11 @@ function get_post_galleries( $post, $html = true ) {
 		return array();
 	}
 
+<<<<<<< HEAD
 	if ( ! has_shortcode( $post->post_content, 'gallery' ) && ! has_block( 'gallery', $post->post_content ) ) {
+=======
+	if ( ! has_shortcode( $post->post_content, 'gallery' ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		return array();
 	}
 
@@ -4768,6 +4860,7 @@ function get_post_galleries( $post, $html = true ) {
 		}
 	}
 
+<<<<<<< HEAD
 	if ( has_block( 'gallery', $post->post_content ) ) {
 		$post_blocks = parse_blocks( $post->post_content );
 
@@ -4857,6 +4950,8 @@ function get_post_galleries( $post, $html = true ) {
 		}
 	}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	/**
 	 * Filters the list of all found galleries in the given post.
 	 *
@@ -5196,7 +5291,11 @@ function wp_getimagesize( $filename, array &$image_info = null ) {
 			return array(
 				$width,
 				$height,
+<<<<<<< HEAD
 				IMAGETYPE_WEBP,
+=======
+				IMAGETYPE_WEBP, // phpcs:ignore PHPCompatibility.Constants.NewConstants.imagetype_webpFound
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				sprintf(
 					'width="%d" height="%d"',
 					$width,
@@ -5212,11 +5311,16 @@ function wp_getimagesize( $filename, array &$image_info = null ) {
 }
 
 /**
+<<<<<<< HEAD
  * Extracts meta information about a WebP file: width, height, and type.
+=======
+ * Extracts meta information about a webp file: width, height and type.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since 5.8.0
  *
  * @param string $filename Path to a WebP file.
+<<<<<<< HEAD
  * @return array {
  *     An array of WebP image information.
  *
@@ -5225,6 +5329,17 @@ function wp_getimagesize( $filename, array &$image_info = null ) {
  *     @type string|false $type   The WebP type: one of 'lossy', 'lossless' or 'animated-alpha'.
  *                                False on failure.
  * }
+=======
+ * @return array $webp_info {
+ *     An array of WebP image information.
+ *
+ *     @type array $size {
+ *         @type int|false    $width  Image width on success, false on failure.
+ *         @type int|false    $height Image height on success, false on failure.
+ *         @type string|false $type   The WebP type: one of 'lossy', 'lossless' or 'animated-alpha'.
+ *                                    False on failure.
+ *     }
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function wp_get_webp_info( $filename ) {
 	$width  = false;
@@ -5280,6 +5395,7 @@ function wp_get_webp_info( $filename ) {
 
 	return compact( 'width', 'height', 'type' );
 }
+<<<<<<< HEAD
 
 /**
  * Gets the default value to use for a `loading` attribute on an element.
@@ -5374,3 +5490,5 @@ function wp_increase_content_media_count( $amount = 1 ) {
 
 	return $content_media_count;
 }
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

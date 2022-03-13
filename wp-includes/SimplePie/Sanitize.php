@@ -71,6 +71,7 @@ class SimplePie_Sanitize
 	var $useragent = '';
 	var $force_fsockopen = false;
 	var $replace_url_attributes = null;
+<<<<<<< HEAD
 	var $registry;
 
 	/**
@@ -80,6 +81,8 @@ class SimplePie_Sanitize
 	 * array('biz' => true, 'com' => array('example' => true), 'net' => array('example' => array('www' => true)))
 	 */
 	var $https_domains = array();
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	public function __construct()
 	{
@@ -250,6 +253,7 @@ class SimplePie_Sanitize
 		$this->replace_url_attributes = (array) $element_attribute;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Set the list of domains for which to force HTTPS.
 	 * @see SimplePie_Misc::https_url()
@@ -312,6 +316,8 @@ class SimplePie_Sanitize
 			$url;
 	}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function sanitize($data, $type, $base = '')
 	{
 		$data = trim($data);
@@ -514,7 +520,10 @@ class SimplePie_Sanitize
 						$value = $this->registry->call('Misc', 'absolutize_url', array($element->getAttribute($attribute), $this->base));
 						if ($value !== false)
 						{
+<<<<<<< HEAD
 							$value = $this->https_url($value);
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 							$element->setAttribute($attribute, $value);
 						}
 					}

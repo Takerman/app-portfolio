@@ -168,11 +168,17 @@ final class WP_Hook implements Iterator, ArrayAccess {
 	 *
 	 * @since 4.7.0
 	 *
+<<<<<<< HEAD
 	 * @param string                $hook_name The filter hook to which the function to be removed is hooked.
 	 * @param callable|string|array $callback  The callback to be removed from running when the filter is applied.
 	 *                                         This method can be called unconditionally to speculatively remove
 	 *                                         a callback that may or may not exist.
 	 * @param int                   $priority  The exact priority used when adding the original filter callback.
+=======
+	 * @param string   $hook_name The filter hook to which the function to be removed is hooked.
+	 * @param callable $callback  The callback to be removed from running when the filter is applied.
+	 * @param int      $priority  The exact priority used when adding the original filter callback.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @return bool Whether the callback existed before it was removed.
 	 */
 	public function remove_filter( $hook_name, $callback, $priority ) {
@@ -203,10 +209,15 @@ final class WP_Hook implements Iterator, ArrayAccess {
 	 *
 	 * @since 4.7.0
 	 *
+<<<<<<< HEAD
 	 * @param string                      $hook_name Optional. The name of the filter hook. Default empty.
 	 * @param callable|string|array|false $callback  Optional. The callback to check for.
 	 *                                               This method can be called unconditionally to speculatively check
 	 *                                               a callback that may or may not exist. Default false.
+=======
+	 * @param string         $hook_name Optional. The name of the filter hook. Default empty.
+	 * @param callable|false $callback  Optional. The callback to check for. Default false.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @return bool|int If `$callback` is omitted, returns boolean for whether the hook has
 	 *                  anything registered. When checking a specific function, the priority
 	 *                  of that hook is returned, or false if the function is not attached.
@@ -441,7 +452,10 @@ final class WP_Hook implements Iterator, ArrayAccess {
 	 * @param mixed $offset An offset to check for.
 	 * @return bool True if the offset exists, false otherwise.
 	 */
+<<<<<<< HEAD
 	#[ReturnTypeWillChange]
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function offsetExists( $offset ) {
 		return isset( $this->callbacks[ $offset ] );
 	}
@@ -456,7 +470,10 @@ final class WP_Hook implements Iterator, ArrayAccess {
 	 * @param mixed $offset The offset to retrieve.
 	 * @return mixed If set, the value at the specified offset, null otherwise.
 	 */
+<<<<<<< HEAD
 	#[ReturnTypeWillChange]
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function offsetGet( $offset ) {
 		return isset( $this->callbacks[ $offset ] ) ? $this->callbacks[ $offset ] : null;
 	}
@@ -471,7 +488,10 @@ final class WP_Hook implements Iterator, ArrayAccess {
 	 * @param mixed $offset The offset to assign the value to.
 	 * @param mixed $value The value to set.
 	 */
+<<<<<<< HEAD
 	#[ReturnTypeWillChange]
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function offsetSet( $offset, $value ) {
 		if ( is_null( $offset ) ) {
 			$this->callbacks[] = $value;
@@ -489,7 +509,10 @@ final class WP_Hook implements Iterator, ArrayAccess {
 	 *
 	 * @param mixed $offset The offset to unset.
 	 */
+<<<<<<< HEAD
 	#[ReturnTypeWillChange]
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function offsetUnset( $offset ) {
 		unset( $this->callbacks[ $offset ] );
 	}
@@ -503,7 +526,10 @@ final class WP_Hook implements Iterator, ArrayAccess {
 	 *
 	 * @return array Of callbacks at current priority.
 	 */
+<<<<<<< HEAD
 	#[ReturnTypeWillChange]
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function current() {
 		return current( $this->callbacks );
 	}
@@ -517,7 +543,10 @@ final class WP_Hook implements Iterator, ArrayAccess {
 	 *
 	 * @return array Of callbacks at next priority.
 	 */
+<<<<<<< HEAD
 	#[ReturnTypeWillChange]
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function next() {
 		return next( $this->callbacks );
 	}
@@ -531,7 +560,10 @@ final class WP_Hook implements Iterator, ArrayAccess {
 	 *
 	 * @return mixed Returns current priority on success, or NULL on failure
 	 */
+<<<<<<< HEAD
 	#[ReturnTypeWillChange]
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function key() {
 		return key( $this->callbacks );
 	}
@@ -545,7 +577,10 @@ final class WP_Hook implements Iterator, ArrayAccess {
 	 *
 	 * @return bool Whether the current position is valid.
 	 */
+<<<<<<< HEAD
 	#[ReturnTypeWillChange]
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function valid() {
 		return key( $this->callbacks ) !== null;
 	}
@@ -557,7 +592,10 @@ final class WP_Hook implements Iterator, ArrayAccess {
 	 *
 	 * @link https://www.php.net/manual/en/iterator.rewind.php
 	 */
+<<<<<<< HEAD
 	#[ReturnTypeWillChange]
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	public function rewind() {
 		reset( $this->callbacks );
 	}

@@ -653,6 +653,7 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 	 * we remove that in this override.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$menu_item_value` to `$value` for PHP 8 named parameter support.
 	 *
 	 * @param array $value The menu item value to sanitize.
@@ -663,6 +664,14 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 		// Restores the more descriptive, specific name for use within this method.
 		$menu_item_value = $value;
 
+=======
+	 *
+	 * @param array $menu_item_value The value to sanitize.
+	 * @return array|false|null|WP_Error Null or WP_Error if an input isn't valid. False if it is marked for deletion.
+	 *                                   Otherwise the sanitized value.
+	 */
+	public function sanitize( $menu_item_value ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		// Menu is marked for deletion.
 		if ( false === $menu_item_value ) {
 			return $menu_item_value;

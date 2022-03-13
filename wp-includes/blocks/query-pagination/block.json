@@ -1,11 +1,16 @@
 {
 	"apiVersion": 2,
 	"name": "core/query-pagination",
+<<<<<<< HEAD
 	"title": "Pagination",
+=======
+	"title": "Query Pagination",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	"category": "design",
 	"parent": [ "core/query" ],
 	"description": "Displays a paginated navigation to next/previous set of posts, when applicable.",
 	"textdomain": "default",
+<<<<<<< HEAD
 	"attributes": {
 		"paginationArrow": {
 			"type": "string",
@@ -16,6 +21,9 @@
 	"providesContext": {
 		"paginationArrow": "paginationArrow"
 	},
+=======
+	"usesContext": [ "queryId", "query" ],
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	"supports": {
 		"align": true,
 		"reusable": false,
@@ -23,6 +31,7 @@
 		"color": {
 			"gradients": true,
 			"link": true
+<<<<<<< HEAD
 		},
 		"__experimentalLayout": {
 			"allowSwitching": false,
@@ -30,6 +39,8 @@
 			"default": {
 				"type": "flex"
 			}
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	},
 	"editorStyle": "wp-block-query-pagination-editor",

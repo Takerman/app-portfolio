@@ -149,8 +149,13 @@ are styled in the Privacy section of edit.css */
 	width: 0;
 	height: 0;
 	border-style: solid;
+<<<<<<< HEAD
 	border-width: 0 10px 5px;
 	border-color: transparent transparent #ffffff;
+=======
+	border-width: 0 10px 5px 10px;
+	border-color: transparent transparent #ffffff transparent;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	right: 20px;
 	top: 5px;
 }
@@ -249,12 +254,20 @@ are styled in the Privacy section of edit.css */
 	text-align: center;
 	height: 100%;
 	width: 100%;
+<<<<<<< HEAD
 	margin: 0 0 3rem;
+=======
+	margin-top: 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 @media all and (min-width: 784px) {
 	.site-status-all-clear {
+<<<<<<< HEAD
 		margin: 2rem 0 5rem;
+=======
+		margin: 5rem 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 }
 
@@ -264,8 +277,12 @@ are styled in the Privacy section of edit.css */
 
 .site-status-all-clear .dashicons {
 	font-size: 150px;
+<<<<<<< HEAD
 	height: 150px;
 	margin-bottom: 2rem;
+=======
+	height: 130px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	width: 150px;
 }
 

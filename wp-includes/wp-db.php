@@ -59,7 +59,10 @@ class wpdb {
 	 * Default is to show errors if both WP_DEBUG and WP_DEBUG_DISPLAY evaluate to true.
 	 *
 	 * @since 0.71
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var bool
 	 */
 	public $show_errors = false;
@@ -68,7 +71,10 @@ class wpdb {
 	 * Whether to suppress errors during the DB bootstrapping. Default false.
 	 *
 	 * @since 2.5.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var bool
 	 */
 	public $suppress_errors = false;
@@ -77,7 +83,10 @@ class wpdb {
 	 * The error encountered during the last query.
 	 *
 	 * @since 2.5.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $last_error = '';
@@ -86,7 +95,10 @@ class wpdb {
 	 * The number of queries made.
 	 *
 	 * @since 1.2.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var int
 	 */
 	public $num_queries = 0;
@@ -95,7 +107,10 @@ class wpdb {
 	 * Count of rows returned by the last query.
 	 *
 	 * @since 0.71
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var int
 	 */
 	public $num_rows = 0;
@@ -104,7 +119,10 @@ class wpdb {
 	 * Count of rows affected by the last query.
 	 *
 	 * @since 0.71
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var int
 	 */
 	public $rows_affected = 0;
@@ -113,7 +131,10 @@ class wpdb {
 	 * The ID generated for an AUTO_INCREMENT column by the last query (usually INSERT).
 	 *
 	 * @since 0.71
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var int
 	 */
 	public $insert_id = 0;
@@ -122,7 +143,10 @@ class wpdb {
 	 * The last query made.
 	 *
 	 * @since 0.71
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $last_query;
@@ -131,12 +155,17 @@ class wpdb {
 	 * Results of the last query.
 	 *
 	 * @since 0.71
+<<<<<<< HEAD
 	 *
 	 * @var stdClass[]|null
+=======
+	 * @var array|null
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public $last_result;
 
 	/**
+<<<<<<< HEAD
 	 * Database query result.
 	 *
 	 * Possible values:
@@ -151,6 +180,12 @@ class wpdb {
 	 * @since 0.71
 	 *
 	 * @var mysqli_result|resource|bool|null
+=======
+	 * MySQL result, which is either a resource or boolean.
+	 *
+	 * @since 0.71
+	 * @var mixed
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	protected $result;
 
@@ -158,25 +193,41 @@ class wpdb {
 	 * Cached column info, for sanity checking data before inserting.
 	 *
 	 * @since 4.2.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var array
 	 */
 	protected $col_meta = array();
 
 	/**
+<<<<<<< HEAD
 	 * Calculated character sets keyed by table name.
 	 *
 	 * @since 4.2.0
 	 *
 	 * @var string[]
+=======
+	 * Calculated character sets on tables.
+	 *
+	 * @since 4.2.0
+	 * @var array
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	protected $table_charset = array();
 
 	/**
+<<<<<<< HEAD
 	 * Whether text fields in the current query need to be sanity checked.
 	 *
 	 * @since 4.2.0
 	 *
+=======
+	 * Whether text fields in the current query need to be sanity checked. Default false.
+	 *
+	 * @since 4.2.0
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var bool
 	 */
 	protected $check_current_query = true;
@@ -185,7 +236,10 @@ class wpdb {
 	 * Flag to ensure we don't run into recursion problems when checking the collation.
 	 *
 	 * @since 4.2.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @see wpdb::check_safe_collation()
 	 * @var bool
 	 */
@@ -195,7 +249,10 @@ class wpdb {
 	 * Saved info on the table column.
 	 *
 	 * @since 0.71
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var array
 	 */
 	protected $col_info;
@@ -209,7 +266,11 @@ class wpdb {
 	 * @since 5.3.0 The fifth element in each query log was added to record custom data.
 	 *
 	 * @var array[] {
+<<<<<<< HEAD
 	 *     Array of arrays containing information about queries that were executed.
+=======
+	 *     Array of queries that were executed.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 *     @type array ...$0 {
 	 *         Data for each query.
@@ -228,20 +289,30 @@ class wpdb {
 	 * The number of times to retry reconnecting before dying. Default 5.
 	 *
 	 * @since 3.9.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @see wpdb::check_connection()
 	 * @var int
 	 */
 	protected $reconnect_retries = 5;
 
 	/**
+<<<<<<< HEAD
 	 * WordPress table prefix.
+=======
+	 * WordPress table prefix
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * You can set this to have multiple WordPress installations in a single database.
 	 * The second reason is for possible security precautions.
 	 *
 	 * @since 2.5.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $prefix = '';
@@ -250,7 +321,10 @@ class wpdb {
 	 * WordPress base table prefix.
 	 *
 	 * @since 3.0.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $base_prefix;
@@ -259,7 +333,10 @@ class wpdb {
 	 * Whether the database queries are ready to start executing.
 	 *
 	 * @since 2.3.2
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var bool
 	 */
 	public $ready = false;
@@ -268,7 +345,10 @@ class wpdb {
 	 * Blog ID.
 	 *
 	 * @since 3.0.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var int
 	 */
 	public $blogid = 0;
@@ -277,18 +357,29 @@ class wpdb {
 	 * Site ID.
 	 *
 	 * @since 3.0.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var int
 	 */
 	public $siteid = 0;
 
 	/**
+<<<<<<< HEAD
 	 * List of WordPress per-site tables.
 	 *
 	 * @since 2.5.0
 	 *
 	 * @see wpdb::tables()
 	 * @var string[]
+=======
+	 * List of WordPress per-blog tables.
+	 *
+	 * @since 2.5.0
+	 * @see wpdb::tables()
+	 * @var array
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public $tables = array(
 		'posts',
@@ -309,9 +400,14 @@ class wpdb {
 	 * 'categories', 'post2cat', and 'link2cat' were deprecated in 2.3.0, db version 5539.
 	 *
 	 * @since 2.9.0
+<<<<<<< HEAD
 	 *
 	 * @see wpdb::tables()
 	 * @var string[]
+=======
+	 * @see wpdb::tables()
+	 * @var array
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public $old_tables = array( 'categories', 'post2cat', 'link2cat' );
 
@@ -319,9 +415,14 @@ class wpdb {
 	 * List of WordPress global tables.
 	 *
 	 * @since 3.0.0
+<<<<<<< HEAD
 	 *
 	 * @see wpdb::tables()
 	 * @var string[]
+=======
+	 * @see wpdb::tables()
+	 * @var array
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public $global_tables = array( 'users', 'usermeta' );
 
@@ -329,9 +430,14 @@ class wpdb {
 	 * List of Multisite global tables.
 	 *
 	 * @since 3.0.0
+<<<<<<< HEAD
 	 *
 	 * @see wpdb::tables()
 	 * @var string[]
+=======
+	 * @see wpdb::tables()
+	 * @var array
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public $ms_global_tables = array(
 		'blogs',
@@ -347,7 +453,10 @@ class wpdb {
 	 * WordPress Comments table.
 	 *
 	 * @since 1.5.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $comments;
@@ -356,7 +465,10 @@ class wpdb {
 	 * WordPress Comment Metadata table.
 	 *
 	 * @since 2.9.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $commentmeta;
@@ -365,7 +477,10 @@ class wpdb {
 	 * WordPress Links table.
 	 *
 	 * @since 1.5.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $links;
@@ -374,7 +489,10 @@ class wpdb {
 	 * WordPress Options table.
 	 *
 	 * @since 1.5.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $options;
@@ -383,7 +501,10 @@ class wpdb {
 	 * WordPress Post Metadata table.
 	 *
 	 * @since 1.5.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $postmeta;
@@ -392,7 +513,10 @@ class wpdb {
 	 * WordPress Posts table.
 	 *
 	 * @since 1.5.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $posts;
@@ -401,7 +525,10 @@ class wpdb {
 	 * WordPress Terms table.
 	 *
 	 * @since 2.3.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $terms;
@@ -410,7 +537,10 @@ class wpdb {
 	 * WordPress Term Relationships table.
 	 *
 	 * @since 2.3.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $term_relationships;
@@ -419,7 +549,10 @@ class wpdb {
 	 * WordPress Term Taxonomy table.
 	 *
 	 * @since 2.3.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $term_taxonomy;
@@ -428,7 +561,10 @@ class wpdb {
 	 * WordPress Term Meta table.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $termmeta;
@@ -441,7 +577,10 @@ class wpdb {
 	 * WordPress User Metadata table.
 	 *
 	 * @since 2.3.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $usermeta;
@@ -450,7 +589,10 @@ class wpdb {
 	 * WordPress Users table.
 	 *
 	 * @since 1.5.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $users;
@@ -459,7 +601,10 @@ class wpdb {
 	 * Multisite Blogs table.
 	 *
 	 * @since 3.0.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $blogs;
@@ -468,7 +613,10 @@ class wpdb {
 	 * Multisite Blog Metadata table.
 	 *
 	 * @since 5.1.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $blogmeta;
@@ -477,7 +625,10 @@ class wpdb {
 	 * Multisite Registration Log table.
 	 *
 	 * @since 3.0.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $registration_log;
@@ -486,7 +637,10 @@ class wpdb {
 	 * Multisite Signups table.
 	 *
 	 * @since 3.0.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $signups;
@@ -495,7 +649,10 @@ class wpdb {
 	 * Multisite Sites table.
 	 *
 	 * @since 3.0.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $site;
@@ -504,7 +661,10 @@ class wpdb {
 	 * Multisite Sitewide Terms table.
 	 *
 	 * @since 3.0.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $sitecategories;
@@ -513,7 +673,10 @@ class wpdb {
 	 * Multisite Site Metadata table.
 	 *
 	 * @since 3.0.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $sitemeta;
@@ -525,7 +688,10 @@ class wpdb {
 	 * Keys are column names, values are format types: 'ID' => '%d'.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @see wpdb::prepare()
 	 * @see wpdb::insert()
 	 * @see wpdb::update()
@@ -539,7 +705,10 @@ class wpdb {
 	 * Database table columns charset.
 	 *
 	 * @since 2.2.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $charset;
@@ -548,7 +717,10 @@ class wpdb {
 	 * Database table columns collate.
 	 *
 	 * @since 2.2.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $collate;
@@ -557,7 +729,10 @@ class wpdb {
 	 * Database Username.
 	 *
 	 * @since 2.9.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	protected $dbuser;
@@ -566,7 +741,10 @@ class wpdb {
 	 * Database Password.
 	 *
 	 * @since 3.1.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	protected $dbpassword;
@@ -575,7 +753,10 @@ class wpdb {
 	 * Database Name.
 	 *
 	 * @since 3.1.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	protected $dbname;
@@ -584,12 +765,16 @@ class wpdb {
 	 * Database Host.
 	 *
 	 * @since 3.1.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	protected $dbhost;
 
 	/**
+<<<<<<< HEAD
 	 * Database handle.
 	 *
 	 * Possible values:
@@ -602,6 +787,12 @@ class wpdb {
 	 * @since 0.71
 	 *
 	 * @var mysqli|resource|false|null
+=======
+	 * Database Handle.
+	 *
+	 * @since 0.71
+	 * @var string
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	protected $dbh;
 
@@ -609,7 +800,10 @@ class wpdb {
 	 * A textual description of the last query/get_row/get_var call.
 	 *
 	 * @since 3.0.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var string
 	 */
 	public $func_call;
@@ -623,7 +817,10 @@ class wpdb {
 	 * will force the checks to occur.
 	 *
 	 * @since 3.3.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var bool
 	 */
 	public $is_mysql = null;
@@ -632,8 +829,12 @@ class wpdb {
 	 * A list of incompatible SQL modes.
 	 *
 	 * @since 3.9.0
+<<<<<<< HEAD
 	 *
 	 * @var string[]
+=======
+	 * @var array
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	protected $incompatible_modes = array(
 		'NO_ZERO_DATE',
@@ -648,7 +849,10 @@ class wpdb {
 	 * Whether to use mysqli over mysql. Default false.
 	 *
 	 * @since 3.9.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var bool
 	 */
 	private $use_mysqli = false;
@@ -657,12 +861,16 @@ class wpdb {
 	 * Whether we've managed to successfully connect at some point.
 	 *
 	 * @since 3.9.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @var bool
 	 */
 	private $has_connected = false;
 
 	/**
+<<<<<<< HEAD
 	 * Time when the last query was performed.
 	 *
 	 * Only set when `SAVEQUERIES` is defined and truthy.
@@ -686,23 +894,41 @@ class wpdb {
 	 * Connects to the database server and selects a database.
 	 *
 	 * Does the actual setting up
+=======
+	 * Connects to the database server and selects a database.
+	 *
+	 * PHP5 style constructor for compatibility with PHP5. Does the actual setting up
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * of the class properties and connection to the database.
 	 *
 	 * @since 2.0.8
 	 *
 	 * @link https://core.trac.wordpress.org/ticket/3354
+<<<<<<< HEAD
 	 *
 	 * @param string $dbuser     Database user.
 	 * @param string $dbpassword Database password.
 	 * @param string $dbname     Database name.
 	 * @param string $dbhost     Database host.
+=======
+	 * @global string $wp_version The WordPress version string.
+	 *
+	 * @param string $dbuser     MySQL database user.
+	 * @param string $dbpassword MySQL database password.
+	 * @param string $dbname     MySQL database name.
+	 * @param string $dbhost     MySQL database host.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public function __construct( $dbuser, $dbpassword, $dbname, $dbhost ) {
 		if ( WP_DEBUG && WP_DEBUG_DISPLAY ) {
 			$this->show_errors();
 		}
 
+<<<<<<< HEAD
 		// Use the `mysqli` extension if it exists unless `WP_USE_EXT_MYSQL` is defined as true.
+=======
+		// Use ext/mysqli if it exists unless WP_USE_EXT_MYSQL is defined as true.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( function_exists( 'mysqli_connect' ) ) {
 			$this->use_mysqli = true;
 
@@ -865,9 +1091,15 @@ class wpdb {
 	 *
 	 * @since 3.1.0
 	 *
+<<<<<<< HEAD
 	 * @param mysqli|resource $dbh     The connection returned by `mysqli_connect()` or `mysql_connect()`.
 	 * @param string          $charset Optional. The character set. Default null.
 	 * @param string          $collate Optional. The collation. Default null.
+=======
+	 * @param resource $dbh     The resource given by mysql_connect.
+	 * @param string   $charset Optional. The character set. Default null.
+	 * @param string   $collate Optional. The collation. Default null.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public function set_charset( $dbh, $charset = null, $collate = null ) {
 		if ( ! isset( $charset ) ) {
@@ -1075,6 +1307,7 @@ class wpdb {
 	/**
 	 * Returns an array of WordPress tables.
 	 *
+<<<<<<< HEAD
 	 * Also allows for the `CUSTOM_USER_TABLE` and `CUSTOM_USER_META_TABLE` to override the WordPress users
 	 * and usermeta tables that would otherwise be determined by the prefix.
 	 *
@@ -1085,6 +1318,18 @@ class wpdb {
 	 * - 'global' - returns the global tables for the installation, returning multisite tables only on multisite.
 	 * - 'ms_global' - returns the multisite global tables, regardless if current installation is multisite.
 	 * - 'old' - returns tables which are deprecated.
+=======
+	 * Also allows for the CUSTOM_USER_TABLE and CUSTOM_USER_META_TABLE to override the WordPress users
+	 * and usermeta tables that would otherwise be determined by the prefix.
+	 *
+	 * The $scope argument can take one of the following:
+	 *
+	 * 'all' - returns 'all' and 'global' tables. No old tables are returned.
+	 * 'blog' - returns the blog-level tables for the queried blog.
+	 * 'global' - returns the global tables for the installation, returning multisite tables only on multisite.
+	 * 'ms_global' - returns the multisite global tables, regardless if current installation is multisite.
+	 * 'old' - returns tables which are deprecated.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 3.0.0
 	 *
@@ -1098,8 +1343,13 @@ class wpdb {
 	 * @param bool   $prefix  Optional. Whether to include table prefixes. If blog prefix is requested,
 	 *                        then the custom users and usermeta tables will be mapped. Default true.
 	 * @param int    $blog_id Optional. The blog_id to prefix. Used only when prefix is requested.
+<<<<<<< HEAD
 	 *                        Defaults to `wpdb::$blogid`.
 	 * @return string[] Table names. When a prefix is requested, the key is the unprefixed table name.
+=======
+	 *                        Defaults to wpdb::$blogid.
+	 * @return array Table names. When a prefix is requested, the key is the unprefixed table name.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public function tables( $scope = 'all', $prefix = true, $blog_id = 0 ) {
 		switch ( $scope ) {
@@ -1157,15 +1407,24 @@ class wpdb {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Selects a database using the current or provided database connection.
+=======
+	 * Selects a database using the current database connection.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * The database name will be changed based on the current database connection.
 	 * On failure, the execution will bail and display a DB error.
 	 *
 	 * @since 0.71
 	 *
+<<<<<<< HEAD
 	 * @param string          $db  Database name.
 	 * @param mysqli|resource $dbh Optional database connection.
+=======
+	 * @param string        $db  MySQL database name.
+	 * @param resource|null $dbh Optional link identifier.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public function select( $db, $dbh = null ) {
 		if ( is_null( $dbh ) ) {
@@ -1232,7 +1491,11 @@ class wpdb {
 	 * @param string $string
 	 * @return string
 	 */
+<<<<<<< HEAD
 	public function _weak_escape( $string ) {
+=======
+	function _weak_escape( $string ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( func_num_args() === 1 && function_exists( '_deprecated_function' ) ) {
 			_deprecated_function( __METHOD__, '3.6.0', 'wpdb::prepare() or esc_sql()' );
 		}
@@ -1250,8 +1513,13 @@ class wpdb {
 	 * @param string $string String to escape.
 	 * @return string Escaped string.
 	 */
+<<<<<<< HEAD
 	public function _real_escape( $string ) {
 		if ( ! is_scalar( $string ) ) {
+=======
+	function _real_escape( $string ) {
+		if ( ! is_scalar( $string ) && ! is_null( $string ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return '';
 		}
 
@@ -1263,11 +1531,20 @@ class wpdb {
 			}
 		} else {
 			$class = get_class( $this );
+<<<<<<< HEAD
 
 			wp_load_translations_early();
 			/* translators: %s: Database access abstraction class, usually wpdb or a class extending wpdb. */
 			_doing_it_wrong( $class, sprintf( __( '%s must set a database connection for use with escaping.' ), $class ), '3.6.0' );
 
+=======
+			if ( function_exists( '__' ) ) {
+				/* translators: %s: Database access abstraction class, usually wpdb or a class extending wpdb. */
+				_doing_it_wrong( $class, sprintf( __( '%s must set a database connection for use with escaping.' ), $class ), '3.6.0' );
+			} else {
+				_doing_it_wrong( $class, sprintf( '%s must set a database connection for use with escaping.', $class ), '3.6.0' );
+			}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$escaped = addslashes( $string );
 		}
 
@@ -1351,19 +1628,32 @@ class wpdb {
 	 * Prepares a SQL query for safe execution.
 	 *
 	 * Uses sprintf()-like syntax. The following placeholders can be used in the query string:
+<<<<<<< HEAD
 	 *
 	 * - %d (integer)
 	 * - %f (float)
 	 * - %s (string)
+=======
+	 *   %d (integer)
+	 *   %f (float)
+	 *   %s (string)
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * All placeholders MUST be left unquoted in the query string. A corresponding argument
 	 * MUST be passed for each placeholder.
 	 *
 	 * Note: There is one exception to the above: for compatibility with old behavior,
+<<<<<<< HEAD
 	 * numbered or formatted string placeholders (eg, `%1$s`, `%5s`) will not have quotes
 	 * added by this function, so should be passed with appropriate quotes around them.
 	 *
 	 * Literal percentage signs (`%`) in the query string must be written as `%%`. Percentage wildcards
+=======
+	 * numbered or formatted string placeholders (eg, %1$s, %5s) will not have quotes
+	 * added by this function, so should be passed with appropriate quotes around them.
+	 *
+	 * Literal percentage signs (%) in the query string must be written as %%. Percentage wildcards
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * (for example, to use in LIKE syntax) must be passed via a substitution argument containing
 	 * the complete LIKE string, these cannot be inserted directly in the query string.
 	 * Also see wpdb::esc_like().
@@ -1372,7 +1662,10 @@ class wpdb {
 	 * containing all arguments. A combination of the two is not supported.
 	 *
 	 * Examples:
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *     $wpdb->prepare( "SELECT * FROM `table` WHERE `column` = %s AND `field` = %d OR `other_field` LIKE %s", array( 'foo', 1337, '%bar' ) );
 	 *     $wpdb->prepare( "SELECT DATE_FORMAT(`field`, '%%c') FROM `table` WHERE `column` = %s", 'foo' );
 	 *
@@ -1413,7 +1706,11 @@ class wpdb {
 
 		// If args were passed as an array (as in vsprintf), move them up.
 		$passed_as_array = false;
+<<<<<<< HEAD
 		if ( isset( $args[0] ) && is_array( $args[0] ) && 1 === count( $args ) ) {
+=======
+		if ( is_array( $args[0] ) && count( $args ) === 1 ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$passed_as_array = true;
 			$args            = $args[0];
 		}
@@ -1513,7 +1810,11 @@ class wpdb {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * First half of escaping for `LIKE` special characters `%` and `_` before preparing for SQL.
+=======
+	 * First half of escaping for LIKE special characters % and _ before preparing for MySQL.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * Use this only before wpdb::prepare() or esc_sql(). Reversing the order is very bad for security.
 	 *
@@ -1702,7 +2003,11 @@ class wpdb {
 	/**
 	 * Connects to and selects database.
 	 *
+<<<<<<< HEAD
 	 * If `$allow_bail` is false, the lack of database connection will need to be handled manually.
+=======
+	 * If $allow_bail is false, the lack of database connection will need to be handled manually.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 3.0.0
 	 * @since 3.9.0 $allow_bail parameter added.
@@ -1721,6 +2026,7 @@ class wpdb {
 		$client_flags = defined( 'MYSQL_CLIENT_FLAGS' ) ? MYSQL_CLIENT_FLAGS : 0;
 
 		if ( $this->use_mysqli ) {
+<<<<<<< HEAD
 			/*
 			 * Set the MySQLi error reporting off because WordPress handles its own.
 			 * This is due to the default value change from `MYSQLI_REPORT_OFF`
@@ -1728,6 +2034,8 @@ class wpdb {
 			 */
 			mysqli_report( MYSQLI_REPORT_OFF );
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$this->dbh = mysqli_init();
 
 			$host    = $this->dbhost;
@@ -1901,7 +2209,11 @@ class wpdb {
 	 * If this function is unable to reconnect, it will forcibly die, or if called
 	 * after the {@see 'template_redirect'} hook has been fired, return false instead.
 	 *
+<<<<<<< HEAD
 	 * If `$allow_bail` is false, the lack of database connection will need to be handled manually.
+=======
+	 * If $allow_bail is false, the lack of database connection will need to be handled manually.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 3.9.0
 	 *
@@ -1985,7 +2297,11 @@ class wpdb {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Performs a database query, using current database connection.
+=======
+	 * Performs a MySQL database query, using current database connection.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * More information can be found on the documentation page.
 	 *
@@ -2032,6 +2348,7 @@ class wpdb {
 			// to flush again, just to make sure everything is clear.
 			$this->flush();
 			if ( $stripped_query !== $query ) {
+<<<<<<< HEAD
 				$this->insert_id  = 0;
 				$this->last_query = $query;
 
@@ -2039,6 +2356,9 @@ class wpdb {
 
 				$this->last_error = __( 'WordPress database error: Could not perform query because it contains invalid data.' );
 
+=======
+				$this->insert_id = 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				return false;
 			}
 		}
@@ -2050,7 +2370,11 @@ class wpdb {
 
 		$this->_do_query( $query );
 
+<<<<<<< HEAD
 		// Database server has gone away, try to reconnect.
+=======
+		// MySQL server has gone away, try to reconnect.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$mysql_errno = 0;
 		if ( ! empty( $this->dbh ) ) {
 			if ( $this->use_mysqli ) {
@@ -2275,7 +2599,10 @@ class wpdb {
 	 * Inserts a row into the table.
 	 *
 	 * Examples:
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *     wpdb::insert( 'table', array( 'column' => 'foo', 'field' => 'bar' ) )
 	 *     wpdb::insert( 'table', array( 'column' => 'foo', 'field' => 1337 ), array( '%s', '%d' ) )
 	 *
@@ -2305,7 +2632,10 @@ class wpdb {
 	 * Replaces a row in the table.
 	 *
 	 * Examples:
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *     wpdb::replace( 'table', array( 'column' => 'foo', 'field' => 'bar' ) )
 	 *     wpdb::replace( 'table', array( 'column' => 'foo', 'field' => 1337 ), array( '%s', '%d' ) )
 	 *
@@ -2356,7 +2686,11 @@ class wpdb {
 	 *                             Default 'INSERT'.
 	 * @return int|false The number of rows affected, or false on error.
 	 */
+<<<<<<< HEAD
 	public function _insert_replace_helper( $table, $data, $format = null, $type = 'INSERT' ) {
+=======
+	function _insert_replace_helper( $table, $data, $format = null, $type = 'INSERT' ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$this->insert_id = 0;
 
 		if ( ! in_array( strtoupper( $type ), array( 'REPLACE', 'INSERT' ), true ) ) {
@@ -2393,7 +2727,10 @@ class wpdb {
 	 * Updates a row in the table.
 	 *
 	 * Examples:
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *     wpdb::update( 'table', array( 'column' => 'foo', 'field' => 'bar' ), array( 'ID' => 1 ) )
 	 *     wpdb::update( 'table', array( 'column' => 'foo', 'field' => 1337 ), array( 'ID' => 1 ), array( '%s', '%d' ), array( '%d' ) )
 	 *
@@ -2473,7 +2810,10 @@ class wpdb {
 	 * Deletes a row in the table.
 	 *
 	 * Examples:
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *     wpdb::delete( 'table', array( 'ID' => 1 ) )
 	 *     wpdb::delete( 'table', array( 'ID' => 1 ), array( '%d' ) )
 	 *
@@ -2562,6 +2902,7 @@ class wpdb {
 		$converted_data = $this->strip_invalid_text( $data );
 
 		if ( $data !== $converted_data ) {
+<<<<<<< HEAD
 
 			$problem_fields = array();
 			foreach ( $data as $field => $value ) {
@@ -2586,6 +2927,8 @@ class wpdb {
 				);
 			}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return false;
 		}
 
@@ -2707,11 +3050,19 @@ class wpdb {
 	public function get_var( $query = null, $x = 0, $y = 0 ) {
 		$this->func_call = "\$db->get_var(\"$query\", $x, $y)";
 
+<<<<<<< HEAD
 		if ( $query ) {
 			if ( $this->check_current_query && $this->check_safe_collation( $query ) ) {
 				$this->check_current_query = false;
 			}
 
+=======
+		if ( $this->check_current_query && $this->check_safe_collation( $query ) ) {
+			$this->check_current_query = false;
+		}
+
+		if ( $query ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$this->query( $query );
 		}
 
@@ -2741,11 +3092,19 @@ class wpdb {
 	public function get_row( $query = null, $output = OBJECT, $y = 0 ) {
 		$this->func_call = "\$db->get_row(\"$query\",$output,$y)";
 
+<<<<<<< HEAD
 		if ( $query ) {
 			if ( $this->check_current_query && $this->check_safe_collation( $query ) ) {
 				$this->check_current_query = false;
 			}
 
+=======
+		if ( $this->check_current_query && $this->check_safe_collation( $query ) ) {
+			$this->check_current_query = false;
+		}
+
+		if ( $query ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$this->query( $query );
 		} else {
 			return null;
@@ -2783,11 +3142,19 @@ class wpdb {
 	 * @return array Database query result. Array indexed from 0 by SQL result row number.
 	 */
 	public function get_col( $query = null, $x = 0 ) {
+<<<<<<< HEAD
 		if ( $query ) {
 			if ( $this->check_current_query && $this->check_safe_collation( $query ) ) {
 				$this->check_current_query = false;
 			}
 
+=======
+		if ( $this->check_current_query && $this->check_safe_collation( $query ) ) {
+			$this->check_current_query = false;
+		}
+
+		if ( $query ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$this->query( $query );
 		}
 
@@ -2821,11 +3188,19 @@ class wpdb {
 	public function get_results( $query = null, $output = OBJECT ) {
 		$this->func_call = "\$db->get_results(\"$query\", $output)";
 
+<<<<<<< HEAD
 		if ( $query ) {
 			if ( $this->check_current_query && $this->check_safe_collation( $query ) ) {
 				$this->check_current_query = false;
 			}
 
+=======
+		if ( $this->check_current_query && $this->check_safe_collation( $query ) ) {
+			$this->check_current_query = false;
+		}
+
+		if ( $query ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			$this->query( $query );
 		} else {
 			return null;
@@ -2883,14 +3258,23 @@ class wpdb {
 		/**
 		 * Filters the table charset value before the DB is checked.
 		 *
+<<<<<<< HEAD
 		 * Returning a non-null value from the filter will effectively short-circuit
+=======
+		 * Passing a non-null value to the filter will effectively short-circuit
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 * checking the DB for the charset, returning that value instead.
 		 *
 		 * @since 4.2.0
 		 *
+<<<<<<< HEAD
 		 * @param string|WP_Error|null $charset The character set to use, WP_Error object
 		 *                                      if it couldn't be found. Default null.
 		 * @param string               $table   The name of the table being checked.
+=======
+		 * @param string|null $charset The character set to use. Default null.
+		 * @param string      $table   The name of the table being checked.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$charset = apply_filters( 'pre_get_table_charset', null, $table );
 		if ( null !== $charset ) {
@@ -2908,7 +3292,11 @@ class wpdb {
 		$table       = '`' . implode( '`.`', $table_parts ) . '`';
 		$results     = $this->get_results( "SHOW FULL COLUMNS FROM $table" );
 		if ( ! $results ) {
+<<<<<<< HEAD
 			return new WP_Error( 'wpdb_get_table_charset_failure', __( 'Could not retrieve table charset.' ) );
+=======
+			return new WP_Error( 'wpdb_get_table_charset_failure' );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		foreach ( $results as $column ) {
@@ -3350,7 +3738,11 @@ class wpdb {
 			$this->check_current_query = false;
 			$row                       = $this->get_row( 'SELECT ' . implode( ', ', $sql ), ARRAY_A );
 			if ( ! $row ) {
+<<<<<<< HEAD
 				return new WP_Error( 'wpdb_strip_invalid_text_failure', __( 'Could not strip invalid text.' ) );
+=======
+				return new WP_Error( 'wpdb_strip_invalid_text_failure' );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			}
 
 			foreach ( array_keys( $data ) as $column ) {
@@ -3645,6 +4037,10 @@ class wpdb {
 		}
 	}
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	/**
 	 * Closes the current database connection.
 	 *
@@ -3790,7 +4186,11 @@ class wpdb {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Retrieves the database server version.
+=======
+	 * Retrieves the MySQL server version.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 2.7.0
 	 *
@@ -3801,7 +4201,11 @@ class wpdb {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Retrieves full database server information.
+=======
+	 * Retrieves full MySQL server information.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @since 5.5.0
 	 *

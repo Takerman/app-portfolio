@@ -198,6 +198,7 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 			);
 		}
 
+<<<<<<< HEAD
 		// Check if capabilities is specified in GET request and if user can list users.
 		if ( ! empty( $request['capabilities'] ) && ! current_user_can( 'list_users' ) ) {
 			return new WP_Error(
@@ -207,6 +208,8 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 			);
 		}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( 'edit' === $request['context'] && ! current_user_can( 'list_users' ) ) {
 			return new WP_Error(
 				'rest_forbidden_context',
@@ -263,6 +266,7 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 		 * present in $registered will be set.
 		 */
 		$parameter_mappings = array(
+<<<<<<< HEAD
 			'exclude'      => 'exclude',
 			'include'      => 'include',
 			'order'        => 'order',
@@ -271,6 +275,15 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 			'roles'        => 'role__in',
 			'capabilities' => 'capability__in',
 			'slug'         => 'nicename__in',
+=======
+			'exclude'  => 'exclude',
+			'include'  => 'include',
+			'order'    => 'order',
+			'per_page' => 'number',
+			'search'   => 'search',
+			'roles'    => 'role__in',
+			'slug'     => 'nicename__in',
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		);
 
 		$prepared_args = array();
@@ -311,12 +324,15 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 			$prepared_args['has_published_posts'] = get_post_types( array( 'show_in_rest' => true ), 'names' );
 		}
 
+<<<<<<< HEAD
 		if ( ! empty( $request['has_published_posts'] ) ) {
 			$prepared_args['has_published_posts'] = ( true === $request['has_published_posts'] )
 				? get_post_types( array( 'show_in_rest' => true ), 'names' )
 				: (array) $request['has_published_posts'];
 		}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( ! empty( $prepared_args['search'] ) ) {
 			$prepared_args['search'] = '*' . $prepared_args['search'] . '*';
 		}
@@ -979,6 +995,7 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 	 * Prepares a single user output for response.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$user` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param WP_User         $item    User object.
@@ -988,6 +1005,15 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 	public function prepare_item_for_response( $item, $request ) {
 		// Restores the more descriptive, specific name for use within this method.
 		$user   = $item;
+=======
+	 *
+	 * @param WP_User         $user    User object.
+	 * @param WP_REST_Request $request Request object.
+	 * @return WP_REST_Response Response object.
+	 */
+	public function prepare_item_for_response( $user, $request ) {
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$data   = array();
 		$fields = $this->get_fields_for_response( $request );
 
@@ -1191,8 +1217,11 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 	 *
 	 * @since 4.7.0
 	 *
+<<<<<<< HEAD
 	 * @global WP_Roles $wp_roles WordPress role management object.
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @param int   $user_id User ID.
 	 * @param array $roles   New user roles.
 	 * @return true|WP_Error True if the current user is allowed to make the role change,
@@ -1570,6 +1599,7 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 			),
 		);
 
+<<<<<<< HEAD
 		$query_params['capabilities'] = array(
 			'description' => __( 'Limit result set to users matching at least one specific capability provided. Accepts csv list or single capability.' ),
 			'type'        => 'array',
@@ -1578,6 +1608,8 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 			),
 		);
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$query_params['who'] = array(
 			'description' => __( 'Limit result set to users who are considered authors.' ),
 			'type'        => 'string',
@@ -1586,6 +1618,7 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 			),
 		);
 
+<<<<<<< HEAD
 		$query_params['has_published_posts'] = array(
 			'description' => __( 'Limit result set to users who have published posts.' ),
 			'type'        => array( 'boolean', 'array' ),
@@ -1595,6 +1628,8 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 			),
 		);
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		/**
 		 * Filters REST API collection parameters for the users controller.
 		 *

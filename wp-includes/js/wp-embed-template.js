@@ -18,6 +18,7 @@
 		}, '*' );
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Send the height message to the parent window.
 	 */
@@ -25,6 +26,8 @@
 		sendEmbedMessage( 'height', Math.ceil( document.body.getBoundingClientRect().height ) );
 	}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	function onLoad() {
 		if ( loaded ) {
 			return;
@@ -145,11 +148,21 @@
 		}
 
 		// Send this document's height to the parent (embedding) site.
+<<<<<<< HEAD
 		sendHeightMessage();
 
 		// Send the document's height again after the featured image has been loaded.
 		if ( featured_image ) {
 			featured_image.addEventListener( 'load', sendHeightMessage );
+=======
+		sendEmbedMessage( 'height', Math.ceil( document.body.getBoundingClientRect().height ) );
+
+		// Send the document's height again after the featured image has been loaded.
+		if ( featured_image ) {
+			featured_image.addEventListener( 'load', function() {
+				sendEmbedMessage( 'height', Math.ceil( document.body.getBoundingClientRect().height ) );
+			} );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		/**
@@ -189,6 +202,7 @@
 
 		clearTimeout( resizing );
 
+<<<<<<< HEAD
 		resizing = setTimeout( sendHeightMessage, 100 );
 	}
 
@@ -219,6 +233,11 @@
 		if ( 'ready' === data.message ) {
 			sendHeightMessage();
 		}
+=======
+		resizing = setTimeout( function () {
+			sendEmbedMessage( 'height', Math.ceil( document.body.getBoundingClientRect().height ) );
+		}, 100 );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	/**
@@ -244,6 +263,9 @@
 		document.addEventListener( 'DOMContentLoaded', onLoad, false );
 		window.addEventListener( 'load', onLoad, false );
 		window.addEventListener( 'resize', onResize, false );
+<<<<<<< HEAD
 		window.addEventListener( 'message', onMessage, false );
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 })( window, document );

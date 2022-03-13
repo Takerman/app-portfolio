@@ -244,7 +244,10 @@ class WP_Upgrader {
 	 * Download a package.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @since 5.2.0 Added the `$check_signatures` parameter.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @since 5.5.0 Added the `$hook_extra` parameter.
 	 *
 	 * @param string $package          The URI of the package. If this is the full path to an
@@ -379,8 +382,13 @@ class WP_Upgrader {
 	 *
 	 * @global WP_Filesystem_Base $wp_filesystem WordPress filesystem subclass.
 	 *
+<<<<<<< HEAD
 	 * @param string $remote_destination The location on the remote filesystem to be cleared.
 	 * @return true|WP_Error True upon success, WP_Error on failure.
+=======
+	 * @param string $remote_destination The location on the remote filesystem to be cleared
+	 * @return bool|WP_Error True upon success, WP_Error on failure.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	public function clear_destination( $remote_destination ) {
 		global $wp_filesystem;
@@ -423,7 +431,11 @@ class WP_Upgrader {
 	/**
 	 * Install a package.
 	 *
+<<<<<<< HEAD
 	 * Copies the contents of a package from a source directory, and installs them in
+=======
+	 * Copies the contents of a package form a source directory, and installs them in
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * a destination directory. Optionally removes the source. It can also optionally
 	 * clear out the destination folder if it already exists.
 	 *
@@ -440,8 +452,13 @@ class WP_Upgrader {
 	 *                                               Default empty.
 	 *     @type bool   $clear_destination           Whether to delete any files already in the destination
 	 *                                               folder. Default false.
+<<<<<<< HEAD
 	 *     @type bool   $clear_working               Whether to delete the files from the working directory
 	 *                                               after copying them to the destination. Default false.
+=======
+	 *     @type bool   $clear_working               Whether to delete the files form the working directory
+	 *                                               after copying to the destination. Default false.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *     @type bool   $abort_if_destination_exists Whether to abort the installation if
 	 *                                               the destination folder already exists. Default true.
 	 *     @type array  $hook_extra                  Extra arguments to pass to the filter hooks called by
@@ -479,8 +496,14 @@ class WP_Upgrader {
 		/**
 		 * Filters the install response before the installation has started.
 		 *
+<<<<<<< HEAD
 		 * Returning a value that could be evaluated as a `WP_Error` will effectively
 		 * short-circuit the installation, returning that value instead.
+=======
+		 * Returning a truthy value, or one that could be evaluated as a WP_Error
+		 * will effectively short-circuit the installation, returning that value
+		 * instead.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 *
 		 * @since 2.8.0
 		 *
@@ -564,8 +587,12 @@ class WP_Upgrader {
 			 *
 			 * @since 2.8.0
 			 *
+<<<<<<< HEAD
 			 * @param true|WP_Error $removed            Whether the destination was cleared.
 			 *                                          True upon success, WP_Error on failure.
+=======
+			 * @param true|WP_Error $removed            Whether the destination was cleared. true upon success, WP_Error on failure.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			 * @param string        $local_destination  The local package destination.
 			 * @param string        $remote_destination The remote package destination.
 			 * @param array         $hook_extra         Extra arguments passed to hooked filters.
@@ -650,8 +677,13 @@ class WP_Upgrader {
 	 *                                               Default empty.
 	 *     @type bool   $clear_destination           Whether to delete any files already in the
 	 *                                               destination folder. Default false.
+<<<<<<< HEAD
 	 *     @type bool   $clear_working               Whether to delete the files from the working
 	 *                                               directory after copying them to the destination.
+=======
+	 *     @type bool   $clear_working               Whether to delete the files form the working
+	 *                                               directory after copying to the destination.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *                                               Default false.
 	 *     @type bool   $abort_if_destination_exists Whether to abort the installation if the destination
 	 *                                               folder already exists. When true, `$clear_destination`
@@ -738,8 +770,13 @@ class WP_Upgrader {
 		}
 
 		/*
+<<<<<<< HEAD
 		 * Download the package. Note: If the package is the full path
 		 * to an existing local file, it will be returned untouched.
+=======
+		 * Download the package (Note, This just returns the filename
+		 * of the file if the package is a local file)
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$download = $this->download_package( $options['package'], true, $options['hook_extra'] );
 
@@ -834,8 +871,13 @@ class WP_Upgrader {
 			 * @since 3.7.0 Added to WP_Upgrader::run().
 			 * @since 4.6.0 `$translations` was added as a possible argument to `$hook_extra`.
 			 *
+<<<<<<< HEAD
 			 * @param WP_Upgrader $upgrader   WP_Upgrader instance. In other contexts this might be a
 			 *                                Theme_Upgrader, Plugin_Upgrader, Core_Upgrade, or Language_Pack_Upgrader instance.
+=======
+			 * @param WP_Upgrader $this WP_Upgrader instance. In other contexts, $this, might be a
+			 *                          Theme_Upgrader, Plugin_Upgrader, Core_Upgrade, or Language_Pack_Upgrader instance.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			 * @param array       $hook_extra {
 			 *     Array of bulk item update data.
 			 *
@@ -870,7 +912,11 @@ class WP_Upgrader {
 	 *
 	 * @since 2.8.0
 	 *
+<<<<<<< HEAD
 	 * @global WP_Filesystem_Base $wp_filesystem WordPress filesystem subclass.
+=======
+	 * @global WP_Filesystem_Base $wp_filesystem Subclass
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @param bool $enable True to enable maintenance mode, false to disable.
 	 */
@@ -947,6 +993,10 @@ class WP_Upgrader {
 	public static function release_lock( $lock_name ) {
 		return delete_option( $lock_name . '.lock' );
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 /** Plugin_Upgrader class */

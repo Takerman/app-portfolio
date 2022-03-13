@@ -78,6 +78,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		color: #fff;
 	}
 
+<<<<<<< HEAD
 	.ai1wm-menu-count {
 		display: inline-block;
 		vertical-align: top;
@@ -95,6 +96,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 		z-index: 26;
 	}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	<?php if ( version_compare( $version, '3.8', '<' ) ) : ?>
 	.toplevel_page_ai1wm_export > div.wp-menu-image {
 		background: none !important;

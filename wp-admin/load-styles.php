@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 /*
  * Disable error reporting.
  *
@@ -8,6 +9,16 @@
 error_reporting( 0 );
 
 // Set ABSPATH for execution.
+=======
+/**
+ * Disable error reporting
+ *
+ * Set this to error_reporting( -1 ) for debugging
+ */
+error_reporting( 0 );
+
+/** Set ABSPATH for execution */
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', dirname( __DIR__ ) . '/' );
 }
@@ -18,12 +29,19 @@ define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
 require ABSPATH . 'wp-admin/includes/noop.php';
 require ABSPATH . WPINC . '/theme.php';
 require ABSPATH . WPINC . '/class-wp-theme-json-resolver.php';
+<<<<<<< HEAD
 require ABSPATH . WPINC . '/global-styles-and-settings.php';
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 require ABSPATH . WPINC . '/script-loader.php';
 require ABSPATH . WPINC . '/version.php';
 
 $protocol = $_SERVER['SERVER_PROTOCOL'];
+<<<<<<< HEAD
 if ( ! in_array( $protocol, array( 'HTTP/1.1', 'HTTP/2', 'HTTP/2.0', 'HTTP/3' ), true ) ) {
+=======
+if ( ! in_array( $protocol, array( 'HTTP/1.1', 'HTTP/2', 'HTTP/2.0' ), true ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$protocol = 'HTTP/1.0';
 }
 

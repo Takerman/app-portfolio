@@ -200,6 +200,7 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 	 * Prepares a taxonomy object for serialization.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$taxonomy` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param WP_Taxonomy     $item    Taxonomy data.
@@ -210,6 +211,15 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 		// Restores the more descriptive, specific name for use within this method.
 		$taxonomy = $item;
 		$base     = ! empty( $taxonomy->rest_base ) ? $taxonomy->rest_base : $taxonomy->name;
+=======
+	 *
+	 * @param WP_Taxonomy     $taxonomy Taxonomy data.
+	 * @param WP_REST_Request $request  Full details about the request.
+	 * @return WP_REST_Response Response object.
+	 */
+	public function prepare_item_for_response( $taxonomy, $request ) {
+		$base = ! empty( $taxonomy->rest_base ) ? $taxonomy->rest_base : $taxonomy->name;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		$fields = $this->get_fields_for_response( $request );
 		$data   = array();
@@ -250,10 +260,13 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 			$data['rest_base'] = $base;
 		}
 
+<<<<<<< HEAD
 		if ( in_array( 'rest_namespace', $fields, true ) ) {
 			$data['rest_namespace'] = $taxonomy->rest_namespace;
 		}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( in_array( 'visibility', $fields, true ) ) {
 			$data['visibility'] = array(
 				'public'             => (bool) $taxonomy->public,
@@ -278,7 +291,11 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 					'href' => rest_url( sprintf( '%s/%s', $this->namespace, $this->rest_base ) ),
 				),
 				'https://api.w.org/items' => array(
+<<<<<<< HEAD
 					'href' => rest_url( rest_get_route_for_taxonomy_items( $taxonomy->name ) ),
+=======
+					'href' => rest_url( sprintf( 'wp/v2/%s', $base ) ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				),
 			)
 		);
@@ -301,8 +318,11 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 	 * Retrieves the taxonomy's schema, conforming to JSON Schema.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @since 5.0.0 The `visibility` property was added.
 	 * @since 5.9.0 The `rest_namespace` property was added.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * @return array Item schema data.
 	 */
@@ -316,49 +336,81 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 			'title'      => 'taxonomy',
 			'type'       => 'object',
 			'properties' => array(
+<<<<<<< HEAD
 				'capabilities'   => array(
+=======
+				'capabilities' => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'All capabilities used by the taxonomy.' ),
 					'type'        => 'object',
 					'context'     => array( 'edit' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'description'    => array(
+=======
+				'description'  => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'A human-readable description of the taxonomy.' ),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'hierarchical'   => array(
+=======
+				'hierarchical' => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'Whether or not the taxonomy should have children.' ),
 					'type'        => 'boolean',
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'labels'         => array(
+=======
+				'labels'       => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'Human-readable labels for the taxonomy for various contexts.' ),
 					'type'        => 'object',
 					'context'     => array( 'edit' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'name'           => array(
+=======
+				'name'         => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'The title for the taxonomy.' ),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit', 'embed' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'slug'           => array(
+=======
+				'slug'         => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'An alphanumeric identifier for the taxonomy.' ),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit', 'embed' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'show_cloud'     => array(
+=======
+				'show_cloud'   => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'Whether or not the term cloud should be displayed.' ),
 					'type'        => 'boolean',
 					'context'     => array( 'edit' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'types'          => array(
+=======
+				'types'        => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'Types associated with the taxonomy.' ),
 					'type'        => 'array',
 					'items'       => array(
@@ -367,12 +419,17 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 					'context'     => array( 'view', 'edit' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'rest_base'      => array(
+=======
+				'rest_base'    => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'REST base route for the taxonomy.' ),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit', 'embed' ),
 					'readonly'    => true,
 				),
+<<<<<<< HEAD
 				'rest_namespace' => array(
 					'description' => __( 'REST namespace route for the taxonomy.' ),
 					'type'        => 'string',
@@ -380,6 +437,9 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 					'readonly'    => true,
 				),
 				'visibility'     => array(
+=======
+				'visibility'   => array(
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'description' => __( 'The visibility settings for the taxonomy.' ),
 					'type'        => 'object',
 					'context'     => array( 'edit' ),

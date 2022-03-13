@@ -30,6 +30,7 @@ function wp_register_layout_support( $block_type ) {
 }
 
 /**
+<<<<<<< HEAD
  * Generates the CSS corresponding to the provided layout.
  *
  * @since 5.9.0
@@ -130,18 +131,27 @@ function wp_get_layout_style( $selector, $layout, $has_block_gap_support = false
 }
 
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Renders the layout config to the block wrapper.
  *
  * @since 5.8.0
  * @access private
  *
+<<<<<<< HEAD
  * @param string $block_content Rendered block content.
  * @param array  $block         Block object.
  * @return string Filtered block content.
+=======
+ * @param  string $block_content Rendered block content.
+ * @param  array  $block         Block object.
+ * @return string                Filtered block content.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function wp_render_layout_support_flag( $block_content, $block ) {
 	$block_type     = WP_Block_Type_Registry::get_instance()->get_registered( $block['blockName'] );
 	$support_layout = block_has_support( $block_type, array( '__experimentalLayout' ), false );
+<<<<<<< HEAD
 
 	if ( ! $support_layout ) {
 		return $block_content;
@@ -153,12 +163,23 @@ function wp_render_layout_support_flag( $block_content, $block ) {
 	$default_block_layout  = _wp_array_get( $block_type->supports, array( '__experimentalLayout', 'default' ), array() );
 	$used_layout           = isset( $block['attrs']['layout'] ) ? $block['attrs']['layout'] : $default_block_layout;
 	if ( isset( $used_layout['inherit'] ) && $used_layout['inherit'] ) {
+=======
+	if ( ! $support_layout || ! isset( $block['attrs']['layout'] ) ) {
+		return $block_content;
+	}
+
+	$used_layout = $block['attrs']['layout'];
+	if ( isset( $used_layout['inherit'] ) && $used_layout['inherit'] ) {
+		$tree           = WP_Theme_JSON_Resolver::get_merged_data();
+		$default_layout = _wp_array_get( $tree->get_settings(), array( 'layout' ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( ! $default_layout ) {
 			return $block_content;
 		}
 		$used_layout = $default_layout;
 	}
 
+<<<<<<< HEAD
 	$id        = uniqid();
 	$gap_value = _wp_array_get( $block, array( 'attrs', 'style', 'spacing', 'blockGap' ) );
 	// Skip if gap value contains unsupported characters.
@@ -166,6 +187,35 @@ function wp_render_layout_support_flag( $block_content, $block ) {
 	// because we only want to match against the value, not the CSS attribute.
 	$gap_value = preg_match( '%[\\\(&=}]|/\*%', $gap_value ) ? null : $gap_value;
 	$style     = wp_get_layout_style( ".wp-container-$id", $used_layout, $has_block_gap_support, $gap_value );
+=======
+	$id           = uniqid();
+	$content_size = isset( $used_layout['contentSize'] ) ? $used_layout['contentSize'] : null;
+	$wide_size    = isset( $used_layout['wideSize'] ) ? $used_layout['wideSize'] : null;
+
+	$all_max_width_value  = $content_size ? $content_size : $wide_size;
+	$wide_max_width_value = $wide_size ? $wide_size : $content_size;
+
+	// Make sure there is a single CSS rule, and all tags are stripped for security.
+	$all_max_width_value  = safecss_filter_attr( explode( ';', $all_max_width_value )[0] );
+	$wide_max_width_value = safecss_filter_attr( explode( ';', $wide_max_width_value )[0] );
+
+	$style = '';
+	if ( $content_size || $wide_size ) {
+		$style  = ".wp-container-$id > * {";
+		$style .= 'max-width: ' . esc_html( $all_max_width_value ) . ';';
+		$style .= 'margin-left: auto !important;';
+		$style .= 'margin-right: auto !important;';
+		$style .= '}';
+
+		$style .= ".wp-container-$id > .alignwide { max-width: " . esc_html( $wide_max_width_value ) . ';}';
+
+		$style .= ".wp-container-$id .alignfull { max-width: none; }";
+	}
+
+	$style .= ".wp-container-$id .alignleft { float: left; margin-right: 2em; }";
+	$style .= ".wp-container-$id .alignright { float: right; margin-left: 2em; }";
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	// This assumes the hook only applies to blocks with a single wrapper.
 	// I think this is a reasonable limitation for that particular hook.
 	$content = preg_replace(
@@ -175,9 +225,13 @@ function wp_render_layout_support_flag( $block_content, $block ) {
 		1
 	);
 
+<<<<<<< HEAD
 	wp_enqueue_block_support_styles( $style );
 
 	return $content;
+=======
+	return $content . '<style>' . $style . '</style>';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 // Register the block support.
@@ -199,6 +253,7 @@ add_filter( 'render_block', 'wp_render_layout_support_flag', 10, 2 );
  *
  * @param string $block_content Rendered block content.
  * @param array  $block         Block object.
+<<<<<<< HEAD
  * @return string Filtered block content.
  */
 function wp_restore_group_inner_container( $block_content, $block ) {
@@ -207,16 +262,28 @@ function wp_restore_group_inner_container( $block_content, $block ) {
 		'/(^\s*<%1$s\b[^>]*wp-block-group(\s|")[^>]*>)(\s*<div\b[^>]*wp-block-group__inner-container(\s|")[^>]*>)((.|\S|\s)*)/U',
 		preg_quote( $tag_name, '/' )
 	);
+=======
+ *
+ * @return string Filtered block content.
+ */
+function wp_restore_group_inner_container( $block_content, $block ) {
+	$group_with_inner_container_regex = '/(^\s*<div\b[^>]*wp-block-group(\s|")[^>]*>)(\s*<div\b[^>]*wp-block-group__inner-container(\s|")[^>]*>)((.|\S|\s)*)/';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	if (
 		'core/group' !== $block['blockName'] ||
 		WP_Theme_JSON_Resolver::theme_has_support() ||
+<<<<<<< HEAD
 		1 === preg_match( $group_with_inner_container_regex, $block_content ) ||
 		( isset( $block['attrs']['layout']['type'] ) && 'default' !== $block['attrs']['layout']['type'] )
+=======
+		1 === preg_match( $group_with_inner_container_regex, $block_content )
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	) {
 		return $block_content;
 	}
 
+<<<<<<< HEAD
 	$replace_regex   = sprintf(
 		'/(^\s*<%1$s\b[^>]*wp-block-group[^>]*>)(.*)(<\/%1$s>\s*$)/ms',
 		preg_quote( $tag_name, '/' )
@@ -224,6 +291,12 @@ function wp_restore_group_inner_container( $block_content, $block ) {
 	$updated_content = preg_replace_callback(
 		$replace_regex,
 		static function( $matches ) {
+=======
+	$replace_regex   = '/(^\s*<div\b[^>]*wp-block-group[^>]*>)(.*)(<\/div>\s*$)/ms';
+	$updated_content = preg_replace_callback(
+		$replace_regex,
+		function( $matches ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return $matches[1] . '<div class="wp-block-group__inner-container">' . $matches[2] . '</div>' . $matches[3];
 		},
 		$block_content

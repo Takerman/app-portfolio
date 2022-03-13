@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * hoverIntent v1.10.2 // 2020.04.28 // jQuery v1.7.0+
+=======
+ * hoverIntent v1.10.1 // 2019.10.05 // jQuery v1.7.0+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * http://briancherne.github.io/jquery-hoverIntent/
  *
  * You may use hoverIntent under the terms of the MIT license. Basically that
@@ -92,11 +96,14 @@
         return out.apply($el[0],[ev]);
     };
 
+<<<<<<< HEAD
     // checks if `value` is a function
     var isFunction = function(value) {
         return typeof value === 'function';
     };
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     $.fn.hoverIntent = function(handlerIn,handlerOut,selector) {
         // instance ID, used as a key to store and retrieve state information on an element
         var instanceId = INSTANCE_COUNT++;
@@ -105,10 +112,17 @@
         var cfg = $.extend({}, _cfg);
         if ( $.isPlainObject(handlerIn) ) {
             cfg = $.extend(cfg, handlerIn);
+<<<<<<< HEAD
             if ( !isFunction(cfg.out) ) {
                 cfg.out = cfg.over;
             }
         } else if ( isFunction(handlerOut) ) {
+=======
+            if ( !$.isFunction(cfg.out) ) {
+                cfg.out = cfg.over;
+            }
+        } else if ( $.isFunction(handlerOut) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
             cfg = $.extend(cfg, { over: handlerIn, out: handlerOut, selector: selector } );
         } else {
             cfg = $.extend(cfg, { over: handlerIn, out: handlerIn, selector: handlerOut } );

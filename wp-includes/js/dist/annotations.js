@@ -150,6 +150,7 @@ const ANNOTATION_ATTRIBUTE_PREFIX = 'annotation-text-';
 /**
  * Applies given annotations to the given record.
  *
+<<<<<<< HEAD
  * @param {Object} record      The record to apply annotations to.
  * @param {Array}  annotations The annotation to apply.
  * @return {Object} A record with the annotations applied.
@@ -157,6 +158,14 @@ const ANNOTATION_ATTRIBUTE_PREFIX = 'annotation-text-';
 
 function applyAnnotations(record) {
   let annotations = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+=======
+ * @param {Object} record The record to apply annotations to.
+ * @param {Array} annotations The annotation to apply.
+ * @return {Object} A record with the annotations applied.
+ */
+
+function applyAnnotations(record, annotations = []) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   annotations.forEach(annotation => {
     let {
       start,
@@ -236,11 +245,18 @@ function retrieveAnnotationPositions(formats) {
  */
 
 
+<<<<<<< HEAD
 function updateAnnotationsWithPositions(annotations, positions, _ref) {
   let {
     removeAnnotation,
     updateAnnotationRange
   } = _ref;
+=======
+function updateAnnotationsWithPositions(annotations, positions, {
+  removeAnnotation,
+  updateAnnotationRange
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   annotations.forEach(currentAnnotation => {
     const position = positions[currentAnnotation.id]; // If we cannot find an annotation, delete it.
 
@@ -276,20 +292,33 @@ const annotation_annotation = {
     return null;
   },
 
+<<<<<<< HEAD
   __experimentalGetPropsForEditableTreePreparation(select, _ref2) {
     let {
       richTextIdentifier,
       blockClientId
     } = _ref2;
+=======
+  __experimentalGetPropsForEditableTreePreparation(select, {
+    richTextIdentifier,
+    blockClientId
+  }) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return {
       annotations: select(STORE_NAME).__experimentalGetAnnotationsForRichText(blockClientId, richTextIdentifier)
     };
   },
 
+<<<<<<< HEAD
   __experimentalCreatePrepareEditableTree(_ref3) {
     let {
       annotations
     } = _ref3;
+=======
+  __experimentalCreatePrepareEditableTree({
+    annotations
+  }) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return (formats, text) => {
       if (annotations.length === 0) {
         return formats;
@@ -369,12 +398,19 @@ var external_wp_data_ = __webpack_require__("1ZqX");
  */
 
 const addAnnotationClassName = OriginalComponent => {
+<<<<<<< HEAD
   return Object(external_wp_data_["withSelect"])((select, _ref) => {
     let {
       clientId,
       className
     } = _ref;
 
+=======
+  return Object(external_wp_data_["withSelect"])((select, {
+    clientId,
+    className
+  }) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     const annotations = select(STORE_NAME).__experimentalGetAnnotationsForBlock(clientId);
 
     return {
@@ -430,12 +466,18 @@ function isValidAnnotationRange(annotation) {
  */
 
 
+<<<<<<< HEAD
 function reducer_annotations() {
   var _state$blockClientId;
 
   let state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   let action = arguments.length > 1 ? arguments[1] : undefined;
 
+=======
+function reducer_annotations(state = {}, action) {
+  var _state$blockClientId;
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   switch (action.type) {
     case 'ANNOTATION_ADD':
       const blockClientId = action.blockClientId;
@@ -518,7 +560,11 @@ const EMPTY_ARRAY = [];
 /**
  * Returns the annotations for a specific client ID.
  *
+<<<<<<< HEAD
  * @param {Object} state    Editor state.
+=======
+ * @param {Object} state Editor state.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @param {string} clientId The ID of the block to get the annotations for.
  *
  * @return {Array} The annotations applicable to this block.
@@ -621,6 +667,7 @@ var v4 = __webpack_require__("7Cbv");
  * @return {Object} Action object.
  */
 
+<<<<<<< HEAD
 function __experimentalAddAnnotation(_ref) {
   let {
     blockClientId,
@@ -630,6 +677,16 @@ function __experimentalAddAnnotation(_ref) {
     source = 'default',
     id = Object(v4["a" /* default */])()
   } = _ref;
+=======
+function __experimentalAddAnnotation({
+  blockClientId,
+  richTextIdentifier = null,
+  range = null,
+  selector = 'range',
+  source = 'default',
+  id = Object(v4["a" /* default */])()
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const action = {
     type: 'ANNOTATION_ADD',
     id,
@@ -663,8 +720,13 @@ function __experimentalRemoveAnnotation(annotationId) {
  * Updates the range of an annotation.
  *
  * @param {string} annotationId ID of the annotation to update.
+<<<<<<< HEAD
  * @param {number} start        The start of the new range.
  * @param {number} end          The end of the new range.
+=======
+ * @param {number} start The start of the new range.
+ * @param {number} end The end of the new range.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {Object} Action object.
  */

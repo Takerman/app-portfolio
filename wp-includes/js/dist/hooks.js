@@ -120,10 +120,17 @@ __webpack_require__.d(__webpack_exports__, "filters", function() { return /* bin
 /**
  * Validate a namespace string.
  *
+<<<<<<< HEAD
  * @param {string} namespace The namespace to validate - should take the form
  *                           `vendor/plugin/function`.
  *
  * @return {boolean} Whether the namespace is valid.
+=======
+ * @param  {string} namespace The namespace to validate - should take the form
+ *                            `vendor/plugin/function`.
+ *
+ * @return {boolean}             Whether the namespace is valid.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function validateNamespace(namespace) {
   if ('string' !== typeof namespace || '' === namespace) {
@@ -147,11 +154,19 @@ function validateNamespace(namespace) {
 /**
  * Validate a hookName string.
  *
+<<<<<<< HEAD
  * @param {string} hookName The hook name to validate. Should be a non empty string containing
  *                          only numbers, letters, dashes, periods and underscores. Also,
  *                          the hook name cannot begin with `__`.
  *
  * @return {boolean} Whether the hook name is valid.
+=======
+ * @param  {string} hookName The hook name to validate. Should be a non empty string containing
+ *                           only numbers, letters, dashes, periods and underscores. Also,
+ *                           the hook name cannot begin with `__`.
+ *
+ * @return {boolean}            Whether the hook name is valid.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function validateHookName(hookName) {
   if ('string' !== typeof hookName || '' === hookName) {
@@ -188,24 +203,40 @@ function validateHookName(hookName) {
  *
  * Adds the hook to the appropriate hooks container.
  *
+<<<<<<< HEAD
  * @param {string}               hookName      Name of hook to add
  * @param {string}               namespace     The unique namespace identifying the callback in the form `vendor/plugin/function`.
  * @param {import('.').Callback} callback      Function to call when the hook is run
  * @param {number}               [priority=10] Priority of this hook
+=======
+ * @param {string}               hookName  Name of hook to add
+ * @param {string}               namespace The unique namespace identifying the callback in the form `vendor/plugin/function`.
+ * @param {import('.').Callback} callback  Function to call when the hook is run
+ * @param {number}               [priority=10]  Priority of this hook
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 /**
  * Returns a function which, when invoked, will add a hook.
  *
+<<<<<<< HEAD
  * @param {import('.').Hooks}    hooks    Hooks instance.
  * @param {import('.').StoreKey} storeKey
+=======
+ * @param  {import('.').Hooks}    hooks Hooks instance.
+ * @param  {import('.').StoreKey} storeKey
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {AddHook} Function that adds a new hook.
  */
 
 function createAddHook(hooks, storeKey) {
+<<<<<<< HEAD
   return function addHook(hookName, namespace, callback) {
     let priority = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 10;
+=======
+  return function addHook(hookName, namespace, callback, priority = 10) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     const hooksStore = hooks[storeKey];
 
     if (!build_module_validateHookName(hookName)) {
@@ -303,17 +334,29 @@ function createAddHook(hooks, storeKey) {
  * Returns a function which, when invoked, will remove a specified hook or all
  * hooks by the given name.
  *
+<<<<<<< HEAD
  * @param {import('.').Hooks}    hooks             Hooks instance.
  * @param {import('.').StoreKey} storeKey
  * @param {boolean}              [removeAll=false] Whether to remove all callbacks for a hookName,
  *                                                 without regard to namespace. Used to create
  *                                                 `removeAll*` functions.
+=======
+ * @param  {import('.').Hooks}    hooks Hooks instance.
+ * @param  {import('.').StoreKey} storeKey
+ * @param  {boolean}              [removeAll=false] Whether to remove all callbacks for a hookName,
+ *                                                  without regard to namespace. Used to create
+ *                                                  `removeAll*` functions.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {RemoveHook} Function that removes hooks.
  */
 
+<<<<<<< HEAD
 function createRemoveHook(hooks, storeKey) {
   let removeAll = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+=======
+function createRemoveHook(hooks, storeKey, removeAll = false) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   return function removeHook(hookName, namespace) {
     const hooksStore = hooks[storeKey];
 
@@ -387,8 +430,13 @@ function createRemoveHook(hooks, storeKey) {
  * Returns a function which, when invoked, will return whether any handlers are
  * attached to a particular hook.
  *
+<<<<<<< HEAD
  * @param {import('.').Hooks}    hooks    Hooks instance.
  * @param {import('.').StoreKey} storeKey
+=======
+ * @param  {import('.').Hooks}    hooks Hooks instance.
+ * @param  {import('.').StoreKey} storeKey
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {HasHook} Function that returns whether any handlers are
  *                   attached to a particular hook and optional namespace.
@@ -413,6 +461,7 @@ function createHasHook(hooks, storeKey) {
  * registered to a hook of the specified type, optionally returning the final
  * value of the call chain.
  *
+<<<<<<< HEAD
  * @param {import('.').Hooks}    hooks                  Hooks instance.
  * @param {import('.').StoreKey} storeKey
  * @param {boolean}              [returnFirstArg=false] Whether each hook callback is expected to
@@ -423,6 +472,17 @@ function createHasHook(hooks, storeKey) {
 function createRunHook(hooks, storeKey) {
   let returnFirstArg = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
   return function runHooks(hookName) {
+=======
+ * @param  {import('.').Hooks}    hooks Hooks instance.
+ * @param  {import('.').StoreKey} storeKey
+ * @param  {boolean}              [returnFirstArg=false] Whether each hook callback is expected to
+ *                                                       return its first argument.
+ *
+ * @return {(hookName:string, ...args: unknown[]) => unknown} Function that runs hook callbacks.
+ */
+function createRunHook(hooks, storeKey, returnFirstArg = false) {
+  return function runHooks(hookName, ...args) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     const hooksStore = hooks[storeKey];
 
     if (!hooksStore[hookName]) {
@@ -437,10 +497,13 @@ function createRunHook(hooks, storeKey) {
 
     if (false) {}
 
+<<<<<<< HEAD
     for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       args[_key - 1] = arguments[_key];
     }
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     if (!handlers || !handlers.length) {
       return returnFirstArg ? args[0] : undefined;
     }
@@ -479,8 +542,13 @@ function createRunHook(hooks, storeKey) {
  * currently running hook, or `null` if no hook of the given type is currently
  * running.
  *
+<<<<<<< HEAD
  * @param {import('.').Hooks}    hooks    Hooks instance.
  * @param {import('.').StoreKey} storeKey
+=======
+ * @param  {import('.').Hooks}    hooks Hooks instance.
+ * @param  {import('.').StoreKey} storeKey
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {() => string | null} Function that returns the current hook name or null.
  */
@@ -500,8 +568,13 @@ function createCurrentHook(hooks, storeKey) {
  * @callback DoingHook
  * Returns whether a hook is currently being executed.
  *
+<<<<<<< HEAD
  * @param {string} [hookName] The name of the hook to check for.  If
  *                            omitted, will check for any hook being executed.
+=======
+ * @param  {string} [hookName] The name of the hook to check for.  If
+ *                             omitted, will check for any hook being executed.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {boolean} Whether the hook is being executed.
  */
@@ -510,8 +583,13 @@ function createCurrentHook(hooks, storeKey) {
  * Returns a function which, when invoked, will return whether a hook is
  * currently being executed.
  *
+<<<<<<< HEAD
  * @param {import('.').Hooks}    hooks    Hooks instance.
  * @param {import('.').StoreKey} storeKey
+=======
+ * @param  {import('.').Hooks}    hooks Hooks instance.
+ * @param  {import('.').StoreKey} storeKey
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {DoingHook} Function that returns whether a hook is currently
  *                     being executed.
@@ -541,7 +619,11 @@ function createDoingHook(hooks, storeKey) {
  *
  * Returns the number of times an action has been fired.
  *
+<<<<<<< HEAD
  * @param {string} hookName The hook name to check.
+=======
+ * @param  {string} hookName The hook name to check.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {number | undefined} The number of times the hook has run.
  */
@@ -550,8 +632,13 @@ function createDoingHook(hooks, storeKey) {
  * Returns a function which, when invoked, will return the number of times a
  * hook has been called.
  *
+<<<<<<< HEAD
  * @param {import('.').Hooks}    hooks    Hooks instance.
  * @param {import('.').StoreKey} storeKey
+=======
+ * @param  {import('.').Hooks}    hooks Hooks instance.
+ * @param  {import('.').StoreKey} storeKey
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {DidHook} Function that returns a hook's call count.
  */

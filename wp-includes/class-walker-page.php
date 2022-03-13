@@ -93,6 +93,7 @@ class Walker_Page extends Walker {
 	 *
 	 * @see Walker::start_el()
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$page` to `$data_object` and `$current_page` to `$current_object_id`
 	 *              to match parent class for PHP 8 named parameter support.
 	 *
@@ -107,6 +108,16 @@ class Walker_Page extends Walker {
 		$page            = $data_object;
 		$current_page_id = $current_object_id;
 
+=======
+	 *
+	 * @param string  $output       Used to append additional content. Passed by reference.
+	 * @param WP_Post $page         Page data object.
+	 * @param int     $depth        Optional. Depth of page. Used for padding. Default 0.
+	 * @param array   $args         Optional. Array of arguments. Default empty array.
+	 * @param int     $current_page Optional. Page ID. Default 0.
+	 */
+	public function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( isset( $args['item_spacing'] ) && 'preserve' === $args['item_spacing'] ) {
 			$t = "\t";
 			$n = "\n";
@@ -126,14 +137,23 @@ class Walker_Page extends Walker {
 			$css_class[] = 'page_item_has_children';
 		}
 
+<<<<<<< HEAD
 		if ( ! empty( $current_page_id ) ) {
 			$_current_page = get_post( $current_page_id );
+=======
+		if ( ! empty( $current_page ) ) {
+			$_current_page = get_post( $current_page );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 			if ( $_current_page && in_array( $page->ID, $_current_page->ancestors, true ) ) {
 				$css_class[] = 'current_page_ancestor';
 			}
 
+<<<<<<< HEAD
 			if ( $page->ID == $current_page_id ) {
+=======
+			if ( $page->ID == $current_page ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				$css_class[] = 'current_page_item';
 			} elseif ( $_current_page && $page->ID === $_current_page->post_parent ) {
 				$css_class[] = 'current_page_parent';
@@ -149,6 +169,7 @@ class Walker_Page extends Walker {
 		 *
 		 * @see wp_list_pages()
 		 *
+<<<<<<< HEAD
 		 * @param string[] $css_class       An array of CSS classes to be applied to each list item.
 		 * @param WP_Post  $page            Page data object.
 		 * @param int      $depth           Depth of page, used for padding.
@@ -156,6 +177,15 @@ class Walker_Page extends Walker {
 		 * @param int      $current_page_id ID of the current page.
 		 */
 		$css_classes = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page_id ) );
+=======
+		 * @param string[] $css_class    An array of CSS classes to be applied to each list item.
+		 * @param WP_Post  $page         Page data object.
+		 * @param int      $depth        Depth of page, used for padding.
+		 * @param array    $args         An array of arguments.
+		 * @param int      $current_page ID of the current page.
+		 */
+		$css_classes = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$css_classes = $css_classes ? ' class="' . esc_attr( $css_classes ) . '"' : '';
 
 		if ( '' === $page->post_title ) {
@@ -168,7 +198,11 @@ class Walker_Page extends Walker {
 
 		$atts                 = array();
 		$atts['href']         = get_permalink( $page->ID );
+<<<<<<< HEAD
 		$atts['aria-current'] = ( $page->ID == $current_page_id ) ? 'page' : '';
+=======
+		$atts['aria-current'] = ( $page->ID == $current_page ) ? 'page' : '';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		/**
 		 * Filters the HTML attributes applied to a page menu item's anchor element.
@@ -181,12 +215,21 @@ class Walker_Page extends Walker {
 		 *     @type string $href         The href attribute.
 		 *     @type string $aria-current The aria-current attribute.
 		 * }
+<<<<<<< HEAD
 		 * @param WP_Post $page            Page data object.
 		 * @param int     $depth           Depth of page, used for padding.
 		 * @param array   $args            An array of arguments.
 		 * @param int     $current_page_id ID of the current page.
 		 */
 		$atts = apply_filters( 'page_menu_link_attributes', $atts, $page, $depth, $args, $current_page_id );
+=======
+		 * @param WP_Post $page         Page data object.
+		 * @param int     $depth        Depth of page, used for padding.
+		 * @param array   $args         An array of arguments.
+		 * @param int     $current_page ID of the current page.
+		 */
+		$atts = apply_filters( 'page_menu_link_attributes', $atts, $page, $depth, $args, $current_page );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		$attributes = '';
 		foreach ( $atts as $attr => $value ) {
@@ -222,6 +265,7 @@ class Walker_Page extends Walker {
 	 * Outputs the end of the current element in the tree.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$page` to `$data_object` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @see Walker::end_el()
@@ -232,6 +276,17 @@ class Walker_Page extends Walker {
 	 * @param array   $args        Optional. Array of arguments. Default empty array.
 	 */
 	public function end_el( &$output, $data_object, $depth = 0, $args = array() ) {
+=======
+	 *
+	 * @see Walker::end_el()
+	 *
+	 * @param string  $output Used to append additional content. Passed by reference.
+	 * @param WP_Post $page   Page data object. Not used.
+	 * @param int     $depth  Optional. Depth of page. Default 0 (unused).
+	 * @param array   $args   Optional. Array of arguments. Default empty array.
+	 */
+	public function end_el( &$output, $page, $depth = 0, $args = array() ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( isset( $args['item_spacing'] ) && 'preserve' === $args['item_spacing'] ) {
 			$t = "\t";
 			$n = "\n";

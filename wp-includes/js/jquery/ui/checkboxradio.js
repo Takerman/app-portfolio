@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * jQuery UI Checkboxradio 1.13.1
+=======
+ * jQuery UI Checkboxradio 1.12.1
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -18,8 +22,11 @@
 //>>css.theme: ../../themes/base/theme.css
 
 ( function( factory ) {
+<<<<<<< HEAD
 	"use strict";
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -32,11 +39,18 @@
 		// Browser globals
 		factory( jQuery );
 	}
+<<<<<<< HEAD
 } )( function( $ ) {
 "use strict";
 
 $.widget( "ui.checkboxradio", [ $.ui.formResetMixin, {
 	version: "1.13.1",
+=======
+}( function( $ ) {
+
+$.widget( "ui.checkboxradio", [ $.ui.formResetMixin, {
+	version: "1.12.1",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	options: {
 		disabled: null,
 		label: null,
@@ -115,6 +129,12 @@ $.widget( "ui.checkboxradio", [ $.ui.formResetMixin, {
 
 		if ( checked ) {
 			this._addClass( this.label, "ui-checkboxradio-checked", "ui-state-active" );
+<<<<<<< HEAD
+=======
+			if ( this.icon ) {
+				this._addClass( this.icon, null, "ui-state-hover" );
+			}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		this._on( {
@@ -149,7 +169,11 @@ $.widget( "ui.checkboxradio", [ $.ui.formResetMixin, {
 	_getRadioGroup: function() {
 		var group;
 		var name = this.element[ 0 ].name;
+<<<<<<< HEAD
 		var nameSelector = "input[name='" + $.escapeSelector( name ) + "']";
+=======
+		var nameSelector = "input[name='" + $.ui.escapeSelector( name ) + "']";
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		if ( !name ) {
 			return $( [] );
@@ -161,7 +185,11 @@ $.widget( "ui.checkboxradio", [ $.ui.formResetMixin, {
 
 			// Not inside a form, check all inputs that also are not inside a form
 			group = $( nameSelector ).filter( function() {
+<<<<<<< HEAD
 				return $( this )._form().length === 0;
+=======
+				return $( this ).form().length === 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			} );
 		}
 
@@ -280,4 +308,8 @@ $.widget( "ui.checkboxradio", [ $.ui.formResetMixin, {
 
 return $.ui.checkboxradio;
 
+<<<<<<< HEAD
 } );
+=======
+} ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

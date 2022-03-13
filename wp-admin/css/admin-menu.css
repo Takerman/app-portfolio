@@ -39,7 +39,11 @@
 .icon16 {
 	height: 18px;
 	width: 18px;
+<<<<<<< HEAD
 	padding: 6px;
+=======
+	padding: 6px 6px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	margin: -6px 0 0 -8px;
 	float: left;
 }
@@ -161,6 +165,10 @@
 #adminmenu li {
 	margin: 0;
 	padding: 0;
+<<<<<<< HEAD
+=======
+	cursor: pointer;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 #adminmenu a {
@@ -344,7 +352,11 @@
 }
 
 #adminmenu .wp-menu-image img {
+<<<<<<< HEAD
 	padding: 9px 0 0;
+=======
+	padding: 9px 0 0 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	opacity: 0.6;
 	filter: alpha(opacity=60);
 }
@@ -487,7 +499,11 @@ ul#adminmenu > li.current > a.current:after {
 #adminmenu li.wp-menu-separator {
 	height: 5px;
 	padding: 0;
+<<<<<<< HEAD
 	margin: 0 0 6px;
+=======
+	margin: 0 0 6px 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	cursor: inherit;
 }
 
@@ -502,7 +518,11 @@ ul#adminmenu > li.current > a.current:after {
 	font-weight: 400;
 	font-size: 14px;
 	padding: 5px 4px 5px 11px;
+<<<<<<< HEAD
 	margin: -7px 0 4px -5px;
+=======
+	margin: -7px 0px 4px -5px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	border-width: 3px 0 3px 5px;
 	border-style: solid;
 	border-color: transparent;
@@ -653,7 +673,11 @@ li#wp-admin-bar-menu-toggle {
 	.auto-fold #adminmenu .wp-has-current-submenu.opensub .wp-submenu,
 	.auto-fold #adminmenu a.menu-top:focus + .wp-submenu,
 	.auto-fold #adminmenu .wp-has-current-submenu a.menu-top:focus + .wp-submenu {
+<<<<<<< HEAD
 		top: 0;
+=======
+		top: 0px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		left: 36px;
 	}
 

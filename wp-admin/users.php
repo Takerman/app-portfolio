@@ -20,10 +20,15 @@ if ( ! current_user_can( 'list_users' ) ) {
 
 $wp_list_table = _get_list_table( 'WP_Users_List_Table' );
 $pagenum       = $wp_list_table->get_pagenum();
+<<<<<<< HEAD
 
 // Used in the HTML title tag.
 $title       = __( 'Users' );
 $parent_file = 'users.php';
+=======
+$title         = __( 'Users' );
+$parent_file   = 'users.php';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 add_screen_option( 'per_page' );
 

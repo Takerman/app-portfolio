@@ -33,7 +33,11 @@ select {
 }
 
 textarea.code {
+<<<<<<< HEAD
 	padding: 4px 6px 1px;
+=======
+	padding: 4px 6px 1px 6px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 input[type="text"],
@@ -1000,8 +1004,13 @@ table.form-table td .updated p {
 
 .pressthis-bookmarklet span {
 	display: inline-block;
+<<<<<<< HEAD
 	margin: 0;
 	padding: 0 9px 8px 12px;
+=======
+	margin: 0px 0 0;
+	padding: 0px 9px 8px 12px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .pressthis-bookmarklet span:before {
@@ -1226,7 +1235,11 @@ table.form-table td .updated p {
 }
 
 .request-filesystem-credentials-form .notice {
+<<<<<<< HEAD
 	margin: 0 0 20px;
+=======
+	margin: 0 0 20px 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	clear: both;
 }
 
@@ -1237,12 +1250,18 @@ table.form-table td .updated p {
 	margin-bottom: 1.3em;
 }
 
+<<<<<<< HEAD
 .tools-privacy-policy-page input.button {
 	margin: 0 6px 0 1px;
 }
 
 .tools-privacy-policy-page select {
 	margin: 0 6px 0.5em 1px;
+=======
+.tools-privacy-policy-page input.button,
+.tools-privacy-policy-page select {
+	margin: 0 6px 0 1px;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .tools-privacy-edit {
@@ -1563,13 +1582,21 @@ table.form-table td .updated p {
 	}
 
 	.form-table th {
+<<<<<<< HEAD
 		padding: 10px 0 0;
+=======
+		padding: 10px 0 0 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		border-bottom: 0;
 	}
 
 	.form-table td {
 		margin-bottom: 0;
+<<<<<<< HEAD
 		padding: 4px 0 6px;
+=======
+		padding: 4px 0 6px 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	.form-table.permalink-structure td code {

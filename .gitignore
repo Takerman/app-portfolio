@@ -1,6 +1,24 @@
+<<<<<<< HEAD
 
 wp-content/upgrade/*
 wp-content/backup-db/*
 wp-content/cache/*
 wp-content/cache/supercache/*
 wp-content/w3tc-cache/*
+=======
+*.log
+# wp-config.php
+wp-content/advanced-cache.php
+# wp-content/backup-db/
+# wp-content/backups/
+wp-content/blogs.dir/
+wp-content/cache/
+wp-content/upgrade/
+# wp-content/uploads/
+wp-content/mu-plugins/
+wp-content/wp-cache-config.php
+# wp-content/plugins/
+/.htaccess
+.well-known/
+php_errorlog
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

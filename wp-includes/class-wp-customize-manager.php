@@ -161,7 +161,11 @@ final class WP_Customize_Manager {
 	 * Mapping of 'panel', 'section', 'control' to the ID which should be autofocused.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @var string[]
+=======
+	 * @var array
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	protected $autofocus = array();
 
@@ -346,7 +350,11 @@ final class WP_Customize_Manager {
 		 * @see WP_Customize_Manager::__construct()
 		 *
 		 * @param string[]             $components Array of core components to load.
+<<<<<<< HEAD
 		 * @param WP_Customize_Manager $manager    WP_Customize_Manager instance.
+=======
+		 * @param WP_Customize_Manager $this       WP_Customize_Manager instance.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$components = apply_filters( 'customize_loaded_components', $this->components, $this );
 
@@ -691,7 +699,11 @@ final class WP_Customize_Manager {
 		 *
 		 * @since 3.4.0
 		 *
+<<<<<<< HEAD
 		 * @param WP_Customize_Manager $manager WP_Customize_Manager instance.
+=======
+		 * @param WP_Customize_Manager $this WP_Customize_Manager instance.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		do_action( 'start_previewing_theme', $this );
 	}
@@ -729,7 +741,11 @@ final class WP_Customize_Manager {
 		 *
 		 * @since 3.4.0
 		 *
+<<<<<<< HEAD
 		 * @param WP_Customize_Manager $manager WP_Customize_Manager instance.
+=======
+		 * @param WP_Customize_Manager $this WP_Customize_Manager instance.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		do_action( 'stop_previewing_theme', $this );
 	}
@@ -928,7 +944,11 @@ final class WP_Customize_Manager {
 		 *
 		 * @since 3.4.0
 		 *
+<<<<<<< HEAD
 		 * @param WP_Customize_Manager $manager WP_Customize_Manager instance.
+=======
+		 * @param WP_Customize_Manager $this WP_Customize_Manager instance.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		do_action( 'customize_register', $this );
 
@@ -1185,7 +1205,11 @@ final class WP_Customize_Manager {
 	 *
 	 * @param array $starter_content Starter content. Defaults to `get_theme_starter_content()`.
 	 */
+<<<<<<< HEAD
 	public function import_theme_starter_content( $starter_content = array() ) {
+=======
+	function import_theme_starter_content( $starter_content = array() ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( empty( $starter_content ) ) {
 			$starter_content = get_theme_starter_content();
 		}
@@ -1859,8 +1883,13 @@ final class WP_Customize_Manager {
 		 *
 		 * @since 4.4.0
 		 *
+<<<<<<< HEAD
 		 * @param mixed                $value   Unsanitized setting post value.
 		 * @param WP_Customize_Manager $manager WP_Customize_Manager instance.
+=======
+		 * @param mixed                $value Unsanitized setting post value.
+		 * @param WP_Customize_Manager $this  WP_Customize_Manager instance.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		do_action( "customize_post_value_set_{$setting_id}", $value, $this );
 
@@ -1876,7 +1905,11 @@ final class WP_Customize_Manager {
 		 *
 		 * @param string               $setting_id Setting ID.
 		 * @param mixed                $value      Unsanitized setting post value.
+<<<<<<< HEAD
 		 * @param WP_Customize_Manager $manager    WP_Customize_Manager instance.
+=======
+		 * @param WP_Customize_Manager $this       WP_Customize_Manager instance.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		do_action( 'customize_post_value_set', $setting_id, $value, $this );
 	}
@@ -1937,7 +1970,11 @@ final class WP_Customize_Manager {
 		 *
 		 * @since 3.4.0
 		 *
+<<<<<<< HEAD
 		 * @param WP_Customize_Manager $manager WP_Customize_Manager instance.
+=======
+		 * @param WP_Customize_Manager $this WP_Customize_Manager instance.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		do_action( 'customize_preview_init', $this );
 	}
@@ -2592,7 +2629,11 @@ final class WP_Customize_Manager {
 		 *
 		 * @param array                $response Additional information passed back to the 'saved'
 		 *                                       event on `wp.customize`.
+<<<<<<< HEAD
 		 * @param WP_Customize_Manager $manager  WP_Customize_Manager instance.
+=======
+		 * @param WP_Customize_Manager $this     WP_Customize_Manager instance.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$response = apply_filters( 'customize_save_response', $response, $this );
 
@@ -2622,7 +2663,11 @@ final class WP_Customize_Manager {
 	 *
 	 * @return array|WP_Error Returns array on success and WP_Error with array data on error.
 	 */
+<<<<<<< HEAD
 	public function save_changeset_post( $args = array() ) {
+=======
+	function save_changeset_post( $args = array() ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		$args = array_merge(
 			array(
@@ -2760,7 +2805,11 @@ final class WP_Customize_Manager {
 		 *
 		 * @since 4.6.0
 		 *
+<<<<<<< HEAD
 		 * @param WP_Customize_Manager $manager WP_Customize_Manager instance.
+=======
+		 * @param WP_Customize_Manager $this WP_Customize_Manager instance.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		do_action( 'customize_save_validation_before', $this );
 
@@ -4688,7 +4737,11 @@ final class WP_Customize_Manager {
 
 			/*
 			 * If the return URL is a page added by a theme to the Appearance menu via add_submenu_page(),
+<<<<<<< HEAD
 			 * verify that it belongs to the active theme, otherwise fall back to the Themes screen.
+=======
+			 * verify that belongs to the active theme, otherwise fall back to the Themes screen.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			 */
 			if ( isset( $query_vars['page'] ) && ! isset( $_registered_pages[ "appearance_page_{$query_vars['page']}" ] ) ) {
 				$return_url = admin_url( 'themes.php' );
@@ -4720,7 +4773,11 @@ final class WP_Customize_Manager {
 	 *
 	 * @since 4.4.0
 	 *
+<<<<<<< HEAD
 	 * @return string[] {
+=======
+	 * @return array {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *     Mapping of 'panel', 'section', 'control' to the ID which should be autofocused.
 	 *
 	 *     @type string $control ID for control to be autofocused.
@@ -4754,9 +4811,15 @@ final class WP_Customize_Manager {
 		 *
 		 * @since 4.2.0
 		 *
+<<<<<<< HEAD
 		 * @param string[]             $nonces  Array of refreshed nonces for save and
 		 *                                      preview actions.
 		 * @param WP_Customize_Manager $manager WP_Customize_Manager instance.
+=======
+		 * @param string[]             $nonces Array of refreshed nonces for save and
+		 *                                     preview actions.
+		 * @param WP_Customize_Manager $this   WP_Customize_Manager instance.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$nonces = apply_filters( 'customize_refresh_nonces', $nonces, $this );
 
@@ -5808,11 +5871,18 @@ final class WP_Customize_Manager {
 		if ( 'installed' === $theme_action ) {
 
 			// Load all installed themes from wp_prepare_themes_for_js().
+<<<<<<< HEAD
 			$themes = array( 'themes' => array() );
 			foreach ( wp_prepare_themes_for_js() as $theme ) {
 				$theme['type']      = 'installed';
 				$theme['active']    = ( isset( $_POST['customized_theme'] ) && $_POST['customized_theme'] === $theme['id'] );
 				$themes['themes'][] = $theme;
+=======
+			$themes = array( 'themes' => wp_prepare_themes_for_js() );
+			foreach ( $themes['themes'] as &$theme ) {
+				$theme['type']   = 'installed';
+				$theme['active'] = ( isset( $_POST['customized_theme'] ) && $_POST['customized_theme'] === $theme['id'] );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			}
 		} elseif ( 'wporg' === $theme_action ) {
 
@@ -5924,7 +5994,11 @@ final class WP_Customize_Manager {
 		 * @see themes_api()
 		 * @see WP_Customize_Manager::__construct()
 		 *
+<<<<<<< HEAD
 		 * @param array|stdClass       $themes  Nested array or object of theme data.
+=======
+		 * @param array                $themes  Nested array of theme data.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 * @param array                $args    List of arguments, such as page, search term, and tags to query for.
 		 * @param WP_Customize_Manager $manager Instance of Customize manager.
 		 */

@@ -671,9 +671,20 @@ function ownKeys(object, enumerableOnly) {
 
   if (Object.getOwnPropertySymbols) {
     var symbols = Object.getOwnPropertySymbols(object);
+<<<<<<< HEAD
     enumerableOnly && (symbols = symbols.filter(function (sym) {
       return Object.getOwnPropertyDescriptor(object, sym).enumerable;
     })), keys.push.apply(keys, symbols);
+=======
+
+    if (enumerableOnly) {
+      symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    }
+
+    keys.push.apply(keys, symbols);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   }
 
   return keys;
@@ -681,12 +692,28 @@ function ownKeys(object, enumerableOnly) {
 
 function _objectSpread2(target) {
   for (var i = 1; i < arguments.length; i++) {
+<<<<<<< HEAD
     var source = null != arguments[i] ? arguments[i] : {};
     i % 2 ? ownKeys(Object(source), !0).forEach(function (key) {
       _defineProperty(target, key, source[key]);
     }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) {
       Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
     });
+=======
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   }
 
   return target;
@@ -1403,7 +1430,11 @@ var external_wp_reduxRoutine_default = /*#__PURE__*/__webpack_require__.n(extern
  * with a store.
  *
  * @param {Function} registrySelector Function receiving a registry `select`
+<<<<<<< HEAD
  *                                    function and returning a state selector.
+=======
+ * function and returning a state selector.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {Function} Registry selector that can be registered with a store.
  */
@@ -1411,9 +1442,13 @@ function createRegistrySelector(registrySelector) {
   // create a selector function that is bound to the registry referenced by `selector.registry`
   // and that has the same API as a regular selector. Binding it in such a way makes it
   // possible to call the selector directly from another selector.
+<<<<<<< HEAD
   const selector = function () {
     return registrySelector(selector.registry.select)(...arguments);
   };
+=======
+  const selector = (...args) => registrySelector(selector.registry.select)(...args);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   /**
    * Flag indicating that the selector is a registry selector that needs the correct registry
    * reference to be assigned to `selecto.registry` to make it work correctly.
@@ -1454,6 +1489,7 @@ function createRegistryControl(registryControl) {
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/data/build-module/controls.js
 /**
+<<<<<<< HEAD
  * External dependencies
  */
 
@@ -1464,6 +1500,11 @@ function createRegistryControl(registryControl) {
 
 /** @typedef {import('./types').WPDataStore} WPDataStore */
 
+=======
+ * Internal dependencies
+ */
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 const SELECT = '@@data/SELECT';
 const RESOLVE_SELECT = '@@data/RESOLVE_SELECT';
 const DISPATCH = '@@data/DISPATCH';
@@ -1473,9 +1514,15 @@ const DISPATCH = '@@data/DISPATCH';
  * Note: This control synchronously returns the current selector value, triggering the
  * resolution, but not waiting for it.
  *
+<<<<<<< HEAD
  * @param {string|WPDataStore} storeNameOrDefinition Unique namespace identifier for the store
  * @param {string}             selectorName          The name of the selector.
  * @param {Array}              args                  Arguments for the selector.
+=======
+ * @param {string} storeKey     The key for the store the selector belongs to.
+ * @param {string} selectorName The name of the selector.
+ * @param {Array}  args         Arguments for the selector.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @example
  * ```js
@@ -1491,6 +1538,7 @@ const DISPATCH = '@@data/DISPATCH';
  * @return {Object} The control descriptor.
  */
 
+<<<<<<< HEAD
 function controls_select(storeNameOrDefinition, selectorName) {
   for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
     args[_key - 2] = arguments[_key];
@@ -1499,6 +1547,12 @@ function controls_select(storeNameOrDefinition, selectorName) {
   return {
     type: SELECT,
     storeKey: Object(external_lodash_["isObject"])(storeNameOrDefinition) ? storeNameOrDefinition.name : storeNameOrDefinition,
+=======
+function controls_select(storeKey, selectorName, ...args) {
+  return {
+    type: SELECT,
+    storeKey,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     selectorName,
     args
   };
@@ -1510,9 +1564,15 @@ function controls_select(storeNameOrDefinition, selectorName) {
  * selectors that may have a resolver. In such case, it will return a `Promise` that resolves
  * after the selector finishes resolving, with the final result value.
  *
+<<<<<<< HEAD
  * @param {string|WPDataStore} storeNameOrDefinition Unique namespace identifier for the store
  * @param {string}             selectorName          The name of the selector
  * @param {Array}              args                  Arguments for the selector.
+=======
+ * @param {string} storeKey      The key for the store the selector belongs to
+ * @param {string} selectorName  The name of the selector
+ * @param {Array}  args          Arguments for the selector.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @example
  * ```js
@@ -1529,6 +1589,7 @@ function controls_select(storeNameOrDefinition, selectorName) {
  */
 
 
+<<<<<<< HEAD
 function controls_resolveSelect(storeNameOrDefinition, selectorName) {
   for (var _len2 = arguments.length, args = new Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
     args[_key2 - 2] = arguments[_key2];
@@ -1537,6 +1598,12 @@ function controls_resolveSelect(storeNameOrDefinition, selectorName) {
   return {
     type: RESOLVE_SELECT,
     storeKey: Object(external_lodash_["isObject"])(storeNameOrDefinition) ? storeNameOrDefinition.name : storeNameOrDefinition,
+=======
+function controls_resolveSelect(storeKey, selectorName, ...args) {
+  return {
+    type: RESOLVE_SELECT,
+    storeKey,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     selectorName,
     args
   };
@@ -1544,9 +1611,15 @@ function controls_resolveSelect(storeNameOrDefinition, selectorName) {
 /**
  * Dispatches a control action for triggering a registry dispatch.
  *
+<<<<<<< HEAD
  * @param {string|WPDataStore} storeNameOrDefinition Unique namespace identifier for the store
  * @param {string}             actionName            The name of the action to dispatch
  * @param {Array}              args                  Arguments for the dispatch action.
+=======
+ * @param {string} storeKey    The key for the store the action belongs to
+ * @param {string} actionName  The name of the action to dispatch
+ * @param {Array}  args        Arguments for the dispatch action.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @example
  * ```js
@@ -1563,6 +1636,7 @@ function controls_resolveSelect(storeNameOrDefinition, selectorName) {
  */
 
 
+<<<<<<< HEAD
 function controls_dispatch(storeNameOrDefinition, actionName) {
   for (var _len3 = arguments.length, args = new Array(_len3 > 2 ? _len3 - 2 : 0), _key3 = 2; _key3 < _len3; _key3++) {
     args[_key3 - 2] = arguments[_key3];
@@ -1571,6 +1645,12 @@ function controls_dispatch(storeNameOrDefinition, actionName) {
   return {
     type: DISPATCH,
     storeKey: Object(external_lodash_["isObject"])(storeNameOrDefinition) ? storeNameOrDefinition.name : storeNameOrDefinition,
+=======
+function controls_dispatch(storeKey, actionName, ...args) {
+  return {
+    type: DISPATCH,
+    storeKey,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     actionName,
     args
   };
@@ -1582,6 +1662,7 @@ const controls_controls = {
   dispatch: controls_dispatch
 };
 const builtinControls = {
+<<<<<<< HEAD
   [SELECT]: createRegistryControl(registry => _ref => {
     let {
       storeKey,
@@ -1607,6 +1688,26 @@ const builtinControls = {
     } = _ref3;
     return registry.dispatch(storeKey)[actionName](...args);
   })
+=======
+  [SELECT]: createRegistryControl(registry => ({
+    storeKey,
+    selectorName,
+    args
+  }) => registry.select(storeKey)[selectorName](...args)),
+  [RESOLVE_SELECT]: createRegistryControl(registry => ({
+    storeKey,
+    selectorName,
+    args
+  }) => {
+    const method = registry.select(storeKey)[selectorName].hasResolver ? 'resolveSelect' : 'select';
+    return registry[method](storeKey)[selectorName](...args);
+  }),
+  [DISPATCH]: createRegistryControl(registry => ({
+    storeKey,
+    actionName,
+    args
+  }) => registry.dispatch(storeKey)[actionName](...args))
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 };
 
 // EXTERNAL MODULE: ./node_modules/is-promise/index.js
@@ -1621,7 +1722,11 @@ var is_promise_default = /*#__PURE__*/__webpack_require__.n(is_promise);
 /**
  * Simplest possible promise redux middleware.
  *
+<<<<<<< HEAD
  * @type {import('redux').Middleware}
+=======
+ * @return {Function} middleware.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 const promiseMiddleware = () => next => action => {
@@ -1638,6 +1743,7 @@ const promiseMiddleware = () => next => action => {
 
 /* harmony default export */ var promise_middleware = (promiseMiddleware);
 
+<<<<<<< HEAD
 // CONCATENATED MODULE: ./node_modules/@wordpress/data/build-module/store/name.js
 /**
  * The identifier for the core/data store.
@@ -1646,16 +1752,21 @@ const promiseMiddleware = () => next => action => {
  */
 const STORE_NAME = 'core/data';
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 // CONCATENATED MODULE: ./node_modules/@wordpress/data/build-module/resolvers-cache-middleware.js
 /**
  * External dependencies
  */
 
+<<<<<<< HEAD
 /**
  * Internal dependencies
  */
 
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /** @typedef {import('./registry').WPDataRegistry} WPDataRegistry */
 
 /**
@@ -1670,9 +1781,14 @@ const STORE_NAME = 'core/data';
  */
 
 const createResolversCacheMiddleware = (registry, reducerKey) => () => next => action => {
+<<<<<<< HEAD
   const resolvers = registry.select(STORE_NAME).getCachedResolvers(reducerKey);
   Object.entries(resolvers).forEach(_ref => {
     let [selectorName, resolversByArgs] = _ref;
+=======
+  const resolvers = registry.select('core/data').getCachedResolvers(reducerKey);
+  Object.entries(resolvers).forEach(([selectorName, resolversByArgs]) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     const resolver = Object(external_lodash_["get"])(registry.stores, [reducerKey, 'resolvers', selectorName]);
 
     if (!resolver || !resolver.shouldInvalidate) {
@@ -1688,7 +1804,11 @@ const createResolversCacheMiddleware = (registry, reducerKey) => () => next => a
       } // Trigger cache invalidation
 
 
+<<<<<<< HEAD
       registry.dispatch(STORE_NAME).invalidateResolution(reducerKey, selectorName, args);
+=======
+      registry.dispatch('core/data').invalidateResolution(reducerKey, selectorName, args);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     });
   });
   return next(action);
@@ -1712,6 +1832,7 @@ function createThunkMiddleware(args) {
  * Higher-order reducer creator which creates a combined reducer object, keyed
  * by a property on the action object.
  *
+<<<<<<< HEAD
  * @template {any} TState
  * @template {import('redux').AnyAction} TAction
  *
@@ -1730,6 +1851,15 @@ const onSubKey = actionProperty => reducer => function () {
   /** @type {keyof state} */
 
   /* eslint-enable jsdoc/no-undefined-types */
+=======
+ * @param {string} actionProperty Action property by which to key object.
+ *
+ * @return {Function} Higher-order reducer.
+ */
+const onSubKey = actionProperty => reducer => (state = {}, action) => {
+  // Retrieve subkey from action. Do not track if undefined; useful for cases
+  // where reducer is scoped by action shape.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const key = action[actionProperty];
 
   if (key === undefined) {
@@ -1755,7 +1885,10 @@ const onSubKey = actionProperty => reducer => function () {
  */
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /**
  * Internal dependencies
  */
@@ -1766,11 +1899,22 @@ const onSubKey = actionProperty => reducer => function () {
  * subkeys, object form:
  *
  *  selectorName -> EquivalentKeyMap<Array,boolean>
+<<<<<<< HEAD
  */
 const subKeysIsResolved = onSubKey('selectorName')(function () {
   let state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new equivalent_key_map_default.a();
   let action = arguments.length > 1 ? arguments[1] : undefined;
 
+=======
+ *
+ * @param {Object} state  Current state.
+ * @param {Object} action Dispatched action.
+ *
+ * @return {Object} Next state.
+ */
+
+const subKeysIsResolved = onSubKey('selectorName')((state = new equivalent_key_map_default.a(), action) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   switch (action.type) {
     case 'START_RESOLUTION':
     case 'FINISH_RESOLUTION':
@@ -1809,6 +1953,7 @@ const subKeysIsResolved = onSubKey('selectorName')(function () {
  *
  *   selectorName -> EquivalentKeyMap<Array, boolean>
  *
+<<<<<<< HEAD
  * @param  state  Current state.
  * @param  action Dispatched action.
  *
@@ -1819,6 +1964,15 @@ const isResolved = function () {
   let state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   let action = arguments.length > 1 ? arguments[1] : undefined;
 
+=======
+ * @param {Object} state   Current state.
+ * @param {Object} action  Dispatched action.
+ *
+ * @return {Object} Next state.
+ */
+
+const isResolved = (state = {}, action) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   switch (action.type) {
     case 'INVALIDATE_RESOLUTION_FOR_STORE':
       return {};
@@ -1844,26 +1998,41 @@ const isResolved = function () {
  * External dependencies
  */
 
+<<<<<<< HEAD
 /** @typedef {Record<string, import('./reducer').State>} State */
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /**
  * Returns the raw `isResolving` value for a given selector name,
  * and arguments set. May be undefined if the selector has never been resolved
  * or not resolved for the given set of arguments, otherwise true or false for
  * resolution started and completed respectively.
  *
+<<<<<<< HEAD
  * @param {State}     state        Data state.
  * @param {string}    selectorName Selector name.
  * @param {unknown[]} args         Arguments passed to selector.
  *
  * @return {boolean | undefined} isResolving value.
+=======
+ * @param {Object} state        Data state.
+ * @param {string} selectorName Selector name.
+ * @param {Array}  args         Arguments passed to selector.
+ *
+ * @return {?boolean} isResolving value.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 function getIsResolving(state, selectorName, args) {
   const map = Object(external_lodash_["get"])(state, [selectorName]);
 
   if (!map) {
+<<<<<<< HEAD
     return undefined;
+=======
+    return;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   }
 
   return map.get(args);
@@ -1872,53 +2041,89 @@ function getIsResolving(state, selectorName, args) {
  * Returns true if resolution has already been triggered for a given
  * selector name, and arguments set.
  *
+<<<<<<< HEAD
  * @param {State}     state        Data state.
  * @param {string}    selectorName Selector name.
  * @param {unknown[]} [args]       Arguments passed to selector (default `[]`).
+=======
+ * @param {Object} state        Data state.
+ * @param {string} selectorName Selector name.
+ * @param {?Array} args         Arguments passed to selector (default `[]`).
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {boolean} Whether resolution has been triggered.
  */
 
+<<<<<<< HEAD
 function hasStartedResolution(state, selectorName) {
   let args = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+=======
+function hasStartedResolution(state, selectorName, args = []) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   return getIsResolving(state, selectorName, args) !== undefined;
 }
 /**
  * Returns true if resolution has completed for a given selector
  * name, and arguments set.
  *
+<<<<<<< HEAD
  * @param {State}     state        Data state.
  * @param {string}    selectorName Selector name.
  * @param {unknown[]} [args]       Arguments passed to selector.
+=======
+ * @param {Object} state        Data state.
+ * @param {string} selectorName Selector name.
+ * @param {?Array} args         Arguments passed to selector.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {boolean} Whether resolution has completed.
  */
 
+<<<<<<< HEAD
 function hasFinishedResolution(state, selectorName) {
   let args = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+=======
+function hasFinishedResolution(state, selectorName, args = []) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   return getIsResolving(state, selectorName, args) === false;
 }
 /**
  * Returns true if resolution has been triggered but has not yet completed for
  * a given selector name, and arguments set.
  *
+<<<<<<< HEAD
  * @param {State}     state        Data state.
  * @param {string}    selectorName Selector name.
  * @param {unknown[]} [args]       Arguments passed to selector.
+=======
+ * @param {Object} state        Data state.
+ * @param {string} selectorName Selector name.
+ * @param {?Array} args         Arguments passed to selector.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {boolean} Whether resolution is in progress.
  */
 
+<<<<<<< HEAD
 function isResolving(state, selectorName) {
   let args = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+=======
+function isResolving(state, selectorName, args = []) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   return getIsResolving(state, selectorName, args) === true;
 }
 /**
  * Returns the list of the cached resolvers.
  *
+<<<<<<< HEAD
  * @param {State} state Data state.
  *
  * @return {State} Resolvers mapped by args and selectorName.
+=======
+ * @param {Object} state      Data state.
+ *
+ * @return {Object} Resolvers mapped by args and selectorName.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 function getCachedResolvers(state) {
@@ -1930,10 +2135,17 @@ function getCachedResolvers(state) {
  * Returns an action object used in signalling that selector resolution has
  * started.
  *
+<<<<<<< HEAD
  * @param {string}    selectorName Name of selector for which resolver triggered.
  * @param {unknown[]} args         Arguments to associate for uniqueness.
  *
  * @return {{ type: 'START_RESOLUTION', selectorName: string, args: unknown[] }} Action object.
+=======
+ * @param {string} selectorName Name of selector for which resolver triggered.
+ * @param {...*}   args         Arguments to associate for uniqueness.
+ *
+ * @return {Object} Action object.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function startResolution(selectorName, args) {
   return {
@@ -1946,10 +2158,17 @@ function startResolution(selectorName, args) {
  * Returns an action object used in signalling that selector resolution has
  * completed.
  *
+<<<<<<< HEAD
  * @param {string}    selectorName Name of selector for which resolver triggered.
  * @param {unknown[]} args         Arguments to associate for uniqueness.
  *
  * @return {{ type: 'FINISH_RESOLUTION', selectorName: string, args: unknown[] }} Action object.
+=======
+ * @param {string} selectorName Name of selector for which resolver triggered.
+ * @param {...*}   args         Arguments to associate for uniqueness.
+ *
+ * @return {Object} Action object.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 function finishResolution(selectorName, args) {
@@ -1963,11 +2182,19 @@ function finishResolution(selectorName, args) {
  * Returns an action object used in signalling that a batch of selector resolutions has
  * started.
  *
+<<<<<<< HEAD
  * @param {string}    selectorName Name of selector for which resolver triggered.
  * @param {unknown[]} args         Array of arguments to associate for uniqueness, each item
  *                                 is associated to a resolution.
  *
  * @return {{ type: 'START_RESOLUTIONS', selectorName: string, args: unknown[] }} Action object.
+=======
+ * @param {string} selectorName Name of selector for which resolver triggered.
+ * @param {...*}   args         Array of arguments to associate for uniqueness, each item
+ * 								is associated to a resolution.
+ *
+ * @return {Object} Action object.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 function startResolutions(selectorName, args) {
@@ -1981,11 +2208,19 @@ function startResolutions(selectorName, args) {
  * Returns an action object used in signalling that a batch of selector resolutions has
  * completed.
  *
+<<<<<<< HEAD
  * @param {string}    selectorName Name of selector for which resolver triggered.
  * @param {unknown[]} args         Array of arguments to associate for uniqueness, each item
  *                                 is associated to a resolution.
  *
  * @return {{ type: 'FINISH_RESOLUTIONS', selectorName: string, args: unknown[] }} Action object.
+=======
+ * @param {string} selectorName Name of selector for which resolver triggered.
+ * @param {...*}   args         Array of arguments to associate for uniqueness, each item
+ * 								is associated to a resolution.
+ *
+ * @return {Object} Action object.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 function finishResolutions(selectorName, args) {
@@ -1998,10 +2233,17 @@ function finishResolutions(selectorName, args) {
 /**
  * Returns an action object used in signalling that we should invalidate the resolution cache.
  *
+<<<<<<< HEAD
  * @param {string}    selectorName Name of selector for which resolver should be invalidated.
  * @param {unknown[]} args         Arguments to associate for uniqueness.
  *
  * @return {{ type: 'INVALIDATE_RESOLUTION', selectorName: string, args: any[] }} Action object.
+=======
+ * @param {string} selectorName Name of selector for which resolver should be invalidated.
+ * @param {Array}  args         Arguments to associate for uniqueness.
+ *
+ * @return {Object} Action object.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 function invalidateResolution(selectorName, args) {
@@ -2015,7 +2257,11 @@ function invalidateResolution(selectorName, args) {
  * Returns an action object used in signalling that the resolution
  * should be invalidated.
  *
+<<<<<<< HEAD
  * @return {{ type: 'INVALIDATE_RESOLUTION_FOR_STORE' }} Action object.
+=======
+ * @return {Object} Action object.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 function invalidateResolutionForStore() {
@@ -2030,7 +2276,11 @@ function invalidateResolutionForStore() {
  * @param {string} selectorName Name of selector for which all resolvers should
  *                              be invalidated.
  *
+<<<<<<< HEAD
  * @return  {{ type: 'INVALIDATE_RESOLUTION_FOR_STORE_SELECTOR', selectorName: string }} Action object.
+=======
+ * @return  {Object} Action object.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 function invalidateResolutionForStoreSelector(selectorName) {
@@ -2070,6 +2320,7 @@ function invalidateResolutionForStoreSelector(selectorName) {
 
 /** @typedef {import('../types').WPDataReduxStoreConfig} WPDataReduxStoreConfig */
 
+<<<<<<< HEAD
 const trimUndefinedValues = array => {
   const result = [...array];
 
@@ -2081,23 +2332,36 @@ const trimUndefinedValues = array => {
 
   return result;
 };
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /**
  * Create a cache to track whether resolvers started running or not.
  *
  * @return {Object} Resolvers Cache.
  */
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 function createResolversCache() {
   const cache = {};
   return {
     isRunning(selectorName, args) {
+<<<<<<< HEAD
       return cache[selectorName] && cache[selectorName].get(trimUndefinedValues(args));
+=======
+      return cache[selectorName] && cache[selectorName].get(args);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     },
 
     clear(selectorName, args) {
       if (cache[selectorName]) {
+<<<<<<< HEAD
         cache[selectorName].delete(trimUndefinedValues(args));
+=======
+        cache[selectorName].delete(args);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       }
     },
 
@@ -2106,7 +2370,11 @@ function createResolversCache() {
         cache[selectorName] = new equivalent_key_map_default.a();
       }
 
+<<<<<<< HEAD
       cache[selectorName].set(trimUndefinedValues(args), true);
+=======
+      cache[selectorName].set(args, true);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     }
 
   };
@@ -2127,10 +2395,17 @@ function createResolversCache() {
  * } );
  * ```
  *
+<<<<<<< HEAD
  * @param {string}                 key     Unique namespace identifier.
  * @param {WPDataReduxStoreConfig} options Registered store options, with properties
  *                                         describing reducer, actions, selectors,
  *                                         and resolvers.
+=======
+ * @param {string}                 key      Unique namespace identifier.
+ * @param {WPDataReduxStoreConfig} options  Registered store options, with properties
+ *                                          describing reducer, actions, selectors,
+ *                                          and resolvers.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @return {WPDataStore} Store Object.
  */
@@ -2163,6 +2438,7 @@ function createReduxStore(key, options) {
       const actions = mapActions({ ...actions_namespaceObject,
         ...options.actions
       }, store);
+<<<<<<< HEAD
       let selectors = mapSelectors({ ...Object(external_lodash_["mapValues"])(selectors_namespaceObject, selector => function (state) {
           for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
             args[_key - 1] = arguments[_key];
@@ -2170,11 +2446,15 @@ function createReduxStore(key, options) {
 
           return selector(state.metadata, ...args);
         }),
+=======
+      let selectors = mapSelectors({ ...Object(external_lodash_["mapValues"])(selectors_namespaceObject, selector => (state, ...args) => selector(state.metadata, ...args)),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         ...Object(external_lodash_["mapValues"])(options.selectors, selector => {
           if (selector.isRegistrySelector) {
             selector.registry = registry;
           }
 
+<<<<<<< HEAD
           return function (state) {
             for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
               args[_key2 - 1] = arguments[_key2];
@@ -2182,6 +2462,9 @@ function createReduxStore(key, options) {
 
             return selector(state.root, ...args);
           };
+=======
+          return (state, ...args) => selector(state.root, ...args);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         })
       }, store);
 
@@ -2242,12 +2525,21 @@ function createReduxStore(key, options) {
 /**
  * Creates a redux store for a namespace.
  *
+<<<<<<< HEAD
  * @param {string}         key       Unique namespace identifier.
  * @param {Object}         options   Registered store options, with properties
  *                                   describing reducer, actions, selectors,
  *                                   and resolvers.
  * @param {WPDataRegistry} registry  Registry reference.
  * @param {Object}         thunkArgs Argument object for the thunk middleware.
+=======
+ * @param {string}         key      Unique namespace identifier.
+ * @param {Object}         options  Registered store options, with properties
+ *                                  describing reducer, actions, selectors,
+ *                                  and resolvers.
+ * @param {WPDataRegistry} registry Registry reference.
+ * @param {Object} thunkArgs        Argument object for the thunk middleware.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @return {Object} Newly created redux store.
  */
 
@@ -2324,16 +2616,27 @@ function mapSelectors(selectors, store) {
 /**
  * Maps actions to dispatch from a given store.
  *
+<<<<<<< HEAD
  * @param {Object} actions Actions to register.
  * @param {Object} store   The redux store to which the actions should be mapped.
  *
  * @return {Object} Actions mapped to the redux store provided.
+=======
+ * @param {Object} actions    Actions to register.
+ * @param {Object} store      The redux store to which the actions should be mapped.
+ * @return {Object}           Actions mapped to the redux store provided.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 
 function mapActions(actions, store) {
+<<<<<<< HEAD
   const createBoundAction = action => function () {
     return Promise.resolve(store.dispatch(action(...arguments)));
+=======
+  const createBoundAction = action => (...args) => {
+    return Promise.resolve(store.dispatch(action(...args)));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   };
 
   return Object(external_lodash_["mapValues"])(actions, createBoundAction);
@@ -2343,12 +2646,17 @@ function mapActions(actions, store) {
  *
  * @param {Object} selectors Selectors to map.
  * @param {Object} store     The redux store the selectors select from.
+<<<<<<< HEAD
  *
  * @return {Object} Selectors mapped to their resolution functions.
+=======
+ * @return {Object}          Selectors mapped to their resolution functions.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 
 function mapResolveSelectors(selectors, store) {
+<<<<<<< HEAD
   return Object(external_lodash_["mapValues"])(Object(external_lodash_["omit"])(selectors, ['getIsResolving', 'hasStartedResolution', 'hasFinishedResolution', 'isResolving', 'getCachedResolvers']), (selector, selectorName) => function () {
     for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
       args[_key3] = arguments[_key3];
@@ -2374,6 +2682,27 @@ function mapResolveSelectors(selectors, store) {
       });
     });
   });
+=======
+  return Object(external_lodash_["mapValues"])(Object(external_lodash_["omit"])(selectors, ['getIsResolving', 'hasStartedResolution', 'hasFinishedResolution', 'isResolving', 'getCachedResolvers']), (selector, selectorName) => (...args) => new Promise(resolve => {
+    const hasFinished = () => selectors.hasFinishedResolution(selectorName, args);
+
+    const getResult = () => selector.apply(null, args); // trigger the selector (to trigger the resolver)
+
+
+    const result = getResult();
+
+    if (hasFinished()) {
+      return resolve(result);
+    }
+
+    const unsubscribe = store.subscribe(() => {
+      if (hasFinished()) {
+        unsubscribe();
+        resolve(getResult());
+      }
+    });
+  }));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 /**
  * Returns resolvers with matched selectors for a given namespace.
@@ -2411,11 +2740,15 @@ function mapResolvers(resolvers, selectors, store, resolversCache) {
       return selector;
     }
 
+<<<<<<< HEAD
     const selectorResolver = function () {
       for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
         args[_key4] = arguments[_key4];
       }
 
+=======
+    const selectorResolver = (...args) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
       async function fulfillSelector() {
         const state = store.getState();
 
@@ -2459,21 +2792,32 @@ function mapResolvers(resolvers, selectors, store, resolversCache) {
  * @param {Object} store        Store reference, for fulfilling via resolvers
  * @param {Object} resolvers    Store Resolvers
  * @param {string} selectorName Selector name to fulfill.
+<<<<<<< HEAD
  * @param {Array}  args         Selector Arguments.
  */
 
 
 async function fulfillResolver(store, resolvers, selectorName) {
+=======
+ * @param {Array} args          Selector Arguments.
+ */
+
+
+async function fulfillResolver(store, resolvers, selectorName, ...args) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const resolver = Object(external_lodash_["get"])(resolvers, [selectorName]);
 
   if (!resolver) {
     return;
   }
 
+<<<<<<< HEAD
   for (var _len5 = arguments.length, args = new Array(_len5 > 3 ? _len5 - 3 : 0), _key5 = 3; _key5 < _len5; _key5++) {
     args[_key5 - 3] = arguments[_key5];
   }
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const action = resolver.fulfill(...args);
 
   if (action) {
@@ -2483,6 +2827,7 @@ async function fulfillResolver(store, resolvers, selectorName) {
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/data/build-module/store/index.js
 function createCoreDataStore(registry) {
+<<<<<<< HEAD
   const getCoreDataSelector = selectorName => function (key) {
     for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       args[_key - 1] = arguments[_key];
@@ -2496,6 +2841,13 @@ function createCoreDataStore(registry) {
       args[_key2 - 1] = arguments[_key2];
     }
 
+=======
+  const getCoreDataSelector = selectorName => (key, ...args) => {
+    return registry.select(key)[selectorName](...args);
+  };
+
+  const getCoreDataAction = actionName => (key, ...args) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return registry.dispatch(key)[actionName](...args);
   };
 
@@ -2525,6 +2877,7 @@ function createCoreDataStore(registry) {
 
 /* harmony default export */ var build_module_store = (createCoreDataStore);
 
+<<<<<<< HEAD
 // CONCATENATED MODULE: ./node_modules/@wordpress/data/build-module/utils/emitter.js
 /**
  * Create an event emitter.
@@ -2576,6 +2929,8 @@ function createEmitter() {
   };
 }
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 // CONCATENATED MODULE: ./node_modules/@wordpress/data/build-module/registry.js
 /**
  * External dependencies
@@ -2587,8 +2942,11 @@ function createEmitter() {
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 /** @typedef {import('./types').WPDataStore} WPDataStore */
 
 /**
@@ -2627,11 +2985,17 @@ function createEmitter() {
  * @return {WPDataRegistry} Data registry.
  */
 
+<<<<<<< HEAD
 function createRegistry() {
   let storeConfigs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   let parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   const stores = {};
   const emitter = createEmitter();
+=======
+function createRegistry(storeConfigs = {}, parent = null) {
+  const stores = {};
+  let listeners = [];
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
   const __experimentalListeningStores = new Set();
   /**
@@ -2640,19 +3004,36 @@ function createRegistry() {
 
 
   function globalListener() {
+<<<<<<< HEAD
     emitter.emit();
+=======
+    listeners.forEach(listener => listener());
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   }
   /**
    * Subscribe to changes to any data.
    *
+<<<<<<< HEAD
    * @param {Function} listener Listener function.
    *
    * @return {Function} Unsubscribe function.
+=======
+   * @param {Function}   listener Listener function.
+   *
+   * @return {Function}           Unsubscribe function.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
    */
 
 
   const subscribe = listener => {
+<<<<<<< HEAD
     return emitter.subscribe(listener);
+=======
+    listeners.push(listener);
+    return () => {
+      listeners = Object(external_lodash_["without"])(listeners, listener);
+    };
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   };
   /**
    * Calls a selector given the current state and extra arguments.
@@ -2766,6 +3147,7 @@ function createRegistry() {
 
     if (typeof config.subscribe !== 'function') {
       throw new TypeError('config.subscribe must be a function');
+<<<<<<< HEAD
     } // Thi emitter is used to keep track of active listeners when the registry
     // get paused, that way, when resumed we should be able to call all these
     // pending listeners.
@@ -2792,6 +3174,9 @@ function createRegistry() {
         unsubscribeFromStoreEmitter();
       };
     };
+=======
+    }
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
     stores[key] = config;
     config.subscribe(globalListener);
@@ -2831,6 +3216,7 @@ function createRegistry() {
     return parent.__experimentalSubscribeStore(storeName, handler);
   }
 
+<<<<<<< HEAD
   function batch(callback) {
     emitter.pause();
     Object(external_lodash_["forEach"])(stores, store => store.emitter.pause());
@@ -2841,6 +3227,9 @@ function createRegistry() {
 
   let registry = {
     batch,
+=======
+  let registry = {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     registerGenericStore,
     stores,
     namespaces: stores,
@@ -2857,8 +3246,13 @@ function createRegistry() {
   /**
    * Registers a standard `@wordpress/data` store.
    *
+<<<<<<< HEAD
    * @param {string} storeName Unique namespace identifier.
    * @param {Object} options   Store description (reducer, actions, selectors, resolvers).
+=======
+   * @param {string} storeName  Unique namespace identifier.
+   * @param {Object} options    Store description (reducer, actions, selectors, resolvers).
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
    *
    * @return {Object} Registered store object.
    */
@@ -2884,11 +3278,16 @@ function createRegistry() {
     return registry;
   }
 
+<<<<<<< HEAD
   registerGenericStore(STORE_NAME, build_module_store(registry));
   Object.entries(storeConfigs).forEach(_ref => {
     let [name, config] = _ref;
     return registry.registerStore(name, config);
   });
+=======
+  registerGenericStore('core/data', build_module_store(registry));
+  Object.entries(storeConfigs).forEach(([name, config]) => registry.registerStore(name, config));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
   if (parent) {
     parent.subscribe(globalListener);
@@ -3179,6 +3578,7 @@ function persistencePlugin(registry, pluginOptions) {
   };
 }
 /**
+<<<<<<< HEAD
  * Move the 'features' object in local storage from the sourceStoreName to the
  * interface store.
  *
@@ -3232,6 +3632,70 @@ persistencePlugin.__unstableMigrate = pluginOptions => {
   migrateFeaturePreferencesToInterfaceStore(persistence, 'core/edit-widgets');
   migrateFeaturePreferencesToInterfaceStore(persistence, 'core/customize-widgets');
   migrateFeaturePreferencesToInterfaceStore(persistence, 'core/edit-post');
+=======
+ * Deprecated: Remove this function and the code in WordPress Core that calls
+ * it once WordPress 5.4 is released.
+ */
+
+
+persistencePlugin.__unstableMigrate = pluginOptions => {
+  var _state$coreEditor, _state$coreEditor$pre;
+
+  const persistence = createPersistenceInterface(pluginOptions);
+  const state = persistence.get(); // Migrate 'insertUsage' from 'core/editor' to 'core/block-editor'
+
+  const editorInsertUsage = (_state$coreEditor = state['core/editor']) === null || _state$coreEditor === void 0 ? void 0 : (_state$coreEditor$pre = _state$coreEditor.preferences) === null || _state$coreEditor$pre === void 0 ? void 0 : _state$coreEditor$pre.insertUsage;
+
+  if (editorInsertUsage) {
+    var _state$coreBlockEdi, _state$coreBlockEdi$p;
+
+    const blockEditorInsertUsage = (_state$coreBlockEdi = state['core/block-editor']) === null || _state$coreBlockEdi === void 0 ? void 0 : (_state$coreBlockEdi$p = _state$coreBlockEdi.preferences) === null || _state$coreBlockEdi$p === void 0 ? void 0 : _state$coreBlockEdi$p.insertUsage;
+    persistence.set('core/block-editor', {
+      preferences: {
+        insertUsage: { ...editorInsertUsage,
+          ...blockEditorInsertUsage
+        }
+      }
+    });
+  }
+
+  let editPostState = state['core/edit-post']; // Default `fullscreenMode` to `false` if any persisted state had existed
+  // and the user hadn't made an explicit choice about fullscreen mode. This
+  // is needed since `fullscreenMode` previously did not have a default value
+  // and was implicitly false by its absence. It is now `true` by default, but
+  // this change is not intended to affect upgrades from earlier versions.
+
+  const hadPersistedState = Object.keys(state).length > 0;
+  const hadFullscreenModePreference = Object(external_lodash_["has"])(state, ['core/edit-post', 'preferences', 'features', 'fullscreenMode']);
+
+  if (hadPersistedState && !hadFullscreenModePreference) {
+    editPostState = Object(external_lodash_["merge"])({}, editPostState, {
+      preferences: {
+        features: {
+          fullscreenMode: false
+        }
+      }
+    });
+  } // Migrate 'areTipsEnabled' from 'core/nux' to 'showWelcomeGuide' in 'core/edit-post'
+
+
+  const areTipsEnabled = Object(external_lodash_["get"])(state, ['core/nux', 'preferences', 'areTipsEnabled']);
+  const hasWelcomeGuide = Object(external_lodash_["has"])(state, ['core/edit-post', 'preferences', 'features', 'welcomeGuide']);
+
+  if (areTipsEnabled !== undefined && !hasWelcomeGuide) {
+    editPostState = Object(external_lodash_["merge"])({}, editPostState, {
+      preferences: {
+        features: {
+          welcomeGuide: areTipsEnabled
+        }
+      }
+    });
+  }
+
+  if (editPostState !== state['core/edit-post']) {
+    persistence.set('core/edit-post', editPostState);
+  }
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 };
 
 /* harmony default export */ var plugins_persistence = (persistencePlugin);
@@ -3352,7 +3816,11 @@ const RegistryConsumer = Consumer;
  * const registry = createRegistry( {} );
  *
  * const SomeChildUsingRegistry = ( props ) => {
+<<<<<<< HEAD
  *   const registry = useRegistry();
+=======
+ *   const registry = useRegistry( registry );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *   // ...logic implementing the registry in other react hooks.
  * };
  *
@@ -3413,7 +3881,11 @@ const AsyncModeConsumer = context_Consumer;
  * the rerendering is delayed until the browser becomes IDLE.
  * It is possible to nest multiple levels of AsyncModeProvider to fine-tune the rendering behavior.
  *
+<<<<<<< HEAD
  * @param {boolean} props.value Enable Async Mode.
+=======
+ * @param {boolean}   props.value  Enable Async Mode.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @return {WPComponent} The component to be rendered.
  */
 
@@ -3461,6 +3933,7 @@ const renderQueue = Object(external_wp_priorityQueue_["createQueue"])();
  * In general, this custom React hook follows the
  * [rules of hooks](https://reactjs.org/docs/hooks-rules.html).
  *
+<<<<<<< HEAD
  * @param {Function|WPDataStore|string} _mapSelect Function called on every state change. The
  *                                                 returned value is exposed to the component
  *                                                 implementing this hook. The function receives
@@ -3475,6 +3948,22 @@ const renderQueue = Object(external_wp_priorityQueue_["createQueue"])();
  * @param {Array}                       deps       If provided, this memoizes the mapSelect so the
  *                                                 same `mapSelect` is invoked on every state
  *                                                 change unless the dependencies change.
+=======
+ * @param {Function|WPDataStore|string} _mapSelect  Function called on every state change. The
+ *                                                  returned value is exposed to the component
+ *                                                  implementing this hook. The function receives
+ *                                                  the `registry.select` method on the first
+ *                                                  argument and the `registry` on the second
+ *                                                  argument.
+ *                                                  When a store key is passed, all selectors for
+ *                                                  the store will be returned. This is only meant
+ *                                                  for usage of these selectors in event
+ *                                                  callbacks, not for data needed to create the
+ *                                                  element tree.
+ * @param {Array}                       deps        If provided, this memoizes the mapSelect so the
+ *                                                  same `mapSelect` is invoked on every state
+ *                                                  change unless the dependencies change.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @example
  * ```js
@@ -3663,8 +4152,13 @@ function useSelect(_mapSelect, deps) {
  * selectors.
  *
  * @param {Function} mapSelectToProps Function called on every state change,
+<<<<<<< HEAD
  *                                    expected to return object of props to
  *                                    merge with the component's own props.
+=======
+ *                                   expected to return object of props to
+ *                                   merge with the component's own props.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @example
  * ```js
@@ -3729,11 +4223,19 @@ const withSelect = mapSelectToProps => Object(external_wp_compose_["createHigher
  *
  * Currently this is an internal api only and is implemented by `withDispatch`
  *
+<<<<<<< HEAD
  * @param {Function} dispatchMap Receives the `registry.dispatch` function as
  *                               the first argument and the `registry` object
  *                               as the second argument.  Should return an
  *                               object mapping props to functions.
  * @param {Array}    deps        An array of dependencies for the hook.
+=======
+ * @param {Function} dispatchMap  Receives the `registry.dispatch` function as
+ *                                the first argument and the `registry` object
+ *                                as the second argument.  Should return an
+ *                                object mapping props to functions.
+ * @param {Array}    deps         An array of dependencies for the hook.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @return {Object}  An object mapping props to functions created by the passed
  *                   in dispatchMap.
  */
@@ -3752,9 +4254,13 @@ const useDispatchWithMap = (dispatchMap, deps) => {
         console.warn(`Property ${propName} returned from dispatchMap in useDispatchWithMap must be a function.`);
       }
 
+<<<<<<< HEAD
       return function () {
         return currentDispatchMap.current(registry.dispatch, registry)[propName](...arguments);
       };
+=======
+      return (...args) => currentDispatchMap.current(registry.dispatch, registry)[propName](...args);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     });
   }, [registry, ...deps]);
 };
@@ -4019,8 +4525,13 @@ const useDispatch = storeNameOrDefinition => {
  * register( store );
  * ```
  *
+<<<<<<< HEAD
  * @return {Function} A reducer that invokes every reducer inside the reducers
  *                    object, and constructs a state object with the same shape.
+=======
+ * @return {Function}       A reducer that invokes every reducer inside the reducers
+ *                          object, and constructs a state object with the same shape.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 
 

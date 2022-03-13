@@ -1,0 +1,17 @@
+/*
+* Theme Name: Kerge - Resume / CV / vCard WordPress Theme
+* Author: lmpixels
+* Author URL: http://themeforest.net/user/lmpixels
+* Version: 3.1.1
+*/
+
+/* ============================================================================= */
+
+.fw-brz-dismiss {
+    display: none;
+}
+
+.fw-page-builder-editor-integration-active .block-editor-writing-flow__click-redirect,
+.fw-page-builder-editor-integration-active .block-editor-block-list__layout {
+    display: none;
+}

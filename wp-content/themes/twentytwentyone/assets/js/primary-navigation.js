@@ -180,9 +180,13 @@ function twentytwentyoneExpandSubMenu( el ) { // jshint ignore:line
 				// Wait 550 and scroll to the anchor.
 				setTimeout(function () {
 					var anchor = document.getElementById(event.target.hash.slice(1));
+<<<<<<< HEAD
 					if ( anchor ) {
 						anchor.scrollIntoView();
 					}
+=======
+					anchor.scrollIntoView();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				}, 550);
 			}
 		} );

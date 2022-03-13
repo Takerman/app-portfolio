@@ -17,7 +17,10 @@ function render_block_core_tag_cloud( $attributes ) {
 		'echo'       => false,
 		'taxonomy'   => $attributes['taxonomy'],
 		'show_count' => $attributes['showTagCounts'],
+<<<<<<< HEAD
 		'number'     => $attributes['numberOfTags'],
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	);
 	$tag_cloud = wp_tag_cloud( $args );
 

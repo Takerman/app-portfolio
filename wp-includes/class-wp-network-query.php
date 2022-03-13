@@ -158,7 +158,11 @@ class WP_Network_Query {
 		 *
 		 * @since 4.6.0
 		 *
+<<<<<<< HEAD
 		 * @param WP_Network_Query $query The WP_Network_Query instance (passed by reference).
+=======
+		 * @param WP_Network_Query $this The WP_Network_Query instance (passed by reference).
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		do_action_ref_array( 'parse_network_query', array( &$this ) );
 	}
@@ -193,7 +197,11 @@ class WP_Network_Query {
 		 *
 		 * @since 4.6.0
 		 *
+<<<<<<< HEAD
 		 * @param WP_Network_Query $query Current instance of WP_Network_Query (passed by reference).
+=======
+		 * @param WP_Network_Query $this Current instance of WP_Network_Query (passed by reference).
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		do_action_ref_array( 'pre_get_networks', array( &$this ) );
 

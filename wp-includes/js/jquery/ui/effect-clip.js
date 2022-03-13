@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * jQuery UI Effects Clip 1.13.1
+=======
+ * jQuery UI Effects Clip 1.12.1
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -14,8 +18,11 @@
 //>>demos: http://jqueryui.com/effect/
 
 ( function( factory ) {
+<<<<<<< HEAD
 	"use strict";
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -28,8 +35,12 @@
 		// Browser globals
 		factory( jQuery );
 	}
+<<<<<<< HEAD
 } )( function( $ ) {
 "use strict";
+=======
+}( function( $ ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 return $.effects.define( "clip", "hide", function( options, done ) {
 	var start,
@@ -64,4 +75,8 @@ return $.effects.define( "clip", "hide", function( options, done ) {
 
 } );
 
+<<<<<<< HEAD
 } );
+=======
+} ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

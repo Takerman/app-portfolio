@@ -287,7 +287,11 @@ abstract class ParagonIE_Sodium_Core_Util
     }
 
     /**
+<<<<<<< HEAD
      * Catch hash_update() failures and throw instead of silently proceeding
+=======
+     * Catch hash_update() failures and throw instead of silently proceding
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
      *
      * @param HashContext|resource &$hs
      * @param string $data
@@ -586,7 +590,10 @@ abstract class ParagonIE_Sodium_Core_Util
             $a <<= 1;
             $b >>= 1;
         }
+<<<<<<< HEAD
         $c = (int) @($c & -1);
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
         /**
          * If $b was negative, we then apply the same value to $c here.
@@ -930,10 +937,13 @@ abstract class ParagonIE_Sodium_Core_Util
         static $mbstring = null;
 
         if ($mbstring === null) {
+<<<<<<< HEAD
             if (!defined('MB_OVERLOAD_STRING')) {
                 $mbstring = false;
                 return $mbstring;
             }
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
             $mbstring = extension_loaded('mbstring')
                 && defined('MB_OVERLOAD_STRING')
                 &&

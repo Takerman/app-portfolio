@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"version": 2,
 	"settings": {
 		"appearanceTools": false,
@@ -15,6 +16,18 @@
  			"customGradient": true,
 			"defaultGradients": true,
 			"defaultPalette": true,
+=======
+	"version": 1,
+	"settings": {
+		"border": {
+			"customRadius": false
+		},
+		"color": {
+			"custom": true,
+			"customDuotone": true,
+ 			"customGradient": true,
+ 			"link": false,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			"duotone": [
 				{
 					"name":  "Dark grayscale" ,
@@ -119,7 +132,10 @@
 					"slug": "midnight"
 				}
 			],
+<<<<<<< HEAD
 			"link": false,
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			"palette": [
 				{
 					"name": "Black",
@@ -181,6 +197,7 @@
 					"slug": "vivid-purple",
 					"color": "#9b51e0"
 				}
+<<<<<<< HEAD
 			],
 			"text": true
 		},
@@ -188,10 +205,21 @@
 			"blockGap": null,
 			"margin": false,
 			"padding": false,
+=======
+			]
+		},
+		"spacing": {
+			"customMargin": false,
+			"customPadding": false,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			"units": [ "px", "em", "rem", "vh", "vw", "%" ]
 		},
 		"typography": {
 			"customFontSize": true,
+<<<<<<< HEAD
+=======
+			"customLineHeight": false,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			"dropCap": true,
 			"fontSizes": [
 				{
@@ -200,6 +228,14 @@
 					"size": "13px"
 				},
 				{
+<<<<<<< HEAD
+=======
+					"name": "Normal",
+					"slug": "normal",
+					"size": "16px"
+				},
+				{
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					"name": "Medium",
 					"slug": "medium",
 					"size": "20px"
@@ -210,6 +246,7 @@
 					"size": "36px"
 				},
 				{
+<<<<<<< HEAD
 					"name": "Extra Large",
 					"slug": "x-large",
 					"size": "42px"
@@ -221,10 +258,18 @@
 			"lineHeight": false,
 			"textDecoration": true,
 			"textTransform": true
+=======
+					"name": "Huge",
+					"slug": "huge",
+					"size": "42px"
+				}
+			]
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		},
 		"blocks": {
 			"core/button": {
 				"border": {
+<<<<<<< HEAD
 					"radius": true
 				}
 			},
@@ -240,5 +285,11 @@
 	},
 	"styles": {
 		"spacing": { "blockGap": "24px" }
+=======
+					"customRadius": true
+				}
+			}
+		}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 }

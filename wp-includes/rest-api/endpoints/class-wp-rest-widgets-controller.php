@@ -17,6 +17,7 @@
 class WP_REST_Widgets_Controller extends WP_REST_Controller {
 
 	/**
+<<<<<<< HEAD
 	 * Tracks whether {@see retrieve_widgets()} has been called in the current request.
 	 *
 	 * @since 5.9.0
@@ -33,6 +34,8 @@ class WP_REST_Widgets_Controller extends WP_REST_Controller {
 	protected $allow_batch = array( 'v1' => true );
 
 	/**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * Widgets controller constructor.
 	 *
 	 * @since 5.8.0
@@ -64,7 +67,11 @@ class WP_REST_Widgets_Controller extends WP_REST_Controller {
 					'permission_callback' => array( $this, 'create_item_permissions_check' ),
 					'args'                => $this->get_endpoint_args_for_item_schema(),
 				),
+<<<<<<< HEAD
 				'allow_batch' => $this->allow_batch,
+=======
+				'allow_batch' => array( 'v1' => true ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				'schema'      => array( $this, 'get_public_item_schema' ),
 			)
 		);
@@ -98,7 +105,11 @@ class WP_REST_Widgets_Controller extends WP_REST_Controller {
 						),
 					),
 				),
+<<<<<<< HEAD
 				'allow_batch' => $this->allow_batch,
+=======
+				'allow_batch' => array( 'v1' => true ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				'schema'      => array( $this, 'get_public_item_schema' ),
 			)
 		);
@@ -113,6 +124,7 @@ class WP_REST_Widgets_Controller extends WP_REST_Controller {
 	 * @return true|WP_Error True if the request has read access, WP_Error object otherwise.
 	 */
 	public function get_items_permissions_check( $request ) {
+<<<<<<< HEAD
 		$this->retrieve_widgets();
 		if ( isset( $request['sidebar'] ) && $this->check_read_sidebar_permission( $request['sidebar'] ) ) {
 			return true;
@@ -124,6 +136,8 @@ class WP_REST_Widgets_Controller extends WP_REST_Controller {
 			}
 		}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		return $this->permissions_check( $request );
 	}
 
@@ -136,20 +150,29 @@ class WP_REST_Widgets_Controller extends WP_REST_Controller {
 	 * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
 	 */
 	public function get_items( $request ) {
+<<<<<<< HEAD
 		$this->retrieve_widgets();
 
 		$prepared          = array();
 		$permissions_check = $this->permissions_check( $request );
+=======
+		retrieve_widgets();
+
+		$prepared = array();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		foreach ( wp_get_sidebars_widgets() as $sidebar_id => $widget_ids ) {
 			if ( isset( $request['sidebar'] ) && $sidebar_id !== $request['sidebar'] ) {
 				continue;
 			}
 
+<<<<<<< HEAD
 			if ( is_wp_error( $permissions_check ) && ! $this->check_read_sidebar_permission( $sidebar_id ) ) {
 				continue;
 			}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			foreach ( $widget_ids as $widget_id ) {
 				$response = $this->prepare_item_for_response( compact( 'sidebar_id', 'widget_id' ), $request );
 
@@ -171,6 +194,7 @@ class WP_REST_Widgets_Controller extends WP_REST_Controller {
 	 * @return true|WP_Error True if the request has read access, WP_Error object otherwise.
 	 */
 	public function get_item_permissions_check( $request ) {
+<<<<<<< HEAD
 		$this->retrieve_widgets();
 
 		$widget_id  = $request['id'];
@@ -180,10 +204,13 @@ class WP_REST_Widgets_Controller extends WP_REST_Controller {
 			return true;
 		}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		return $this->permissions_check( $request );
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Checks if a sidebar can be read publicly.
 	 *
 	 * @since 5.9.0
@@ -198,6 +225,8 @@ class WP_REST_Widgets_Controller extends WP_REST_Controller {
 	}
 
 	/**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * Gets an individual widget.
 	 *
 	 * @since 5.8.0
@@ -206,7 +235,11 @@ class WP_REST_Widgets_Controller extends WP_REST_Controller {
 	 * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
 	 */
 	public function get_item( $request ) {
+<<<<<<< HEAD
 		$this->retrieve_widgets();
+=======
+		retrieve_widgets();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		$widget_id  = $request['id'];
 		$sidebar_id = wp_find_widgets_sidebar( $widget_id );
@@ -302,7 +335,12 @@ class WP_REST_Widgets_Controller extends WP_REST_Controller {
 		 * See https://core.trac.wordpress.org/ticket/53657.
 		 */
 		wp_get_sidebars_widgets();
+<<<<<<< HEAD
 		$this->retrieve_widgets();
+=======
+
+		retrieve_widgets();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		$widget_id  = $request['id'];
 		$sidebar_id = wp_find_widgets_sidebar( $widget_id );
@@ -377,7 +415,12 @@ class WP_REST_Widgets_Controller extends WP_REST_Controller {
 		 * See https://core.trac.wordpress.org/ticket/53657.
 		 */
 		wp_get_sidebars_widgets();
+<<<<<<< HEAD
 		$this->retrieve_widgets();
+=======
+
+		retrieve_widgets();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		$widget_id  = $request['id'];
 		$sidebar_id = wp_find_widgets_sidebar( $widget_id );
@@ -460,10 +503,17 @@ class WP_REST_Widgets_Controller extends WP_REST_Controller {
 		 *
 		 * @since 5.8.0
 		 *
+<<<<<<< HEAD
 		 * @param string                    $widget_id  ID of the widget marked for deletion.
 		 * @param string                    $sidebar_id ID of the sidebar the widget was deleted from.
 		 * @param WP_REST_Response|WP_Error $response   The response data, or WP_Error object on failure.
 		 * @param WP_REST_Request           $request    The request sent to the API.
+=======
+		 * @param string           $widget_id  ID of the widget marked for deletion.
+		 * @param string           $sidebar_id ID of the sidebar the widget was deleted from.
+		 * @param WP_REST_Response $response   The response data.
+		 * @param WP_REST_Request  $request    The request sent to the API.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		do_action( 'rest_delete_widget', $widget_id, $sidebar_id, $response, $request );
 
@@ -493,6 +543,7 @@ class WP_REST_Widgets_Controller extends WP_REST_Controller {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Looks for "lost" widgets once per request.
 	 *
 	 * @since 5.9.0
@@ -507,6 +558,8 @@ class WP_REST_Widgets_Controller extends WP_REST_Controller {
 	}
 
 	/**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * Saves the widget in the request object.
 	 *
 	 * @since 5.8.0
@@ -733,9 +786,15 @@ class WP_REST_Widgets_Controller extends WP_REST_Controller {
 		 *
 		 * @since 5.8.0
 		 *
+<<<<<<< HEAD
 		 * @param WP_REST_Response|WP_Error $response The response object, or WP_Error object on failure.
 		 * @param array                     $widget   The registered widget data.
 		 * @param WP_REST_Request           $request  Request used to generate the response.
+=======
+		 * @param WP_REST_Response $response The response object.
+		 * @param array            $widget   The registered widget data.
+		 * @param WP_REST_Request  $request  Request used to generate the response.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		return apply_filters( 'rest_prepare_widget', $response, $widget, $request );
 	}
@@ -834,23 +893,39 @@ class WP_REST_Widgets_Controller extends WP_REST_Controller {
 				'instance'      => array(
 					'description' => __( 'Instance settings of the widget, if supported.' ),
 					'type'        => 'object',
+<<<<<<< HEAD
 					'context'     => array( 'edit' ),
+=======
+					'context'     => array( 'view', 'edit', 'embed' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					'default'     => null,
 					'properties'  => array(
 						'encoded' => array(
 							'description' => __( 'Base64 encoded representation of the instance settings.' ),
 							'type'        => 'string',
+<<<<<<< HEAD
 							'context'     => array( 'edit' ),
+=======
+							'context'     => array( 'view', 'edit', 'embed' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						),
 						'hash'    => array(
 							'description' => __( 'Cryptographic hash of the instance settings.' ),
 							'type'        => 'string',
+<<<<<<< HEAD
 							'context'     => array( 'edit' ),
+=======
+							'context'     => array( 'view', 'edit', 'embed' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						),
 						'raw'     => array(
 							'description' => __( 'Unencoded instance settings, if supported.' ),
 							'type'        => 'object',
+<<<<<<< HEAD
 							'context'     => array( 'edit' ),
+=======
+							'context'     => array( 'view', 'edit', 'embed' ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						),
 					),
 				),
@@ -859,7 +934,11 @@ class WP_REST_Widgets_Controller extends WP_REST_Controller {
 					'type'        => 'string',
 					'context'     => array(),
 					'arg_options' => array(
+<<<<<<< HEAD
 						'sanitize_callback' => static function( $string ) {
+=======
+						'sanitize_callback' => function( $string ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 							$array = array();
 							wp_parse_str( $string, $array );
 							return $array;

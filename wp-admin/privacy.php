@@ -9,7 +9,10 @@
 /** WordPress Administration Bootstrap */
 require_once __DIR__ . '/admin.php';
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 $title = __( 'Privacy' );
 
 list( $display_version ) = explode( '-', get_bloginfo( 'version' ) );

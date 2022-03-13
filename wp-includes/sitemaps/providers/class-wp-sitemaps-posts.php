@@ -53,6 +53,7 @@ class WP_Sitemaps_Posts extends WP_Sitemaps_Provider {
 	 * Gets a URL list for a post type sitemap.
 	 *
 	 * @since 5.5.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$post_type` to `$object_subtype` to match parent class
 	 *              for PHP 8 named parameter support.
 	 *
@@ -65,6 +66,14 @@ class WP_Sitemaps_Posts extends WP_Sitemaps_Provider {
 		// Restores the more descriptive, specific name for use within this method.
 		$post_type = $object_subtype;
 
+=======
+	 *
+	 * @param int    $page_num  Page of results.
+	 * @param string $post_type Optional. Post type name. Default empty.
+	 * @return array Array of URLs for a sitemap.
+	 */
+	public function get_url_list( $page_num, $post_type = '' ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		// Bail early if the queried post type is not supported.
 		$supported_types = $this->get_object_subtypes();
 
@@ -75,14 +84,24 @@ class WP_Sitemaps_Posts extends WP_Sitemaps_Provider {
 		/**
 		 * Filters the posts URL list before it is generated.
 		 *
+<<<<<<< HEAD
 		 * Returning a non-null value will effectively short-circuit the generation,
+=======
+		 * Passing a non-null value will effectively short-circuit the generation,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 * returning that value instead.
 		 *
 		 * @since 5.5.0
 		 *
+<<<<<<< HEAD
 		 * @param array[]|null $url_list  The URL list. Default null.
 		 * @param string       $post_type Post type name.
 		 * @param int          $page_num  Page of results.
+=======
+		 * @param array  $url_list  The URL list. Default null.
+		 * @param string $post_type Post type name.
+		 * @param int    $page_num  Page of results.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		$url_list = apply_filters(
 			'wp_sitemaps_posts_pre_url_list',
@@ -148,6 +167,7 @@ class WP_Sitemaps_Posts extends WP_Sitemaps_Provider {
 	 * Gets the max number of pages available for the object type.
 	 *
 	 * @since 5.5.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$post_type` to `$object_subtype` to match parent class
 	 *              for PHP 8 named parameter support.
 	 *
@@ -162,6 +182,17 @@ class WP_Sitemaps_Posts extends WP_Sitemaps_Provider {
 		// Restores the more descriptive, specific name for use within this method.
 		$post_type = $object_subtype;
 
+=======
+	 *
+	 * @param string $post_type Optional. Post type name. Default empty.
+	 * @return int Total number of pages.
+	 */
+	public function get_max_num_pages( $post_type = '' ) {
+		if ( empty( $post_type ) ) {
+			return 0;
+		}
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		/**
 		 * Filters the max number of pages before it is generated.
 		 *

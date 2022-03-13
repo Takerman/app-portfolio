@@ -35,10 +35,15 @@ if ( isset( $_GET['h'] ) && '' !== $_GET['h'] && false !== get_option( 'delete_b
 $blog = get_site();
 $user = wp_get_current_user();
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
 $title       = __( 'Delete Site' );
 $parent_file = 'tools.php';
 
+=======
+$title       = __( 'Delete Site' );
+$parent_file = 'tools.php';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 require_once ABSPATH . 'wp-admin/admin-header.php';
 
 echo '<div class="wrap">';

@@ -14,7 +14,11 @@
  */
 function render_block_core_site_logo( $attributes ) {
 	$adjust_width_height_filter = function ( $image ) use ( $attributes ) {
+<<<<<<< HEAD
 		if ( empty( $attributes['width'] ) || empty( $image ) || ! $image[1] || ! $image[2] ) {
+=======
+		if ( empty( $attributes['width'] ) || empty( $image ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return $image;
 		}
 		$height = (float) $attributes['width'] / ( (float) $image[1] / (float) $image[2] );
@@ -48,6 +52,13 @@ function render_block_core_site_logo( $attributes ) {
 		$classnames[] = $attributes['className'];
 	}
 
+<<<<<<< HEAD
+=======
+	if ( ! empty( $attributes['align'] ) && in_array( $attributes['align'], array( 'center', 'left', 'right' ), true ) ) {
+		$classnames[] = "align{$attributes['align']}";
+	}
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( empty( $attributes['width'] ) ) {
 		$classnames[] = 'is-default-size';
 	}
@@ -77,6 +88,7 @@ function register_block_core_site_logo_setting() {
 add_action( 'rest_api_init', 'register_block_core_site_logo_setting', 10 );
 
 /**
+<<<<<<< HEAD
  * Register a core site setting for a site icon
  */
 function register_block_core_site_icon_setting() {
@@ -94,6 +106,8 @@ function register_block_core_site_icon_setting() {
 add_action( 'rest_api_init', 'register_block_core_site_icon_setting', 10 );
 
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Registers the `core/site-logo` block on the server.
  */
 function register_block_core_site_logo() {
@@ -146,12 +160,15 @@ add_filter( 'pre_set_theme_mod_custom_logo', '_sync_custom_logo_to_site_logo' );
  * @param array $value     Updated theme mod settings.
  */
 function _delete_site_logo_on_remove_custom_logo( $old_value, $value ) {
+<<<<<<< HEAD
 	global $_ignore_site_logo_changes;
 
 	if ( $_ignore_site_logo_changes ) {
 		return;
 	}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	// If the custom_logo is being unset, it's being removed from theme mods.
 	if ( isset( $old_value['custom_logo'] ) && ! isset( $value['custom_logo'] ) ) {
 		delete_option( 'site_logo' );
@@ -162,12 +179,15 @@ function _delete_site_logo_on_remove_custom_logo( $old_value, $value ) {
  * Deletes the site logo when all theme mods are being removed.
  */
 function _delete_site_logo_on_remove_theme_mods() {
+<<<<<<< HEAD
 	global $_ignore_site_logo_changes;
 
 	if ( $_ignore_site_logo_changes ) {
 		return;
 	}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( false !== get_theme_support( 'custom-logo' ) ) {
 		delete_option( 'site_logo' );
 	}
@@ -185,6 +205,7 @@ function _delete_site_logo_on_remove_custom_logo_on_setup_theme() {
 	add_action( "delete_option_theme_mods_$theme", '_delete_site_logo_on_remove_theme_mods' );
 }
 add_action( 'setup_theme', '_delete_site_logo_on_remove_custom_logo_on_setup_theme', 11 );
+<<<<<<< HEAD
 
 /**
  * Removes the custom_logo theme-mod when the site_logo option gets deleted.
@@ -203,3 +224,5 @@ function _delete_custom_logo_on_remove_site_logo() {
 	$_ignore_site_logo_changes = false;
 }
 add_action( 'delete_option_site_logo', '_delete_custom_logo_on_remove_site_logo' );
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

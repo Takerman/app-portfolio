@@ -145,13 +145,18 @@ final class WP_Customize_Custom_CSS_Setting extends WP_Customize_Setting {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Validate a received value for being valid CSS.
+=======
+	 * Validate CSS.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * Checks for imbalanced braces, brackets, and comments.
 	 * Notifications are rendered when the customizer state is saved.
 	 *
 	 * @since 4.7.0
 	 * @since 4.9.0 Checking for balanced characters has been moved client-side via linting in code editor.
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$css` to `$value` for PHP 8 named parameter support.
 	 *
 	 * @param string $value CSS to validate.
@@ -161,6 +166,13 @@ final class WP_Customize_Custom_CSS_Setting extends WP_Customize_Setting {
 		// Restores the more descriptive, specific name for use within this method.
 		$css = $value;
 
+=======
+	 *
+	 * @param string $css The input string.
+	 * @return true|WP_Error True if the input was validated, otherwise WP_Error.
+	 */
+	public function validate( $css ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$validity = new WP_Error();
 
 		if ( preg_match( '#</?\w+#', $css ) ) {
@@ -177,6 +189,7 @@ final class WP_Customize_Custom_CSS_Setting extends WP_Customize_Setting {
 	 * Store the CSS setting value in the custom_css custom post type for the stylesheet.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$css` to `$value` for PHP 8 named parameter support.
 	 *
 	 * @param string $value CSS to update.
@@ -186,6 +199,13 @@ final class WP_Customize_Custom_CSS_Setting extends WP_Customize_Setting {
 		// Restores the more descriptive, specific name for use within this method.
 		$css = $value;
 
+=======
+	 *
+	 * @param string $css The input value.
+	 * @return int|false The post ID or false if the value could not be saved.
+	 */
+	public function update( $css ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( empty( $css ) ) {
 			$css = '';
 		}

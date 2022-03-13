@@ -22,10 +22,16 @@ if ( ! defined( 'WP_ADMIN' ) ) {
  * @global string    $update_title
  * @global int       $total_update_count
  * @global string    $parent_file
+<<<<<<< HEAD
  * @global string    $typenow
  */
 global $title, $hook_suffix, $current_screen, $wp_locale, $pagenow,
 	$update_title, $total_update_count, $parent_file, $typenow;
+=======
+ */
+global $title, $hook_suffix, $current_screen, $wp_locale, $pagenow,
+	$update_title, $total_update_count, $parent_file;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 // Catch plugins that include admin-header.php before admin.php completes.
 if ( empty( $current_screen ) ) {
@@ -49,6 +55,7 @@ if ( $admin_title === $title ) {
 	/* translators: Admin screen title. %s: Admin screen name. */
 	$admin_title = sprintf( __( '%s &#8212; WordPress' ), $title );
 } else {
+<<<<<<< HEAD
 	$screen_title = $title;
 
 	if ( 'post' === $current_screen->base && 'add' !== $current_screen->action ) {
@@ -66,6 +73,10 @@ if ( $admin_title === $title ) {
 
 	/* translators: Admin screen title. 1: Admin screen name, 2: Network or site name. */
 	$admin_title = sprintf( __( '%1$s &lsaquo; %2$s &#8212; WordPress' ), $screen_title, $admin_title );
+=======
+	/* translators: Admin screen title. 1: Admin screen name, 2: Network or site name. */
+	$admin_title = sprintf( __( '%1$s &lsaquo; %2$s &#8212; WordPress' ), $title, $admin_title );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 if ( wp_is_recovery_mode() ) {
@@ -97,7 +108,11 @@ wp_enqueue_script( 'svg-painter' );
 $admin_body_class = preg_replace( '/[^a-z0-9_-]+/i', '-', $hook_suffix );
 ?>
 <script type="text/javascript">
+<<<<<<< HEAD
 addLoadEvent = function(func){if(typeof jQuery!=='undefined')jQuery(function(){func();});else if(typeof wpOnload!=='function'){wpOnload=func;}else{var oldonload=wpOnload;wpOnload=function(){oldonload();func();}}};
+=======
+addLoadEvent = function(func){if(typeof jQuery!=='undefined')jQuery(document).ready(func);else if(typeof wpOnload!=='function'){wpOnload=func;}else{var oldonload=wpOnload;wpOnload=function(){oldonload();func();}}};
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 var ajaxurl = '<?php echo esc_js( admin_url( 'admin-ajax.php', 'relative' ) ); ?>',
 	pagenow = '<?php echo esc_js( $current_screen->id ); ?>',
 	typenow = '<?php echo esc_js( $current_screen->post_type ); ?>',
@@ -148,7 +163,11 @@ do_action( 'admin_print_scripts' );
 /**
  * Fires in head section for a specific admin page.
  *
+<<<<<<< HEAD
  * The dynamic portion of the hook name, `$hook_suffix`, refers to the hook suffix
+=======
+ * The dynamic portion of the hook, `$hook_suffix`, refers to the hook suffix
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * for the admin page.
  *
  * @since 2.1.0

@@ -7,9 +7,15 @@ Author: the WordPress team
 Author URI: https://wordpress.org/
 Description: Twenty Twenty-One is a blank canvas for your ideas and it makes the block editor your best brush. With new block patterns, which allow you to create a beautiful layout in a matter of seconds, this theme’s soft colors and eye-catching — yet timeless — design will let your work shine. Take it for a spin! See how Twenty Twenty-One elevates your portfolio, business website, or personal blog.
 Requires at least: 5.3
+<<<<<<< HEAD
 Tested up to: 5.9
 Requires PHP: 5.6
 Version: 1.5
+=======
+Tested up to: 5.8
+Requires PHP: 5.6
+Version: 1.4
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: twentytwentyone
@@ -2114,7 +2120,11 @@ input[type=reset]:disabled,
 
 .wp-block-cover .wp-block-cover__inner-container,
 .wp-block-cover-image .wp-block-cover__inner-container {
+<<<<<<< HEAD
 	width: calc(100% - 2 * var(--global--spacing-vertical));
+=======
+	width: calc(100% - calc(2 * var(--global--spacing-vertical)));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .wp-block-cover .wp-block-cover__inner-container > *,
@@ -2276,8 +2286,13 @@ input[type=reset]:disabled,
 .wp-block-group.has-background .wp-block-group__inner-container > hr.wp-block-separator:not(.is-style-dots):not(.alignwide).alignfull,
 .wp-block-group.is-style-twentytwentyone-border .wp-block-group__inner-container > .alignfull,
 .wp-block-group.is-style-twentytwentyone-border .wp-block-group__inner-container > hr.wp-block-separator:not(.is-style-dots):not(.alignwide).alignfull {
+<<<<<<< HEAD
 	max-width: calc(var(--responsive--alignfull-width) + 2 * var(--global--spacing-vertical));
 	width: calc(var(--responsive--alignfull-width) + 2 * var(--global--spacing-vertical));
+=======
+	max-width: calc(var(--responsive--alignfull-width) + (2 * var(--global--spacing-vertical)));
+	width: calc(var(--responsive--alignfull-width) + (2 * var(--global--spacing-vertical)));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	margin-left: calc(-1 * var(--global--spacing-vertical));
 }
 
@@ -2602,6 +2617,7 @@ h6,
 @media screen and (min-width: 600px) {
 
 	.wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid.columns-2 li {
+<<<<<<< HEAD
 		width: calc(100% / 2);
 	}
 
@@ -2619,6 +2635,25 @@ h6,
 
 	.wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid.columns-6 li {
 		width: calc(100% / 6);
+=======
+		width: calc((100% / 2));
+	}
+
+	.wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid.columns-3 li {
+		width: calc((100% / 3));
+	}
+
+	.wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid.columns-4 li {
+		width: calc((100% / 4));
+	}
+
+	.wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid.columns-5 li {
+		width: calc((100% / 5));
+	}
+
+	.wp-block-latest-posts.is-style-twentytwentyone-latest-posts-dividers.is-grid.columns-6 li {
+		width: calc((100% / 6));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 }
 
@@ -3916,7 +3951,11 @@ table.wp-calendar-table caption {
 	}
 
 	.site-header.has-logo:not(.has-title-and-tagline).has-menu .site-logo img {
+<<<<<<< HEAD
 		max-height: calc(var(--button--padding-vertical) - 0.25 * var(--global--spacing-unit) + 1.7em);
+=======
+		max-height: calc(var(--button--padding-vertical) - (0.25 * var(--global--spacing-unit)) + 1.7em);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	.site-header.has-logo.has-title-and-tagline {
@@ -3947,7 +3986,11 @@ table.wp-calendar-table caption {
 	body:not(.primary-navigation-open) .site-header.has-logo.has-title-and-tagline .menu-button-container {
 		position: relative;
 		padding-top: 0;
+<<<<<<< HEAD
 		margin-top: calc(0px - var(--button--padding-vertical) + 0.25 * var(--global--spacing-unit));
+=======
+		margin-top: calc(0px - var(--button--padding-vertical) + (0.25 * var(--global--spacing-unit)));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	body:not(.primary-navigation-open) .site-header.has-logo.has-title-and-tagline .menu-button-container #primary-mobile-menu {
@@ -3995,7 +4038,10 @@ table.wp-calendar-table caption {
 	font-size: var(--branding--title--font-size);
 }
 
+<<<<<<< HEAD
 .site-footer > .site-info .privacy-policy,
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 .site-footer > .site-info .powered-by {
 	margin-top: calc(0.5 * var(--global--spacing-vertical));
 }
@@ -4006,19 +4052,25 @@ table.wp-calendar-table caption {
 		align-items: center;
 	}
 
+<<<<<<< HEAD
 	.site-footer > .site-info .site-name {
 		margin-right: calc(0.5 * var(--global--spacing-vertical));
 	}
 
 	.site-footer > .site-info .privacy-policy,
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	.site-footer > .site-info .powered-by {
 		margin-top: initial;
 		margin-left: auto;
 	}
+<<<<<<< HEAD
 
 	.site-footer > .site-info .privacy-policy + .powered-by {
 		margin-left: calc(0.5 * var(--global--spacing-vertical));
 	}
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 .site-footer > .site-info a {
@@ -4601,7 +4653,11 @@ h1.page-title {
 .comment-form > p textarea {
 	display: block;
 	font-size: var(--global--font-size-sm);
+<<<<<<< HEAD
 	margin-bottom: calc(0.5 * var(--global--spacing-unit));
+=======
+	margin-bottom: calc(.5 * var(--global--spacing-unit));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	width: 100%;
 	font-weight: var(--form--label-weight);
 }
@@ -4639,7 +4695,11 @@ h1.page-title {
 .menu-button-container #primary-mobile-menu {
 	display: flex;
 	margin-left: auto;
+<<<<<<< HEAD
 	padding: calc(var(--button--padding-vertical) - 0.25 * var(--global--spacing-unit)) calc(0.5 * var(--button--padding-horizontal));
+=======
+	padding: calc(var(--button--padding-vertical) - (0.25 * var(--global--spacing-unit))) calc(0.5 * var(--button--padding-horizontal));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	font-size: var(--primary-nav--font-size-button);
 	font-weight: var(--primary-nav--font-weight-button);
 	background-color: transparent;
@@ -5231,7 +5291,11 @@ h1.page-title {
 		flex: 0 1 auto;
 		margin-bottom: inherit;
 		margin-top: inherit;
+<<<<<<< HEAD
 		max-width: calc(50% - 0.5 * var(--global--spacing-unit));
+=======
+		max-width: calc(50% - (0.5 * var(--global--spacing-unit)));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	.navigation .nav-links .nav-next {
@@ -5283,7 +5347,11 @@ h1.page-title {
 @media only screen and (min-width: 822px) {
 
 	.post-navigation .post-title {
+<<<<<<< HEAD
 		margin: 5px calc(24px + 0.25 * var(--global--spacing-unit)) 0;
+=======
+		margin: 5px calc(24px + (0.25 * var(--global--spacing-unit))) 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 }
 @media only screen and (min-width: 482px) {
@@ -5463,6 +5531,45 @@ h1.page-title {
 	}
 }
 
+<<<<<<< HEAD
+=======
+.widget-area ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.widget-area ul li {
+	line-height: var(--widget--line-height-list);
+}
+
+.widget-area ul.sub-menu,
+.widget-area ul.children {
+	margin-left: var(--widget--spacing-menu);
+}
+
+.widget-area ul .sub-menu-toggle {
+	display: none;
+}
+
+.widget-area a {
+	color: var(--footer--color-link);
+	text-decoration: underline;
+	text-decoration-style: solid;
+	text-decoration-color: currentColor;
+}
+
+.widget-area a:link,
+.widget-area a:visited,
+.widget-area a:active {
+	color: var(--footer--color-link);
+}
+
+.widget-area a:hover {
+	color: var(--footer--color-link-hover);
+	text-decoration-style: dotted;
+}
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 .widget-area .wp-block-social-links.alignright {
 	margin-top: var(--global--spacing-vertical);
 	justify-content: flex-end;
@@ -5512,6 +5619,7 @@ h1.page-title {
 	font-size: var(--global--font-size-xs);
 }
 
+<<<<<<< HEAD
 .widget ul {
 	list-style-type: none;
 	padding: 0;
@@ -5548,6 +5656,8 @@ h1.page-title {
 	text-decoration-style: dotted;
 }
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 .search-form {
 	display: flex;
 	flex-wrap: wrap;

@@ -24,6 +24,7 @@
 			"gradients": true,
 			"link": true
 		},
+<<<<<<< HEAD
 		"spacing": {
 			"margin": true,
 			"padding": true
@@ -38,6 +39,11 @@
 			"__experimentalDefaultControls": {
 				"fontSize": true
 			}
+=======
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	},
 	"editorStyle": "wp-block-post-excerpt-editor",

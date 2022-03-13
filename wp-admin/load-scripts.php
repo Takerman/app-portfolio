@@ -1,13 +1,22 @@
 <?php
 
+<<<<<<< HEAD
 /*
  * Disable error reporting.
+=======
+/**
+ * Disable error reporting
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * Set this to error_reporting( -1 ) for debugging.
  */
 error_reporting( 0 );
 
+<<<<<<< HEAD
 // Set ABSPATH for execution.
+=======
+/** Set ABSPATH for execution */
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', dirname( __DIR__ ) . '/' );
 }
@@ -15,7 +24,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'WPINC', 'wp-includes' );
 
 $protocol = $_SERVER['SERVER_PROTOCOL'];
+<<<<<<< HEAD
 if ( ! in_array( $protocol, array( 'HTTP/1.1', 'HTTP/2', 'HTTP/2.0', 'HTTP/3' ), true ) ) {
+=======
+if ( ! in_array( $protocol, array( 'HTTP/1.1', 'HTTP/2', 'HTTP/2.0' ), true ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$protocol = 'HTTP/1.0';
 }
 

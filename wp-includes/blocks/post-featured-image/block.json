@@ -9,6 +9,7 @@
 		"isLink": {
 			"type": "boolean",
 			"default": false
+<<<<<<< HEAD
 		},
 		"width": {
 			"type": "string"
@@ -19,11 +20,14 @@
 		"scale": {
 			"type": "string",
 			"default": "cover"
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	},
 	"usesContext": [ "postId", "postType", "queryId" ],
 	"supports": {
 		"align": [ "left", "right", "center", "wide", "full" ],
+<<<<<<< HEAD
 		"color": {
 			"__experimentalDuotone": "img",
 			"text": false,
@@ -34,6 +38,9 @@
 			"margin": true,
 			"padding": true
 		}
+=======
+		"html": false
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	},
 	"editorStyle": "wp-block-post-featured-image-editor",
 	"style": "wp-block-post-featured-image"

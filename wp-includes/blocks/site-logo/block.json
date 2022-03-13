@@ -2,10 +2,20 @@
 	"apiVersion": 2,
 	"name": "core/site-logo",
 	"title": "Site Logo",
+<<<<<<< HEAD
 	"category": "theme",
 	"description": "Display a graphic to represent this site. Update the block, and the changes apply everywhere it’s used. This is different than the site icon, which is the smaller image visible in your dashboard, browser tabs, etc used to help others recognize this site.",
 	"textdomain": "default",
 	"attributes": {
+=======
+	"category": "layout",
+	"description": "Useful for displaying a graphic mark, design, or symbol to represent the site. Once a site logo is set, it can be reused in different places and templates. It should not be confused with the site icon, which is the small image used in the dashboard, browser tabs, public search results, etc, to help recognize a site.",
+	"textdomain": "default",
+	"attributes": {
+		"align": {
+			"type": "string"
+		},
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		"width": {
 			"type": "number"
 		},
@@ -16,6 +26,7 @@
 		"linkTarget": {
 			"type": "string",
 			"default": "_self"
+<<<<<<< HEAD
 		},
 		"shouldSyncIcon": {
 			"type": "boolean"
@@ -26,17 +37,23 @@
 		"attributes": {
 			"width": 350,
 			"className": "block-editor-block-types-list__site-logo-example"
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	},
 	"supports": {
 		"html": false,
 		"align": true,
+<<<<<<< HEAD
 		"alignWide": false,
 		"color": {
 			"__experimentalDuotone": "img",
 			"text": false,
 			"background": false
 		}
+=======
+		"alignWide": false
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	},
 	"styles": [
 		{

@@ -21,7 +21,10 @@ if ( is_multisite() && ! is_network_admin() ) {
 	exit;
 }
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 $title       = __( 'Add Themes' );
 $parent_file = 'themes.php';
 
@@ -221,14 +224,25 @@ require_once ABSPATH . 'wp-admin/admin-header.php';
 		// and to ensure tags are translated.
 		$feature_list = get_theme_feature_list( false );
 
+<<<<<<< HEAD
 		foreach ( $feature_list as $feature_group => $features ) {
 			echo '<fieldset class="filter-group">';
 			echo '<legend>' . esc_html( $feature_group ) . '</legend>';
+=======
+		foreach ( $feature_list as $feature_name => $features ) {
+			echo '<fieldset class="filter-group">';
+			$feature_name = esc_html( $feature_name );
+			echo '<legend>' . $feature_name . '</legend>';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			echo '<div class="filter-group-feature">';
 			foreach ( $features as $feature => $feature_name ) {
 				$feature = esc_attr( $feature );
 				echo '<input type="checkbox" id="filter-id-' . $feature . '" value="' . $feature . '" /> ';
+<<<<<<< HEAD
 				echo '<label for="filter-id-' . $feature . '">' . esc_html( $feature_name ) . '</label>';
+=======
+				echo '<label for="filter-id-' . $feature . '">' . $feature_name . '</label>';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			}
 			echo '</div>';
 			echo '</fieldset>';

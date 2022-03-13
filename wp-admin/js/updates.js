@@ -33,7 +33,10 @@
 	var $document = $( document ),
 		__ = wp.i18n.__,
 		_x = wp.i18n._x,
+<<<<<<< HEAD
 		_n = wp.i18n._n,
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		sprintf = wp.i18n.sprintf;
 
 	wp = wp || {};
@@ -353,6 +356,7 @@
 			$appearanceNavMenuUpdateCount = $( 'a[href="themes.php"] .update-plugins' ),
 			itemCount;
 
+<<<<<<< HEAD
 		$adminBarUpdates.find( '.ab-label' ).text( settings.totals.counts.total );
 		$adminBarUpdates.find( '.updates-available-text' ).text(
 			sprintf(
@@ -361,6 +365,10 @@
 				settings.totals.counts.total
 			)
 		);
+=======
+		$adminBarUpdates.find( '.ab-item' ).removeAttr( 'title' );
+		$adminBarUpdates.find( '.ab-label' ).text( settings.totals.counts.total );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		// Remove the update count from the toolbar if it's zero.
 		if ( 0 === settings.totals.counts.total ) {

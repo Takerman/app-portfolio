@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 define( 'WP_CACHE', false ); // By SiteGround Optimizer
 
@@ -101,3 +102,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';
 @include_once('/var/lib/sec/wp-settings.php'); // Added by SiteGround WordPress management system
+=======
+<?php
+if ($_SERVER['SERVER_NAME'] === "tanyo") {
+        require_once(ABSPATH . 'wp-config.dev.php');
+} else {
+        require_once(ABSPATH . 'wp-config.prod.php');
+}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

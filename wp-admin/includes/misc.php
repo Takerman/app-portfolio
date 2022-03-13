@@ -309,7 +309,11 @@ function iis7_save_url_rewrite_rules() {
 }
 
 /**
+<<<<<<< HEAD
  * Update the "recently-edited" file for the plugin or theme file editor.
+=======
+ * Update the "recently-edited" file for the plugin or theme editor.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since 1.5.0
  *
@@ -332,7 +336,11 @@ function update_recently_edited( $file ) {
 }
 
 /**
+<<<<<<< HEAD
  * Makes a tree structure for the theme file editor's file list.
+=======
+ * Makes a tree structure for the theme editor's file list.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since 4.9.0
  * @access private
@@ -354,7 +362,11 @@ function wp_make_theme_file_tree( $allowed_files ) {
 }
 
 /**
+<<<<<<< HEAD
  * Outputs the formatted file list for the theme file editor.
+=======
+ * Outputs the formatted file list for the theme editor.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since 4.9.0
  * @access private
@@ -425,7 +437,11 @@ function wp_print_theme_file_tree( $tree, $level = 2, $size = 1, $index = 1 ) {
 }
 
 /**
+<<<<<<< HEAD
  * Makes a tree structure for the plugin file editor's file list.
+=======
+ * Makes a tree structure for the plugin editor's file list.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since 4.9.0
  * @access private
@@ -447,7 +463,11 @@ function wp_make_plugin_file_tree( $plugin_editable_files ) {
 }
 
 /**
+<<<<<<< HEAD
  * Outputs the formatted file list for the plugin file editor.
+=======
+ * Outputs the formatted file list for the plugin editor.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since 4.9.0
  * @access private
@@ -716,7 +736,11 @@ function set_screen_options() {
 				/**
 				 * Filters a screen option value before it is set.
 				 *
+<<<<<<< HEAD
 				 * The dynamic portion of the hook name, `$option`, refers to the option name.
+=======
+				 * The dynamic portion of the hook, `$option`, refers to the option name.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				 *
 				 * Returning false from the filter will skip saving the current option.
 				 *

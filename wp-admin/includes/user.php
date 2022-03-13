@@ -25,7 +25,11 @@ function add_user() {
  * @since 2.0.0
  *
  * @param int $user_id Optional. User ID.
+<<<<<<< HEAD
  * @return int|WP_Error User ID of the updated user or WP_Error on failure.
+=======
+ * @return int|WP_Error User ID of the updated user.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function edit_user( $user_id = 0 ) {
 	$wp_roles = wp_roles();
@@ -234,9 +238,15 @@ function edit_user( $user_id = 0 ) {
 		 *
 		 * @since 4.4.0
 		 *
+<<<<<<< HEAD
 		 * @param int|WP_Error $user_id ID of the newly created user or WP_Error on failure.
 		 * @param string       $notify  Type of notification that should happen. See
 		 *                              wp_send_new_user_notifications() for more information.
+=======
+		 * @param int    $user_id ID of the newly created user.
+		 * @param string $notify  Type of notification that should happen. See wp_send_new_user_notifications()
+		 *                        for more information on possible values.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		 */
 		do_action( 'edit_user_created_user', $user_id, $notify );
 	}
@@ -536,7 +546,11 @@ function default_password_nag() {
 function delete_users_add_js() {
 	?>
 <script>
+<<<<<<< HEAD
 jQuery( function($) {
+=======
+jQuery(document).ready( function($) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	var submit = $('#submit').prop('disabled', true);
 	$('input[name="delete_option"]').one('change', function() {
 		submit.prop('disabled', false);
@@ -544,7 +558,11 @@ jQuery( function($) {
 	$('#reassign_user').focus( function() {
 		$('#delete_option1').prop('checked', true).trigger('change');
 	});
+<<<<<<< HEAD
 } );
+=======
+});
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 </script>
 	<?php
 }
@@ -604,9 +622,15 @@ Please click the following link to activate your user account:
  *     The array of request data. All arguments are optional and may be empty.
  *
  *     @type string $app_name    The suggested name of the application.
+<<<<<<< HEAD
  *     @type string $app_id      A UUID provided by the application to uniquely identify it.
  *     @type string $success_url The URL the user will be redirected to after approving the application.
  *     @type string $reject_url  The URL the user will be redirected to after rejecting the application.
+=======
+ *     @type string $app_id      A uuid provided by the application to uniquely identify it.
+ *     @type string $success_url The url the user will be redirected to after approving the application.
+ *     @type string $reject_url  The url the user will be redirected to after rejecting the application.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * }
  * @param WP_User $user The user authorizing the application.
  * @return true|WP_Error True if the request is valid, a WP_Error object contains errors if not.
@@ -620,7 +644,11 @@ function wp_is_authorize_application_password_request_valid( $request, $user ) {
 		if ( 'http' === $scheme ) {
 			$error->add(
 				'invalid_redirect_scheme',
+<<<<<<< HEAD
 				__( 'The success URL must be served over a secure connection.' )
+=======
+				__( 'The success url must be served over a secure connection.' )
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			);
 		}
 	}
@@ -631,7 +659,11 @@ function wp_is_authorize_application_password_request_valid( $request, $user ) {
 		if ( 'http' === $scheme ) {
 			$error->add(
 				'invalid_redirect_scheme',
+<<<<<<< HEAD
 				__( 'The rejection URL must be served over a secure connection.' )
+=======
+				__( 'The rejection url must be served over a secure connection.' )
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			);
 		}
 	}
@@ -639,7 +671,11 @@ function wp_is_authorize_application_password_request_valid( $request, $user ) {
 	if ( ! empty( $request['app_id'] ) && ! wp_is_uuid( $request['app_id'] ) ) {
 		$error->add(
 			'invalid_app_id',
+<<<<<<< HEAD
 			__( 'The application ID must be a UUID.' )
+=======
+			__( 'The app id must be a uuid.' )
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		);
 	}
 

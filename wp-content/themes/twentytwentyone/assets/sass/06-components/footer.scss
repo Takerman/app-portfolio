@@ -31,7 +31,10 @@
 		font-size: var(--branding--title--font-size);
 	}
 
+<<<<<<< HEAD
 	.privacy-policy,
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	.powered-by {
 		margin-top: calc(0.5 * var(--global--spacing-vertical));
 	}
@@ -40,19 +43,25 @@
 		display: flex;
 		align-items: center;
 
+<<<<<<< HEAD
 		.site-name {
 			margin-right: calc(0.5 * var(--global--spacing-vertical));
 		}
 
 		.privacy-policy,
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		.powered-by {
 			margin-top: initial;
 			margin-left: auto;
 		}
+<<<<<<< HEAD
 
 		.privacy-policy + .powered-by {
 			margin-left: calc(0.5 * var(--global--spacing-vertical));
 		}
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 
 	a {

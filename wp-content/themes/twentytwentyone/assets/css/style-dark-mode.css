@@ -82,7 +82,11 @@
 @media only screen and (max-width: 481px) {
 
 	body:not(.primary-navigation-open) #dark-mode-toggler.relative ~ nav {
+<<<<<<< HEAD
 		top: 88px;
+=======
+		top: calc(44px + 44px);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 }
 @media only screen {

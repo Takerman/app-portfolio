@@ -199,12 +199,20 @@ const Stop = props => Object(external_wp_element_["createElement"])('stop', prop
  * @return {JSX.Element} Stop component
  */
 
+<<<<<<< HEAD
 const SVG = _ref => {
   let {
     className,
     isPressed,
     ...props
   } = _ref;
+=======
+const SVG = ({
+  className,
+  isPressed,
+  ...props
+}) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const appliedProps = { ...props,
     className: classnames_default()(className, {
       'is-pressed': isPressed

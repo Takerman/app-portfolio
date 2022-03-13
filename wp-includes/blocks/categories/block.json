@@ -17,10 +17,13 @@
 		"showPostCounts": {
 			"type": "boolean",
 			"default": false
+<<<<<<< HEAD
 		},
 		"showOnlyTopLevel": {
 			"type": "boolean",
 			"default": false
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	},
 	"supports": {

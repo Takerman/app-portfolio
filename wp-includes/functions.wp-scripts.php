@@ -186,7 +186,11 @@ function wp_register_script( $handle, $src, $deps = array(), $ver = false, $in_f
 /**
  * Localize a script.
  *
+<<<<<<< HEAD
  * Works only if the script has already been registered.
+=======
+ * Works only if the script has already been added.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * Accepts an associative array $l10n and creates a JavaScript object:
  *
@@ -224,7 +228,11 @@ function wp_localize_script( $handle, $object_name, $l10n ) {
 /**
  * Sets translated strings for a script.
  *
+<<<<<<< HEAD
  * Works only if the script has already been registered.
+=======
+ * Works only if the script has already been added.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @see WP_Scripts::set_translations()
  * @global WP_Scripts $wp_scripts The WP_Scripts object for printing scripts.
@@ -402,7 +410,11 @@ function wp_script_is( $handle, $list = 'enqueued' ) {
 /**
  * Add metadata to a script.
  *
+<<<<<<< HEAD
  * Works only if the script has already been registered.
+=======
+ * Works only if the script has already been added.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * Possible values for $key and $value:
  * 'conditional' string Comments for IE 6, lte IE 7, etc.

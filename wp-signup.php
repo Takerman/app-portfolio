@@ -15,7 +15,11 @@ if ( is_array( get_site_option( 'illegal_names' ) ) && isset( $_GET['new'] ) && 
 }
 
 /**
+<<<<<<< HEAD
  * Prints signup_header via wp_head.
+=======
+ * Prints signup_header via wp_head
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since MU (3.0.0)
  */
@@ -43,14 +47,22 @@ if ( ! is_main_site() ) {
 $wp_query->is_404 = false;
 
 /**
+<<<<<<< HEAD
  * Fires before the Site Sign-up page is loaded.
+=======
+ * Fires before the Site Signup page is loaded.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since 4.4.0
  */
 do_action( 'before_signup_header' );
 
 /**
+<<<<<<< HEAD
  * Prints styles for front-end Multisite Sign-up pages.
+=======
+ * Prints styles for front-end Multisite signup pages
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since MU (3.0.0)
  */
@@ -79,7 +91,11 @@ add_action( 'wp_head', 'wpmu_signup_stylesheet' );
 get_header( 'wp-signup' );
 
 /**
+<<<<<<< HEAD
  * Fires before the site Sign-up form.
+=======
+ * Fires before the site sign-up form.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since 3.0.0
  */
@@ -89,7 +105,11 @@ do_action( 'before_signup_form' );
 <div class="mu_register wp-signup-container" role="main">
 <?php
 /**
+<<<<<<< HEAD
  * Generates and displays the Sign-up and Create Site forms.
+=======
+ * Generates and displays the Signup and Create Site forms
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since MU (3.0.0)
  *
@@ -224,7 +244,11 @@ function show_blog_form( $blogname = '', $blog_title = '', $errors = '' ) {
 }
 
 /**
+<<<<<<< HEAD
  * Validates the new site sign-up.
+=======
+ * Validate the new site signup
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since MU (3.0.0)
  *
@@ -288,7 +312,11 @@ function show_user_form( $user_name = '', $user_email = '', $errors = '' ) {
 }
 
 /**
+<<<<<<< HEAD
  * Validates user sign-up name and email.
+=======
+ * Validate user signup name and email
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since MU (3.0.0)
  *
@@ -300,7 +328,11 @@ function validate_user_form() {
 }
 
 /**
+<<<<<<< HEAD
  * Shows a form for returning users to sign up for another site.
+=======
+ * Allow returning users to sign up for another site
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since MU (3.0.0)
  *
@@ -394,6 +426,7 @@ function signup_another_blog( $blogname = '', $blog_title = '', $errors = '' ) {
 }
 
 /**
+<<<<<<< HEAD
  * Validates a new site sign-up for an existing user.
  *
  * @since MU (3.0.0)
@@ -405,6 +438,19 @@ function signup_another_blog( $blogname = '', $blog_title = '', $errors = '' ) {
  * @global string   $path       The new site's path.
  *
  * @return null|bool True if site signup was validated, false on error.
+=======
+ * Validate a new site signup for an existing user.
+ *
+ * @global string          $blogname   The new site's subdomain or directory name.
+ * @global string          $blog_title The new site's title.
+ * @global WP_Error        $errors     Existing errors in the global scope.
+ * @global string          $domain     The new site's domain.
+ * @global string          $path       The new site's path.
+ *
+ * @since MU (3.0.0)
+ *
+ * @return null|bool True if site signup was validated, false if error.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *                   The function halts all execution if the user is not logged in.
  */
 function validate_another_blog_signup() {
@@ -486,7 +532,11 @@ function validate_another_blog_signup() {
 }
 
 /**
+<<<<<<< HEAD
  * Shows a message confirming that the new site has been created.
+=======
+ * Confirm a new site signup.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since MU (3.0.0)
  * @since 4.4.0 Added the `$blog_id` parameter.
@@ -553,9 +603,12 @@ function confirm_another_blog_signup( $domain, $path, $blog_title, $user_name, $
  *
  * @since MU (3.0.0)
  *
+<<<<<<< HEAD
  * @global string $active_signup String that returns registration type. The value can be
  *                               'all', 'none', 'blog', or 'user'.
  *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @param string          $user_name  The username.
  * @param string          $user_email The user's email.
  * @param WP_Error|string $errors     A WP_Error object containing existing errors. Defaults to empty string.
@@ -629,11 +682,19 @@ function signup_user( $user_name = '', $user_email = '', $errors = '' ) {
 }
 
 /**
+<<<<<<< HEAD
  * Validates the new user sign-up.
  *
  * @since MU (3.0.0)
  *
  * @return bool True if new user sign-up was validated, false on error.
+=======
+ * Validate the new user signup
+ *
+ * @since MU (3.0.0)
+ *
+ * @return bool True if new user signup was validated, false if error
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function validate_user_signup() {
 	$result     = validate_user_form();
@@ -659,12 +720,21 @@ function validate_user_signup() {
 }
 
 /**
+<<<<<<< HEAD
  * Shows a message confirming that the new user has been registered and is awaiting activation.
  *
  * @since MU (3.0.0)
  *
  * @param string $user_name  The username.
  * @param string $user_email The user's email address.
+=======
+ * New user signup confirmation
+ *
+ * @since MU (3.0.0)
+ *
+ * @param string $user_name The username
+ * @param string $user_email The user's email address
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function confirm_user_signup( $user_name, $user_email ) {
 	?>
@@ -747,17 +817,29 @@ function signup_blog( $user_name = '', $user_email = '', $blogname = '', $blog_t
 		do_action( 'signup_hidden_fields', 'validate-site' );
 		?>
 		<?php show_blog_form( $blogname, $blog_title, $errors ); ?>
+<<<<<<< HEAD
 		<p class="submit"><input type="submit" name="submit" class="submit" value="<?php esc_attr_e( 'Sign up' ); ?>" /></p>
+=======
+		<p class="submit"><input type="submit" name="submit" class="submit" value="<?php esc_attr_e( 'Signup' ); ?>" /></p>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	</form>
 	<?php
 }
 
 /**
+<<<<<<< HEAD
  * Validates new site signup.
  *
  * @since MU (3.0.0)
  *
  * @return bool True if the site sign-up was validated, false on error.
+=======
+ * Validate new site signup
+ *
+ * @since MU (3.0.0)
+ *
+ * @return bool True if the site signup was validated, false if error
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  */
 function validate_blog_signup() {
 	// Re-validate user info.
@@ -860,7 +942,11 @@ function confirm_blog_signup( $domain, $path, $blog_title, $user_name = '', $use
 }
 
 /**
+<<<<<<< HEAD
  * Retrieves languages available during the site/user sign-up process.
+=======
+ * Retrieves languages available during the site/user signup process.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @since 4.4.0
  *
@@ -871,10 +957,17 @@ function confirm_blog_signup( $domain, $path, $blog_title, $user_name = '', $use
  */
 function signup_get_available_languages() {
 	/**
+<<<<<<< HEAD
 	 * Filters the list of available languages for front-end site sign-ups.
 	 *
 	 * Passing an empty array to this hook will disable output of the setting on the
 	 * sign-up form, and the default language will be used when creating the site.
+=======
+	 * Filters the list of available languages for front-end site signups.
+	 *
+	 * Passing an empty array to this hook will disable output of the setting on the
+	 * signup form, and the default language will be used when creating the site.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 *
 	 * Languages not already installed will be stripped.
 	 *

@@ -155,9 +155,13 @@ var external_wp_blocks_ = __webpack_require__("HSyU");
 
 
 
+<<<<<<< HEAD
 function rendererPath(block) {
   let attributes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   let urlQueryArgs = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+=======
+function rendererPath(block, attributes = null, urlQueryArgs = {}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   return Object(external_wp_url_["addQueryArgs"])(`/wp/v2/block-renderer/${block}`, {
     context: 'edit',
     ...(null !== attributes ? {
@@ -167,20 +171,33 @@ function rendererPath(block) {
   });
 }
 
+<<<<<<< HEAD
 function DefaultEmptyResponsePlaceholder(_ref) {
   let {
     className
   } = _ref;
+=======
+function DefaultEmptyResponsePlaceholder({
+  className
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   return Object(external_wp_element_["createElement"])(external_wp_components_["Placeholder"], {
     className: className
   }, Object(external_wp_i18n_["__"])('Block rendered as empty.'));
 }
 
+<<<<<<< HEAD
 function DefaultErrorResponsePlaceholder(_ref2) {
   let {
     response,
     className
   } = _ref2;
+=======
+function DefaultErrorResponsePlaceholder({
+  response,
+  className
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const errorMessage = Object(external_wp_i18n_["sprintf"])( // translators: %s: error message describing the problem
   Object(external_wp_i18n_["__"])('Error loading block: %s'), response.errorMsg);
   return Object(external_wp_element_["createElement"])(external_wp_components_["Placeholder"], {
@@ -188,6 +205,7 @@ function DefaultErrorResponsePlaceholder(_ref2) {
   }, errorMessage);
 }
 
+<<<<<<< HEAD
 function DefaultLoadingResponsePlaceholder(_ref3) {
   let {
     children,
@@ -210,6 +228,14 @@ function DefaultLoadingResponsePlaceholder(_ref3) {
       opacity: showLoader ? '0.3' : 1
     }
   }, children));
+=======
+function DefaultLoadingResponsePlaceholder({
+  className
+}) {
+  return Object(external_wp_element_["createElement"])(external_wp_components_["Placeholder"], {
+    className: className
+  }, Object(external_wp_element_["createElement"])(external_wp_components_["Spinner"], null));
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 function ServerSideRender(props) {
@@ -224,18 +250,30 @@ function ServerSideRender(props) {
     LoadingResponsePlaceholder = DefaultLoadingResponsePlaceholder
   } = props;
   const isMountedRef = Object(external_wp_element_["useRef"])(true);
+<<<<<<< HEAD
   const [showLoader, setShowLoader] = Object(external_wp_element_["useState"])(false);
   const fetchRequestRef = Object(external_wp_element_["useRef"])();
   const [response, setResponse] = Object(external_wp_element_["useState"])(null);
   const prevProps = Object(external_wp_compose_["usePrevious"])(props);
   const [isLoading, setIsLoading] = Object(external_wp_element_["useState"])(false);
+=======
+  const fetchRequestRef = Object(external_wp_element_["useRef"])();
+  const [response, setResponse] = Object(external_wp_element_["useState"])(null);
+  const prevProps = Object(external_wp_compose_["usePrevious"])(props);
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
   function fetchData() {
     if (!isMountedRef.current) {
       return;
     }
 
+<<<<<<< HEAD
     setIsLoading(true);
+=======
+    if (null !== response) {
+      setResponse(null);
+    }
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
     const sanitizedAttributes = attributes && Object(external_wp_blocks_["__experimentalSanitizeBlockAttributes"])(block, attributes); // If httpMethod is 'POST', send the attributes in the request body instead of the URL.
     // This allows sending a larger attributes object than in a GET request, where the attributes are in the URL.
@@ -264,10 +302,13 @@ function ServerSideRender(props) {
           errorMsg: error.message
         });
       }
+<<<<<<< HEAD
     }).finally(() => {
       if (isMountedRef.current && fetchRequest === fetchRequestRef.current) {
         setIsLoading(false);
       }
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     });
     return fetchRequest;
   }
@@ -287,6 +328,7 @@ function ServerSideRender(props) {
       debouncedFetchData();
     }
   });
+<<<<<<< HEAD
   /**
    * Effect to handle showing the loading placeholder.
    * Show it only if there is no previous response or
@@ -320,6 +362,14 @@ function ServerSideRender(props) {
   }
 
   if (hasError) {
+=======
+
+  if (response === '') {
+    return Object(external_wp_element_["createElement"])(EmptyResponsePlaceholder, props);
+  } else if (!response) {
+    return Object(external_wp_element_["createElement"])(LoadingResponsePlaceholder, props);
+  } else if (response.error) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     return Object(external_wp_element_["createElement"])(ErrorResponsePlaceholder, Object(esm_extends["a" /* default */])({
       response: response
     }, props));
@@ -351,9 +401,12 @@ function ServerSideRender(props) {
 
 const EMPTY_OBJECT = {};
 const ExportedServerSideRender = Object(external_wp_data_["withSelect"])(select => {
+<<<<<<< HEAD
   // FIXME: @wordpress/server-side-render should not depend on @wordpress/editor.
   // It is used by blocks that can be loaded into a *non-post* block editor.
   // eslint-disable-next-line @wordpress/data-no-store-string-literals
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const coreEditorSelect = select('core/editor');
 
   if (coreEditorSelect) {
@@ -370,12 +423,20 @@ const ExportedServerSideRender = Object(external_wp_data_["withSelect"])(select 
   }
 
   return EMPTY_OBJECT;
+<<<<<<< HEAD
 })(_ref => {
   let {
     urlQueryArgs = EMPTY_OBJECT,
     currentPostId,
     ...props
   } = _ref;
+=======
+})(({
+  urlQueryArgs = EMPTY_OBJECT,
+  currentPostId,
+  ...props
+}) => {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   const newUrlQueryArgs = Object(external_wp_element_["useMemo"])(() => {
     if (!currentPostId) {
       return urlQueryArgs;

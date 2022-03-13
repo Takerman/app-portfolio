@@ -3,7 +3,11 @@
 	"name": "core/embed",
 	"title": "Embed",
 	"category": "embed",
+<<<<<<< HEAD
 	"description": "Add a block that displays content pulled from other sites, like Twitter or YouTube.",
+=======
+	"description": "Add a block that displays content pulled from other sites, like Twitter, Instagram or YouTube.",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	"textdomain": "default",
 	"attributes": {
 		"url": {

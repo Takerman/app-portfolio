@@ -18,7 +18,11 @@
 
 	<?php get_template_part( 'template-parts/footer/footer-widgets' ); ?>
 
+<<<<<<< HEAD
 	<footer id="colophon" class="site-footer">
+=======
+	<footer id="colophon" class="site-footer" role="contentinfo">
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		<?php if ( has_nav_menu( 'footer' ) ) : ?>
 			<nav aria-label="<?php esc_attr_e( 'Secondary menu', 'twentytwentyone' ); ?>" class="footer-navigation">
@@ -53,6 +57,7 @@
 					<?php endif; ?>
 				<?php endif; ?>
 			</div><!-- .site-name -->
+<<<<<<< HEAD
 
 			<?php
 			if ( function_exists( 'the_privacy_policy_link' ) ) {
@@ -60,6 +65,8 @@
 			}
 			?>
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			<div class="powered-by">
 				<?php
 				printf(

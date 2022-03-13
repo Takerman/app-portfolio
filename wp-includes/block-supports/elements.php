@@ -12,6 +12,7 @@
  * @since 5.8.0
  * @access private
  *
+<<<<<<< HEAD
  * @param string $block_content Rendered block content.
  * @param array  $block         Block object.
  * @return string Filtered block content.
@@ -21,17 +22,32 @@ function wp_render_elements_support( $block_content, $block ) {
 		return $block_content;
 	}
 
+=======
+ * @param  string $block_content Rendered block content.
+ * @param  array  $block         Block object.
+ * @return string                Filtered block content.
+ */
+function wp_render_elements_support( $block_content, $block ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$link_color = null;
 	if ( ! empty( $block['attrs'] ) ) {
 		$link_color = _wp_array_get( $block['attrs'], array( 'style', 'elements', 'link', 'color', 'text' ), null );
 	}
 
 	/*
+<<<<<<< HEAD
 	 * For now we only care about link color.
 	 * This code in the future when we have a public API
 	 * should take advantage of WP_Theme_JSON::compute_style_properties
 	 * and work for any element and style.
 	 */
+=======
+	* For now we only care about link color.
+	* This code in the future when we have a public API
+	* should take advantage of WP_Theme_JSON::compute_style_properties
+	* and work for any element and style.
+	*/
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( null === $link_color ) {
 		return $block_content;
 	}
@@ -46,7 +62,11 @@ function wp_render_elements_support( $block_content, $block ) {
 	}
 	$link_color_declaration = esc_html( safecss_filter_attr( "color: $link_color" ) );
 
+<<<<<<< HEAD
 	$style = ".$class_name a{" . $link_color_declaration . ';}';
+=======
+	$style = "<style>.$class_name a{" . $link_color_declaration . " !important;}</style>\n";
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	// Like the layout hook this assumes the hook only applies to blocks with a single wrapper.
 	// Retrieve the opening tag of the first HTML element.
@@ -68,9 +88,14 @@ function wp_render_elements_support( $block_content, $block ) {
 		$content              = substr_replace( $block_content, ' class="' . $class_name . '"', $first_element_offset + strlen( $first_element ) - 1, 0 );
 	}
 
+<<<<<<< HEAD
 	wp_enqueue_block_support_styles( $style );
 
 	return $content;
+=======
+	return $content . $style;
+
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 add_filter( 'render_block', 'wp_render_elements_support', 10, 2 );

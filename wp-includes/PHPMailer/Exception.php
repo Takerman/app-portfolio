@@ -35,6 +35,10 @@ class Exception extends \Exception
      */
     public function errorMessage()
     {
+<<<<<<< HEAD
         return '<strong>' . htmlspecialchars($this->getMessage(), ENT_COMPAT | ENT_HTML401) . "</strong><br />\n";
+=======
+        return '<strong>' . htmlspecialchars($this->getMessage()) . "</strong><br />\n";
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     }
 }

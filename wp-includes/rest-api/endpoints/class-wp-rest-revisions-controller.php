@@ -49,10 +49,17 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 */
 	public function __construct( $parent_post_type ) {
 		$this->parent_post_type  = $parent_post_type;
+<<<<<<< HEAD
 		$this->rest_base         = 'revisions';
 		$post_type_object        = get_post_type_object( $parent_post_type );
 		$this->parent_base       = ! empty( $post_type_object->rest_base ) ? $post_type_object->rest_base : $post_type_object->name;
 		$this->namespace         = ! empty( $post_type_object->rest_namespace ) ? $post_type_object->rest_namespace : 'wp/v2';
+=======
+		$this->namespace         = 'wp/v2';
+		$this->rest_base         = 'revisions';
+		$post_type_object        = get_post_type_object( $parent_post_type );
+		$this->parent_base       = ! empty( $post_type_object->rest_base ) ? $post_type_object->rest_base : $post_type_object->name;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$this->parent_controller = $post_type_object->get_rest_controller();
 
 		if ( ! $this->parent_controller ) {
@@ -535,6 +542,7 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * Prepares the revision for the REST response.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$post` to `$item` to match parent class for PHP 8 named parameter support.
 	 *
 	 * @param WP_Post         $item    Post revision object.
@@ -544,6 +552,14 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	public function prepare_item_for_response( $item, $request ) {
 		// Restores the more descriptive, specific name for use within this method.
 		$post            = $item;
+=======
+	 *
+	 * @param WP_Post         $post    Post revision object.
+	 * @param WP_REST_Request $request Request object.
+	 * @return WP_REST_Response Response object.
+	 */
+	public function prepare_item_for_response( $post, $request ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$GLOBALS['post'] = $post;
 
 		setup_postdata( $post );

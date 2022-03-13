@@ -517,6 +517,7 @@ function wp_get_post_revisions( $post_id = 0, $args = null ) {
 }
 
 /**
+<<<<<<< HEAD
  * Returns the url for viewing and potentially restoring revisions of a given post.
  *
  * @since 5.9.0
@@ -551,6 +552,8 @@ function wp_get_post_revisions_url( $post_id = 0 ) {
 }
 
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Determine if revisions are enabled for a given post.
  *
  * @since 3.6.0
@@ -608,11 +611,14 @@ function wp_revisions_to_keep( $post ) {
 	 * The dynamic portion of the hook name, `$post->post_type`, refers to
 	 * the post type slug.
 	 *
+<<<<<<< HEAD
 	 * Possible hook names include:
 	 *
 	 *  - `wp_post_revisions_to_keep`
 	 *  - `wp_page_revisions_to_keep`
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @since 5.8.0
 	 *
 	 * @param int     $num  Number of revisions to store.
@@ -638,6 +644,7 @@ function _set_preview( $post ) {
 	}
 
 	$preview = wp_get_post_autosave( $post->ID );
+<<<<<<< HEAD
 
 	if ( is_object( $preview ) ) {
 		$preview = sanitize_post( $preview );
@@ -646,6 +653,17 @@ function _set_preview( $post ) {
 		$post->post_title   = $preview->post_title;
 		$post->post_excerpt = $preview->post_excerpt;
 	}
+=======
+	if ( ! is_object( $preview ) ) {
+		return $post;
+	}
+
+	$preview = sanitize_post( $preview );
+
+	$post->post_content = $preview->post_content;
+	$post->post_title   = $preview->post_title;
+	$post->post_excerpt = $preview->post_excerpt;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	add_filter( 'get_the_terms', '_wp_preview_terms_filter', 10, 3 );
 	add_filter( 'get_post_metadata', '_wp_preview_post_thumbnail_filter', 10, 3 );

@@ -77,9 +77,12 @@ for ( $i = 1; $i <= $count; $i++ ) {
 	$content_transfer_encoding = '';
 	$post_author               = 1;
 	$author_found              = false;
+<<<<<<< HEAD
 	$post_date                 = null;
 	$post_date_gmt             = null;
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	foreach ( $message as $line ) {
 		// Body signal.
 		if ( strlen( $line ) < 3 ) {

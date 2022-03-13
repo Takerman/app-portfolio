@@ -102,8 +102,11 @@ abstract class WP_Privacy_Requests_Table extends WP_List_Table {
 	 *
 	 * @since 4.9.6
 	 *
+<<<<<<< HEAD
 	 * @global wpdb $wpdb WordPress database abstraction object.
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @return object Number of posts for each status.
 	 */
 	protected function get_request_counts() {

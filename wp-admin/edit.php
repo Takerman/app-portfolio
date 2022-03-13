@@ -154,7 +154,11 @@ if ( $doaction ) {
 			}
 			$sendback = add_query_arg( 'untrashed', $untrashed, $sendback );
 
+<<<<<<< HEAD
 			remove_filter( 'wp_untrash_post_status', 'wp_untrash_post_set_previous_status', 10 );
+=======
+			remove_filter( 'wp_untrash_post_status', 'wp_untrash_post_set_previous_status', 10, 3 );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 			break;
 		case 'delete':
@@ -232,7 +236,10 @@ if ( 'wp_block' === $post_type ) {
 	wp_enqueue_style( 'wp-list-reusable-blocks' );
 }
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 $title = $post_type_object->labels->name;
 
 if ( 'post' === $post_type ) {

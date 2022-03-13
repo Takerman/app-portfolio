@@ -1,0 +1,41 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Kerge contact form 1.1.0\n"
+"POT-Creation-Date: 2020-05-12 10:05+0400\n"
+"PO-Revision-Date: 2017-06-16 19:41+0400\n"
+"Last-Translator: \n"
+"Language-Team: LMPixels linar@lmpixels.com\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext;_n;__ngettext_noop;_n_noop;_x;_nx;_nx_noop;_ex;esc_attr__;esc_attr_e;esc_attr_x;esc_html__;esc_html_e;esc_html_x;_c\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: kerge-contact-form.php:24
+msgid "New message from contact form"
+msgstr ""
+
+#: kerge-contact-form.php:29
+msgid "Contact form successfully submitted. Thank you, I will get back to you soon!"
+msgstr ""
+
+#: kerge-contact-form.php:30
+msgid "There was an error while submitting the form. Please try again later"
+msgstr ""
+
+#: kerge-contact-form.php:32
+msgid "You have new message from Contact Form"
+msgstr ""
+
+#: kerge-contact-form.php:36
+msgid "Please click on the reCAPTCHA box."
+msgstr ""
+
+#: kerge-contact-form.php:37
+msgid "Robot verification failed, please try again."
+msgstr ""

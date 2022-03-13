@@ -41,12 +41,15 @@
  * These variables do not appear to be used anywhere else.
  */
 /**
+<<<<<<< HEAD
 *  Converts a hex value into the rgb equivalent.
 *
 * @param {string} hex - the hexadecimal value to convert
 * @return {string} comma separated rgb values
 */
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Breakpoint mixins
  */
 /**
@@ -92,6 +95,10 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
+<<<<<<< HEAD
+=======
+  align-self: flex-start;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   width: calc(50% - 1em);
 }
 .wp-block-gallery .blocks-gallery-image:nth-of-type(even),
@@ -106,9 +113,22 @@
 .blocks-gallery-grid .blocks-gallery-item figure {
   margin: 0;
   height: 100%;
+<<<<<<< HEAD
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
+=======
+}
+@supports (position: sticky) {
+  .wp-block-gallery .blocks-gallery-image figure,
+.wp-block-gallery .blocks-gallery-item figure,
+.blocks-gallery-grid .blocks-gallery-image figure,
+.blocks-gallery-grid .blocks-gallery-item figure {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 .wp-block-gallery .blocks-gallery-image img,
 .wp-block-gallery .blocks-gallery-item img,
@@ -117,7 +137,19 @@
   display: block;
   max-width: 100%;
   height: auto;
+<<<<<<< HEAD
   width: auto;
+=======
+  width: 100%;
+}
+@supports (position: sticky) {
+  .wp-block-gallery .blocks-gallery-image img,
+.wp-block-gallery .blocks-gallery-item img,
+.blocks-gallery-grid .blocks-gallery-image img,
+.blocks-gallery-grid .blocks-gallery-item img {
+    width: auto;
+  }
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 .wp-block-gallery .blocks-gallery-image figcaption,
 .wp-block-gallery .blocks-gallery-item figcaption,
@@ -135,7 +167,10 @@
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0, rgba(0, 0, 0, 0.3) 70%, transparent);
   box-sizing: border-box;
   margin: 0;
+<<<<<<< HEAD
   z-index: 2;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 .wp-block-gallery .blocks-gallery-image figcaption img,
 .wp-block-gallery .blocks-gallery-item figcaption img,
@@ -147,6 +182,14 @@
 .blocks-gallery-grid figcaption {
   flex-grow: 1;
 }
+<<<<<<< HEAD
+=======
+.wp-block-gallery.is-cropped .blocks-gallery-image, .wp-block-gallery.is-cropped .blocks-gallery-item,
+.blocks-gallery-grid.is-cropped .blocks-gallery-image,
+.blocks-gallery-grid.is-cropped .blocks-gallery-item {
+  align-self: inherit;
+}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 .wp-block-gallery.is-cropped .blocks-gallery-image a,
 .wp-block-gallery.is-cropped .blocks-gallery-image img, .wp-block-gallery.is-cropped .blocks-gallery-item a,
 .wp-block-gallery.is-cropped .blocks-gallery-item img,
@@ -155,10 +198,27 @@
 .blocks-gallery-grid.is-cropped .blocks-gallery-item a,
 .blocks-gallery-grid.is-cropped .blocks-gallery-item img {
   width: 100%;
+<<<<<<< HEAD
   height: 100%;
   flex: 1;
   -o-object-fit: cover;
      object-fit: cover;
+=======
+}
+@supports (position: sticky) {
+  .wp-block-gallery.is-cropped .blocks-gallery-image a,
+.wp-block-gallery.is-cropped .blocks-gallery-image img, .wp-block-gallery.is-cropped .blocks-gallery-item a,
+.wp-block-gallery.is-cropped .blocks-gallery-item img,
+.blocks-gallery-grid.is-cropped .blocks-gallery-image a,
+.blocks-gallery-grid.is-cropped .blocks-gallery-image img,
+.blocks-gallery-grid.is-cropped .blocks-gallery-item a,
+.blocks-gallery-grid.is-cropped .blocks-gallery-item img {
+    height: 100%;
+    flex: 1;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 .wp-block-gallery.columns-1 .blocks-gallery-image, .wp-block-gallery.columns-1 .blocks-gallery-item,
 .blocks-gallery-grid.columns-1 .blocks-gallery-image,
@@ -259,6 +319,7 @@
 .wp-block-gallery.aligncenter .blocks-gallery-item figure,
 .blocks-gallery-grid.aligncenter .blocks-gallery-item figure {
   justify-content: center;
+<<<<<<< HEAD
 }
 
 .wp-block-gallery:not(.is-cropped) .blocks-gallery-item {
@@ -453,4 +514,6 @@
 }
 .wp-block-gallery.has-nested-images.aligncenter {
   justify-content: center;
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }

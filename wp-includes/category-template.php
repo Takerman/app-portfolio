@@ -661,9 +661,15 @@ function wp_list_categories( $args = '' ) {
 	 *
 	 * @since 2.1.0
 	 *
+<<<<<<< HEAD
 	 * @param string       $output HTML output.
 	 * @param array|string $args   An array or query string of taxonomy-listing arguments. See
 	 *                             wp_list_categories() for information on accepted arguments.
+=======
+	 * @param string $output HTML output.
+	 * @param array  $args   An array of taxonomy-listing arguments. See wp_list_categories()
+	 *                       for information on accepted arguments.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 */
 	$html = apply_filters( 'wp_list_categories', $output, $args );
 
@@ -737,9 +743,15 @@ function wp_tag_cloud( $args = '' ) {
 
 	foreach ( $tags as $key => $tag ) {
 		if ( 'edit' === $args['link'] ) {
+<<<<<<< HEAD
 			$link = get_edit_term_link( $tag, $tag->taxonomy, $args['post_type'] );
 		} else {
 			$link = get_term_link( $tag, $tag->taxonomy );
+=======
+			$link = get_edit_term_link( $tag->term_id, $tag->taxonomy, $args['post_type'] );
+		} else {
+			$link = get_term_link( (int) $tag->term_id, $tag->taxonomy );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		if ( is_wp_error( $link ) ) {
@@ -1343,6 +1355,7 @@ function get_the_term_list( $post_id, $taxonomy, $before = '', $sep = '', $after
 	/**
 	 * Filters the term links for a given taxonomy.
 	 *
+<<<<<<< HEAD
 	 * The dynamic portion of the hook name, `$taxonomy`, refers
 	 * to the taxonomy slug.
 	 *
@@ -1352,6 +1365,11 @@ function get_the_term_list( $post_id, $taxonomy, $before = '', $sep = '', $after
 	 *  - `term_links-post_tag`
 	 *  - `term_links-post_format`
 	 *
+=======
+	 * The dynamic portion of the filter name, `$taxonomy`, refers
+	 * to the taxonomy slug.
+	 *
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @since 2.5.0
 	 *
 	 * @param string[] $links An array of term links.

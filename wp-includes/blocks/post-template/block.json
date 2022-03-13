@@ -16,10 +16,14 @@
 	"supports": {
 		"reusable": false,
 		"html": false,
+<<<<<<< HEAD
 		"align": true,
 		"__experimentalLayout": {
 			"allowEditing": false
 		}
+=======
+		"align": true
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	},
 	"style": "wp-block-post-template",
 	"editorStyle": "wp-block-post-template-editor"

@@ -6,6 +6,7 @@
  */
 
 /**
+<<<<<<< HEAD
  * Adds necessary filters to use 'wp_template' posts instead of theme template files.
  *
  * @access private
@@ -32,6 +33,8 @@ function _add_template_loader_filters() {
 }
 
 /**
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * Find a block template with equal or higher specificity than a given PHP template file.
  *
  * Internally, this communicates the block content that needs to be used by the template canvas through a global variable.
@@ -40,18 +43,27 @@ function _add_template_loader_filters() {
  *
  * @global string $_wp_current_template_content
  *
+<<<<<<< HEAD
  * @param string   $template  Path to the template. See locate_template().
  * @param string   $type      Sanitized filename without extension.
  * @param string[] $templates A list of template candidates, in descending order of priority.
+=======
+ * @param string $template  Path to the template. See locate_template().
+ * @param string $type      Sanitized filename without extension.
+ * @param array  $templates A list of template candidates, in descending order of priority.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * @return string The path to the Full Site Editing template canvas file, or the fallback PHP template.
  */
 function locate_block_template( $template, $type, array $templates ) {
 	global $_wp_current_template_content;
 
+<<<<<<< HEAD
 	if ( ! current_theme_supports( 'block-templates' ) ) {
 		return $template;
 	}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( $template ) {
 		/*
 		 * locate_template() has found a PHP template at the path specified by $template.
@@ -75,7 +87,11 @@ function locate_block_template( $template, $type, array $templates ) {
 		$templates = array_slice( $templates, 0, $index + 1 );
 	}
 
+<<<<<<< HEAD
 	$block_template = resolve_block_template( $type, $templates, $template );
+=======
+	$block_template = resolve_block_template( $type, $templates );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	if ( $block_template ) {
 		if ( empty( $block_template->content ) && is_user_logged_in() ) {
@@ -122,6 +138,7 @@ function locate_block_template( $template, $type, array $templates ) {
  *
  * @access private
  * @since 5.8.0
+<<<<<<< HEAD
  * @since 5.9.0 Added the `$fallback_template` parameter.
  *
  * @param string   $template_type      The current template type.
@@ -130,6 +147,14 @@ function locate_block_template( $template, $type, array $templates ) {
  * @return WP_Block_Template|null template A template object, or null if none could be found.
  */
 function resolve_block_template( $template_type, $template_hierarchy, $fallback_template ) {
+=======
+ *
+ * @param string   $template_type      The current template type.
+ * @param string[] $template_hierarchy The current template hierarchy, ordered by priority.
+ * @return WP_Block_Template|null template A template object, or null if none could be found.
+ */
+function resolve_block_template( $template_type, $template_hierarchy ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( ! $template_type ) {
 		return null;
 	}
@@ -156,11 +181,16 @@ function resolve_block_template( $template_type, $template_hierarchy, $fallback_
 
 	usort(
 		$templates,
+<<<<<<< HEAD
 		static function ( $template_a, $template_b ) use ( $slug_priorities ) {
+=======
+		function ( $template_a, $template_b ) use ( $slug_priorities ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return $slug_priorities[ $template_a->slug ] - $slug_priorities[ $template_b->slug ];
 		}
 	);
 
+<<<<<<< HEAD
 	$theme_base_path        = get_stylesheet_directory() . DIRECTORY_SEPARATOR;
 	$parent_theme_base_path = get_template_directory() . DIRECTORY_SEPARATOR;
 
@@ -198,6 +228,8 @@ function resolve_block_template( $template_type, $template_hierarchy, $fallback_
 		}
 	}
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	return count( $templates ) ? $templates[0] : null;
 }
 
@@ -239,10 +271,14 @@ function get_the_block_template_html() {
 	$content = $wp_embed->autoembed( $content );
 	$content = do_blocks( $content );
 	$content = wptexturize( $content );
+<<<<<<< HEAD
 	$content = convert_smilies( $content );
 	$content = shortcode_unautop( $content );
 	$content = wp_filter_content_tags( $content );
 	$content = do_shortcode( $content );
+=======
+	$content = wp_filter_content_tags( $content );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$content = str_replace( ']]>', ']]&gt;', $content );
 
 	// Wrap block template in .wp-site-blocks to allow for specific descendant styles
@@ -299,6 +335,7 @@ function _block_template_render_without_post_block_context( $context ) {
 
 	return $context;
 }
+<<<<<<< HEAD
 
 /**
  * Sets the current WP_Query to return auto-draft posts.
@@ -331,3 +368,5 @@ function _resolve_template_for_new_post( $wp_query ) {
 		$wp_query->set( 'post_status', 'auto-draft' );
 	}
 }
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

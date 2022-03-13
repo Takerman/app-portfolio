@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * jQuery UI Draggable 1.13.1
+=======
+ * jQuery UI Draggable 1.12.1
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -15,8 +19,11 @@
 //>>css.structure: ../../themes/base/draggable.css
 
 ( function( factory ) {
+<<<<<<< HEAD
 	"use strict";
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -30,11 +37,18 @@
 		// Browser globals
 		factory( jQuery );
 	}
+<<<<<<< HEAD
 } )( function( $ ) {
 "use strict";
 
 $.widget( "ui.draggable", $.ui.mouse, {
 	version: "1.13.1",
+=======
+}( function( $ ) {
+
+$.widget( "ui.draggable", $.ui.mouse, {
+	version: "1.12.1",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	widgetEventPrefix: "drag",
 	options: {
 		addClasses: true,
@@ -102,7 +116,11 @@ $.widget( "ui.draggable", $.ui.mouse, {
 
 		// Among others, prevent a drag on a resizable-handle
 		if ( this.helper || o.disabled ||
+<<<<<<< HEAD
 			$( event.target ).closest( ".ui-resizable-handle" ).length > 0 ) {
+=======
+				$( event.target ).closest( ".ui-resizable-handle" ).length > 0 ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return false;
 		}
 
@@ -185,8 +203,13 @@ $.widget( "ui.draggable", $.ui.mouse, {
 		this.scrollParent = this.helper.scrollParent( true );
 		this.offsetParent = this.helper.offsetParent();
 		this.hasFixedAncestor = this.helper.parents().filter( function() {
+<<<<<<< HEAD
 			return $( this ).css( "position" ) === "fixed";
 		} ).length > 0;
+=======
+				return $( this ).css( "position" ) === "fixed";
+			} ).length > 0;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		//The element's absolute position on the page minus margins
 		this.positionAbs = this.element.offset();
@@ -198,9 +221,13 @@ $.widget( "ui.draggable", $.ui.mouse, {
 		this.originalPageY = event.pageY;
 
 		//Adjust the mouse offset relative to the helper if "cursorAt" is supplied
+<<<<<<< HEAD
 		if ( o.cursorAt ) {
 			this._adjustOffsetFromHelper( o.cursorAt );
 		}
+=======
+		( o.cursorAt && this._adjustOffsetFromHelper( o.cursorAt ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		//Set a containment if given in the options
 		this._setContainment();
@@ -294,8 +321,13 @@ $.widget( "ui.draggable", $.ui.mouse, {
 		}
 
 		if ( ( this.options.revert === "invalid" && !dropped ) ||
+<<<<<<< HEAD
 			( this.options.revert === "valid" && dropped ) ||
 			this.options.revert === true || ( typeof this.options.revert === "function" &&
+=======
+				( this.options.revert === "valid" && dropped ) ||
+				this.options.revert === true || ( $.isFunction( this.options.revert ) &&
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				this.options.revert.call( this.element, dropped ) )
 		) {
 			$( this.helper ).animate(
@@ -367,7 +399,11 @@ $.widget( "ui.draggable", $.ui.mouse, {
 	_createHelper: function( event ) {
 
 		var o = this.options,
+<<<<<<< HEAD
 			helperIsFunction = typeof o.helper === "function",
+=======
+			helperIsFunction = $.isFunction( o.helper ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			helper = helperIsFunction ?
 				$( o.helper.apply( this.element[ 0 ], [ event ] ) ) :
 				( o.helper === "clone" ?
@@ -388,7 +424,11 @@ $.widget( "ui.draggable", $.ui.mouse, {
 		}
 
 		if ( helper[ 0 ] !== this.element[ 0 ] &&
+<<<<<<< HEAD
 			!( /(fixed|absolute)/ ).test( helper.css( "position" ) ) ) {
+=======
+				!( /(fixed|absolute)/ ).test( helper.css( "position" ) ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			helper.css( "position", "absolute" );
 		}
 
@@ -406,7 +446,11 @@ $.widget( "ui.draggable", $.ui.mouse, {
 		if ( typeof obj === "string" ) {
 			obj = obj.split( " " );
 		}
+<<<<<<< HEAD
 		if ( Array.isArray( obj ) ) {
+=======
+		if ( $.isArray( obj ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			obj = { left: +obj[ 0 ], top: +obj[ 1 ] || 0 };
 		}
 		if ( "left" in obj ) {
@@ -441,7 +485,11 @@ $.widget( "ui.draggable", $.ui.mouse, {
 		// the document, which means that the scroll is included in the initial calculation of the
 		// offset of the parent, and never recalculated upon drag
 		if ( this.cssPosition === "absolute" && this.scrollParent[ 0 ] !== document &&
+<<<<<<< HEAD
 			$.contains( this.scrollParent[ 0 ], this.offsetParent[ 0 ] ) ) {
+=======
+				$.contains( this.scrollParent[ 0 ], this.offsetParent[ 0 ] ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			po.left += this.scrollParent.scrollLeft();
 			po.top += this.scrollParent.scrollTop();
 		}
@@ -508,10 +556,17 @@ $.widget( "ui.draggable", $.ui.mouse, {
 				$( window ).scrollLeft() - this.offset.relative.left - this.offset.parent.left,
 				$( window ).scrollTop() - this.offset.relative.top - this.offset.parent.top,
 				$( window ).scrollLeft() + $( window ).width() -
+<<<<<<< HEAD
 				this.helperProportions.width - this.margins.left,
 				$( window ).scrollTop() +
 				( $( window ).height() || document.body.parentNode.scrollHeight ) -
 				this.helperProportions.height - this.margins.top
+=======
+					this.helperProportions.width - this.margins.left,
+				$( window ).scrollTop() +
+					( $( window ).height() || document.body.parentNode.scrollHeight ) -
+					this.helperProportions.height - this.margins.top
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			];
 			return;
 		}
@@ -522,7 +577,11 @@ $.widget( "ui.draggable", $.ui.mouse, {
 				0,
 				$( document ).width() - this.helperProportions.width - this.margins.left,
 				( $( document ).height() || document.body.parentNode.scrollHeight ) -
+<<<<<<< HEAD
 				this.helperProportions.height - this.margins.top
+=======
+					this.helperProportions.height - this.margins.top
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			];
 			return;
 		}
@@ -547,6 +606,7 @@ $.widget( "ui.draggable", $.ui.mouse, {
 
 		this.containment = [
 			( parseInt( c.css( "borderLeftWidth" ), 10 ) || 0 ) +
+<<<<<<< HEAD
 			( parseInt( c.css( "paddingLeft" ), 10 ) || 0 ),
 			( parseInt( c.css( "borderTopWidth" ), 10 ) || 0 ) +
 			( parseInt( c.css( "paddingTop" ), 10 ) || 0 ),
@@ -562,6 +622,23 @@ $.widget( "ui.draggable", $.ui.mouse, {
 			this.helperProportions.height -
 			this.margins.top -
 			this.margins.bottom
+=======
+				( parseInt( c.css( "paddingLeft" ), 10 ) || 0 ),
+			( parseInt( c.css( "borderTopWidth" ), 10 ) || 0 ) +
+				( parseInt( c.css( "paddingTop" ), 10 ) || 0 ),
+			( isUserScrollable ? Math.max( ce.scrollWidth, ce.offsetWidth ) : ce.offsetWidth ) -
+				( parseInt( c.css( "borderRightWidth" ), 10 ) || 0 ) -
+				( parseInt( c.css( "paddingRight" ), 10 ) || 0 ) -
+				this.helperProportions.width -
+				this.margins.left -
+				this.margins.right,
+			( isUserScrollable ? Math.max( ce.scrollHeight, ce.offsetHeight ) : ce.offsetHeight ) -
+				( parseInt( c.css( "borderBottomWidth" ), 10 ) || 0 ) -
+				( parseInt( c.css( "paddingBottom" ), 10 ) || 0 ) -
+				this.helperProportions.height -
+				this.margins.top -
+				this.margins.bottom
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		];
 		this.relativeContainer = c;
 	},
@@ -666,18 +743,30 @@ $.widget( "ui.draggable", $.ui.mouse, {
 					this.originalPageY ) / o.grid[ 1 ] ) * o.grid[ 1 ] : this.originalPageY;
 				pageY = containment ? ( ( top - this.offset.click.top >= containment[ 1 ] ||
 					top - this.offset.click.top > containment[ 3 ] ) ?
+<<<<<<< HEAD
 					top :
 					( ( top - this.offset.click.top >= containment[ 1 ] ) ?
 						top - o.grid[ 1 ] : top + o.grid[ 1 ] ) ) : top;
+=======
+						top :
+						( ( top - this.offset.click.top >= containment[ 1 ] ) ?
+							top - o.grid[ 1 ] : top + o.grid[ 1 ] ) ) : top;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 				left = o.grid[ 0 ] ? this.originalPageX +
 					Math.round( ( pageX - this.originalPageX ) / o.grid[ 0 ] ) * o.grid[ 0 ] :
 					this.originalPageX;
 				pageX = containment ? ( ( left - this.offset.click.left >= containment[ 0 ] ||
 					left - this.offset.click.left > containment[ 2 ] ) ?
+<<<<<<< HEAD
 					left :
 					( ( left - this.offset.click.left >= containment[ 0 ] ) ?
 						left - o.grid[ 0 ] : left + o.grid[ 0 ] ) ) : left;
+=======
+						left :
+						( ( left - this.offset.click.left >= containment[ 0 ] ) ?
+							left - o.grid[ 0 ] : left + o.grid[ 0 ] ) ) : left;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			}
 
 			if ( o.axis === "y" ) {
@@ -851,8 +940,13 @@ $.ui.plugin.add( "draggable", "connectToSortable", {
 					this.offset.click = draggable.offset.click;
 
 					if ( this !== sortable &&
+<<<<<<< HEAD
 						this._intersectsWith( this.containerCache ) &&
 						$.contains( sortable.element[ 0 ], this.element[ 0 ] ) ) {
+=======
+							this._intersectsWith( this.containerCache ) &&
+							$.contains( sortable.element[ 0 ], this.element[ 0 ] ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						innermostIntersecting = false;
 					}
 
@@ -1012,7 +1106,11 @@ $.ui.plugin.add( "draggable", "scroll", {
 		}
 
 		if ( i.scrollParentNotHidden[ 0 ] !== i.document[ 0 ] &&
+<<<<<<< HEAD
 			i.scrollParentNotHidden[ 0 ].tagName !== "HTML" ) {
+=======
+				i.scrollParentNotHidden[ 0 ].tagName !== "HTML" ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			i.overflowOffset = i.scrollParentNotHidden.offset();
 		}
 	},
@@ -1026,7 +1124,11 @@ $.ui.plugin.add( "draggable", "scroll", {
 		if ( scrollParent !== document && scrollParent.tagName !== "HTML" ) {
 			if ( !o.axis || o.axis !== "x" ) {
 				if ( ( i.overflowOffset.top + scrollParent.offsetHeight ) - event.pageY <
+<<<<<<< HEAD
 					o.scrollSensitivity ) {
+=======
+						o.scrollSensitivity ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					scrollParent.scrollTop = scrolled = scrollParent.scrollTop + o.scrollSpeed;
 				} else if ( event.pageY - i.overflowOffset.top < o.scrollSensitivity ) {
 					scrollParent.scrollTop = scrolled = scrollParent.scrollTop - o.scrollSpeed;
@@ -1035,7 +1137,11 @@ $.ui.plugin.add( "draggable", "scroll", {
 
 			if ( !o.axis || o.axis !== "y" ) {
 				if ( ( i.overflowOffset.left + scrollParent.offsetWidth ) - event.pageX <
+<<<<<<< HEAD
 					o.scrollSensitivity ) {
+=======
+						o.scrollSensitivity ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					scrollParent.scrollLeft = scrolled = scrollParent.scrollLeft + o.scrollSpeed;
 				} else if ( event.pageX - i.overflowOffset.left < o.scrollSensitivity ) {
 					scrollParent.scrollLeft = scrolled = scrollParent.scrollLeft - o.scrollSpeed;
@@ -1048,7 +1154,11 @@ $.ui.plugin.add( "draggable", "scroll", {
 				if ( event.pageY - $( document ).scrollTop() < o.scrollSensitivity ) {
 					scrolled = $( document ).scrollTop( $( document ).scrollTop() - o.scrollSpeed );
 				} else if ( $( window ).height() - ( event.pageY - $( document ).scrollTop() ) <
+<<<<<<< HEAD
 					o.scrollSensitivity ) {
+=======
+						o.scrollSensitivity ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					scrolled = $( document ).scrollTop( $( document ).scrollTop() + o.scrollSpeed );
 				}
 			}
@@ -1059,7 +1169,11 @@ $.ui.plugin.add( "draggable", "scroll", {
 						$( document ).scrollLeft() - o.scrollSpeed
 					);
 				} else if ( $( window ).width() - ( event.pageX - $( document ).scrollLeft() ) <
+<<<<<<< HEAD
 					o.scrollSensitivity ) {
+=======
+						o.scrollSensitivity ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					scrolled = $( document ).scrollLeft(
 						$( document ).scrollLeft() + o.scrollSpeed
 					);
@@ -1112,16 +1226,27 @@ $.ui.plugin.add( "draggable", "snap", {
 			b = t + inst.snapElements[ i ].height;
 
 			if ( x2 < l - d || x1 > r + d || y2 < t - d || y1 > b + d ||
+<<<<<<< HEAD
 				!$.contains( inst.snapElements[ i ].item.ownerDocument,
 					inst.snapElements[ i ].item ) ) {
 				if ( inst.snapElements[ i ].snapping ) {
 					if ( inst.options.snap.release ) {
+=======
+					!$.contains( inst.snapElements[ i ].item.ownerDocument,
+					inst.snapElements[ i ].item ) ) {
+				if ( inst.snapElements[ i ].snapping ) {
+					( inst.options.snap.release &&
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						inst.options.snap.release.call(
 							inst.element,
 							event,
 							$.extend( inst._uiHash(), { snapItem: inst.snapElements[ i ].item } )
+<<<<<<< HEAD
 						);
 					}
+=======
+						) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				}
 				inst.snapElements[ i ].snapping = false;
 				continue;
@@ -1192,14 +1317,22 @@ $.ui.plugin.add( "draggable", "snap", {
 			}
 
 			if ( !inst.snapElements[ i ].snapping && ( ts || bs || ls || rs || first ) ) {
+<<<<<<< HEAD
 				if ( inst.options.snap.snap ) {
+=======
+				( inst.options.snap.snap &&
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					inst.options.snap.snap.call(
 						inst.element,
 						event,
 						$.extend( inst._uiHash(), {
 							snapItem: inst.snapElements[ i ].item
+<<<<<<< HEAD
 						} ) );
 				}
+=======
+						} ) ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			}
 			inst.snapElements[ i ].snapping = ( ts || bs || ls || rs || first );
 
@@ -1217,9 +1350,13 @@ $.ui.plugin.add( "draggable", "stack", {
 					( parseInt( $( b ).css( "zIndex" ), 10 ) || 0 );
 			} );
 
+<<<<<<< HEAD
 		if ( !group.length ) {
 			return;
 		}
+=======
+		if ( !group.length ) { return; }
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		min = parseInt( $( group[ 0 ] ).css( "zIndex" ), 10 ) || 0;
 		$( group ).each( function( i ) {
@@ -1250,4 +1387,8 @@ $.ui.plugin.add( "draggable", "zIndex", {
 
 return $.ui.draggable;
 
+<<<<<<< HEAD
 } );
+=======
+} ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

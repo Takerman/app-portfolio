@@ -301,6 +301,7 @@ const getAttachmentsCollection = ids => {
 };
 
 class media_upload_MediaUpload extends external_wp_element_["Component"] {
+<<<<<<< HEAD
   constructor(_ref) {
     let {
       allowedTypes,
@@ -310,6 +311,16 @@ class media_upload_MediaUpload extends external_wp_element_["Component"] {
       multiple = false,
       title = Object(external_wp_i18n_["__"])('Select or Upload Media')
     } = _ref;
+=======
+  constructor({
+    allowedTypes,
+    gallery = false,
+    unstableFeaturedImageFlow = false,
+    modalClass,
+    multiple = false,
+    title = Object(external_wp_i18n_["__"])('Select or Upload Media')
+  }) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
     super(...arguments);
     this.openModal = this.openModal.bind(this);
     this.onOpen = this.onOpen.bind(this);
@@ -473,6 +484,7 @@ class media_upload_MediaUpload extends external_wp_element_["Component"] {
       return;
     }
 
+<<<<<<< HEAD
     const isGallery = this.props.gallery;
     const selection = this.frame.state().get('selection');
 
@@ -492,6 +504,17 @@ class media_upload_MediaUpload extends external_wp_element_["Component"] {
         selection.add(attachments.models);
       }
     });
+=======
+    if (!this.props.gallery) {
+      const selection = this.frame.state().get('selection');
+      Object(external_lodash_["castArray"])(this.props.value).forEach(id => {
+        selection.add(wp.media.attachment(id));
+      });
+    } // load the images so they are available in the media modal.
+
+
+    getAttachmentsCollection(Object(external_lodash_["castArray"])(this.props.value)).more();
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   }
 
   onClose() {
@@ -591,6 +614,7 @@ function getMimeTypesArray(wpMimeTypesObject) {
  *
  *	TODO: future enhancement to add an upload indicator.
  *
+<<<<<<< HEAD
  * @param {Object}   $0                    Parameters object passed to the function.
  * @param {?Array}   $0.allowedTypes       Array with the types of media that can be uploaded, if unset all types are allowed.
  * @param {?Object}  $0.additionalData     Additional data to include in the request.
@@ -611,6 +635,27 @@ async function uploadMedia(_ref) {
     onFileChange,
     wpAllowedMimeTypes = null
   } = _ref;
+=======
+ * @param   {Object}   $0                    Parameters object passed to the function.
+ * @param   {?Array}   $0.allowedTypes       Array with the types of media that can be uploaded, if unset all types are allowed.
+ * @param   {?Object}  $0.additionalData     Additional data to include in the request.
+ * @param   {Array}    $0.filesList          List of files.
+ * @param   {?number}  $0.maxUploadFileSize  Maximum upload size in bytes allowed for the site.
+ * @param   {Function} $0.onError            Function called when an error happens.
+ * @param   {Function} $0.onFileChange       Function called each time a file or a temporary representation of the file is available.
+ * @param   {?Object}  $0.wpAllowedMimeTypes List of allowed mime types and file extensions.
+ */
+
+async function uploadMedia({
+  allowedTypes,
+  additionalData = {},
+  filesList,
+  maxUploadFileSize,
+  onError = external_lodash_["noop"],
+  onFileChange,
+  wpAllowedMimeTypes = null
+}) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
   // Cast filesList to array
   const files = [...filesList];
   const filesSet = [];
@@ -661,7 +706,11 @@ async function uploadMedia(_ref) {
     if (allowedMimeTypesForUser && mediaFile.type && !isAllowedMimeTypeForUser(mediaFile.type)) {
       triggerError({
         code: 'MIME_TYPE_NOT_ALLOWED_FOR_USER',
+<<<<<<< HEAD
         message: Object(external_wp_i18n_["__"])('Sorry, you are not allowed to upload this file type.'),
+=======
+        message: Object(external_wp_i18n_["__"])('Sorry, this file type is not permitted for security reasons.'),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
         file: mediaFile
       });
       continue;

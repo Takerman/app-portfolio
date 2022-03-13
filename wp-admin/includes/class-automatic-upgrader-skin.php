@@ -66,6 +66,7 @@ class Automatic_Upgrader_Skin extends WP_Upgrader_Skin {
 	 * Stores a message about the upgrade.
 	 *
 	 * @since 3.7.0
+<<<<<<< HEAD
 	 * @since 5.9.0 Renamed `$data` to `$feedback` for PHP 8 named parameter support.
 	 *
 	 * @param string|array|WP_Error $feedback Message data.
@@ -80,6 +81,20 @@ class Automatic_Upgrader_Skin extends WP_Upgrader_Skin {
 			$string = $feedback;
 		}
 
+=======
+	 *
+	 * @param string|array|WP_Error $data    Message data.
+	 * @param mixed                 ...$args Optional text replacements.
+	 */
+	public function feedback( $data, ...$args ) {
+		if ( is_wp_error( $data ) ) {
+			$string = $data->get_error_message();
+		} elseif ( is_array( $data ) ) {
+			return;
+		} else {
+			$string = $data;
+		}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( ! empty( $this->upgrader->strings[ $string ] ) ) {
 			$string = $this->upgrader->strings[ $string ];
 		}

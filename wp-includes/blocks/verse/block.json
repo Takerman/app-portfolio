@@ -27,6 +27,7 @@
 		},
 		"typography": {
 			"fontSize": true,
+<<<<<<< HEAD
 			"__experimentalFontFamily": true,
 			"lineHeight": true,
 			"__experimentalFontStyle": true,
@@ -37,6 +38,9 @@
 				"fontSize": true,
 				"fontAppearance": true
 			}
+=======
+			"__experimentalFontFamily": true
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		},
 		"spacing": {
 			"padding": true

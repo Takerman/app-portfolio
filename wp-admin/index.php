@@ -29,12 +29,19 @@ if ( wp_is_mobile() ) {
 	wp_enqueue_script( 'jquery-touch-punch' );
 }
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
 $title       = __( 'Dashboard' );
 $parent_file = 'index.php';
 
 $help  = '<p>' . __( 'Welcome to your WordPress Dashboard!' ) . '</p>';
 $help .= '<p>' . __( 'The Dashboard is the first place you will come to every time you log into your site. It is where you will find all your WordPress tools. If you need help, just click the &#8220;Help&#8221; tab above the screen title.' ) . '</p>';
+=======
+$title       = __( 'Dashboard' );
+$parent_file = 'index.php';
+
+$help = '<p>' . __( 'Welcome to your WordPress Dashboard! This is the screen you will see when you log in to your site, and gives you access to all the site management features of WordPress. You can get help for any screen by clicking the Help tab above the screen title.' ) . '</p>';
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 $screen = get_current_screen();
 
@@ -108,6 +115,7 @@ $screen->add_help_tab(
 
 unset( $help );
 
+<<<<<<< HEAD
 $wp_version = get_bloginfo( 'version', 'display' );
 /* translators: %s: WordPress version. */
 $wp_version_text = sprintf( __( 'Version %s' ), $wp_version );
@@ -132,6 +140,12 @@ $screen->set_help_sidebar(
 	'<p>' . __( '<a href="https://wordpress.org/support/article/dashboard-screen/">Documentation on Dashboard</a>' ) . '</p>' .
 	'<p>' . __( '<a href="https://wordpress.org/support/">Support</a>' ) . '</p>' .
 	'<p>' . $wp_version_text . '</p>'
+=======
+$screen->set_help_sidebar(
+	'<p><strong>' . __( 'For more information:' ) . '</strong></p>' .
+	'<p>' . __( '<a href="https://wordpress.org/support/article/dashboard-screen/">Documentation on Dashboard</a>' ) . '</p>' .
+	'<p>' . __( '<a href="https://wordpress.org/support/">Support</a>' ) . '</p>'
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 );
 
 require_once ABSPATH . 'wp-admin/admin-header.php';

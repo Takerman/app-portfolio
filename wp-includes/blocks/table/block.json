@@ -3,7 +3,11 @@
 	"name": "core/table",
 	"title": "Table",
 	"category": "text",
+<<<<<<< HEAD
 	"description": "Create structured content in rows and columns to display information.",
+=======
+	"description": "Insert a table — perfect for sharing charts and data.",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	"textdomain": "default",
 	"attributes": {
 		"hasFixedLayout": {
@@ -129,6 +133,7 @@
 			"__experimentalSkipSerialization": true,
 			"gradients": true
 		},
+<<<<<<< HEAD
 		"typography": {
 			"fontSize": true,
 			"lineHeight": true,
@@ -140,6 +145,8 @@
 				"fontSize": true
 			}
 		},
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		"__experimentalBorder": {
 			"__experimentalSkipSerialization": true,
 			"color": true,

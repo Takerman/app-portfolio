@@ -2,9 +2,15 @@
 Contributors: yani.iliev, bangelov, pimjitsawang
 Tags: move, transfer, copy, migrate, backup, clone, restore, db migration, wordpress migration, website migration, database export, database import, apoyo, sauvegarde, di riserva, バックアップ
 Requires at least: 3.3
+<<<<<<< HEAD
 Tested up to: 5.9
 Requires PHP: 5.2.17
 Stable tag: 7.56
+=======
+Tested up to: 5.8
+Requires PHP: 5.2.17
+Stable tag: 7.51
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 License: GPLv2 or later
 
 Move, transfer, copy, migrate, and backup a site with 1-click. Quick, easy, and reliable.
@@ -24,7 +30,11 @@ Follow these three simple steps, and your site will be live at its new location 
 
 One feature that makes All-in-One WP Migration widely loved (to the tune of over 6,000 5-star user reviews) is that the technical requirements for installing the plugin are simple.
 
+<<<<<<< HEAD
 If you have WordPress version between 3.3 and 5.9.1 and PHP version between 5.2.17 and 8.1.3, you are good to go. All-in-One WP Migration also supports all versions of MySQL and MariaDB.
+=======
+If you have WordPress version between 3.3 and 5.8.1 and PHP version between 5.2.17 and 8.0.10, you are good to go. All-in-One WP Migration also supports all versions of MySQL and MariaDB.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 **Features Spotlight:**
 
@@ -76,7 +86,11 @@ Plugins dashboard.
 1. Click "Add New" and Search for "All-in-One WP Migration"
 1. Install and Activate
 
+<<<<<<< HEAD
 Alternatively, you can download the plugin using the download button on this page and then upload the all-in-one-wp-migration folder to the /wp-content/plugins/ directory then activate throught the Plugins dashboard in WordPress
+=======
+Alternatively, you can download the plugin using the download button on this page and then upload the all-in-one-wp-migration folder to the /wp-content/plugins/ directory then activate throught the Plugins dashboard in WordPress
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 == Screenshots ==
 1. Mobile Export page
@@ -89,6 +103,7 @@ All-in-One WP Migration is in full compliance with General Data Protection Regul
 See our [GDPR Compliant Privacy Policy here](https://www.iubenda.com/privacy-policy/946881).
 
 == Changelog ==
+<<<<<<< HEAD
 = 7.56 =
 **Added**
 
@@ -114,6 +129,8 @@ See our [GDPR Compliant Privacy Policy here](https://www.iubenda.com/privacy-pol
 
 * Out of disk space when exporting database.sql
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 = 7.51 =
 **Added**
 

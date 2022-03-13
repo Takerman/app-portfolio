@@ -10,7 +10,11 @@
 ?>
 
 <?php if ( has_nav_menu( 'primary' ) ) : ?>
+<<<<<<< HEAD
 	<nav id="site-navigation" class="primary-navigation" aria-label="<?php esc_attr_e( 'Primary menu', 'twentytwentyone' ); ?>">
+=======
+	<nav id="site-navigation" class="primary-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary menu', 'twentytwentyone' ); ?>">
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		<div class="menu-button-container">
 			<button id="primary-mobile-menu" class="button" aria-controls="primary-menu-list" aria-expanded="false">
 				<span class="dropdown-icon open"><?php esc_html_e( 'Menu', 'twentytwentyone' ); ?>

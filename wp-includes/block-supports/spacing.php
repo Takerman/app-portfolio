@@ -1,9 +1,12 @@
 <?php
 /**
  * Spacing block support flag.
+<<<<<<< HEAD
 
  * For backwards compatibility, this remains separate to the dimensions.php
  * block support despite both belonging under a single panel in the editor.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  *
  * @package WordPress
  * @since 5.8.0
@@ -41,6 +44,7 @@ function wp_register_spacing_support( $block_type ) {
  *
  * @param WP_Block_Type $block_type       Block Type.
  * @param array         $block_attributes Block attributes.
+<<<<<<< HEAD
  * @return array Block spacing CSS classes and inline styles.
  */
 function wp_apply_spacing_support( $block_type, $block_attributes ) {
@@ -50,27 +54,49 @@ function wp_apply_spacing_support( $block_type, $block_attributes ) {
 
 	$has_padding_support = block_has_support( $block_type, array( 'spacing', 'padding' ), false );
 	$has_margin_support  = block_has_support( $block_type, array( 'spacing', 'margin' ), false );
+=======
+ *
+ * @return array Block spacing CSS classes and inline styles.
+ */
+function wp_apply_spacing_support( $block_type, $block_attributes ) {
+	$has_padding_support = wp_has_spacing_feature_support( $block_type, 'padding' );
+	$has_margin_support  = wp_has_spacing_feature_support( $block_type, 'margin' );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$styles              = array();
 
 	if ( $has_padding_support ) {
 		$padding_value = _wp_array_get( $block_attributes, array( 'style', 'spacing', 'padding' ), null );
+<<<<<<< HEAD
 		if ( is_array( $padding_value ) ) {
 			foreach ( $padding_value as $key => $value ) {
 				$styles[] = sprintf( 'padding-%s: %s;', $key, $value );
 			}
 		} elseif ( null !== $padding_value ) {
 			$styles[] = sprintf( 'padding: %s;', $padding_value );
+=======
+		if ( null !== $padding_value ) {
+			foreach ( $padding_value as $key => $value ) {
+				$styles[] = sprintf( 'padding-%s: %s;', $key, $value );
+			}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	}
 
 	if ( $has_margin_support ) {
 		$margin_value = _wp_array_get( $block_attributes, array( 'style', 'spacing', 'margin' ), null );
+<<<<<<< HEAD
 		if ( is_array( $margin_value ) ) {
 			foreach ( $margin_value as $key => $value ) {
 				$styles[] = sprintf( 'margin-%s: %s;', $key, $value );
 			}
 		} elseif ( null !== $margin_value ) {
 			$styles[] = sprintf( 'margin: %s;', $margin_value );
+=======
+		if ( null !== $margin_value ) {
+			foreach ( $margin_value as $key => $value ) {
+				$styles[] = sprintf( 'margin-%s: %s;', $key, $value );
+			}
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 	}
 
@@ -78,6 +104,7 @@ function wp_apply_spacing_support( $block_type, $block_attributes ) {
 }
 
 /**
+<<<<<<< HEAD
  * Checks whether serialization of the current block's spacing properties should
  * occur.
  *
@@ -93,6 +120,23 @@ function wp_skip_spacing_serialization( $block_type ) {
 	return is_array( $spacing_support ) &&
 		array_key_exists( '__experimentalSkipSerialization', $spacing_support ) &&
 		$spacing_support['__experimentalSkipSerialization'];
+=======
+ * Checks whether the current block type supports the spacing feature requested.
+ *
+ * @since 5.8.0
+ * @access private
+ *
+ * @param WP_Block_Type $block_type Block type to check for support.
+ * @param string        $feature    Name of the feature to check support for.
+ * @param mixed         $default    Fallback value for feature support, defaults to false.
+ *
+ * @return boolean                  Whether or not the feature is supported.
+ */
+function wp_has_spacing_feature_support( $block_type, $feature, $default = false ) {
+	// Check if the specific feature has been opted into individually
+	// via nested flag under `spacing`.
+	return block_has_support( $block_type, array( 'spacing', $feature ), $default );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 // Register the block support.

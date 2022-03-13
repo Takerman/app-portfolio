@@ -320,6 +320,7 @@ if ( isset( $plugin_page ) ) {
 	 *
 	 * The dynamic portion of the hook name, `$importer`, refers to the importer slug.
 	 *
+<<<<<<< HEAD
 	 * Possible hook names include:
 	 *
 	 *  - `load-importer-blogger`
@@ -330,14 +331,22 @@ if ( isset( $plugin_page ) ) {
 	 *  - `load-importer-tumblr`
 	 *  - `load-importer-wordpress`
 	 *
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	 * @since 3.5.0
 	 */
 	do_action( "load-importer-{$importer}" ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 
+<<<<<<< HEAD
 	// Used in the HTML title tag.
 	$title        = __( 'Import' );
 	$parent_file  = 'tools.php';
 	$submenu_file = 'import.php';
+=======
+	$parent_file  = 'tools.php';
+	$submenu_file = 'import.php';
+	$title        = __( 'Import' );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	if ( ! isset( $_GET['noheader'] ) ) {
 		require_once ABSPATH . 'wp-admin/admin-header.php';

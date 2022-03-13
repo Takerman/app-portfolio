@@ -76,7 +76,10 @@ if ( 'grid' === $mode ) {
 		'<p>' . __( '<a href="https://wordpress.org/support/">Support</a>' ) . '</p>'
 	);
 
+<<<<<<< HEAD
 	// Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$title       = __( 'Media Library' );
 	$parent_file = 'upload.php';
 
@@ -216,7 +219,10 @@ if ( $doaction ) {
 
 $wp_list_table->prepare_items();
 
+<<<<<<< HEAD
 // Used in the HTML title tag.
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 $title       = __( 'Media Library' );
 $parent_file = 'upload.php';
 
@@ -300,7 +306,11 @@ if ( ! empty( $_GET['posted'] ) ) {
 
 if ( ! empty( $_GET['attached'] ) && absint( $_GET['attached'] ) ) {
 	$attached = absint( $_GET['attached'] );
+<<<<<<< HEAD
 	if ( 1 === $attached ) {
+=======
+	if ( 1 == $attached ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$message = __( 'Media file attached.' );
 	} else {
 		/* translators: %s: Number of media files. */
@@ -312,7 +322,11 @@ if ( ! empty( $_GET['attached'] ) && absint( $_GET['attached'] ) ) {
 
 if ( ! empty( $_GET['detach'] ) && absint( $_GET['detach'] ) ) {
 	$detached = absint( $_GET['detach'] );
+<<<<<<< HEAD
 	if ( 1 === $detached ) {
+=======
+	if ( 1 == $detached ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$message = __( 'Media file detached.' );
 	} else {
 		/* translators: %s: Number of media files. */
@@ -324,7 +338,11 @@ if ( ! empty( $_GET['detach'] ) && absint( $_GET['detach'] ) ) {
 
 if ( ! empty( $_GET['deleted'] ) && absint( $_GET['deleted'] ) ) {
 	$deleted = absint( $_GET['deleted'] );
+<<<<<<< HEAD
 	if ( 1 === $deleted ) {
+=======
+	if ( 1 == $deleted ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$message = __( 'Media file permanently deleted.' );
 	} else {
 		/* translators: %s: Number of media files. */
@@ -336,7 +354,11 @@ if ( ! empty( $_GET['deleted'] ) && absint( $_GET['deleted'] ) ) {
 
 if ( ! empty( $_GET['trashed'] ) && absint( $_GET['trashed'] ) ) {
 	$trashed = absint( $_GET['trashed'] );
+<<<<<<< HEAD
 	if ( 1 === $trashed ) {
+=======
+	if ( 1 == $trashed ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$message = __( 'Media file moved to the Trash.' );
 	} else {
 		/* translators: %s: Number of media files. */
@@ -349,7 +371,11 @@ if ( ! empty( $_GET['trashed'] ) && absint( $_GET['trashed'] ) ) {
 
 if ( ! empty( $_GET['untrashed'] ) && absint( $_GET['untrashed'] ) ) {
 	$untrashed = absint( $_GET['untrashed'] );
+<<<<<<< HEAD
 	if ( 1 === $untrashed ) {
+=======
+	if ( 1 == $untrashed ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$message = __( 'Media file restored from the Trash.' );
 	} else {
 		/* translators: %s: Number of media files. */

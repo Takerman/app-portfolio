@@ -32,10 +32,15 @@ if ( wp_is_application_passwords_available_for_user( $user_id ) ) {
 }
 
 if ( IS_PROFILE_PAGE ) {
+<<<<<<< HEAD
 	// Used in the HTML title tag.
 	$title = __( 'Profile' );
 } else {
 	// Used in the HTML title tag.
+=======
+	$title = __( 'Profile' );
+} else {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	/* translators: %s: User's display name. */
 	$title = __( 'Edit User %s' );
 }
@@ -553,12 +558,21 @@ endif;
 			/**
 			 * Filters a user contactmethod label.
 			 *
+<<<<<<< HEAD
 			 * The dynamic portion of the hook name, `$name`, refers to
 			 * each of the keys in the contact methods array.
 			 *
 			 * @since 2.9.0
 			 *
 			 * @param string $desc The translatable label for the contact method.
+=======
+			 * The dynamic portion of the filter hook, `$name`, refers to
+			 * each of the keys in the contactmethods array.
+			 *
+			 * @since 2.9.0
+			 *
+			 * @param string $desc The translatable label for the contactmethod.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			 */
 			echo apply_filters( "user_{$name}_label", $desc );
 			?>
@@ -733,11 +747,19 @@ endif;
 
 	</table>
 
+<<<<<<< HEAD
 <?php if ( wp_is_application_passwords_available_for_user( $user_id ) || ! wp_is_application_passwords_supported() ) : // phpcs:disable Generic.WhiteSpace.ScopeIndent ?>
 	<div class="application-passwords hide-if-no-js" id="application-passwords-section">
 		<h2><?php _e( 'Application Passwords' ); ?></h2>
 		<p><?php _e( 'Application passwords allow authentication via non-interactive systems, such as XML-RPC or the REST API, without providing your actual password. Application passwords can be easily revoked. They cannot be used for traditional logins to your website.' ); ?></p>
 		<?php if ( wp_is_application_passwords_available_for_user( $user_id ) ) : ?>
+=======
+
+		<?php if ( wp_is_application_passwords_available_for_user( $user_id ) ) : ?>
+	<div class="application-passwords hide-if-no-js" id="application-passwords-section">
+		<h2><?php _e( 'Application Passwords' ); ?></h2>
+		<p><?php _e( 'Application passwords allow authentication via non-interactive systems, such as XML-RPC or the REST API, without providing your actual password. Application passwords can be easily revoked. They cannot be used for traditional logins to your website.' ); ?></p>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			<?php
 			if ( is_multisite() ) {
 				$blogs       = get_blogs_of_user( $user_id, true );
@@ -767,7 +789,11 @@ endif;
 			<div class="create-application-password form-wrap">
 				<div class="form-field">
 					<label for="new_application_password_name"><?php _e( 'New Application Password Name' ); ?></label>
+<<<<<<< HEAD
 					<input type="text" size="30" id="new_application_password_name" name="new_application_password_name" class="input" aria-required="true" aria-describedby="new_application_password_name_desc" />
+=======
+					<input type="text" size="30" id="new_application_password_name" name="new_application_password_name" placeholder="<?php esc_attr_e( 'WordPress App on My Phone' ); ?>" class="input" aria-required="true" aria-describedby="new_application_password_name_desc" />
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					<p class="description" id="new_application_password_name_desc"><?php _e( 'Required to create an Application Password, but not to update the user.' ); ?></p>
 				</div>
 
@@ -797,6 +823,7 @@ endif;
 			$application_passwords_list_table->display();
 			?>
 		</div>
+<<<<<<< HEAD
 		<?php elseif ( ! wp_is_application_passwords_supported() ) : ?>
 			<p><?php _e( 'The application password feature requires HTTPS, which is not enabled on this site.' ); ?></p>
 			<p>
@@ -811,6 +838,10 @@ endif;
 		<?php endif; ?>
 	</div>
 <?php endif; // phpcs:enable Generic.WhiteSpace.ScopeIndent ?>
+=======
+	</div>
+<?php endif; ?>
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		<?php
 		if ( IS_PROFILE_PAGE ) {

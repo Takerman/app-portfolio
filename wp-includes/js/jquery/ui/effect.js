@@ -1,5 +1,9 @@
 /*!
+<<<<<<< HEAD
  * jQuery UI Effects 1.13.1
+=======
+ * jQuery UI Effects 1.12.1
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -9,15 +13,24 @@
 
 //>>label: Effects Core
 //>>group: Effects
+<<<<<<< HEAD
 /* eslint-disable max-len */
 //>>description: Extends the internal jQuery effects. Includes morphing and easing. Required by all other effects.
 /* eslint-enable max-len */
+=======
+// jscs:disable maximumLineLength
+//>>description: Extends the internal jQuery effects. Includes morphing and easing. Required by all other effects.
+// jscs:enable maximumLineLength
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 //>>docs: http://api.jqueryui.com/category/effects-core/
 //>>demos: http://jqueryui.com/effect/
 
 ( function( factory ) {
+<<<<<<< HEAD
 	"use strict";
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -27,6 +40,7 @@
 		// Browser globals
 		factory( jQuery );
 	}
+<<<<<<< HEAD
 } )( function( $ ) {
 "use strict";
 
@@ -52,10 +66,42 @@ var jQuery = $;
  *
  * Date: Sun May 10 09:02:36 2020 +0200
  */
+=======
+}( function( $ ) {
+
+// Include version.js
+$.ui = $.ui || {};
+$.ui.version = "1.12.1";
+
+var dataSpace = "ui-effects-",
+	dataSpaceStyle = "ui-effects-style",
+	dataSpaceAnimated = "ui-effects-animated",
+
+	// Create a local jQuery because jQuery Color relies on it and the
+	// global may not exist with AMD and a custom build (#10199)
+	jQuery = $;
+
+$.effects = {
+	effect: {}
+};
+
+/*!
+ * jQuery Color Animations v2.1.2
+ * https://github.com/jquery/jquery-color
+ *
+ * Copyright 2014 jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * Date: Wed Jan 16 08:47:09 2013 -0600
+ */
+( function( jQuery, undefined ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	var stepHooks = "backgroundColor borderBottomColor borderLeftColor borderRightColor " +
 		"borderTopColor color columnRuleColor outlineColor textDecorationColor textEmphasisColor",
 
+<<<<<<< HEAD
 	class2type = {},
 	toString = class2type.toString,
 
@@ -63,6 +109,12 @@ var jQuery = $;
 	rplusequals = /^([\-+])=\s*(\d+\.?\d*)/,
 
 	// a set of RE's that can match strings and generate color tuples.
+=======
+	// Plusequals test for += 100 -= 100
+	rplusequals = /^([\-+])=\s*(\d+\.?\d*)/,
+
+	// A set of RE's that can match strings and generate color tuples.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	stringParsers = [ {
 			re: /rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(?:,\s*(\d?(?:\.\d+)?)\s*)?\)/,
 			parse: function( execResult ) {
@@ -85,31 +137,49 @@ var jQuery = $;
 			}
 		}, {
 
+<<<<<<< HEAD
 			// this regex ignores A-F because it's compared against an already lowercased string
 			re: /#([a-f0-9]{2})([a-f0-9]{2})([a-f0-9]{2})([a-f0-9]{2})?/,
+=======
+			// This regex ignores A-F because it's compared against an already lowercased string
+			re: /#([a-f0-9]{2})([a-f0-9]{2})([a-f0-9]{2})/,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			parse: function( execResult ) {
 				return [
 					parseInt( execResult[ 1 ], 16 ),
 					parseInt( execResult[ 2 ], 16 ),
+<<<<<<< HEAD
 					parseInt( execResult[ 3 ], 16 ),
 					execResult[ 4 ] ?
 						( parseInt( execResult[ 4 ], 16 ) / 255 ).toFixed( 2 ) :
 						1
+=======
+					parseInt( execResult[ 3 ], 16 )
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				];
 			}
 		}, {
 
+<<<<<<< HEAD
 			// this regex ignores A-F because it's compared against an already lowercased string
 			re: /#([a-f0-9])([a-f0-9])([a-f0-9])([a-f0-9])?/,
+=======
+			// This regex ignores A-F because it's compared against an already lowercased string
+			re: /#([a-f0-9])([a-f0-9])([a-f0-9])/,
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			parse: function( execResult ) {
 				return [
 					parseInt( execResult[ 1 ] + execResult[ 1 ], 16 ),
 					parseInt( execResult[ 2 ] + execResult[ 2 ], 16 ),
+<<<<<<< HEAD
 					parseInt( execResult[ 3 ] + execResult[ 3 ], 16 ),
 					execResult[ 4 ] ?
 						( parseInt( execResult[ 4 ] + execResult[ 4 ], 16 ) / 255 )
 							.toFixed( 2 ) :
 						1
+=======
+					parseInt( execResult[ 3 ] + execResult[ 3 ], 16 )
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				];
 			}
 		}, {
@@ -125,7 +195,11 @@ var jQuery = $;
 			}
 		} ],
 
+<<<<<<< HEAD
 	// jQuery.Color( )
+=======
+	// JQuery.Color( )
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	color = jQuery.Color = function( color, green, blue, alpha ) {
 		return new jQuery.Color.fn.parse( color, green, blue, alpha );
 	},
@@ -179,6 +253,7 @@ var jQuery = $;
 	},
 	support = color.support = {},
 
+<<<<<<< HEAD
 	// element for support tests
 	supportElem = jQuery( "<p>" )[ 0 ],
 
@@ -193,6 +268,22 @@ supportElem.style.cssText = "background-color:rgba(1,1,1,.5)";
 support.rgba = supportElem.style.backgroundColor.indexOf( "rgba" ) > -1;
 
 // define cache name and alpha properties
+=======
+	// Element for support tests
+	supportElem = jQuery( "<p>" )[ 0 ],
+
+	// Colors = jQuery.Color.names
+	colors,
+
+	// Local aliases of functions called often
+	each = jQuery.each;
+
+// Determine rgba support immediately
+supportElem.style.cssText = "background-color:rgba(1,1,1,.5)";
+support.rgba = supportElem.style.backgroundColor.indexOf( "rgba" ) > -1;
+
+// Define cache name and alpha properties
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 // for rgba and hsla spaces
 each( spaces, function( spaceName, space ) {
 	space.cache = "_" + spaceName;
@@ -203,6 +294,7 @@ each( spaces, function( spaceName, space ) {
 	};
 } );
 
+<<<<<<< HEAD
 // Populate the class2type map
 jQuery.each( "Boolean Number String Function Array Date RegExp Object Error Symbol".split( " " ),
 	function( _i, name ) {
@@ -219,6 +311,8 @@ function getType( obj ) {
 		typeof obj;
 }
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 function clamp( value, prop, allowEmpty ) {
 	var type = propTypes[ prop.type ] || {};
 
@@ -237,13 +331,22 @@ function clamp( value, prop, allowEmpty ) {
 
 	if ( type.mod ) {
 
+<<<<<<< HEAD
 		// we add mod before modding to make sure that negatives values
+=======
+		// We add mod before modding to make sure that negatives values
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		// get converted properly: -10 -> 350
 		return ( value + type.mod ) % type.mod;
 	}
 
+<<<<<<< HEAD
 	// for now all property types without mod have min and max
 	return Math.min( type.max, Math.max( 0, value ) );
+=======
+	// For now all property types without mod have min and max
+	return 0 > value ? 0 : type.max < value ? type.max : value;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 function stringParse( string ) {
@@ -252,7 +355,11 @@ function stringParse( string ) {
 
 	string = string.toLowerCase();
 
+<<<<<<< HEAD
 	each( stringParsers, function( _i, parser ) {
+=======
+	each( stringParsers, function( i, parser ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		var parsed,
 			match = parser.re.exec( string ),
 			values = match && parser.parse( match ),
@@ -261,12 +368,20 @@ function stringParse( string ) {
 		if ( values ) {
 			parsed = inst[ spaceName ]( values );
 
+<<<<<<< HEAD
 			// if this was an rgba parse the assignment might happen twice
+=======
+			// If this was an rgba parse the assignment might happen twice
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			// oh well....
 			inst[ spaces[ spaceName ].cache ] = parsed[ spaces[ spaceName ].cache ];
 			rgba = inst._rgba = parsed._rgba;
 
+<<<<<<< HEAD
 			// exit each( stringParsers ) here because we matched
+=======
+			// Exit each( stringParsers ) here because we matched
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			return false;
 		}
 	} );
@@ -274,7 +389,11 @@ function stringParse( string ) {
 	// Found a stringParser that handled it
 	if ( rgba.length ) {
 
+<<<<<<< HEAD
 		// if this came from a parsed string, force "transparent" when alpha is 0
+=======
+		// If this came from a parsed string, force "transparent" when alpha is 0
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		// chrome, (and maybe others) return "transparent" as rgba(0,0,0,0)
 		if ( rgba.join() === "0,0,0,0" ) {
 			jQuery.extend( rgba, colors.transparent );
@@ -282,7 +401,11 @@ function stringParse( string ) {
 		return inst;
 	}
 
+<<<<<<< HEAD
 	// named colors
+=======
+	// Named colors
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	return colors[ string ];
 }
 
@@ -298,10 +421,17 @@ color.fn = jQuery.extend( color.prototype, {
 		}
 
 		var inst = this,
+<<<<<<< HEAD
 			type = getType( red ),
 			rgba = this._rgba = [];
 
 		// more than 1 argument specified - assume ( red, green, blue, alpha )
+=======
+			type = jQuery.type( red ),
+			rgba = this._rgba = [];
+
+		// More than 1 argument specified - assume ( red, green, blue, alpha )
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( green !== undefined ) {
 			red = [ red, green, blue, alpha ];
 			type = "array";
@@ -312,7 +442,11 @@ color.fn = jQuery.extend( color.prototype, {
 		}
 
 		if ( type === "array" ) {
+<<<<<<< HEAD
 			each( spaces.rgba.props, function( _key, prop ) {
+=======
+			each( spaces.rgba.props, function( key, prop ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				rgba[ prop.idx ] = clamp( red[ prop.idx ], prop );
 			} );
 			return this;
@@ -320,12 +454,17 @@ color.fn = jQuery.extend( color.prototype, {
 
 		if ( type === "object" ) {
 			if ( red instanceof color ) {
+<<<<<<< HEAD
 				each( spaces, function( _spaceName, space ) {
+=======
+				each( spaces, function( spaceName, space ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					if ( red[ space.cache ] ) {
 						inst[ space.cache ] = red[ space.cache ].slice();
 					}
 				} );
 			} else {
+<<<<<<< HEAD
 				each( spaces, function( _spaceName, space ) {
 					var cache = space.cache;
 					each( space.props, function( key, prop ) {
@@ -334,6 +473,16 @@ color.fn = jQuery.extend( color.prototype, {
 						if ( !inst[ cache ] && space.to ) {
 
 							// if the value was null, we don't need to copy it
+=======
+				each( spaces, function( spaceName, space ) {
+					var cache = space.cache;
+					each( space.props, function( key, prop ) {
+
+						// If the cache doesn't exist, and we know how to convert
+						if ( !inst[ cache ] && space.to ) {
+
+							// If the value was null, we don't need to copy it
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 							// if the key was alpha, we don't need to copy it either
 							if ( key === "alpha" || red[ key ] == null ) {
 								return;
@@ -341,11 +490,16 @@ color.fn = jQuery.extend( color.prototype, {
 							inst[ cache ] = space.to( inst._rgba );
 						}
 
+<<<<<<< HEAD
 						// this is the only case where we allow nulls for ALL properties.
+=======
+						// This is the only case where we allow nulls for ALL properties.
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						// call clamp with alwaysAllowEmpty
 						inst[ cache ][ prop.idx ] = clamp( red[ key ], prop, true );
 					} );
 
+<<<<<<< HEAD
 					// everything defined but alpha?
 					if ( inst[ cache ] && jQuery.inArray( null, inst[ cache ].slice( 0, 3 ) ) < 0 ) {
 
@@ -354,6 +508,14 @@ color.fn = jQuery.extend( color.prototype, {
 							inst[ cache ][ 3 ] = 1;
 						}
 
+=======
+					// Everything defined but alpha?
+					if ( inst[ cache ] &&
+							jQuery.inArray( null, inst[ cache ].slice( 0, 3 ) ) < 0 ) {
+
+						// Use the default of 1
+						inst[ cache ][ 3 ] = 1;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 						if ( space.from ) {
 							inst._rgba = space.from( inst[ cache ] );
 						}
@@ -403,18 +565,30 @@ color.fn = jQuery.extend( color.prototype, {
 			result = start.slice();
 
 		end = end[ space.cache ];
+<<<<<<< HEAD
 		each( space.props, function( _key, prop ) {
+=======
+		each( space.props, function( key, prop ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			var index = prop.idx,
 				startValue = start[ index ],
 				endValue = end[ index ],
 				type = propTypes[ prop.type ] || {};
 
+<<<<<<< HEAD
 			// if null, don't override start value
+=======
+			// If null, don't override start value
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( endValue === null ) {
 				return;
 			}
 
+<<<<<<< HEAD
 			// if null - use end
+=======
+			// If null - use end
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			if ( startValue === null ) {
 				result[ index ] = endValue;
 			} else {
@@ -432,7 +606,11 @@ color.fn = jQuery.extend( color.prototype, {
 	},
 	blend: function( opaque ) {
 
+<<<<<<< HEAD
 		// if we are already opaque - return ourself
+=======
+		// If we are already opaque - return ourself
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( this._rgba[ 3 ] === 1 ) {
 			return this;
 		}
@@ -448,10 +626,14 @@ color.fn = jQuery.extend( color.prototype, {
 	toRgbaString: function() {
 		var prefix = "rgba(",
 			rgba = jQuery.map( this._rgba, function( v, i ) {
+<<<<<<< HEAD
 				if ( v != null ) {
 					return v;
 				}
 				return i > 2 ? 1 : 0;
+=======
+				return v == null ? ( i > 2 ? 1 : 0 ) : v;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			} );
 
 		if ( rgba[ 3 ] === 1 ) {
@@ -468,7 +650,11 @@ color.fn = jQuery.extend( color.prototype, {
 					v = i > 2 ? 1 : 0;
 				}
 
+<<<<<<< HEAD
 				// catch 1 and 2
+=======
+				// Catch 1 and 2
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				if ( i && i < 3 ) {
 					v = Math.round( v * 100 ) + "%";
 				}
@@ -491,7 +677,11 @@ color.fn = jQuery.extend( color.prototype, {
 
 		return "#" + jQuery.map( rgba, function( v ) {
 
+<<<<<<< HEAD
 			// default to 0 when nulls exist
+=======
+			// Default to 0 when nulls exist
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			v = ( v || 0 ).toString( 16 );
 			return v.length === 1 ? "0" + v : v;
 		} ).join( "" );
@@ -502,7 +692,11 @@ color.fn = jQuery.extend( color.prototype, {
 } );
 color.fn.parse.prototype = color.fn;
 
+<<<<<<< HEAD
 // hsla conversions adapted from:
+=======
+// Hsla conversions adapted from:
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 // https://code.google.com/p/maashaack/source/browse/packages/graphics/trunk/src/graphics/colors/HUE2RGB.as?r=5021
 
 function hue2rgb( p, q, h ) {
@@ -544,7 +738,11 @@ spaces.hsla.to = function( rgba ) {
 		h = ( 60 * ( r - g ) / diff ) + 240;
 	}
 
+<<<<<<< HEAD
 	// chroma (diff) == 0 means greyscale which, by definition, saturation = 0%
+=======
+	// Chroma (diff) == 0 means greyscale which, by definition, saturation = 0%
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	// otherwise, saturation is based on the ratio of chroma (diff) to lightness (add)
 	if ( diff === 0 ) {
 		s = 0;
@@ -575,17 +773,27 @@ spaces.hsla.from = function( hsla ) {
 	];
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 each( spaces, function( spaceName, space ) {
 	var props = space.props,
 		cache = space.cache,
 		to = space.to,
 		from = space.from;
 
+<<<<<<< HEAD
 	// makes rgba() and hsla()
 	color.fn[ spaceName ] = function( value ) {
 
 		// generate a cache for this space if it doesn't exist
+=======
+	// Makes rgba() and hsla()
+	color.fn[ spaceName ] = function( value ) {
+
+		// Generate a cache for this space if it doesn't exist
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( to && !this[ cache ] ) {
 			this[ cache ] = to( this._rgba );
 		}
@@ -594,7 +802,11 @@ each( spaces, function( spaceName, space ) {
 		}
 
 		var ret,
+<<<<<<< HEAD
 			type = getType( value ),
+=======
+			type = jQuery.type( value ),
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			arr = ( type === "array" || type === "object" ) ? value : arguments,
 			local = this[ cache ].slice();
 
@@ -615,14 +827,22 @@ each( spaces, function( spaceName, space ) {
 		}
 	};
 
+<<<<<<< HEAD
 	// makes red() green() blue() alpha() hue() saturation() lightness()
 	each( props, function( key, prop ) {
 
 		// alpha is included in more than one space
+=======
+	// Makes red() green() blue() alpha() hue() saturation() lightness()
+	each( props, function( key, prop ) {
+
+		// Alpha is included in more than one space
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		if ( color.fn[ key ] ) {
 			return;
 		}
 		color.fn[ key ] = function( value ) {
+<<<<<<< HEAD
 			var local, cur, match, fn,
 				vtype = getType( value );
 
@@ -633,6 +853,13 @@ each( spaces, function( spaceName, space ) {
 			}
 			local = this[ fn ]();
 			cur = local[ prop.idx ];
+=======
+			var vtype = jQuery.type( value ),
+				fn = ( key === "alpha" ? ( this._hsla ? "hsla" : "rgba" ) : spaceName ),
+				local = this[ fn ](),
+				cur = local[ prop.idx ],
+				match;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 			if ( vtype === "undefined" ) {
 				return cur;
@@ -640,7 +867,11 @@ each( spaces, function( spaceName, space ) {
 
 			if ( vtype === "function" ) {
 				value = value.call( this, cur );
+<<<<<<< HEAD
 				vtype = getType( value );
+=======
+				vtype = jQuery.type( value );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			}
 			if ( value == null && prop.empty ) {
 				return this;
@@ -657,17 +888,30 @@ each( spaces, function( spaceName, space ) {
 	} );
 } );
 
+<<<<<<< HEAD
 // add cssHook and .fx.step function for each named hook.
 // accept a space separated string of properties
 color.hook = function( hook ) {
 	var hooks = hook.split( " " );
 	each( hooks, function( _i, hook ) {
+=======
+// Add cssHook and .fx.step function for each named hook.
+// accept a space separated string of properties
+color.hook = function( hook ) {
+	var hooks = hook.split( " " );
+	each( hooks, function( i, hook ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		jQuery.cssHooks[ hook ] = {
 			set: function( elem, value ) {
 				var parsed, curElem,
 					backgroundColor = "";
 
+<<<<<<< HEAD
 				if ( value !== "transparent" && ( getType( value ) !== "string" || ( parsed = stringParse( value ) ) ) ) {
+=======
+				if ( value !== "transparent" && ( jQuery.type( value ) !== "string" ||
+						( parsed = stringParse( value ) ) ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					value = color( parsed || value );
 					if ( !support.rgba && value._rgba[ 3 ] !== 1 ) {
 						curElem = hook === "backgroundColor" ? elem.parentNode : elem;
@@ -693,7 +937,12 @@ color.hook = function( hook ) {
 					elem.style[ hook ] = value;
 				} catch ( e ) {
 
+<<<<<<< HEAD
 					// wrapped to prevent IE from throwing errors on "invalid" values like 'auto' or 'inherit'
+=======
+					// Wrapped to prevent IE from throwing errors on "invalid" values like
+					// 'auto' or 'inherit'
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				}
 			}
 		};
@@ -715,7 +964,11 @@ jQuery.cssHooks.borderColor = {
 	expand: function( value ) {
 		var expanded = {};
 
+<<<<<<< HEAD
 		each( [ "Top", "Right", "Bottom", "Left" ], function( _i, part ) {
+=======
+		each( [ "Top", "Right", "Bottom", "Left" ], function( i, part ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 			expanded[ "border" + part + "Color" ] = value;
 		} );
 		return expanded;
@@ -751,6 +1004,7 @@ colors = jQuery.Color.names = {
 	_default: "#ffffff"
 };
 
+<<<<<<< HEAD
 
 var dataSpace = "ui-effects-",
 	dataSpaceStyle = "ui-effects-style",
@@ -759,6 +1013,9 @@ var dataSpace = "ui-effects-",
 $.effects = {
 	effect: {}
 };
+=======
+} )( jQuery );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 /******************************************************************************/
 /****************************** CLASS ANIMATIONS ******************************/
@@ -790,12 +1047,15 @@ $.each(
 	}
 );
 
+<<<<<<< HEAD
 function camelCase( string ) {
 	return string.replace( /-([\da-z])/gi, function( all, letter ) {
 		return letter.toUpperCase();
 	} );
 }
 
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 function getElementStyles( elem ) {
 	var key, len,
 		style = elem.ownerDocument.defaultView ?
@@ -808,11 +1068,19 @@ function getElementStyles( elem ) {
 		while ( len-- ) {
 			key = style[ len ];
 			if ( typeof style[ key ] === "string" ) {
+<<<<<<< HEAD
 				styles[ camelCase( key ) ] = style[ key ];
 			}
 		}
 
 		// Support: Opera, IE <9
+=======
+				styles[ $.camelCase( key ) ] = style[ key ];
+			}
+		}
+
+	// Support: Opera, IE <9
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	} else {
 		for ( key in style ) {
 			if ( typeof style[ key ] === "string" ) {
@@ -982,12 +1250,21 @@ $.fn.extend( {
 
 ( function() {
 
+<<<<<<< HEAD
 if ( $.expr && $.expr.pseudos && $.expr.pseudos.animated ) {
 	$.expr.pseudos.animated = ( function( orig ) {
 		return function( elem ) {
 			return !!$( elem ).data( dataSpaceAnimated ) || orig( elem );
 		};
 	} )( $.expr.pseudos.animated );
+=======
+if ( $.expr && $.expr.filters && $.expr.filters.animated ) {
+	$.expr.filters.animated = ( function( orig ) {
+		return function( elem ) {
+			return !!$( elem ).data( dataSpaceAnimated ) || orig( elem );
+		};
+	} )( $.expr.filters.animated );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 if ( $.uiBackCompat !== false ) {
@@ -1056,7 +1333,10 @@ if ( $.uiBackCompat !== false ) {
 			// Firefox incorrectly exposes anonymous content
 			// https://bugzilla.mozilla.org/show_bug.cgi?id=561664
 			try {
+<<<<<<< HEAD
 				// eslint-disable-next-line no-unused-expressions
+=======
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				active.id;
 			} catch ( e ) {
 				active = document.body;
@@ -1119,7 +1399,11 @@ if ( $.uiBackCompat !== false ) {
 }
 
 $.extend( $.effects, {
+<<<<<<< HEAD
 	version: "1.13.1",
+=======
+	version: "1.12.1",
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	define: function( name, mode, effect ) {
 		if ( !effect ) {
@@ -1201,6 +1485,7 @@ $.extend( $.effects, {
 		var y, x;
 
 		switch ( origin[ 0 ] ) {
+<<<<<<< HEAD
 			case "top":
 				y = 0;
 				break;
@@ -1226,6 +1511,33 @@ $.extend( $.effects, {
 				break;
 			default:
 				x = origin[ 1 ] / original.width;
+=======
+		case "top":
+			y = 0;
+			break;
+		case "middle":
+			y = 0.5;
+			break;
+		case "bottom":
+			y = 1;
+			break;
+		default:
+			y = origin[ 0 ] / original.height;
+		}
+
+		switch ( origin[ 1 ] ) {
+		case "left":
+			x = 0;
+			break;
+		case "center":
+			x = 0.5;
+			break;
+		case "right":
+			x = 1;
+			break;
+		default:
+			x = origin[ 1 ] / original.width;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		}
 
 		return {
@@ -1250,8 +1562,13 @@ $.extend( $.effects, {
 			marginLeft: element.css( "marginLeft" ),
 			marginRight: element.css( "marginRight" )
 		} )
+<<<<<<< HEAD
 			.outerWidth( element.outerWidth() )
 			.outerHeight( element.outerHeight() );
+=======
+		.outerWidth( element.outerWidth() )
+		.outerHeight( element.outerHeight() );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		if ( /^(static|relative)/.test( cssPosition ) ) {
 			cssPosition = "absolute";
@@ -1272,9 +1589,15 @@ $.extend( $.effects, {
 				marginRight: element.css( "marginRight" ),
 				"float": element.css( "float" )
 			} )
+<<<<<<< HEAD
 				.outerWidth( element.outerWidth() )
 				.outerHeight( element.outerHeight() )
 				.addClass( "ui-effects-placeholder" );
+=======
+			.outerWidth( element.outerWidth() )
+			.outerHeight( element.outerHeight() )
+			.addClass( "ui-effects-placeholder" );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 			element.data( dataSpace + "placeholder", placeholder );
 		}
@@ -1290,7 +1613,11 @@ $.extend( $.effects, {
 
 	removePlaceholder: function( element ) {
 		var dataKey = dataSpace + "placeholder",
+<<<<<<< HEAD
 			placeholder = element.data( dataKey );
+=======
+				placeholder = element.data( dataKey );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 		if ( placeholder ) {
 			placeholder.remove();
@@ -1335,7 +1662,11 @@ function _normalizeArguments( effect, options, speed, callback ) {
 	}
 
 	// Catch (effect, callback)
+<<<<<<< HEAD
 	if ( typeof options === "function" ) {
+=======
+	if ( $.isFunction( options ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		callback = options;
 		speed = null;
 		options = {};
@@ -1349,7 +1680,11 @@ function _normalizeArguments( effect, options, speed, callback ) {
 	}
 
 	// Catch (effect, options, callback)
+<<<<<<< HEAD
 	if ( typeof speed === "function" ) {
+=======
+	if ( $.isFunction( speed ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		callback = speed;
 		speed = null;
 	}
@@ -1362,8 +1697,13 @@ function _normalizeArguments( effect, options, speed, callback ) {
 	speed = speed || options.duration;
 	effect.duration = $.fx.off ? 0 :
 		typeof speed === "number" ? speed :
+<<<<<<< HEAD
 			speed in $.fx.speeds ? $.fx.speeds[ speed ] :
 				$.fx.speeds._default;
+=======
+		speed in $.fx.speeds ? $.fx.speeds[ speed ] :
+		$.fx.speeds._default;
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 
 	effect.complete = callback || options.complete;
 
@@ -1383,7 +1723,11 @@ function standardAnimationOption( option ) {
 	}
 
 	// Complete callback
+<<<<<<< HEAD
 	if ( typeof option === "function" ) {
+=======
+	if ( $.isFunction( option ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		return true;
 	}
 
@@ -1410,7 +1754,11 @@ $.fn.extend( {
 				var el = $( this ),
 					normalizedMode = $.effects.mode( el, mode ) || defaultMode;
 
+<<<<<<< HEAD
 				// Sentinel for duck-punching the :animated pseudo-selector
+=======
+				// Sentinel for duck-punching the :animated psuedo-selector
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 				el.data( dataSpaceAnimated, true );
 
 				// Save effect mode for later use,
@@ -1418,9 +1766,15 @@ $.fn.extend( {
 				// as the .show() below destroys the initial state
 				modes.push( normalizedMode );
 
+<<<<<<< HEAD
 				// See $.uiBackCompat inside of run() for removal of defaultMode in 1.14
 				if ( defaultMode && ( normalizedMode === "show" ||
 					( normalizedMode === defaultMode && normalizedMode === "hide" ) ) ) {
+=======
+				// See $.uiBackCompat inside of run() for removal of defaultMode in 1.13
+				if ( defaultMode && ( normalizedMode === "show" ||
+						( normalizedMode === defaultMode && normalizedMode === "hide" ) ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					el.show();
 				}
 
@@ -1428,7 +1782,11 @@ $.fn.extend( {
 					$.effects.saveStyle( el );
 				}
 
+<<<<<<< HEAD
 				if ( typeof next === "function" ) {
+=======
+				if ( $.isFunction( next ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					next();
 				}
 			};
@@ -1463,11 +1821,19 @@ $.fn.extend( {
 			}
 
 			function done() {
+<<<<<<< HEAD
 				if ( typeof complete === "function" ) {
 					complete.call( elem[ 0 ] );
 				}
 
 				if ( typeof next === "function" ) {
+=======
+				if ( $.isFunction( complete ) ) {
+					complete.call( elem[ 0 ] );
+				}
+
+				if ( $.isFunction( next ) ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 					next();
 				}
 			}
@@ -1576,6 +1942,7 @@ $.fn.extend( {
 				width: target.innerWidth()
 			},
 			startPosition = element.offset(),
+<<<<<<< HEAD
 			transfer = $( "<div class='ui-effects-transfer'></div>" );
 
 		transfer
@@ -1594,10 +1961,29 @@ $.fn.extend( {
 					done();
 				}
 			} );
+=======
+			transfer = $( "<div class='ui-effects-transfer'></div>" )
+				.appendTo( "body" )
+				.addClass( options.className )
+				.css( {
+					top: startPosition.top - fixTop,
+					left: startPosition.left - fixLeft,
+					height: element.innerHeight(),
+					width: element.innerWidth(),
+					position: targetFixed ? "fixed" : "absolute"
+				} )
+				.animate( animation, options.duration, options.easing, function() {
+					transfer.remove();
+					if ( $.isFunction( done ) ) {
+						done();
+					}
+				} );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	}
 } );
 
 function parseClip( str, element ) {
+<<<<<<< HEAD
 	var outerWidth = element.outerWidth(),
 		outerHeight = element.outerHeight(),
 		clipRegex = /^rect\((-?\d*\.?\d*px|-?\d+%|auto),?\s*(-?\d*\.?\d*px|-?\d+%|auto),?\s*(-?\d*\.?\d*px|-?\d+%|auto),?\s*(-?\d*\.?\d*px|-?\d+%|auto)\)$/,
@@ -1609,6 +1995,19 @@ function parseClip( str, element ) {
 		bottom: values[ 3 ] === "auto" ? outerHeight : parseFloat( values[ 3 ] ),
 		left: parseFloat( values[ 4 ] ) || 0
 	};
+=======
+		var outerWidth = element.outerWidth(),
+			outerHeight = element.outerHeight(),
+			clipRegex = /^rect\((-?\d*\.?\d*px|-?\d+%|auto),?\s*(-?\d*\.?\d*px|-?\d+%|auto),?\s*(-?\d*\.?\d*px|-?\d+%|auto),?\s*(-?\d*\.?\d*px|-?\d+%|auto)\)$/,
+			values = clipRegex.exec( str ) || [ "", 0, outerWidth, outerHeight, 0 ];
+
+		return {
+			top: parseFloat( values[ 1 ] ) || 0,
+			right: values[ 2 ] === "auto" ? outerWidth : parseFloat( values[ 2 ] ),
+			bottom: values[ 3 ] === "auto" ? outerHeight : parseFloat( values[ 3 ] ),
+			left: parseFloat( values[ 4 ] ) || 0
+		};
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 }
 
 $.fx.step.clip = function( fx ) {
@@ -1685,4 +2084,8 @@ $.each( baseEasings, function( name, easeIn ) {
 
 return $.effects;
 
+<<<<<<< HEAD
 } );
+=======
+} ) );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73

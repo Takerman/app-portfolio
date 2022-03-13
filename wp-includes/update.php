@@ -143,7 +143,11 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 		$query['channel'] = WP_AUTO_UPDATE_CORE;
 	}
 
+<<<<<<< HEAD
 	$url      = 'http://api.wordpress.org/core/version-check/1.7/?' . http_build_query( $query, '', '&' );
+=======
+	$url      = 'http://api.wordpress.org/core/version-check/1.7/?' . http_build_query( $query, null, '&' );
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 	$http_url = $url;
 	$ssl      = wp_http_supports( array( 'ssl' ) );
 
@@ -517,7 +521,11 @@ function wp_update_plugins( $extra_stats = array() ) {
 		}
 	}
 
+<<<<<<< HEAD
 	$sanitize_plugin_update_payload = static function( &$item ) {
+=======
+	$sanitize_plugin_update_payload = function( &$item ) {
+>>>>>>> e18f5ac9ad7aab8535f127152ee52f505e0cbc73
 		$item = (object) $item;
 
 		unset( $item->translations, $item->compatibility );
