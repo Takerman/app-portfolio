@@ -1380,4 +1380,17 @@ class TRP_Translation_Manager
         }
     }
 
+    /**
+     * Prevent indexing edit translation preview pages.
+     *
+     * Hooked to trp_head, wp_head
+     *
+     */
+    public function output_noindex_tag()
+    {
+        if( $this->conditions_met( 'true' ) || $this->conditions_met( 'preview' ) ){
+            echo '<meta name="robots" content="noindex, nofollow">';
+        }
+    }
+
 }

@@ -114,6 +114,8 @@ class TRP_Machine_Translator {
     }
 
     /**
+     *
+     * @deprecated
      * Check the automatic translation API keys for Google Translate and DeepL.
      *
      * @param TRP_Translate_Press $machine_translator Machine translator instance.
@@ -123,12 +125,6 @@ class TRP_Machine_Translator {
      * @return array [ (string) $message, (bool) $error ].
      */
     public function automatic_translate_error_check( $machine_translator, $translation_engine, $api_key ) {
-
-        //@TODO need to find a better solution as the code bellow does not work
-
-//        if ($this->correct_api_key!=null){
-//                return $this->correct_api_key;
-//        }
 
         $is_error       = false;
         $return_message = '';
@@ -188,11 +184,16 @@ class TRP_Machine_Translator {
 
     public function is_correct_api_key(){
 
-        $machine_translator = $this;
-        $translation_engine = $this->settings['trp_machine_translation_settings']['translation-engine'];
-        $api_key = $this->get_api_key();
+        if(method_exists($this, 'check_api_key_validity')){
+            $verification = $this->check_api_key_validity();
+        }else {
+            //we only need this values for automatic translate error check function for backwards compatibility
 
-        $verification = $this->automatic_translate_error_check( $machine_translator, $translation_engine, $api_key );
+            $machine_translator = $this;
+            $translation_engine = $this->settings['trp_machine_translation_settings']['translation-engine'];
+            $api_key = $this->get_api_key();
+            $verification = $this->automatic_translate_error_check( $machine_translator, $translation_engine, $api_key );
+        }
         if($verification['error']== false) {
             return true;
         }
@@ -314,7 +315,8 @@ class TRP_Machine_Translator {
         if ( !empty($strings) && is_array($strings) && method_exists( $this, 'translate_array' ) && apply_filters( 'trp_disable_automatic_translations_due_to_error', false ) === false ) {
 
             /* google has a problem translating this characters ( '%', '$', '#' )...for some reasons it puts spaces after them so we need to 'encode' them and decode them back. hopefully it won't break anything important */
-            $trp_exclude_words_from_automatic_translation = apply_filters('trp_exclude_words_from_automatic_translation', array('%', '$', '#'));
+            /* we put '%s' before '%' because google seems to transform %s into % in strings for some languages which causes a 500 Fata Error in PHP 8*/
+            $trp_exclude_words_from_automatic_translation = apply_filters('trp_exclude_words_from_automatic_translation', array('%s','%', '$', '#'));
             $placeholders = $this->get_placeholders(count($trp_exclude_words_from_automatic_translation));
             $shortcode_tags_to_execute = apply_filters( 'trp_do_these_shortcodes_before_automatic_translation', array('trp_language') );
 

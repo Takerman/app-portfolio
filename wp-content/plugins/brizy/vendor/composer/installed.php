@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '3465441709effb3416861daa420f53619ad36ca5',
+    'reference' => '8957c3113bf0943211361b771f7d39486a3f2c51',
     'name' => 'brizy/brizy',
   ),
   'versions' => 
@@ -32,12 +32,12 @@
     ),
     'bagrinsergiu/content-placeholder' => 
     array (
-      'pretty_version' => '2.0.5',
-      'version' => '2.0.5.0',
+      'pretty_version' => '2.0.6',
+      'version' => '2.0.6.0',
       'aliases' => 
       array (
       ),
-      'reference' => '3be1d4e2033c6c074f12391fc796e5ab9a9bc72d',
+      'reference' => 'ba8b64a6055615b2294f2b575e303fb3b0331d7e',
     ),
     'brizy/brizy' => 
     array (
@@ -46,7 +46,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '3465441709effb3416861daa420f53619ad36ca5',
+      'reference' => '8957c3113bf0943211361b771f7d39486a3f2c51',
     ),
     'enshrined/svg-sanitize' => 
     array (
@@ -83,15 +83,14 @@
       array (
         0 => '9999999-dev',
       ),
-      'reference' => '940c299b7a449d6621103c195d7094b1976861a7',
+      'reference' => '3ce73d6d5c11031579bb036d7059b570b00e2255',
     ),
     'symfony/deprecation-contracts' => 
     array (
-      'pretty_version' => 'dev-main',
-      'version' => 'dev-main',
+      'pretty_version' => '2.5.x-dev',
+      'version' => '2.5.9999999.9999999-dev',
       'aliases' => 
       array (
-        0 => '2.5.x-dev',
       ),
       'reference' => '6f981ee24cf69ee7ce9736146d1c57c2780598a8',
     ),
@@ -101,18 +100,18 @@
       'version' => '5.4.9999999.9999999-dev',
       'aliases' => 
       array (
+        0 => '9999999-dev',
       ),
-      'reference' => '7189ac0d3f99c7526950f13ff337d2b9a2bedf21',
+      'reference' => '84d1af2d39dd81b48eb1cd3af3f107eea7a275bb',
     ),
     'symfony/polyfill-ctype' => 
     array (
-      'pretty_version' => 'dev-main',
-      'version' => 'dev-main',
+      'pretty_version' => 'v1.24.0',
+      'version' => '1.24.0.0',
       'aliases' => 
       array (
-        0 => '1.23.x-dev',
       ),
-      'reference' => '46cd95797e9df938fdd2b03693b5fca5e64b01ce',
+      'reference' => '30885182c981ab175d4d034db0f6f469898070ab',
     ),
     'tburry/pquery' => 
     array (

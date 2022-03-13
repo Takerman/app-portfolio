@@ -24,7 +24,6 @@
 	<?php else : ?>
 		<input type="hidden" name="redirect_to" value="<?php echo $args['redirect_to']; ?>" />
 	<?php endif; ?>
-
 	<input type="hidden" name="rememberme" id="rememberme" value="<?php echo $args['rememberme']; ?>" />
 	<input name="do_not_challenge" type="checkbox" id="do_not_challenge" />
 	<label for="do_not_challenge"><?php esc_html_e( 'Do not challenge me for the next 30 days.', 'sg-security' ); ?></label>

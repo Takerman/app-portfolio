@@ -11,7 +11,7 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 	 * Provider access token.
 	 *
 	 * @since 1.3.6
-     *
+	 *
 	 * @var string
 	 */
 	public $access_token;
@@ -20,7 +20,7 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 	 * Provider API key.
 	 *
 	 * @since 1.3.6
-     *
+	 *
 	 * @var string
 	 */
 	public $api_key = 'c58xq3r27udz59h9rrq7qnvf';
@@ -29,7 +29,7 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 	 * Sign up link.
 	 *
 	 * @since 1.3.6
-     *
+	 *
 	 * @var string
 	 */
 	public $sign_up = 'https://constant-contact.evyy.net/c/11535/341874/3411?sharedid=wpforms';
@@ -112,7 +112,7 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 			$pass = $this->process_conditionals( $fields, $entry, $form_data, $connection );
 			if ( ! $pass ) {
 				wpforms_log(
-					esc_html__( 'Constant Contact Subscription stopped by conditional logic', 'wpforms-lite' ),
+					'Constant Contact Subscription stopped by conditional logic',
 					$fields,
 					array(
 						'type'    => array( 'provider', 'conditional_logic' ),
@@ -130,7 +130,7 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 			// Return early if there was a problem.
 			if ( isset( $contact['error_key'] ) ) {
 				wpforms_log(
-					esc_html__( 'Constant Contact API Error', 'wpforms-lite' ),
+					'Constant Contact API Error',
 					$contact->get_error_message(),
 					array(
 						'type'    => array( 'provider', 'error' ),
@@ -310,7 +310,7 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 			// Check for errors.
 			if ( isset( $res['error_key'] ) ) {
 				wpforms_log(
-					esc_html__( 'Constant Contact API Error', 'wpforms-lite' ),
+					'Constant Contact API Error',
 					$res->get_error_message(),
 					[
 						'type'    => [ 'provider', 'error' ],
@@ -395,7 +395,7 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 
 		if ( empty( $lists ) ) {
 			wpforms_log(
-				esc_html__( 'Constant Contact API Error', 'wpforms-lite' ),
+				'Constant Contact API Error',
 				'',
 				array(
 					'type' => array( 'provider', 'error' ),
@@ -482,6 +482,7 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 	 * Provider account authorize fields HTML.
 	 *
 	 * @since 1.3.6
+	 *
 	 * @return string
 	 */
 	public function output_auth() {
@@ -489,34 +490,58 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 		$providers = wpforms_get_providers_options();
 		$class     = ! empty( $providers[ $this->slug ] ) ? 'hidden' : '';
 
-		$output = '<div class="wpforms-provider-account-add ' . $class . ' wpforms-connection-block">';
+		ob_start();
+		?>
 
-		$output .= sprintf( '<h4>%s</h4>', esc_html__( 'Add New Account', 'wpforms-lite' ) );
+		<div class="wpforms-provider-account-add <?php echo sanitize_html_class( $class ); ?> wpforms-connection-block">
 
-		$output .= '<p>';
-		$output .= esc_html__( 'Please fill out all of the fields below to register your new Constant Contact account.', 'wpforms-lite' );
-		$output .= '<br><a href="https://wpforms.com/docs/how-to-connect-constant-contact-with-wpforms/" target="_blank" rel="noopener noreferrer">';
-		$output .= esc_html__( 'Click here for documentation on connecting WPForms with Constant Contact.', 'wpforms-lite' );
-		$output .= '</a>';
-		$output .= '</p>';
+			<h4><?php esc_html_e( 'Add New Account', 'wpforms-lite' ); ?></h4>
 
-		$output .= '<p class="wpforms-alert wpforms-alert-warning">';
-		$output .= esc_html__( 'Because Constant Contact requires external authentication, you will need to register WPForms with Constant Contact before you can proceed.', 'wpforms-lite' );
-		$output .= '</p>';
+			<p>
+				<?php esc_html_e( 'Please fill out all of the fields below to register your new Constant Contact account.', 'wpforms-lite' ); ?>
+				<br>
+				<a href="https://wpforms.com/docs/how-to-connect-constant-contact-with-wpforms/" target="_blank" rel="noopener noreferrer">
+					<?php esc_html_e( 'Click here for documentation on connecting WPForms with Constant Contact.', 'wpforms-lite' ); ?>
+				</a>
+			</p>
 
-		$output .= '<p class=""><strong><a onclick="window.open(this.href,\'\',\'resizable=yes,location=no,width=750,height=500,status\'); return false" href="https://oauth2.constantcontact.com/oauth2/oauth/siteowner/authorize?response_type=code&client_id=c58xq3r27udz59h9rrq7qnvf&redirect_uri=https://wpforms.com/oauth/constant-contact/" class="btn">';
-		$output .= esc_html__( 'Click here to register with Constant Contact', 'wpforms-lite' );
-		$output .= '</a></strong></p>';
+			<p class="wpforms-alert wpforms-alert-warning">
+				<?php esc_html_e( 'Because Constant Contact requires external authentication, you will need to register WPForms with Constant Contact before you can proceed.', 'wpforms-lite' ); ?>
+			</p>
 
-		$output .= sprintf( '<input type="text" data-name="authcode" placeholder="%s %s" class="wpforms-required">', $this->name, esc_html__( 'Authorization Code', 'wpforms-lite' ) );
+			<p>
+				<strong>
+					<a onclick="window.open(this.href,'','resizable=yes,location=no,width=750,height=500,status'); return false" href="https://oauth2.constantcontact.com/oauth2/oauth/siteowner/authorize?response_type=code&client_id=c58xq3r27udz59h9rrq7qnvf&redirect_uri=https://wpforms.com/oauth/constant-contact/" class="btn">
+						<?php esc_html_e( 'Click here to register with Constant Contact', 'wpforms-lite' ); ?>
+					</a>
+				</strong>
+			</p>
 
-		$output .= sprintf( '<input type="text" data-name="label" placeholder="%s %s" class="wpforms-required">', $this->name, esc_html__( 'Account Nickname', 'wpforms-lite' ) );
+			<?php
+			printf(
+				'<input type="text" data-name="authcode" placeholder="%s %s" class="wpforms-required">',
+				esc_attr( $this->name ),
+				esc_attr__( 'Authorization Code', 'wpforms-lite' )
+			);
 
-		$output .= sprintf( '<button data-provider="%s">%s</button>', $this->slug, esc_html__( 'Connect', 'wpforms-lite' ) );
+			printf(
+				'<input type="text" data-name="label" placeholder="%s %s" class="wpforms-required">',
+				esc_attr( $this->name ),
+				esc_attr__( 'Account Nickname', 'wpforms-lite' )
+			);
 
-		$output .= '</div>';
+			printf(
+				'<button data-provider="%s">%s</button>',
+				esc_attr( $this->slug ),
+				esc_html__( 'Connect', 'wpforms-lite' )
+			);
 
-		return $output;
+			?>
+		</div>
+
+		<?php
+
+		return ob_get_clean();
 	}
 
 	/**
@@ -556,10 +581,9 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 		<p>
 			<?php
 			printf(
-				'<a href="%s" target="_blank" rel="noopener noreferrer" class="secondary-text">' .
-					esc_html__( 'Learn more about the power of email marketing.', 'wpforms-lite' ) .
-				'</a>',
-				esc_url( admin_url( 'admin.php?page=wpforms-page&wpforms-page=constant-contact' ) )
+				'<a href="%s" target="_blank" rel="noopener noreferrer" class="secondary-text">%s</a>',
+				esc_url( admin_url( 'admin.php?page=wpforms-page&wpforms-page=constant-contact' ) ),
+				esc_html__( 'Learn more about the power of email marketing.', 'wpforms-lite' )
 			);
 			?>
 		</p>
@@ -579,25 +603,37 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 	 */
 	public function integrations_tab_new_form() {
 
-		$output  = '<p>';
-		$output .= '<a href="https://wpforms.com/docs/how-to-connect-constant-contact-with-wpforms/" target="_blank" rel="noopener noreferrer">';
-		$output .= esc_html__( 'Click here for documentation on connecting WPForms with Constant Contact.', 'wpforms-lite' );
-		$output .= '</a>';
-		$output .= '</p>';
+		?>
+		<p>
+			<a href="https://wpforms.com/docs/how-to-connect-constant-contact-with-wpforms/" target="_blank" rel="noopener noreferrer">
+				<?php esc_html_e( 'Click here for documentation on connecting WPForms with Constant Contact.', 'wpforms-lite' ); ?>
+			</a>
+		</p>
 
-		$output .= '<p class="wpforms-alert wpforms-alert-warning">';
-		$output .= esc_html__( 'Because Constant Contact requires external authentication, you will need to register WPForms with Constant Contact before you can proceed.', 'wpforms-lite' );
-		$output .= '</p>';
+		<p class="wpforms-alert wpforms-alert-warning">
+			<?php esc_html_e( 'Because Constant Contact requires external authentication, you will need to register WPForms with Constant Contact before you can proceed.', 'wpforms-lite' ); ?>
+		</p>
 
-		$output .= '<p class=""><strong><a onclick="window.open(this.href,\'\',\'resizable=yes,location=no,width=800,height=600,status\'); return false" href="https://oauth2.constantcontact.com/oauth2/oauth/siteowner/authorize?response_type=code&client_id=c58xq3r27udz59h9rrq7qnvf&redirect_uri=https://wpforms.com/oauth/constant-contact/" class="btn">';
-		$output .= esc_html__( 'Click here to register with Constant Contact', 'wpforms-lite' );
-		$output .= '</a></strong></p>';
+		<p>
+			<strong>
+				<a onclick="window.open(this.href,'','resizable=yes,location=no,width=800,height=600,status'); return false" href="https://oauth2.constantcontact.com/oauth2/oauth/siteowner/authorize?response_type=code&client_id=c58xq3r27udz59h9rrq7qnvf&redirect_uri=https://wpforms.com/oauth/constant-contact/" class="btn">
+					<?php esc_html_e( 'Click here to register with Constant Contact', 'wpforms-lite' ); ?>
+				</a>
+			</strong>
+		</p>
 
-		$output .= sprintf( '<input type="text" name="authcode" placeholder="%s %s" class="wpforms-required">', $this->name, esc_html__( 'Authorization Code', 'wpforms-lite' ) );
+		<?php
+		printf(
+			'<input type="text" name="authcode" placeholder="%s %s" class="wpforms-required">',
+			esc_attr( $this->name ),
+			esc_attr__( 'Authorization Code', 'wpforms-lite' )
+		);
 
-		$output .= sprintf( '<input type="text" name="label" placeholder="%s %s" class="wpforms-required">', $this->name, esc_html__( 'Account Nickname', 'wpforms-lite' ) );
-
-		echo $output;
+		printf(
+			'<input type="text" name="label" placeholder="%s %s" class="wpforms-required">',
+			esc_attr( $this->name ),
+			esc_attr__( 'Account Nickname', 'wpforms-lite' )
+		);
 	}
 
 	/************************
@@ -617,14 +653,16 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 		}
 
 		// Don't display on WPForms admin content pages.
-		if ( ! empty( $_GET['wpforms-page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
+		if ( ! empty( $_GET['wpforms-page'] ) ) {
 			return;
 		}
 
 		// Don't display if user is about to connect via Settings page.
-		if ( ! empty( $_GET['wpforms-integration'] ) && $this->slug === $_GET['wpforms-integration'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( ! empty( $_GET['wpforms-integration'] ) && $this->slug === $_GET['wpforms-integration'] ) {
 			return;
 		}
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
 		// Only display the notice if the Constant Contact option is set and
 		// there are previous Constant Contact connections created.
@@ -637,7 +675,7 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 		}
 
 		// Output the notice message.
-		$connect    = admin_url( 'admin.php?page=wpforms-settings&wpforms-integration=constant-contact#!wpforms-tab-providers' );
+		$connect    = admin_url( 'admin.php?page=wpforms-settings&view=integrations&wpforms-integration=constant-contact#!wpforms-tab-providers' );
 		$learn_more = admin_url( 'admin.php?page=wpforms-page&wpforms-page=constant-contact' );
 
 		ob_start();
@@ -660,25 +698,21 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 				<?php esc_html_e( 'Connect your existing account', 'wpforms-lite' ); ?>
 			</a>
 			<?php
-			printf(
-				wp_kses( /* translators: %s - WPForms Constant Contact internal URL. */
+			echo wp_kses(
+				sprintf( /* translators: %s - WPForms Constant Contact internal URL. */
 					__( 'Learn More about the <a href="%s">power of email marketing</a>', 'wpforms-lite' ),
-					[
-						'a' => [
-							'href' => [],
-						],
-					]
+					esc_url( $learn_more )
 				),
-				esc_url( $learn_more )
+				[
+					'a' => [
+						'href' => [],
+					],
+				]
 			);
 			?>
 		</p>
 
 		<style>
-			.wpforms-constant-contact-notice {
-				border-left-color: #1a5285;
-			}
-
 			.wpforms-constant-contact-notice p:first-of-type {
 				margin: 16px 0 8px;
 			}
@@ -689,7 +723,6 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 
 			.wpforms-constant-contact-notice .button-primary,
 			.wpforms-constant-contact-notice .button-secondary {
-				display: inline-block;
 				margin: 0 10px 0 0;
 			}
 		</style>
@@ -734,45 +767,80 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 	 */
 	public function learn_more_page() {
 
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
 		if (
 			empty( $_GET['page'] ) ||
 			empty( $_GET['wpforms-page'] ) ||
-			'wpforms-page' !== $_GET['page'] ||
-			'constant-contact' !== $_GET['wpforms-page']
+			$_GET['page'] !== 'wpforms-page' ||
+			$_GET['wpforms-page'] !== 'constant-contact'
 		) {
 			return;
 		}
-		$more = 'http://www.wpbeginner.com/beginners-guide/why-you-should-start-building-your-email-list-right-away';
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 		?>
 		<div class="wrap about-wrap">
 			<h1><?php esc_html_e( 'Grow Your Website with WPForms + Email Marketing', 'wpforms-lite' ); ?></h1>
 			<p><?php esc_html_e( 'Wondering if email marketing is really worth your time?', 'wpforms-lite' ); ?></p>
-			<p><?php echo wp_kses( __( 'Email is hands-down the most effective way to nurture leads and turn them into customers, with a return on investment (ROI) of <strong>$44 back for every $1 spent</strong> according to DMA.', 'wpforms-lite' ), array( 'strong' => array() ) ); ?></p>
+			<p>
+				<?php
+				echo wp_kses(
+					__( 'Email is hands-down the most effective way to nurture leads and turn them into customers, with a return on investment (ROI) of <strong>$44 back for every $1 spent</strong> according to DMA.', 'wpforms-lite' ),
+					[ 'strong' => [] ]
+				);
+				?>
+			</p>
 			<p><?php esc_html_e( 'Here are 3 big reasons why every smart business in the world has an email list:', 'wpforms-lite' ); ?></p>
 			<a href="<?php echo esc_url( $this->sign_up ); ?>" target="_blank" rel="noopener noreferrer">
-				<img src="<?php echo WPFORMS_PLUGIN_URL; ?>assets/images/cc-about-logo.png" class="logo">
+				<?php
+				printf(
+					'<img src="%1$s" srcset="%2$s 2x" alt="%3$s" class="logo"/>',
+					esc_url( WPFORMS_PLUGIN_URL . 'assets/images/constant-contact/cc-about-logo.png' ),
+					esc_url( WPFORMS_PLUGIN_URL . 'assets/images/constant-contact/cc-about-logo@2x.png' ),
+					esc_html__( 'Try Us Free Constant Contact', 'wpforms-lite' )
+				)
+				?>
 			</a>
 			<ol class="reasons">
-				<li><?php echo wp_kses( __( '<strong>Email is still #1</strong> - At least 91% of consumers check their email on a daily basis. You get direct access to your subscribers, without having to play by social media&#39;s rules and algorithms.', 'wpforms-lite' ), array( 'strong' => array() ) ); ?></li>
-				<li><?php echo wp_kses( __( '<strong>You own your email list</strong> - Unlike with social media, your list is your property and no one can revoke your access to it.', 'wpforms-lite' ), array( 'strong' => array() ) ); ?></li>
-				<li><?php echo wp_kses( __( '<strong>Email converts</strong> - People who buy products marketed through email spend 138% more than those who don&#39;t receive email offers.', 'wpforms-lite' ), array( 'strong' => array() ) ); ?></li>
+				<li>
+					<?php
+					echo wp_kses(
+						__( '<strong>Email is still #1</strong> - At least 91% of consumers check their email on a daily basis. You get direct access to your subscribers, without having to play by social media&#39;s rules and algorithms.', 'wpforms-lite' ),
+						[ 'strong' => [] ]
+					);
+					?>
+				</li>
+				<li>
+					<?php
+					echo wp_kses(
+						__( '<strong>You own your email list</strong> - Unlike with social media, your list is your property and no one can revoke your access to it.', 'wpforms-lite' ),
+						[ 'strong' => [] ]
+					);
+					?>
+				</li>
+				<li>
+					<?php
+					echo wp_kses(
+						__( '<strong>Email converts</strong> - People who buy products marketed through email spend 138% more than those who don&#39;t receive email offers.', 'wpforms-lite' ),
+						[ 'strong' => [] ]
+					);
+					?>
+				</li>
 			</ol>
 			<p><?php esc_html_e( 'That&#39;s why it&#39;s crucial to start collecting email addresses and building your list as soon as possible.', 'wpforms-lite' ); ?></p>
 			<p>
 				<?php
-				printf(
-					wp_kses(
-						/* translators: %s - WPBeginners.com Guide to Email Lists URL. */
+				echo wp_kses(
+					sprintf( /* translators: %s - WPBeginners.com Guide to Email Lists URL. */
 						__( 'For more details, see this guide on <a href="%s" target="_blank" rel="noopener noreferrer">why building your email list is so important</a>.', 'wpforms-lite' ),
-						array(
-							'a' => array(
-								'href'   => array(),
-								'target' => array(),
-								'rel'    => array(),
-							),
-						)
+						'https://www.wpbeginner.com/beginners-guide/why-you-should-start-building-your-email-list-right-away'
 					),
-					$more
+					[
+						'a' => [
+							'href'   => [],
+							'target' => [],
+							'rel'    => [],
+						],
+					]
 				);
 				?>
 			</p>
@@ -809,19 +877,19 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 			<p><?php esc_html_e( 'Here&#39;s how it works.', 'wpforms-lite' ); ?></p>
 			<div class="steps">
 				<div class="step1 step">
-					<img src="<?php echo WPFORMS_PLUGIN_URL; ?>assets/images/cc-about-step1.png">
+					<img src="<?php echo esc_url( WPFORMS_PLUGIN_URL . 'assets/images/constant-contact/cc-about-step1.png' ); ?>">
 					<p><?php esc_html_e( '1. Select from our pre-built templates, or create a form from scratch.', 'wpforms-lite' ); ?></p>
 				</div>
 				<div class="step2 step">
-					<img src="<?php echo WPFORMS_PLUGIN_URL; ?>assets/images/cc-about-step2.png">
+					<img src="<?php echo esc_url( WPFORMS_PLUGIN_URL . 'assets/images/constant-contact/cc-about-step2.png' ); ?>">
 					<p><?php esc_html_e( '2. Drag and drop any field you want onto your signup form.', 'wpforms-lite' ); ?></p>
 				</div>
 				<div class="step3 step">
-					<img src="<?php echo WPFORMS_PLUGIN_URL; ?>assets/images/cc-about-step3.png">
+					<img src="<?php echo esc_url( WPFORMS_PLUGIN_URL . 'assets/images/constant-contact/cc-about-step3.png' ); ?>">
 					<p><?php esc_html_e( '3. Connect your Constant Contact email list.', 'wpforms-lite' ); ?></p>
 				</div>
 				<div class="step4 step">
-					<img src="<?php echo WPFORMS_PLUGIN_URL; ?>assets/images/cc-about-step4.png">
+					<img src="<?php echo esc_url( WPFORMS_PLUGIN_URL . 'assets/images/constant-contact/cc-about-step4.png' ); ?>">
 					<p><?php esc_html_e( '4. Add your new form to any post, page, or sidebar.', 'wpforms-lite' ); ?></p>
 				</div>
 			</div>

@@ -4,6 +4,11 @@ namespace SG_Security\Install_Service;
 
 use SG_Security\Install_Service\Install_1_0_1;
 use SG_Security\Install_Service\Install_1_1_0;
+use SG_Security\Install_Service\Install_1_1_1;
+use SG_Security\Install_Service\Install_1_2_0;
+use SG_Security\Install_Service\Install_1_2_1;
+use SG_Security\Install_Service\Install_1_2_2;
+use SG_Security\Install_Service\Install_1_2_3;
 
 /**
  * Define the Install interface.
@@ -22,6 +27,11 @@ class Install_Service {
 		$this->installs = array(
 			new Install_1_0_1(),
 			new Install_1_1_0(),
+			new Install_1_1_1(),
+			new Install_1_2_0(),
+			new Install_1_2_1(),
+			new Install_1_2_2(),
+			new Install_1_2_3(),
 		);
 	}
 

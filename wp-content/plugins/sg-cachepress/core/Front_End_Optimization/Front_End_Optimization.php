@@ -1,8 +1,10 @@
 <?php
 namespace SiteGround_Optimizer\Front_End_Optimization;
 
-use SiteGround_Optimizer\Helper\Helper;
 use SiteGround_Optimizer\Supercacher\Supercacher;
+use SiteGround_Optimizer\File_Cacher\File_Cacher;
+use SiteGround_Helper\Helper_Service;
+
 /**
  * SG Front_End_Optimization main plugin class
  */
@@ -105,7 +107,7 @@ class Front_End_Optimization {
 			return;
 		}
 
-		$uploads_dir = Helper::get_uploads_dir();
+		$uploads_dir = Helper_Service::get_uploads_dir();
 
 		// Build the assets dir name.
 		$directory = $uploads_dir . '/siteground-optimizer-assets';
@@ -153,7 +155,7 @@ class Front_End_Optimization {
 	 * @return string           Original filepath.
 	 */
 	public static function get_original_filepath( $original ) {
-		$home_url = Helper::get_site_url();
+		$home_url = Helper_Service::get_site_url();
 		// Get the home_url from database. Some plugins like qtranslate for example,
 		// modify the home_url, which result to wrong replacement with ABSPATH for resources loaded via link.
 		// Very ugly way to handle resources without protocol.
@@ -269,7 +271,7 @@ class Front_End_Optimization {
 		}
 
 		// Skip all external sources.
-		if ( @strpos( Helper::get_home_url(), $host ) === false ) {
+		if ( @strpos( Helper_Service::get_home_url(), $host ) === false ) {
 			return $src;
 		}
 
@@ -459,6 +461,7 @@ class Front_End_Optimization {
 		Supercacher::delete_assets();
 		Supercacher::purge_cache();
 		Supercacher::flush_memcache();
+		File_Cacher::purge_everything();
 	}
 
 	/**

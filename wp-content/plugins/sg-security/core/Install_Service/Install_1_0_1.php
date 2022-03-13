@@ -45,7 +45,6 @@ class Install_1_0_1 extends Install {
 
 		$deps = array(
 			'Directory_Service',
-			'Headers_Service',
 			'Xmlrpc_Service',
 		);
 

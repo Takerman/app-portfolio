@@ -5,11 +5,13 @@ use SiteGround_Optimizer\Options\Options;
 use SiteGround_Optimizer\Message_Service\Message_Service;
 use SiteGround_Optimizer\Multisite\Multisite;
 use SiteGround_Optimizer\Front_End_Optimization\Front_End_Optimization;
-use SiteGround_Optimizer\Helper\Helper;
 use SiteGround_Optimizer\Htaccess\Htaccess;
 use SiteGround_Optimizer\Analysis\Analysis;
 use SiteGround_Optimizer\Rest\Rest;
 use SiteGround_Optimizer\Heartbeat_Control\Heartbeat_Control;
+use SiteGround_Helper\Helper_Service;
+use SiteGround_Optimizer\DNS\Cloudflare;
+use SiteGround_Optimizer\File_Cacher\File_Cacher;
 
 /**
  * Rest Helper class that manages all of the front end optimisation.
@@ -23,15 +25,21 @@ class Rest_Helper_Options extends Rest_Helper {
 	public $options_map = array(
 		'caching'     => array(
 			'enable_cache',
+			'file_caching',
+			'preheat_cache',
+			'logged_in_cache',
 			'enable_memcached',
 			'autoflush_cache',
 			'user_agent_header',
 			'purge_rest_cache',
+			'logged_in_cache',
 		),
 		'environment' => array(
 			'ssl_enabled',
 			'fix_insecure_content',
 			'database_optimization',
+			'enable_gzip_compression',
+			'enable_browser_caching',
 		),
 		'frontend'    => array(
 			'optimize_css',
@@ -212,7 +220,7 @@ class Rest_Helper_Options extends Rest_Helper {
 		$data = $this->validate_rest_request( $request );
 
 		// Check if we need to change htaccess rule.
-		$this->maybe_change_htaccess_rules( $option, $data['key'] );
+		$this->maybe_change_htaccess_rules( $data['option'], $data['value'] );
 
 		// Change the option.
 		$result = $this->options->change_option( $data['option'], $data['value'] );
@@ -251,7 +259,7 @@ class Rest_Helper_Options extends Rest_Helper {
 		switch ( $params['page_id'] ) {
 			case 'caching':
 				// Get the CF status.
-				$has_cloudflare = intval( get_option( $this->option_prefix . 'has_cloudflare', 0 ) );
+				$has_cloudflare = Cloudflare::has_cloudflare();
 
 				// Options requiring additional action.
 				$page_data = array(
@@ -263,7 +271,8 @@ class Rest_Helper_Options extends Rest_Helper {
 						'default'  => array(),
 						'selected' => get_option( $this->option_prefix . 'excluded_urls', array() ),
 					),
-					'has_cloudflare'     => $has_cloudflare,
+					'file_caching_interval_cleanup' => File_Cacher::get_instance()->get_intervals(),
+					'has_cloudflare' => $has_cloudflare,
 				);
 
 				// Finish preparing the options for the page if CF is not active.
@@ -283,10 +292,6 @@ class Rest_Helper_Options extends Rest_Helper {
 				break;
 			case 'environment':
 				$page_data = array(
-					'dns_prefetch_urls' => array(
-						'default'  => array(),
-						'selected' => get_option( $this->option_prefix . 'dns_prefetch_urls', array() ),
-					),
 					'heartbeat_dropdowns' => $this->heartbeat_control->prepare_intervals(),
 					'heartbeat_control'   => $this->heartbeat_control->is_enabled(),
 				);
@@ -323,6 +328,10 @@ class Rest_Helper_Options extends Rest_Helper {
 					'async_javascript_exclude' => array(
 						'default'  => $assets['scripts']['default'],
 						'selected' => array_values( get_option( $this->option_prefix . 'async_javascript_exclude', array() ) ),
+					),
+					'dns_prefetch_urls' => array(
+						'default'  => array(),
+						'selected' => get_option( $this->option_prefix . 'dns_prefetch_urls', array() ),
 					),
 				);
 
@@ -373,7 +382,7 @@ class Rest_Helper_Options extends Rest_Helper {
 		$options['previous_tests']              = $this->analysis->rest_get_test_results();
 
 		// Check for non converted images when we are on avalon server.
-		if ( Helper::is_siteground() ) {
+		if ( Helper_Service::is_siteground() ) {
 			$options['has_images_for_conversion'] = $this->options->check_for_unoptimized_images( 'webp' );
 		}
 

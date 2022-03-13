@@ -1,9 +1,10 @@
 <?php
 namespace SiteGround_Optimizer\Combinator;
 
-use SiteGround_Optimizer\Helper\Helper;
 use SiteGround_Optimizer\Options\Options;
 use SiteGround_Optimizer\Front_End_Optimization\Front_End_Optimization;
+use SiteGround_Helper\Helper_Service;
+
 /**
  * SG Css_Combinator main plugin class
  */
@@ -180,7 +181,7 @@ class Css_Combinator extends Abstract_Combinator {
 			}
 
 			// Replace the site url and get the src.
-			$excluded[] = trim( str_replace( Helper::get_site_url(), '', strtok( $wp_styles->registered[ $handle ]->src, '?' ) ), '/\\' );
+			$excluded[] = trim( str_replace( Helper_Service::get_site_url(), '', strtok( $wp_styles->registered[ $handle ]->src, '?' ) ), '/\\' );
 		}
 
 		// Set the excluded urls.
@@ -210,7 +211,7 @@ class Css_Combinator extends Abstract_Combinator {
 
 		// Bail if it's an external style.
 		if (
-			@strpos( Helper::get_home_url(), $host ) === false &&
+			@strpos( Helper_Service::get_home_url(), $host ) === false &&
 			! @strpos( $style[2], 'wp-includes' )
 		) {
 			return true;
@@ -220,7 +221,7 @@ class Css_Combinator extends Abstract_Combinator {
 		$src  = Front_End_Optimization::remove_query_strings( $style[2] );
 
 		// Bail if the url is excluded.
-		if ( in_array( str_replace( trailingslashit( Helper::get_site_url() ), '', $src ), $this->excluded_urls ) ) {
+		if ( in_array( str_replace( trailingslashit( Helper_Service::get_site_url() ), '', $src ), $this->excluded_urls ) ) {
 			return true;
 		}
 
@@ -359,7 +360,7 @@ class Css_Combinator extends Abstract_Combinator {
 	 */
 	public function swap_font_display( $content ) {
 		// Bail if Font Optimization is disabled.
-		if ( 0 === get_option( 'siteground_optimizer_optimize_web_fonts', 1 ) ) {
+		if ( ! Options::is_enabled( 'siteground_optimizer_optimize_web_fonts' ) ) {
 			return $content;
 		}
 

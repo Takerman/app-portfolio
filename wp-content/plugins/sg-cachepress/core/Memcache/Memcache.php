@@ -2,7 +2,7 @@
 namespace SiteGround_Optimizer\Memcache;
 
 use SiteGround_Optimizer\Options\Options;
-use SiteGround_Optimizer\Helper\Helper;
+use SiteGround_Helper\Helper_Service;
 
 /**
  * The class responsible for obejct cache.
@@ -148,7 +148,7 @@ class Memcache {
 		$port_file_content = $this->get_port_file_contents();
 
 		if ( ! $port_file_content ) {
-			if ( Helper::is_siteground() ) {
+			if ( Helper_Service::is_siteground() ) {
 				return 11211;
 			}
 

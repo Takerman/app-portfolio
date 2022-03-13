@@ -1,6 +1,5 @@
 <?php
 namespace SiteGround_Optimizer\Install_Service;
-use SiteGround_Optimizer\Config\Config;
 
 class Install_5_3_6 extends Install {
 
@@ -20,11 +19,6 @@ class Install_5_3_6 extends Install {
 	 *
 	 * @since 5.3.6
 	 */
-	public function install() {
-		// Init the config.
-		$config = new Config();
-		// Update the config.
-		$config->update_config();
-	}
+	public function install() {}
 
 }

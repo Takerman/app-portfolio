@@ -78,6 +78,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 		color: #fff;
 	}
 
+	.ai1wm-menu-count {
+		display: inline-block;
+		vertical-align: top;
+		box-sizing: border-box;
+		margin: 1px 0 -1px 2px;
+		padding: 0 5px;
+		min-width: 18px;
+		height: 18px;
+		border-radius: 9px;
+		background-color: #d63638;
+		color: #fff;
+		font-size:  11px;
+		line-height: 1.6;
+		text-align: center;
+		z-index: 26;
+	}
+
 	<?php if ( version_compare( $version, '3.8', '<' ) ) : ?>
 	.toplevel_page_ai1wm_export > div.wp-menu-image {
 		background: none !important;

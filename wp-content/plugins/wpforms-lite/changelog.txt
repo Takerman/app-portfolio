@@ -1,5 +1,37 @@
 == Changelog ==
 
+= 1.7.2.1 =
+- Fixed: Compatibility with PHP 8.0 and PHP 8.1.
+- Fixed: Compatibility with WordPress 5.9, including its new Full Site Editing feature.
+- Fixed: Broken cache directory path if `WP_CONTENT_DIR` is set in the `wp-config.php` without trailing slash.
+- Fixed: PHP Notice when using the `wpforms_log()` function in certain conditions.
+- Fixed: Type mismatch brakes a list of scheduled actions in Action Scheduler if typed arguments are passed.
+
+= 1.7.2 =
+- Added: Search by form name and description is available on the Forms Overview page.
+- Added: New "Author" column in the Forms Overview table to display a name of a person who created the form.
+- Changed: Adjusted an error message for the Locked Field modal when attempting to delete required form fields.
+- Changed: Hide image choice style options if image choices are not enabled.
+- Changed: Improved sanitization for Page and Form IDs in Form embed wizard popup.
+- Changed: Adjusted Weekly Summary email text for Lite users.
+- Changed: Updated the WPForms > About Us page.
+- Changed: Updated jQuery inputmask lib to 5.0.7-beta29.
+- Changed: Updated DOMPurify lib to 2.3.4.
+- Fixed: Missing search docs in the Form Builder Help.
+- Fixed: Display empty table instead of empty state screen for Unread (0), Starred (0), Abandoned (0), etc., views.
+- Fixed: Media modal 'Actions' menu was missing when using the Divi Builder.
+- Fixed: PHP notice was generated on a form preview if a page template is changed.
+- Fixed: Correctly handle the legacy widget options (show/hide form title and description) on the front-end.
+- Fixed: If a form with configured Google reCAPTCHA v3 is submitted after 2 minutes, there was an error "Google reCAPTCHA verification failed, please try again later."
+- Fixed: Better compatibility for From Name and From Email fields in the Form Builder > Notifications screen when the WP Mail SMTP plugin forces those values.
+- Fixed: PHP warning occurred when the `%` symbol is used inside some Form Builder settings.
+- Fixed: Form Preview didn't work properly on the upcoming Twenty Twenty-Two theme.
+- Fixed: PHP timeout occurred in the Form Builder when large multi-level term taxonomies were used as dynamic choices for Checkboxes/Multiple Choices/Dropdown fields.
+- Fixed: PHP fatal error generated in some cases when Site Health information was displayed.
+- Fixed: WP.com VIP clients used to have caching issues with external data.
+- Fixed: WooCommerce product import (CSV) to update existing products wasn't updating product images while WPForms was active.
+- Fixed: Form couldn't be submitted on the Lite version of the plugin when it contained the Page Break field from the paid version.
+
 = 1.7.1.2 =
 - Fixed: Edge case when form tokens (anti-spam protection) failed verification at certain time of a new day.
 

@@ -92,13 +92,26 @@ class Activity_Log_Themes extends Activity_Log_Helper {
 			return;
 		}
 
+		$activity = __( 'Updated Theme', 'sg-security' );
+
+		if ( ! empty( $options['theme'] ) ) {
+			$this->log_event( array(
+				'activity'    => $activity,
+				'description' => $this->get_theme_description( $this->get_theme_name( $options['theme'] ), $activity ),
+				'object_id'   => 0,
+				'type'        => 'theme',
+				'action'      => 'update',
+			) );
+
+			return;
+		}
+
 		foreach ( $options['themes'] as $path ) {
-			$activity   = __( 'Updated Theme', 'sg-security' );
 			$theme_name = $this->get_theme_name( $path );
 			$this->log_event( array(
 				'activity'    => $activity,
 				'description' => $this->get_theme_description( $theme_name, $activity ),
-				'object_id'   => $theme_name,
+				'object_id'   => 0,
 				'type'        => 'theme',
 				'action'      => 'update',
 			) );

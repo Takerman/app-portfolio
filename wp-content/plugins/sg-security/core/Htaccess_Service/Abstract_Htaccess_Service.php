@@ -2,7 +2,7 @@
 namespace SG_Security\Htaccess_Service;
 
 use SG_Security;
-use SG_Security\Helper\Helper;
+use SiteGround_Helper\Helper_Service;
 
 /**
  * SG Security Abstract_Htaccess_Service main plugin class.
@@ -47,7 +47,7 @@ abstract class Abstract_Htaccess_Service {
 	 */
 	public function __construct() {
 		if ( null === $this->wp_filesystem ) {
-			$this->wp_filesystem = Helper::setup_wp_filesystem();
+			$this->wp_filesystem = Helper_Service::setup_wp_filesystem();
 		}
 
 		self::$instance = $this;

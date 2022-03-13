@@ -1,19 +1,19 @@
 === SiteGround Optimizer ===
-Contributors: Hristo Sg, siteground, sstoqnov, stoyangeorgiev, elenachavdarova
+Contributors: Hristo Sg, siteground, sstoqnov, stoyangeorgiev, elenachavdarova, ignatggeorgiev
 Tags: nginx, caching, speed, memcache, memcached, performance, siteground, nginx, supercacher
 Requires at least: 4.7
 Requires PHP: 7.0
-Tested up to: 5.8
+Tested up to: 5.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-With the SiteGround Optimizer enabled, you're getting the very best from your hosting environment!
-
 == Description ==
 
-This plugin is designed to link WordPress with the SiteGround Performance services. It WILL NOT WORK on another hosting provider.
+This plugin is developed by SiteGround to dramatically improve WordPress website performance on any hosting environment.
 
-Improve your site performance in a matter of a few clicks. The SiteGround Optimizer unlocks a wide range of speed optimization features like powerful caching, front-end optimizations, automated image optimizations, lazy image loading, file compression, CSS & HTML minifications, and much more. 
+Initially designed for SiteGround’s servers and already used by almost 2 Million SiteGround clients, with the release of SiteGround Optimizer 7.0.0 the plugin will work on any hosting platform. All WordPress users, regardless  of their hosting provider, can take advantage of its unmatched WordPress speed-boosting features, no tech knowledge required.
+
+Even though some of its features will still only work on SiteGround’s hosting platform, due to the specific server optimizations that other hosting providers might not support, the SiteGround Optimizer plugin is the most powerful all-in-one WordPress performance plugin, free and available for all.
 
 The SiteGround Optimizer plugin has few different parts handling specific performance optimizations:
 
@@ -27,7 +27,28 @@ The Dashboard offers a quick look at the current optimization status of your web
 
 = SiteGround Optimizer Caching Page =
 
-On this page, you can control your Dynamic Caching which runs by default on all SiteGround servers and enable the Memcached object caching for your site. You can also enable Automatic Cache purge which will clear the cache when needed. You can now use WordPress API Cache Control checkbox if you need the WP API cache purged too. Enabling the Browser-specific caching will create different cache versions based on the user agent used. From Exclude Post Types you can exclude the ones you don’t want to be cached at all. You can also exclude specific URLs or use a wildcard to exclude any sub-pages of a specific “parent-page”. We have also provided a test tool where you can check if a specific URL has Dynamic caching actually running.
+On this page, you can control your website cache.
+
+Dynamic Caching:
+	With our Dynamic Caching enabled all non-static resources of your website are cached to prevent unnecessary database queries and page loading, effectively decreasing the loading speed and TTFB (time to first byte) of your website. Dynamic Caching runs by default on all SiteGround servers and available only for them.
+
+File-Based Caching:
+	With file-based caching enabled we will create static HTML versions of your website which will be served to future visitors. The files are stored in the browser memory.
+	Included in version 7.0.0, the File-Based Caching is available both for SiteGround and non SiteGround users.
+
+	File-Based Caching configuration:
+		- Clean up interval - this allows you to manage the interval File-Based cache will be automatically purged on.
+		- Preheat cache - When Preheating is enabled, our system will reload the cache once it is purged after content update in order to serve the fastest possible results to your real visitors. Preheating is using the website sitemap and being executed via cron.
+		- Logged-in users cache - By default, we do not cache content for logged in users. Once Logged In Cache is enabled, we will store separate caches for each user. Note, that if you have many users, the size of the stored cache may be increased.
+
+Memcached:
+	Powerful object caching for your site. Memcached stores frequently executed queries to your databases and then reuses them for better performance. It is available only on SiteGround Environment.
+
+You can also enable Automatic Purge which will clear the cache when needed. You can use the WordPress API Cache Control checkbox if you need the WP API cache purged too.
+Enabling the Browser-specific caching will create different cache versions based on the user agent used.
+From Exclude Post Types you can exclude the ones you don’t want to be cached by Dynamic Caching. Feature is not available for File-Based Caching.
+You can also exclude specific URLs or use a wildcard to exclude any sub-pages of a specific “parent-page”. The feature applies both for Dynamic and File-Based Caching.
+We have also provided a test tool where you can check if a specific URL has Dynamic caching actually running.
 
 We have a filter that allows you to control which user roles have access to flush the cache using the Purge SG Cache button.
 
@@ -42,6 +63,18 @@ Here's an example of the code, you can add to your functions.php file:
 		return $default_capabilities;
 	}
 
+Another filter is created in order to manage the number of URLs your website will be preheating. The default value is 200.
+
+Here's an example of the code, you can add to your functions.php file:
+
+	add_filter( 'sg_file_caching_preheat_url_limit', 'sgo_preheat_limit' );
+	function sgo_preheat_limit( $xml_urls ) {
+		// Define custom limit for XML URL preheat.
+		$xml_urls = 300;
+
+		return $xml_urls;
+	}
+
 = SiteGround Optimizer Environment Page =
 
 Here, you can force HTTPS for your site and fix insecure content errors. You can activate Database Optimization which will remove all unnecessary items from your database and optimize its tables. If you are using the InnoDB storage engine, the optimization of tables is done automatically by the engine. Use DNS-Prefetching to increase load speeds for external resources. It works by resolving the domain name, before a resource is requested. You can also manage Heartbeat Control to modify the frequency of the WP Heartbeat for different locations. By default, the WordPress Heartbeat API checks every 15 seconds on your post edit pages and every 60 seconds on your dashboard and front end whether there are scheduled tasks to be executed. With this option, you can make the checks run less frequently or completely disable them.
@@ -54,7 +87,13 @@ The GENERAL tab offers you the possibility to Minify the HTML Output, which will
 
 = SiteGround Optimizer Media Optimization Page =
 
-Here, you can configure the Image compression in order to resize your existing images and decrease the space they are occupying. The dimension of the images will not change. You can fine-tune the compression level as well as choose either original images backups are created. Use WebP Images to generate webP copies of your images. WebP is a next generation image format supported by modern browsers which greatly reduces the size of your images. If the browser does not support WebP, the original images will be loaded. You can also enable or disable Lazy Load for various assets. You can also exclude specific assets such as iframes, videos, thumbnails, widgets, shortcodes and more from the dropdown menu. You have an option to exclude specific images from Lazy Loading. This is done by adding the class of the image in the tab. Enable the Maximum Image Width if you often upload large images on your website. Enabling this will resize your existing and future images whose width exceeds 2560 px.
+Image Compression:
+	Here, you can configure the Image compression in order to resize your existing images and decrease the space they are occupying. The dimension of the images will not change. You can fine-tune the compression level as well as choose either original images backups are created. It is available only on SiteGround Environment.
+
+Use WebP Images:
+	WebP is a next generation image format supported by modern browsers which greatly reduces the size of your images. If the browser does not support WebP, the original images will be loaded. It is available only on SiteGround Environment.
+
+You can also enable or disable Lazy Load for various assets. You can also exclude specific assets such as iframes, videos, thumbnails, widgets, shortcodes and more from the dropdown menu. You have an option to exclude specific images from Lazy Loading. This is done by adding the class of the image in the tab. Enable the Maximum Image Width if you often upload large images on your website. Enabling this will resize your existing and future images whose width exceeds 2560 px.
 
 You can modify the max image width setting using the filter we've designed for that purpose. Here's an example of the code, you can add to your functions.php file:
 
@@ -208,10 +247,11 @@ In version 5.0 we've added full WP-CLI support for all plugin options and functi
 
 Caching:
 * `wp sg optimize dynamic-cache enable|disable` - enables or disables Dynamic caching rules
+* `wp sg optimize file-cache enable|disable` - enables or disables File caching rules
 * `wp sg memcached enable|disable` - enables or disables Memcached
 * `wp sg optimize autoflush-cache enable|disable` - enables or disables Automatic Purge cache option
 * `wp sg optimize purge-rest-cache enable|disable` - enables or disables Automatic Purge for WordPress API cache
-* `wp sg purge (url)` - purges the entire cache or if URL is passed
+* `wp sg purge (url)` - purges the Dynamic, File-based and Object caches for the site or a single url (if passed)
 * `wp sg optimize mobile-cache enable|disable` - enables or disables Browser caching rules
 
 Environment:
@@ -247,7 +287,7 @@ Others:
 
 = Available wp sg status options =
 
-* dynamic-cache|autoflush|browser-caching
+* dynamic-cache|autoflush|browser-caching|file-cache
 * memcache
 * ssl|ssl-fix
 * database-optimization
@@ -264,10 +304,8 @@ Others:
 
 In order to work correctly, this plugin requires that your server meets the following criteria:
 
-* SiteGround account
 * WordPress 4.7
-* PHP 5.5
-* If you're not hosted with SiteGround this plugin WILL NOT WORK  because it relies on a specific server configuration
+* PHP 7.0+
 
 Our plugin uses a cookie in order to function properly. It does not store personal data and is used solely for the needs of our caching system.
 
@@ -290,6 +328,66 @@ Our plugin uses a cookie in order to function properly. It does not store person
 
 == Changelog ==
 
+= Version 7.0.6 =
+Release Date: March 4th, 2022
+
+* Improved installation for users not hosted on SiteGround.
+
+= Version 7.0.5 =
+Release Date: March 2nd, 2022
+
+* Improved Cache Preheat
+* Improved Auto Purge functionality (File-Based cache, comments, custom post types)
+* Improved new images WebP generation
+* Improved Multisite support
+
+= Version 7.0.4 =
+Release Date: February 28th, 2022
+
+* Improved uninstall checks
+
+= Version 7.0.3 =
+Release Date: February 14th, 2022
+
+* Improved Divi support
+* Improved WP-CLI support
+
+= Version 7.0.2 =
+Release Date: February 10th, 2022
+
+* Improved Cloudflare cache purge
+* Improved Divi support
+* Improved JS Combination
+* Improved WP-CLI support
+* Minor bug fixes
+
+= Version 7.0.1 =
+Release Date: February 4th, 2022
+
+* Improved Cache Preloading
+* Improved Cloudflare detection
+* Improved Divi support
+* Minor bug fixes
+
+= Version 7.0.0 =
+Release Date: February 2nd, 2022
+
+* NEW – Plugin available for users not hosted on SiteGround
+* NEW – File-Based Full Page Caching
+* NEW – File-Based Full Page Caching for Logged-in Users
+* NEW – Cache Preloading (requires FB Caching)
+* NEW – Individual Image compression level settings
+* Code Refactoring and General Improvements
+* Improved HTML Minification
+* Improved LazyLoad excludes
+* Improved Automatic Purge for custom post types
+* Improved Cache exclude for wp-json URLs
+* Improved Test URL cache option
+* Improved Cloudflare detection
+* Improved Phlox theme support
+* Improved WooCommerce email verification support
+* Improved WP-CLI support
+* Environment data collection consent added
 
 = Version 6.0.5 =
 Release Date: November 17th, 2021
@@ -300,7 +398,7 @@ Release Date: November 17th, 2021
 Release Date: November 16th, 2021
 
 * Improved HTML minification
-* Improved HTTPS Enfore for multisites
+* Improved HTTPS Enforce for multisites
 * Improved Google PageSpeed Integration
 * Improved multisite permissions for admins
 * Improved autoflush

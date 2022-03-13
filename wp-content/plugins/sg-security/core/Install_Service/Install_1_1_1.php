@@ -34,7 +34,7 @@ class Install_1_1_1 extends Install {
 		}
 
 		$users = get_users( array(
-			'role__in'   => $sg_2fa->roles,
+			'role__in'   => $sg_2fa->get_2fa_user_roles(),
 			'fields'     => array( 'ID' ),
 			'meta_query' => array(
 				array(

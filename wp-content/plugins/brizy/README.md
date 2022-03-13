@@ -1,9 +1,9 @@
 # Brizy - Page Builder
 Contributors: themefuse<br>
 Requires at least: 4.5<br>
-Tested up to: 5.8.2<br>
+Tested up to: 5.9.1<br>
 Requires PHP: 5.6.20<br>
-Stable tag: 2.3.25<br>
+Stable tag: 2.3.33<br>
 License: GPLv3<br>
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -117,6 +117,94 @@ $bodyHtml = apply_filters( 'brizy_content', $html->get_body(), Brizy_Editor_Proj
 [Privacy policy](https://brizy.io/privacy/)
 
 ## Changelog
+
+### 2.3.33 - 2022-03-10
+* New: Import and Export Saved Blocks, Popups, Layouts 
+* New: Show progress on story when autoplay is on
+* Improved: Increased the number of history snapshots from 10 to 20. Happy Ctrl-Z-ing 
+* Improved: SEO for Video element 
+* Improved: Plugin Cross-Site Scripting
+* Fixed: Link to slide in Web Stories
+* Fixed: Undo and redo in Text element
+* Fixed: Text styles after pasting text from outside the builder
+* Fixed: Random global blocks are not saved in Global block list
+* Fixed: Posts include and exclude select 
+* Fixed: Style for Counter element in Firefox
+* Fixed: Vimeo video background loop
+* Fixed: Countdown restart after finished
+
+### 2.3.32 - 2022-03-04
+* Fixed: Security fix
+
+### 2.3.31 - 2022-03-02
+* New: Collaboration tool option in left sidebar 
+* Improved: Changed max value for counter element 
+* Improved: Selecting dropdown options in Post filter option 
+* Improved: Cache for dynamic content images
+* Improved: Performance on extracting images, avoid creating duplicate of images when the sizes are bigger than image, removed functions and all data sent to editor regards to download_images from s3
+* Improved: SQL query for attachment id
+* Improved: Optimize save global blocks
+* Fixed: Avoid load duplicates images in the editor
+* Fixed: Original image width and height
+* Fixed: Width for sidebar custom attributes 
+* Fixed: Links on buttons when global blocks are missing 
+* Fixed: Gradient color for buttons
+* Fixed: External Popups font assets 
+* Fixed: Form hidden field send only label 
+* Fixed: Premade popup designs available only in PRO 
+* Fixed: View as for membership roles in builder 
+* Fixed: Separators in responsive and hamburger dropdowns in the left sidebar 
+* Fixed: Accordion active tags 
+* Fixed: Hide go to dashboard for reseller partners
+* Fixed: Removed dependency asset storage of asset proxy processor
+* Fixed: Custom fonts endpoint
+
+### 2.3.30 - 2022-02-09
+* Improved: Form element - added Loading animation to button after submit
+* Fixed: Form element - Hidden field not working correctly
+* Fixed: Video element - gets muted after cover image is added
+* Fixed: Tabs element - options not working on responsive views
+* Fixed: Tabs element - orientation and style not working on responsive views
+* Fixed: Tabs element - duplicate options in right sidebar on responsive views
+* Fixed: Blocks get reordered when only global blocks exist in page
+* Fixed: Menu element - jumping on hover when border opacity is 0 in normal mode
+* Fixed: Columns and Rows - image background hover not working 
+* Fixed: Global blocks conditions in custom post types 
+* Fixed: Section Background Video error when loop is enabled
+* Fixed: Slider and Carousel element - dots not positioned correctly
+
+### 2.3.29 - 2022-02-03
+* Fixed: Font url validation
+* Fixed: Do shortcode on render brizy content of the shop page
+* Fixed: Brizy and Complianz – GDPR/CCPA Cookie Consent plugin incompatibility
+* Fixed: Saves scripts relative to the plugin main folder
+* Fixed: WPML menu switcher, WPML sync menu, WPML fatal error on duplicate non brizy posts
+* Fixed: Brizy Overview dashboard widget
+* Fixed: Allow br tags on render lead list in admin dashboard
+
+### 2.3.28 - 2022-01-17
+* Fixed: Color and align for text element
+
+### 2.3.27 - 2022-01-14
+* New: Added border, background-color and shadow for content
+* New: Added Image width px unit for svg and gif type
+* Improved: XSS in RichText and all Links
+* Fixed: Login entered information error
+* Fixed: Dashboard news
+* Fixed: Update pot file and corrected some strings translations
+* Fixed: Fatal error on duplicate page with wpml, restore asset url by wp option siteurl
+
+### 2.3.26 - 2022-01-10
+* Improved: Removed icon ids
+* Fixed: Video with cover was not playing on click
+* Fixed: Upload form field could not be edited if placeholder is off
+* Fixed: Form error messages
+* Fixed: Added compatibility with the plugin Perfmatters
+* Fixed: On export templates check if the license key is valid
+* Fixed: Tell the editor if the current user is admin 
+* Fixed: Do not load scripts in header and footer when they are build it with Astra Pro and template is brizy blank template
+* Fixed: WPML Menu switcher is missing from Brizy pages
+* Fixed: Escape the script contents for non adminstrators users (This vulnerability was discovered by Vishnupriya Ilango of Fortinets FortiGuard Labs)
 
 ### 2.3.25 - 2021-12-20
 * Fixed: Image size select

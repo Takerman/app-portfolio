@@ -2,11 +2,11 @@
 namespace SiteGround_Optimizer\Settings;
 
 use SiteGround_Optimizer\Options\Options;
-use SiteGround_Optimizer\Helper\Helper;
 use SiteGround_Optimizer\Supercacher\Supercacher;
 use SiteGround_Optimizer\Ssl\Ssl;
 use SiteGround_Optimizer\Memcache\Memcache;
 use SiteGround_Optimizer\Htaccess\Htaccess;
+use SiteGround_Helper\Helper_Service;
 
 class Settings {
 	/**
@@ -35,15 +35,6 @@ class Settings {
 		'resize_images',
 		'lazyload_images',
 		'webp_support',
-		'lazyload_gravatars',
-		'lazyload_thumbnails',
-		'lazyload_responsive',
-		'lazyload_textwidgets',
-		'lazyload_mobile',
-		'lazyload_woocommerce',
-		'lazyload_shortcodes',
-		'lazyload_videos',
-		'lazyload_iframes',
 		'supercacher_permissions',
 		'frontend_permissions',
 		'images_permissions',
@@ -58,6 +49,7 @@ class Settings {
 		'dns_prefetch_urls',
 		'combine_javascript_exclude',
 		'minify_javascript_exclude',
+		'excluded_lazy_load_media_types',
 	);
 
 	/**
@@ -93,15 +85,6 @@ class Settings {
 	);
 
 	/**
-	 * The constructor.
-	 *
-	 * @since 5.7.13
-	 */
-	public function __construct() {
-		$this->options_service = new Options();
-	}
-
-	/**
 	 * Create export file or hash.
 	 *
 	 * @since  5.7.13
@@ -109,6 +92,9 @@ class Settings {
 	 * @return string/filesource  String containing the hashed json or a json file.
 	 */
 	public function export() {
+		// Init the Options Service.
+		$this->options_service = new Options();
+
 		// Prepare the settings array.
 		$settings = array();
 		// Get the options from database.
@@ -162,7 +148,7 @@ class Settings {
 			// Bail if the option is active by default on avalon server.
 			if (
 				! empty( $this->complex_options[ $option ]['disabled_on_avalon'] ) &&
-				Helper::is_siteground()
+				Helper_Service::is_siteground()
 			) {
 				continue;
 			}

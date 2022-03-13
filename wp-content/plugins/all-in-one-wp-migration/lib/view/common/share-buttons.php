@@ -30,20 +30,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0&appId=597242117012725" nonce="xH3McWON"></script>
-<script src="https://apis.google.com/js/platform.js"></script>
+<script async defer src="https://apis.google.com/js/platform.js"></script>
 <script>
-	!function (d,s,id) {
-		var js,
-			fjs = d.getElementsByTagName(s)[0],
-			p   = /^http:/.test(d.location) ? 'http' : 'https';
+window.twttr = (function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0],
+		t = window.twttr || {};
+	if (d.getElementById(id)) return t;
+	js = d.createElement(s);
+	js.id = id;
+	js.src = "https://platform.twitter.com/widgets.js";
+	fjs.parentNode.insertBefore(js, fjs);
 
-		if (!d.getElementById(id)) {
-			js = d.createElement(s);
-			js.id = id;
-			js.src = p+'://platform.twitter.com/widgets.js';
-			fjs.parentNode.insertBefore(js, fjs);
-		}
-	}(document, 'script', 'twitter-wjs');
+	t._e = [];
+	t.ready = function(f) {
+		t._e.push(f);
+	};
+
+	return t;
+}(document, "script", "twitter-wjs"));
 </script>
 
 <div class="ai1wm-share-button-container">

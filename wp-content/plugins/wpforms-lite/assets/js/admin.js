@@ -269,7 +269,7 @@
 					msg = $( this ).parent().hasClass( 'delete' ) ? wpforms_admin.form_delete_confirm : wpforms_admin.form_duplicate_confirm;
 
 				// Trigger alert modal to confirm.
-				$.confirm({
+				$.confirm( {
 					title: false,
 					content: msg,
 					icon: 'fa fa-exclamation-circle',
@@ -279,17 +279,27 @@
 							text: wpforms_admin.ok,
 							btnClass: 'btn-confirm',
 							keys: [ 'enter' ],
-							action: function(){
+							action: function() {
 								window.location = url;
-							}
+							},
 						},
 						cancel: {
 							text: wpforms_admin.cancel,
-							keys: [ 'esc' ]
-						}
-					}
-				});
-			});
+							keys: [ 'esc' ],
+						},
+					},
+				} );
+			} );
+
+			// Reset search form.
+			$( document ).on( 'click', '#wpforms-overview-table #wpforms-reset-filter .reset', function() {
+
+				// Reset search term.
+				$( '#wpforms-overview-search-term' ).val( '' );
+
+				// Submit the form.
+				$( this ).closest( 'form' ).submit();
+			} );
 		},
 
 		//--------------------------------------------------------------------//
@@ -2104,7 +2114,7 @@
 				return;
 			}
 
-			var	$overlap       = $( '#wpforms-overview, #wpforms-entries-list, #wpforms-tools.wpforms-tools-tab-action-scheduler' ),
+			var	$overlap       = $( '#wpforms-overview, #wpforms-entries-list, #wpforms-tools.wpforms-tools-tab-action-scheduler, #wpforms-tools.wpforms-tools-tab-logs' ),
 				wpfooterTop    = $wpfooter.offset().top,
 				wpfooterBottom = wpfooterTop + $wpfooter.height(),
 				overlapBottom  = $overlap.length > 0 ? $overlap.offset().top + $overlap.height() + 85 : 0;

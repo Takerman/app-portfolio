@@ -95,8 +95,8 @@ class Addons {
                      %4$s
                  </a>
              </p>',
-			esc_html__( 'WPForms Addons is a PRO feature.', 'wpforms-lite' ),
-			esc_html__( 'Please upgrade to the PRO plan to unlock them and more awesome features.', 'wpforms-lite' ),
+			esc_html__( 'WPForms Addons are a PRO feature', 'wpforms-lite' ),
+			esc_html__( 'Please upgrade to PRO to unlock our addons, advanced form fields, and more!', 'wpforms-lite' ),
 			esc_url( wpforms_admin_upgrade_link( 'addons' ) ),
 			esc_html__( 'Upgrade Now', 'wpforms-lite' )
 		);

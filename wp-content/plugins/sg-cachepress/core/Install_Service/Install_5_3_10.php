@@ -2,8 +2,8 @@
 namespace SiteGround_Optimizer\Install_Service;
 
 use SiteGround_Optimizer\Htaccess\Htaccess;
-use SiteGround_Optimizer\Helper\Helper;
 use SiteGround_Optimizer\Options\Options;
+use SiteGround_Helper\Helper_Service;
 
 class Install_5_3_10 extends Install {
 
@@ -25,7 +25,7 @@ class Install_5_3_10 extends Install {
 	 */
 	public function install() {
 
-		if ( Helper::is_siteground() ) {
+		if ( Helper_Service::is_siteground() ) {
 
 			$this->htaccess_service = new Htaccess();
 			$this->options_service = new Options();

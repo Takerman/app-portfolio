@@ -36,7 +36,7 @@ class FieldId extends SmartTag {
 		}
 
 		$field_key = ! empty( $field_parts[1] ) ? sanitize_key( $field_parts[1] ) : 'value';
-		$value     = isset( $fields[ $field_id ][ $field_key ] ) ? wpforms_sanitize_textarea_field( $fields[ $field_id ][ $field_key ] ) : '';
+		$value     = isset( $fields[ $field_id ][ $field_key ] ) ? wp_kses_post( wp_unslash( $fields[ $field_id ][ $field_key ] ) ) : '';
 
 		/**
 		 * Modify value for the `field_id` smart tag.

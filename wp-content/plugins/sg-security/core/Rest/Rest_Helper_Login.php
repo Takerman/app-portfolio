@@ -6,7 +6,7 @@ use SG_Security\Sg_2fa\Sg_2fa;
 use SG_Security\Login_Service\Login_Service;
 use SG_Security\Usernames_Service\Usernames_Service;
 use SG_Security\Message_Service\Message_Service;
-use SG_Security\Helper\Helper;
+use SiteGround_Helper\Helper_Service;
 
 /**
  * Rest Helper class that manages the login security.
@@ -54,9 +54,9 @@ class Rest_Helper_Login extends Rest_Helper {
 		}
 
 		update_option( 'sg_security_login_type', $data['type'] );
-		update_option( 'sg_security_login_url', str_replace( Helper::get_home_url(), '', $data['login'] ) );
+		update_option( 'sg_security_login_url', str_replace( Helper_Service::get_home_url(), '', $data['login'] ) );
 		if ( ! empty( $data['signup'] ) ) {
-			update_option( 'sg_security_login_register', str_replace( Helper::get_home_url(), '', $data['signup'] ) );
+			update_option( 'sg_security_login_register', str_replace( Helper_Service::get_home_url(), '', $data['signup'] ) );
 		}
 
 		self::send_json(

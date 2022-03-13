@@ -36,7 +36,7 @@ class FW_WP_Option
 	 * @param string|null $specific_multi_key
 	 * @param array|string|int|bool $set_value
 	 */
-	public static function set($option_name, $specific_multi_key = null, $set_value)
+	public static function set($option_name = '', $specific_multi_key = null, $set_value = '')
 	{
 		if ($specific_multi_key === null) { // Replace entire option
 			update_option($option_name, $set_value, false);

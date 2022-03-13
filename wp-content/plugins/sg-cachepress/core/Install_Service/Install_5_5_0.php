@@ -2,7 +2,7 @@
 namespace SiteGround_Optimizer\Install_Service;
 use SiteGround_Optimizer\Htaccess\Htaccess;
 use SiteGround_Optimizer\Options\Options;
-use SiteGround_Optimizer\Helper\Helper;
+use SiteGround_Helper\Helper_Service;
 
 class Install_5_5_0 extends Install {
 
@@ -30,7 +30,7 @@ class Install_5_5_0 extends Install {
 
 		if (
 			Options::is_enabled( 'siteground_optimizer_enable_browser_caching' ) &&
-			! Helper::is_siteground()
+			! Helper_Service::is_siteground()
 		) {
 			$this->htaccess_service->enable( 'browser-caching' );
 		}

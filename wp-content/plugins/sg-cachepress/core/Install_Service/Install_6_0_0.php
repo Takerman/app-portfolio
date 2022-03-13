@@ -74,8 +74,8 @@ class Install_6_0_0 extends Install {
 		if ( 0 === $curent_optimization_status ) {
 			// Update the new options.
 			update_option( $this->prefix . 'heartbeat_post_interval', 120 );
-			update_option( $this->prefix . 'heartbeat_dashboard_interval', false );
-			update_option( $this->prefix . 'heartbeat_frontend_interval', false );
+			update_option( $this->prefix . 'heartbeat_dashboard_interval', 0 );
+			update_option( $this->prefix . 'heartbeat_frontend_interval', 0 );
 
 			return;
 		}

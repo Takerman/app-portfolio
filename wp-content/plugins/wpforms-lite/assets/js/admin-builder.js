@@ -1655,6 +1655,7 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 				$optionRow.find( '.wpforms-alert' ).toggleClass( 'wpforms-hidden' );
 				$fieldOptions.find( '.wpforms-field-option-row-choices ul' ).toggleClass( 'show-images' );
 				$fieldOptions.find( '.wpforms-field-option-row-choices_images_style' ).toggleClass( 'wpforms-hidden' );
+				$fieldOptions.find( '.wpforms-field-option-row-dynamic_choices' ).toggleClass( 'wpforms-hidden', checked );
 
 				if ( checked ) {
 					$( '#wpforms-field-option-' + fieldID + '-input_columns' ).val( 'inline' ).trigger( 'change' );
@@ -2582,7 +2583,7 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 
 			$.alert( {
 				title: wpforms_builder.field_locked,
-				content: wpforms_builder.field_locked_msg,
+				content: wpforms_builder.field_locked_no_delete_msg,
 				icon: 'fa fa-info-circle',
 				type: 'blue',
 				buttons: {
@@ -2906,31 +2907,33 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 		},
 
 		/**
-		 * Duplicate field
+		 * Duplicate field.
 		 *
 		 * @since 1.2.9
+		 *
+		 * @param {string} id Field id.
 		 */
-		fieldDuplicate: function(id) {
+		fieldDuplicate: function( id ) {
 
-			var $field = $('#wpforms-field-'+id),
-				type   = $field.data('field-type');
+			var $field = $( '#wpforms-field-' + id ),
+				type   = $field.data( 'field-type' );
 
-			if ($field.hasClass('no-duplicate')) {
-				$.alert({
+			if ( $field.hasClass( 'no-duplicate' ) ) {
+				$.alert( {
 					title: wpforms_builder.field_locked,
-					content: wpforms_builder.field_locked_msg,
+					content: wpforms_builder.field_locked_no_duplicate_msg,
 					icon: 'fa fa-info-circle',
 					type: 'blue',
-					buttons : {
-						confirm : {
+					buttons: {
+						confirm: {
 							text: wpforms_builder.close,
 							btnClass: 'btn-confirm',
 							keys: [ 'enter' ],
-						}
-					}
-				});
+						},
+					},
+				} );
 			} else {
-				$.confirm({
+				$.confirm( {
 					title: false,
 					content: wpforms_builder.duplicate_confirm,
 					icon: 'fa fa-exclamation-circle',
@@ -4537,23 +4540,23 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 		 */
 		fieldDynamicChoiceToggleImageChoices: function() {
 
-			$( '#wpforms-builder .wpforms-field-options .wpforms-field-option' ).each(
-				function( key, value ) {
-					var $option = $( value ),
-						dynamicSelect = $option.find( '.wpforms-field-option-row-dynamic_choices select' );
+			$( '#wpforms-builder .wpforms-field-options .wpforms-field-option' ).each( function( key, value ) {
 
-					if (
-						typeof dynamicSelect.val() !== 'undefined' &&
-						'' !== dynamicSelect.val()
-					) {
-						$option.find( '.wpforms-field-option-row-choices_images' ).hide();
-						$option.find( '.wpforms-field-option-row-choices_images_style' ).hide();
-					} else {
-						$option.find( '.wpforms-field-option-row-choices_images' ).show();
-						$option.find( '.wpforms-field-option-row-choices_images_style' ).show();
-					}
+				var $option = $( value ),
+					dynamicChoices = $option.find( '.wpforms-field-option-row-dynamic_choices select' ).val(),
+					isDynamicChoices = typeof dynamicChoices !== 'undefined' && '' !== dynamicChoices,
+					isImageChoices = $option.find( '.wpforms-field-option-row-choices_images input' ).is( ':checked' );
+
+				$option
+					.find( '.wpforms-field-option-row-choices_images' )
+					.toggleClass( 'wpforms-hidden', isDynamicChoices );
+
+				if ( ! isImageChoices || isDynamicChoices ) {
+					$option
+						.find( '.wpforms-field-option-row-choices_images_style' )
+						.addClass( 'wpforms-hidden' );
 				}
-			);
+			} );
 		},
 
 		/**

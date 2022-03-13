@@ -42,6 +42,7 @@ class Loader {
 			'UsageTracking\UsageTracking',
 			'DefaultThemes\DefaultThemes',
 			'TranslationsPress\Translations',
+			'DefaultContent\DefaultContent',
 		];
 
 		$class_names = (array) apply_filters( 'wpforms_integrations_available', $core_class_names );

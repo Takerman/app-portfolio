@@ -2,7 +2,7 @@
 namespace SG_Security\Rest;
 
 use SG_Security;
-use SG_Security\Helper\Helper;
+use SiteGround_Helper\Helper_Service;
 
 /**
  * Rest Helper class that manages the plugin dashboard.
@@ -19,7 +19,7 @@ class Rest_Helper_Dashboard extends Rest_Helper {
 		$response = array();
 
 		// Add notification if we have updates available.
-		if ( true === Helper::has_updates() ) {
+		if ( true === Helper_Service::has_updates() ) {
 			$response = array(
 				array(
 					'title'       => __( 'YOUR WORDPRESS NEEDS ATTENTION', 'sg-security' ),
@@ -74,25 +74,10 @@ class Rest_Helper_Dashboard extends Rest_Helper {
 	 * @since  1.0.2
 	 */
 	public function ebook() {
-
-		$data = array(
-			'image' => SG_Security\URL . '/assets/images/ebook.png',
-			'link'  => 'https://www.siteground.com/wordpress-security-ebook?utm_source=sgsecurityplugin',
-			'title'  => __( 'Free ebook', 'sg-security' ),
-		);
-
-		if ( ! file_exists( '/Z' ) ) {
-			$data = array(
-				'image' => SG_Security\URL . '/assets/images/banner.png',
-				'link'  => 'https://www.siteground.com/wordpress-hosting.htm?mktafcode=9832cb52871fb4c5792efb7c32e4a755',
-				'title'  => __( 'Get Secure WordPress Hosting', 'sg-security' ),
-			);
-		}
-
 		self::send_json(
 			'',
 			1,
-			$data
+			$this->get_remote_banners()
 		);
 	}
 
@@ -126,5 +111,36 @@ class Rest_Helper_Dashboard extends Rest_Helper {
 			)
 		);
 	}
-}
 
+	/**
+	 * Make a remote request to fetch the banner assets and texts in the dashboard.
+	 *
+	 * @since  1.2.0
+	 *
+	 * @return array $result The array containing the link and titles.
+	 */
+	public function get_remote_banners() {
+		// Get the banner content.
+		$response = wp_remote_get( 'https://sgwpdemo.com/jsons/sg-security-banners.json' );
+
+		// Bail if the request fails.
+		if ( 200 !== wp_remote_retrieve_response_code( $response ) ) {
+			self::send_json_error( 'Error' );
+		}
+
+		// Get the locale.
+		$locale = get_locale();
+
+		// Determine the type of asset we are going to show.
+		$type = Helper_Service::is_siteground() ? 'ebook' : 'banners';
+
+		// Get the body of the response.
+		$body = wp_remote_retrieve_body( $response );
+		
+		// Decode the json response.
+		$banners = json_decode( $body, true );
+
+		// Return the correct assets, title and marketing urls.
+		return array_key_exists( $locale, $banners[ $type ] ) ? $banners[ $type ][ $locale ] : $banners[ $type ]['default'];
+	}
+}

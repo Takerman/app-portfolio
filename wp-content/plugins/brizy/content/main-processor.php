@@ -15,9 +15,7 @@ class Brizy_Content_MainProcessor {
 	private $context;
 
 	/**
-	 * Brizy_Content_MainProcessor constructor.
-	 *
-	 * @param $context
+	 * @param Brizy_Content_Context $context
 	 */
 	public function __construct( Brizy_Content_Context $context ) {
 
@@ -26,15 +24,8 @@ class Brizy_Content_MainProcessor {
 		$this->processors[] = new Brizy_Content_ShortcodeToPlaceholderProcessor();
 		$this->processors[] = new Brizy_Editor_Asset_DomainProcessor();
 		$this->processors[] = new Brizy_Content_DynamicContentProcessor();
-
-		$post_id       = $context->getWpPost() ? $context->getWpPost()->ID : null;
-		$urlBuilder    = new Brizy_Editor_UrlBuilder( $context->getProject(), $post_id );
-		$asset_storage = new Brizy_Editor_Asset_AssetProxyStorage( $urlBuilder );
-		$media_storage = new Brizy_Editor_Asset_MediaProxyStorage( $urlBuilder );
-
-		$this->processors[] = new Brizy_Editor_Asset_AssetProxyProcessor( $asset_storage );
-		$this->processors[] = new Brizy_Editor_Asset_MediaAssetProcessor( $media_storage );
-		$this->processors[] = new Brizy_Editor_Asset_SvgAssetProcessor(  );
+		$this->processors[] = new Brizy_Editor_Asset_ImgProcessor();
+		$this->processors[] = new Brizy_Editor_Asset_MediaProcessor();
 
 		$this->processors = apply_filters( 'brizy_content_processors', $this->processors, $context );
 	}

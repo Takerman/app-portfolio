@@ -364,6 +364,8 @@ class Ai1wm_Import_Done {
 			Ai1wm_Status::done( __( 'Your site has been imported successfully!', AI1WM_PLUGIN_NAME ), Ai1wm_Template::get_content( 'import/done', array( 'should_reset_permalinks' => $should_reset_permalinks ) ) );
 		}
 
+		do_action( 'ai1wm_status_import_done', $params );
+
 		return $params;
 	}
 }

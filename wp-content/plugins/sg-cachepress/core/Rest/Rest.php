@@ -40,6 +40,10 @@ class Rest {
 	public static $toggle_options = array(
 		// Cache.
 		'purge_rest_cache',
+		'logged_in_cache',
+		// Environment.
+		'enable_gzip_compression',
+		'enable_browser_caching',
 		// Frontend Opitmizations.
 		'optimize_css',
 		'optimize_javascript',
@@ -79,6 +83,22 @@ class Rest {
 		// Media.
 		'excluded_lazy_load_classes',
 		'excluded_lazy_load_media_types',
+	);
+
+	/**
+	 * All popups endpoints.
+	 *
+	 * @since 7.0.0
+	 *
+	 * @var array
+	 */
+	public static $popups = array(
+		'memcache'            => 'Memcached',
+		'dynamic-cache'       => 'Dynamic Caching',
+		'webp-support'        => 'WebP Optimiztion',
+		'images'              => 'Images Optimization',
+		'optimize-javascript' => 'JavaScript Minification',
+		'optimize-css'        => 'CSS Minification',
 	);
 
 	/**
@@ -231,7 +251,6 @@ class Rest {
 				'args'                => array(
 					'page_id' => array(
 						'validate_callback' => function( $param, $request, $key ) {
-
 							$page_ids = array(
 								'dashboard',
 								'caching',
@@ -329,6 +348,21 @@ class Rest {
 			)
 		);
 
+		register_rest_route(
+			self::REST_NAMESPACE, '/file-caching', array(
+				'methods'             => 'PUT',
+				'callback'            => array( $this->rest_helper_cache, 'manage_file_caching' ),
+				'permission_callback' => array( $this, 'check_permissions' ),
+			)
+		);
+
+		register_rest_route(
+			self::REST_NAMESPACE, '/file-caching-settings', array(
+				'methods'             => 'PUT',
+				'callback'            => array( $this->rest_helper_cache, 'manage_file_caching_settings' ),
+				'permission_callback' => array( $this, 'check_permissions' ),
+			)
+		);
 	}
 
 	/**
@@ -480,6 +514,33 @@ class Rest {
 				)
 			);
 		}
+
+		register_rest_route(
+			self::REST_NAMESPACE, '/feature-popup/(?P<type>[^/]+)', array(
+				'methods'             => 'GET',
+				'callback'            => array( $this->rest_helper_misc, 'feature_popup' ),
+				'permission_callback' => array( $this, 'check_permissions' ),
+				'args'                => array(
+					'type' => array(
+						'validate_callback' => function( $param, $request, $key ) {
+							return array_key_exists( $param, str_replace( '_', '-', self::$popups ) );
+						},
+					),
+					'page_id' => array(
+						'validate_callback' => function( $param, $request, $key ) {
+
+							$popup_type = array(
+								'memcache',
+								'dynamic-cache',
+								'images',
+							);
+
+							return array_key_exists( $param, $popup_type );
+						},
+					),
+				),
+			)
+		);
 	}
 
 	/**

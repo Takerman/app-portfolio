@@ -525,8 +525,9 @@ function wpforms_panel_fields_group( $inner, $args = [], $echo = true ) {
 	}
 
 	$output .= sprintf(
-		'<div class="wpforms-panel-fields-group-inner"%s>' . $inner . '</div>',
-		empty( $opened ) && $unfoldable ? ' style="display: none;"' : ''
+		'<div class="wpforms-panel-fields-group-inner"%s>%s</div>',
+		empty( $opened ) && $unfoldable ? ' style="display: none;"' : '',
+		$inner
 	);
 
 	if ( ! empty( $args['borders'] ) && in_array( 'bottom', $args['borders'], true ) ) {

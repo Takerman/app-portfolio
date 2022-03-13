@@ -14,6 +14,12 @@ class Block_Service {
 	 */
 	public function block_user_by_ip() {
 		global $wpdb;
+
+		// Bail if table doesn't exist.
+		if ( ! Helper::table_exists( $wpdb->sgs_visitors ) ) {
+			return;
+		}
+
 		// Check if we have the ip blocked in the database.
 		$result = $wpdb->get_col( // phpcs:ignore
 			'SELECT `ip` FROM `' . $wpdb->sgs_visitors . '`
@@ -30,6 +36,9 @@ class Block_Service {
 		if ( ! in_array( Helper::get_current_user_ip(), $result ) ) {
 			return;
 		}
+
+		// Update the total blocked visits counter.
+		update_option( 'sg_security_total_blocked_visits', get_option( 'sg_security_total_blocked_visits', 0 ) + 1 );
 
 		wp_die(
 			esc_html__( 'You don’t have access to this page. Please contact the administrator of this website for further assistance.', 'sg-security' ),
@@ -54,7 +63,7 @@ class Block_Service {
 		// Get the user id.
 		$user_id = $this->get_user_id_by_id( $id );
 
-		// Bail if the user is truing to self block.
+		// Bail if the user is trying to self block.
 		if ( wp_get_current_user()->data->ID === $user_id ) {
 			return array(
 				'message' => __( 'This will restrict your account to a Subscriber role and will lock you out of the Admin Menu', 'sg-security' ),
@@ -115,13 +124,13 @@ class Block_Service {
 			);
 		}
 
-		// Bail if the user is trying to self block.
+		// Bail if the user is trying to self block or block the local server.
 		if (
-			Helper::get_current_user_ip() === $request_id &&
+			( Helper::get_current_user_ip() === $ip || '127.0.0.1' === $ip ) &&
 			1 === intval( $type )
 		) {
 			return array(
-				'message' => __( 'You cannot block the IP you are currently using!', 'sg-security' ),
+				'message' => __( 'You cannot block this IP!', 'sg-security' ),
 				'result' => 0,
 			);
 		}
@@ -237,9 +246,36 @@ class Block_Service {
 		// IP blocked.
 		return array(
 			'result' => 1,
-			'data' => array(
-				'block'  => intval( $maybe_id->block ),
+			'data'   => array(
+				'block' => intval( $maybe_id->block ),
 			),
+		);
+	}
+
+	/**
+	 * Unblock user.
+	 *
+	 * @since  1.2.0
+	 *
+	 * @param  int   $id       The visitor ID we want to unblock.
+	 *
+	 * @return array $response Response message.
+	 */
+	public function unblock_user( $id ) {
+		global $wpdb;
+
+		$wpdb->update(
+			$wpdb->sgs_visitors,
+			array(
+				'block'      => 0,
+				'blocked_on' => null,
+			),
+			array( 'id' => $id )
+		);
+
+		return array(
+			'message' => __( 'User Unblocked!.', 'sg-security' ),
+			'result'  => 1,
 		);
 	}
 }

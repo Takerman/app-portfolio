@@ -1,0 +1,175 @@
+# Translation of Plugins - SiteGround Optimizer - Development (trunk) in English (UK)
+# This file is distributed under the same license as the Plugins - SiteGround Optimizer - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-04-24 11:54:22+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: en_GB\n"
+"Project-Id-Version: Plugins - SiteGround Optimizer - Development (trunk)\n"
+
+#: core/Message_Service/Message_Service.php:25
+msgid "Browser-Specific Caching"
+msgstr "Browser-Specific Caching"
+
+#. Author URI of the plugin
+msgid "https://www.siteground.com"
+msgstr "https://www.siteground.com"
+
+#. Plugin URI of the plugin
+msgid "https://siteground.com"
+msgstr "https://siteground.com"
+
+#: core/Front_End_Optimization/Front_End_Optimization.php:408
+msgid "others"
+msgstr "others"
+
+#: core/Message_Service/Message_Service.php:35
+msgid "CSS Combination"
+msgstr "CSS Combination"
+
+#: core/Message_Service/Message_Service.php:91
+msgid "Could not disable %s"
+msgstr "Could not disable %s"
+
+#: core/Message_Service/Message_Service.php:88
+msgid "Could not enable %s"
+msgstr "Could not enable %s"
+
+#: core/Message_Service/Message_Service.php:83
+msgid "%s Disabled"
+msgstr "%s Disabled"
+
+#: core/Message_Service/Message_Service.php:80
+msgid "%s Enabled"
+msgstr "%s Enabled"
+
+#: helpers/manual-translations.php:4
+msgid "Frontend Optimization"
+msgstr "Front End Optimisation"
+
+#: helpers/manual-translations.php:2
+msgid "SuperCacher Settings"
+msgstr "SuperCacher Settings"
+
+#: helpers/manual-translations.php:3
+msgid "Environment Optimization"
+msgstr "Environment Optimisation"
+
+#: core/Message_Service/Message_Service.php:47
+#: core/Message_Service/Message_Service.php:71
+msgid "Can Optimize Environment"
+msgstr "Can Optimise Environment"
+
+#: core/Message_Service/Message_Service.php:46
+#: core/Message_Service/Message_Service.php:70
+msgid "Can Optimize Images"
+msgstr "Can Optimise Images"
+
+#: core/Message_Service/Message_Service.php:45
+#: core/Message_Service/Message_Service.php:69
+msgid "Can Optimize Frontend"
+msgstr "Can Optimise Front End"
+
+#: core/Message_Service/Message_Service.php:44
+#: core/Message_Service/Message_Service.php:68
+msgid "Can Config SuperCacher"
+msgstr "Can Config SuperCacher"
+
+#: core/Message_Service/Message_Service.php:41
+msgid "Lazy Loading Images"
+msgstr "Lazy Loading Images"
+
+#: core/Message_Service/Message_Service.php:39
+msgid "Emoji Removal Filter"
+msgstr "Emoji Removal Filter"
+
+#: core/Message_Service/Message_Service.php:38
+msgid "Query Strings Removal"
+msgstr "Query Strings Removal"
+
+#: core/Message_Service/Message_Service.php:34
+msgid "CSS Minification"
+msgstr "CSS Minification"
+
+#: core/Message_Service/Message_Service.php:32
+msgid "JavaScript Minification"
+msgstr "JavaScript Minification"
+
+#: core/Message_Service/Message_Service.php:31
+msgid "HTML Minification"
+msgstr "HTML Minification"
+
+#: core/Message_Service/Message_Service.php:28
+msgid "Insecure Content Fix"
+msgstr "Insecure Content Fix"
+
+#: core/Message_Service/Message_Service.php:27
+msgid "HTTPS"
+msgstr "HTTPS"
+
+#: core/Message_Service/Message_Service.php:24
+msgid "Autoflush"
+msgstr "Autoflush"
+
+#: core/Rest/Rest_Helper_Cache.php:357
+msgid "Could Not Disable Memcache!"
+msgstr "Could Not Disable Memcache!"
+
+#: core/Rest/Rest_Helper_Cache.php:314
+msgid "Could Not Enable Memcache!"
+msgstr "Could Not Enable Memcache!"
+
+#: core/Rest/Rest_Helper_Cache.php:298
+msgid "Memcached Enabled"
+msgstr "Memcached Enabled"
+
+#: core/Message_Service/Message_Service.php:30
+#: helpers/sg-cachepress-react-strings.php:95
+msgid "Browser Caching"
+msgstr "Browser Caching"
+
+#: core/Message_Service/Message_Service.php:29
+#: helpers/sg-cachepress-react-strings.php:93
+msgid "GZIP Compression"
+msgstr "GZIP Compression"
+
+#: helpers/sg-cachepress-react-strings.php:219
+msgid "Other"
+msgstr "Other"
+
+#: helpers/manual-translations.php:6
+msgid "Performance Test"
+msgstr "Performance Test"
+
+#: helpers/sg-cachepress-react-strings.php:81
+#: helpers/sg-cachepress-react-strings.php:185
+msgid "Enabled"
+msgstr "Enabled"
+
+#. Description of the plugin
+msgid "This plugin will link your WordPress application with all the performance optimizations provided by SiteGround"
+msgstr "This plugin will link your WordPress application with all the performance optimisations provided by SiteGround"
+
+#: core/Admin/Admin.php:240
+msgid "SG Optimizer"
+msgstr "SG Optimizer"
+
+#: core/Admin/Admin_Bar.php:62
+msgid "Purge SG Cache"
+msgstr "Purge SG Cache"
+
+#: core/Message_Service/Message_Service.php:22
+msgid "Dynamic Cache"
+msgstr "Dynamic Cache"
+
+#: helpers/sg-cachepress-react-strings.php:39
+msgid "Purge Cache"
+msgstr "Purge Cache"
+
+#. Author of the plugin
+msgid "SiteGround"
+msgstr "SiteGround"

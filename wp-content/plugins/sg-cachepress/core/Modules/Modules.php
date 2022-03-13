@@ -3,9 +3,10 @@ namespace SiteGround_Optimizer\Modules;
 
 require_once \SiteGround_Optimizer\DIR . '/vendor/pear/net_dns2/Net/DNS2.php';
 
+use SiteGround_Optimizer\DNS\Cloudflare;
 use SiteGround_Optimizer\Multisite\Multisite;
 use SiteGround_Optimizer\Options\Options;
-use SiteGround_Optimizer\Helper\Helper;
+use SiteGround_Helper\Helper_Service;
 
 /**
  * Provide list of SiteGround Optimizer modules.
@@ -693,10 +694,6 @@ class Modules {
 			$active_tabs[ $tab_slug ] = __( $tab['title'], 'sg-cachepress' );
 		}
 
-		if ( ! Options::is_enabled( 'siteground_optimizer_has_cloudflare' ) ) {
-			unset( $active_tabs['cloudflare'] );
-		}
-
 		// Return the tabs.
 		if ( ! is_multisite() ) {
 			// Return the tabs.
@@ -763,7 +760,7 @@ class Modules {
 		// Add the new modules to the response if the optimization is not enabled.
 		if ( ! empty( $new_modules ) ) {
 			foreach ( $new_modules as $index => $card ) {
-				if ( 1 == get_option( 'siteground_optimizer_' . $card['optimization'], 0 ) ) {
+				if ( Options::is_enabled( 'siteground_optimizer_' . $card['optimization'] ) ) {
 					continue;
 				}
 
@@ -811,7 +808,7 @@ class Modules {
 	public function get_optimizations() {
 		$optimizations = array();
 		$count         = 3;
-		$is_siteground = Helper::is_siteground();
+		$is_siteground = Helper_Service::is_siteground();
 
 		// Order the modules.
 		$keys = array_column( $this->modules, 'weight' );
@@ -824,7 +821,7 @@ class Modules {
 			}
 
 			// Bail if the optimization is alredy enabled.
-			if ( 1 == get_option( $module['options'][0], 0 ) ) {
+			if ( Options::is_enabled( $module['options'][0] ) ) {
 				continue;
 			}
 
@@ -858,61 +855,5 @@ class Modules {
 		return array();
 	}
 
-	/**
-	 * Check if the current domain has cloudflare.
-	 *
-	 * @since  5.7.0
-	 *
-	 * @return boolean True/False.
-	 */
-	public function has_cloudflare() {
-		$resolver = new \Net_DNS2_Resolver(
-			array(
-				'nameservers' => array( '1.1.1.1', '8.8.8.8' ),
-			)
-		);
-
-		// Parse the url.
-		$url_parts = parse_url( site_url( '/' ) );
-
-		try {
-			// Get the A record info.
-			$dns_resolver_response = $resolver->query( $url_parts['host'], 'A' );
-		} catch ( \Exception $e ) {
-			return;
-		}
-
-		if ( empty( $dns_resolver_response->answer ) ) {
-			return;
-		}
-
-		foreach ( $dns_resolver_response->answer as $record ) {
-			if ( is_a( $record, 'Net_DNS2_RR_A' ) ) {
-				$a_record = $record;
-				break;
-			}
-		}
-
-		if ( empty( $a_record->address ) ) {
-			return;
-		}
-
-		// Make a request to the site url.
-		$response = wp_remote_get( 'http://' . $a_record->address );
-
-		// Retrieve response headers.
-		$headers = wp_remote_retrieve_headers( $response );
-
-		// Check if the server is cloudflare.
-		if (
-			! empty( $headers['server'] ) &&
-			'cloudflare' === $headers['server']
-		) {
-			update_option( 'siteground_optimizer_has_cloudflare', 1 );
-			return;
-		}
-
-		update_option( 'siteground_optimizer_has_cloudflare', 0 );
-	}
 
 }

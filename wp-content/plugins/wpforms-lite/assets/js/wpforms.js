@@ -1,4 +1,4 @@
-/* global wpforms_settings, grecaptcha, hcaptcha, wpformsRecaptchaCallback, wpforms_validate, wpforms_datepicker, wpforms_timepicker, Mailcheck, Choices, WPFormsPasswordField, WPFormsEntryPreview, punycode, tinyMCE */
+/* global wpforms_settings, grecaptcha, hcaptcha, wpformsRecaptchaCallback, wpformsRecaptchaV3Execute, wpforms_validate, wpforms_datepicker, wpforms_timepicker, Mailcheck, Choices, WPFormsPasswordField, WPFormsEntryPreview, punycode, tinyMCE */
 
 'use strict';
 
@@ -115,14 +115,14 @@ var wpforms = window.wpforms || ( function( document, window, $ ) {
 					$( this ).attr( 'name', 'wpf-temp-' + random );
 				} );
 
-				// Prepend URL field contents with http:// if user input doesn't contain a schema.
+				// Prepend URL field contents with https:// if user input doesn't contain a schema.
 				$( '.wpforms-validate input[type=url]' ).change( function() {
 					var url = $( this ).val();
 					if ( ! url ) {
 						return false;
 					}
 					if ( url.substr( 0, 7 ) !== 'http://' && url.substr( 0, 8 ) !== 'https://' ) {
-						$( this ).val( 'http://' + url );
+						$( this ).val( 'https://' + url );
 					}
 				} );
 
@@ -411,41 +411,60 @@ var wpforms = window.wpforms || ( function( document, window, $ ) {
 							},
 							submitHandler: function( form ) {
 
-								var $form       = $( form ),
-									$submit     = $form.find( '.wpforms-submit' ),
-									altText     = $submit.data( 'alt-text' ),
-									recaptchaID = $submit.get( 0 ).recaptchaID;
+								/**
+								 * Submit handler routine.
+								 *
+								 * @since 1.7.2
+								 *
+								 * @returns {boolean|void} False if form won't submit.
+								 */
+								var submitHandlerRoutine = function() {
 
-								if ( $form.data( 'token' ) && 0 === $( '.wpforms-token', $form ).length ) {
-									$( '<input type="hidden" class="wpforms-token" name="wpforms[token]" />' )
-										.val( $form.data( 'token' ) )
-										.appendTo( $form );
+									var $form = $( form ),
+										$submit = $form.find( '.wpforms-submit' ),
+										altText = $submit.data( 'alt-text' ),
+										recaptchaID = $submit.get( 0 ).recaptchaID;
+
+									if ( $form.data( 'token' ) && 0 === $( '.wpforms-token', $form ).length ) {
+										$( '<input type="hidden" class="wpforms-token" name="wpforms[token]" />' )
+											.val( $form.data( 'token' ) )
+											.appendTo( $form );
+									}
+
+									$submit.prop( 'disabled', true );
+									$form.find( '#wpforms-field_recaptcha-error' ).remove();
+
+									// Display processing text.
+									if ( altText ) {
+										$submit.text( altText );
+									}
+
+									if ( ! app.empty( recaptchaID ) || recaptchaID === 0 ) {
+
+										// Form contains invisible reCAPTCHA.
+										grecaptcha.execute( recaptchaID ).then( null, function( reason ) {
+
+											reason = ( null === reason ) ? '' : '<br>' + reason;
+											$form.find( '.wpforms-recaptcha-container' )
+												.append( '<label id="wpforms-field_recaptcha-error" class="wpforms-error"> ' + wpforms_settings.val_recaptcha_fail_msg + reason + '</label>' );
+											$submit.prop( 'disabled', false );
+										} );
+										return false;
+									}
+
+									// Remove name attributes if needed.
+									$( '.wpforms-input-temp-name' ).removeAttr( 'name' );
+
+									app.formSubmit( $form );
+								};
+
+								// In the case of active Google reCAPTCHA v3, first, we should call `grecaptcha.execute`.
+								// This is needed to obtain proper grecaptcha token before submitting the form.
+								if ( typeof wpformsRecaptchaV3Execute === 'function' ) {
+									return wpformsRecaptchaV3Execute( submitHandlerRoutine );
 								}
 
-								$submit.prop( 'disabled', true );
-								$form.find( '#wpforms-field_recaptcha-error' ).remove();
-
-								// Display processing text.
-								if ( altText ) {
-									$submit.text( altText );
-								}
-
-								if ( ! app.empty( recaptchaID ) || recaptchaID === 0 ) {
-
-									// Form contains invisible reCAPTCHA.
-									grecaptcha.execute( recaptchaID ).then( null, function( reason ) {
-
-										reason = ( null === reason ) ? '' : '<br>' + reason;
-										$form.find( '.wpforms-recaptcha-container' ).append( '<label id="wpforms-field_recaptcha-error" class="wpforms-error"> ' + wpforms_settings.val_recaptcha_fail_msg + reason + '</label>' );
-										$submit.prop( 'disabled', false );
-									} );
-									return false;
-								}
-
-								// Remove name attributes if needed.
-								$( '.wpforms-input-temp-name' ).removeAttr( 'name' );
-
-								app.formSubmit( $form );
+								return submitHandlerRoutine();
 							},
 							invalidHandler: function( event, validator ) {
 

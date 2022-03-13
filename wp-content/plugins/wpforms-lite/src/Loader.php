@@ -114,6 +114,7 @@ class Loader {
 			],
 			[
 				'name' => 'Admin\SiteHealth',
+				'hook' => 'admin_init',
 			],
 			[
 				'name' => 'Admin\Settings\Captcha',
@@ -121,7 +122,7 @@ class Loader {
 			],
 			[
 				'name' => 'Admin\Tools\Tools',
-				'hook' => 'admin_init',
+				'hook' => 'current_screen',
 			],
 			[
 				'name' => 'Admin\Pages\Addons',
@@ -129,6 +130,10 @@ class Loader {
 			],
 			[
 				'name' => 'Forms\Fields\Richtext\EntryViewContent',
+			],
+			[
+				'name' => 'Admin\Forms\Search',
+				'id'   => 'forms_search',
 			]
 		);
 	}

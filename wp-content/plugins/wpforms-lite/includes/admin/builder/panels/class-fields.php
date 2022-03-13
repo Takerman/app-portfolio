@@ -306,6 +306,7 @@ class WPForms_Builder_Panel_Fields extends WPForms_Builder_Panel {
 			$css .= ! empty( $field['input_columns'] ) && $field['input_columns'] === '3' ? ' wpforms-list-3-columns' : '';
 			$css .= ! empty( $field['input_columns'] ) && $field['input_columns'] === 'inline' ? ' wpforms-list-inline' : '';
 			$css .= isset( $field['meta']['delete'] ) && $field['meta']['delete'] === false ? ' no-delete' : '';
+			$css .= isset( $field['meta']['duplicate'] ) && $field['meta']['duplicate'] === false ? ' no-duplicate' : '';
 
 			$css = apply_filters( 'wpforms_field_preview_class', $css, $field );
 

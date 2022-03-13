@@ -8,6 +8,15 @@
 class WPForms_Overview {
 
 	/**
+	 * Overview Table instance.
+	 *
+	 * @since 1.7.2
+	 *
+	 * @var WPForms_Overview_Table
+	 */
+	private $overview_table;
+
+	/**
 	 * Primary class constructor.
 	 *
 	 * @since 1.0.0
@@ -15,11 +24,11 @@ class WPForms_Overview {
 	public function __construct() {
 
 		// Maybe load overview page.
-		add_action( 'admin_init', array( $this, 'init' ) );
+		add_action( 'admin_init', [ $this, 'init' ] );
 
 		// Setup screen options. Needs to be here as admin_init hook it too late.
-		add_action( 'load-toplevel_page_wpforms-overview', array( $this, 'screen_options' ) );
-		add_filter( 'set-screen-option', array( $this, 'screen_options_set' ), 10, 3 );
+		add_action( 'load-toplevel_page_wpforms-overview', [ $this, 'screen_options' ] );
+		add_filter( 'set-screen-option', [ $this, 'screen_options_set' ], 10, 3 );
 		add_filter( 'set_screen_option_wpforms_forms_per_page', [ $this, 'screen_options_set' ], 10, 3 );
 	}
 
@@ -35,24 +44,52 @@ class WPForms_Overview {
 			return;
 		}
 
+		// Avoid recursively include _wp_http_referer in the REQUEST_URI.
+		$this->remove_referer();
+
+		add_action( 'current_screen', [ $this, 'init_overview_table' ] );
+
 		// Bulk actions.
-		add_action( 'load-toplevel_page_wpforms-overview', array( $this, 'notices' ) );
-		add_action( 'load-toplevel_page_wpforms-overview', array( $this, 'process_bulk_actions' ) );
-		add_filter( 'removable_query_args', array( $this, 'removable_query_args' ) );
+		add_action( 'load-toplevel_page_wpforms-overview', [ $this, 'notices' ] );
+		add_action( 'load-toplevel_page_wpforms-overview', [ $this, 'process_bulk_actions' ] );
+		add_filter( 'removable_query_args', [ $this, 'removable_query_args' ] );
 
 		// The overview page leverages WP_List_Table so we must load it.
 		if ( ! class_exists( 'WP_List_Table', false ) ) {
 			require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
 		}
 
-		// Load the class that builds the overview table.
-		require_once WPFORMS_PLUGIN_DIR . 'includes/admin/overview/class-overview-table.php';
-
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueues' ) );
-		add_action( 'wpforms_admin_page', array( $this, 'output' ) );
+		add_action( 'admin_enqueue_scripts', [ $this, 'enqueues' ] );
+		add_action( 'wpforms_admin_page', [ $this, 'output' ] );
 
 		// Provide hook for addons.
 		do_action( 'wpforms_overview_init' );
+	}
+
+	/**
+	 * Init overview table class.
+	 *
+	 * @since 1.7.2
+	 */
+	public function init_overview_table() {
+
+		// Load the class that builds the overview table.
+		require_once WPFORMS_PLUGIN_DIR . 'includes/admin/overview/class-overview-table.php';
+
+		$this->overview_table = new WPForms_Overview_Table();
+	}
+
+	/**
+	 * Remove previous `_wp_http_referer` variable from the REQUEST_URI.
+	 *
+	 * @since 1.7.2
+	 */
+	private function remove_referer() {
+
+		if ( isset( $_SERVER['REQUEST_URI'] ) ) {
+			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$_SERVER['REQUEST_URI'] = remove_query_arg( '_wp_http_referer', wp_unslash( $_SERVER['REQUEST_URI'] ) );
+		}
 	}
 
 	/**
@@ -64,17 +101,17 @@ class WPForms_Overview {
 
 		$screen = get_current_screen();
 
-		if ( null === $screen || 'toplevel_page_wpforms-overview' !== $screen->id ) {
+		if ( $screen === null || $screen->id !== 'toplevel_page_wpforms-overview' ) {
 			return;
 		}
 
 		add_screen_option(
 			'per_page',
-			array(
+			[
 				'label'   => esc_html__( 'Number of forms per page:', 'wpforms-lite' ),
 				'option'  => 'wpforms_forms_per_page',
 				'default' => apply_filters( 'wpforms_overview_per_page', 20 ),
-			)
+			]
 		);
 	}
 
@@ -91,7 +128,7 @@ class WPForms_Overview {
 	 */
 	public function screen_options_set( $keep, $option, $value ) {
 
-		if ( 'wpforms_forms_per_page' === $option ) {
+		if ( $option === 'wpforms_forms_per_page' ) {
 			return $value;
 		}
 
@@ -128,18 +165,18 @@ class WPForms_Overview {
 				<?php endif; ?>
 			</h1>
 
-			<?php
-			$overview_table = new WPForms_Overview_Table();
-			$overview_table->prepare_items();
-			?>
-
 			<div class="wpforms-admin-content">
 
 				<?php
+				$this->overview_table->prepare_items();
 
 				do_action( 'wpforms_admin_overview_before_table' );
 
-				if ( empty( $overview_table->items ) ) {
+				if (
+					empty( $this->overview_table->items ) &&
+					// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+					! isset( $_GET['search']['term'] )
+				) {
 
 					// Output no forms screen.
 					echo wpforms_render( 'admin/empty-states/no-forms' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -151,8 +188,11 @@ class WPForms_Overview {
 						<input type="hidden" name="post_type" value="wpforms" />
 						<input type="hidden" name="page" value="wpforms-overview" />
 
-						<?php $overview_table->views(); ?>
-						<?php $overview_table->display(); ?>
+						<?php
+							$this->overview_table->views();
+							$this->overview_table->search_box( esc_html__( 'Search Forms', 'wpforms-lite' ), 'wpforms-overview-search' );
+							$this->overview_table->display();
+						?>
 
 					</form>
 				<?php } ?>
@@ -172,29 +212,29 @@ class WPForms_Overview {
 
 		$deleted    = ! empty( $_REQUEST['deleted'] ) ? sanitize_key( $_REQUEST['deleted'] ) : false; // phpcs:ignore WordPress.Security.NonceVerification
 		$duplicated = ! empty( $_REQUEST['duplicated'] ) ? sanitize_key( $_REQUEST['duplicated'] ) : false; // phpcs:ignore WordPress.Security.NonceVerification
-		$notice     = array();
+		$notice     = [];
 
-		if ( $deleted && 'error' !== $deleted ) {
-			$notice = array(
+		if ( $deleted && $deleted !== 'error' ) {
+			$notice = [
 				'type' => 'info',
 				/* translators: %s - Deleted forms count. */
 				'msg'  => sprintf( _n( '%s form was successfully deleted.', '%s forms were successfully deleted.', $deleted, 'wpforms-lite' ), $deleted ),
-			);
+			];
 		}
 
-		if ( $duplicated && 'error' !== $duplicated ) {
-			$notice = array(
+		if ( $duplicated && $duplicated !== 'error' ) {
+			$notice = [
 				'type' => 'info',
 				/* translators: %s - Duplicated forms count. */
 				'msg'  => sprintf( _n( '%s form was successfully duplicated.', '%s forms were successfully duplicated.', $duplicated, 'wpforms-lite' ), $duplicated ),
-			);
+			];
 		}
 
-		if ( 'error' === $deleted || 'error' === $duplicated ) {
-			$notice = array(
+		if ( $deleted === 'error' || $duplicated === 'error' ) {
+			$notice = [
 				'type' => 'error',
 				'msg'  => esc_html__( 'Security check failed. Please try again.', 'wpforms-lite' ),
-			);
+			];
 		}
 
 		if ( ! empty( $notice ) ) {
@@ -209,7 +249,7 @@ class WPForms_Overview {
 	 */
 	public function process_bulk_actions() {
 
-		$ids    = isset( $_GET['form_id'] ) ? array_map( 'absint', (array) $_GET['form_id'] ) : array(); // phpcs:ignore WordPress.Security.NonceVerification
+		$ids    = isset( $_GET['form_id'] ) ? array_map( 'absint', (array) $_GET['form_id'] ) : []; // phpcs:ignore WordPress.Security.NonceVerification
 		$action = ! empty( $_REQUEST['action'] ) ? sanitize_key( $_REQUEST['action'] ) : false; // phpcs:ignore WordPress.Security.NonceVerification
 
 		if ( $action === '-1' ) {
@@ -252,7 +292,7 @@ class WPForms_Overview {
 			add_query_arg(
 				$action . 'd',
 				$processed_forms,
-				remove_query_arg( array( 'action', 'action2', '_wpnonce', 'form_id', 'paged', '_wp_http_referer' ) )
+				remove_query_arg( [ 'action', 'action2', '_wpnonce', 'form_id', 'paged', '_wp_http_referer' ] )
 			)
 		);
 		exit;

@@ -21,6 +21,7 @@ class TRP_Upgrade {
         global $wpdb;
         $this->db = $wpdb;
 		$this->settings = $settings;
+
 	}
 
 	/**
@@ -104,6 +105,22 @@ class TRP_Upgrade {
 	public function get_updates_details(){
 		return apply_filters( 'trp_updates_details',
 			array(
+                'remove_cdata_original_and_dictionary_rows' => array(
+                    'version'           => '0',
+                    'option_name'       => 'trp_remove_cdata_original_and_dictionary_rows',
+                    'callback'          => array( $this->trp_query,'remove_cdata_in_original_and_dictionary_tables'),
+                    'batch_size'        => 1000,
+                    'message_initial'   => '',
+                    'message_processing'=> __('Removing cdata dictionary strings for language %s...', 'translatepress-multilingual' )
+                ),
+                'remove_untranslated_links_dictionary_rows' => array(
+                    'version'           => '0',
+                    'option_name'       => 'trp_remove_untranslated_links_dictionary_rows',
+                    'callback'          => array( $this->trp_query,'remove_untranslated_links_in_dictionary_table'),
+                    'batch_size'        => 10000,
+                    'message_initial'   => '',
+                    'message_processing'=> __('Removing untranslated dictionary links for language %s...', 'translatepress-multilingual' )
+                ),
 				'full_trim_originals_140' => array(
 					'version'           => '1.4.0',
 					'option_name'       => 'trp_updated_database_full_trim_originals_140',
@@ -155,7 +172,7 @@ class TRP_Upgrade {
                     'batch_size'        => 1000,
                     'message_processing'=> __('Inserting original strings for language %s...', 'translatepress-multilingual' )
                 ),
-                    'original_id_cleanup_166' => array(
+                'original_id_cleanup_166' => array(
                     'version'           => '1.6.6',
                     'option_name'       => 'trp_updated_database_original_id_cleanup_166',
                     'callback'          => array( $this,'trp_updated_database_original_id_cleanup_166'),
@@ -187,6 +204,15 @@ class TRP_Upgrade {
                     'batch_size'        => 20000,
                     'message_initial'   => '',
                     'message_processing'=> __('Cleaning original meta table for language %s...', 'translatepress-multilingual' )
+                ),
+                'show_error_db_message' => array(
+                    'version'           => '0', // independent of tp version, available only on demand
+                    'option_name'       => 'trp_show_error_db_message',
+                    'callback'          => array( $this,'trp_successfully_run_database_optimization'),
+                    'batch_size'        => 10,
+                    'message_initial'   => '',
+                    'message_processing'=> __('Finishing up...', 'translatepress-multilingual' ),
+                    'execute_only_once' => true
                 )
 			)
 		);
@@ -200,9 +226,10 @@ class TRP_Upgrade {
 			return;
 		}
 		$updates_needed = $this->get_updates_details();
+        $option_db_error_message = get_option($updates_needed['show_error_db_message']['option_name']);
 		foreach( $updates_needed as $update ){
 			$option = get_option( $update['option_name'], 'is not set' );
-			if ( $option === 'no' ){
+			if ( $option === 'no' && $option_db_error_message !== 'no'){
 				add_action( 'admin_notices', array( $this, 'admin_notice_update_database' ) );
 				break;
 			}
@@ -226,9 +253,38 @@ class TRP_Upgrade {
 		echo $html;//phpcs:ignore
 	}
 
+    public function trp_successfully_run_database_optimization($language_code= null, $inferior_size = null, $batch_size = null){
+        delete_option('trp_show_error_db_message');
+
+        return true;
+    }
+
+
+    public function show_admin_error_message(){
+        if ( ( isset( $_GET[ 'page'] ) && $_GET['page'] == 'trp_update_database' ) ){
+            return;
+        }
+        $updates_needed = $this->get_updates_details();
+        $option_db_error_message = get_option($updates_needed['show_error_db_message']['option_name']);
+        if ( $option_db_error_message === 'no' ) {
+            add_action( 'admin_notices', array( $this, 'trp_admin_notice_error_database' ) );
+        }
+
+    }
+
+    public function trp_admin_notice_error_database(){
+
+        echo '<div class="notice notice-error is-dismissible">
+            <p>' . wp_kses( sprintf( __('Database optimization did not complete successfully. We recommend restoring the original database or <a href="%s" >trying again.</a>', 'translatepress-multilingual'), admin_url('admin.php?page=trp_update_database') ), array('a' => array( 'href' => array() ) ) ) .'</p>
+        </div>';
+
+    }
+
 	public function trp_update_database_page(){
 		require_once TRP_PLUGIN_DIR . 'partials/trp-update-database.php';
 	}
+
+
 
 	/**
 	 * Call all functions to update database
@@ -248,6 +304,9 @@ class TRP_Upgrade {
 		$request = array();
 		$request['progress_message'] = '';
 		$updates_needed = $this->get_updates_details();
+        if (isset($_REQUEST['initiate_update']) && $_REQUEST['initiate_update']=== "true" ){
+            update_option('trp_show_error_db_message', 'no');
+        }
 		if ( empty ( $_REQUEST['trp_updb_action'] ) ){
 			foreach( $updates_needed as $update_action_key => $update ) {
 				$option = get_option( $update['option_name'], 'is not set' );
@@ -329,23 +388,25 @@ class TRP_Upgrade {
 
 		if ( $finished_with_language ) {
 			// finished with the current language
-			$index = array_search( $language_code, $this->settings['translation-languages'] );
-			if ( isset ( $this->settings['translation-languages'][ $index + 1 ] ) ) {
-				// next language code in array
-				$request['trp_updb_lang'] = $this->settings['translation-languages'][ $index + 1 ];
-				$request['progress_message'] .= __(' done.', 'translatepress-multilingual' ) . '</br>';
-                $update_message_processing = isset( $updates_needed[$_REQUEST['trp_updb_action']]['message_processing'] ) ?
-                                                $updates_needed[ sanitize_text_field( $_REQUEST['trp_updb_action'] ) ]['message_processing']
-                                                : __('Processing table for language %s...', 'translatepress-multilingual' );
-				$request['progress_message'] .= '</br>' . sprintf( $update_message_processing,  $request['trp_updb_lang'] );
-			} else {
-				// finish action due to completing all the translation languages
-				$request['progress_message'] .= __(' done.', 'translatepress-multilingual' ) . '</br>';
-				$request['trp_updb_lang'] = '';
-				// this will stop showing the admin notice
-				update_option( $update_details['option_name'], 'yes' );
-				$request['trp_updb_action'] = '';
-			}
+            $index = array_search( $language_code, $this->settings['translation-languages'] );
+
+                if ( isset ( $this->settings['translation-languages'][ $index + 1 ] ) && (!isset($update_details['execute_only_once']) || $update_details['execute_only_once'] == false)) {
+                        // next language code in array
+                        $request['trp_updb_lang']    = $this->settings['translation-languages'][ $index + 1 ];
+                        $request['progress_message'] .= __( ' done.', 'translatepress-multilingual' ) . '</br>';
+                        $update_message_processing   = isset( $updates_needed[ $_REQUEST['trp_updb_action'] ]['message_processing'] ) ?
+                            $updates_needed[ sanitize_text_field( $_REQUEST['trp_updb_action'] ) ]['message_processing']
+                            : __( 'Processing table for language %s...', 'translatepress-multilingual' );
+                        $request['progress_message'] .= '</br>' . sprintf( $update_message_processing, $request['trp_updb_lang'] );
+
+                    } else {
+                        // finish action due to completing all the translation languages
+                        $request['progress_message'] .= __( ' done.', 'translatepress-multilingual' ) . '</br>';
+                        $request['trp_updb_lang']    = '';
+                        // this will stop showing the admin notice
+                        update_option( $update_details['option_name'], 'yes' );
+                        $request['trp_updb_action'] = '';
+                    }
 		}else{
 			$request['trp_updb_lang'] = $language_code;
             $request['progress_message'] = '.';
@@ -491,6 +552,48 @@ class TRP_Upgrade {
         }
     }
 
+
+    public function trp_prepare_options_for_database_optimization(){
+        if ( !current_user_can('manage_options') ){
+            return;
+        }
+
+        $redirect = false;
+
+        if(isset( $_GET['trp_rm_duplicates_gettext'] )){
+            update_option('trp_remove_duplicate_gettext_rows', 'no');
+            update_option('trp_remove_duplicate_untranslated_gettext_rows', 'no');
+            $redirect = true;
+        }
+
+        if(isset( $_GET['trp_rm_duplicates_dictionary'] )){
+            update_option('trp_remove_duplicate_dictionary_rows', 'no');
+            update_option('trp_remove_duplicate_untranslated_dictionary_rows', 'no');
+            $redirect = true;
+        }
+
+        if ( isset( $_GET['trp_rm_duplicates_original_strings'] ) ){
+            $this->trp_remove_duplicate_original_strings();
+            $redirect = true;
+        }
+
+        if ( isset( $_GET['trp_rm_cdata_original_and_dictionary'])){
+            update_option('trp_remove_cdata_original_and_dictionary_rows', 'no');
+            $redirect = true;
+        }
+
+        if ( isset( $_GET['trp_rm_untranslated_links'] ) ){
+            update_option('trp_remove_untranslated_links_dictionary_rows', 'no');
+            $redirect = true;
+        }
+
+        if ( $redirect ) {
+            $url = add_query_arg( array( 'page' => 'trp_update_database' ), site_url( 'wp-admin/admin.php' ) );
+            wp_safe_redirect( $url );
+            exit;
+        }
+    }
+
 	/**
 	 * Remove duplicate rows from DB for trp_dictionary tables.
 	 * Removes untranslated strings if there is a translated version.
@@ -507,26 +610,6 @@ class TRP_Upgrade {
 		// prepare page structure
 
 		require_once TRP_PLUGIN_DIR . 'partials/trp-remove-duplicate-rows.php';
-
-        if(isset( $_GET['trp_rm_duplicates_gettext'] )){
-            update_option('trp_remove_duplicate_gettext_rows', 'no');
-            update_option('trp_remove_duplicate_untranslated_gettext_rows', 'no');
-        }
-
-        if(isset( $_GET['trp_rm_duplicates_dictionary'] )){
-            update_option('trp_remove_duplicate_dictionary_rows', 'no');
-            update_option('trp_remove_duplicate_untranslated_dictionary_rows', 'no');
-        }
-
-        if ( isset( $_GET['trp_rm_duplicates_original_strings'] ) ){
-            $this->trp_remove_duplicate_original_strings();
-        }
-
-        if (isset( $_GET['trp_rm_duplicates_gettext'] ) || isset( $_GET['trp_rm_duplicates_dictionary'] ) || isset( $_GET['trp_rm_duplicates_original_strings'] )) {
-            $url = add_query_arg( array( 'page' => 'trp_update_database' ), site_url( 'wp-admin/admin.php' ) );
-            wp_safe_redirect( $url );
-        }
-        exit;
 	}
 
 	public function enqueue_update_script( $hook ) {
@@ -644,8 +727,6 @@ class TRP_Upgrade {
         }
         $this->trp_query->rename_originals_table();
         $this->trp_query->check_original_table();
-
-        echo '<br> ' . esc_html__( 'Recreated original strings table.', 'translatepress-multilingual' );
 
         update_option( 'trp_updated_database_original_id_insert_166', 'no' );
         update_option( 'trp_updated_database_original_id_cleanup_166', 'no' );

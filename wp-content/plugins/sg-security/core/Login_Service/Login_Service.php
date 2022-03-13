@@ -46,20 +46,29 @@ class Login_Service {
 
 		// Bail if the allowed ip list is empty.
 		if ( empty( $allowed_ips ) ) {
-			return;
+			return true;
 		}
 
-		// Bail if the user ip is not in the allowed IP lis.
-		if ( ! in_array( Helper::get_current_user_ip(), $allowed_ips ) ) {
-			wp_die(
-				esc_html__( 'You don’t have access to this page. Please contact the administrator of this website for further assistance.', 'sg-security' ),
-				esc_html__( 'Restricted access', 'sg-security' ),
-				array(
-					'sgs_error' => true,
-					'response'  => 403,
-				)
-			);
+		foreach ( $allowed_ips as $allowed_ip ) {
+			if ( Helper::get_current_user_ip() === $allowed_ip ) {
+				return true;
+			}
+			if ( false !== strpos( $allowed_ip, '/' ) && $this->ip_in_range( Helper::get_current_user_ip(), $allowed_ip ) ) {
+				return true;
+			}
 		}
+
+		// Update the total blocked logins counter.
+		update_option( 'sg_security_total_blocked_logins', get_option( 'sg_security_total_blocked_logins', 0 ) + 1 );
+
+		wp_die(
+			esc_html__( 'You don’t have access to this page. Please contact the administrator of this website for further assistance.', 'sg-security' ),
+			esc_html__( 'Restricted access', 'sg-security' ),
+			array(
+				'sgs_error' => true,
+				'response'  => 403,
+			)
+		);
 	}
 
 	/**
@@ -80,6 +89,10 @@ class Login_Service {
 
 		// Bail if ip, has reached login attempts limit.
 		if ( $login_attempts[ $user_ip ]['timestamp'] > time() ) {
+
+			// Update the total blocked logins counter.
+			update_option( 'sg_security_total_blocked_logins', get_option( 'sg_security_total_blocked_logins', 0 ) + 1 );
+
 			wp_die(
 				esc_html__( 'You don’t have access to this page. Please contact the administrator of this website for further assistance.', 'sg-security' ),
 				esc_html__( 'The access to that page has been restricted by the administrator of this website', 'sg-security' ),
@@ -116,7 +129,6 @@ class Login_Service {
 		}
 
 		$err_codes = $errors->get_error_codes();
-
 		// Invalid username.
 		if (
 			! in_array( 'invalid_username', $err_codes ) &&
@@ -215,5 +227,32 @@ class Login_Service {
 		}
 
 		return $data;
+	}
+	/**
+	 * Search an IP range for a given IP.
+	 *
+	 * @since  1.2.0
+	 *
+	 * @param  string $ip    The ip to be searched for.
+	 * @param  string $range The range to be searched in.
+	 *
+	 * @return bool          True, if IP is contained in the range.
+	 */
+	public function ip_in_range( $ip, $range ) {
+		$range = explode( '/', $range );
+		// Get the netmask from the range.
+		$netmask = $range[1];
+		// Get the base range ip and convert to long.
+		$start_ip = ip2long( $range[0] );
+		// Get the count of the possible IPs.
+		$ip_count = 1 << ( 32 - $netmask );
+
+		// Iterate through all possible IPs and return true on match, false if not found.
+		for ( $i = 0; $i < $ip_count - 1; $i++ ) {
+			if ( long2ip( ( $start_ip + $i ) ) === $ip ) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

@@ -1,9 +1,12 @@
 <?php
 namespace SiteGround_Optimizer\Minifier;
 
-use SiteGround_Optimizer\Helper\Helper;
 use SiteGround_Optimizer\Front_End_Optimization\Front_End_Optimization;
 use SiteGround_Optimizer\Supercacher\Supercacher;
+use SiteGround_Optimizer\Helper\Helper;
+use SiteGround_Helper\Helper_Service;
+use MatthiasMullie\Minify;
+
 /**
  * SG Minifier main plugin class
  */
@@ -87,7 +90,7 @@ class Minifier {
 		}
 		// Setup wp filesystem.
 		if ( null === $this->wp_filesystem ) {
-			$this->wp_filesystem = Helper::setup_wp_filesystem();
+			$this->wp_filesystem = Helper_Service::setup_wp_filesystem();
 		}
 
 		$this->assets_dir = Front_End_Optimization::get_instance()->assets_dir;
@@ -148,7 +151,7 @@ class Minifier {
 				stripos( $wp_scripts->registered[ $handle ]->src, '.min.js' ) !== false || // If the file is minified already.
 				false === $wp_scripts->registered[ $handle ]->src || // If the source is empty.
 				in_array( $handle, $excluded_scripts ) || // If the file is ignored.
-				@strpos( Helper::get_home_url(), parse_url( $wp_scripts->registered[ $handle ]->src, PHP_URL_HOST ) ) === false // Skip all external sources.
+				@strpos( Helper_Service::get_home_url(), parse_url( $wp_scripts->registered[ $handle ]->src, PHP_URL_HOST ) ) === false // Skip all external sources.
 			) {
 				continue;
 			}
@@ -164,9 +167,40 @@ class Minifier {
 			// Check that everythign with minified file is ok.
 			if ( $is_minified_file_ok ) {
 				// Replace the script src with the minified version.
-				$wp_scripts->registered[ $handle ]->src = str_replace( ABSPATH, Helper::get_site_url(), $filename );
+				$wp_scripts->registered[ $handle ]->src = str_replace( ABSPATH, Helper_Service::get_site_url(), $filename );
 			}
 		}
+	}
+
+	/**
+	 * Use the MatthiasMullie library for a minification fallback
+	 *
+	 * @since  6.0.4
+	 *
+	 * @param  string $minifier_type     The type of minifier we are using.
+	 * @param  string $filename          The file we are creating.
+	 * @param  string $original_filepath The original filepath.
+	 *
+	 * @return bool true/false If the minification was successful.
+	 */
+	public function minify_scripts_lib( $minifier_type, $filename, $original_filepath ) {
+		// Prepare the corect minifier.
+		switch ( $minifier_type ) {
+			case 'JS':
+				$minifier = new Minify\JS( $original_filepath );
+				break;
+			case 'CSS':
+				$minifier = new Minify\CSS( $original_filepath );
+				break;
+		}
+
+		// Bail if minification fails.
+		// The method will return string and write the new file.
+		if ( empty( $minifier->minify( $filename ) ) ) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -201,17 +235,29 @@ class Minifier {
 			return true;
 		}
 
-		// The minified file doens't exists or the original file has been modified.
-		// Minify the file then.
-		exec(
-			sprintf(
-				'minify %s --output=%s',
-				$original_filepath,
-				$new_file_path
-			),
-			$output,
-			$status
-		);
+		// Fallback if we are not on a SiteGround Server.
+		if ( ! Helper_Service::is_siteground() ) {
+			$minifier_type = strtoupper( pathinfo( $original_filepath, PATHINFO_EXTENSION ) );
+
+			if ( empty( $minifier_type ) ) {
+				return false;
+			}
+
+			$status = ! $this->minify_scripts_lib( $minifier_type, $new_file_path, $original_filepath );
+
+		} else {
+			// The minified file doens't exists or the original file has been modified.
+			// Minify the file then.
+			exec(
+				sprintf(
+					'minify %s --output=%s',
+					$original_filepath,
+					$new_file_path
+				),
+				$output,
+				$status
+			);
+		}
 
 		// Return false if the minification fails.
 		if ( 1 === intval( $status ) || ! file_exists( $new_file_path ) ) {
@@ -254,7 +300,7 @@ class Minifier {
 				stripos( $wp_styles->registered[ $handle ]->src, '.min.css' ) !== false || // If the file is minified already.
 				false === $wp_styles->registered[ $handle ]->src || // If the source is empty.
 				in_array( $handle, $excluded_styles ) || // If the file is ignored.
-				@strpos( Helper::get_home_url(), parse_url( $wp_styles->registered[ $handle ]->src, PHP_URL_HOST ) ) === false // Skip all external sources.
+				@strpos( Helper_Service::get_home_url(), parse_url( $wp_styles->registered[ $handle ]->src, PHP_URL_HOST ) ) === false // Skip all external sources.
 			) {
 				continue;
 			}
@@ -276,7 +322,7 @@ class Minifier {
 			// Check that everythign with minified file is ok.
 			if ( $is_minified_file_ok ) {
 				// Replace the script src with the minified version.
-				$wp_styles->registered[ $handle ]->src = str_replace( ABSPATH, Helper::get_site_url(), $filename );
+				$wp_styles->registered[ $handle ]->src = str_replace( ABSPATH, Helper_Service::get_site_url(), $filename );
 			}
 		}
 	}
@@ -321,10 +367,7 @@ class Minifier {
 	 * @return boolean True if the url is excluded, false otherwise.
 	 */
 	public function is_url_excluded() {
-		$protocol = isset( $_SERVER['HTTPS'] ) ? 'https' : 'http';
-
-		// Build the current url.
-		$url = $protocol . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$url = Helper::get_current_url();
 
 		// Get excluded urls.
 		$excluded_urls = apply_filters( 'sgo_html_minify_exclude_urls', get_option( 'siteground_optimizer_minify_html_exclude', array() ) );

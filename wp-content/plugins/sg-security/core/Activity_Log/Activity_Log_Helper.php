@@ -16,6 +16,11 @@ class Activity_Log_Helper {
 	 * @param  array $args Array of the event details.
 	 */
 	public function log_event( $args ) {
+		// Include the template.php if the function doesn't exists.
+		if ( ! function_exists( 'wp_get_current_user' ) ) {
+			require_once ABSPATH . '/wp-includes/pluggable.php';
+		}
+
 		// Get the current user.
 		$user = \wp_get_current_user();
 
@@ -36,7 +41,7 @@ class Activity_Log_Helper {
 				'code'         => 200, // The user ID.
 				'visitor_id'   => $this->get_visitor_by_user_id( $user_id ), // The user ID.
 				'visitor_type' => 'user', // The visitor type.
-				'hostname'     => gethostbyaddr( $ip ),
+				'hostname'     => filter_var( $ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6 ) ? $ip : gethostbyaddr( $ip ),
 			),
 			$args
 		);
@@ -75,7 +80,7 @@ class Activity_Log_Helper {
 					  `action` varchar(255) NOT NULL,
 					  `visitor_type` varchar(255) NOT NULL,
 					  PRIMARY KEY (`id`)
-				) ENGINE=InnoDB  DEFAULT CHARSET=utf8;";
+				) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4;";
 
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		dbDelta( $events_sql );
@@ -87,7 +92,7 @@ class Activity_Log_Helper {
 					  `block` int(11) NOT NULL DEFAULT 0,
 					  `blocked_on` int(11) NOT NULL DEFAULT 0,
 					  PRIMARY KEY (`id`)
-				) ENGINE=InnoDB  DEFAULT CHARSET=utf8;";
+				) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4;";
 		dbDelta( $visitors_sql );
 	}
 
@@ -102,6 +107,12 @@ class Activity_Log_Helper {
 	 */
 	public function check_for_duplicates( $args ) {
 		global $wpdb;
+
+		// Bail if table doesn't exist.
+		if ( ! Helper::table_exists( $wpdb->sgs_visitors ) ) {
+			return false;
+		}
+
 		$has_duplicate = $wpdb->get_row( // phpcs:ignore
 			$wpdb->prepare(
 				'SELECT `id` FROM `' . $wpdb->sgs_log . '`
@@ -182,7 +193,9 @@ class Activity_Log_Helper {
 	 */
 	public function get_visitor_by_user_id( $user_id ) {
 		global $wpdb;
-		$maybe_id = $wpdb->get_row( // phpcs:ignore
+
+		// Check if there is already a record as a visitor for this user.
+		$maybe_id = $wpdb->get_row( // phpcs:ignore.
 			$wpdb->prepare(
 				'SELECT `ID` FROM `' . $wpdb->sgs_visitors . '`
 					WHERE `user_id` = %s
@@ -191,11 +204,13 @@ class Activity_Log_Helper {
 			)
 		);
 
+		// If there is such record, return the visitor ID.
 		if ( ! is_null( $maybe_id ) ) {
 			return $maybe_id->ID;
 		}
 
-		$id = $wpdb->insert(
+		// Create a new record for the user as a visitor.
+		$wpdb->insert(
 			$wpdb->sgs_visitors,
 			array(
 				'user_id' => $user_id,
@@ -204,7 +219,18 @@ class Activity_Log_Helper {
 			array( '%s', '%s' )
 		);
 
-		return $id;
+		// Get the user visitor ID.
+		$id = $wpdb->get_row( // phpcs:ignore.
+			$wpdb->prepare(
+				'SELECT `ID` FROM `' . $wpdb->sgs_visitors . '`
+					WHERE `user_id` = %s
+				;',
+				$user_id
+			)
+		);
+
+		// Return the ID.
+		return $id->ID;
 	}
 
 	/**
@@ -232,7 +258,8 @@ class Activity_Log_Helper {
 			return $maybe_id->ID;
 		}
 
-		$id = $wpdb->insert(
+		// Insert the visitors ip in the db.
+		$wpdb->insert(
 			$wpdb->sgs_visitors,
 			array(
 				'ip' => $ip,
@@ -240,7 +267,17 @@ class Activity_Log_Helper {
 			array( '%s' )
 		);
 
-		return $id;
+		// Get the visitor id from visitors table.
+		$id = $wpdb->get_row( // phpcs:ignore.
+			$wpdb->prepare(
+				'SELECT `ID` FROM `' . $wpdb->sgs_visitors . '`
+					WHERE `ip` = %s
+				;',
+				$ip
+			)
+		);
+
+		return $id->ID;
 	}
 
 }

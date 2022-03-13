@@ -1,7 +1,7 @@
 <?php
 namespace SiteGround_Optimizer\DNS;
 
-use SiteGround_Optimizer\Helper\Helper;
+use SiteGround_Helper\Helper_Service;
 
 /**
  *
@@ -127,7 +127,7 @@ class Cloudflare {
 
 		// Prepare path and data.
 		$data = array(
-			'name'  => preg_replace( '(^https?://(www\.)?)', '', untrailingslashit( Helper::get_home_url() ) ),
+			'name'  => preg_replace( '(^https?://(www\.)?)', '', untrailingslashit( Helper_Service::get_home_url() ) ),
 			'match' => 'all',
 		);
 
@@ -239,7 +239,7 @@ class Cloudflare {
 			$this->get_path( 'worker' ),
 			'POST',
 			array(
-				'pattern'                 => untrailingslashit( Helper::get_home_url() ) . '/*',
+				'pattern'                 => untrailingslashit( Helper_Service::get_home_url() ) . '/*',
 				'script'                  => $this->worker,
 				'request_limit_fail_open' => true,
 			)
@@ -398,5 +398,68 @@ class Cloudflare {
 				'purge_everything' => true,
 			)
 		);
+	}
+
+	/**
+	 * Check if CloudFlare is enabled.
+	 *
+	 * @since  7.0.0
+	 *
+	 * @return boolean Returns true if CloudFlare is enabled, false if not.
+	 */
+	public static function has_cloudflare() {
+		// Check if the user is hosted on SiteGround.
+		if ( ! Helper_Service::is_siteground() ) {
+			return false;
+		}
+
+		// Check for all domain entries on the SiteGround App, listing cf_enable variable and the name of the app.
+		$result = exec( 'site-tools-client domain-all list -f cf_enabled,name', $stc_output );
+
+		// Bail if there's an issue with the execution of the shell script.
+		if ( empty( $result ) ) {
+			return false;
+		}
+
+		// Bail if the output is empty.
+		if ( empty( $stc_output ) ) {
+			return false;
+		}
+
+		// Iterate each line of the output.
+		foreach ( $stc_output as $line ) {
+			// Break each line into chunks, one with the domain and one with the cf_enabled status.
+			$str_arr = explode( ' ', $line );
+
+			// Bail if one of the variables is empty.
+			if (
+				empty( $str_arr[0] ) ||
+				empty( $str_arr[1] )
+			) {
+				continue;
+			}
+
+			// Parse output into php variables.
+			parse_str( $str_arr[1], $domain );
+			parse_str( $str_arr[0], $cf_enabled );
+
+			// Bail if cf_enabled is missing or equal to 0.
+			if (
+				empty( $cf_enabled['cf_enabled'] ) ||
+				'0' === $cf_enabled
+			) {
+				continue;
+			}
+
+			// Remove all subdomains from the url, except www.
+			preg_match( "/^(?:https?:\/\/)?(?:www\.)?([^\/]+)/im", get_home_url(), $matches );
+
+			// Return true if the domain is the same as the one of the current website.
+			if ( $matches[1] === $domain['name'] ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

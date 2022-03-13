@@ -33,3 +33,6 @@ require_once ABSPATH . 'wp-settings.php';
 
 define('DISALLOW_FILE_EDIT', true);
 define('WP_ALLOW_REPAIR', 'true');
+@ini_set( 'upload_max_size' , '300M' );
+@ini_set( 'post_max_size', '300M');
+@ini_set( 'memory_limit', '300M' );

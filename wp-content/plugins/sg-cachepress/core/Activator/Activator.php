@@ -14,13 +14,6 @@ class Activator {
 	 * @since 5.0.9
 	 */
 	public function activate() {
-		if ( ! file_exists( "/Z" ) ) {
-			echo '<div class="notice notice-error">' . esc_html__( 'The SiteGround Optimizer plugin is designed to work only on SiteGround Servers. We\'ve deactivated it because it may render your site blank if used on another environment.', 'sg-cachepress' ) . '</div>';
-
-			// Adding @ before will prevent XDebug output.
-			@trigger_error( esc_html__( 'The SiteGround Optimizer plugin is designed to work only on SiteGround Servers.', 'sg-cachepress' ), E_USER_ERROR );
-		}
-
 		$this->maybe_create_memcache_dropin();
 
 		$install_service = new Install_Service();

@@ -10,7 +10,7 @@
  * Plugin Name:       SiteGround Security
  * Plugin URI:        https://siteground.com
  * Description:       SiteGround Security is the all-in-one security solution for your WordPress website. Protect login & limit login attempts. User activity log. Lock system folders & more.
- * Version:           1.1.3
+ * Version:           1.2.3
  * Author:            SiteGround
  * Author URI:        https://www.siteground.com
  * Text Domain:       sg-security
@@ -31,7 +31,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 // Define version constant.
 if ( ! defined( __NAMESPACE__ . '\VERSION' ) ) {
-	define( __NAMESPACE__ . '\VERSION', '1.1.3' );
+	define( __NAMESPACE__ . '\VERSION', '1.2.3' );
 }
 
 // Define slug constant.

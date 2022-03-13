@@ -3,9 +3,9 @@ Contributors: cozmoslabs, razvan.mo, madalin.ungureanu, sareiodata, cristophor
 Donate link: https://www.translatepress.com/
 Tags: translate, translation, multilingual, automatic translation, bilingual, front-end translation, google translate, language
 Requires at least: 3.1.0
-Tested up to: 5.8.2
+Tested up to: 5.9.1
 Requires PHP: 5.6.20
-Stable tag: 2.1.8
+Stable tag: 2.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -140,6 +140,31 @@ For more information please check out our [documentation](https://translatepress
 
 
 == Changelog ==
+= 2.2.2 =
+* Fixed issue in WP 5.9 causing Invalid Data SQL Error reports
+* Improved page load time for WooCommerce websites on translated languages
+* Improved admin notices regarding database optimization
+
+= 2.2.1 =
+* Added Advanced option to adjust hreflang to hide region independent language tags or country locale tags
+* Added missing flags for Tamil (Sri Lanka), Spanish (Ecuador), Spanish (Dominican Republic), Amharic
+* Improved Automatic Translation tab checking for translation API key validity
+* Improved Plugins interface action buttons for TP by taking into account free/pro status
+* Fixed error management interface displaying raw HTML instead of formatted HTML
+* Fixed notice in admin for an edge case
+* Fixed notice in Test API Page when test request resulted in WP Error
+
+= 2.2.0 =
+* Fixed language slug incorrectly ending up in .htaccess in some cases
+* Fixed issue in hreflang tags when using certain custom language codes
+* Added missing Persian (Afghanistan) flag
+
+= 2.1.9 =
+* Improved database optimization tool by adding option to remove CDATA and untranslated links from TP custom tables
+* Fixed database optimization tool not starting in some cases
+* Fixed edge case error unknown format specifier on php 8 related to automatic translation of gettext strings
+* Added noindex tag to Translation Editor pages to prevent duplicate indexing
+
 = 2.1.8 =
 * Added language formality setting to be used in Automatic Translation
 * Added Advanced option for enabling clickable shortcode language switcher

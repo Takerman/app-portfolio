@@ -3,6 +3,7 @@ namespace SG_Security\Rest;
 
 use SG_Security\Block_Service\Block_Service;
 use SG_Security\Helper\Helper;
+use SG_Security\Activity_Log\Activity_Log_Weekly_Emails;
 
 /**
  * Rest Helper class that manages all of the options.
@@ -21,6 +22,7 @@ class Rest_Helper_Activity extends Rest_Helper {
 	 */
 	public function __construct() {
 		$this->block_service = new Block_Service();
+		$this->weekly_emails = new Activity_Log_Weekly_Emails();
 	}
 
 	/**
@@ -56,6 +58,12 @@ class Rest_Helper_Activity extends Rest_Helper {
 	 */
 	public function get_unknown_filters( $request ) {
 		global $wpdb;
+
+		// Bail if table doesn't exist.
+		if ( ! Helper::table_exists( $wpdb->sgs_log ) ) {
+			return array();
+		}
+
 		$db_fields = $wpdb->get_results( // phpcs:ignore
 			'SELECT `ts`, `code`, `visitor_type`, `ip` FROM `' . $wpdb->sgs_log . '`
 				WHERE `visitor_type` != "user"
@@ -174,6 +182,12 @@ class Rest_Helper_Activity extends Rest_Helper {
 	 */
 	public function get_registered_activity_filters( $request, $visitors ) {
 		global $wpdb;
+
+		// Bail if table doesn't exist.
+		if ( ! Helper::table_exists( $wpdb->sgs_log ) ) {
+			return array();
+		}
+
 		$db_fields = $wpdb->get_results( // phpcs:ignore
 			'SELECT `ts`, `activity`, `visitor_id` FROM `' . $wpdb->sgs_log . '`
 				WHERE `visitor_type` = "user"
@@ -271,6 +285,21 @@ class Rest_Helper_Activity extends Rest_Helper {
 		$limited_view = $this->validate_and_get_option_value( $request, 'limitedView', false ); // phpcs:ignore
 		$data         = array();
 
+		// Bail if table doesn't exist.
+		if ( ! Helper::table_exists( $wpdb->sgs_visitors ) ) {
+			// Send the options to react app.
+			self::send_json(
+				'',
+				0,
+				array(
+					'entries' => $data,
+					'filters' => $this->get_unknown_filters( $request, array() ),
+					'page'    => false === $paged ? 1 : $paged,
+					'pages'   => 1,
+				)
+			);
+		}
+
 		$query = $this->get_query( $request );
 		$entries = $wpdb->get_results( $query, ARRAY_A ); // phpcs:ignore
 
@@ -323,6 +352,20 @@ class Rest_Helper_Activity extends Rest_Helper {
 		$data         = array();
 		$query        = $this->get_query( $request, true );
 
+		// Bail if table doesn't exist.
+		if ( ! Helper::table_exists( $wpdb->sgs_visitors ) ) {
+			// Send the options to react app.
+			self::send_json(
+				'',
+				0,
+				array(
+					'entries' => $data,
+					'filters' => $this->get_unknown_filters( $request, array() ),
+					'page'    => false === $paged ? 1 : $paged,
+					'pages'   => 1,
+				)
+			);
+		}
 
 		$entries = $wpdb->get_results( $query, ARRAY_A ); // phpcs:ignore
 
@@ -407,7 +450,7 @@ class Rest_Helper_Activity extends Rest_Helper {
 		}
 
 		return array(
-			'nicename'     => $user->data->user_nicename,
+			'nicename'     => $user->data->user_login,
 			'blocked'      => $visitor_data->block,
 			'do_not_block' => 0,
 			'ts'           => $visitor_data->blocked_on,
@@ -508,7 +551,6 @@ class Rest_Helper_Activity extends Rest_Helper {
 		$params = $request->get_params( $request );
 		$body   = json_decode( $request->get_body(), true );
 
-
 		if ( empty( $params['id'] ) ) {
 			self::send_json(
 				__( 'Missing ID param!', 'sg-security' ),
@@ -519,7 +561,8 @@ class Rest_Helper_Activity extends Rest_Helper {
 		$response = $this->block_service->block_ip( $params['id'], $body['block'] );
 
 		self::send_json(
-			$response['message']
+			$response['message'],
+			$response['result']
 		);
 	}
 
@@ -531,7 +574,10 @@ class Rest_Helper_Activity extends Rest_Helper {
 	 * @param  Object $request The request object.
 	 */
 	public function block_user( $request ) {
+		// Get the request params.
 		$params = $request->get_params( $request );
+		// Get the request body.
+		$body = json_decode( $request->get_body(), true );
 
 		if ( empty( $params['id'] ) ) {
 			self::send_json(
@@ -540,8 +586,18 @@ class Rest_Helper_Activity extends Rest_Helper {
 			);
 		}
 
-		$response = $this->block_service->change_user_role( $params['id'] );
+		switch ( $body['block'] ) {
+			// Unblock request.
+			case 0:
+				$response = $this->block_service->unblock_user( $params['id'] );
+				break;
+			// Block request.
+			case 1:
+				$response = $this->block_service->change_user_role( $params['id'] );
+				break;
+		}
 
+		// Send the response.
 		self::send_json(
 			$response['message'],
 			$response['result']
@@ -621,6 +677,51 @@ class Rest_Helper_Activity extends Rest_Helper {
 			1,
 			array(
 				'entries' => $data,
+			)
+		);
+	}
+
+	/**
+	 * Get the emails set to receive weekly report email.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @param Object $request The request object.
+	 */
+	public function get_weekly_report_recipients( $request ) {
+		$data = $this->weekly_emails->weekly_report_receipients();
+
+		// Send the options to react app.
+		self::send_json(
+			'',
+			1,
+			array(
+				'entries'    => $data,
+				'max_emails' => 5,
+			)
+		);
+	}
+
+	/**
+	 * Manage the weekly report notification email addresses.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @param Object $request The request object.
+	 */
+	public function manage_notification_emails( $request ) {
+		$data = json_decode( $request->get_body(), true );
+
+		// Update the option.
+		update_option( 'sg_security_notification_emails', array_unique( array_column( $data['entries'], 'email' ) ) );
+
+		self::send_json(
+			__( 'Notification emails updated.', 'sg-security' ),
+			1,
+			array(
+				'weeklyReports' => array(
+					$this->weekly_emails->weekly_report_receipients(),
+				),
 			)
 		);
 	}

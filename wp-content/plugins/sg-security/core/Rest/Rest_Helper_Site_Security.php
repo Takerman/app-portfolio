@@ -20,7 +20,6 @@ class Rest_Helper_Site_Security extends Rest_Helper {
 		$this->readme_service      = new Readme_Service();
 		$this->rest_helper_options = new Rest_Helper_Options();
 		$this->directory_service   = new Directory_Service();
-		$this->headers_service     = new Headers_Service();
 		$this->hsts_service        = new Hsts_Service();
 		$this->xmlrpc_service      = new Xmlrpc_Service();
 	}
@@ -101,10 +100,6 @@ class Rest_Helper_Site_Security extends Rest_Helper {
 	 * @param  object $request Request data.
 	 */
 	public function xss_protection( $request ) {
-		$value = $this->validate_and_get_option_value( $request, 'xss_protection' );
-
-		$this->headers_service->toggle_rules( $value );
-
 		$this->rest_helper_options->change_option_from_rest( $request, 'xss_protection' );
 	}
 

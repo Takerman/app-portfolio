@@ -96,15 +96,16 @@ class WPForms_Form_Handler {
 		}
 
 		// Check whether we have any forms other than the currently created one.
-		$other_form = wpforms()->form->get(
+		$other_form = $this->get(
 			'',
 			[
-				'order'          => 'id',
-				'orderby'        => 'desc',
-				'posts_per_page' => 1,
-				'nopaging'       => false,
-				'fields'         => 'ids',
-				'post__not_in'   => [ $form_id ],
+				'posts_per_page'         => 1,
+				'nopaging'               => false,
+				'fields'                 => 'ids',
+				'post__not_in'           => [ $form_id ],
+				'update_post_meta_cache' => false,
+				'update_post_term_cache' => false,
+				'cap'                    => false,
 			]
 		);
 
@@ -162,7 +163,7 @@ class WPForms_Form_Handler {
 		}
 
 		 if ( ! empty( $args['cap'] ) && ! wpforms_current_user_can( $args['cap'], $id ) ) {
-		 	return false;
+			return false;
 		 }
 
 		// @todo add $id array support
@@ -180,6 +181,7 @@ class WPForms_Form_Handler {
 	 * Fetch multiple forms.
 	 *
 	 * @since 1.5.8
+	 * @since 1.7.2 Added support for $args['search']['term'] - search form title or description by term.
 	 *
 	 * @param array $args Additional arguments array.
 	 *
@@ -187,7 +189,16 @@ class WPForms_Form_Handler {
 	 */
 	protected function get_multiple( $args = [] ) {
 
-		$args = apply_filters( 'wpforms_get_multiple_forms_args', $args );
+		/**
+		 * Allow developers to filter the get_multiple() arguments.
+		 *
+		 * @since 1.5.8
+		 *
+		 * @param array $args Arguments array. Almost the same as for `get_posts()` function.
+		 *                    Additional element:
+		 *                    ['search']['term'] - search the form title or description by term.
+		 */
+		$args = (array) apply_filters( 'wpforms_get_multiple_forms_args', $args );
 
 		// No ID provided, get multiple forms.
 		$defaults = [
@@ -199,9 +210,38 @@ class WPForms_Form_Handler {
 
 		$args = wp_parse_args( $args, $defaults );
 
-		$args['post_type'] = 'wpforms';
+		$args['post_type']        = 'wpforms';
+		$args['suppress_filters'] = false;
 
-		return get_posts( $args );
+		/**
+		 * Allow developers to execute some code before get_posts() call inside \WPForms_Form_Handler::get_multiple().
+		 *
+		 * @since 1.7.2
+		 *
+		 * @param array $args Arguments of the `get_posts()`.
+		 */
+		do_action( 'wpforms_form_handler_get_multiple_before_get_posts', $args );
+
+		$forms = get_posts( $args );
+
+		/**
+		 * Allow developers to execute some code right after get_posts() call inside \WPForms_Form_Handler::get_multiple().
+		 *
+		 * @since 1.7.2
+		 *
+		 * @param array $args  Arguments of the `get_posts`.
+		 * @param array $forms Forms data. Result of getting multiple forms.
+		 */
+		do_action( 'wpforms_form_handler_get_multiple_after_get_posts', $args, $forms );
+
+		/**
+		 * Allow developers to filter the result of get_multiple().
+		 *
+		 * @since 1.7.2
+		 *
+		 * @param array $forms Result of getting multiple forms.
+		 */
+		return apply_filters( 'wpforms_form_handler_get_multiple_forms_result', $forms );
 	}
 
 	/**
@@ -286,7 +326,7 @@ class WPForms_Form_Handler {
 		];
 
 		// Prevent $args['post_content'] from overwriting predefined $form_content.
-		// Typically it happens if the form was created with a form template and a user was not redirected to a form editing screen afterwards.
+		// Typically, it happens if the form was created with a form template and a user was not redirected to a form editing screen afterwards.
 		// This is only possible if a user has 'wpforms_create_forms' and no 'wpforms_edit_own_forms' capability.
 		if ( isset( $args['post_content'] ) && is_array( json_decode( wp_unslash( $args['post_content'] ), true ) ) ) {
 			$args['post_content'] = wpforms_encode( array_replace_recursive( $form_content, json_decode( wp_unslash( $args['post_content'] ), true ) ) );

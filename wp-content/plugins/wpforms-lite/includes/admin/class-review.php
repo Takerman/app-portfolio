@@ -192,7 +192,7 @@ class WPForms_Review {
 	 */
 	public function review_dismiss() {
 
-		_deprecated_function( __CLASS__ . '::' . __METHOD__, '1.6.7.1 of the WPForms plugin' );
+		_deprecated_function( __METHOD__, '1.6.7.1 of the WPForms plugin' );
 
 		$review              = get_option( 'wpforms_review', [] );
 		$review['time']      = time();

@@ -4,6 +4,8 @@ namespace SiteGround_Optimizer\Cli;
 use SiteGround_Optimizer\Options\Options;
 use SiteGround_Optimizer\Htaccess\Htaccess;
 use SiteGround_Optimizer\Message_Service\Message_Service;
+use SiteGround_Optimizer\File_Cacher\File_Cacher;
+
 /**
  * WP-CLI: wp sg optimize {option} enable/disable.
  *
@@ -30,6 +32,7 @@ class Cli_Optimizer {
 	 * ---
 	 * options:
 	 *  - dynamic-cache
+	 *  - file-cache
 	 *  - autoflush-cache
 	 *  - purge-rest-cache
 	 *  - mobile-cache
@@ -87,6 +90,8 @@ class Cli_Optimizer {
 				return $this->optimize_database( $args[1] );
 			case 'mobile-cache':
 				return $this->optimize_mobile_cache( $args[1] );
+			case 'file-cache':
+				return $this->optimize_file_cache( $args[1] );
 		}
 	}
 
@@ -222,4 +227,25 @@ class Cli_Optimizer {
 		return true === $result ? \WP_CLI::success( $message ) : \WP_CLI::error( $message );
 	}
 
+	/**
+	 * Enable/Disable File Caching feature.
+	 *
+	 * @since  7.0.0
+	 *
+	 * @param  string $action String, containing the action that is to be used, "enable" or "disable"
+	 *
+	 * @return void
+	 */
+	public function optimize_file_cache( $action ) {
+			// Check if the option should be enabled or disabled.
+			$value = 'enable' === $action ? 1 : 0;
+
+			// Invoke managment method and try disabling/enabling the option.
+			$result = File_Cacher::toggle_file_cache( $value );
+
+			// Get the correct message for the user based on the result.
+			$message = Message_Service::get_response_message( $result['status'], 'file_caching', $value );
+
+			return true === $result['status'] ? \WP_CLI::success( $message ) : \WP_CLI::error( $message );
+	}
 }

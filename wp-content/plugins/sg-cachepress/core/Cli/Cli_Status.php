@@ -44,6 +44,7 @@ class Cli_Status {
 	 *  - ssl-fix
 	 *  - autoflush
 	 *  - dynamic-cache
+	 *  - file-cache
 	 *  - google-fonts
 	 *  - database-optimization
 	 *  - browser-caching
@@ -73,6 +74,7 @@ class Cli_Status {
 		$mapping = array(
 			'autoflush'                    => 'siteground_optimizer_autoflush_cache',
 			'dynamic-cache'                => 'siteground_optimizer_enable_cache',
+			'file-cache'                   => 'siteground_optimizer_file_caching',
 			'memcache'                     => 'siteground_optimizer_enable_memcached',
 			'ssl-fix'                      => 'siteground_optimizer_fix_insecure_content',
 			'html'                         => 'siteground_optimizer_optimize_html',
@@ -108,7 +110,7 @@ class Cli_Status {
 		}
 
 		// Very ugly way to get meaningful message.
-		$message = Message_Service::get_response_message( $result, str_replace( 'siteground_optimizer_', '', $mapping[ $type ] ), null );
+		$message = Message_Service::get_response_message( $status, str_replace( 'siteground_optimizer_', '', $mapping[ $type ] ), null );
 
 		// The optimization is disabled.
 		if ( false === $status ) {

@@ -226,7 +226,7 @@ class PoParser
 
                     $entry[$key] = isset($entry[$key]) ? $entry[$key] : array('msgid' => array(), 'msgstr' => array());
 
-                    if (@strpos($key, 'obsolete') !== false) {
+                    if (strpos($key, 'obsolete') !== false) {
                         $entry['obsolete'] = true;
                         switch ($tmpKey) {
                             case 'msgid':
@@ -293,7 +293,7 @@ class PoParser
                     break;
 
                 default:
-                    if (@strpos($key, 'msgstr[') !== false) {
+                    if (strpos($key, 'msgstr[') !== false) {
                         // translated-string-case-n
                         $state = $key;
                         $entry[$state][] = $data;
@@ -303,7 +303,7 @@ class PoParser
                             case 'msgctxt':
                             case 'msgid':
                             case 'msgid_plural':
-                            case (@strpos($state, 'msgstr[') !== false):
+                            case (strpos($state, 'msgstr[') !== false):
                                 if (is_string($entry[$state])) {
                                     // Convert it to array
                                     $entry[$state] = array($entry[$state]);
@@ -631,7 +631,7 @@ class PoParser
                 if ($isPlural) {
                     $noTranslation = true;
                     foreach ($entry as $key => $value) {
-                        if (@strpos($key, 'msgstr[') === false) {
+                        if (strpos($key, 'msgstr[') === false) {
                             continue;
                         }
                         $output .= $key." ";

@@ -17,12 +17,12 @@ class Activity_Log_Users extends Activity_Log_Helper {
 		$activity = __( 'User Login', 'sg-security' );
 		$this->log_event(
 			array(
-				'activity'     => $activity,
-				'description'  => $this->get_user_description( $user->ID, $activity ),
-				'object_id'    => $user->ID,
-				'user_id'      => $user->ID,
-				'type'         => 'user',
-				'action'       => 'login',
+				'activity'    => $activity,
+				'description' => $this->get_user_description( $user->ID, $activity ),
+				'object_id'   => $user->ID,
+				'user_id'     => $user->ID,
+				'type'        => 'user',
+				'action'      => 'login',
 			)
 		);
 	}
@@ -38,12 +38,12 @@ class Activity_Log_Users extends Activity_Log_Helper {
 		$activity = __( 'User logout', 'sg-security' );
 		$this->log_event(
 			array(
-				'activity'     => $activity,
-				'description'  => $this->get_user_description( $id, $activity ),
-				'object_id'    => $id,
-				'user_id'      => $id,
-				'type'         => 'user',
-				'action'       => 'logout',
+				'activity'    => $activity,
+				'description' => $this->get_user_description( $id, $activity ),
+				'object_id'   => $id,
+				'user_id'     => $id,
+				'type'        => 'user',
+				'action'      => 'logout',
 			)
 		);
 	}
@@ -62,7 +62,6 @@ class Activity_Log_Users extends Activity_Log_Helper {
 				'activity'    => $activity,
 				'description' => $this->get_user_description( $id, $activity ),
 				'object_id'   => $id,
-				'user_id'     => $id,
 				'type'        => 'user',
 				'action'      => 'delete',
 			)
@@ -80,12 +79,11 @@ class Activity_Log_Users extends Activity_Log_Helper {
 		$activity = __( 'User Register', 'sg-security' );
 		$this->log_event(
 			array(
-				'activity'     => $activity,
-				'description'  => $this->get_user_description( $id, $activity ),
-				'object_id'    => $id,
-				'user_id'      => $id,
-				'type'         => 'user',
-				'action'       => 'register',
+				'activity'    => $activity,
+				'description' => $this->get_user_description( $id, $activity ),
+				'object_id'   => $id,
+				'type'        => 'user',
+				'action'      => 'register',
 			)
 		);
 	}
@@ -143,6 +141,6 @@ class Activity_Log_Users extends Activity_Log_Helper {
 	 */
 	public function get_user_description( $user_id, $activity ) {
 		$user = get_user_by( 'id', $user_id );
-		return $activity . ' - ' . $user->data->user_nicename;
+		return $activity . ' - ' . $user->data->user_login;
 	}
 }

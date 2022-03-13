@@ -93,7 +93,7 @@ class ListTable extends WP_List_Table {
 	 */
 	private function get_items_type() {
 
-		return filter_input( INPUT_GET, 'log_type', FILTER_SANITIZE_STRING );
+		return filter_input( INPUT_GET, 'log_type', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 	}
 
 	/**
@@ -119,7 +119,7 @@ class ListTable extends WP_List_Table {
 	 */
 	private function get_request_search_query() {
 
-		return filter_input( INPUT_GET, 's', FILTER_SANITIZE_STRING );
+		return filter_input( INPUT_GET, 's', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 	}
 
 	/**

@@ -1,9 +1,12 @@
 <?php
 namespace SiteGround_Optimizer\Supercacher;
 
-use SiteGround_Optimizer\Front_End_Optimization\Front_End_Optimization;
 use SiteGround_Optimizer\DNS\Cloudflare;
+use SiteGround_Optimizer\File_Cacher\File_Cacher;
+use SiteGround_Optimizer\Front_End_Optimization\Front_End_Optimization;
 use SiteGround_Optimizer\Options\Options;
+use SiteGround_Helper\Helper_Service;
+
 /**
  * SG CachePress main plugin class
  */
@@ -17,7 +20,7 @@ class Supercacher {
 	public $children = array(
 		'supercacher_posts'    => array(
 			array(
-				'option'   => 'purge_post_save',
+				'option'   => 'purge_all_post_cache',
 				'hook'     => 'save_post',
 				'priority' => 1,
 			),
@@ -191,6 +194,11 @@ class Supercacher {
 	 * @return bool True if the cache is deleted, false otherwise.
 	 */
 	public static function purge_cache_request( $url, $include_child_paths = true ) {
+		// Check if the user is hosted on SiteGround.
+		if ( ! Helper_Service::is_siteground() ) {
+			return;
+		}
+
 		// Bail if the url is empty.
 		if ( empty( $url ) ) {
 			return;
@@ -228,6 +236,11 @@ class Supercacher {
 			$output,
 			$status
 		);
+
+		// Clear the file cache as well, if enabled.
+		if ( Options::is_enabled( 'siteground_optimizer_file_caching' ) ) {
+			File_Cacher::get_instance()->purge_cache_request( $url, $include_child_paths );
+		}
 
 		do_action( 'siteground_optimizer_flush_cache', $url );
 
@@ -299,8 +312,10 @@ class Supercacher {
 			return;
 		}
 
-		// Add slash at the end of the url.
-		$url = trailingslashit( $url );
+		// Add slash at the end of the url if it does not have get parameters.
+		if ( ! strpos( $url, '?' ) ) {
+			$url = trailingslashit( $url );
+		}
 
 		// Check if the url is excluded for dynamic checks only.
 		if ( false === $is_cloudflare_check ) {

@@ -18,6 +18,17 @@
                                 <input type="hidden" name="page" value="trp_remove_duplicate_rows">
                                 <input type="hidden" name="trp_rm_batch" value="1">
                                 <input type="hidden" name="trp_rm_duplicates" value="<?php echo esc_attr( $this->settings['translation-languages'][0] ); ?>">
+
+                                <input type="checkbox" name="trp_rm_cdata_original_and_dictionary" id="trp_rm_cdata_original_and_dictionary" checked><label for="trp_rm_cdata_original_and_dictionary"><?php esc_attr_e( 'Remove CDATA for original and dictionary strings', 'translatepress-multilingual' ); ?></label></input><br>
+                                <p class="description">
+                                    <?php echo wp_kses ( __( 'Removes CDATA from trp_original_strings and trp_dictionary_* tables.<br>This type of content should not be detected by TranslatePress. It might have been introduced in the database in older versions of the plugin.', 'translatepress-multilingual' ), array( 'br' => array() )  ); ?>
+                                </p>
+                                <br>
+                                <input type="checkbox" name="trp_rm_untranslated_links" id="trp_rm_untranslated_links" checked><label for="trp_rm_untranslated_links"><?php esc_attr_e( 'Remove untranslated links from dictionary tables', 'translatepress-multilingual' ); ?></label></input><br>
+                                <p class="description">
+                                    <?php echo wp_kses ( __( 'Removes untranslated links and images from all trp_dictionary_* tables. These tables contain translations for user-inputted strings such as post content, post title, menus etc.', 'translatepress-multilingual' ), array( 'br' => array() )  ); ?>
+                                </p>
+                                <br>
                                 <input type="checkbox" name="trp_rm_duplicates_gettext" id="trp_rm_duplicates_gettext" checked><label for="trp_rm_duplicates_gettext"><?php esc_attr_e( 'Remove duplicate rows for gettext strings', 'translatepress-multilingual' ); ?></label></input><br>
                                 <p class="description">
                                     <?php echo wp_kses ( __( 'Cleans up all trp_gettext_* tables of duplicate rows. These tables contain translations for themes and plugin strings.', 'translatepress-multilingual' ), array( 'br' => array() )  ); ?>

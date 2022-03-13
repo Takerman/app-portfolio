@@ -23,8 +23,9 @@
                 "phpunit/phpunit": "~4.0"
             },
             "time": "2016-09-08T12:53:20+00:00",
+            "default-branch": true,
             "type": "package",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "CharlesRumley\\": "src/",
@@ -48,6 +49,10 @@
                 "php",
                 "translation"
             ],
+            "support": {
+                "issues": "https://github.com/charles-rumley/php-po-to-json/issues",
+                "source": "https://github.com/charles-rumley/php-po-to-json/tree/master"
+            },
             "install-path": "../charles-rumley/php-po-to-json"
         },
         {
@@ -69,8 +74,9 @@
                 "php": ">=5.3"
             },
             "time": "2019-03-20T00:55:58+00:00",
+            "default-branch": true,
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "PHPGangsta/GoogleAuthenticator.php"
@@ -94,6 +100,10 @@
                 "rfc6238",
                 "totp"
             ],
+            "support": {
+                "issues": "https://github.com/PHPGangsta/GoogleAuthenticator/issues",
+                "source": "https://github.com/PHPGangsta/GoogleAuthenticator"
+            },
             "install-path": "../phpgangsta/googleauthenticator"
         },
         {
@@ -160,21 +170,25 @@
                 "random pattern",
                 "random string"
             ],
+            "support": {
+                "issues": "https://github.com/antonioribeiro/random/issues",
+                "source": "https://github.com/antonioribeiro/random/tree/master"
+            },
             "install-path": "../pragmarx/random"
         },
         {
             "name": "pragmarx/recovery",
-            "version": "v0.2.0",
-            "version_normalized": "0.2.0.0",
+            "version": "v0.2.1",
+            "version_normalized": "0.2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/antonioribeiro/recovery.git",
-                "reference": "03db473434ce84212b8991020929b162fe15f01f"
+                "reference": "b5ce4082f059afac6761714a84497816f45271cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/antonioribeiro/recovery/zipball/03db473434ce84212b8991020929b162fe15f01f",
-                "reference": "03db473434ce84212b8991020929b162fe15f01f",
+                "url": "https://api.github.com/repos/antonioribeiro/recovery/zipball/b5ce4082f059afac6761714a84497816f45271cc",
+                "reference": "b5ce4082f059afac6761714a84497816f45271cc",
                 "shasum": ""
             },
             "require": {
@@ -189,7 +203,7 @@
             "suggest": {
                 "tightenco/collect": "Allows to generate recovery codes as collections"
             },
-            "time": "2021-03-23T22:57:38+00:00",
+            "time": "2021-08-15T12:26:51+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -227,6 +241,10 @@
                 "recovery codes",
                 "two factor auth"
             ],
+            "support": {
+                "issues": "https://github.com/antonioribeiro/recovery/issues",
+                "source": "https://github.com/antonioribeiro/recovery/tree/v0.2.1"
+            },
             "install-path": "../pragmarx/recovery"
         },
         {
@@ -278,7 +296,97 @@
                 "i18n",
                 "po"
             ],
+            "support": {
+                "issues": "https://github.com/raulferras/PHP-po-parser/issues",
+                "source": "https://github.com/raulferras/PHP-po-parser/tree/master"
+            },
             "install-path": "../sepia/po-parser"
+        },
+        {
+            "name": "siteground/siteground-data",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.siteground.com/wordpress/siteground-data.git",
+                "reference": "c1281835d47feb1f43d93ffa500e04856498362b"
+            },
+            "time": "2022-02-08T14:32:06+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-4": {
+                    "SiteGround_Data\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Stanimir Stoyanov",
+                    "email": "stanimir.stoyanov@siteground.com"
+                }
+            ],
+            "install-path": "../siteground/siteground-data"
+        },
+        {
+            "name": "siteground/siteground-emails",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.siteground.com/wordpress/siteground-emails.git",
+                "reference": "93ca7a456317f6e7135a68198e560b1c6db22833"
+            },
+            "time": "2022-02-28T13:32:04+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-4": {
+                    "SiteGround_Emails\\": "src/"
+                }
+            },
+            "install-path": "../siteground/siteground-emails"
+        },
+        {
+            "name": "siteground/siteground-helper",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.siteground.com/wordpress/siteground-helper.git",
+                "reference": "b735bf5df36006a0e8435a6ba79b5b5cfa0e66dc"
+            },
+            "time": "2022-02-10T07:23:42+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-4": {
+                    "SiteGround_Helper\\": "src/"
+                }
+            },
+            "install-path": "../siteground/siteground-helper"
+        },
+        {
+            "name": "siteground/siteground-i18n",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.siteground.com/wordpress/siteground-i18n.git",
+                "reference": "b242d643714a172f4d000e3b6a05a6069c8dd30b"
+            },
+            "time": "2022-01-31T13:14:49+00:00",
+            "default-branch": true,
+            "type": "library",
+            "installation-source": "source",
+            "autoload": {
+                "psr-4": {
+                    "SiteGround_i18n\\": "src/"
+                }
+            },
+            "install-path": "../siteground/siteground-i18n"
         }
     ],
     "dev": true,

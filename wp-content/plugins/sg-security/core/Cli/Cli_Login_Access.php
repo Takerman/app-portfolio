@@ -69,7 +69,7 @@ class Cli_Login_Access {
 		}
 
 		// Bail if the value is not a valid IP address.
-		if ( ! filter_var( $args[1], FILTER_VALIDATE_IP ) ) {
+		if ( ! $this->filter_ip( $args[1]) ) {
 			\WP_CLI::error( 'Please, provide a valid IP address.' );
 		}
 
@@ -110,7 +110,7 @@ class Cli_Login_Access {
 		}
 
 		// Bail if the value is not a valid IP address.
-		if ( ! filter_var( $args[1], FILTER_VALIDATE_IP ) ) {
+		if ( ! $this->filter_ip( $args[1]) ) {
 			\WP_CLI::error( 'Please, provide a valid IP address.' );
 		}
 
@@ -151,5 +151,33 @@ class Cli_Login_Access {
 		foreach ( $list_arrays as $ips ) {
 			echo $ips . "\n"; // phpcs:ignore
 		}
+	}
+
+	/**
+	 * Filter, that checks if the passed variable is a valid IP address.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @param string $ip The passed IP by the user.
+	 *
+	 * @return bool      True, if the IP is valid, otherwise - false.
+	*/
+	public function filter_ip( $ip ) {
+		// Regex, that validates the IP, including wildcard.
+		$ip = explode( '/', $ip );
+
+		if ( ! filter_var( $ip[0], FILTER_VALIDATE_IP ) ) {
+			return false;
+		}
+
+		if ( count( $ip ) > 2 ) {
+			return false;
+		}
+
+		if ( isset( $ip[1] ) && ( intval( $ip[1] ) > 32 || intval( $ip[1] ) < 1 || ! is_numeric( $ip[1] ) ) ) {
+			return false;
+		}
+
+		return true;
 	}
 }

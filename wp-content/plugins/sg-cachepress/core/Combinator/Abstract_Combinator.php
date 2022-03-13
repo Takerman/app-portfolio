@@ -1,9 +1,10 @@
 <?php
 namespace SiteGround_Optimizer\Combinator;
 
-use SiteGround_Optimizer\Helper\Helper;
 use SiteGround_Optimizer\Options\Options;
 use SiteGround_Optimizer\Front_End_Optimization\Front_End_Optimization;
+use SiteGround_Helper\Helper_Service;
+
 /**
  * SG Abstract_Combinator main plugin class
  */
@@ -30,7 +31,7 @@ abstract class Abstract_Combinator {
 
 		// Setup wp filesystem.
 		if ( null === $this->wp_filesystem ) {
-			$this->wp_filesystem = Helper::setup_wp_filesystem();
+			$this->wp_filesystem = Helper_Service::setup_wp_filesystem();
 		}
 
 		$this->assets_dir = Front_End_Optimization::get_instance()->assets_dir;
@@ -50,8 +51,9 @@ abstract class Abstract_Combinator {
 		$url = Front_End_Optimization::remove_query_strings( $url );
 		// Get the original filepath.
 		$filepath = Front_End_Optimization::get_original_filepath( $url );
+
 		// Get the content of the file.
-		return $this->wp_filesystem->get_contents( $filepath );
+		return $this->wp_filesystem->get_contents( preg_replace( '~#038;(.*)~', '', $filepath ) );
 	}
 
 	/**
@@ -68,7 +70,7 @@ abstract class Abstract_Combinator {
 	public function create_temp_file_and_get_url( $content, $handle, $type = 'css' ) {
 		$style_hash = md5( implode( '', $content ) );
 		$new_file   = $this->assets_dir . 'siteground-optimizer-combined-' . $type . '-' . $style_hash . '.' . $type;
-		$url        = str_replace( ABSPATH, Helper::get_site_url(), $new_file );
+		$url        = str_replace( ABSPATH, Helper_Service::get_site_url(), $new_file );
 
 		$data = array(
 			'handle' => 'siteground-optimizer-combined-' . $type . '-' . $style_hash,
@@ -143,7 +145,7 @@ abstract class Abstract_Combinator {
 		$file_path = $dir . '/' . $hash . '.' . $type;
 
 		// Setup the WP Filesystem.
-		$wp_filesystem = Helper::setup_wp_filesystem();
+		$wp_filesystem = Helper_Service::setup_wp_filesystem();
 
 		// Check if cached version of the file exists.
 		if ( $wp_filesystem->exists( $file_path ) ) {

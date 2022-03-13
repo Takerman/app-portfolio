@@ -2,6 +2,8 @@
 namespace SG_Security\Custom_Login_Url;
 
 use SG_Security\Helper\Helper;
+use SiteGround_Helper\Helper_Service;
+
 /**
  * Custom_Login_Url class which disable the WordPress feed.
  */
@@ -158,10 +160,13 @@ class Custom_Login_Url {
 	 * Handle login.
 	 *
 	 * @since  1.1.0
-	 * @porps  iThemes Security
 	 */
 	private function handle_login() {
 		$action = isset( $_GET['action'] ) ? $_GET['action'] : '';
+
+		if ( 'rp' === $action ) {
+			return;
+		}
 
 		if ( 'postpass' === $action ) {
 			return;
@@ -219,7 +224,7 @@ class Custom_Login_Url {
 		}
 
 		// Redirect to 404 page.
-		wp_redirect( Helper::get_home_url() . $this->options['redirect'], 302 );
+		wp_redirect( Helper_Service::get_home_url() . $this->options['redirect'], 302 );
 		exit;
 	}
 
@@ -265,7 +270,7 @@ class Custom_Login_Url {
 	 * @param string $type The permissions type.
 	 */
 	private function set_permissions_cookie( $type ) {
-		$url_parts = parse_url( Helper::get_site_url() );
+		$url_parts = parse_url( Helper_Service::get_site_url() );
 		$home_path = trailingslashit( $url_parts['path'] );
 
 		setcookie(
@@ -381,7 +386,10 @@ class Custom_Login_Url {
 	 */
 	public function change_email_confirmation_url( $content, $email_data ) {
 		// Bail if the request is not personal data removal.
-		if ( 'remove_personal_data' !== $email_data['request']->action_name ) {
+		if (
+			'remove_personal_data' !== $email_data['request']->action_name &&
+			'export_personal_data' !== $email_data['request']->action_name
+		) {
 			return $content;
 		}
 
@@ -397,5 +405,28 @@ class Custom_Login_Url {
 			esc_url_raw( $confirm_url ),
 			$content
 		);
+	}
+
+	/**
+	 * Modify the WPDiscuz comment post login URL.
+	 *
+	 * @since  1.2.0
+	 *
+	 * @param  string $login HTML code returned by the wpdiscuz_login_link filter.
+	 *
+	 * @return string $login modified HTML code with the SGS token added to the login link.
+	 */
+	public function custom_login_for_wpdiscuz( $login ) {
+		// Get the login URL from the HTML.
+		preg_match( '/<a\s+(?:[^>]*?\s+)?href=(["])(.*?)\1/', $login, $match );
+
+		// Add the token to it.
+		$new_url = add_query_arg( $this->token, $this->options['new_slug'], $match[2] );
+
+		// Replace the URL in the HTML.
+		$login = str_replace( $match[2], $new_url, $login);
+
+		// Return the updated HTML.
+		return $login;
 	}
 }

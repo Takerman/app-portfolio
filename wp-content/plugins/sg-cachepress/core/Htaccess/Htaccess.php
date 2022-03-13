@@ -2,7 +2,7 @@
 namespace SiteGround_Optimizer\Htaccess;
 
 use SiteGround_Optimizer;
-use SiteGround_Optimizer\Helper\Helper;
+use SiteGround_Helper\Helper_Service;
 
 class Htaccess {
 
@@ -74,7 +74,7 @@ class Htaccess {
 	 */
 	public function __construct() {
 		if ( null === $this->wp_filesystem ) {
-			$this->wp_filesystem = Helper::setup_wp_filesystem();
+			$this->wp_filesystem = Helper_Service::setup_wp_filesystem();
 		}
 
 		if ( null === $this->path ) {

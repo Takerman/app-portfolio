@@ -2,8 +2,8 @@
 namespace SiteGround_Optimizer\Install_Service;
 
 use SiteGround_Optimizer\Htaccess\Htaccess;
-use SiteGround_Optimizer\Helper\Helper;
 use SiteGround_Optimizer\Options\Options;
+use SiteGround_Helper\Helper_Service;
 
 class Install_5_3_0 extends Install {
 
@@ -31,7 +31,7 @@ class Install_5_3_0 extends Install {
 		$this->htaccess_service->disable( 'browser-caching' );
 		$this->htaccess_service->enable( 'browser-caching' );
 
-		if ( Helper::is_siteground() ) {
+		if ( Helper_Service::is_siteground() ) {
 			// $this->options_service->disable_option( 'siteground_optimizer_enable_browser_caching' );
 			$this->options_service->disable_option( 'siteground_optimizer_enable_gzip_compression' );
 

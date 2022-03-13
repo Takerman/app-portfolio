@@ -4,6 +4,7 @@ namespace SiteGround_Optimizer\Rest;
 use SiteGround_Optimizer\Ssl\Ssl;
 use SiteGround_Optimizer\Options\Options;
 use SiteGround_Optimizer\Heartbeat_Control\Heartbeat_Control;
+use SiteGround_Optimizer\File_Cacher\File_Cacher;
 
 /**
  * Rest Helper class that manages enviroment optimisation settings.
@@ -29,6 +30,8 @@ class Rest_Helper_Environment extends Rest_Helper {
 	public function ssl( $request ) {
 		// Validate rest request and prepare data.
 		$data = $this->validate_rest_request( $request, array( 'ssl_enabled' ) );
+
+		File_Cacher::get_instance()->refresh_config();
 
 		0 === $data['value'] ? $this->ssl_disable() : $this->ssl_enable( $data );
 	}

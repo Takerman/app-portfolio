@@ -4,7 +4,6 @@ namespace SG_Security\Cli;
 use SG_Security\Options_Service\Options_Service;
 use SG_Security\Htaccess_Service\Directory_Service;
 use SG_Security\Htaccess_Service\Xmlrpc_Service;
-use SG_Security\Htaccess_Service\Headers_Service;
 use SG_Security\Feed_Service\Feed_Service;
 use SG_Security\Loader\Loader;
 
@@ -55,8 +54,8 @@ class Cli_Secure {
 		switch ( $args[0] ) {
 			case 'protect-system-folders':
 			case 'xml-rpc':
-			case 'xss-protection':
 				return $this->htaccess_secure( $args );
+			case 'xss-protection':
 			case 'rss-atom-feed':
 			case 'hide-wordpress-version':
 			case 'plugins-themes-editor':
@@ -114,7 +113,6 @@ class Cli_Secure {
 		$classes = array(
 			'protect-system-folders' => 'Directory_Service',
 			'xml-rpc'                => 'Xmlrpc_Service',
-			'xss-protection'         => 'Headers_Service',
 		);
 
 		$class_name = 'SG_Security\Htaccess_Service\\' . $classes[ $args[0] ];

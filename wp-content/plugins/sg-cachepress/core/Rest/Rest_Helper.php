@@ -35,6 +35,7 @@ abstract class Rest_Helper {
 			'enable_cache',
 			'enable_memcached',
 			'autoflush_cache',
+			'file_caching',
 		),
 	);
 

@@ -24,7 +24,7 @@ class FieldHtmlId extends SmartTag {
 
 		$attributes = $this->get_attributes();
 
-		if ( ! isset( $attributes['field_html_id'] ) || ! is_numeric( $attributes['field_html_id'] ) || 0 > $attributes['field_html_id'] ) {
+		if ( ! isset( $attributes['field_html_id'] ) || ! is_numeric( $attributes['field_html_id'] ) || $attributes['field_html_id'] < 0 ) {
 			return '';
 		}
 
@@ -36,7 +36,7 @@ class FieldHtmlId extends SmartTag {
 
 		$value = ! isset( $fields[ $field_id ]['value'] ) || (string) $fields[ $field_id ]['value'] === ''
 			? '<em>' . esc_html__( '(empty)', 'wpforms-lite' ) . '</em>'
-			: wpforms_sanitize_textarea_field( $fields[ $field_id ]['value'] );
+			: wp_kses_post( wp_unslash( $fields[ $field_id ]['value'] ) );
 
 		/**
 		 * Modify value for the {field_html_id="123"} tag.

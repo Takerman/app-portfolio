@@ -86,6 +86,15 @@ class Ai1wm_Backups {
 	}
 
 	/**
+	 * Count all backup files
+	 *
+	 * @return integer
+	 */
+	public static function count_files() {
+		return count( Ai1wm_Backups::get_files() );
+	}
+
+	/**
 	 * Delete backup file
 	 *
 	 * @param  string  $file File name

@@ -2,10 +2,16 @@
 namespace SiteGround_Optimizer\Loader;
 
 use SiteGround_Optimizer;
+use SiteGround_Optimizer\File_Cacher\File_Cacher;
 use SiteGround_Optimizer\Options\Options;
 use SiteGround_Optimizer\Helper\Helper;
 use SiteGround_Optimizer\Helper\Factory_Trait;
 use SiteGround_Optimizer\Install_Service\Install_6_0_0;
+use SiteGround_Helper\Helper_Service;
+use SiteGround_i18n\i18n_Service;
+use SiteGround_Data\Settings_Page;
+use SiteGround_Data\Settings;
+
 /**
  * Loader functions and main initialization class.
  */
@@ -36,21 +42,46 @@ class Loader {
 			'images_optimizer'       => 'images_optimizer',
 			'images_optimizer_webp'  => 'images_optimizer',
 			'cli'                    => 'cli',
-			'config'                 => 'config',
 			'heartbeat_control'      => 'heartbeat_control',
 			'cloudflare'             => 'DNS',
 			'database_optimizer'     => 'database_optimizer',
 			'supercacher'            => 'supercacher',
 			'supercacher_helper'     => 'supercacher',
+			'file_cacher'            => 'file_cacher',
 			'ssl'                    => 'ssl',
 		),
 	);
+
 	/**
 	 * Create a new helper.
 	 */
 	public function __construct() {
 		$this->load_dependencies();
 		$this->add_hooks();
+		$this->add_settings();
+	}
+
+	/**
+	 * Add the data collector hooks.
+	 *
+	 * @since 7.0.0
+	 */
+	public function add_settings() {
+		$this->page = new Settings_Page();
+		$this->settings = new Settings();
+
+		add_action( 'admin_menu', array( $this->page, 'register_settings_page' ) );
+
+		add_action( 'admin_init', array( $this->page, 'add_setting_fields' ) );
+
+		add_filter( 'allowed_options', array( $this->page, 'change_allowed_options' ) );
+
+		// Register rest route.
+		add_action( 'rest_api_init', array( $this->page, 'register_rest_routes' ) );
+
+		if ( 1 === intval( get_option( 'siteground_data_consenst', 0 ) ) ) {
+			$this->settings->schedule_cron_job();
+		}
 	}
 
 	/**
@@ -100,7 +131,7 @@ class Loader {
 		// Check if plugin is installed.
 		add_action( 'plugins_loaded', array( $this->helper, 'is_plugin_installed' ) );
 		// Hide warnings in rest api.
-		add_action( 'init', array( $this->helper, 'hide_warnings_in_rest_api' ) );
+		add_action( 'init', array( new Helper_Service(), 'hide_warnings_in_rest_api' ) );
 		// Remove the https module from Site Heatlh, because our plugin provide the same functionality.
 		add_filter( 'site_status_tests', array( $this->helper, 'sitehealth_remove_https_status' ) );
 	}
@@ -162,7 +193,7 @@ class Loader {
 		}
 
 		// Register the stylesheets for the admin area.
-		add_action( 'admin_enqueue_scripts', array( $this->admin, 'enqueue_styles' ) );
+		add_action( 'admin_enqueue_scripts', array( $this->admin, 'enqueue_styles' ), 11 );
 		// Register the JavaScript for the admin area.
 		add_action( 'admin_enqueue_scripts', array( $this->admin, 'enqueue_scripts' ) );
 		// Add styles to WordPress admin head.
@@ -199,7 +230,6 @@ class Loader {
 		// Display notice for blocking plugins.
 		add_action( 'network_admin_notices', array( $this->modules, 'blocking_plugins_notice' ) );
 		// Check if the current domain has cloudflare.
-		add_action( 'wp_login', array( $this->modules, 'has_cloudflare' ), 1 );
 
 		// Disable certain modules if there are conflicting plugins installed.
 		if ( 1 === (int) get_option( 'disable_conflicting_modules', 0 ) ) {
@@ -248,10 +278,18 @@ class Loader {
 	public function add_front_end_optimization_hooks() {
 		// Check the size of the assets dir.
 		add_action( 'siteground_optimizer_check_assets_dir', array( $this->front_end_optimization, 'check_assets_dir' ) );
+		add_action( 'update_option_siteground_optimizer_combine_css', array( $this->front_end_optimization, 'check_assets_dir' ), 10, 0 );
 
 		// Schedule a cron job that will check for too big assets dir.
-		if ( ! wp_next_scheduled( 'siteground_optimizer_check_assets_dir' ) ) {
+		if (
+			! wp_next_scheduled( 'siteground_optimizer_check_assets_dir' ) &&
+			! Options::is_enabled( 'siteground_optimizer_file_caching' )
+		) {
 			wp_schedule_event( time(), 'daily', 'siteground_optimizer_check_assets_dir' );
+		}
+
+		if ( Options::is_enabled( 'siteground_optimizer_file_caching' ) ) {
+			wp_clear_scheduled_hook( 'siteground_optimizer_check_assets_dir' );
 		}
 
 		// Bail if is admin page and any builders are enabled.
@@ -277,6 +315,7 @@ class Loader {
 			// Add async attr to all scripts.
 			add_filter( 'script_loader_tag', array( $this->front_end_optimization, 'add_async_attribute' ), 10, 3 );
 		}
+
 	}
 
 	/**
@@ -334,7 +373,7 @@ class Loader {
 			foreach ( $child as $attriutes ) {
 
 				// Continue if option is in the exclude list.
-				if ( in_array( $child_name, $excluded_types ) ) {
+				if ( in_array( 'lazyload_'. $attriutes["option"], $excluded_types ) ) {
 					continue;
 				}
 
@@ -384,6 +423,7 @@ class Loader {
 			Options::is_enabled( 'siteground_optimizer_combine_javascript' ) ||
 			Options::is_enabled( 'siteground_optimizer_optimize_web_fonts' ) ||
 			Options::is_enabled( 'siteground_optimizer_dns_prefetch' ) ||
+			Options::is_enabled( 'siteground_optimizer_file_caching' ) ||
 			! empty( get_option( 'siteground_optimizer_dns_prefetch_urls', false ) ) ||
 			Options::is_enabled( 'siteground_optimizer_fix_insecure_content' )
 		) {
@@ -399,26 +439,30 @@ class Loader {
 	 * @since 5.9.0
 	 */
 	public function add_images_optimizer_hooks() {
-
-		add_action( 'wp_ajax_siteground_optimizer_start_image_optimization', array( $this->images_optimizer, 'start_optimization' ) );
-		add_action( 'wp_ajax_nopriv_siteground_optimizer_start_image_optimization', array( $this->images_optimizer, 'start_optimization' ) );
-		add_action( 'siteground_optimizer_start_image_optimization_cron', array( $this->images_optimizer, 'start_optimization' ) );
-
 		// Resize newly uploaded images.
 		if ( Options::is_enabled( 'siteground_optimizer_resize_images' ) ) {
 			add_action( 'wp_generate_attachment_metadata', array( $this->images_optimizer, 'resize' ) );
 		}
 
+		// Image optimizations are not available for non SG users.
+		if ( ! Helper_Service::is_siteground() ) {
+			return;
+		}
+
+		add_action( 'wp_ajax_siteground_optimizer_start_image_optimization', array( $this->images_optimizer, 'start_optimization' ) );
+		add_action( 'wp_ajax_nopriv_siteground_optimizer_start_image_optimization', array( $this->images_optimizer, 'start_optimization' ) );
+		add_action( 'siteground_optimizer_start_image_optimization_cron', array( $this->images_optimizer, 'start_optimization' ) );
+
 		// Optimize newly uploaded images.
-		if (
-			0 !== get_option( 'siteground_optimizer_compression_level', 0 ) &&
-			0 === Helper::is_cron_disabled()
-		) {
+		if ( '0' !== get_option( 'siteground_optimizer_compression_level', '0' ) ) {
 			add_action( 'delete_attachment', array( $this->images_optimizer, 'delete_backups' ) );
 			add_action( 'wp_generate_attachment_metadata', array( $this->images_optimizer, 'optimize_new_image' ), 10, 2 );
 		} else {
 			add_action( 'wp_generate_attachment_metadata', array( $this->images_optimizer, 'maybe_update_total_unoptimized_images' ) );
 		}
+
+		add_action( 'edit_attachment', array( $this->images_optimizer, 'custom_attachment_compression_level' ) );
+		add_filter( 'attachment_fields_to_edit', array( $this->images_optimizer, 'custom_attachment_compression_level_field' ), null, 2 );
 	}
 
 	/**
@@ -432,10 +476,7 @@ class Loader {
 		add_action( 'siteground_optimizer_start_webp_conversion_cron', array( $this->images_optimizer_webp, 'start_optimization' ) );
 
 		// Optimize newly uploaded images.
-		if (
-			Options::is_enabled( 'siteground_optimizer_webp_support' ) &&
-			0 === Helper::is_cron_disabled()
-		) {
+		if ( Options::is_enabled( 'siteground_optimizer_webp_support' ) ) {
 			add_action( 'delete_attachment', array( $this->images_optimizer_webp, 'delete_webp_copy' ) );
 			add_action( 'edit_attachment', array( $this->images_optimizer_webp, 'regenerate_webp_copy' ) );
 			add_action( 'wp_generate_attachment_metadata', array( $this->images_optimizer_webp, 'optimize_new_image' ), 10, 2 );
@@ -454,15 +495,6 @@ class Loader {
 		if ( class_exists( 'WP_CLI' ) ) {
 			add_action( 'init', array( $this->cli, 'register_commands' ) );
 		}
-	}
-
-	/**
-	 * Add config hooks.
-	 *
-	 * @since 5.9.0
-	 */
-	public function add_config_hooks() {
-		add_action( 'wp_login', array( $this->config, 'update_config' ) );
 	}
 
 	/**
@@ -513,7 +545,6 @@ class Loader {
 	 */
 	public function add_supercacher_hooks() {
 		add_action( 'siteground_optimizer_purge_cron_cache', array( $this->supercacher, 'purge_cache' ), 11 );
-		add_action( 'update_option_siteground_optimizer_combine_css', array( $this->supercacher, 'delete_assets' ), 10, 0 );
 
 		// Bail if Dynamic cache or Autoflush is disabled.
 		if (
@@ -523,46 +554,74 @@ class Loader {
 			return;
 		}
 
-		foreach ( $this->supercacher->purge_hooks as $callback => $hooks ) {
-			foreach ( $hooks as $hook ) {
-				add_action( $hook, array( $this->supercacher, $callback ), PHP_INT_MAX );
-			}
-		}
+		$this->add_caching_hooks( $this->supercacher );
 
 		add_action( 'pll_save_post', array( $this->supercacher, 'flush_memcache' ) );
-
-		$this->supercacher->purge_on_other_events();
-		$this->supercacher->purge_on_options_save();
-
-		// Loop all children.
-		foreach ( $this->supercacher->children as $child_name => $child ) {
-			// Loop trough all options.
-			foreach ( $child as $attriutes ) {
-
-				if ( array_key_exists( 'priority', $attriutes ) ) {
-					// Add the action.
-					add_action( $attriutes['hook'], array( $this->supercacher->$child_name, $attriutes['option'] ), $attriutes['priority'] );
-					continue;
-				}
-
-				add_action( $attriutes['hook'], array( $this->supercacher->$child_name, $attriutes['option'] ) );
-
-			}
-		}
 	}
 
 	/**
 	 * Add supercacher helper hooks.
 	 *
-	 * @since 5.9.0
+	 * @since 6.0.0
 	 */
 	public function add_supercacher_helper_hooks() {
+		// Modify the rest api cache headers.
+		add_filter( 'rest_post_dispatch', array( $this->supercacher_helper, 'set_rest_cache_headers' ) );
 		// Set headers cookie.
 		add_action( 'wp_headers', array( $this->supercacher_helper, 'set_cache_headers' ) );
-		// Set the bypass cookie.
-		add_action( 'wp_login', array( $this->supercacher_helper, 'set_bypass_cookie' ), 1 );
-		// Remove the bypass cookie set on login.
-		add_action( 'wp_logout', array( $this->supercacher_helper, 'remove_bypass_cookie' ) );
+	}
+
+	/**
+	 * Add File Cacher helper hooks.
+	 *
+	 * @since 6.0.0
+	 */
+	public function add_file_cacher_hooks() {
+		if ( ! Options::is_enabled( 'siteground_optimizer_file_caching' ) ) {
+			return;
+		}
+
+		add_action( 'cron_schedules', array( $this->file_cacher, 'sg_add_cron_interval' ) );
+		add_action( 'siteground_optimizer_cache_preheat', array( $this->file_cacher, 'preheat_cache' ) );
+		add_action( 'siteground_optimizer_clear_cache_dir', array( $this->file_cacher, 'clean_cache_dir' ) );
+
+		// Maybe enable dynamic cache.
+		add_action( 'wp_login', array( $this->file_cacher, 'maybe_enable_dynamic' ) );
+
+		// Bail if the autoflush is disabled.
+		if ( ! Options::is_enabled( 'siteground_optimizer_autoflush_cache' ) ) {
+			return;
+		}
+
+		$this->add_caching_hooks( $this->file_cacher );
+	}
+
+	/**
+	 * Add general caching hookss
+	 *
+	 * @param class $class - the class instance, holding the method invoked in this.
+	 */
+	public function add_caching_hooks( $class ) {
+		foreach ( $class->purge_hooks as $callback => $hooks ) {
+			foreach ( $hooks as $hook ) {
+				add_action( $hook, array( $class, $callback ), PHP_INT_MAX );
+			}
+		}
+
+		$class->purge_on_other_events();
+		$class->purge_on_options_save();
+
+		// Loop all children.
+		foreach ( $class->children as $child_name => $child ) {
+			// Loop trough all options.
+			foreach ( $child as $attriutes ) {
+				add_action(
+					$attriutes['hook'], // The hook.
+					array( $class->$child_name, $attriutes['option'] ), // The callback.
+					! empty( $attriutes['priority'] ) ? $attriutes['priority'] : 10 // The priority.
+				);
+			}
+		}
 	}
 
 	/**

@@ -104,8 +104,9 @@ class Brizy_Editor_Editor_Editor
         $heartBeatInterval = (int)apply_filters('wp_check_post_lock_window', 150);
         $config = array(
             'user' => array(
-                'role' => 'admin',
+                'role'         => 'admin',
                 'isAuthorized' => $this->project->getMetaValue('brizy-cloud-token') !== null,
+                'allowScripts' => $this->isUserAllowedToAddScripts( $context )
             ),
             'project' => array(
                 'id' => $this->project->getId(),
@@ -115,13 +116,13 @@ class Brizy_Editor_Editor_Editor
             'urls' => array(
                 'site' => home_url(),
                 'api' => home_url('/wp-json/v1'),
-                'assets' => $context == self::COMPILE_CONTEXT?Brizy_SiteUrlReplacer::hideSiteUrl($this->urlBuilder->editor_build_url()):$this->urlBuilder->editor_build_url(),
+                'assets' => $context == self::COMPILE_CONTEXT ? Brizy_Config::EDITOR_BUILD_RELATIVE_PATH : $this->urlBuilder->editor_build_url(),
                 'image' => $this->urlBuilder->external_media_url() . "",
                 'blockThumbnails' => $this->urlBuilder->external_asset_url('thumbs') . "",
                 'templateThumbnails' => $this->urlBuilder->external_asset_url('thumbs') . "",
                 'templateIcons' => $this->urlBuilder->proxy_url('editor/icons'),
                 'templateFonts' => $this->urlBuilder->external_fonts_url(),
-                'editorFonts' => home_url(),
+                'editorFonts' => home_url( '/' ),
                 'pagePreview' => $preview_post_link,
                 'about' => __bt('about-url', apply_filters('brizy_about_url', Brizy_Config::ABOUT_URL)),
                 'backToDashboard' => get_edit_post_link($wp_post_id, null),
@@ -150,7 +151,6 @@ class Brizy_Editor_Editor_Editor
 				'page'             => $wp_post_id,
                 'postType'          => get_post_type( $wp_post_id ),
 				'featuredImage'    => $this->getThumbnailData( $wp_post_id ),
-				'pageAttachments'  => array( 'images' => $this->get_page_attachments() ),
 				'templates'        => $this->post->get_templates(),
 				'plugins'          => array(
 					'dummy'       => true,
@@ -236,32 +236,6 @@ class Brizy_Editor_Editor_Editor
         $config['wp']['postTermParents'] = array_values(array_diff_key($this->getAllParents($postTermsByKeys),$postTermsByKeys));
         $config['wp']['postAuthor'] = (int)$this->post->getWpPost()->post_author;
         return $config;
-    }
-
-    /**
-     * @return object
-     */
-    private function get_page_attachments()
-    {
-        global $wpdb;
-        $query = $wpdb->prepare(
-            "SELECT 
-					pm.*
-				FROM 
-					{$wpdb->prefix}postmeta pm 
-				    JOIN {$wpdb->prefix}postmeta pm2 ON pm2.post_id=pm.post_id AND pm2.meta_key='brizy_post_uid' AND pm2.meta_value=%s
-				WHERE pm.meta_key='brizy_attachment_uid'
-				GROUP BY pm.post_id",
-            $this->post->getUid()
-        );
-
-        $results = $wpdb->get_results($query);
-        $attachment_data = array();
-        foreach ($results as $row) {
-            $attachment_data[$row->meta_value] = true;
-        }
-
-        return (object)$attachment_data;
     }
 
     /**
@@ -513,17 +487,27 @@ class Brizy_Editor_Editor_Editor
                 get_object_vars(is_object($custom_menu_data) ? $custom_menu_data : (object)array())
             );
 
-	        $menu_items = [];
+	        $menuItems = [];
 
-			add_action( 'wp_get_nav_menu_items', function ( $items ) use ( &$menu_items ) {
-		        $menu_items = $items;
+	        add_action( 'wp_get_nav_menu_items', function ( $items ) use ( &$menuItems ) {
+		        foreach ( $items as $item ) {
+			        $menuItems[ $item->ID ] = $item;
+		        }
 		        return $items;
 	        }, -1000 );
 
-            wp_get_nav_menu_items( $menu->term_id );
+	        $currentItems = wp_get_nav_menu_items( $menu->term_id );
 
-            _wp_menu_item_classes_by_context($menu_items);
-            $menu_items = $this->get_menu_tree($menu_items);
+	        _wp_menu_item_classes_by_context( $menuItems );
+
+	        $currentItemsAssociative = [];
+	        foreach ( $currentItems as $currentItem ) {
+		        $currentItemsAssociative[ $currentItem->ID ] = $currentItem;
+	        }
+
+	        $menuItems = $currentItemsAssociative + $menuItems;
+
+            $menu_items = $this->get_menu_tree($menuItems);
 
             if (count($menu_items) > 0) {
                 $amenu->items = $menu_items;
@@ -546,16 +530,20 @@ class Brizy_Editor_Editor_Editor
         $result_items = array();
 
         foreach ($items as $item) {
-            if ((int)$item->menu_item_parent !== $parent) {
-                continue;
-            }
+	        if ( (string) $item->menu_item_parent !== (string) $parent ) {
+		        continue;
+	        }
 
             $menu_uid = get_post_meta($item->ID, 'brizy_post_uid', true);
 
-            if (!$menu_uid) {
-                $menu_uid = md5($item->ID . time());
-                update_post_meta($item->ID, 'brizy_post_uid', $menu_uid);
-            }
+	        if ( ! $menu_uid ) {
+		        $menu_uid = md5( $item->ID . time() );
+		        $update   = update_post_meta( $item->ID, 'brizy_post_uid', $menu_uid );
+
+		        if ( ! $update ) {
+			        $menu_uid = $item->ID;
+		        }
+	        }
 
             $megaMenuItems = $this->getMegaMenuItems();
 
@@ -1007,7 +995,6 @@ class Brizy_Editor_Editor_Editor
             'downloadLayouts' => $pref . Brizy_Admin_Layouts_Api::DOWNLOAD_LAYOUTS,
             'uploadLayouts' => $pref . Brizy_Admin_Layouts_Api::UPLOAD_LAYOUTS,
             'media' => $pref . Brizy_Editor_API::AJAX_MEDIA,
-            'downloadMedia' => $pref . Brizy_Editor_API::AJAX_DOWNLOAD_MEDIA,
             'getMediaUid' => $pref . Brizy_Editor_API::AJAX_MEDIA_METAKEY,
             'getAttachmentUid' => $pref . Brizy_Editor_API::AJAX_CREATE_ATTACHMENT_UID,
             'getServerTimeStamp' => $pref . Brizy_Editor_API::AJAX_TIMESTAMP,
@@ -1077,6 +1064,33 @@ class Brizy_Editor_Editor_Editor
         }
 
         return $response;
+    }
+
+	/**
+	 * Do not use: $userId = get_post_meta( $this->post->getWpPostId(), '_edit_last', true );
+	 * This meta _edit_last is often deleted by plugins dealing with optimize database
+	 *
+	 * @param $context
+	 *
+	 * @return bool
+	 */
+	private function isUserAllowedToAddScripts( $context ) {
+
+		if ( $context == self::COMPILE_CONTEXT ) {
+
+			$userId = $this->post->getLastUserEdited();
+
+			if ( $userId === null ) {
+				return true;
+			}
+
+		} else {
+			$userId = get_current_user_id();
+		}
+
+		$userCan = user_can( $userId, 'unfiltered_html' );
+
+		return $userCan;
     }
 
 	private function getImgSizes() {

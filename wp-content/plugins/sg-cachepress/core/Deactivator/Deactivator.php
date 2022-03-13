@@ -4,6 +4,7 @@ namespace SiteGround_Optimizer\Deactivator;
 use SiteGround_Optimizer\Memcache\Memcache;
 use SiteGround_Optimizer\Options\Options;
 use SiteGround_Optimizer\Supercacher\Supercacher;
+use SiteGround_Optimizer\File_Cacher\File_Cacher;
 
 class Deactivator {
 	/**
@@ -18,6 +19,7 @@ class Deactivator {
 		// Flush dynamic and memcache.
 		Supercacher::purge_cache();
 		Supercacher::flush_memcache();
+		File_Cacher::cleanup();
 	}
 
 }

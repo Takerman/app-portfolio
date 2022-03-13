@@ -104,6 +104,9 @@ class Minify_Html {
 				,$this->_html);
 		}
 
+		// Remove all inline script comments.
+		$this->_html = preg_replace( '/\n\n/', "\n", $this->_html );
+
 		// replace PREs with placeholders
 		$this->_html = preg_replace_callback('/\\s*(<pre\\b[^>]*?>[\\s\\S]*?<\\/pre>)\\s*/i'
 			,array($this, '_removePreCB')

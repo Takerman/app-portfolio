@@ -122,7 +122,6 @@ class Activity_Log_Plugins extends Activity_Log_Helper {
 
 		$activity = __( 'Updated Plugin', 'sg-security' );
 
-
 		if ( ! empty( $options['plugin'] ) ) {
 			$this->log_event( array(
 				'activity'    => $activity,

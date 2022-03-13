@@ -1,0 +1,1491 @@
+# Translation of Plugins - Brizy &#8211; Page Builder - Stable (latest release) in English (UK)
+# This file is distributed under the same license as the Plugins - Brizy &#8211; Page Builder - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-08-05 09:04:35+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: en_GB\n"
+"Project-Id-Version: Plugins - Brizy &#8211; Page Builder - Stable (latest release)\n"
+
+#: languages/texts.php:416
+msgid "remove this block"
+msgstr "remove this block"
+
+#: languages/texts.php:415
+msgid "or"
+msgstr "or"
+
+#: languages/texts.php:414
+msgid "open an issue"
+msgstr "open an issue"
+
+#: languages/texts.php:413
+msgid "You can"
+msgstr "You can"
+
+#: languages/texts.php:412
+msgid "An error happened while trying to display this block"
+msgstr "An error happened while trying to display this block"
+
+#: languages/texts.php:411
+msgid "Enter Search Keyword"
+msgstr "Enter Search Keyword"
+
+#: languages/texts.php:410
+msgid "All Categories"
+msgstr "All Categories"
+
+#: languages/texts.php:409
+msgid "Global"
+msgstr "Global"
+
+#: languages/texts.php:408
+msgid "Saved"
+msgstr "Saved"
+
+#: languages/texts.php:407
+msgid "Save"
+msgstr "Save"
+
+#: languages/texts.php:406
+msgid "Make it Global"
+msgstr "Make it Global"
+
+#: languages/texts.php:405
+msgid "Block"
+msgstr "Block"
+
+#: languages/texts.php:404
+msgid "Filter By"
+msgstr "Filter By"
+
+#: languages/texts.php:319
+msgid "Message sent"
+msgstr "Message sent"
+
+#: languages/texts.php:318
+msgid "Error"
+msgstr "Error"
+
+#: languages/texts.php:403
+msgid "Comment count"
+msgstr "Comment count"
+
+#: languages/texts.php:402
+msgid "Parent"
+msgstr "Parent"
+
+#: languages/texts.php:401
+msgid "Modified"
+msgstr "Modified"
+
+#: languages/texts.php:400
+msgid "Meta Value"
+msgstr "Meta Value"
+
+#: languages/texts.php:399
+msgid "Meta Key"
+msgstr "Meta Key"
+
+#: languages/texts.php:398
+msgid "Inherit"
+msgstr "Inherit"
+
+#: languages/texts.php:397
+msgid "Auto-Draft"
+msgstr "Auto-Draft"
+
+#: languages/texts.php:396
+msgid "Trash"
+msgstr "Bin"
+
+#: languages/texts.php:395
+msgid "Private"
+msgstr "Private"
+
+#: languages/texts.php:394
+msgid "Pending"
+msgstr "Pending"
+
+#: languages/texts.php:393
+msgid "Draft"
+msgstr "Draft"
+
+#: languages/texts.php:392
+msgid "Future"
+msgstr "Future"
+
+#: languages/texts.php:391
+msgid "Status"
+msgstr "Status"
+
+#: languages/texts.php:390
+msgid "Exclude"
+msgstr "Exclude"
+
+#: languages/texts.php:389
+msgid "Include"
+msgstr "Include"
+
+#: languages/texts.php:388
+msgid "Author"
+msgstr "Author"
+
+#: languages/texts.php:387
+msgid "Category"
+msgstr "Category"
+
+#: languages/texts.php:386
+msgid "Number posts"
+msgstr "Number of posts"
+
+#: languages/texts.php:385
+msgid "Post"
+msgstr "Post"
+
+#: languages/texts.php:384
+msgid "Post Type"
+msgstr "Post Type"
+
+#: languages/texts.php:383
+msgid "Weight"
+msgstr "Weight"
+
+#: languages/texts.php:382
+msgid "Paste your wordpress shortcode here..."
+msgstr "Paste your WordPress shortcode here..."
+
+#: languages/texts.php:381
+msgid "ID"
+msgstr "ID"
+
+#: languages/texts.php:380
+msgid "Random"
+msgstr "Random"
+
+#: languages/texts.php:379
+msgid "Menu Order"
+msgstr "Menu Order"
+
+#: languages/texts.php:378
+msgid "Popularity"
+msgstr "Popularity"
+
+#: languages/texts.php:377
+msgid "Rating"
+msgstr "Rating"
+
+#: languages/texts.php:376
+msgid "Title"
+msgstr "Title"
+
+#: languages/texts.php:375
+msgid "Filter"
+msgstr "Filter"
+
+#: languages/texts.php:374
+msgid "Order Tracking"
+msgstr "Order Tracking"
+
+#: languages/texts.php:373
+msgid "My Account"
+msgstr "My Account"
+
+#: languages/texts.php:372
+msgid "Checkout"
+msgstr "Checkout"
+
+#: languages/texts.php:371
+msgid "Cart"
+msgstr "Cart"
+
+#: languages/texts.php:370
+msgid "Page"
+msgstr "Page"
+
+#: languages/texts.php:369
+msgid "Count"
+msgstr "Count"
+
+#: languages/texts.php:368
+msgid "Description"
+msgstr "Description"
+
+#: languages/texts.php:367
+msgid "Slug"
+msgstr "Slug"
+
+#: languages/texts.php:366
+msgid "Name"
+msgstr "Name"
+
+#: languages/texts.php:365
+msgid "Order By"
+msgstr "Order By"
+
+#: languages/texts.php:364
+msgid "Desc"
+msgstr "Desc"
+
+#: languages/texts.php:363
+msgid "Asc"
+msgstr "Asc"
+
+#: languages/texts.php:362
+msgid "Order"
+msgstr "Order"
+
+#: languages/texts.php:361
+msgid "Categories Count"
+msgstr "Categories Count"
+
+#: languages/texts.php:360
+msgid "Columns"
+msgstr "Columns"
+
+#: languages/texts.php:359
+msgid "Style Add to Cart"
+msgstr "Style Add to Cart"
+
+#: languages/texts.php:358
+msgid "Layout"
+msgstr "Layout"
+
+#: languages/texts.php:357
+msgid "Products Count"
+msgstr "Products Count"
+
+#: languages/texts.php:356
+msgid "Product ID or SKU"
+msgstr "Product ID or SKU"
+
+#: languages/texts.php:355
+msgid "Product ID"
+msgstr "Product ID"
+
+#: languages/texts.php:354
+msgid "Query"
+msgstr "Query"
+
+#: languages/texts.php:351
+msgid "MultiPage"
+msgstr "MultiPage"
+
+#: languages/texts.php:350
+msgid "Footer"
+msgstr "Footer"
+
+#: languages/texts.php:347
+msgid "Play"
+msgstr "Play"
+
+#: languages/texts.php:346
+msgid "Cover"
+msgstr "Cover"
+
+#: languages/texts.php:345
+msgid "Controls"
+msgstr "Controls"
+
+#: languages/texts.php:344
+msgid "Ratio"
+msgstr "Ratio"
+
+#: languages/texts.php:343
+msgid "Video Link"
+msgstr "Video Link"
+
+#: languages/texts.php:341
+msgid "SoundCloud Link"
+msgstr "SoundCloud Link"
+
+#: languages/texts.php:340
+msgid "SoundCloud"
+msgstr "SoundCloud"
+
+#: languages/texts.php:338
+msgid "Bar"
+msgstr "Bar"
+
+#: languages/texts.php:337
+msgid "Show Percentage"
+msgstr "Show Percentage"
+
+#: languages/texts.php:336
+msgid "Percentage"
+msgstr "Percentage"
+
+#: languages/texts.php:334
+msgid "Satur.."
+msgstr "Satur.."
+
+#: languages/texts.php:333
+msgid "Brigh.."
+msgstr "Brigh.."
+
+#: languages/texts.php:332
+msgid "Hue"
+msgstr "Hue"
+
+#: languages/texts.php:331
+msgid "Opacity"
+msgstr "Opacity"
+
+#: languages/texts.php:330
+msgid "Style"
+msgstr "Style"
+
+#: languages/texts.php:327
+msgid "Select"
+msgstr "Select"
+
+#: languages/texts.php:326
+msgid "Paragraph"
+msgstr "Paragraph"
+
+#: languages/texts.php:325
+msgid "Number"
+msgstr "Number"
+
+#: languages/texts.php:324
+msgid "Email"
+msgstr "E-mail"
+
+#: languages/texts.php:323
+msgid "Required"
+msgstr "Required"
+
+#: languages/texts.php:322
+msgid "Go to"
+msgstr "Go to"
+
+#: languages/texts.php:321
+msgid "Redirect"
+msgstr "Redirect"
+
+#: languages/texts.php:320
+msgid "Message not sent"
+msgstr "Message not sent"
+
+#: languages/texts.php:317
+msgid "Success"
+msgstr "Success"
+
+#: languages/texts.php:316
+msgid "Message"
+msgstr "Message"
+
+#: languages/texts.php:315
+msgid "Label"
+msgstr "Label"
+
+#: languages/texts.php:314
+msgid "Field Type"
+msgstr "Field Type"
+
+#: languages/texts.php:313
+msgid "Field"
+msgstr "Field"
+
+#: languages/texts.php:311
+msgid "Paste your code here..."
+msgstr "Paste your code here..."
+
+#: languages/texts.php:309
+msgid "End"
+msgstr "End"
+
+#: languages/texts.php:308
+msgid "Start"
+msgstr "Start"
+
+#: languages/texts.php:306
+msgid "Russian"
+msgstr "Russian"
+
+#: languages/texts.php:305
+msgid "Dutch"
+msgstr "Dutch"
+
+#: languages/texts.php:304
+msgid "Italian"
+msgstr "Italian"
+
+#: languages/texts.php:303
+msgid "French"
+msgstr "French"
+
+#: languages/texts.php:302
+msgid "Spanish"
+msgstr "Spanish"
+
+#: languages/texts.php:301
+msgid "English"
+msgstr "English"
+
+#: languages/texts.php:300
+msgid "German"
+msgstr "German"
+
+#: languages/texts.php:299
+msgid "Language"
+msgstr "Language"
+
+#: languages/texts.php:298
+msgid "+ 12:00 (Auckland)"
+msgstr "+ 12:00 (Auckland)"
+
+#: languages/texts.php:297
+msgid "+ 11:00 (Ponape)"
+msgstr "+ 11:00 (Ponape)"
+
+#: languages/texts.php:296
+msgid "+ 10:00 (Sidney, Melbourne)"
+msgstr "+ 10:00 (Sydney, Melbourne)"
+
+#: languages/texts.php:295
+msgid "+ 9:00 (Tokyo, Seoul)"
+msgstr "+ 9:00 (Tokyo, Seoul)"
+
+#: languages/texts.php:294
+msgid "+ 8:00 (Singapore, Beijing)"
+msgstr "+ 8:00 (Singapore, Beijing)"
+
+#: languages/texts.php:293
+msgid "+ 7:00 (Bangkok, Jakarta)"
+msgstr "+ 7:00 (Bangkok, Jakarta)"
+
+#: languages/texts.php:292
+msgid "+ 6:00 (Astana)"
+msgstr "+ 6:00 (Astana)"
+
+#: languages/texts.php:291
+msgid "+ 5:00 (Yekaterinburg)"
+msgstr "+ 5:00 (Yekaterinburg)"
+
+#: languages/texts.php:290
+msgid "+ 4:00 (Dubai, Baku)"
+msgstr "+ 4:00 (Dubai, Baku)"
+
+#: languages/texts.php:289
+msgid "+ 3:00 (Moscow, Baghdad)"
+msgstr "+ 3:00 (Moscow, Baghdad)"
+
+#: languages/texts.php:288
+msgid "+ 2:00 (Athens, Istanbul)"
+msgstr "+ 2:00 (Athens, Istanbul)"
+
+#: languages/texts.php:287
+msgid "+ 1:00 (Berlin, Paris)"
+msgstr "+ 1:00 (Berlin, Paris)"
+
+#: languages/texts.php:286
+msgid "00:00 (London, Dublin)"
+msgstr "00:00 (London, Dublin)"
+
+#: languages/texts.php:285
+msgid "- 1:00 (Cape Verde)"
+msgstr "- 1:00 (Cape Verde)"
+
+#: languages/texts.php:284
+msgid "- 2:00 (Noronha)"
+msgstr "- 2:00 (Noronha)"
+
+#: languages/texts.php:283
+msgid "- 3:00 (Brasilia, Santiago)"
+msgstr "- 3:00 (Brasilia, Santiago)"
+
+#: languages/texts.php:282
+msgid "- 4:00 (Halifax, Manaus)"
+msgstr "- 4:00 (Halifax, Manaus)"
+
+#: languages/texts.php:281
+msgid "- 5:00 (New York, Miami)"
+msgstr "- 5:00 (New York, Miami)"
+
+#: languages/texts.php:280
+msgid "- 6:00 (Chicago, Dallas)"
+msgstr "- 6:00 (Chicago, Dallas)"
+
+#: languages/texts.php:279
+msgid "- 7:00 (Denver, Phoenix)"
+msgstr "- 7:00 (Denver, Phoenix)"
+
+#: languages/texts.php:278
+msgid "- 8:00 (Los Angeles)"
+msgstr "- 8:00 (Los Angeles)"
+
+#: languages/texts.php:277
+msgid "- 9:00 (Anchorage)"
+msgstr "- 9:00 (Anchorage)"
+
+#: languages/texts.php:276
+msgid "- 10:00 (Honolulu, Papeete)"
+msgstr "- 10:00 (Honolulu, Papeete)"
+
+#: languages/texts.php:275
+msgid "- 11:00 (Niue)"
+msgstr "- 11:00 (Niue)"
+
+#: languages/texts.php:274
+msgid "Time Zone"
+msgstr "Time Zone"
+
+#: languages/texts.php:273
+msgid "Minutes"
+msgstr "Minutes"
+
+#: languages/texts.php:272
+msgid "Hour"
+msgstr "Hour"
+
+#: languages/texts.php:271
+msgid "Date"
+msgstr "Date"
+
+#: languages/texts.php:267
+msgid "Hover"
+msgstr "Hover"
+
+#: languages/texts.php:266
+msgid "Normal"
+msgstr "Normal"
+
+#: languages/texts.php:263
+msgid "Spacing"
+msgstr "Spacing"
+
+#: languages/texts.php:262
+msgid "Fill"
+msgstr "Fill"
+
+#: languages/texts.php:261
+msgid "Corner"
+msgstr "Corner"
+
+#: languages/texts.php:260
+msgid "Margin"
+msgstr "Margin"
+
+#: languages/texts.php:258
+msgid "Padding"
+msgstr "Padding"
+
+#: languages/texts.php:254 languages/texts.php:255
+msgid "Open In New Tab"
+msgstr "Open In New Tab"
+
+#: languages/texts.php:253
+msgid "Link to"
+msgstr "Link to"
+
+#: languages/texts.php:252
+msgid "Anchor"
+msgstr "Anchor"
+
+#: languages/texts.php:251
+msgid "Link"
+msgstr "Link"
+
+#: languages/texts.php:249
+msgid "Editable Text"
+msgstr "Editable Text"
+
+#: languages/texts.php:248
+msgid "PRE"
+msgstr "PRE"
+
+#: languages/texts.php:247
+msgid "H6"
+msgstr "H6"
+
+#: languages/texts.php:246
+msgid "H5"
+msgstr "H5"
+
+#: languages/texts.php:245
+msgid "H4"
+msgstr "H4"
+
+#: languages/texts.php:244
+msgid "H3"
+msgstr "H3"
+
+#: languages/texts.php:243
+msgid "H2"
+msgstr "H2"
+
+#: languages/texts.php:242
+msgid "H1"
+msgstr "H1"
+
+#: languages/texts.php:241
+msgid "P"
+msgstr "P"
+
+#: languages/texts.php:240
+msgid "HTML Tag"
+msgstr "HTML Tag"
+
+#: languages/texts.php:239
+msgid "Gap Below"
+msgstr "Gap Below"
+
+#: languages/texts.php:238
+msgid "Gap Above"
+msgstr "Gap Above"
+
+#: languages/texts.php:237
+msgid "Italic"
+msgstr "Italic"
+
+#: languages/texts.php:236
+msgid "Bold"
+msgstr "Bold"
+
+#: languages/texts.php:235
+msgid "List"
+msgstr "List"
+
+#: languages/texts.php:234
+msgid "Letter Spc."
+msgstr "Letter Spc."
+
+#: languages/texts.php:233
+msgid "Line Hgt."
+msgstr "Line Hgt."
+
+#: languages/texts.php:232
+msgid "Size"
+msgstr "Size"
+
+#: languages/texts.php:231
+msgid "Font Family"
+msgstr "Font Family"
+
+#: languages/texts.php:230
+msgid "Typography"
+msgstr "Typography"
+
+#: languages/texts.php:228
+msgid "Position"
+msgstr "Position"
+
+#: languages/texts.php:227
+msgid "Align"
+msgstr "Align"
+
+#: languages/texts.php:226
+msgid "Content"
+msgstr "Content"
+
+#: languages/texts.php:224
+msgid "RollOut"
+msgstr "RollOut"
+
+#: languages/texts.php:223
+msgid "RollIn"
+msgstr "RollIn"
+
+#: languages/texts.php:222
+msgid "JackInTheBox"
+msgstr "JackInTheBox"
+
+#: languages/texts.php:221
+msgid "Hinge"
+msgstr "Hinge"
+
+#: languages/texts.php:220
+msgid "ZoomOutUp"
+msgstr "ZoomOutUp"
+
+#: languages/texts.php:219
+msgid "ZoomOutRight"
+msgstr "ZoomOutRight"
+
+#: languages/texts.php:218
+msgid "ZoomOutLeft"
+msgstr "ZoomOutLeft"
+
+#: languages/texts.php:217
+msgid "ZoomOutDown"
+msgstr "ZoomOutDown"
+
+#: languages/texts.php:216
+msgid "ZoomOut"
+msgstr "ZoomOut"
+
+#: languages/texts.php:215
+msgid "ZoomInUp"
+msgstr "ZoomInUp"
+
+#: languages/texts.php:214
+msgid "ZoomInRight"
+msgstr "ZoomInRight"
+
+#: languages/texts.php:213
+msgid "ZoomInLeft"
+msgstr "ZoomInLeft"
+
+#: languages/texts.php:212
+msgid "ZoomInDown"
+msgstr "ZoomInDown"
+
+#: languages/texts.php:211
+msgid "ZoomIn"
+msgstr "ZoomIn"
+
+#: languages/texts.php:210
+msgid "SlideOutRight"
+msgstr "SlideOutRight"
+
+#: languages/texts.php:209
+msgid "SlideOutLeft"
+msgstr "SlideOutLeft"
+
+#: languages/texts.php:208
+msgid "SlideOutDown"
+msgstr "SlideOutDown"
+
+#: languages/texts.php:207
+msgid "SlideOutUp"
+msgstr "SlideOutUp"
+
+#: languages/texts.php:206
+msgid "SlideInRight"
+msgstr "SlideInRight"
+
+#: languages/texts.php:205
+msgid "SlideInLeft"
+msgstr "SlideInLeft"
+
+#: languages/texts.php:204
+msgid "SlideInDown"
+msgstr "SlideInDown"
+
+#: languages/texts.php:203
+msgid "SlideInUp"
+msgstr "SlideInUp"
+
+#: languages/texts.php:202
+msgid "RotateOutUpRight"
+msgstr "RotateOutUpRight"
+
+#: languages/texts.php:201
+msgid "RotateOutUpLeft"
+msgstr "RotateOutUpLeft"
+
+#: languages/texts.php:200
+msgid "RotateOutDownRight"
+msgstr "RotateOutDownRight"
+
+#: languages/texts.php:199
+msgid "RotateOutDownLeft"
+msgstr "RotateOutDownLeft"
+
+#: languages/texts.php:198
+msgid "RotateOut"
+msgstr "RotateOut"
+
+#: languages/texts.php:197
+msgid "RotateInUpRight"
+msgstr "RotateInUpRight"
+
+#: languages/texts.php:196
+msgid "RotateInUpLeft"
+msgstr "RotateInUpLeft"
+
+#: languages/texts.php:195
+msgid "RotateInDownRight"
+msgstr "RotateInDownRight"
+
+#: languages/texts.php:194
+msgid "RotateInDownLeft"
+msgstr "RotateInDownLeft"
+
+#: languages/texts.php:193
+msgid "RotateIn"
+msgstr "RotateIn"
+
+#: languages/texts.php:192
+msgid "LightSpeedIn"
+msgstr "LightSpeedIn"
+
+#: languages/texts.php:191
+msgid "FlipOutY"
+msgstr "FlipOutY"
+
+#: languages/texts.php:190
+msgid "FlipOutX"
+msgstr "FlipOutX"
+
+#: languages/texts.php:189
+msgid "FlipInY"
+msgstr "FlipInY"
+
+#: languages/texts.php:188
+msgid "FlipInX"
+msgstr "FlipInX"
+
+#: languages/texts.php:187
+msgid "Flip"
+msgstr "Flip"
+
+#: languages/texts.php:186
+msgid "FadeOutUpBig"
+msgstr "FadeOutUpBig"
+
+#: languages/texts.php:185
+msgid "FadeOutUp"
+msgstr "FadeOutUp"
+
+#: languages/texts.php:184
+msgid "FadeOutRightBig"
+msgstr "FadeOutRightBig"
+
+#: languages/texts.php:183
+msgid "FadeOutRight"
+msgstr "FadeOutRight"
+
+#: languages/texts.php:182
+msgid "FadeOutLeftBig"
+msgstr "FadeOutLeftBig"
+
+#: languages/texts.php:181
+msgid "FadeOutLeft"
+msgstr "FadeOutLeft"
+
+#: languages/texts.php:180
+msgid "FadeOutDownBig"
+msgstr "FadeOutDownBig"
+
+#: languages/texts.php:179
+msgid "FadeOutDown"
+msgstr "FadeOutDown"
+
+#: languages/texts.php:178
+msgid "FadeOut"
+msgstr "FadeOut"
+
+#: languages/texts.php:177
+msgid "FadeInUpBig"
+msgstr "FadeInUpBig"
+
+#: languages/texts.php:176
+msgid "FadeInUp"
+msgstr "FadeInUp"
+
+#: languages/texts.php:175
+msgid "FadeInRightBig"
+msgstr "FadeInRightBig"
+
+#: languages/texts.php:174
+msgid "FadeInRight"
+msgstr "FadeInRight"
+
+#: languages/texts.php:173
+msgid "FadeInLeftBig"
+msgstr "FadeInLeftBig"
+
+#: languages/texts.php:172
+msgid "FadeInLeft"
+msgstr "FadeInLeft"
+
+#: languages/texts.php:171
+msgid "FadeInDownBig"
+msgstr "FadeInDownBig"
+
+#: languages/texts.php:170
+msgid "FadeInDown"
+msgstr "FadeInDown"
+
+#: languages/texts.php:169
+msgid "FadeIn"
+msgstr "FadeIn"
+
+#: languages/texts.php:168
+msgid "BounceOutUp"
+msgstr "BounceOutUp"
+
+#: languages/texts.php:167
+msgid "BounceOutRight"
+msgstr "BounceOutRight"
+
+#: languages/texts.php:166
+msgid "BounceOutLeft"
+msgstr "BounceOutLeft"
+
+#: languages/texts.php:165
+msgid "BounceOutDown"
+msgstr "BounceOutDown"
+
+#: languages/texts.php:164
+msgid "BounceOut"
+msgstr "BounceOut"
+
+#: languages/texts.php:163
+msgid "BounceInUp"
+msgstr "BounceInUp"
+
+#: languages/texts.php:162
+msgid "BounceInRight"
+msgstr "BounceInRight"
+
+#: languages/texts.php:161
+msgid "BounceInLeft"
+msgstr "BounceInLeft"
+
+#: languages/texts.php:160
+msgid "BounceInDown"
+msgstr "BounceInDown"
+
+#: languages/texts.php:159
+msgid "BounceIn"
+msgstr "BounceIn"
+
+#: languages/texts.php:158
+msgid "Jello"
+msgstr "Jello"
+
+#: languages/texts.php:157
+msgid "Wobble"
+msgstr "Wobble"
+
+#: languages/texts.php:156
+msgid "Tada"
+msgstr "Tada"
+
+#: languages/texts.php:155
+msgid "Swing"
+msgstr "Swing"
+
+#: languages/texts.php:154
+msgid "Shake"
+msgstr "Shake"
+
+#: languages/texts.php:153
+msgid "RubberBand"
+msgstr "RubberBand"
+
+#: languages/texts.php:152
+msgid "Pulse"
+msgstr "Pulse"
+
+#: languages/texts.php:151
+msgid "Flash"
+msgstr "Flash"
+
+#: languages/texts.php:150
+msgid "Bounce"
+msgstr "Bounce"
+
+#: languages/texts.php:149
+msgid "Delay"
+msgstr "Delay"
+
+#: languages/texts.php:148
+msgid "Duration"
+msgstr "Duration"
+
+#: languages/texts.php:147
+msgid "Animation"
+msgstr "Animation"
+
+#: languages/texts.php:145
+msgid "Delete"
+msgstr "Delete"
+
+#: languages/texts.php:144
+msgid "Duplicate"
+msgstr "Duplicate"
+
+#: languages/texts.php:140 languages/texts.php:259
+msgid "Border"
+msgstr "Border"
+
+#: languages/texts.php:139
+msgid "Overlay"
+msgstr "Overlay"
+
+#: languages/texts.php:138
+msgid "Colors"
+msgstr "Colours"
+
+#: languages/texts.php:136
+msgid "Zoom"
+msgstr "Zoom"
+
+#: languages/texts.php:135
+msgid "Enter address"
+msgstr "Enter address"
+
+#: languages/texts.php:134
+msgid "Address"
+msgstr "Address"
+
+#: languages/texts.php:132
+msgid "Loop"
+msgstr "Loop"
+
+#: languages/texts.php:131
+msgid "720p"
+msgstr "720p"
+
+#: languages/texts.php:130
+msgid "1080p"
+msgstr "1080p"
+
+#: languages/texts.php:129
+msgid "Quality"
+msgstr "Quality"
+
+#: languages/texts.php:128
+msgid "YouTube or Vimeo"
+msgstr "YouTube or Vimeo"
+
+#: languages/texts.php:127
+msgid "URL"
+msgstr "URL"
+
+#: languages/texts.php:125
+msgid "Animated"
+msgstr "Animated"
+
+#: languages/texts.php:124
+msgid "Fixed"
+msgstr "Fixed"
+
+#: languages/texts.php:123
+msgid "Parallax"
+msgstr "Parallax"
+
+#: languages/texts.php:121
+msgid "Bg Size"
+msgstr "Bg Size"
+
+#: languages/texts.php:120
+msgid "Background"
+msgstr "Background"
+
+#: languages/texts.php:118
+msgid "Add new column"
+msgstr "Add new column"
+
+#: languages/texts.php:115
+msgid "component"
+msgstr "component"
+
+#: languages/texts.php:114
+msgid "Could not find"
+msgstr "Could not find"
+
+#: languages/texts.php:113
+msgid "Missing Element"
+msgstr "Missing Element"
+
+#: languages/texts.php:110
+msgid "Full"
+msgstr "Full"
+
+#: languages/texts.php:109
+msgid "Custom"
+msgstr "Custom"
+
+#: languages/texts.php:108
+msgid "Auto"
+msgstr "Auto"
+
+#: languages/texts.php:107
+msgid "Boxed"
+msgstr "Boxed"
+
+#: languages/texts.php:106
+msgid "Height"
+msgstr "Height"
+
+#: languages/texts.php:105
+msgid "Width"
+msgstr "Width"
+
+#: languages/texts.php:104
+msgid "Full Height"
+msgstr "Full Height"
+
+#: languages/texts.php:102
+msgid "Outline"
+msgstr "Outline"
+
+#: languages/texts.php:101
+msgid "Round"
+msgstr "Round"
+
+#: languages/texts.php:100
+msgid "Tail"
+msgstr "Tail"
+
+#: languages/texts.php:99
+msgid "Heavy"
+msgstr "Heavy"
+
+#: languages/texts.php:98
+msgid "Thin"
+msgstr "Thin"
+
+#: languages/texts.php:97
+msgid "Arrows"
+msgstr "Arrows"
+
+#: languages/texts.php:96
+msgid "Square"
+msgstr "Square"
+
+#: languages/texts.php:95
+msgid "Diamond"
+msgstr "Diamond"
+
+#: languages/texts.php:94
+msgid "Circle"
+msgstr "Circle"
+
+#: languages/texts.php:93
+msgid "None"
+msgstr "None"
+
+#: languages/texts.php:92
+msgid "Dots"
+msgstr "Dots"
+
+#: languages/texts.php:91
+msgid "Navigation"
+msgstr "Navigation"
+
+#: languages/texts.php:90
+msgid "Speed"
+msgstr "Speed"
+
+#: languages/texts.php:89
+msgid "Auto Play"
+msgstr "Auto Play"
+
+#: languages/texts.php:88
+msgid "Make it a Slider"
+msgstr "Make it a Slider"
+
+#: languages/texts.php:86
+msgid "Slider"
+msgstr "Slider"
+
+#: languages/texts.php:83
+msgid "CSS Class"
+msgstr "CSS Class"
+
+#: languages/texts.php:82
+msgid "Z-index"
+msgstr "Z-index"
+
+#: languages/texts.php:81
+msgid "Enable on Mobile"
+msgstr "Enable on Mobile"
+
+#: languages/texts.php:80
+msgid "Disable on Mobile"
+msgstr "Disable on Mobile"
+
+#: languages/texts.php:79
+msgid "Show on Desktop"
+msgstr "Show on Desktop"
+
+#: languages/texts.php:78
+msgid "Advanced"
+msgstr "Advanced"
+
+#: languages/texts.php:76
+msgid "More Settings"
+msgstr "More Settings"
+
+#: languages/texts.php:73
+msgid "Publish"
+msgstr "Publish"
+
+#: languages/texts.php:72
+msgid "Update"
+msgstr "Update"
+
+#: languages/texts.php:71
+msgid "Save HTML"
+msgstr "Save HTML"
+
+#: languages/texts.php:68
+msgid "Back to WordPress"
+msgstr "Back to WordPress"
+
+#: languages/texts.php:67
+msgid "Plugin Settings"
+msgstr "Plugin Settings"
+
+#: languages/texts.php:66
+msgid "Back to Brizy"
+msgstr "Back to Brizy"
+
+#: languages/texts.php:65
+msgid "About Brizy"
+msgstr "About Brizy"
+
+#: languages/texts.php:64
+msgid "More"
+msgstr "More"
+
+#: languages/texts.php:62
+msgid "Mobile"
+msgstr "Mobile"
+
+#: languages/texts.php:61
+msgid "Desktop"
+msgstr "Desktop"
+
+#: languages/texts.php:60
+msgid "Mobile view"
+msgstr "Mobile view"
+
+#: languages/texts.php:58
+msgid "New Style #%s"
+msgstr "New Style #%s"
+
+#: languages/texts.php:57
+msgid "Add New"
+msgstr "Add New"
+
+#: languages/texts.php:56
+msgid "Add new option"
+msgstr "Add new option"
+
+#: languages/texts.php:55
+msgid "Type font name"
+msgstr "Type font name"
+
+#: languages/texts.php:54
+msgid "Add New Google Font"
+msgstr "Add New Google Font"
+
+#: languages/texts.php:53 languages/texts.php:77
+msgid "Styling"
+msgstr "Styling"
+
+#: languages/texts.php:51
+msgid "Drag to reorder"
+msgstr "Drag to reorder"
+
+#: languages/texts.php:50
+msgid "Reorder Blocks"
+msgstr "Reorder Blocks"
+
+#: languages/texts.php:48
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: languages/texts.php:47
+msgid "Posts"
+msgstr "Posts"
+
+#: languages/texts.php:46
+msgid "Menu"
+msgstr "Menu"
+
+#: languages/texts.php:45
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: languages/texts.php:44
+msgid "Products"
+msgstr "Products"
+
+#: languages/texts.php:43
+msgid "Product"
+msgstr "Product"
+
+#: languages/texts.php:42
+msgid "Pages"
+msgstr "Pages"
+
+#: languages/texts.php:41
+msgid "Categories"
+msgstr "Categories"
+
+#: languages/texts.php:40
+msgid "Add to cart"
+msgstr "Add to cart"
+
+#: languages/texts.php:39
+msgid "Column"
+msgstr "Column"
+
+#: languages/texts.php:38
+msgid "Row"
+msgstr "Row"
+
+#: languages/texts.php:37
+msgid "Accordion"
+msgstr "Accordion"
+
+#: languages/texts.php:36
+msgid "Progress"
+msgstr "Progress"
+
+#: languages/texts.php:35
+msgid "Tabs"
+msgstr "Tabs"
+
+#: languages/texts.php:34
+msgid "Countdown"
+msgstr "Countdown"
+
+#: languages/texts.php:33
+msgid "Counter"
+msgstr "Counter"
+
+#: languages/texts.php:32
+msgid "SndCloud"
+msgstr "SoundCloud"
+
+#: languages/texts.php:31
+msgid "Icon Box"
+msgstr "Icon Box"
+
+#: languages/texts.php:30
+msgid "Form"
+msgstr "Form"
+
+#: languages/texts.php:29
+msgid "Embed"
+msgstr "Embed"
+
+#: languages/texts.php:28 languages/texts.php:133
+msgid "Map"
+msgstr "Map"
+
+#: languages/texts.php:27
+msgid "Line"
+msgstr "Line"
+
+#: languages/texts.php:26
+msgid "Spacer"
+msgstr "Spacer"
+
+#: languages/texts.php:25 languages/texts.php:126
+msgid "Video"
+msgstr "Video"
+
+#: languages/texts.php:24 languages/texts.php:122
+msgid "Image"
+msgstr "Image"
+
+#: languages/texts.php:23
+msgid "Icon"
+msgstr "Icon"
+
+#: languages/texts.php:22
+msgid "Button"
+msgstr "Button"
+
+#: languages/texts.php:21 languages/texts.php:328
+msgid "Text"
+msgstr "Text"
+
+#: languages/texts.php:20
+msgid "Add Elements"
+msgstr "Add Elements"
+
+#: languages/texts.php:16
+msgid "Press the button to add blocks"
+msgstr "Press the button to add blocks"
+
+#: languages/texts.php:15
+msgid "Add a new block"
+msgstr "Add a new block"
+
+#: languages/texts.php:12
+msgid "Switch to desktop to add blocks"
+msgstr "Switch to desktop to add blocks"
+
+#: languages/texts.php:11
+msgid "SWITCH TO DESKTOP"
+msgstr "SWITCH TO DESKTOP"
+
+#: languages/texts.php:10
+msgid "Press the button above to add blocks"
+msgstr "Press the button above to add blocks"
+
+#: languages/texts.php:9
+msgid "START BUILDING YOUR PAGE"
+msgstr "START BUILDING YOUR PAGE"
+
+#. Author of the plugin/theme
+msgid "Brizy.io"
+msgstr "Brizy.io"
+
+#. Description of the plugin/theme
+msgid "A free drag & drop front-end page builder to help you create WordPress pages lightning fast. It's easy with Brizy."
+msgstr "A free drag & drop front-end page builder to help you create WordPress pages lightning fast. It's easy with Brizy."
+
+#. #-#-#-#-#  brizy-code.pot (Brizy 1.0.18)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  brizy-code.pot (Brizy 1.0.18)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "https://brizy.io/"
+msgstr "https://brizy.io/"
+
+#. Plugin Name of the plugin/theme
+msgid "Brizy"
+msgstr "Brizy"
+
+#: public/views/error.php:10
+msgid "Go back"
+msgstr "Go back"
+
+#: public/main.php:95
+msgid "View"
+msgstr "View"
+
+#: public/main.php:84
+msgid "Preview"
+msgstr "Preview"
+
+#: public/hooks.php:34
+msgid "Brizy Template"
+msgstr "Brizy Template"
+
+#: editor/post.php:400
+msgid "Default"
+msgstr "Default"
+
+#: admin/views/settings/view.php:64
+msgid "Save Changes"
+msgstr "Save Changes"
+
+#: admin/views/settings/view.php:34
+msgid "Exclude for roles"
+msgstr "Exclude for roles"
+
+#: admin/views/settings/view.php:16
+msgid "Post Types"
+msgstr "Post Types"
+
+#: admin/views/button.php:45 admin/views/editor.php:21
+msgid "Continue to edit with"
+msgstr "Continue to edit with"
+
+#: admin/main.php:448
+msgid "Auto Draft"
+msgstr "Auto Draft"
+
+#: admin/main.php:352
+msgid "Edit with Brizy"
+msgstr "Edit with Brizy"
+
+#: admin/main.php:156 languages/texts.php:142
+msgid "Settings"
+msgstr "Settings"

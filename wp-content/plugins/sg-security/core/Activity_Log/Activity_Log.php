@@ -14,7 +14,10 @@ use SG_Security\Activity_Log\Activity_Log_Users;
 use SG_Security\Activity_Log\Activity_Log_Widgets;
 use SG_Security\Activity_Log\Activity_Log_Unknown;
 use SG_Security\Activity_Log\Activity_Log_Taxonomies;
+use SG_Security\Activity_Log\Activity_Log_Weekly_Emails;
 use SG_Security\Helper\Helper;
+use SG_Security\Activity_Log\Activity_Log_Helper;
+use SiteGround_Helper\Helper_Service;
 
 /**
  * Activity log main class
@@ -74,6 +77,7 @@ class Activity_Log {
 		'widgets',
 		'unknown',
 		'taxonomies',
+		'weekly_emails',
 	);
 
 	/**
@@ -142,7 +146,7 @@ class Activity_Log {
 	 */
 	public function set_sgs_logs_cron() {
 		// Bail if cron is disabled.
-		if ( 1 === Helper::is_cron_disabled() ) {
+		if ( 1 === Helper_Service::is_cron_disabled() ) {
 			return;
 		}
 
@@ -161,7 +165,7 @@ class Activity_Log {
 		if (
 			isset( $_GET['page'] ) &&
 			'sg-security' === $_GET['page'] &&
-			1 === Helper::is_cron_disabled()
+			1 === Helper_Service::is_cron_disabled()
 		) {
 			$this->delete_old_activity_logs();
 		}
@@ -175,8 +179,13 @@ class Activity_Log {
 	public function delete_old_activity_logs() {
 		global $wpdb;
 
+		// Bail if table doesn't exist.
+		if ( ! Helper::table_exists( $wpdb->sgs_log ) ) {
+			return false;
+		}
+
 		// Set custom log lifetime interval in days. The intval covers the cases for string, array and sql injections.
-		$log_lifetime = intval( apply_filters( 'sgs_set_activity_log_lifetime',  self::LOG_LIFETIME ) ) ;
+		$log_lifetime = intval( apply_filters( 'sgs_set_activity_log_lifetime', self::LOG_LIFETIME ) );
 
 		// If the custom value is less than 1 day or more than 12, fallback to the default lifetime.
 		if ( ( 1 > $log_lifetime ) || ( $log_lifetime > 12 ) ) {
@@ -193,4 +202,30 @@ class Activity_Log {
 		);
 	}
 
+	/**
+	 * Create log tables upon new site creation.
+	 *
+	 * @since  1.2.0
+	 *
+	 * @param  WP_Site $new_site New site object.
+	 */
+	public function create_subsite_log_tables( $new_site ) {
+		// Check if the method exists.
+		if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
+			require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+		}
+
+		if ( ! \is_plugin_active_for_network( 'sg-security/sg-security.php' ) ) {
+			return;
+		}
+
+		// Switch to the newly created blog.
+		switch_to_blog( $new_site->blog_id );
+
+		// Add the new tables.
+		Activity_Log_Helper::create_log_tables();
+
+		// Restore to the current blog.
+		restore_current_blog();
+	}
 }

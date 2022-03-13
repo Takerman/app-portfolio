@@ -1,9 +1,10 @@
 <?php
 namespace SiteGround_Optimizer\Combinator;
 
-use SiteGround_Optimizer\Helper\Helper;
 use SiteGround_Optimizer\Options\Options;
 use SiteGround_Optimizer\Front_End_Optimization\Front_End_Optimization;
+use SiteGround_Helper\Helper_Service;
+
 /**
  * SG JS_Combinator main plugin class
  */
@@ -246,6 +247,7 @@ class Js_Combinator extends Abstract_Combinator {
 		'script_memory_usage',
 		'var jetReviewsWidget',
 		'var wpa_hidden_field',
+		'snaptr',
 	);
 
 	/**
@@ -450,7 +452,7 @@ class Js_Combinator extends Abstract_Combinator {
 		'<script\s+',
 		'([^>]+[\s\'"])?',
 		'src\s*=\s*[\'"]\s*?',
-		'([^\'"]+\.js(?:\?[^\'"]*)?)\s*?',
+		'([^\'"]+\.js(?:[^\'"]*)?)\s*?',
 		'[\'"]',
 		'([^>]+)?',
 		'\/?>',
@@ -617,7 +619,7 @@ class Js_Combinator extends Abstract_Combinator {
 			}
 
 			// Replace the site url and get the src.
-			$excluded[] = trim( str_replace( Helper::get_site_url(), '', strtok( wp_scripts()->registered[ $handle ]->src, '?' ) ), '/\\' );
+			$excluded[] = trim( str_replace( Helper_Service::get_site_url(), '', strtok( wp_scripts()->registered[ $handle ]->src, '?' ) ), '/\\' );
 		}
 
 		// Set the excluded urls.
@@ -705,7 +707,7 @@ class Js_Combinator extends Abstract_Combinator {
 		$is_external = false;
 
 		if (
-			@strpos( Helper::get_home_url(), parse_url( $src, PHP_URL_HOST ) ) === false &&
+			@strpos( Helper_Service::get_home_url(), parse_url( $src, PHP_URL_HOST ) ) === false &&
 			! @strpos( $src, 'wp-includes' )
 		) {
 			$is_external = true;
@@ -824,7 +826,7 @@ class Js_Combinator extends Abstract_Combinator {
 		} else {
 			$src = Front_End_Optimization::remove_query_strings( $src );
 
-			if ( in_array( str_replace( trailingslashit( Helper::get_site_url() ), '', $src ), $this->excluded_urls ) ) {
+			if ( in_array( str_replace( trailingslashit( Helper_Service::get_site_url() ), '', $src ), $this->excluded_urls ) ) {
 				return true;
 			}
 

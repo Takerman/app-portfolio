@@ -94,7 +94,11 @@ function trp_x( $text, $context, $domain, $language ){
  * @return string the path of the mo file if it is found else an empty string
  */
 function trp_find_translation_location_for_domain( $domain, $language ){
-
+    global $trp_template_directory;
+    if ( !isset($trp_template_directory)){
+        // "caching" this because it sometimes leads to increased page load time due to many calls
+        $trp_template_directory = get_template_directory();
+    }
     $path = '';
 
     if( file_exists( WP_LANG_DIR . '/plugins/'. $domain .'-' . $language . '.mo') ) {
@@ -107,8 +111,8 @@ function trp_find_translation_location_for_domain( $domain, $language ){
     } else {
         $possible_translation_folders = array( '', 'languages/', 'language/', 'translations/', 'translation/', 'lang/' );
         foreach( $possible_translation_folders as $possible_translation_folder ){
-            if (file_exists(get_template_directory() . '/' . $possible_translation_folder . $domain . '-' . $language . '.mo')) {
-                $path = get_template_directory() . '/' . $possible_translation_folder . $domain . '-' . $language . '.mo';
+            if (file_exists($trp_template_directory . '/' . $possible_translation_folder . $domain . '-' . $language . '.mo')) {
+                $path = $trp_template_directory . '/' . $possible_translation_folder . $domain . '-' . $language . '.mo';
             } elseif ( file_exists(WP_PLUGIN_DIR . '/' . $domain . '/' . $possible_translation_folder . $domain . '-' . $language . '.mo') ) {
                 $path = WP_PLUGIN_DIR . '/' . $domain . '/' . $possible_translation_folder . $domain . '-' . $language . '.mo';
             }

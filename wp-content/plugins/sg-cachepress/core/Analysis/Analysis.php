@@ -2,7 +2,7 @@
 namespace SiteGround_Optimizer\Analysis;
 
 use SiteGround_Optimizer\Options\Options;
-use SiteGround_Optimizer\Helper\Helper;
+use SiteGround_Helper\Helper_Service;
 
 /**
  * SG Analysis main plugin class
@@ -589,11 +589,11 @@ class Analysis {
 	public function check_for_premigration_test() {
 		global $wp_filesystem;
 		// Bail if the file does not exist.
-		if ( ! file_exists( Helper::get_uploads_dir() . '/pagespeed_results.json' ) ) {
+		if ( ! file_exists( Helper_Service::get_uploads_dir() . '/pagespeed_results.json' ) ) {
 			return false;
 		}
 		// Return the string containing the pre-migration speed test.
-		$pre_migration_result = json_decode( $wp_filesystem->get_contents( Helper::get_uploads_dir() . '/pagespeed_results.json' ), true );
+		$pre_migration_result = json_decode( $wp_filesystem->get_contents( Helper_Service::get_uploads_dir() . '/pagespeed_results.json' ), true );
 
 		$data = array_merge( $this->process_analysis( $pre_migration_result ), array( 'device' => 'desktop' ) );
 
@@ -601,7 +601,7 @@ class Analysis {
 		add_option( 'sgo_pre_migration_speed_test', $data, '', false );
 
 		// Remove the file from the folder.
-		$wp_filesystem->delete( Helper::get_uploads_dir() . '/pagespeed_results.json' );
+		$wp_filesystem->delete( Helper_Service::get_uploads_dir() . '/pagespeed_results.json' );
 	}
 
 }

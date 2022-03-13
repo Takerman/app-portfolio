@@ -407,7 +407,7 @@ class WPForms_Builder {
 			'dom-purify',
 			WPFORMS_PLUGIN_URL . 'assets/js/purify.min.js',
 			[],
-			'2.3.0'
+			'2.3.4'
 		);
 
 		if ( wp_is_mobile() ) {
@@ -499,6 +499,8 @@ class WPForms_Builder {
 			'field'                          => esc_html__( 'Field', 'wpforms-lite' ),
 			'field_locked'                   => esc_html__( 'Field Locked', 'wpforms-lite' ),
 			'field_locked_msg'               => esc_html__( 'This field cannot be deleted or duplicated.', 'wpforms-lite' ),
+			'field_locked_no_delete_msg'     => esc_html__( 'This field cannot be deleted.', 'wpforms-lite' ),
+			'field_locked_no_duplicate_msg'  => esc_html__( 'This field cannot be duplicated.', 'wpforms-lite' ),
 			'fields_available'               => esc_html__( 'Available Fields', 'wpforms-lite' ),
 			'fields_unavailable'             => esc_html__( 'No fields available', 'wpforms-lite' ),
 			'heads_up'                       => esc_html__( 'Heads up!', 'wpforms-lite' ),

@@ -2,139 +2,14 @@
 namespace SG_Security\Helper;
 
 use SG_Security;
+use SiteGround_Helper\Helper_Service;
+use SG_Security\Salt_Shaker\Salt_Shaker;
+use \WP_Session_Tokens;
 
 /**
  * Helper functions and main initialization class.
  */
 class Helper {
-
-	/**
-	 * Load the global wp_filesystem.
-	 *
-	 * @since  1.0.0
-	 *
-	 * @return object The instance.
-	 */
-	public static function setup_wp_filesystem() {
-		global $wp_filesystem;
-
-		// Initialize the WP filesystem, no more using 'file-put-contents' function.
-		if ( empty( $wp_filesystem ) ) {
-			require_once( ABSPATH . '/wp-admin/includes/file.php' );
-			WP_Filesystem();
-		}
-
-		return $wp_filesystem;
-	}
-
-	/**
-	 * Check if wp cron is disabled and send error message.
-	 *
-	 * @since  1.0.0
-	 */
-	public static function is_cron_disabled() {
-		if ( defined( 'DISABLE_WP_CRON' ) && true == DISABLE_WP_CRON ) {
-			return 1;
-		}
-
-		return 0;
-	}
-
-	/**
-	 * Hide warnings in rest api.
-	 *
-	 * @since  1.0.0
-	 */
-	public function hide_warnings_in_rest_api() {
-		if ( self::is_rest() ) {
-			error_reporting( E_ERROR | E_PARSE );
-		}
-	}
-
-	/**
-	 * Checks if the current request is a WP REST API request.
-	 *
-	 * Case #1: After WP_REST_Request initialisation
-	 * Case #2: Support "plain" permalink settings
-	 * Case #3: URL Path begins with wp-json/ (your REST prefix)
-	 *          Also supports WP installations in subfolders
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return bool True if it's rest request, false otherwise.
-	 */
-	public static function is_rest() {
-		$prefix = rest_get_url_prefix();
-
-		if (
-			defined( 'REST_REQUEST' ) && REST_REQUEST ||
-			(
-				isset( $_GET['rest_route'] ) &&
-				0 === @strpos( trim( $_GET['rest_route'], '\\/' ), $prefix, 0 )
-			)
-		) {
-			return true;
-		}
-
-		$rest_url    = wp_parse_url( site_url( $prefix ) );
-		$current_url = wp_parse_url( add_query_arg( array() ) );
-
-		return 0 === @strpos( $current_url['path'], $rest_url['path'], 0 );
-	}
-
-	/**
-	 * Some plugins like WPML for example are overwriting the home url.
-	 *
-	 * @since  1.0.0
-	 *
-	 * @return string The real home url.
-	 */
-	public static function get_home_url() {
-		$url = get_option( 'home' );
-
-		$scheme = is_ssl() ? 'https' : parse_url( $url, PHP_URL_SCHEME );
-
-		$url = set_url_scheme( $url, $scheme );
-
-		return trailingslashit( $url );
-	}
-
-	/**
-	 * Some plugins like WPML for example are overwriting the site url.
-	 *
-	 * @since  1.0.0
-	 *
-	 * @return string The real site url.
-	 */
-	public static function get_site_url() {
-		$url = get_option( 'siteurl' );
-
-		$scheme = is_ssl() ? 'https' : parse_url( $url, PHP_URL_SCHEME );
-
-		$url = set_url_scheme( $url, $scheme );
-
-		return trailingslashit( $url );
-	}
-
-	/**
-	 * Get WordPress uploads dir
-	 *
-	 * @since  1.0.0
-	 *
-	 * @return string Path to the uploads dir.
-	 */
-	public static function get_uploads_dir() {
-		// Get the uploads dir.
-		$upload_dir = wp_upload_dir();
-
-		$base_dir = $upload_dir['basedir'];
-
-		if ( defined( 'UPLOADS' ) ) {
-			$base_dir = ABSPATH . UPLOADS;
-		}
-
-		return $base_dir;
-	}
 
 	/**
 	 * Get the current user's ip address.
@@ -166,52 +41,11 @@ class Helper {
 				continue;
 			}
 
-			return str_replace( '::1', '127.0.0.1', $_SERVER[ $key ] ); //phpcs:ignore
+			return preg_replace( '/^::1$/', '127.0.0.1', $_SERVER[ $key ] ); //phpcs:ignore
 		}
 
 		// Return the local IP by default.
 		return '127.0.0.1';
-	}
-
-	/**
-	 * Check for any updates available.
-	 *
-	 * @since  1.0.0
-	 *
-	 * @return boolean True if we have, false otherwise.
-	 */
-	public static function has_updates() {
-		// Get dependencies.
-		require_once( ABSPATH . 'wp-admin/includes/update.php' );
-
-		if ( ! function_exists( 'get_plugins' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/plugin.php';
-		}
-
-		// Check for theme updates.
-		if ( ! empty( get_theme_updates() ) ) {
-			return true;
-		}
-
-		// Check for plugin updates.
-		if ( ! empty( get_plugin_updates() ) ) {
-			return true;
-		}
-
-		$core = get_core_updates();
-
-		// Check for core.
-		if ( 'latest' !== $core[0]->response ) {
-			return true;
-		}
-
-		// Check for translation updates.
-		if ( ! empty( wp_get_translation_updates() ) ) {
-			return true;
-		}
-
-		// Bail if we do not have any updates available.
-		return false;
 	}
 
 	/**
@@ -234,7 +68,7 @@ class Helper {
 	 */
 	public static function get_url_path( $url ) {
 		// Get the site url parts.
-		$url_parts = parse_url( self::get_site_url() );
+		$url_parts = parse_url( Helper_Service::get_site_url() );
 		// Get the home path.
 		$home_path = ! empty( $url_parts['path'] ) ? trailingslashit( $url_parts['path'] ) : '/';
 
@@ -268,13 +102,49 @@ class Helper {
 	 * @param  array  $args    Array with additional args.
 	 */
 	public function custom_wp_die_callback( $message, $title, $args ) {
-		// Call the default wp_die_handler if the custom param is not set.
-		if ( empty( $args['sgs_error'] ) ) {
+		// Call the default wp_die_handler if the custom param is not set or a WP_Error object is present.
+		if ( is_object( $message ) || empty( $args['sgs_error'] ) ) {
 			_default_wp_die_handler( $message, $title, $args );
 		}
 
 		// Include the error template.
 		include SG_Security\DIR . '/templates/error.php';
 		exit;
+	}
+
+	/**
+	 * Checks if the table exists in the database.
+	 *
+	 * @since  1.2.0
+	 *
+	 * @param  string $table_name The name of the table
+	 *
+	 * @return boolean            True/False.
+	 */
+	public static function table_exists( $table_name ) {
+		global $wpdb;
+
+		// Bail if table doesn't exist.
+		if ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table_name ) ) !== $table_name ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Force user logout.
+	 *
+	 * @since  1.2.2
+	 */
+	public function logout_users() {
+		// Init the salt shaker
+		$this->salt_shaker = new Salt_Shaker();
+
+		// Change salts
+		$this->salt_shaker->change_salts();
+
+		// Destroy all sessions.
+		WP_Session_Tokens::destroy_all_for_all_users();
 	}
 }

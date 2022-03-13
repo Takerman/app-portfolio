@@ -1,4 +1,4 @@
-# Copyright (C) 2021 TranslatePress Multilingual
+# Copyright (C) 2022 TranslatePress Multilingual
 # This file is distributed under the same license as the TranslatePress Multilingual package.
 msgid ""
 msgstr ""
@@ -45,27 +45,27 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: includes/class-advanced-tab.php:181
+#: includes/class-advanced-tab.php:185
 msgid "Settings saved."
 msgstr ""
 
-#: includes/class-advanced-tab.php:313, includes/class-error-manager.php:172, partials/machine-translation-settings-page.php:13, partials/machine-translation-settings-page.php:117, partials/machine-translation-settings-page.php:150, partials/main-settings-page.php:42, partials/main-settings-page.php:55, partials/main-settings-page.php:68
+#: includes/class-advanced-tab.php:318, includes/class-error-manager.php:172, partials/machine-translation-settings-page.php:13, partials/machine-translation-settings-page.php:117, partials/machine-translation-settings-page.php:150, partials/main-settings-page.php:42, partials/main-settings-page.php:55, partials/main-settings-page.php:68
 msgid "Yes"
 msgstr ""
 
-#: includes/class-advanced-tab.php:510, includes/class-advanced-tab.php:521, includes/class-advanced-tab.php:615, includes/class-advanced-tab.php:646
+#: includes/class-advanced-tab.php:528, includes/class-advanced-tab.php:539, includes/class-advanced-tab.php:633, includes/class-advanced-tab.php:664
 msgid "Are you sure you want to remove this item?"
 msgstr ""
 
-#: includes/class-advanced-tab.php:510, includes/class-advanced-tab.php:521, includes/class-advanced-tab.php:615, includes/class-advanced-tab.php:646, partials/main-settings-language-selector.php:60, add-ons-advanced/extra-languages/partials/language-selector-pro.php:62
+#: includes/class-advanced-tab.php:528, includes/class-advanced-tab.php:539, includes/class-advanced-tab.php:633, includes/class-advanced-tab.php:664, partials/main-settings-language-selector.php:60, add-ons-advanced/extra-languages/partials/language-selector-pro.php:62
 msgid "Remove"
 msgstr ""
 
-#: includes/class-advanced-tab.php:521, includes/class-advanced-tab.php:646, partials/main-settings-language-selector.php:102, add-ons-advanced/extra-languages/partials/language-selector-pro.php:103
+#: includes/class-advanced-tab.php:539, includes/class-advanced-tab.php:664, partials/main-settings-language-selector.php:102, add-ons-advanced/extra-languages/partials/language-selector-pro.php:103
 msgid "Add"
 msgstr ""
 
-#: includes/class-advanced-tab.php:599, includes/class-advanced-tab.php:633
+#: includes/class-advanced-tab.php:617, includes/class-advanced-tab.php:651
 msgid "Select..."
 msgstr ""
 
@@ -185,7 +185,7 @@ msgstr ""
 msgid "Automatic translation has been disabled."
 msgstr ""
 
-#: includes/class-error-manager.php:146, includes/class-plugin-notices.php:341, includes/class-plugin-notices.php:392, includes/class-plugin-notices.php:373, includes/class-plugin-notices.php:406, includes/class-plugin-notices.php:431, includes/class-plugin-notices.php:455, includes/class-reviews.php:119, includes/class-reviews.php:122, includes/class-upgrade.php:736
+#: includes/class-error-manager.php:146, includes/class-plugin-notices.php:341, includes/class-plugin-notices.php:392, includes/class-plugin-notices.php:373, includes/class-plugin-notices.php:406, includes/class-plugin-notices.php:431, includes/class-plugin-notices.php:455, includes/class-reviews.php:119, includes/class-reviews.php:122, includes/class-upgrade.php:817
 msgid "Dismiss this notice."
 msgstr ""
 
@@ -297,11 +297,11 @@ msgstr ""
 msgid "(last checked on %s)"
 msgstr ""
 
-#: includes/class-machine-translator.php:140
+#: includes/class-machine-translator.php:136, includes/google-translate/class-google-translate-v2-machine-translator.php:181
 msgid "Please enter your Google Translate key."
 msgstr ""
 
-#: includes/class-machine-translator.php:155
+#: includes/class-machine-translator.php:151, add-ons-pro/deepl/includes/class-deepl-machine-translator.php:286
 msgid "Please enter your DeepL API key."
 msgstr ""
 
@@ -441,7 +441,11 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: includes/class-settings.php:604
+#: includes/class-settings.php:613, partials/license-settings-page.php:32
+msgid "Activate License"
+msgstr ""
+
+#: includes/class-settings.php:605
 msgid "Pro Features"
 msgstr ""
 
@@ -785,99 +789,111 @@ msgstr ""
 msgid "Twitter Image"
 msgstr ""
 
-#: includes/class-upgrade.php:125
+#: includes/class-upgrade.php:114
+msgid "Removing cdata dictionary strings for language %s..."
+msgstr ""
+
+#: includes/class-upgrade.php:122
+msgid "Removing untranslated dictionary links for language %s..."
+msgstr ""
+
+#: includes/class-upgrade.php:142
 msgid "Removing duplicated gettext strings for language %s..."
 msgstr ""
 
-#: includes/class-upgrade.php:133
+#: includes/class-upgrade.php:150
 msgid "Removing untranslated gettext strings where translation is available for language %s..."
 msgstr ""
 
-#: includes/class-upgrade.php:141
+#: includes/class-upgrade.php:158
 msgid "Removing duplicated dictionary strings for language %s..."
 msgstr ""
 
-#: includes/class-upgrade.php:149
+#: includes/class-upgrade.php:166
 msgid "Removing untranslated dictionary strings where translation is available for language %s..."
 msgstr ""
 
-#: includes/class-upgrade.php:156
+#: includes/class-upgrade.php:173
 msgid "Inserting original strings for language %s..."
 msgstr ""
 
-#: includes/class-upgrade.php:165
+#: includes/class-upgrade.php:182
 msgid "Cleaning original strings table for language %s..."
 msgstr ""
 
-#: includes/class-upgrade.php:173
+#: includes/class-upgrade.php:190
 msgid "Updating original string ids for language %s..."
 msgstr ""
 
-#: includes/class-upgrade.php:181
+#: includes/class-upgrade.php:198
 msgid "Regenerating original meta table for language %s..."
 msgstr ""
 
-#: includes/class-upgrade.php:189
+#: includes/class-upgrade.php:206
 msgid "Cleaning original meta table for language %s..."
 msgstr ""
 
-#: includes/class-upgrade.php:223
+#: includes/class-upgrade.php:214
+msgid "Finishing up..."
+msgstr ""
+
+#: includes/class-upgrade.php:250
 msgid "TranslatePress data update"
 msgstr ""
 
-#: includes/class-upgrade.php:223
+#: includes/class-upgrade.php:250
 msgid "We need to update your translations database to the latest version."
 msgstr ""
 
-#: includes/class-upgrade.php:224
+#: includes/class-upgrade.php:251
 msgid "IMPORTANT: It is strongly recommended to first backup the database!\nAre you sure you want to continue?"
 msgstr ""
 
-#: includes/class-upgrade.php:224
+#: includes/class-upgrade.php:251
 msgid "Run the updater"
 msgstr ""
 
-#: includes/class-upgrade.php:240
+#: includes/class-upgrade.php:278
+msgid "Database optimization did not complete successfully. We recommend restoring the original database or <a href=\"%s\" >trying again.</a>"
+msgstr ""
+
+#: includes/class-upgrade.php:296
 msgid "Update aborted! Your user account doesn't have the capability to perform database updates."
 msgstr ""
 
-#: includes/class-upgrade.php:245
+#: includes/class-upgrade.php:301
 msgid "Update aborted! Invalid nonce."
 msgstr ""
 
-#: includes/class-upgrade.php:286
+#: includes/class-upgrade.php:345
 msgid "Update aborted! Incorrect action."
 msgstr ""
 
-#: includes/class-upgrade.php:289
+#: includes/class-upgrade.php:348
 msgid "Update aborted! Incorrect language code."
 msgstr ""
 
-#: includes/class-upgrade.php:273
+#: includes/class-upgrade.php:332
 msgid "Updating database to version %s+"
 msgstr ""
 
-#: includes/class-upgrade.php:277, includes/class-upgrade.php:339
+#: includes/class-upgrade.php:336, includes/class-upgrade.php:399
 msgid "Processing table for language %s..."
 msgstr ""
 
-#: includes/class-upgrade.php:260, includes/class-upgrade.php:368
+#: includes/class-upgrade.php:319, includes/class-upgrade.php:429
 msgid "Back to TranslatePress Settings"
 msgstr ""
 
-#: includes/class-upgrade.php:264
+#: includes/class-upgrade.php:323
 msgid "Successfully updated database!"
 msgstr ""
 
-#: includes/class-upgrade.php:343, includes/class-upgrade.php:336
+#: includes/class-upgrade.php:404, includes/class-upgrade.php:396
 msgid " done."
 msgstr ""
 
-#: includes/class-upgrade.php:648
-msgid "Recreated original strings table."
-msgstr ""
-
-#: includes/class-upgrade.php:734
+#: includes/class-upgrade.php:815
 msgid "All individual TranslatePress add-on plugins <a href=\"%1$s\" target=\"_blank\">have been discontinued</a> and are now included in the premium Personal, Business and Developer versions of TranslatePress. Please log into your <a href=\"%2$s\" target=\"_blank\">account page</a>, download the new premium version and install it. Your individual addons settings will be ported over."
 msgstr ""
 
@@ -1035,10 +1051,6 @@ msgstr ""
 
 #: partials/license-settings-page.php:14
 msgid "License Key"
-msgstr ""
-
-#: partials/license-settings-page.php:32
-msgid "Activate License"
 msgstr ""
 
 #: partials/license-settings-page.php:22
@@ -1351,11 +1363,11 @@ msgstr ""
 msgid "Response:"
 msgstr ""
 
-#: partials/test-api-settings-page.php:27
+#: partials/test-api-settings-page.php:32
 msgid "Response Body:"
 msgstr ""
 
-#: partials/test-api-settings-page.php:32
+#: partials/test-api-settings-page.php:42
 msgid "Entire Response From wp_remote_get():"
 msgstr ""
 
@@ -1375,31 +1387,47 @@ msgstr ""
 msgid "Operations to perform"
 msgstr ""
 
-#: partials/trp-remove-duplicate-rows.php:21
+#: partials/trp-remove-duplicate-rows.php:22
+msgid "Remove CDATA for original and dictionary strings"
+msgstr ""
+
+#: partials/trp-remove-duplicate-rows.php:24
+msgid "Removes CDATA from trp_original_strings and trp_dictionary_* tables.<br>This type of content should not be detected by TranslatePress. It might have been introduced in the database in older versions of the plugin."
+msgstr ""
+
+#: partials/trp-remove-duplicate-rows.php:27
+msgid "Remove untranslated links from dictionary tables"
+msgstr ""
+
+#: partials/trp-remove-duplicate-rows.php:29
+msgid "Removes untranslated links and images from all trp_dictionary_* tables. These tables contain translations for user-inputted strings such as post content, post title, menus etc."
+msgstr ""
+
+#: partials/trp-remove-duplicate-rows.php:32
 msgid "Remove duplicate rows for gettext strings"
 msgstr ""
 
-#: partials/trp-remove-duplicate-rows.php:23
+#: partials/trp-remove-duplicate-rows.php:34
 msgid "Cleans up all trp_gettext_* tables of duplicate rows. These tables contain translations for themes and plugin strings."
 msgstr ""
 
-#: partials/trp-remove-duplicate-rows.php:26
+#: partials/trp-remove-duplicate-rows.php:37
 msgid "Remove duplicate rows for dictionary strings"
 msgstr ""
 
-#: partials/trp-remove-duplicate-rows.php:28
+#: partials/trp-remove-duplicate-rows.php:39
 msgid "Cleans up all trp_dictionary_* tables of duplicate rows. These tables contain translations for user-inputted strings such as post content, post title, menus etc."
 msgstr ""
 
-#: partials/trp-remove-duplicate-rows.php:31
+#: partials/trp-remove-duplicate-rows.php:42
 msgid "Remove duplicate rows for original dictionary strings"
 msgstr ""
 
-#: partials/trp-remove-duplicate-rows.php:33
+#: partials/trp-remove-duplicate-rows.php:44
 msgid "Cleans up all trp_original_strings table of duplicate rows. This table contains strings in the default language, without any translation.<br>The trp_original_meta table, which contains meta information that refers to the post parent’s id, is also regenerated.<br>Such duplicates can appear in exceptional situations of unexpected behavior."
 msgstr ""
 
-#: partials/trp-remove-duplicate-rows.php:39
+#: partials/trp-remove-duplicate-rows.php:50
 msgid "Optimize Database"
 msgstr ""
 
@@ -1607,6 +1635,26 @@ msgstr ""
 msgid "Ads a slash at the end of the home_url() function"
 msgstr ""
 
+#: includes/advanced-settings/hreflang-remove-locale.php:10
+msgid "Show Both (recommended)"
+msgstr ""
+
+#: includes/advanced-settings/hreflang-remove-locale.php:10
+msgid "Remove Country Locale"
+msgstr ""
+
+#: includes/advanced-settings/hreflang-remove-locale.php:10
+msgid "Remove Region Independent Locale"
+msgstr ""
+
+#: includes/advanced-settings/hreflang-remove-locale.php:11
+msgid "Remove duplicate hreflang"
+msgstr ""
+
+#: includes/advanced-settings/hreflang-remove-locale.php:12
+msgid "Choose which hreflang tags will appear on your website.<br/>We recommend showing both types of hreflang tags as indicated by <a href=\"https://developers.google.com/search/docs/advanced/crawling/localized-versions\" title=\"Google Crawling\" target=\"_blank\">Google documentation</a>.<br/>Removing Country Locale when having multiple Country Locales of the same language (ex. English UK and English US) will result in showing one hreflang tag with link to just one of the region locales for that language."
+msgstr ""
+
 #: includes/advanced-settings/open-language-switcher-shortcode-on-click.php:8
 msgid "Open language switcher only on click"
 msgstr ""
@@ -1671,23 +1719,23 @@ msgstr ""
 msgid "Google Translate v2"
 msgstr ""
 
-#: includes/google-translate/functions.php:40
+#: includes/google-translate/functions.php:41
 msgid "Google Translate API Key"
 msgstr ""
 
-#: includes/google-translate/functions.php:60
+#: includes/google-translate/functions.php:61
 msgid "Visit <a href=\"https://cloud.google.com/docs/authentication/api-keys\" target=\"_blank\">this link</a> to see how you can set up an API key, <strong>control API costs</strong> and set HTTP referrer restrictions."
 msgstr ""
 
-#: includes/google-translate/functions.php:61
+#: includes/google-translate/functions.php:62
 msgid "Your HTTP referrer is: %s"
 msgstr ""
 
-#: includes/google-translate/functions.php:100
+#: includes/google-translate/functions.php:101
 msgid "There was an error on the server processing your Google Translate key."
 msgstr ""
 
-#: includes/google-translate/functions.php:97
+#: includes/google-translate/functions.php:98
 msgid "There was an error with your Google Translate key."
 msgstr ""
 

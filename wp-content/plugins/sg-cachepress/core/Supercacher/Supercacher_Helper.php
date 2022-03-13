@@ -2,12 +2,38 @@
 namespace SiteGround_Optimizer\Supercacher;
 
 use SiteGround_Optimizer\Helper\Helper;
+use SiteGround_Helper\Helper_Service;
 
 /**
  * SG CachePress class that help to split the logic in Supercacher.
  */
 class Supercacher_Helper {
 
+	/**
+	 * Check if we need to change the cache header of rest requests.
+	 *
+	 * @since 6.0.6
+	 *
+	 * @param WP_HTTP_Respons $result Result to send to the client.
+	 */
+	public function set_rest_cache_headers( $result ) {
+		// Get the optimization status.
+		$is_cache_enabled = (int) get_option( 'siteground_optimizer_enable_cache', 0 );
+
+		// Prepare the url.
+		$url = ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] == 'on' ) ? 'https://' : 'http://';
+		$url .= $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+
+		// Set the cache header to false so it's skipped from caching.
+		if (
+			0 === $is_cache_enabled ||
+			self::is_url_excluded( trailingslashit( $url ) )
+		) {
+			$result->header( 'X-Cache-Enabled', 'False' );
+		}
+
+		return $result;
+	}
 	/**
 	 * Set headers cookie.
 	 *
@@ -18,15 +44,16 @@ class Supercacher_Helper {
 			return;
 		}
 
-		$is_cache_enabled = (int) get_option( 'siteground_optimizer_enable_cache', 0 );
-		$vary_user_agent = (int) get_option( 'siteground_optimizer_user_agent_header', 0 );
+		$is_cache_enabled   = (int) get_option( 'siteground_optimizer_enable_cache', 0 );
+		$file_cache_enabled = (int) get_option( 'siteground_optimizer_file_caching', 0 );
+		$vary_user_agent    = (int) get_option( 'siteground_optimizer_user_agent_header', 0 );
 
 		$url = ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] == 'on' ) ? 'https://' : 'http://';
 		$url .= $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
 		// Bail if the cache is not enabled or if the url is excluded from cache.
 		if (
-			0 === $is_cache_enabled ||
+			( 0 === $is_cache_enabled && 0 === $file_cache_enabled ) ||
 			self::is_url_excluded( $url ) ||
 			self::is_post_type_excluded( $url )
 		) {
@@ -42,48 +69,7 @@ class Supercacher_Helper {
 		// Set cache header.
 		$headers['X-Cache-Enabled'] = 'True';
 
-		if ( \is_user_logged_in() ) {
-			$this->set_bypass_cookie();
-		} else {
-			$this->remove_bypass_cookie();
-		}
-
 		return $headers;
-	}
-
-	/**
-	 * Set the bypass cookie.
-	 *
-	 * @since  5.0.0
-	 */
-	public function set_bypass_cookie() {
-		if ( version_compare( phpversion(), '7.3', '>=' ) ) {
-			setcookie(
-				'wpSGCacheBypass',
-				1,
-				array(
-					'expires'  => time() + 100 * MINUTE_IN_SECONDS,
-					'path'     => COOKIEPATH,
-					'httponly' => true,
-					'samesite' => 'Lax',
-				)
-			);
-		} else {
-			setcookie( 'wpSGCacheBypass', 1, time() + 100 * MINUTE_IN_SECONDS, COOKIEPATH . ';samesite=Lax;' );
-		}
-	}
-
-	/**
-	 * Remove the bypass cookie set on login.
-	 *
-	 * @since  5.0.0
-	 */
-	public function remove_bypass_cookie() {
-		if ( empty( $_COOKIE['wpSGCacheBypass'] ) ) {
-			return;
-		}
-
-		setcookie( 'wpSGCacheBypass', 0, time() - HOUR_IN_SECONDS, COOKIEPATH );
 	}
 
 	/**

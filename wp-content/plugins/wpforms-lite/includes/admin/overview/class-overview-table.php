@@ -17,6 +17,15 @@ class WPForms_Overview_Table extends WP_List_Table {
 	public $per_page;
 
 	/**
+	 * Number of forms in different views.
+	 *
+	 * @since 1.7.2
+	 *
+	 * @var array
+	 */
+	private $count;
+
+	/**
 	 * Primary class constructor.
 	 *
 	 * @since 1.0.0
@@ -25,12 +34,14 @@ class WPForms_Overview_Table extends WP_List_Table {
 
 		// Utilize the parent constructor to build the main class properties.
 		parent::__construct(
-			array(
+			[
 				'singular' => 'form',
 				'plural'   => 'forms',
 				'ajax'     => false,
-			)
+			]
 		);
+
+		add_filter( 'default_hidden_columns', [ $this, 'default_hidden_columns' ], 10, 2 );
 
 		// Default number of forms to show per page.
 		$this->per_page = (int) apply_filters( 'wpforms_overview_per_page', 20 );
@@ -45,12 +56,13 @@ class WPForms_Overview_Table extends WP_List_Table {
 	 */
 	public function get_columns() {
 
-		$columns = array(
+		$columns = [
 			'cb'        => '<input type="checkbox" />',
-			'form_name' => esc_html__( 'Name', 'wpforms-lite' ),
+			'name'      => esc_html__( 'Name', 'wpforms-lite' ),
+			'author'    => esc_html__( 'Author', 'wpforms-lite' ),
 			'shortcode' => esc_html__( 'Shortcode', 'wpforms-lite' ),
 			'created'   => esc_html__( 'Created', 'wpforms-lite' ),
-		);
+		];
 
 		return apply_filters( 'wpforms_overview_table_columns', $columns );
 	}
@@ -74,7 +86,7 @@ class WPForms_Overview_Table extends WP_List_Table {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param WP_Post $form        Form.
+	 * @param WP_Post $form        CPT object as a form representation.
 	 * @param string  $column_name Column Name.
 	 *
 	 * @return string
@@ -84,27 +96,44 @@ class WPForms_Overview_Table extends WP_List_Table {
 		switch ( $column_name ) {
 			case 'id':
 				$value = $form->ID;
+
 				break;
 
 			case 'shortcode':
 				$value = '[wpforms id="' . $form->ID . '"]';
+
 				break;
 
 			case 'created':
 				$value = get_the_date( get_option( 'date_format' ), $form );
+
 				break;
 
 			case 'modified':
 				$value = get_post_modified_time( get_option( 'date_format' ), false, $form );
+
 				break;
 
 			case 'author':
+				$value  = '';
 				$author = get_userdata( $form->post_author );
-				$value  = $author->display_name;
+
+				if ( ! $author ) {
+					break;
+				}
+
+				$value         = $author->display_name;
+				$user_edit_url = get_edit_user_link( $author->ID );
+
+				if ( ! empty( $user_edit_url ) ) {
+					$value = '<a href="' . esc_url( $user_edit_url ) . '">' . esc_html( $value ) . '</a>';
+				}
+
 				break;
 
 			case 'php':
 				$value = '<code style="display:block;font-size:11px;">if( function_exists( \'wpforms_get\' ) ){ wpforms_get( ' . $form->ID . ' ); }</code>';
+
 				break;
 
 			default:
@@ -112,6 +141,23 @@ class WPForms_Overview_Table extends WP_List_Table {
 		}
 
 		return apply_filters( 'wpforms_overview_table_column_value', $value, $form, $column_name );
+	}
+
+	/**
+	 * Filter the default list of hidden columns.
+	 *
+	 * @since 1.7.2
+	 *
+	 * @param string[]  $hidden Array of IDs of columns hidden by default.
+	 * @param WP_Screen $screen WP_Screen object of the current screen.
+	 */
+	public function default_hidden_columns( $hidden, $screen ) {
+
+		if ( $screen->id !== 'toplevel_page_wpforms-overview' ) {
+			return $hidden;
+		}
+
+		return [ 'author' ];
 	}
 
 	/**
@@ -123,10 +169,10 @@ class WPForms_Overview_Table extends WP_List_Table {
 	 *
 	 * @return string
 	 */
-	public function column_form_name( $form ) {
+	public function column_name( $form ) {
 
 		// Build the row action links and return the value.
-		return $this->get_column_form_name_title( $form ) . $this->get_column_form_name_row_actions( $form );
+		return $this->get_column_name_title( $form ) . $this->get_column_name_row_actions( $form );
 	}
 
 	/**
@@ -138,7 +184,7 @@ class WPForms_Overview_Table extends WP_List_Table {
 	 *
 	 * @return string
 	 */
-	protected function get_column_form_name_title( $form ) {
+	protected function get_column_name_title( $form ) {
 
 		$title = ! empty( $form->post_title ) ? $form->post_title : $form->post_name;
 		$name  = sprintf(
@@ -160,10 +206,10 @@ class WPForms_Overview_Table extends WP_List_Table {
 				'<a href="%s" title="%s"><strong>%s</strong></a>',
 				esc_url(
 					add_query_arg(
-						array(
+						[
 							'view'    => 'list',
 							'form_id' => $form->ID,
-						),
+						],
 						admin_url( 'admin.php?page=wpforms-entries' )
 					)
 				),
@@ -177,10 +223,10 @@ class WPForms_Overview_Table extends WP_List_Table {
 				'<a href="%s" title="%s"><strong>%s</strong></a>',
 				esc_url(
 					add_query_arg(
-						array(
+						[
 							'view'    => 'fields',
 							'form_id' => $form->ID,
-						),
+						],
 						admin_url( 'admin.php?page=wpforms-builder' )
 					)
 				),
@@ -201,10 +247,10 @@ class WPForms_Overview_Table extends WP_List_Table {
 	 *
 	 * @return string
 	 */
-	protected function get_column_form_name_row_actions( $form ) {
+	protected function get_column_name_row_actions( $form ) {
 
 		// Build all of the row action links.
-		$row_actions = array();
+		$row_actions = [];
 
 		// Edit.
 		if ( wpforms_current_user_can( 'edit_form_single', $form->ID ) ) {
@@ -212,10 +258,10 @@ class WPForms_Overview_Table extends WP_List_Table {
 				'<a href="%s" title="%s">%s</a>',
 				esc_url(
 					add_query_arg(
-						array(
+						[
 							'view'    => 'fields',
 							'form_id' => $form->ID,
-						),
+						],
 						admin_url( 'admin.php?page=wpforms-builder' )
 					)
 				),
@@ -230,10 +276,10 @@ class WPForms_Overview_Table extends WP_List_Table {
 				'<a href="%s" title="%s">%s</a>',
 				esc_url(
 					add_query_arg(
-						array(
+						[
 							'view'    => 'list',
 							'form_id' => $form->ID,
-						),
+						],
 						admin_url( 'admin.php?page=wpforms-entries' )
 					)
 				),
@@ -259,10 +305,10 @@ class WPForms_Overview_Table extends WP_List_Table {
 				esc_url(
 					wp_nonce_url(
 						add_query_arg(
-							array(
+							[
 								'action'  => 'duplicate',
 								'form_id' => $form->ID,
-							),
+							],
 							admin_url( 'admin.php?page=wpforms-overview' )
 						),
 						'wpforms_duplicate_form_nonce'
@@ -280,10 +326,10 @@ class WPForms_Overview_Table extends WP_List_Table {
 				esc_url(
 					wp_nonce_url(
 						add_query_arg(
-							array(
+							[
 								'action'  => 'delete',
 								'form_id' => $form->ID,
-							),
+							],
 							admin_url( 'admin.php?page=wpforms-overview' )
 						),
 						'wpforms_delete_form_nonce'
@@ -306,15 +352,47 @@ class WPForms_Overview_Table extends WP_List_Table {
 	 */
 	public function get_bulk_actions() {
 
-		$actions = array();
+		$actions = [];
 
 		if ( wpforms_current_user_can( 'delete_entries' ) ) {
-			$actions = array(
+			$actions = [
 				'delete' => esc_html__( 'Delete', 'wpforms-lite' ),
-			);
+			];
 		}
 
 		return $actions;
+	}
+
+	/**
+	 * Generate the table navigation above or below the table.
+	 *
+	 * @since 1.7.2
+	 *
+	 * @param string $which The location of the table navigation: 'top' or 'bottom'.
+	 */
+	protected function display_tablenav( $which ) {
+
+		// If there are some forms just call the parent method.
+		if ( $this->has_items() ) {
+			parent::display_tablenav( $which );
+
+			return;
+		}
+
+		// Otherwise, display bulk actions menu and "0 items" on the right (pagination).
+		?>
+			<div class="tablenav <?php echo esc_attr( $which ); ?>">
+				<div class="alignleft actions bulkactions">
+					<?php $this->bulk_actions( $which ); ?>
+				</div>
+				<?php
+				if ( $which === 'top' ) {
+					$this->pagination( $which );
+				}
+				?>
+				<br class="clear" />
+			</div>
+		<?php
 	}
 
 	/**
@@ -324,56 +402,40 @@ class WPForms_Overview_Table extends WP_List_Table {
 	 */
 	public function no_items() {
 
-		printf(
-			wp_kses( /* translators: %s - WPForms Builder page. */
-				__( 'Whoops, you haven\'t created a form yet. Want to <a href="%s">give it a go</a>?', 'wpforms-lite' ),
-				array(
-					'a' => array(
-						'href' => array(),
-					),
-				)
-			),
-			esc_url( admin_url( 'admin.php?page=wpforms-builder' ) )
-		);
+		esc_html_e( 'No forms found.', 'wpforms-lite' );
 	}
 
 	/**
-	 * Fetch and setup the final data for the table.
+	 * Fetch and set up the final data for the table.
 	 *
 	 * @since 1.0.0
 	 */
 	public function prepare_items() {
 
-		// Setup the columns.
+		// Set up the columns.
 		$columns = $this->get_columns();
 
 		// Hidden columns (none).
-		$hidden = array();
+		$hidden = get_hidden_columns( $this->screen );
 
-		// Define which columns can be sorted - form name, date.
-		$sortable = array(
-			'form_name' => array( 'title', false ),
-			'created'   => array( 'date', false ),
-		);
+		// Define which columns can be sorted - form name, author, date.
+		$sortable = [
+			'name'    => [ 'title', false ],
+			'author'  => [ 'author', false ],
+			'created' => [ 'date', false ],
+		];
 
 		// Set column headers.
-		$this->_column_headers = array( $columns, $hidden, $sortable );
-
-		// Get forms.
-		if ( wpforms_current_user_can( 'wpforms_view_others_forms' ) ) {
-			$total = wp_count_posts( 'wpforms' )->publish;
-		} else {
-			$total = count_user_posts( get_current_user_id(), 'wpforms', true );
-		}
+		$this->_column_headers = [ $columns, $hidden, $sortable ];
 
 		// phpcs:disable WordPress.Security.NonceVerification.Recommended
 		$page     = $this->get_pagenum();
-		$order    = isset( $_GET['order'] ) && strtoupper( sanitize_text_field( wp_unslash( $_GET['order'] ) ) ) === 'ASC' ? 'ASC' : 'DESC';
+		$order    = isset( $_GET['order'] ) && $_GET['order'] === 'asc' ? 'ASC' : 'DESC';
 		$orderby  = isset( $_GET['orderby'] ) ? sanitize_key( $_GET['orderby'] ) : 'ID';
 		$per_page = $this->get_items_per_page( 'wpforms_forms_per_page', $this->per_page );
 		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
-		$args = array(
+		$args = [
 			'orderby'        => $orderby,
 			'order'          => $order,
 			'nopaging'       => false,
@@ -381,20 +443,75 @@ class WPForms_Overview_Table extends WP_List_Table {
 			'paged'          => $page,
 			'no_found_rows'  => false,
 			'post_status'    => 'publish',
-		);
-
-		$data = wpforms()->form->get( '', $args );
+		];
 
 		// Giddy up.
-		$this->items = $data;
+		$this->items = wpforms()->get( 'form' )->get( '', $args );
+		$per_page    = isset( $args['posts_per_page'] ) ? $args['posts_per_page'] : $this->get_items_per_page( 'wpforms_forms_per_page', $this->per_page );
+
+		$this->update_count( $args );
 
 		// Finalize pagination.
 		$this->set_pagination_args(
-			array(
-				'total_items' => $total,
+			[
+				'total_items' => $this->count['all'],
 				'per_page'    => $per_page,
-				'total_pages' => ceil( $total / $per_page ),
-			)
+				'total_pages' => ceil( $this->count['all'] / $per_page ),
+			]
+		);
+	}
+
+	/**
+	 * Calculate and update form counts.
+	 *
+	 * @since 1.7.2
+	 *
+	 * @param array $args Get forms arguments.
+	 */
+	private function update_count( $args ) {
+
+		/**
+		 * Allow developers to count forms filtered by some search criteria.
+		 * If result will not contain `all` key, count All Forms without filtering will be performed.
+		 *
+		 * @since 1.7.2
+		 *
+		 * @param array $count Contains counts of forms in different views.
+		 * @param array $args  Arguments of the `get_posts`.
+		 */
+		$this->count = (array) apply_filters( 'wpforms_overview_table_update_count', [], $args );
+
+		// We do not need to perform all forms count if we have the result already.
+		if ( isset( $this->count['all'] ) ) {
+			return;
+		}
+
+		// Count all forms.
+		$this->count['all'] = wpforms_current_user_can( 'wpforms_view_others_forms' )
+			 ? (int) wp_count_posts( 'wpforms' )->publish
+			 : (int) count_user_posts( get_current_user_id(), 'wpforms', true );
+	}
+
+	/**
+	 * Display the pagination.
+	 *
+	 * @since 1.7.2
+	 *
+	 * @param string $which The location of the table pagination: 'top' or 'bottom'.
+	 */
+	protected function pagination( $which ) {
+
+		if ( $this->has_items() ) {
+			parent::pagination( $which );
+
+			return;
+		}
+
+		printf(
+			'<div class="tablenav-pages one-page">
+				<span class="displaying-num">%s</span>
+			</div>',
+			esc_html__( '0 items', 'wpforms-lite' )
 		);
 	}
 
@@ -410,5 +527,18 @@ class WPForms_Overview_Table extends WP_List_Table {
 		parent::display_rows();
 
 		do_action( 'wpforms_admin_overview_after_rows', $this );
+	}
+
+	/**
+	 * Forms search markup.
+	 *
+	 * @since 1.7.2
+	 *
+	 * @param string $text     The 'submit' button label.
+	 * @param string $input_id ID attribute value for the search input field.
+	 */
+	public function search_box( $text, $input_id ) {
+
+		wpforms()->get( 'forms_search' )->search_box( $text, $input_id );
 	}
 }

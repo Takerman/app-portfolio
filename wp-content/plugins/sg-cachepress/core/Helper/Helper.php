@@ -1,10 +1,21 @@
 <?php
 namespace SiteGround_Optimizer\Helper;
 
+use SiteGround_Helper\Helper_Service;
+
 /**
  * Helper functions and main initialization class.
  */
 class Helper {
+
+	/**
+	 * The ajax actions that should bypass the update_queue ajax check.
+	 *
+	 * @var array
+	 */
+	public static $whitelisted_ajax_actions = array(
+		'et_fb_ajax_save',
+	);
 
 	/**
 	 * Test if the current browser runs on a mobile device (smart phone, tablet, etc.)
@@ -83,125 +94,6 @@ class Helper {
 	}
 
 	/**
-	 * Load the global wp_filesystem.
-	 *
-	 * @since  5.0.0
-	 *
-	 * @return object The instance.
-	 */
-	public static function setup_wp_filesystem() {
-		global $wp_filesystem;
-
-		// Initialize the WP filesystem, no more using 'file-put-contents' function.
-		if ( empty( $wp_filesystem ) ) {
-			require_once( ABSPATH . '/wp-admin/includes/file.php' );
-			WP_Filesystem();
-		}
-
-		return $wp_filesystem;
-	}
-
-	/**
-	 * Check if wp cron is disabled and send error message.
-	 *
-	 * @since  5.0.0
-	 */
-	public static function is_cron_disabled() {
-		if ( defined( 'DISABLE_WP_CRON' ) && true == DISABLE_WP_CRON ) {
-			return 1;
-		}
-
-		return 0;
-	}
-
-	/**
-	 * Hide warnings in rest api.
-	 *
-	 * @since  5.0.0
-	 */
-	public function hide_warnings_in_rest_api() {
-		if ( self::is_rest() ) {
-			error_reporting( E_ERROR | E_PARSE );
-		}
-	}
-
-	/**
-	 * Checks if the current request is a WP REST API request.
-	 *
-	 * Case #1: After WP_REST_Request initialisation
-	 * Case #2: Support "plain" permalink settings
-	 * Case #3: URL Path begins with wp-json/ (your REST prefix)
-	 *          Also supports WP installations in subfolders
-	 *
-	 * @since 5.0.0
-	 *
-	 * @return bool True if it's rest request, false otherwise.
-	 */
-	public static function is_rest() {
-		$prefix = rest_get_url_prefix();
-
-		if (
-			defined( 'REST_REQUEST' ) && REST_REQUEST ||
-			(
-				isset( $_GET['rest_route'] ) &&
-				0 === @strpos( trim( $_GET['rest_route'], '\\/' ), $prefix, 0 )
-			)
-		) {
-			return true;
-		}
-
-		$rest_url    = wp_parse_url( site_url( $prefix ) );
-		$current_url = wp_parse_url( add_query_arg( array() ) );
-
-		return 0 === @strpos( $current_url['path'], $rest_url['path'], 0 );
-	}
-
-	/**
-	 * Some plugins like WPML for example are overwriting the home url.
-	 *
-	 * @since  5.0.10
-	 *
-	 * @return string The real home url.
-	 */
-	public static function get_home_url() {
-		$url = get_option( 'home' );
-
-		$scheme = is_ssl() ? 'https' : parse_url( $url, PHP_URL_SCHEME );
-
-		$url = set_url_scheme( $url, $scheme );
-
-		return trailingslashit( $url );
-	}
-
-	/**
-	 * Some plugins like WPML for example are overwriting the site url.
-	 *
-	 * @since  5.0.10
-	 *
-	 * @return string The real site url.
-	 */
-	public static function get_site_url() {
-		$url = get_option( 'siteurl' );
-
-		$scheme = is_ssl() ? 'https' : parse_url( $url, PHP_URL_SCHEME );
-
-		$url = set_url_scheme( $url, $scheme );
-
-		return trailingslashit( $url );
-	}
-
-	/**
-	 * Checks if the plugin run on the new SiteGround interface.
-	 *
-	 * @since  5.3.0
-	 *
-	 * @return boolean True/False.
-	 */
-	public static function is_siteground() {
-		return (int) ( file_exists( '/etc/yum.repos.d/baseos.repo' ) && file_exists( '/Z' ) );
-	}
-
-	/**
 	 * Checks what are the upload dir permissions.
 	 *
 	 * @since  5.7.11
@@ -215,32 +107,12 @@ class Helper {
 		}
 
 		// Check if directory permissions are set accordingly.
-		if ( 700 <= intval( substr( sprintf( '%o', fileperms( self::get_uploads_dir() ) ), -3 ) ) ) {
+		if ( 700 <= intval( substr( sprintf( '%o', fileperms( Helper_Service::get_uploads_dir() ) ), -3 ) ) ) {
 			return true;
 		}
 
 		// Return false if permissions are below 700.
 		return false;
-	}
-
-	/**
-	 * Get WordPress uploads dir
-	 *
-	 * @since  5.7.11
-	 *
-	 * @return string Path to the uploads dir.
-	 */
-	public static function get_uploads_dir() {
-		// Get the uploads dir.
-		$upload_dir = wp_upload_dir();
-
-		$base_dir = $upload_dir['basedir'];
-
-		if ( defined( 'UPLOADS' ) ) {
-			$base_dir = ABSPATH . UPLOADS;
-		}
-
-		return $base_dir;
 	}
 
 	/**
@@ -258,44 +130,61 @@ class Helper {
 	}
 
 	/**
-	 * Check for any updates available.
+	 * Get the current url.
 	 *
-	 * @since  6.0.0
+	 * @since  7.0.0
 	 *
-	 * @return boolean True if we have, false otherwise.
+	 * @return string The current url.
 	 */
-	public static function has_updates() {
-		// Get dependencies.
-		require_once( ABSPATH . 'wp-admin/includes/update.php' );
-
-		if ( ! function_exists( 'get_plugins' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+	public static function get_current_url() {
+		// Return empty string if it is not an HTTP request.
+		if ( ! isset( $_SERVER['HTTP_HOST'] ) ) {
+			return '';
 		}
 
-		// Check for theme updates.
-		if ( ! empty( get_theme_updates() ) ) {
+		$protocol = isset( $_SERVER['HTTPS'] ) ? 'https' : 'http'; // phpcs:ignore
+
+		// Build the current url.
+		return $protocol . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; //phpcs:ignore
+	}
+
+	/**
+	 * Check if the request is AJAX based and if it's whitelisted.
+	 *
+	 * @since  7.0.2
+	 *
+	 * @return bool The result of the check, true or false.
+	 */
+	public static function sg_doing_ajax() {
+		// Check if the request is ajax-based.
+		if ( ! wp_doing_ajax() ) {
+			return false;
+		}
+
+		// Check if action is set and if it's set, check if it exists in the whitelist.
+		if (
+			empty( $_POST['action'] ) || // phpcs:ignore
+			! empty( $_POST['action'] ) && ! in_array( $_POST['action'], Helper::$whitelisted_ajax_actions )
+		) {
 			return true;
 		}
 
-		// Check for plugin updates.
-		if ( ! empty( get_plugin_updates() ) ) {
-			return true;
-		}
-
-		$core = get_core_updates();
-
-		// Check for core.
-		if ( ! empty( $core ) && 'latest' !== $core[0]->response ) {
-			return true;
-		}
-
-		// Check for translation updates.
-		if ( ! empty( wp_get_translation_updates() ) ) {
-			return true;
-		}
-
-		// Bail if we do not have any updates available.
 		return false;
 	}
 
+	/**
+	 * Check if the passed content is xml.
+	 *
+	 * @since  7.0.2
+	 *
+	 * @param  string $content       The page content.
+	 *
+	 * @return bool   $run_xml_check Wheter the page xml sitemap.
+	 */
+	public static function is_xml( $content ) {
+		// Get the first 200 chars of the file to make the preg_match check faster.
+		$xml_part = substr( $content, 0, 20 );
+
+		return preg_match( '/<\?xml version="/', $xml_part );
+	}
 }

@@ -1,6 +1,7 @@
 <?php
 namespace SiteGround_Optimizer\Helper;
 
+use SiteGround_Optimizer\Helper\Helper;
 /**
  * Trait used for factory pattern in the plugin.
  */
@@ -19,9 +20,8 @@ trait Update_Queue_Trait {
 
 		// If there is already a data present on it, update the value.
 		$queue = array_unique( array_merge( $queue, $urls ) );
-
-		// Do not update the queue if a cronjob request is made.
-		if ( wp_doing_cron() || wp_doing_ajax() ) {
+		// Do not update the queue if a cronjob or ajax request is made.
+		if ( wp_doing_cron() || Helper::sg_doing_ajax() ) {
 			// Schedule a cron job that will delete all assets (minified js and css files) every 30 days.
 			if ( wp_next_scheduled( 'siteground_optimizer_purge_cron_cache' ) ) {
 				wp_clear_scheduled_hook( 'siteground_optimizer_purge_cron_cache' );

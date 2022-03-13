@@ -2,13 +2,13 @@
 namespace SiteGround_Optimizer\Admin;
 
 use SiteGround_Optimizer;
-
 use SiteGround_Optimizer\Rest\Rest;
 use SiteGround_Optimizer\Helper\Helper;
 use SiteGround_Optimizer\Multisite\Multisite;
 use SiteGround_Optimizer\Modules\Modules;
 use SiteGround_Optimizer\Options\Options;
-use SiteGround_Optimizer\I18n\I18n;
+use SiteGround_i18n\i18n_Service;
+use SiteGround_Helper\Helper_Service;
 
 /**
  * Handle all hooks for our custom admin page.
@@ -112,6 +112,9 @@ class Admin {
 		if ( false === $this->is_plugin_page() ) {
 			return;
 		}
+
+		// Removing conflicting fonts.
+		wp_dequeue_style( 'auxin-front-icon' );
 
 		wp_enqueue_style(
 			'siteground-optimizer-admin',
@@ -241,11 +244,6 @@ class Admin {
 			\SiteGround_Optimizer\URL . '/assets/images/icon.svg'
 		);
 
-		// Check if we need to remove the cloudflare page.
-		if ( ! Options::is_enabled( 'siteground_optimizer_has_cloudflare' ) ) {
-			unset( $this->subpages['cloudflare'] );
-		}
-
 		if ( is_network_admin() ) {
 			return;
 		}
@@ -312,12 +310,15 @@ class Admin {
 		foreach ( $this->subpages as $subpage => $title ) {
 			$navigation[ $subpage ] = admin_url( 'admin.php?page=' . $subpage );
 		}
+
+		$i18n_service = new i18n_Service( 'sg-cachepress' );
+
 		$data = array(
 			'rest_base'           => untrailingslashit( get_rest_url( null, '/' ) ),
-			'home_url'            => Helper::get_home_url(),
-			'is_cron_disabled'    => Helper::is_cron_disabled(),
-			'is_avalon'           => Helper::is_siteground(),
-			'locale'              => I18n::get_i18n_data_json(),
+			'home_url'            => Helper_Service::get_home_url(),
+			'is_cron_disabled'    => Helper_Service::is_cron_disabled(),
+			'is_siteground'       => Helper_Service::is_siteground(),
+			'locale'              => $i18n_service->get_i18n_data_json(),
 			'update_timestamp'    => get_option( 'siteground_optimizer_update_timestamp', 0 ),
 			'is_shop'             => is_plugin_active( 'woocommerce/woocommerce.php' ) ? 1 : 0,
 			'localeSlug'          => join( '-', explode( '_', \get_user_locale() ) ),
@@ -327,6 +328,7 @@ class Admin {
 				'is_network_admin' => intval( is_network_admin() ),
 				'is_multisite'     => intval( is_multisite() ),
 			),
+			'data_consent_popup'  => $this->get_popup_settings(),
 			'config'              => array(
 				'assetsPath' => SiteGround_Optimizer\URL . '/assets/images',
 			),
@@ -365,7 +367,14 @@ class Admin {
 	public function reorder_submenu_pages( $menu_order ) {
 		// Load the global submenu.
 		global $submenu;
+
 		if ( empty( $submenu['sg-cachepress'] ) ) {
+			return;
+		}
+
+		// Hide the dashboard page on Multisite applications.
+		if ( is_multisite() ) {
+			unset( $submenu['sg-cachepress'][0] );
 			return;
 		}
 
@@ -380,6 +389,11 @@ class Admin {
 	 * @return bool True/False
 	 */
 	public function is_plugin_page() {
+		// Bail if the page is not an admin screen.
+		if ( ! is_admin() ) {
+			return false;
+		}
+
 		$current_screen = \get_current_screen();
 
 		if ( in_array( $current_screen->id, $this->get_plugin_page_ids() ) ) {
@@ -387,5 +401,48 @@ class Admin {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Get the popup configuration.
+	 *
+	 * @since  7.0.0
+	 *
+	 * @return array The popup settings.
+	 */
+	public function get_popup_settings() {
+		$settings = array();
+
+		$data_consent       = intval( get_option( 'siteground_data_consent', 0 ) );
+		$email_consent      = intval( get_option( 'siteground_email_consent', 0 ) );
+		$settings_optimizer = intval( get_option( 'siteground_settings_optimizer', 0 ) );
+
+		if ( ! empty( $settings_optimizer ) ) {
+			return array(
+				'show_data_field'  => 0,
+				'show_email_field' => 0,
+			);
+		}
+
+		if ( Helper_Service::is_siteground() ) {
+			if ( 1 === $data_consent ) {
+				return array(
+					'show_data_field'  => 0,
+					'show_email_field' => 0,
+				);
+			}
+
+			return array(
+				'show_data_field'  => 1,
+				'show_email_field' => 0,
+			);
+		}
+
+		$settings = array();
+
+		$settings['show_data_field'] = 0 === $data_consent ? 1 : 0;
+		$settings['show_email_field'] = 0 === $email_consent ? 1 : 0;
+
+		return $settings;
 	}
 }

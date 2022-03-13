@@ -206,7 +206,7 @@ class Brizy_Public_Main
     {
 	    Brizy_Public_AssetEnqueueManager::_init()->enqueuePost( $this->post );
 
-        do_action('brizy_preview_enqueue_scripts');
+        do_action( 'brizy_preview_enqueue_scripts', $this->post );
     }
 
     public function toolbar_link($wp_admin_bar)
@@ -222,7 +222,7 @@ class Brizy_Public_Main
         $postTypeLabel = $wp_post_types[$type]->labels->singular_name;
         $args = array(
             'id' => 'brizy_Edit_page_link',
-            'title' => __("Edit " . $postTypeLabel . " with " . __bt('brizy', 'Brizy')),
+            'title' => sprintf( __( 'Edit %s with %s', 'brizy' ), $postTypeLabel, __bt( 'brizy', 'Brizy' ) ),
             'href' => apply_filters('brizy_toolbar_link', $this->post->edit_url(), $this->post),
             'meta' => array(),
         );
@@ -484,7 +484,7 @@ class Brizy_Public_Main
 
     public function brizy_the_content()
     {
-        echo $this->insert_page_content( 'brz-root__container' );
+        echo do_shortcode( $this->insert_page_content( 'brz-root__container' ) );
     }
 
     /**

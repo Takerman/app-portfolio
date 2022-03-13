@@ -1,4 +1,6 @@
 <?php
+
+use SiteGround_Optimizer\Options\Options;
 /**
  * Public function to purge cache.
  *
@@ -10,7 +12,10 @@
  */
 function sg_cachepress_purge_cache( $url = false ) {
 	// Bail if Dynamic cache is disabled.
-	if ( 1 !== get_option( 'siteground_optimizer_enable_cache', 0 ) ) {
+	if (
+		! Options::is_enabled( 'siteground_optimizer_enable_cache' ) &&
+		! Options::is_enabled( 'siteground_optimizer_file_caching' )
+	) {
 		return;
 	}
 
@@ -20,7 +25,17 @@ function sg_cachepress_purge_cache( $url = false ) {
 
 	do_action( 'siteground_optimizer_flush_cache', $url );
 
-	return $siteground_optimizer_loader->supercacher->purge_cache_request( $url );
+	$response = $siteground_optimizer_loader->supercacher->purge_cache_request( $url );
+
+	if ( Options::is_enabled( 'siteground_optimizer_file_caching' ) ) {
+		if ( $url === get_home_url( '/' ) ) {
+			$response = $siteground_optimizer_loader->file_cacher->purge_everything();
+		} else {
+			$response = $siteground_optimizer_loader->file_cacher->purge_cache_request( $url, true );
+		}
+	}
+
+	return $response;
 }
 
 /**
@@ -32,13 +47,17 @@ function sg_cachepress_purge_everything() {
 	global $siteground_optimizer_loader;
 
 	// Purge Dynamic cache if enabled.
-	if ( 1 === get_option( 'siteground_optimizer_enable_cache', 0 ) ) {
+	if ( Options::is_enabled( 'siteground_optimizer_enable_cache' ) ) {
 		$siteground_optimizer_loader->supercacher->purge_cache();
 	}
 
 	// Purge Memcached if enabled.
-	if ( 1 === get_option( 'siteground_optimizer_enable_memcached', 0 ) ) {
+	if ( Options::is_enabled( 'siteground_optimizer_enable_memcached' ) ) {
 		$siteground_optimizer_loader->supercacher->flush_memcache();
+	}
+
+	if ( Options::is_enabled( 'siteground_optimizer_file_caching' ) ) {
+		$siteground_optimizer_loader->file_cacher->purge_everything();
 	}
 
 	$siteground_optimizer_loader->supercacher->delete_assets();

@@ -3,7 +3,7 @@ namespace SiteGround_Optimizer\Images_Optimizer;
 
 use SiteGround_Optimizer\Supercacher\Supercacher;
 use SiteGround_Optimizer\Options\Options;
-use SiteGround_Optimizer\Helper\Helper;
+use SiteGround_Helper\Helper_Service;
 
 /**
  * SG Images_Optimizer main plugin class
@@ -195,7 +195,7 @@ class Images_Optimizer_Webp extends Abstract_Images_Optimizer {
 	 * @return bool True on success, false on failure.
 	 */
 	public function delete_webp_files() {
-		$basedir = Helper::get_uploads_dir();
+		$basedir = Helper_Service::get_uploads_dir();
 		exec( "find $basedir -name '*.webp' -type f -print0 | xargs -L 500 -0 rm", $output, $result );
 
 		$this->reset_image_optimization_status();

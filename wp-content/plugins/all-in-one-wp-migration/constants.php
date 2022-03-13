@@ -35,7 +35,7 @@ define( 'AI1WM_DEBUG', false );
 // ==================
 // = Plugin Version =
 // ==================
-define( 'AI1WM_VERSION', '7.51' );
+define( 'AI1WM_VERSION', '7.56' );
 
 // ===============
 // = Plugin Name =
@@ -477,6 +477,11 @@ define( 'AI1WM_BACKUPS_INDEX_PHP', AI1WM_BACKUPS_PATH . DIRECTORY_SEPARATOR . 'i
 // = Backups index.html File =
 // ===========================
 define( 'AI1WM_BACKUPS_INDEX_HTML', AI1WM_BACKUPS_PATH . DIRECTORY_SEPARATOR . 'index.html' );
+
+// ===========================
+// = Backups robots.txt File =
+// ===========================
+define( 'AI1WM_BACKUPS_ROBOTS_TXT', AI1WM_BACKUPS_PATH . DIRECTORY_SEPARATOR . 'robots.txt' );
 
 // ==========================
 // = Backups .htaccess File =

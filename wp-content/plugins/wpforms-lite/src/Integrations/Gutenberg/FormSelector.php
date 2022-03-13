@@ -52,7 +52,7 @@ class FormSelector implements IntegrationInterface {
 	public function register_block() {
 
 		$disable_css_setting = wpforms_setting( 'disable-css', '1' );
-		$editor_style        = ! empty( $disable_css_setting ) ? 'wpforms-gutenberg-form-selector' : '';
+		$block_style         = ! empty( $disable_css_setting ) ? 'wpforms-gutenberg-form-selector' : '';
 
 		$attributes = [
 			'formId'       => [
@@ -73,7 +73,8 @@ class FormSelector implements IntegrationInterface {
 			'wpforms/form-selector',
 			[
 				'attributes'      => \apply_filters( 'wpforms_gutenberg_form_selector_attributes', $attributes ),
-				'editor_style'    => $editor_style,
+				'style'           => $block_style,
+				'editor_style'    => 'wpforms-integrations',
 				'render_callback' => [ $this, 'get_form_html' ],
 			]
 		);
@@ -127,7 +128,7 @@ class FormSelector implements IntegrationInterface {
 			wp_register_style(
 				'wpforms-gutenberg-form-selector',
 				WPFORMS_PLUGIN_URL . "assets/css/wpforms-{$css_file}{$min}.css",
-				[ 'wp-edit-blocks' ],
+				[ 'wp-edit-blocks', 'wpforms-integrations' ],
 				WPFORMS_VERSION
 			);
 		}

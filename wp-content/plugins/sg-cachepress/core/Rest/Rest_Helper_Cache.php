@@ -5,6 +5,9 @@ use SiteGround_Optimizer\Supercacher\Supercacher;
 use SiteGround_Optimizer\Options\Options;
 use SiteGround_Optimizer\Htaccess\Htaccess;
 use SiteGround_Optimizer\Memcache\Memcache;
+use SiteGround_Optimizer\File_Cacher\File_Cacher;
+use SiteGround_Helper\Helper_Service;
+
 /**
  * Rest Helper class that manages caching options.
  */
@@ -15,7 +18,7 @@ class Rest_Helper_Cache extends Rest_Helper {
 	 */
 	public function __construct() {
 		$this->memcache = new Memcache();
-		$this->options = new Options();
+		$this->options  = new Options();
 		$this->htaccess = new Htaccess();
 	}
 
@@ -41,11 +44,16 @@ class Rest_Helper_Cache extends Rest_Helper {
 			// Disable REST API flush.
 			Options::disable_option( 'siteground_optimizer_purge_rest_cache' );
 
+			Options::disable_option( 'siteground_optimizer_file_caching' );
+
+			File_Cacher::cleanup();
+
 			// Send the response.
 			self::send_json_success(
 				self::get_response_message( true, 'enable_cache', 0 ),
 				array(
 					'enable_cache'      => 0,
+					'file_caching'      => 0,
 					'autoflush_cache'   => 0,
 					'user_agent_header' => 0,
 					'purge_rest_cache'  => 0,
@@ -140,8 +148,10 @@ class Rest_Helper_Cache extends Rest_Helper {
 			);
 		}
 
-		// Enable Dynamic Cache.
-		Options::enable_option( 'siteground_optimizer_enable_cache' );
+		$cache_option = Helper_Service::is_siteground() ? 'enable_cache' : 'file_caching';
+
+		// Enable the cache.
+		Options::enable_option( 'siteground_optimizer_' . $cache_option );
 
 		// Enable Automatic Purge.
 		Options::enable_option( 'siteground_optimizer_autoflush_cache' );
@@ -150,7 +160,7 @@ class Rest_Helper_Cache extends Rest_Helper {
 		self::send_json_success(
 			self::get_response_message( true, 'autoflush_cache', 1 ),
 			array(
-				'enable_cache'    => 1,
+				$cache_option     => 1,
 				'autoflush_cache' => 1,
 			)
 		);
@@ -182,8 +192,10 @@ class Rest_Helper_Cache extends Rest_Helper {
 			);
 		}
 
-		// Enable Dynamic Cache.
-		Options::enable_option( 'siteground_optimizer_enable_cache' );
+		$cache_option = Helper_Service::is_siteground() ? 'enable_cache' : 'file_caching';
+
+		// Enable the cache.
+		Options::enable_option( 'siteground_optimizer_' . $cache_option );
 
 		// Enable Automatic Purge.
 		Options::enable_option( 'siteground_optimizer_autoflush_cache' );
@@ -193,11 +205,15 @@ class Rest_Helper_Cache extends Rest_Helper {
 
 		$this->htaccess->disable( 'user-agent-vary' );
 
+		if ( Options::is_enabled( 'siteground_optimizer_file_caching' ) ) {
+			File_Cacher::get_instance()->purge_everything();
+		}
+
 		// Send the response.
 		self::send_json_success(
 			self::get_response_message( true, 'user_agent_header', 1 ),
 			array(
-				'enable_cache'      => 1,
+				$cache_option       => 1,
 				'autoflush_cache'   => 1,
 				'user_agent_header' => 1,
 			)
@@ -233,12 +249,21 @@ class Rest_Helper_Cache extends Rest_Helper {
 	 * @since 5.0.0
 	 */
 	public function purge_cache_from_rest() {
-		// Purge the cache.
-		Supercacher::purge_cache();
+		if ( Options::is_enabled( 'siteground_optimizer_enable_cache' ) ) {
+			// Purge the cache.
+			Supercacher::purge_cache();
+
+			// Send the response.
+			self::send_json_success(
+				__( 'Dynamic Caching successfully purged', 'sg-cachepress' )
+			);
+		}
+
+		File_Cacher::get_instance()->purge_everything();
 
 		// Send the response.
 		self::send_json_success(
-			__( 'Dynamic Caching successfully purged', 'sg-cachepress' )
+			__( 'File-based Caching successfully purged', 'sg-cachepress' )
 		);
 	}
 
@@ -334,4 +359,68 @@ class Rest_Helper_Cache extends Rest_Helper {
 		);
 	}
 
+	/**
+	 * Manage the File Caching option for the plugin.
+	 *
+	 * @since  7.0.0
+	 *
+	 * @param object $request Request data.
+	 */
+	public function manage_file_caching( $request ) {
+		// Get the default and selected.
+		$value = $this->validate_and_get_option_value( $request, 'file_caching' );
+
+		// Invoke managment method and try disabling/enabling the option.
+		$result = File_Cacher::toggle_file_cache( $value );
+
+		// Send the response.
+		self::send_json_response(
+			$result['status'],
+			self::get_response_message( $result['status'], 'file_caching', $value ),
+			$result['data']
+		);
+	}
+
+	/**
+	 * Change the File Caching settings.
+	 *
+	 * @since  7.0.0
+	 *
+	 * @param object $request Request data.
+	 */
+	public function manage_file_caching_settings( $request ) {
+		$params = $request->get_params( $request );
+
+		// Get the default and selected.
+		$interval        = $this->validate_and_get_option_value( $request, 'file_caching_interval_cleanup', false );
+		$preheat_cache   = $this->validate_and_get_option_value( $request, 'preheat_cache', false );
+		$logged_in_cache = $this->validate_and_get_option_value( $request, 'logged_in_cache', false );
+
+		// Update the option.
+		if ( is_int( $interval ) ) {
+			update_option( 'siteground_optimizer_file_caching_interval_cleanup', $interval );
+			File_Cacher::get_instance()->schedule_cleanup();
+		}
+
+		if ( is_int( $preheat_cache ) ) {
+			update_option( 'siteground_optimizer_preheat_cache', $preheat_cache );
+		}
+
+		if ( is_int( $logged_in_cache ) ) {
+			update_option( 'siteground_optimizer_logged_in_cache', $logged_in_cache );
+		}
+
+		File_Cacher::get_instance()->remove_config();
+		File_Cacher::get_instance()->create_config();
+
+		// Send the response.
+		self::send_json_success(
+			__( 'File caching settings updated', 'sg-cachepress' ),
+			array(
+				'file_caching_interval_cleanup' => File_Cacher::get_instance()->get_intervals(),
+				'preheat_cache'                 => $preheat_cache,
+				'logged_in_cache'               => $logged_in_cache,
+			)
+		);
+	}
 }

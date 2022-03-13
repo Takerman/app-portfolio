@@ -2,6 +2,8 @@
 namespace SiteGround_Optimizer\Supercacher;
 
 use SiteGround_Optimizer\Helper\Update_Queue_Trait;
+use SiteGround_Optimizer\Options\Options;
+use SiteGround_Optimizer\File_Cacher\File_Cacher;
 use WP_Rewrite;
 /**
  * SG CachePress main plugin class
@@ -12,27 +14,28 @@ class Supercacher_Posts {
 	/**
 	 * List of post types excluded from smart cache purge.
 	 *
-	 * @since 5.9.4
+	 * @since 7.0.5
 	 *
 	 * @var array.
 	 */
 	public $excluded_post_types = array(
-		// Spotlight-social-photo-feeds plugin.
-		'sl-insta-media',
-		'sl-insta-feed',
-		// Layerswp theme.
-		'custom_css',
-		// ttm-plugin plugin.
-		'dn_wp_yt_log',
-		// post-smtp plugin.
-		'postman_sent_mail',
-		// Flamingo plugin.
-		'flamingo_contact',
-		'flamingo_inbound',
-		'flamingo_outbound',
-		// Stop-spammers-premium plugin.
-		'ssp-firewall',
-		'pf_contact',
+		// eventprime-guest-bookings
+		'em_booking',
+	);
+
+	/**
+	 * List of post statuses excluded from smart cache purge.
+	 *
+	 * @since 7.0.0
+	 *
+	 * @var   array.
+	 */
+	public $excluded_post_status = array(
+		// Drafts
+		'draft',
+		'auto-draft',
+		// Trash
+		'trash'
 	);
 
 	/**
@@ -124,23 +127,6 @@ class Supercacher_Posts {
 	}
 
 	/**
-	 * Purge on post save.
-	 *
-	 * @since 5.9.0
-	 *
-	 * @param  int $post_id The post id.
-	 */
-	public function purge_post_save( $post_id ) {
-		// Purge all cache if a post is saved and the WPML plugin is active.
-		if ( class_exists( 'SitePress' ) ) {
-			return Supercacher::get_instance()->purge_everything();
-		}
-
-		// Continue with post cache purge.
-		$this->purge_all_post_cache( $post_id );
-	}
-
-	/**
 	 * Adds the post that has been changed and it's parents,
 	 * the index cache, and the post categories to the purge cache queue.
 	 *
@@ -149,27 +135,27 @@ class Supercacher_Posts {
 	 * @param  int $post_id The post id.
 	 */
 	public function purge_all_post_cache( $post_id ) {
-		// Delete the index page only if this is the front page.
-		if ( (int) get_option( 'page_on_front' ) === $post_id ) {
-			// Add the index page to the cache purge queue.
-			$this->update_queue( array( get_home_url( null, '/' ) ) );
-			return;
-		}
-
 		// Get the post.
 		$post = get_post( $post_id );
 
 		// Bail if post type is excluded from cache purge.
-		if ( in_array( $post->post_type, $this->excluded_post_types ) ) {
+		if ( true === $this->is_post_excluded_from_cache_purge( $post ) ) {
 			return;
 		}
 
-		// Do not purge the cache for revisions and auto-drafts.
-		if (
-			'auto-draft' === $post->post_status ||
-			'revision' === $post->post_type ||
-			'trash' === $post->post_status
-		) {
+		// Purge all cache if the WPML plugin is active.
+		if ( class_exists( 'SitePress' ) ) {
+			if ( Options::is_enabled( 'siteground_optimizer_file_caching' ) ) {
+				File_Cacher::get_instance()->purge_everything();
+			}
+
+			return Supercacher::get_instance()->purge_everything();
+		}
+
+		// Delete the index page only if this is the front page.
+		if ( (int) get_option( 'page_on_front' ) === $post_id ) {
+			// Add the index page to the cache purge queue.
+			$this->update_queue( array( get_home_url( null, '/' ) ) );
 			return;
 		}
 
@@ -195,5 +181,38 @@ class Supercacher_Posts {
 				)
 			)
 		);
+	}
+
+	/**
+	 * Check if post is excluded from cache purge.
+	 *
+	 * @since  7.0.0
+	 *
+	 * @param  object $post The WP_Post Object.
+	 * @return bool         True if post is excluded, false if not.
+	 */
+	public function is_post_excluded_from_cache_purge( $post ) {
+		// Get Post Type object
+		$post_type = get_post_type_object( $post->post_type );
+
+		// Return true if post type is not an object. This check is needed for initial post type registration.
+		if ( ! is_object( $post_type ) ) {
+			return true;
+		}
+
+		// True if post type/status is excluded or post type is not public.
+		if (
+			in_array( $post_type->name, $this->excluded_post_types ) || // Post type is excluded
+			in_array( $post->post_status, $this->excluded_post_status ) || // Post status is excluded
+			false === $post_type->public // Post type is not public
+		) {
+			// Flush only rest cache if post type is excluded but visible in rest.
+			if ( true === $post_type->show_in_rest ) {
+				Supercacher::get_instance()->purge_rest_cache();
+			}
+			return true;
+		}
+
+		return false;
 	}
 }

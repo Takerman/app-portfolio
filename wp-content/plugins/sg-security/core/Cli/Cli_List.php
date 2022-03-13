@@ -3,6 +3,8 @@ namespace SG_Security\Cli;
 
 use SG_Security\Options_Service\Options_Service;
 use SG_Security\Rest\Rest_Helper_Activity;
+use SG_Security\Helper\Helper;
+
 /**
  * WP-CLI: wp sg list {setting} value.
  *
@@ -99,6 +101,13 @@ class Cli_List {
 	 * @return string       The sql query.
 	 */
 	public function get_query( $type ) {
+		global $wpdb;
+
+		// Bail if table doesn't exist.
+		if ( ! Helper::table_exists( $this->wpdb->sgs_log ) ) {
+			return false;
+		}
+
 		// Prepare the clauses.
 		$select = 'SELECT * FROM ' . $this->wpdb->sgs_log;
 		$where  = ' WHERE `visitor_type` != "user"';

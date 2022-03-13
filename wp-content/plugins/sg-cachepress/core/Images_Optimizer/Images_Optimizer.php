@@ -3,8 +3,8 @@ namespace SiteGround_Optimizer\Images_Optimizer;
 
 use SiteGround_Optimizer\Supercacher\Supercacher;
 use SiteGround_Optimizer\Options\Options;
-use SiteGround_Optimizer\Helper\Helper;
 use SiteGround_Optimizer\Front_End_Optimization\Front_End_Optimization;
+use SiteGround_Helper\Helper_Service;
 
 /**
  * SG Images_Optimizer main plugin class
@@ -124,6 +124,15 @@ class Images_Optimizer extends Abstract_Images_Optimizer {
 		$upload_dir = wp_get_upload_dir();
 		// Get path to main image.
 		$main_image = get_attached_file( $id );
+
+		// Bail if the override is disabled and the image has a custom compression level.
+		if (
+			1 !== intval( get_option( 'siteground_optimizer_overwrite_custom' ) ) &&
+			! empty( get_post_meta( $id, 'siteground_optimizer_compression_level', true ) )
+		) {
+			return false;
+		}
+
 		// Get the basename.
 		$basename = basename( $main_image );
 		// Get the command placeholder. It will be used by main image and to optimize the different image sizes.
@@ -203,14 +212,14 @@ class Images_Optimizer extends Abstract_Images_Optimizer {
 	 *
 	 * @return bool             False on success, true on failure.
 	 */
-	private function execute_optimization_command( $filepath ) {
+	private function execute_optimization_command( $filepath, $compression_level = null ) {
 		// Bail if the file doens't exists.
 		if ( ! file_exists( $filepath ) ) {
 			return true;
 		}
 
 		// Get option for the selected compression level.
-		$compression_level = intval( get_option( 'siteground_optimizer_compression_level' ) );
+		$compression_level = is_null( $compression_level ) ? intval( get_option( 'siteground_optimizer_compression_level' ) ) : $compression_level;
 
 		// Bail if compression level is set to None.
 		if ( 0 === $compression_level ) {
@@ -264,7 +273,6 @@ class Images_Optimizer extends Abstract_Images_Optimizer {
 				// DO NOT REMOVE THE LINE BELOW!
 				// The jpegoptim doesn't support input/output params, so we need to create a backup of the original image.
 				copy( $filepath, $output_filepath );
-
 				$placeholder = 'jpegoptim %1$s %3$s 2>&1';
 				break;
 
@@ -313,7 +321,7 @@ class Images_Optimizer extends Abstract_Images_Optimizer {
 		$urls = array(
 			0 => array(
 				'compression' => 0,
-				'url'         => str_replace( ABSPATH, Helper::get_home_url(), $filepath ),
+				'url'         => str_replace( ABSPATH, Helper_Service::get_home_url(), $filepath ),
 				'size'        => $this->get_human_readable_size( $filepath ),
 			),
 		);
@@ -342,7 +350,7 @@ class Images_Optimizer extends Abstract_Images_Optimizer {
 				$new_filename
 			);
 
-			$urls[ $type ]['url']         = str_replace( ABSPATH, Helper::get_home_url(), $new_filename );
+			$urls[ $type ]['url']         = str_replace( ABSPATH, Helper_Service::get_home_url(), $new_filename );
 			$urls[ $type ]['compression'] = intval( $type );
 			$urls[ $type ]['size']        = $this->get_human_readable_size( $new_filename );
 		}
@@ -384,7 +392,7 @@ class Images_Optimizer extends Abstract_Images_Optimizer {
 	 * @return The result of restore.
 	 */
 	public function restore_originals() {
-		$basedir = Helper::get_uploads_dir();
+		$basedir = Helper_Service::get_uploads_dir();
 
 		exec( "find $basedir -regextype posix-extended -type f -regex '.*bak.(png|jpg|jpeg|gif)$' -exec rename '.bak' '' {} \;", $output, $result );
 
@@ -418,6 +426,88 @@ class Images_Optimizer extends Abstract_Images_Optimizer {
 
 		if ( ! empty( $files ) ) {
 			exec( 'rm ' . implode( ' ', $files ) );
+		}
+	}
+
+	/**
+	 * Add custom metabox for compression level per attachment, on the media screen.
+	 *
+	 * @since 6.0.6
+	 *
+	 * @param array   $form_fields Fields of the edit_attachment form.
+	 * @param WP_Post $post        The object containing the attachment.
+	 *
+	 * @return array               Fields of the edit_attachment form.
+	 */
+	public function custom_attachment_compression_level_field( $form_fields, $post ) {
+		// Get current attachment compression level.
+		$field_value = get_post_meta( $post->ID, 'siteground_optimizer_compression_level', true );
+
+		// If field value is empty - fallback to site global option.
+		if ( ! is_numeric( $field_value ) ) {
+			$field_value = get_option( 'siteground_optimizer_compression_level' );
+		}
+
+		// The field html.
+		$html = '<select name="compression_level">';
+
+		// Select options.
+		$options = array(
+			'None',
+			'Low',
+			'Medium',
+			'High',
+		);
+
+		// Add the select options to the html.
+		foreach ( $options as $key => $value ) {
+			$html .= '<option' . selected( $field_value, $key, false ) . ' value="' . $key . '">' . $value . '</option>';
+		}
+
+		$html .= '</select>';
+
+		$form_fields['compression_level'] = array(
+			'value' => $field_value ? intval( $field_value ) : '',
+			'label' => __( 'Compression Level', 'sg-cachepress' ),
+			'input' => 'html',
+			'html'  => $html,
+		);
+
+		return $form_fields;
+	}
+
+	/**
+	 * Saving the new meta for the compression level of the attachment.
+	 *
+	 * @since 6.0.6
+	 *
+	 * @param int $attachment_id ID of the attachment.
+	 *
+	 * @return bool|string       Status code of the compression.
+	 */
+	public function custom_attachment_compression_level( $attachment_id ) {
+		if ( ! isset( $_REQUEST['compression_level'] ) ) {
+			return $attachment_id;
+		}
+
+		// Update the attachment's meta.
+		update_post_meta( $attachment_id, 'siteground_optimizer_compression_level', $_REQUEST['compression_level'] ); // phpcs:ignore
+
+		// Get attachment's filepath.
+		$filepath = get_attached_file( $attachment_id );
+
+		// Revert to backup image, if None is selected.
+		if ( 1 === intval( $_REQUEST['compression_level'] ) ) {
+			// Optimize the image with the new compression level.
+			return $this->execute_optimization_command( $filepath, intval( $_REQUEST['compression_level'] ) );
+		}
+
+		// Find backup image path.
+		$backup_filepath = preg_replace( '~.(png|jpg|jpeg|gif)$~', '.bak.$1', $filepath );
+
+		// Check if backup file exists, if so, replace the file with the original one.
+		if ( file_exists( $backup_filepath ) ) {
+			copy( $backup_filepath, $filepath );
 		}
 	}
 }

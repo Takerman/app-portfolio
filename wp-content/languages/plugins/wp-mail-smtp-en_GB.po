@@ -1,0 +1,92 @@
+# Translation of Plugins - WP Mail SMTP by WPForms - Stable (latest release) in English (UK)
+# This file is distributed under the same license as the Plugins - WP Mail SMTP by WPForms - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-11-29 18:52:44+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: en_GB\n"
+"Project-Id-Version: Plugins - WP Mail SMTP by WPForms - Stable (latest release)\n"
+
+#: src/Admin/Pages/MiscTab.php:129
+msgid "Hide Announcements"
+msgstr "Hide Announcements"
+
+#. Author of the plugin
+#: src/Admin/Pages/AboutTab.php:277
+msgid "WPForms"
+msgstr "WPForms"
+
+#. Author URI of the plugin
+msgid "https://wpforms.com/"
+msgstr "https://wpforms.com/"
+
+#: src/Admin/Pages/SettingsTab.php:249
+msgid "Return Path indicates where non-delivery receipts - or bounce messages - are to be sent."
+msgstr "Return Path indicates where non-delivery receipts - or bounce messages - are to be sent."
+
+#: src/Admin/DashboardWidget.php:452
+msgid "Save Changes"
+msgstr "Save Changes"
+
+#: src/Admin/Area.php:249 src/Admin/Area.php:250 src/Admin/Area.php:1161
+msgid "Settings"
+msgstr "Settings"
+
+#: assets/languages/wp-mail-smtp-vue.php:217
+#: src/Providers/OptionsAbstract.php:288
+msgid "Authentication"
+msgstr "Authentication"
+
+#: assets/languages/wp-mail-smtp-vue.php:229
+#: src/Admin/Pages/SettingsTab.php:121
+msgid "From Email"
+msgstr "From Email"
+
+#: assets/languages/wp-mail-smtp-vue.php:184 src/Admin/Pages/ExportTab.php:121
+#: src/Admin/Pages/SettingsTab.php:191
+msgid "From Name"
+msgstr "From Name"
+
+#: assets/languages/wp-mail-smtp-vue.php:205
+#: src/Providers/OptionsAbstract.php:252
+msgid "SMTP Port"
+msgstr "SMTP Port"
+
+#: assets/languages/wp-mail-smtp-vue.php:298 src/Admin/Pages/TestTab.php:230
+#: src/SiteHealth.php:327
+msgid "Send a Test Email"
+msgstr "Send a Test Email"
+
+#: assets/languages/wp-mail-smtp-vue.php:202
+#: src/Providers/OptionsAbstract.php:212
+msgid "Encryption"
+msgstr "Encryption"
+
+#: assets/languages/wp-mail-smtp-vue.php:199
+#: src/Providers/OptionsAbstract.php:198
+msgid "SMTP Host"
+msgstr "SMTP Host"
+
+#: src/Admin/Pages/SettingsTab.php:245
+msgid "Set the return-path to match the From Email"
+msgstr "Set the return-path to match the From Email"
+
+#: src/Admin/Pages/SettingsTab.php:236
+msgid "Return Path"
+msgstr "Return Path"
+
+#: assets/languages/wp-mail-smtp-vue.php:709 src/Admin/Pages/ExportTab.php:135
+#: src/Admin/Pages/SettingsTab.php:258
+msgid "Mailer"
+msgstr "Mailer"
+
+#. Plugin Name of the plugin
+#: src/Admin/Area.php:238 src/Admin/Area.php:239 src/Admin/Area.php:285
+#: src/Admin/Area.php:286 src/Admin/DashboardWidget.php:168
+#: src/Admin/DashboardWidget.php:444 src/SiteHealth.php:43
+msgid "WP Mail SMTP"
+msgstr "WP Mail SMTP"

@@ -1,31 +1,33 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-develop',
-        'version' => 'dev-develop',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '1fa21bcf6f2cebe9610f95c283838fc979fd3299',
+        'reference' => '0bf12b9c7d14b89ed874b10a3898fee6503f0301',
         'name' => 'awesomemotive/wpforms',
         'dev' => true,
     ),
     'versions' => array(
         'awesomemotive/wpforms' => array(
-            'pretty_version' => 'dev-develop',
-            'version' => 'dev-develop',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '1fa21bcf6f2cebe9610f95c283838fc979fd3299',
+            'reference' => '0bf12b9c7d14b89ed874b10a3898fee6503f0301',
             'dev_requirement' => false,
         ),
         'goodby/csv' => array(
-            'pretty_version' => '1.3.0',
-            'version' => '1.3.0.0',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'library',
             'install_path' => __DIR__ . '/../goodby/csv',
-            'aliases' => array(),
-            'reference' => 'e71217b8d6110f3d1ac3784ef9b8a2383c3398b9',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'reference' => '0fb8031424b4450638d01f8f1db04fd5d7e28474',
             'dev_requirement' => false,
         ),
         'mk-j/php_xlsxwriter' => array(
@@ -45,7 +47,7 @@
             'aliases' => array(
                 0 => '9999999-dev',
             ),
-            'reference' => '07314cf15422b2e162d591fe8ef2b850612b808f',
+            'reference' => 'fa60732bcafd446e9ff858eefa06cdcbae8d9823',
             'dev_requirement' => true,
         ),
         'symfony/css-selector' => array(

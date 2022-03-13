@@ -1,0 +1,209 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"
+      xmlns:v="urn:schemas-microsoft-com:vml"
+      xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <!--[if !mso]><!-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!--<![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="color-scheme" content="light dark"/>
+    <meta name="supported-color-schemes" content="light dark"/>
+    <meta name="description" content="SiteGround Newsletter"/>
+    <title>SiteGround Security</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600|Roboto:400,700" rel="stylesheet"/>
+    <style type="text/css">
+        :root {
+            color-scheme: light dark;
+            supported-color-schemes: light dark;
+        }
+        body { margin: 0; padding: 0; width: 100% !important; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        img { max-width: 100%;outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block !important; border: none;}
+        #backgroundTable { margin: 0; padding: 10px 10px 10px 10px; width: 100% !important; line-height: 100%;}
+        @media screen and (max-width: 480px), screen and (max-device-width: 480px) {
+            .flex, [class=flex] { width: 94% !important; }
+            .dblock, [class=dblock] { display: block !important; width: 100% !important; max-width: 100%; padding: 0 !important; max-height: none !important; }
+
+            #backgroundTable { padding: 10px 0 10px 0px;}
+            a { word-break: break-word;}
+        }
+        @media (prefers-color-scheme: dark) {
+            .dark-img {display:block !important; width: auto !important; overflow: visible !important; float: none !important; max-height:inherit !important; max-width:inherit !important; line-height: auto !important; margin-top:0px !important; visibility:inherit !important; }
+            .light-img { display:none !important; }
+            #backgroundTable, body { background: #363636 !important;}
+            .body-text, h1, h2, p, span, strong, em, b { color: #f2f2f2 !important; }
+            .infobox { background: #666666 !important;}
+            .datatable td, .datatable th{background: #363636 !important;}
+            a{ color: #3adcf7 !important; }
+            [data-ogsc] .dark-img { display:block !important; width: auto !important; overflow: visible !important; float: none !important; max-height:inherit !important; max-width:inherit !important; line-height: auto !important; margin-top:0px !important; visibility:inherit !important; }
+            [data-ogsc] .light-img { display:none !important; }
+            [data-ogsb] #backgroundTable, body { background: #363636 !important;}
+            [data-ogsc] .body-text, h1, h2, p, span, strong, em, b { color: #f2f2f2 !important; }
+            [data-ogsb] .infobox { background: #666666 !important;}
+            [data-ogsb] .datatable td, .datatable th{background: #363636 !important;}
+            [data-ogsc] a{ color: #3adcf7 !important; }
+        }
+    </style>
+    <!--Fallback For Outlook -->
+    <!--[if mso]>
+    <style type=”text/css”>
+        .body-text {
+            font-family: Arial, sans-serif !important;
+        }
+    </style>
+    <![endif]-->
+    <!--MS Outlook 120 DPI fix-->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+</head>
+<body style="margin: 0; padding: 0;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id="backgroundTable" style="background: #ffffff;">
+    <tr>
+        <td>
+            <!-- Main Container -->
+            <table class="flex" align="center" border="0" cellpadding="0" cellspacing="0" width="600"
+                   style="border-collapse: collapse; font-family: 'Open Sans', Arial, Helvetica, sans-serif;">
+
+
+                <tr>
+                    <td style="padding: 30px 0 30px 0;">
+                        <img
+                                src="https://www.siteground.com/static/en/img/emails/plugins/sg_security/sg_security_weeky_report.jpg"
+                                width="600" alt="SiteGround Security weekly report"
+                                style="max-height: 300px;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="body-text"
+                        style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 0 25px 0"><?php esc_html_e( 'Hey there,', 'sg-security' ); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="body-text"
+                        style="color: #444444; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0px 0 40px 0">
+                        <?php esc_html_e( 'Below you can find a summary of your site ', 'sg-security' ); ?><a href="<?php echo $args['domain']; ?>" target="_blank" rel="noreferrer" style="color: #22b8d1; text-decoration: none;"><?php echo $args['domain']; ?></a><?php esc_html_e( ' traffic for the past week. Visit the ', 'sg-security' ); ?><a href="<?php echo $args['activity_log_link'] ?>" target="_blank" rel="noreferrer" style="color: #22b8d1; text-decoration: none;"><?php esc_html_e( 'SiteGround Security Activity Log', 'sg-security' ); ?></a><?php esc_html_e( ' page in your WordPress admin for more information.', 'sg-security' ); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="body-text"
+                        style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 20px; line-height: 30px; padding: 0 0 20px 0"><?php esc_html_e( 'Traffic summary for ', 'sg-security' ); echo $args['start_time'] ?> - <?php echo $args['end_time'] ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 0 0 30px 0;">
+                        <table class="infobox" border="0" cellpadding="0" cellspacing="0" width="100%"
+                               bgcolor="#ececec">
+                            <tr>
+                                <td style="padding: 30px 30px 0 30px;">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tr>
+                                            <td width="255" valign="top" class="dblock">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 0 0px 0; text-align: center">
+                                                            <?php echo $args['total_human'] ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="body-text" style="color: #444444; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0 0 30px 0; text-align: center;">
+                                                            <?php esc_html_e( 'Human traffic', 'sg-security' ); ?>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30" style="font-size: 0; line-height: 0;" class="dblock">&nbsp;</td>
+                                            <td width="255" valign="top" class="dblock">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 0 0px 0; text-align: center">
+                                                            <?php echo $args['total_bots'] ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="body-text" style="color: #444444; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0 0 30px 0; text-align: center;">
+                                                            <?php esc_html_e( 'Bot traffic', 'sg-security' ); ?>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 30px 0 30px;">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tr>
+                                            <td width="255" valign="top" class="dblock">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 0 0px 0; text-align: center">
+                                                            <?php echo $args['total_blocked_login'] ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="body-text" style="color: #444444; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0 0 30px 0; text-align: center;">
+                                                            <?php esc_html_e( 'Blocked login attempts', 'sg-security' ); ?>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30" style="font-size: 0; line-height: 0;" class="dblock">&nbsp;</td>
+                                            <td width="255" valign="top" class="dblock">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 0 0px 0; text-align: center">
+                                                            <?php echo $args['total_blocked_visits'] ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="body-text" style="color: #444444; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0 0 30px 0; text-align: center;">
+                                                            <?php esc_html_e( 'Blocked visit attempts', 'sg-security' ); ?>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="body-text"
+                        style="color: #444444; font-style: italic; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0px 0 25px 0">
+                        <?php esc_html_e( 'You can learn more about blocked traffic and how you can manage it in your plugin in our ', 'sg-security' ); ?><a href="https://www.siteground.com/tutorials/wordpress/sg-security/blocked-login-visit-attempts/" target="_blank" rel="noreferrer" style="color: #22b8d1; text-decoration: none;"><?php esc_html_e( 'Blocked Login and Visit Attempts ', 'sg-security' ); ?></a><?php esc_html_e( 'article.', 'sg-security' ); ?>
+                        </a>
+                    </td>
+                </tr>
+                <?php if (
+                    0 === $args['is_siteground'] &&
+                    1 === $args['agreed_email_consent']
+                ) {
+                    include_once( \SG_Security\DIR . '/templates/partials/weekly_report_non_sg.php' );
+                } ?>
+                <tr>
+                    <td class="body-text"
+                        style="color: #a4a4a4; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px; padding: 0px 0 25px 0">
+                        <?php esc_html_e( 'You are receiving this email because you have a SiteGround security plugin installed on one or more of your WordPress sites. If you no longer wish to receive these emails, you can ', 'sg-security' ); ?><a href="<?php echo $args['activity_log_link'] ?>" target="_blank" rel="noreferrer" style="color: #22b8d1; text-decoration: none;"><?php esc_html_e( 'unsubscribe', 'sg-security' ); ?></a>.
+                    </td>
+                </tr>
+
+            </table>
+
+            <!-- End Main Container -->
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

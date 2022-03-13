@@ -27,6 +27,7 @@ final class Extractor
      */
     public function __construct($registry)
     {
+        @ini_set('pcre.backtrack_limit', "2000000");
         $this->registry = $registry;
     }
 

@@ -4,7 +4,6 @@ namespace SG_Security\Loader;
 use SG_Security;
 use SG_Security\Options_Service\Options_Service;
 
-
 /**
  * Loader functions and main initialization class.
  */
@@ -27,19 +26,88 @@ class Loader {
 		'login_service',
 		'activity_log',
 		'rest',
-		'i18n',
 		'block_service',
 		'install_service',
 		'cli',
 		'custom_login_url',
+		'headers_service',
+	);
+
+	/**
+	 * External dependencies.
+	 *
+	 * @var array
+	 */
+	public $external_dependencies = array(
+		'Settings_Page'  => array(
+			'namespace' => 'Data',
+		),
+		'Settings'       => array(
+			'namespace' => 'Data',
+			'hook'      => 'settings',
+		),
+		'Helper_Service' => array(
+			'namespace' => 'Helper',
+		),
+		'i18n_Service'   => array(
+			'namespace' => 'i18n',
+			'hook'      => 'i18n',
+			'args'      => 'sg-security',
+		),
 	);
 
 	/**
 	 * Create a new helper.
 	 */
 	public function __construct() {
+		$this->load_external_dependencies();
 		$this->load_dependencies();
 		$this->add_hooks();
+	}
+	/**
+	 * Add our custom settings page hooks.
+	 *
+	 * @since 1.2.1
+	 */
+	public function add_settings_hooks() {
+		add_action( 'admin_menu', array( $this->settings_page, 'register_settings_page' ) );
+
+		add_action( 'admin_init', array( $this->settings_page, 'add_setting_fields' ) );
+
+		add_filter( 'allowed_options', array( $this->settings_page, 'change_allowed_options' ) );
+
+		// Register rest route.
+		add_action( 'rest_api_init', array( $this->settings_page, 'register_rest_routes' ) );
+	}
+
+	/**
+	 * Load all of our external dependencies
+	 *
+	 * @since  1.2.1
+	 */
+	public function load_external_dependencies() {
+		// Loop trough all deps.
+		foreach ( $this->external_dependencies as $library => $props ) {
+
+			// Build the class.
+			$class = 'SiteGround_' . $props['namespace'] . '\\' . $library;
+
+			// Check if class exists.
+			if ( ! class_exists( $class ) ) {
+				throw new \Exception( 'Unknown library type "' . $library . '".' );
+			}
+
+			// Lowercase the classsname we are going to use in the object context.
+			$classname = strtolower( $library );
+
+			// Check if we need to add any arguments when calling the class.
+			$this->$classname = true === array_key_exists( 'args', $props ) ? new $class( $props['args'] ) : new $class();
+
+			// Check if we need to add hooks for the specific dependency.
+			if ( array_key_exists( 'hook', $props ) ) {
+				call_user_func( array( $this, 'add_' . $props['hook'] . '_hooks' ) );
+			}
+		}
 	}
 
 	/**
@@ -102,7 +170,7 @@ class Loader {
 	public function add_admin_hooks() {
 		add_action( 'admin_menu', array( $this->admin, 'add_plugin_pages' ) );
 		add_filter( 'custom_menu_order', array( $this->admin, 'reorder_submenu_pages' ) );
-		add_action( 'admin_enqueue_scripts', array( $this->admin, 'enqueue_styles' ) );
+		add_action( 'admin_enqueue_scripts', array( $this->admin, 'enqueue_styles' ), 11 );
 		add_action( 'admin_enqueue_scripts', array( $this->admin, 'enqueue_scripts' ) );
 		add_action( 'admin_print_styles', array( $this->admin, 'admin_print_styles' ) );
 		add_action( 'admin_init', array( $this->admin, 'hide_errors_and_notices' ), PHP_INT_MAX );
@@ -114,9 +182,10 @@ class Loader {
 	 * @since 1.0.0
 	 */
 	public function add_helper_hooks() {
-		add_action( 'init', array( $this->helper, 'hide_warnings_in_rest_api' ) );
+		add_action( 'init', array( $this->helper_service, 'hide_warnings_in_rest_api' ) );
 		add_action( '_core_updated_successfully', array( $this->helper, 'set_server_ip' ) );
 		add_filter( 'wp_die_handler', array( $this->helper, 'custom_wp_die_handler' ) );
+		add_action( 'sgs_force_logout', array( $this->helper, 'logout_users' ) );
 	}
 
 	/**
@@ -149,6 +218,7 @@ class Loader {
 		add_action( 'update_option_users_can_register', array( $this->custom_login_url, 'handle_user_registration_change' ), 10, 2 );
 		add_action( 'wp_ajax_dismiss_sg_security_notice', array( $this->custom_login_url, 'hide_notice' ) );
 		add_action( 'admin_notices', array( $this->custom_login_url, 'show_notices' ) );
+		add_filter( 'wpdiscuz_login_link', array( $this->custom_login_url, 'custom_login_for_wpdiscuz' ) );
 	}
 
 	/**
@@ -249,7 +319,6 @@ class Loader {
 		if ( ! Options_Service::is_enabled( 'sg2fa' ) ) {
 			return;
 		}
-
 		add_action( 'wp_login', array( $this->sg_2fa, 'init_2fa' ), 3, 2 );
 		add_action( 'login_form_sgs2fa', array( $this->sg_2fa, 'validate_2fa_login' ) );
 		add_action( 'login_form_sgs2fabc', array( $this->sg_2fa, 'validate_2fabc_login' ) );
@@ -288,6 +357,9 @@ class Loader {
 	 * @since 1.0.0
 	 */
 	public function add_activity_log_hooks() {
+		// Fires only for Multisite. Add log, visitors table if network active.
+		add_action( 'wp_insert_site', array( $this->activity_log, 'create_subsite_log_tables' ) );
+
 		// Set the cron job for deleting the old logs.
 		add_action( 'init', array( $this->activity_log, 'set_sgs_logs_cron' ) );
 		// Delete old logs if cron is disabled.
@@ -357,6 +429,27 @@ class Loader {
 
 		// Register unknow activity.
 		register_shutdown_function( array( $this->activity_log->unknown, 'log_visit' ) );
+
+		// Get the list of weekly email receipients.
+		$weekly_email_receipients = get_option( 'sg_security_notification_emails', array() );
+
+		if ( empty( $weekly_email_receipients ) ) {
+			$this->activity_log->weekly_emails->weekly_report_email->unschedule_event();
+		} else {
+			// Schedule weekly report event.
+			if ( ! wp_next_scheduled( 'sgs_email_cron' ) ) {
+				$this->activity_log->weekly_emails->weekly_report_email->schedule_event();
+			}
+		}
+
+		// Update the weekly report timestamp before the mail is sent.
+		add_action( 'sgs_email_cron', array( $this->activity_log->weekly_emails, 'update_last_cron_run_timestamp' ), 1 );
+
+		// Sent the weekly report email.
+		add_action( 'sgs_email_cron', array( $this->activity_log->weekly_emails->weekly_report_email, 'sg_handle_email' ) );
+
+		// Reset the weekly report stats counters after the mail is sent.
+		add_action( 'sgs_email_cron', array( $this->activity_log->weekly_emails, 'reset_weekly_stats_counters' ), PHP_INT_MAX );
 	}
 
 	/**
@@ -366,9 +459,9 @@ class Loader {
 	 */
 	public function add_i18n_hooks() {
 		// Load the plugin textdomain.
-		add_action( 'after_setup_theme', array( $this->i18n, 'load_textdomain' ), 9999 );
+		add_action( 'after_setup_theme', array( $this->i18n_service, 'load_textdomain' ), 9999 );
 		// Generate JSON translations.
-		add_action( 'upgrader_process_complete', array( $this->i18n, 'update_json_translations' ), 10, 2 );
+		add_action( 'upgrader_process_complete', array( $this->i18n_service, 'update_json_translations' ), 10, 2 );
 	}
 
 	/**
@@ -391,5 +484,17 @@ class Loader {
 		if ( class_exists( 'WP_CLI' ) ) {
 			add_action( 'init', array( $this->cli, 'register_commands' ) );
 		}
+	}
+
+	/**
+	 * Add headers_service hooks.
+	 *
+	 * @since 1.2.1
+	 */
+	public function add_headers_service_hooks() {
+		// Add security headers.
+		add_action( 'wp_headers' , array( $this->headers_service, 'set_security_headers' ) );
+		// Add security headers for rest.
+		add_filter( 'rest_post_dispatch', array( $this->headers_service, 'set_rest_security_headers' ) );
 	}
 }

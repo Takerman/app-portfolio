@@ -1,6 +1,5 @@
 <?php
 namespace SiteGround_Optimizer\Install_Service;
-use SiteGround_Optimizer\Config\Config;
 
 class Install_5_4_0 extends Install {
 

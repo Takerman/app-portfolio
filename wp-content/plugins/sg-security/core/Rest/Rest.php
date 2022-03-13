@@ -217,8 +217,8 @@ class Rest {
 
 		register_rest_route(
 			self::REST_NAMESPACE, '/custom-login-url/', array(
-				'methods'  => 'POST',
-				'callback' => array( $this->login_helper, 'custom_login_url' ),
+				'methods'             => 'POST',
+				'callback'            => array( $this->login_helper, 'custom_login_url' ),
 				'permission_callback' => array( $this, 'check_permissions' ),
 			)
 		);
@@ -325,21 +325,6 @@ class Rest {
 		);
 
 		register_rest_route(
-			self::REST_NAMESPACE, '/unblock/(?P<id>\d+)', array(
-				'methods'             => 'POST',
-				'callback'            => array( $this->activity_helper, 'unblock' ),
-				'permission_callback' => array( $this, 'check_permissions' ),
-				'args'                => array(
-					'id' => array(
-						'validate_callback' => function( $param, $request, $key ) {
-							return is_numeric( $param );
-						},
-					),
-				),
-			)
-		);
-
-		register_rest_route(
 			self::REST_NAMESPACE, '/get-visitor-status/(?P<id>\d+)', array(
 				'methods'             => 'POST',
 				'callback'            => array( $this->activity_helper, 'get_visitor_status' ),
@@ -351,6 +336,22 @@ class Rest {
 						},
 					),
 				),
+			)
+		);
+
+		register_rest_route(
+			self::REST_NAMESPACE, '/weekly-report/', array(
+				'methods'             => 'POST',
+				'callback'            => array( $this->activity_helper, 'get_weekly_report_recipients' ),
+				'permission_callback' => array( $this, 'check_permissions' ),
+			)
+		);
+
+		register_rest_route(
+			self::REST_NAMESPACE, '/notification-emails/', array(
+				'methods'             => 'POST',
+				'callback'            => array( $this->activity_helper, 'manage_notification_emails' ),
+				'permission_callback' => array( $this, 'check_permissions' ),
 			)
 		);
 	}

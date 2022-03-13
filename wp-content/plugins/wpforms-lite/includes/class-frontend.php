@@ -642,13 +642,17 @@ class WPForms_Frontend {
 
 		// This filter is for backwards compatibility purposes.
 		$types = array( 'text', 'textarea', 'name', 'number', 'email', 'hidden', 'url', 'html', 'divider', 'password', 'phone', 'address', 'select', 'checkbox', 'radio' );
+
 		if ( in_array( $field['type'], $types, true ) ) {
-			$field = apply_filters( "wpforms_{$field['type']}_field_display", $field, $attributes, $form_data );
-		} elseif ( 'credit-card' === $field['type'] ) {
-			$field = apply_filters( 'wpforms_creditcard_field_display', $field, $attributes, $form_data );
-		} elseif ( in_array( $field['type'], array( 'payment-multiple', 'payment-single', 'payment-checkbox' ), true ) ) {
+			$filtered_field = apply_filters( "wpforms_{$field['type']}_field_display", $field, $attributes, $form_data );
+			$field          = wpforms_list_intersect_key( (array) $filtered_field, $field );
+		} elseif ( $field['type'] === 'credit-card' ) {
+			$filtered_field = apply_filters( 'wpforms_creditcard_field_display', $field, $attributes, $form_data );
+			$field          = wpforms_list_intersect_key( (array) $filtered_field, $field );
+		} elseif ( in_array( $field['type'], [ 'payment-multiple', 'payment-single', 'payment-checkbox' ], true ) ) {
 			$filter_field_type = str_replace( '-', '_', $field['type'] );
-			$field             = apply_filters( 'wpforms_' . $filter_field_type . '_field_display', $field, $attributes, $form_data );
+			$filtered_field    = apply_filters( 'wpforms_' . $filter_field_type . '_field_display', $field, $attributes, $form_data );
+			$field             = wpforms_list_intersect_key( (array) $filtered_field, $field );
 		}
 
 		$form_id  = absint( $form_data['id'] );
@@ -1234,6 +1238,13 @@ class WPForms_Frontend {
 			return;
 		}
 
+		/**
+		 * Fire before frontend JS assets are loaded.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $forms Forms on the current page.
+		 */
 		do_action( 'wpforms_frontend_js', $this->forms );
 
 		$min = wpforms_get_min_suffix();
@@ -1251,7 +1262,7 @@ class WPForms_Frontend {
 		// TODO: should be moved out of here.
 		if (
 			$this->assets_global() ||
-			true === wpforms_has_field_type( 'date-time', $this->forms, true )
+			wpforms_has_field_type( 'date-time', $this->forms, true )
 		) {
 			wp_enqueue_script(
 				'wpforms-flatpickr',
@@ -1272,14 +1283,14 @@ class WPForms_Frontend {
 		// Load jQuery input mask library - https://github.com/RobinHerbots/jquery.inputmask.
 		if (
 			$this->assets_global() ||
-			true === wpforms_has_field_type( [ 'phone', 'address' ], $this->forms, true ) ||
-			true === wpforms_has_field_setting( 'input_mask', $this->forms, true )
+			wpforms_has_field_type( [ 'phone', 'address' ], $this->forms, true ) ||
+			wpforms_has_field_setting( 'input_mask', $this->forms, true )
 		) {
 			wp_enqueue_script(
 				'wpforms-maskedinput',
 				WPFORMS_PLUGIN_URL . 'assets/js/jquery.inputmask.min.js',
 				[ 'jquery' ],
-				'5.0.6',
+				'5.0.7-beta.29',
 				true
 			);
 		}
@@ -1287,7 +1298,7 @@ class WPForms_Frontend {
 		// Load mailcheck <https://github.com/mailcheck/mailcheck> and punycode libraries.
 		if (
 			$this->assets_global() ||
-			true === wpforms_has_field_type( [ 'email' ], $this->forms, true )
+			wpforms_has_field_type( [ 'email' ], $this->forms, true )
 		) {
 			wp_enqueue_script(
 				'wpforms-mailcheck',
@@ -1310,7 +1321,7 @@ class WPForms_Frontend {
 		// TODO: should be moved out of here.
 		if (
 			$this->assets_global() ||
-			true === wpforms_has_field_type( 'credit-card', $this->forms, true )
+			wpforms_has_field_type( 'credit-card', $this->forms, true )
 		) {
 			wp_enqueue_script(
 				'wpforms-payment',
@@ -1324,7 +1335,7 @@ class WPForms_Frontend {
 		// Load base JS.
 		wp_enqueue_script(
 			'wpforms',
-			WPFORMS_PLUGIN_URL . 'assets/js/wpforms.js',
+			WPFORMS_PLUGIN_URL . "assets/js/wpforms{$min}.js",
 			[ 'jquery' ],
 			WPFORMS_VERSION,
 			true
@@ -1421,38 +1432,38 @@ class WPForms_Frontend {
 		// IE11 polyfills for native `matches()` and `closest()` methods.
 		$polyfills = // language=JavaScript PhpStorm.
 			'if (!Element.prototype.matches) {
-			    Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+				Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
 			}
 			if (!Element.prototype.closest) {
-			    Element.prototype.closest = function (s) {
-			        var el = this;
-			        do {
-			            if (Element.prototype.matches.call(el, s)) { return el; }
-			            el = el.parentElement || el.parentNode;
-			        } while (el !== null && el.nodeType === 1);
-			        return null;
-			    };
+				Element.prototype.closest = function (s) {
+					var el = this;
+					do {
+						if (Element.prototype.matches.call(el, s)) { return el; }
+						el = el.parentElement || el.parentNode;
+					} while (el !== null && el.nodeType === 1);
+					return null;
+				};
 			}
 		';
 
 		// Native equivalent for jQuery's `trigger()` method.
 		$dispatch = // language=JavaScript PhpStorm.
 			'var wpformsDispatchEvent = function (el, ev, custom) {
-			    var e = document.createEvent(custom ? "CustomEvent" : "HTMLEvents");
-			    custom ? e.initCustomEvent(ev, true, true, false) : e.initEvent(ev, true, true);
-			    el.dispatchEvent(e);
+				var e = document.createEvent(custom ? "CustomEvent" : "HTMLEvents");
+				custom ? e.initCustomEvent(ev, true, true, false) : e.initEvent(ev, true, true);
+				el.dispatchEvent(e);
 			};
 		';
 
 		// Captcha callback, used by hCaptcha and checkbox reCaptcha v2.
 		$callback = // language=JavaScript PhpStorm.
 			'var wpformsRecaptchaCallback = function (el) {
-			    var hdn = el.parentNode.querySelector(".wpforms-recaptcha-hidden");
-			    var err = el.parentNode.querySelector("#g-recaptcha-hidden-error");
-			    hdn.value = "1";
-			    wpformsDispatchEvent(hdn, "change", false);
-			    hdn.classList.remove("wpforms-error");
-			    err && hdn.parentNode.removeChild(err);
+				var hdn = el.parentNode.querySelector(".wpforms-recaptcha-hidden");
+				var err = el.parentNode.querySelector("#g-recaptcha-hidden-error");
+				hdn.value = "1";
+				wpformsDispatchEvent(hdn, "change", false);
+				hdn.classList.remove("wpforms-error");
+				err && hdn.parentNode.removeChild(err);
 			};
 		';
 
@@ -1463,15 +1474,15 @@ class WPForms_Frontend {
 
 			$data .= // language=JavaScript PhpStorm.
 				'var wpformsRecaptchaLoad = function () {
-				    Array.prototype.forEach.call(document.querySelectorAll(".g-recaptcha"), function (el) {
-				        var captchaID = hcaptcha.render(el, {
-				            callback: function () {
-				                wpformsRecaptchaCallback(el);
-				            }
-				        });
-				        el.setAttribute("data-recaptcha-id", captchaID);
-				    });
-				    wpformsDispatchEvent(document, "wpformsRecaptchaLoaded", true);
+					Array.prototype.forEach.call(document.querySelectorAll(".g-recaptcha"), function (el) {
+						var captchaID = hcaptcha.render(el, {
+							callback: function () {
+								wpformsRecaptchaCallback(el);
+							}
+						});
+						el.setAttribute("data-recaptcha-id", captchaID);
+					});
+					wpformsDispatchEvent(document, "wpformsRecaptchaLoaded", true);
 				};
 			';
 
@@ -1483,16 +1494,20 @@ class WPForms_Frontend {
 			$data = $dispatch;
 
 			$data .= // language=JavaScript PhpStorm.
-				'var wpformsRecaptchaLoad = function () {
-				    grecaptcha.execute("' . $captcha_settings['site_key'] . '", {action: "wpforms"}).then(function (token) {
-				        Array.prototype.forEach.call(document.getElementsByName("wpforms[recaptcha]"), function (el) {
-				            el.value = token;
-				        });
-				    });
-				    wpformsDispatchEvent(document, "wpformsRecaptchaLoaded", true);
-				};
-				grecaptcha.ready(wpformsRecaptchaLoad);
-    		';
+				'var wpformsRecaptchaV3Execute = function ( callback ) {
+					grecaptcha.execute( "' . $captcha_settings['site_key'] . '", { action: "wpforms" } ).then( function ( token ) {
+						Array.prototype.forEach.call( document.getElementsByName( "wpforms[recaptcha]" ), function ( el ) {
+							el.value = token;
+						} );
+						if ( typeof callback === "function" ) {
+							return callback();
+						}
+					} );
+				}
+				grecaptcha.ready( function () {
+					wpformsDispatchEvent( document, "wpformsRecaptchaLoaded", true );
+				} );
+			';
 
 		} elseif ( $captcha_settings['recaptcha_type'] === 'invisible' ) {
 
@@ -1501,26 +1516,26 @@ class WPForms_Frontend {
 
 			$data .= // language=JavaScript PhpStorm.
 				'var wpformsRecaptchaLoad = function () {
-				    Array.prototype.forEach.call(document.querySelectorAll(".g-recaptcha"), function (el) {
-				        try {
-				            var recaptchaID = grecaptcha.render(el, {
-				                callback: function () {
-				                    wpformsRecaptchaCallback(el);
-				                }
-				            }, true);
-				            el.closest("form").querySelector("button[type=submit]").recaptchaID = recaptchaID;
-				        } catch (error) {}
-				    });
-				    wpformsDispatchEvent(document, "wpformsRecaptchaLoaded", true);
+					Array.prototype.forEach.call(document.querySelectorAll(".g-recaptcha"), function (el) {
+						try {
+							var recaptchaID = grecaptcha.render(el, {
+								callback: function () {
+									wpformsRecaptchaCallback(el);
+								}
+							}, true);
+							el.closest("form").querySelector("button[type=submit]").recaptchaID = recaptchaID;
+						} catch (error) {}
+					});
+					wpformsDispatchEvent(document, "wpformsRecaptchaLoaded", true);
 				};
 				var wpformsRecaptchaCallback = function (el) {
-				    var $form = el.closest("form");
-				    if (typeof wpforms.formSubmit === "function") {
-				        wpforms.formSubmit($form);
-				    } else {
-				        $form.querySelector("button[type=submit]").recaptchaID = false;
-				        $form.submit();
-				    }
+					var $form = el.closest("form");
+					if (typeof wpforms.formSubmit === "function") {
+						wpforms.formSubmit($form);
+					} else {
+						$form.querySelector("button[type=submit]").recaptchaID = false;
+						$form.submit();
+					}
 				};
 			';
 
@@ -1531,17 +1546,17 @@ class WPForms_Frontend {
 
 			$data .= // language=JavaScript PhpStorm.
 				'var wpformsRecaptchaLoad = function () {
-				    Array.prototype.forEach.call(document.querySelectorAll(".g-recaptcha"), function (el) {
-				        try {
-				            var recaptchaID = grecaptcha.render(el, {
-				                callback: function () {
-				                    wpformsRecaptchaCallback(el);
-				                }
-				            });
-				            el.setAttribute("data-recaptcha-id", recaptchaID);
-				        } catch (error) {}
-				    });
-				    wpformsDispatchEvent(document, "wpformsRecaptchaLoaded", true);
+					Array.prototype.forEach.call(document.querySelectorAll(".g-recaptcha"), function (el) {
+						try {
+							var recaptchaID = grecaptcha.render(el, {
+								callback: function () {
+									wpformsRecaptchaCallback(el);
+								}
+							});
+							el.setAttribute("data-recaptcha-id", recaptchaID);
+						} catch (error) {}
+					});
+					wpformsDispatchEvent(document, "wpformsRecaptchaLoaded", true);
 				};
 			';
 
@@ -1573,7 +1588,7 @@ class WPForms_Frontend {
 		if ( ! wpforms_is_amp() ) {
 			wp_enqueue_script(
 				'wpforms-confirmation',
-				WPFORMS_PLUGIN_URL . 'assets/js/wpforms-confirmation.js',
+				WPFORMS_PLUGIN_URL . "assets/js/wpforms-confirmation{$min}.js",
 				[ 'jquery' ],
 				WPFORMS_VERSION,
 				true

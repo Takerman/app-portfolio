@@ -381,6 +381,9 @@ class TRP_Translation_Render{
     		return $output;
 	    }
 
+        global $TRP_HDOM_QUOTE_DEFAULT;
+        $TRP_HDOM_QUOTE_DEFAULT = apply_filters('trp_hdom_quote_default_double_quotes', '"');
+
     	global $trp_editor_notices;
 
         /* replace our special tags so we have valid html */

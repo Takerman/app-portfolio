@@ -20,6 +20,7 @@ class Message_Service {
 		// Array containing message responses.
 		$messages = array(
 			'enable_cache'                                 => __( 'Dynamic Cache', 'sg-cachepress' ),
+			'file_caching'                                 => __( 'File-Based Caching', 'sg-cachepress' ),
 			'autoflush_cache'                              => __( 'Autoflush', 'sg-cachepress' ),
 			'user_agent_header'                            => __( 'Browser-Specific Caching', 'sg-cachepress' ),
 			'enable_memcached'                             => __( 'Memcached', 'sg-cachepress' ),

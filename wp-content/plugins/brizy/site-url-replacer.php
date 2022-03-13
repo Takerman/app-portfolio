@@ -27,5 +27,4 @@ class Brizy_SiteUrlReplacer {
 
 		return $content;
 	}
-
 }

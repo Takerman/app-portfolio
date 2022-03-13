@@ -1624,4 +1624,3 @@ function trp_page_builders_compatibility_with_subdirectory_for_default_language(
     }
     return $needed_language;
 }
-

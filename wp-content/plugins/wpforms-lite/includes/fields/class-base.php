@@ -1014,7 +1014,7 @@ abstract class WPForms_Field {
 				);
 				foreach ( $values as $key => $value ) {
 					$default        = ! empty( $value['default'] ) ? $value['default'] : '';
-					$base           = sprintf( 'fields[%s][choices][%s]', absint( $field['id'] ), sanitize_key( $key ) );
+					$base           = sprintf( 'fields[%d][choices][%d]', absint( $field['id'] ), absint( $key ) );
 					$image          = ! empty( $value['image'] ) ? $value['image'] : '';
 					$hide_image_btn = false;
 
@@ -1147,7 +1147,7 @@ abstract class WPForms_Field {
 				);
 				foreach ( $values as $key => $value ) {
 					$default        = ! empty( $value['default'] ) ? $value['default'] : '';
-					$base           = sprintf( 'fields[%s][choices][%s]', absint( $field['id'] ), esc_attr( $key ) );
+					$base           = sprintf( 'fields[%d][choices][%d]', absint( $field['id'] ), absint( $key ) );
 					$image          = ! empty( $value['image'] ) ? $value['image'] : '';
 					$hide_image_btn = false;
 
@@ -1220,7 +1220,7 @@ abstract class WPForms_Field {
 					'<div class="wpforms-alert-warning wpforms-alert %s">',
 					! empty( $field['choices_images'] ) ? '' : 'wpforms-hidden'
 				);
-				$note .= wp_kses( /* translators: %s - URL to the ActiveCampaign Getting started page. */
+				$note .= wp_kses(
 					__( '<h4>Images are not cropped or resized.</h4><p>For best results, they should be the same size and 250x250 pixels or smaller.</p>', 'wpforms-lite' ),
 					[
 						'h4' => [],
@@ -1463,14 +1463,42 @@ abstract class WPForms_Field {
 			case 'dynamic_choices':
 				$value   = ! empty( $field['dynamic_choices'] ) ? esc_attr( $field['dynamic_choices'] ) : '';
 				$tooltip = esc_html__( 'Select auto-populate method to use.', 'wpforms-lite' );
-				$options = array(
+				$options = [
 					''          => esc_html__( 'Off', 'wpforms-lite' ),
 					'post_type' => esc_html__( 'Post Type', 'wpforms-lite' ),
 					'taxonomy'  => esc_html__( 'Taxonomy', 'wpforms-lite' ),
+				];
+				$output  = $this->field_element(
+					'label',
+					$field,
+					[
+						'slug'    => 'dynamic_choices',
+						'value'   => esc_html__( 'Dynamic Choices', 'wpforms-lite' ),
+						'tooltip' => $tooltip,
+					],
+					false
 				);
-				$output  = $this->field_element( 'label', $field, array( 'slug' => 'dynamic_choices', 'value' => esc_html__( 'Dynamic Choices', 'wpforms-lite' ), 'tooltip' => $tooltip ), false );
-				$output .= $this->field_element( 'select', $field, array( 'slug' => 'dynamic_choices', 'value' => $value, 'options' => $options ), false );
-				$output  = $this->field_element( 'row', $field, array( 'slug' => 'dynamic_choices', 'content' => $output ), false );
+				$output .= $this->field_element(
+					'select',
+					$field,
+					[
+						'slug'    => 'dynamic_choices',
+						'value'   => $value,
+						'options' => $options,
+					],
+					false
+				);
+				$output  = $this->field_element(
+					'row',
+					$field,
+					[
+						'slug'    => 'dynamic_choices',
+						'class'   => ! empty( $field['choices_images'] ) ? 'wpforms-hidden' : '',
+						'content' => $output,
+					],
+					false
+				);
+
 				break;
 
 			/*

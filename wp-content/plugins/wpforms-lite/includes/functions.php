@@ -89,14 +89,14 @@ function wpforms_is_url( $url ) {
  * Get the current URL.
  *
  * @since 1.0.0
+ * @since 1.7.2 Refactored based on the `home_url` function.
  *
  * @return string
  */
 function wpforms_current_url() {
 
-	$url = ( ! empty( $_SERVER['HTTPS'] ) ) ? 'https://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] : 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-
-	return esc_url_raw( $url );
+	// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	return esc_url_raw( home_url( wp_unslash( $_SERVER['REQUEST_URI'] ) ) );
 }
 
 /**
@@ -288,15 +288,21 @@ function wpforms_has_field_setting( $setting, $form, $multiple = false ) {
 }
 
 /**
- * Check if form provided contains page breaks, if so give details.
+ * Check if form provided contains Page Break, if so give details.
  *
  * @since 1.0.0
  *
- * @param mixed $form
+ * @todo It is not used since 1.4.0. Probably, it should be deprecated and suggest using the wpforms_get_pagebreak_details() function.
  *
- * @return mixed
+ * @param WP_Post|array $form Form data.
+ *
+ * @return int|bool Pages count or false.
  */
 function wpforms_has_pagebreak( $form = false ) {
+
+	if ( ! wpforms()->pro ) {
+		return false;
+	}
 
 	$form_data = '';
 	$pagebreak = false;
@@ -315,8 +321,10 @@ function wpforms_has_pagebreak( $form = false ) {
 	$fields = $form_data['fields'];
 
 	foreach ( $fields as $field ) {
-		if ( 'pagebreak' === $field['type'] && empty( $field['position'] ) ) {
+
+		if ( $field['type'] === 'pagebreak' && empty( $field['position'] ) ) {
 			$pagebreak = true;
+
 			$pages ++;
 		}
 	}
@@ -329,16 +337,22 @@ function wpforms_has_pagebreak( $form = false ) {
 }
 
 /**
- * Try to find and return a top or bottom pagebreak.
+ * Try to find and return a top or bottom Page Break.
  *
  * @since 1.2.1
  *
- * @param mixed $form
- * @param mixed $type
+ * @todo It is not used since 1.4.0. Probably, it should be deprecated and suggest using the wpforms_get_pagebreak_details() function.
+ *
+ * @param WP_Post|array $form Form data.
+ * @param string|bool   $type Type of Page Break fields (top, bottom, pages or false).
  *
  * @return array|bool
  */
 function wpforms_get_pagebreak( $form = false, $type = false ) {
+
+	if ( ! wpforms()->pro ) {
+		return false;
+	}
 
 	$form_data = '';
 
@@ -353,16 +367,20 @@ function wpforms_get_pagebreak( $form = false, $type = false ) {
 	}
 
 	$fields = $form_data['fields'];
-	$pages  = array();
+	$pages  = [];
 
 	foreach ( $fields as $field ) {
-		if ( 'pagebreak' === $field['type'] ) {
-			$position = ! empty( $field['position'] ) ? $field['position'] : false;
-			if ( 'pages' === $type && 'bottom' !== $position ) {
-				$pages[] = $field;
-			} elseif ( $position === $type ) {
-				return $field;
-			}
+
+		if ( $field['type'] !== 'pagebreak' ) {
+			continue;
+		}
+
+		$position = ! empty( $field['position'] ) ? $field['position'] : false;
+
+		if ( $type === 'pages' && $position !== 'bottom' ) {
+			$pages[] = $field;
+		} elseif ( $position === $type ) {
+			return $field;
 		}
 	}
 
@@ -378,15 +396,18 @@ function wpforms_get_pagebreak( $form = false, $type = false ) {
  *
  * @since 1.3.7
  *
- * @param mixed $form
+ * @param WP_Post|array $form Form data.
  *
- * @return mixed false or an array
+ * @return false|array Page Break details or false.
  */
 function wpforms_get_pagebreak_details( $form = false ) {
 
-	$form_data = '';
-	$details   = array();
-	$pages     = 1;
+	if ( ! wpforms()->pro ) {
+		return false;
+	}
+
+	$details = [];
+	$pages   = 1;
 
 	if ( is_object( $form ) && ! empty( $form->post_content ) ) {
 		$form_data = wpforms_decode( $form->post_content );
@@ -399,26 +420,25 @@ function wpforms_get_pagebreak_details( $form = false ) {
 	}
 
 	foreach ( $form_data['fields'] as $field ) {
-		if ( 'pagebreak' === $field['type'] ) {
-			if ( empty( $field['position'] ) ) {
-				$pages ++;
-				$details['total']   = $pages;
-				$details['pages'][] = $field;
-			} elseif ( 'top' === $field['position'] ) {
-				$details['top'] = $field;
-			} elseif ( 'bottom' === $field['position'] ) {
-				$details['bottom'] = $field;
-			}
+
+		if ( $field['type'] !== 'pagebreak' ) {
+			continue;
+		}
+
+		if ( empty( $field['position'] ) ) {
+			$pages ++;
+			$details['total']   = $pages;
+			$details['pages'][] = $field;
+		} elseif ( $field['position'] === 'top' ) {
+			$details['top'] = $field;
+		} elseif ( $field['position'] === 'bottom' ) {
+			$details['bottom'] = $field;
 		}
 	}
 
 	if ( ! empty( $details ) ) {
-		if ( empty( $details['top'] ) ) {
-			$details['top'] = array();
-		}
-		if ( empty( $details['bottom'] ) ) {
-			$details['bottom'] = array();
-		}
+		$details['top']     = empty( $details['top'] ) ? [] : $details['top'];
+		$details['bottom']  = empty( $details['bottom'] ) ? [] : $details['bottom'];
 		$details['current'] = 1;
 
 		return $details;
@@ -1432,6 +1452,7 @@ function wpforms_get_hierarchical_object( $args = [], $flat = false ) { // phpcs
 	$parents    = [];
 	$ref_parent = '';
 	$ref_name   = '';
+	$number     = 0;
 
 	if ( ! empty( $args['post_type'] ) ) {
 
@@ -1445,6 +1466,7 @@ function wpforms_get_hierarchical_object( $args = [], $flat = false ) { // phpcs
 		$ref_parent = 'post_parent';
 		$ref_id     = 'ID';
 		$ref_name   = 'post_title';
+		$number     = ! empty( $args['posts_per_page'] ) ? $args['posts_per_page'] : 0;
 
 	} elseif ( ! empty( $args['taxonomy'] ) ) {
 
@@ -1458,6 +1480,7 @@ function wpforms_get_hierarchical_object( $args = [], $flat = false ) { // phpcs
 		$ref_parent = 'parent';
 		$ref_id     = 'term_id';
 		$ref_name   = 'name';
+		$number     = ! empty( $args['number'] ) ? $args['number'] : 0;
 	}
 
 	if ( empty( $items ) || is_wp_error( $items ) ) {
@@ -1475,6 +1498,29 @@ function wpforms_get_hierarchical_object( $args = [], $flat = false ) { // phpcs
 	}
 
 	$children_count = count( $children );
+	$is_limited     = $number > 1;
+
+	// We can't guarantee that all children have a parent if there is a limit in the request.
+	// Hence, we have to make sure that there is a parent for every child.
+	if ( $is_limited && $children_count ) {
+		foreach ( $children as $child ) {
+			if ( ! empty( $parents[ $child->{$ref_parent} ] ) || ! empty( $children[ $child->{$ref_parent} ] ) ) {
+				continue;
+			}
+
+			do {
+				$current_parent = ! empty( $args['post_type'] ) ? get_post( $child->{$ref_parent} ) : get_term( $child->{$ref_parent} );
+
+				if ( $current_parent->{$ref_parent} === 0 ) {
+					$parents[ $current_parent->{$ref_id} ]     = $current_parent;
+					$parents[ $current_parent->{$ref_id} ]->ID = (int) $current_parent->{$ref_id};
+				} else {
+					$children[ $current_parent->{$ref_id} ]     = $current_parent;
+					$children[ $current_parent->{$ref_id} ]->ID = (int) $current_parent->{$ref_id};
+				}
+			} while ( $current_parent->{$ref_parent} > 0 );
+		}
+	}
 
 	while ( $children_count >= 1 ) {
 		foreach ( $children as $child ) {
@@ -1496,10 +1542,10 @@ function wpforms_get_hierarchical_object( $args = [], $flat = false ) { // phpcs
 
 		_wpforms_get_hierarchical_object_flatten( $parents, $parents_flat, $ref_name );
 
-		return $parents_flat;
+		$parents = $parents_flat;
 	}
 
-	return $parents;
+	return $is_limited ? array_slice( $parents, 0, $number ) : $parents;
 }
 
 /**
@@ -1853,24 +1899,30 @@ function wpforms_log( $title = '', $message = '', $args = array() ) {
 
 	// Filter logs types from Tools -> Logs page.
 	$logs_types = wpforms_setting( 'logs-types', false );
+
 	if ( $logs_types && empty( array_intersect( $logs_types, $types ) ) ) {
 		return;
 	}
 
 	// Filter user roles from Tools -> Logs page.
-	global $current_user;
-	$logs_user_roles = wpforms_setting( 'logs-user-roles', false );
-	if ( $logs_user_roles && empty( array_intersect( $logs_user_roles, $current_user->roles ) ) ) {
+	$current_user       = function_exists( 'wp_get_current_user' ) ? wp_get_current_user() : null;
+	$current_user_id    = $current_user ? $current_user->ID : 0;
+	$current_user_roles = $current_user ? $current_user->roles : [];
+	$logs_user_roles    = wpforms_setting( 'logs-user-roles', false );
+
+	if ( $logs_user_roles && empty( array_intersect( $logs_user_roles, $current_user_roles ) ) ) {
 		return;
 	}
 
 	// Filter logs users from Tools -> Logs page.
 	$logs_users = wpforms_setting( 'logs-users', false );
-	if ( $logs_users && ! in_array( $current_user->ID, $logs_users, true ) ) {
+
+	if ( $logs_users && ! in_array( $current_user_id, $logs_users, true ) ) {
 		return;
 	}
 
 	$log = wpforms()->get( 'log' );
+
 	if ( ! method_exists( $log, 'add' ) ) {
 		return;
 	}
@@ -1881,7 +1933,7 @@ function wpforms_log( $title = '', $message = '', $args = array() ) {
 		$types,
 		isset( $args['form_id'] ) ? absint( $args['form_id'] ) : 0,
 		isset( $args['parent'] ) ? absint( $args['parent'] ) : 0,
-		$current_user->ID
+		$current_user_id
 	);
 }
 
@@ -2646,12 +2698,22 @@ function wpforms_upload_dir() {
 		return [ 'error' => $upload_dir['error'] ];
 	}
 
-	$wpforms_upload_root = trailingslashit( realpath( $upload_dir['basedir'] ) ) . 'wpforms';
+	$basedir             = wp_is_stream( $upload_dir['basedir'] ) ? $upload_dir['basedir'] : realpath( $upload_dir['basedir'] );
+	$wpforms_upload_root = trailingslashit( $basedir ) . 'wpforms';
 
-	// Add filter to allow redefine store directory.
+	/**
+	 * Allow developers to change a directory where cache and uploaded files will be stored.
+	 *
+	 * @since 1.5.2
+	 *
+	 * @param string $wpforms_upload_root WPForms upload root directory.
+	 */
 	$custom_uploads_root = apply_filters( 'wpforms_upload_root', $wpforms_upload_root );
-	if ( wp_is_writable( $custom_uploads_root ) ) {
-		$wpforms_upload_root = $custom_uploads_root;
+
+	if ( is_dir( $custom_uploads_root ) && wp_is_writable( $custom_uploads_root ) ) {
+		$wpforms_upload_root = wp_is_stream( $custom_uploads_root )
+			? $custom_uploads_root
+			: realpath( $custom_uploads_root );
 	}
 
 	return [
@@ -3003,4 +3065,32 @@ function wpforms_process_smart_tags( $content, $form_data, $fields = [], $entry_
 	 * @return string
 	 */
 	return apply_filters( 'wpforms_process_smart_tags',  $content, $form_data, $fields, $entry_id );
+}
+
+/**
+ * Get formatted [ id => title ] pages list.
+ *
+ * @since 1.7.2
+ *
+ * @param array|string $args Array or string of arguments to retrieve pages.
+ *
+ * @return array
+ */
+function wpforms_get_pages_list( $args = [] ) {
+
+	$pages = get_pages( $args );
+	$list  = [];
+
+	if ( empty( $pages ) ) {
+		return $list;
+	}
+
+	foreach ( $pages as $page ) {
+		/* translators: %d - a page ID. */
+		$title             = ! empty( $page->post_title ) ? $page->post_title : sprintf( __( '#%d (no title)', 'wpforms-lite' ), $page->ID );
+		$depth             = count( $page->ancestors );
+		$list[ $page->ID ] = str_repeat( '&nbsp;', $depth * 3 ) . $title;
+	}
+
+	return $list;
 }

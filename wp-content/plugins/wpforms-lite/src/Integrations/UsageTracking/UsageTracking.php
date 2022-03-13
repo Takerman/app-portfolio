@@ -154,6 +154,8 @@ class UsageTracking implements IntegrationInterface {
 			'server_version'                 => isset( $_SERVER['SERVER_SOFTWARE'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) ) : '',
 			'is_ssl'                         => is_ssl(),
 			'is_multisite'                   => is_multisite(),
+			'is_wpcom'                       => defined( 'IS_WPCOM' ) && IS_WPCOM,
+			'is_wpcom_vip'                   => ( defined( 'WPCOM_IS_VIP_ENV' ) && WPCOM_IS_VIP_ENV ) || ( function_exists( 'wpcom_is_vip' ) && wpcom_is_vip() ),
 			'sites_count'                    => $this->get_sites_total(),
 			'active_plugins'                 => $this->get_active_plugins(),
 			'theme_name'                     => $theme_data->name,
@@ -193,14 +195,36 @@ class UsageTracking implements IntegrationInterface {
 	 * Get license type.
 	 *
 	 * @since 1.6.1
+	 * @since 1.7.2 Clarified the license type.
 	 *
 	 * @return string
 	 */
 	private function get_license_type() {
 
-		$license_type = wpforms_get_license_type();
+		if ( ! wpforms()->pro ) {
+			return 'lite';
+		}
 
-		return empty( $license_type ) ? 'lite' : $license_type;
+		$license_type = wpforms_get_license_type();
+		$license_key  = wpforms_get_license_key();
+
+		if ( ! $license_type ) {
+			return empty( $license_key ) ? 'no license' : 'not verified';
+		}
+
+		if ( wpforms_setting( 'is_expired', false, 'wpforms_license' ) ) {
+			return 'expired';
+		}
+
+		if ( wpforms_setting( 'is_disabled', false, 'wpforms_license' ) ) {
+			return 'disabled';
+		}
+
+		if ( wpforms_setting( 'is_invalid', false, 'wpforms_license' ) ) {
+			return 'invalid';
+		}
+
+		return $license_type;
 	}
 
 	/**

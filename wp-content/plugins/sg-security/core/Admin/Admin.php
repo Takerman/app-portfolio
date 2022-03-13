@@ -2,8 +2,8 @@
 namespace SG_Security\Admin;
 
 use SG_Security;
-use SG_Security\Helper\Helper;
-use SG_Security\I18n\I18n;
+use SiteGround_Helper\Helper_Service;
+use SiteGround_i18n\i18n_Service;
 
 /**
  * Handle all hooks for our custom admin page.
@@ -82,6 +82,8 @@ class Admin {
 			'all'
 		);
 
+		// Removing conflicting fonts.
+		wp_dequeue_style( 'auxin-front-icon' );
 	}
 
 	/**
@@ -122,6 +124,11 @@ class Admin {
 	 * @return bool True/False
 	 */
 	public function is_plugin_page() {
+		// Bail if the page is not an admin screen.
+		if ( ! is_admin() ) {
+			return false;
+		}
+
 		$current_screen = \get_current_screen();
 
 		if ( in_array( $current_screen->id, $this->get_plugin_page_ids() ) ) {
@@ -166,11 +173,12 @@ class Admin {
 	public function admin_print_styles() {
 		echo '<style>.toplevel_page_sg-security.menu-top .wp-menu-image img { width:20px; margin: auto; } </style>';
 
-		$current_screen = \get_current_screen();
-
-		if ( ! in_array( $current_screen->id, $this->get_plugin_page_ids() ) ) {
+		// Bail if we are on different page.
+		if ( ! $this->is_plugin_page() ) {
 			return;
 		}
+
+		$current_screen = \get_current_screen();
 
 		echo '<style>.notice { display:none!important; } </style>';
 
@@ -192,14 +200,17 @@ class Admin {
 			$id = 'SECURITY_DASHBOARD';
 		}
 
+		$i18n_service = new i18n_Service( 'sg-security' );
+
 		$data = array(
-			'rest_base'        => untrailingslashit( get_rest_url( null, '/' ) ),
-			'home_url'         => Helper::get_site_url(),
-			'update_timestamp' => get_option( 'sg_security_update_timestamp', 0 ),
-			'localeSlug'       => join( '-', explode( '_', \get_user_locale() ) ),
-			'locale'           => I18n::get_i18n_data_json(),
-			'wp_nonce'         => wp_create_nonce( 'wp_rest' ),
-			'log_page_url'     => admin_url( 'admin.php?page=activity-log' ),
+			'rest_base'          => untrailingslashit( get_rest_url( null, '/' ) ),
+			'home_url'           => Helper_Service::get_site_url(),
+			'update_timestamp'   => get_option( 'sg_security_update_timestamp', 0 ),
+			'localeSlug'         => join( '-', explode( '_', \get_user_locale() ) ),
+			'locale'             => $i18n_service->get_i18n_data_json(),
+			'wp_nonce'           => wp_create_nonce( 'wp_rest' ),
+			'log_page_url'       => admin_url( 'admin.php?page=activity-log' ),
+			'data_consent_popup' => $this->get_popup_settings(),
 		);
 
 		echo '<script>window.addEventListener("load", function(){ SGSecurity.init({page: SGSecurity.PAGE.' . $id . ',config:' . json_encode( $data ) . '})});</script>';
@@ -231,4 +242,50 @@ class Admin {
 
 		$submenu['sg-security'][0][0] = __( 'Dashboard', 'sg-security' );
 	}
+
+	/**
+	 * Get the popup configuration.
+	 *
+	 * @since  1.2.0
+	 *
+	 * @return array The popup settings.
+	 */
+	public function get_popup_settings() {
+		$settings = array();
+
+		$data_consent       = intval( get_option( 'siteground_data_consent', 0 ) );
+		$email_consent      = intval( get_option( 'siteground_email_consent', 0 ) );
+		$settings_security  = intval( get_option( 'siteground_settings_security', 0 ) );
+
+
+		if ( ! empty( $settings_security ) ) {
+			return array(
+				'show_data_field'  => 0,
+				'show_email_field' => 0,
+			);
+		}
+
+		if ( Helper_Service::is_siteground() ) {
+			if ( 1 === $data_consent ) {
+				return array(
+					'show_data_field'  => 0,
+					'show_email_field' => 0,
+				);
+			}
+
+			return array(
+				'show_data_field'  => 1,
+				'show_email_field' => 0,
+			);
+		}
+
+
+		$settings = array();
+
+		$settings['show_data_field'] = 0 === $data_consent ? 1 : 0;
+		$settings['show_email_field'] = 0 === $email_consent ? 1 : 0;
+
+		return $settings;
+	}
+
 }

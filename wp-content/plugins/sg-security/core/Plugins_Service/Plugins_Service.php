@@ -135,10 +135,12 @@ class Plugins_Service {
 			deactivate_plugins( $plugin['path'] );
 		}
 
-		$response = delete_plugins( array( $plugin['path'] ) );
-
-		if ( true !== $response ) {
-			return false;
+		try {
+			if ( true !== delete_plugins( array( $plugin['path'] ) ) ) {
+				return false;
+			};
+		} catch ( \Error $e ) {
+				return;
 		}
 
 		// Prepare the necesary dependencies.
@@ -150,6 +152,7 @@ class Plugins_Service {
 
 		// Refresh plugin update information.
 		wp_clean_plugins_cache();
+
 		return $result;
 
 	}

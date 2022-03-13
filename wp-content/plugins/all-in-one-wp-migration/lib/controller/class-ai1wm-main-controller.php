@@ -271,6 +271,7 @@ class Ai1wm_Main_Controller {
 		$this->create_backups_webconfig( AI1WM_BACKUPS_WEBCONFIG );
 		$this->create_backups_index_php( AI1WM_BACKUPS_INDEX_PHP );
 		$this->create_backups_index_html( AI1WM_BACKUPS_INDEX_HTML );
+		$this->create_backups_robots_txt( AI1WM_BACKUPS_ROBOTS_TXT );
 	}
 
 	/**
@@ -454,6 +455,22 @@ class Ai1wm_Main_Controller {
 	}
 
 	/**
+	 * Create backups robots.txt file
+	 *
+	 * @param  string Path to file
+	 * @return void
+	 */
+	public function create_backups_robots_txt( $path ) {
+		if ( ! Ai1wm_File_Robots::create( $path ) ) {
+			if ( is_multisite() ) {
+				return add_action( 'network_admin_notices', array( $this, 'backups_robots_txt_notice' ) );
+			} else {
+				return add_action( 'admin_notices', array( $this, 'backups_robots_txt_notice' ) );
+			}
+		}
+	}
+
+	/**
 	 * If the "noabort" environment variable has been set,
 	 * the script will continue to run even though the connection has been broken
 	 *
@@ -551,6 +568,15 @@ class Ai1wm_Main_Controller {
 	}
 
 	/**
+	 * Display notice for robots.txt file in backups directory
+	 *
+	 * @return void
+	 */
+	public function backups_robots_txt_notice() {
+		Ai1wm_Template::render( 'main/backups-robots-txt-notice' );
+	}
+
+	/**
 	 * Display notice for .htaccess file in WordPress directory
 	 *
 	 * @return void
@@ -623,7 +649,7 @@ class Ai1wm_Main_Controller {
 		add_submenu_page(
 			'ai1wm_export',
 			__( 'Backups', AI1WM_PLUGIN_NAME ),
-			__( 'Backups', AI1WM_PLUGIN_NAME ),
+			__( 'Backups', AI1WM_PLUGIN_NAME ) . Ai1wm_Template::get_content( 'main/backups', array( 'count' => Ai1wm_Backups::count_files() ) ),
 			'import',
 			'ai1wm_backups',
 			'Ai1wm_Backups_Controller::index'
