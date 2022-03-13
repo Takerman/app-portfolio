@@ -2,9 +2,9 @@
 define('WP_HOME', 'https://tanyoivanov.net');
 define('WP_SITEURL', 'https://tanyoivanov.net');
 
-define('DB_NAME', 'dbs6nibju2kcuj');
-define('DB_USER', 'um7kwb8zorzrm');
-define('DB_PASSWORD', 'um7kwb8zorzrm');
+define('DB_NAME', 'dbpabdtd8iffe5');
+define('DB_USER', 'ulfisiwe5wnup');
+define('DB_PASSWORD', 'ulfisiwe5wnup');
 define('DB_HOST', 'localhost');
 
 define('DB_CHARSET', 'utf8mb4');
