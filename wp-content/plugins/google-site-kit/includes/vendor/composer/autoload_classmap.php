@@ -81,6 +81,7 @@ return array(
     'Google\\Site_Kit\\Core\\Modules\\Module_With_Scopes_Trait' => $baseDir . '/Core/Modules/Module_With_Scopes_Trait.php',
     'Google\\Site_Kit\\Core\\Modules\\Module_With_Screen' => $baseDir . '/Core/Modules/Module_With_Screen.php',
     'Google\\Site_Kit\\Core\\Modules\\Module_With_Screen_Trait' => $baseDir . '/Core/Modules/Module_With_Screen_Trait.php',
+    'Google\\Site_Kit\\Core\\Modules\\Module_With_Service_Entity' => $baseDir . '/Core/Modules/Module_With_Service_Entity.php',
     'Google\\Site_Kit\\Core\\Modules\\Module_With_Settings' => $baseDir . '/Core/Modules/Module_With_Settings.php',
     'Google\\Site_Kit\\Core\\Modules\\Module_With_Settings_Trait' => $baseDir . '/Core/Modules/Module_With_Settings_Trait.php',
     'Google\\Site_Kit\\Core\\Modules\\Modules' => $baseDir . '/Core/Modules/Modules.php',
