@@ -61,7 +61,7 @@ $times_svg = '<svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="htt
 				<i class="fa fa-support"></i>
 				<h3><?php esc_html_e( 'Get Support', 'wpforms-lite' ); ?></h3>
 
-				<?php if ( wpforms()->pro ) { ?>
+				<?php if ( wpforms()->is_pro() ) { ?>
 					<p><?php esc_html_e( 'Submit a ticket and our world class support team will be in touch soon.', 'wpforms-lite' ); ?></p>
 					<a href="<?php echo esc_url( $settings['support_ticket_url'] ); ?>"
 						class="wpforms-btn wpforms-btn-md wpforms-btn-light-grey"

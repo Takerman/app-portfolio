@@ -228,12 +228,14 @@ class Help {
 
 		$tasks = wpforms()->get( 'tasks' );
 
-		if ( empty( $tasks->is_scheduled( 'wpforms_builder_help_cache_update' ) ) ) {
-			$tasks->create( 'wpforms_builder_help_cache_update' )
-			      ->recurring( time() + $this->settings['cache_ttl'], $this->settings['cache_ttl'] )
-			      ->params()
-			      ->register();
+		if ( $tasks->is_scheduled( 'wpforms_builder_help_cache_update' ) !== false ) {
+			return;
 		}
+
+		$tasks->create( 'wpforms_builder_help_cache_update' )
+		      ->recurring( time() + $this->settings['cache_ttl'], $this->settings['cache_ttl'] )
+		      ->params()
+		      ->register();
 	}
 
 	/**
@@ -329,11 +331,13 @@ class Help {
 			'providers/zapier'                                   => 'zapier',
 			'providers/salesforce'                               => 'salesforce',
 			'providers/sendinblue'                               => 'sendinblue',
+			'providers/hubspot'                                  => 'hubspot',
 			'payments'                                           => '',
 			'payments/paypal_standard'                           => 'paypal standard',
 			'payments/stripe'                                    => 'stripe',
 			'payments/authorize_net'                             => 'authorize.net',
 			'payments/square'                                    => 'square',
+			'revisions'                                          => 'revisions',
 		];
 		// phpcs:enable
 	}
@@ -1156,6 +1160,9 @@ class Help {
 			'sendinblue'                => [
 				'/docs/how-to-install-and-use-the-sendinblue-addon-with-wpforms/',
 			],
+			'hubspot'                   => [
+				'/docs/how-to-install-and-use-the-hubspot-addon-in-wpforms/',
+			],
 			'integrate'                 => [
 				'/docs/how-to-install-and-use-zapier-addon-with-wpforms/',
 				'/docs/how-to-install-and-use-the-webhooks-addon-with-wpforms/',
@@ -1195,6 +1202,9 @@ class Help {
 			'square'                    => [
 				'/docs/how-to-install-and-use-the-square-addon-with-wpforms/',
 				'/docs/how-to-test-square-payments-on-your-site/',
+			],
+			'revisions'                 => [
+				'/docs/how-to-use-form-revisions-in-wpforms/',
 			],
 		];
 	}

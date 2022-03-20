@@ -222,12 +222,14 @@ abstract class CacheBase {
 
 		$tasks = wpforms()->get( 'tasks' );
 
-		if ( empty( $tasks->is_scheduled( $this->settings['update_action'] ) ) ) {
-			$tasks->create( $this->settings['update_action'] )
-				  ->recurring( time() + $this->settings['cache_ttl'], $this->settings['cache_ttl'] )
-				  ->params()
-				  ->register();
+		if ( $tasks->is_scheduled( $this->settings['update_action'] ) !== false ) {
+			return;
 		}
+
+		$tasks->create( $this->settings['update_action'] )
+			  ->recurring( time() + $this->settings['cache_ttl'], $this->settings['cache_ttl'] )
+			  ->params()
+			  ->register();
 	}
 
 	/**

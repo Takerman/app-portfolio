@@ -86,6 +86,63 @@ function wpforms_is_url( $url ) {
 }
 
 /**
+ * Verify that an email is valid.
+ * See the linked RFC.
+ *
+ * @see https://www.rfc-editor.org/rfc/inline-errata/rfc3696.html
+ *
+ * @since 1.7.3
+ *
+ * @param string $email Email address to verify.
+ *
+ * @return bool Returns a valid email address on success, false on failure.
+ */
+function wpforms_is_email( $email ) { // phpcs:ignore Generic.Metrics.CyclomaticComplexity.TooHigh
+
+	// Do not allow callables, arrays and objects.
+	if ( ! is_scalar( $email ) ) {
+		return false;
+	}
+
+	// Email can't be longer than 254 octets,
+	// otherwise it can't be used to send an email address (limitation in the MAIL and RCPT commands).
+	// 1 octet = 8 bits = 1 byte.
+	if ( strlen( $email ) > 254 ) {
+		return false;
+	}
+
+	$email_arr = explode( '@', $email );
+
+	if ( count( $email_arr ) !== 2 ) {
+		return false;
+	}
+
+	list( $local, $domain ) = $email_arr;
+
+	/**
+	 * RFC requires local part to be no longer than 64 octets.
+	 * Punycode library checks for 63 octets.
+	 *
+	 * @link https://github.com/true/php-punycode/blob/master/src/Punycode.php#L182.
+	 */
+	if ( strlen( $local ) > 63 ) {
+		return false;
+	}
+
+	$domain_arr = explode( '.', $domain );
+
+	foreach ( $domain_arr as $domain_label ) {
+		// The RFC says: 'A DNS label may be no more than 63 octets long'.
+		if ( strlen( $domain_label ) > 63 ) {
+			return false;
+		}
+	}
+
+	// Other limitations are checked by the native WordPress function is_email().
+	return (bool) is_email( $email );
+}
+
+/**
  * Get the current URL.
  *
  * @since 1.0.0
@@ -300,7 +357,7 @@ function wpforms_has_field_setting( $setting, $form, $multiple = false ) {
  */
 function wpforms_has_pagebreak( $form = false ) {
 
-	if ( ! wpforms()->pro ) {
+	if ( ! wpforms()->is_pro() ) {
 		return false;
 	}
 
@@ -350,7 +407,7 @@ function wpforms_has_pagebreak( $form = false ) {
  */
 function wpforms_get_pagebreak( $form = false, $type = false ) {
 
-	if ( ! wpforms()->pro ) {
+	if ( ! wpforms()->is_pro() ) {
 		return false;
 	}
 
@@ -402,7 +459,7 @@ function wpforms_get_pagebreak( $form = false, $type = false ) {
  */
 function wpforms_get_pagebreak_details( $form = false ) {
 
-	if ( ! wpforms()->pro ) {
+	if ( ! wpforms()->is_pro() ) {
 		return false;
 	}
 
@@ -564,12 +621,16 @@ function wpforms_size_to_bytes( $size ) {
 	switch ( strtoupper( $suffix ) ) {
 		case 'P':
 			$value *= 1024;
+
 		case 'T':
 			$value *= 1024;
+
 		case 'G':
 			$value *= 1024;
+
 		case 'M':
 			$value *= 1024;
+
 		case 'K':
 			$value *= 1024;
 			break;
@@ -1140,42 +1201,58 @@ function wpforms_days() {
 }
 
 /**
- * Lookup user IP.
- *
- * There are many ways to do this, but we prefer the way EDD does it.
- * https://github.com/easydigitaldownloads/easy-digital-downloads/blob/master/includes/misc-functions.php#L163
+ * Get the user IP address.
  *
  * @since 1.2.5
+ * @since 1.7.3 Improve the IP detection quality by taking care of proxies (e.g. when the site is behind Cloudflare).
+ *
+ * Code based on the:
+ *   - WordPress method \WP_Community_Events::get_unsafe_client_ip
+ *   - Cloudflare documentation https://support.cloudflare.com/hc/en-us/articles/206776727
  *
  * @return string
  */
 function wpforms_get_ip() {
 
-	$ip = false;
+	$ip = '127.0.0.1';
 
-	if ( ! empty( $_SERVER['HTTP_X_REAL_IP'] ) ) {
-		$ip = filter_var( wp_unslash( $_SERVER['HTTP_X_REAL_IP'] ), FILTER_VALIDATE_IP );
-	} elseif ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
-		// Check ip from share internet.
-		$ip = filter_var( wp_unslash( $_SERVER['HTTP_CLIENT_IP'] ), FILTER_VALIDATE_IP );
-	} elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
-		// To check ip is pass from proxy.
-		// Can include more than 1 ip, first is the public one.
-		// WPCS: sanitization ok.
-		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		$ips = explode( ',', wp_unslash( $_SERVER['HTTP_X_FORWARDED_FOR'] ) );
-		if ( is_array( $ips ) ) {
-			$ip = filter_var( $ips[0], FILTER_VALIDATE_IP );
+	$address_headers = [
+		'HTTP_TRUE_CLIENT_IP',
+		'HTTP_CF_CONNECTING_IP',
+		'HTTP_X_REAL_IP',
+		'HTTP_CLIENT_IP',
+		'HTTP_X_FORWARDED_FOR',
+		'HTTP_X_FORWARDED',
+		'HTTP_X_CLUSTER_CLIENT_IP',
+		'HTTP_FORWARDED_FOR',
+		'HTTP_FORWARDED',
+		'REMOTE_ADDR',
+	];
+
+	foreach ( $address_headers as $header ) {
+		if ( ! array_key_exists( $header, $_SERVER ) ) {
+			continue;
 		}
-	} elseif ( ! empty( $_SERVER['REMOTE_ADDR'] ) ) {
-		$ip = filter_var( wp_unslash( $_SERVER['REMOTE_ADDR'] ), FILTER_VALIDATE_IP );
+
+		/*
+		 * HTTP_X_FORWARDED_FOR can contain a chain of comma-separated
+		 * addresses. The first one is the original client. It can't be
+		 * trusted for authenticity, but we don't need to for this purpose.
+		 */
+		$address_chain = explode( ',', filter_var( wp_unslash( $_SERVER[ $header ] ), FILTER_VALIDATE_IP ) );
+		$ip            = trim( $address_chain[0] );
+
+		break;
 	}
 
-	$ip       = false !== $ip ? $ip : '127.0.0.1';
-	$ip_array = explode( ',', $ip );
-	$ip_array = array_map( 'trim', $ip_array );
-
-	return sanitize_text_field( apply_filters( 'wpforms_get_ip', $ip_array[0] ) );
+	/**
+	 * Filter detected IP address.
+	 *
+	 * @since 1.2.5
+	 *
+	 * @param string $ip IP address.
+	 */
+	return filter_var( apply_filters( 'wpforms_get_ip', $ip ), FILTER_VALIDATE_IP );
 }
 
 /**
@@ -1827,7 +1904,7 @@ function wpforms_debug_data( $data, $echo = true ) {
 
 	if ( wpforms_debug() ) {
 
-		$output = '<div><textarea style="background:#fff;margin: 20px 0;width:100%;height:500px;font-size:12px;font-family: Consolas,Monaco,monospace;direction: ltr;unicode-bidi: embed;line-height: 1.4;padding: 4px 6px 1px;" readonly>';
+		$output = '<div class="wpforms-debug"><textarea style="background:#fff;margin: 20px 0;width:100%;height:500px;font-size:12px;font-family: Consolas,Monaco,monospace;direction: ltr;unicode-bidi: embed;line-height: 1.4;padding: 4px 6px 1px;" readonly>';
 
 		$output .= "=================== WPFORMS DEBUG ===================\n\n";
 
@@ -2245,6 +2322,14 @@ function wpforms_get_providers_all() {
 			'plugin_slug' => 'wpforms-zapier',
 			'license'     => 'pro',
 		],
+		[
+			'name'        => 'HubSpot',
+			'slug'        => 'hubspot',
+			'img'         => 'addon-icon-hubspot.png',
+			'plugin'      => 'wpforms-hubspot/wpforms-hubspot.php',
+			'plugin_slug' => 'wpforms-hubspot',
+			'license'     => 'pro',
+		],
 	];
 }
 
@@ -2478,9 +2563,9 @@ function wpforms_chain( $value ) {
  */
 function wpforms_get_license_type() {
 
-	$type = \wpforms_setting( 'type', '', 'wpforms_license' );
+	$type = wpforms_setting( 'type', '', 'wpforms_license' );
 
-	if ( empty( $type ) || ! \wpforms()->pro ) {
+	if ( empty( $type ) || ! wpforms()->is_pro() ) {
 		return false;
 	}
 
@@ -2864,12 +2949,10 @@ function wpforms_is_gutenberg_active() {
 	include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
 	if ( is_plugin_active( 'disable-gutenberg/disable-gutenberg.php' ) ) {
-
 		return ! disable_gutenberg();
 	}
 
 	if ( is_plugin_active( 'classic-editor/classic-editor.php' ) ) {
-
 		return get_option( 'classic-editor-replace' ) === 'block';
 	}
 
@@ -2887,21 +2970,58 @@ function wpforms_is_gutenberg_active() {
  */
 function wpforms_can_install( $type ) {
 
+	return wpforms_can_do( 'install', $type );
+}
+
+/**
+ * Determine if the plugin/addon activations are allowed.
+ *
+ * @since 1.7.3
+ *
+ * @param string $type Should be `plugin` or `addon`.
+ *
+ * @return bool
+ */
+function wpforms_can_activate( $type ) {
+
+	return wpforms_can_do( 'activate', $type );
+}
+
+/**
+ * Determine if the plugin/addon installations/activations are allowed.
+ *
+ * @since 1.7.3
+ *
+ * @internal Use wpforms_can_activate() or wpforms_can_install() instead.
+ *
+ * @param string $what Should be 'activate' or 'install'.
+ * @param string $type Should be `plugin` or `addon`.
+ *
+ * @return bool
+ */
+function wpforms_can_do( $what, $type ) {
+
+	if ( ! in_array( $what, [ 'install', 'activate' ], true ) ) {
+		return false;
+	}
+
 	if ( ! in_array( $type, [ 'plugin', 'addon' ], true ) ) {
 		return false;
 	}
 
-	if ( ! current_user_can( 'install_plugins' ) ) {
+	$capability = $what . '_plugins';
+
+	if ( ! current_user_can( $capability ) ) {
 		return false;
 	}
 
-	// Determine whether file modifications are allowed.
-	if ( ! wp_is_file_mod_allowed( 'wpforms_can_install' ) ) {
+	// Determine whether file modifications are allowed and it is activation permissions checking.
+	if ( $what === 'install' && ! wp_is_file_mod_allowed( 'wpforms_can_install' ) ) {
 		return false;
 	}
 
 	// All plugin checks are done.
-	if ( 'plugin' === $type ) {
+	if ( $type === 'plugin' ) {
 		return true;
 	}
 

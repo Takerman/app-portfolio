@@ -148,6 +148,7 @@ In version 1.0.2 we've added full WP-CLI support for all plugin options and func
 * `wp sg log ip add|remove|list <name> --ip=<ip>` - add/list/remove user defined pingbots listed in the activity log by ip
 * `wp sg log ua add|remove|list <name> ` - add/list/remove user defined bots listed in the activity log by user agent
 * `wp sg list log-unknown|log-registered|log-blocked --days=<days>` - List specific access log for a specific period
+* `wp sg 2fa reset id ID` - Resets the 2fa setup for the user ID.
 
 = Requirements =
 * WordPress 4.7
@@ -172,6 +173,13 @@ In version 1.0.2 we've added full WP-CLI support for all plugin options and func
 1. Go to Plugins -> Installed Plugins and click the 'Activate' link under the WordPress SiteGround Security listing
 
 == Changelog ==
+
+= Version 1.2.4 =
+Release Date: March 16th, 2022
+
+* Improved Weekly Emails
+* Improved Woocommerce Payments plugin support
+* 2FA Authentication Security Strengthening
 
 = Version 1.2.3 =
 Release Date: March 11th, 2022

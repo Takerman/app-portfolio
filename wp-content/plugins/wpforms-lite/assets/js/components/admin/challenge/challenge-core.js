@@ -538,7 +538,7 @@ WPFormsChallenge.core = window.WPFormsChallenge.core || ( function( document, wi
 		/**
 		 * Init ListUI.
 		 *
-		 * @since {vERSION}
+		 * @since 1.6.2
 		 *
 		 * @param {number|string} status  Challenge status.
 		 * @param {boolean}       initial Initial run, false by default.

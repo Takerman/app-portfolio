@@ -162,7 +162,7 @@ class Preview {
 			];
 		}
 
-		if ( wpforms()->pro && wpforms_current_user_can( 'view_entries_form_single', $this->form_data['id'] ) ) {
+		if ( wpforms()->is_pro() && wpforms_current_user_can( 'view_entries_form_single', $this->form_data['id'] ) ) {
 			$links[] = [
 				'url'  => esc_url(
 					add_query_arg(

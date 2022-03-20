@@ -74,7 +74,7 @@ class WPForms_Review {
 		}
 
 		// Logic is slightly different depending on what's at our disposal.
-		if ( wpforms()->pro && class_exists( 'WPForms_Entry_Handler', false ) ) {
+		if ( wpforms()->is_pro() && class_exists( 'WPForms_Entry_Handler', false ) ) {
 			$this->review();
 		} else {
 			$this->review_lite();

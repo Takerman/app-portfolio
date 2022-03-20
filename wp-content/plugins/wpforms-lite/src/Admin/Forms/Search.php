@@ -28,15 +28,6 @@ class Search {
 	private $term_escaped;
 
 	/**
-	 * Count forms in different views.
-	 *
-	 * @since 1.7.2
-	 *
-	 * @var array
-	 */
-	private $count;
-
-	/**
 	 * Determine if the class is allowed to load.
 	 *
 	 * @since 1.7.2
@@ -121,14 +112,12 @@ class Search {
 				'update_post_meta_cache' => false,
 				'update_post_term_cache' => false,
 				'fields'                 => 'ids',
+				'post_status'            => 'publish',
 			]
 		);
 
 		$forms        = wpforms()->get( 'form' )->get( '', $args );
 		$count['all'] = is_array( $forms ) ? count( $forms ) : 0;
-
-		// Store in class property for further use.
-		$this->count = $count;
 
 		return $count;
 	}
@@ -259,12 +248,46 @@ class Search {
 			return;
 		}
 
+		$views = wpforms()->get( 'forms_views' );
+		$count = $views->get_count();
+		$view  = $views->get_current_view();
+
+		$count['all'] = ! empty( $count['all'] ) ? $count['all'] : 0;
+
+		$message = sprintf(
+			wp_kses( /* translators: %1$d - number of forms found, %2$s - search term. */
+				_n(
+					'Found <strong>%1$d form</strong> containing <em>"%2$s"</em>',
+					'Found <strong>%1$d forms</strong> containing <em>"%2$s"</em>',
+					(int) $count['all'],
+					'wpforms-lite'
+				),
+				[
+					'strong' => [],
+					'em'     => [],
+				]
+			),
+			(int) $count['all'],
+			esc_html( $search_term )
+		);
+
+		/**
+		 * Filters the message in the search reset block.
+		 *
+		 * @since 1.7.3
+		 *
+		 * @param string $message     Message text.
+		 * @param string $search_term Search term.
+		 * @param array  $count       Count forms in different views.
+		 * @param string $view        Current view.
+		 */
+		$message = apply_filters( 'wpforms_admin_forms_search_search_reset_block_message', $message, $search_term, $count, $view );
+
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo wpforms_render(
 			'admin/forms/search-reset',
 			[
-				'search_term' => $search_term,
-				'count_all'   => $this->count['all'],
+				'message' => $message,
 			],
 			true
 		);

@@ -43,7 +43,7 @@ class WPForms_Form_Handler {
 				'rewrite'             => false,
 				'query_var'           => false,
 				'can_export'          => false,
-				'supports'            => [ 'title' ],
+				'supports'            => [ 'title', 'author', 'revisions' ],
 				'capability_type'     => 'wpforms_form', // Not using 'capability_type' anywhere. It just has to be custom for security reasons.
 				'map_meta_cap'        => false, // Don't let WP to map meta caps to have a granular control over this process via 'map_meta_cap' filter.
 			]
@@ -129,19 +129,34 @@ class WPForms_Form_Handler {
 	 */
 	public function get( $id = '', $args = [] ) {
 
-		$args = apply_filters( 'wpforms_get_form_args', $args, $id );
-
 		if ( $id === false ) {
 			return false;
 		}
 
+		// phpcs:disable WPForms.PHP.ValidateHooks.InvalidHookName
+
+		/**
+		 * Allow developers to filter the WPForms_Form_Handler::get() arguments.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $args Arguments array.
+		 * @param mixed $id   Form ID.
+		 */
+		$args = (array) apply_filters( 'wpforms_get_form_args', $args, $id );
+
+		// phpcs:enable WPForms.PHP.ValidateHooks.InvalidHookName
+
+		// By default, we should return only published forms.
+		$defaults = [
+			'post_status' => 'publish',
+		];
+
+		$args = (array) wp_parse_args( $args, $defaults );
+
 		$forms = empty( $id ) ? $this->get_multiple( $args ) : $this->get_single( $id, $args );
 
-		if ( empty( $forms ) ) {
-			return false;
-		}
-
-		return $forms;
+		return ! empty( $forms ) ? $forms : false;
 	}
 
 	/**
@@ -202,16 +217,16 @@ class WPForms_Form_Handler {
 
 		// No ID provided, get multiple forms.
 		$defaults = [
-			'orderby'       => 'id',
-			'order'         => 'ASC',
-			'no_found_rows' => true,
-			'nopaging'      => true,
+			'orderby'          => 'id',
+			'order'            => 'ASC',
+			'no_found_rows'    => true,
+			'nopaging'         => true,
+			'suppress_filters' => false,
 		];
 
 		$args = wp_parse_args( $args, $defaults );
 
-		$args['post_type']        = 'wpforms';
-		$args['suppress_filters'] = false;
+		$args['post_type'] = 'wpforms';
 
 		/**
 		 * Allow developers to execute some code before get_posts() call inside \WPForms_Form_Handler::get_multiple().
@@ -242,6 +257,75 @@ class WPForms_Form_Handler {
 		 * @param array $forms Result of getting multiple forms.
 		 */
 		return apply_filters( 'wpforms_form_handler_get_multiple_forms_result', $forms );
+	}
+
+	/**
+	 * Update the form status.
+	 *
+	 * @since 1.7.3
+	 *
+	 * @param int    $form_id Form ID.
+	 * @param string $status  New status.
+	 *
+	 * @return bool
+	 */
+	public function update_status( $form_id, $status ) {
+
+		// Status updates are used only in trash and restore actions,
+		// which are actually part of the deletion operation.
+		// Therefore, we should check the `delete_form_single` and not `edit_form_single` permission.
+		if ( ! wpforms_current_user_can( 'delete_form_single', $form_id ) ) {
+			return false;
+		}
+
+		$form_id = absint( $form_id );
+		$status  = empty( $status ) ? 'publish' : sanitize_key( $status );
+
+		/**
+		 * Filters the allowed form statuses.
+		 *
+		 * @since 1.7.3
+		 *
+		 * @param array $allowed_statuses Array of allowed form statuses. Default: publish, trash.
+		 */
+		$allowed = (array) apply_filters( 'wpforms_form_handler_update_status_allowed', [ 'publish', 'trash' ] );
+
+		if ( ! in_array( $status, $allowed, true ) ) {
+			return false;
+		}
+
+		$result = wp_update_post(
+			[
+				'ID'          => $form_id,
+				'post_status' => $status,
+			]
+		);
+
+		return $result !== 0;
+	}
+
+	/**
+	 * Delete all forms in the Trash.
+	 *
+	 * @since 1.7.3
+	 *
+	 * @return int|bool Number of deleted forms OR false.
+	 */
+	public function empty_trash() {
+
+		$forms = $this->get_multiple(
+			[
+				'post_status'      => 'trash',
+				'fields'           => 'ids',
+				'suppress_filters' => true,
+			]
+		);
+
+		if ( empty( $forms ) ) {
+			return false;
+		}
+
+		return $this->delete( $forms ) ? count( $forms ) : false;
 	}
 
 	/**
@@ -639,7 +723,13 @@ class WPForms_Form_Handler {
 			$form['field_id'] = '1';
 		}
 
+		// Skip creating a revision for this action.
+		remove_action( 'post_updated', 'wp_save_post_revision' );
+
 		$this->update( $form_id, $form );
+
+		// Restore the initial revisions state.
+		add_action( 'post_updated', 'wp_save_post_revision', 10, 1 );
 
 		return $field_id;
 	}

@@ -173,6 +173,38 @@ var wpforms = window.wpforms || ( function( document, window, $ ) {
 				// Validate email addresses.
 				$.validator.methods.email = function( value, element ) {
 
+					// For comments, see wpforms_is_email() function.
+					const isEmail = function( value ) {
+						if ( value.length > 254 ) {
+							return false;
+						}
+
+						const valueArr = value.split( '@' );
+
+						if ( valueArr.length !== 2 ) {
+							return false;
+						}
+
+						const local  = valueArr[ 0 ];
+						const domain = valueArr[ 1 ];
+
+						if ( local.length > 63 ) {
+							return false;
+						}
+
+						const domainArr = domain.split( '.' );
+
+						for ( const domainLabel of domainArr ) {
+							if ( domainLabel.length > 63 ) {
+								return false;
+							}
+						}
+
+						return true;
+					}
+
+					const isEmailTest = isEmail( value );
+
 					// Test email on the multiple @ and spaces:
 					// - no spaces allowed in the local and domain parts
 					// - only one @ after the local part allowed
@@ -183,7 +215,7 @@ var wpforms = window.wpforms || ( function( document, window, $ ) {
 					// - two dots in a row not allowed
 					var dotsTest = /^(?!\.)(?!.*?\.\.).*[^.]$/.test( value );
 
-					return this.optional( element ) || ( structureTest && dotsTest );
+					return this.optional( element ) || ( structureTest && dotsTest && isEmailTest );
 				};
 
 				// Validate email by allowlist/blocklist.
@@ -233,7 +265,8 @@ var wpforms = window.wpforms || ( function( document, window, $ ) {
 
 				// Validate confirmations.
 				$.validator.addMethod( 'confirm', function( value, element, param ) {
-					return value === $( element ).closest( '.wpforms-field' ).find( 'input:first-child' ).val();
+					const field = $( element ).closest( '.wpforms-field' );
+					return $( field.find( 'input' )[ 0 ] ).val() === $( field.find( 'input' )[ 1 ] ).val();
 				}, wpforms_settings.val_confirm );
 
 				// Validate required payments.
@@ -2244,8 +2277,18 @@ var wpforms = window.wpforms || ( function( document, window, $ ) {
 
 			args.complete = function( jqHXR, textStatus ) {
 
-				// Do not make form active if the action is required.
-				if ( jqHXR.responseJSON && jqHXR.responseJSON.data && jqHXR.responseJSON.data.action_required ) {
+				/*
+				 * Do not make form active if the action is required or
+				 * if the ajax request was successful and the form has a redirect.
+				 */
+				if (
+					jqHXR.responseJSON &&
+					jqHXR.responseJSON.data &&
+					(
+						jqHXR.responseJSON.data.action_required ||
+						( textStatus === 'success' && jqHXR.responseJSON.data.redirect_url )
+					)
+				) {
 					return;
 				}
 

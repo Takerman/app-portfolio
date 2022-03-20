@@ -74,7 +74,7 @@
                 <tr>
                     <td style="padding: 30px 0 30px 0;">
                         <img
-                                src="https://www.siteground.com/static/en/img/emails/plugins/sg_security/sg_security_weeky_report.jpg"
+                                src="<?php echo $args['email_image']; ?>"
                                 width="600" alt="SiteGround Security weekly report"
                                 style="max-height: 300px;"/>
                     </td>
@@ -100,79 +100,37 @@
                         <table class="infobox" border="0" cellpadding="0" cellspacing="0" width="100%"
                                bgcolor="#ececec">
                             <tr>
-                                <td style="padding: 30px 30px 0 30px;">
+                                <td style="padding: 30px 30px 30px 30px;">
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                         <tr>
-                                            <td width="255" valign="top" class="dblock">
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                    <tr>
-                                                        <td class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 0 0px 0; text-align: center">
-                                                            <?php echo $args['total_human'] ?>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="body-text" style="color: #444444; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0 0 30px 0; text-align: center;">
-                                                            <?php esc_html_e( 'Human traffic', 'sg-security' ); ?>
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                            <td valign="top" align="center" class="body-text" style="width:50%; padding: 0 0 30px 0;">
+                                                <div class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 15px; text-align: center"><?php echo $args['total_human']; ?></div>
+                                                <div class="body-text" style="color: #444444; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0 15px; text-align: center; display: block">
+                                                <?php esc_html_e( 'Human traffic', 'sg-security' ); ?>
+                                                 </div>
                                             </td>
-                                            <td width="30" style="font-size: 0; line-height: 0;" class="dblock">&nbsp;</td>
-                                            <td width="255" valign="top" class="dblock">
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                    <tr>
-                                                        <td class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 0 0px 0; text-align: center">
-                                                            <?php echo $args['total_bots'] ?>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="body-text" style="color: #444444; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0 0 30px 0; text-align: center;">
-                                                            <?php esc_html_e( 'Bot traffic', 'sg-security' ); ?>
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                            <td valign="top" align="center" class="body-text" style="width:50%; padding: 0 0 30px 0;">
+                                                <div class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 15px; text-align: center"><?php echo $args['total_bots']; ?></div>
+                                                <div class="body-text" style="color: #444444; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0 15px; text-align: center; display: block">
+                                                <?php esc_html_e( 'Bot traffic', 'sg-security' ); ?>
+                                                 </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top" align="center" class="body-text" style="width:50%;">
+                                                <div class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 15px; text-align: center"><?php echo $args['total_blocked_login']; ?></div>
+                                                <div class="body-text" style="color: #444444; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0 15px; text-align: center; display: block">
+                                                 <?php esc_html_e( 'Blocked login attempts', 'sg-security' ); ?>
+                                                 </div>
+                                            </td>
+                                            <td valign="top" align="center" class="body-text" style="width:50%;">
+                                                <div class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 15px; text-align: center"><?php echo $args['total_blocked_visits']; ?></div>
+                                                <div class="body-text" style="color: #444444; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0 15px; text-align: center; display: block">
+                                                <?php esc_html_e( 'Blocked visit attempts', 'sg-security' ); ?>
+                                                 </div>
                                             </td>
                                         </tr>
                                     </table>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 0 30px 0 30px;">
-                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                        <tr>
-                                            <td width="255" valign="top" class="dblock">
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                    <tr>
-                                                        <td class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 0 0px 0; text-align: center">
-                                                            <?php echo $args['total_blocked_login'] ?>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="body-text" style="color: #444444; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0 0 30px 0; text-align: center;">
-                                                            <?php esc_html_e( 'Blocked login attempts', 'sg-security' ); ?>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                            <td width="30" style="font-size: 0; line-height: 0;" class="dblock">&nbsp;</td>
-                                            <td width="255" valign="top" class="dblock">
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                    <tr>
-                                                        <td class="body-text" style="color: #363636; font-weight: 700; font-family: 'Roboto', Arial, Helvetica, sans-serif; font-size: 26px; line-height: 38px; padding: 0 0 0px 0; text-align: center">
-                                                            <?php echo $args['total_blocked_visits'] ?>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="body-text" style="color: #444444; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0 0 30px 0; text-align: center;">
-                                                            <?php esc_html_e( 'Blocked visit attempts', 'sg-security' ); ?>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-
                                 </td>
                             </tr>
                         </table>
@@ -194,7 +152,7 @@
                 <tr>
                     <td class="body-text"
                         style="color: #a4a4a4; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 13px; line-height: 20px; padding: 0px 0 25px 0">
-                        <?php esc_html_e( 'You are receiving this email because you have a SiteGround security plugin installed on one or more of your WordPress sites. If you no longer wish to receive these emails, you can ', 'sg-security' ); ?><a href="<?php echo $args['activity_log_link'] ?>" target="_blank" rel="noreferrer" style="color: #22b8d1; text-decoration: none;"><?php esc_html_e( 'unsubscribe', 'sg-security' ); ?></a>.
+                        <?php esc_html_e( 'You are receiving this email because you have a SiteGround security plugin installed on one or more of your WordPress sites. If you no longer wish to receive these emails, you can ', 'sg-security' ); ?><a href="<?php echo $args['activity_log_link']; ?>" target="_blank" rel="noreferrer" style="color: #22b8d1; text-decoration: none;"><?php esc_html_e( 'unsubscribe', 'sg-security' ); ?></a>.
                     </td>
                 </tr>
 

@@ -253,7 +253,7 @@ class WPForms_Builder_Panel_Setup extends WPForms_Builder_Panel {
 		$args['demo_url']    = '';
 
 		if ( ! empty( $template['url'] ) ) {
-			$utm_campaign     = wpforms()->pro ? 'plugin' : 'liteplugin';
+			$utm_campaign     = wpforms()->is_pro() ? 'plugin' : 'liteplugin';
 			$args['demo_url'] = add_query_arg(
 				[
 					'utm_content' => $template['name'],

@@ -43,10 +43,10 @@ class FieldHtmlId extends SmartTag {
 		 *
 		 * @since 1.4.0
 		 *
-		 * @param string Smart tag value.
-		 * @param array  The field.
-		 * @param array  Processed form settings/data, prepared to be used later.
-		 * @param string Context usage.
+		 * @param string $value     Smart tag value.
+		 * @param array  $field     The field.
+		 * @param array  $form_data Processed form settings/data, prepared to be used later.
+		 * @param string $context   Context usage.
 		 */
 		return (string) apply_filters( 'wpforms_html_field_value', $value, $fields[ $field_id ], $form_data, 'smart-tag' );
 	}

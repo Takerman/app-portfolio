@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<tr>
 		<td>
 			<h6 class="greeting"><?php esc_html_e( 'Hi there!', 'wpforms-lite' ); ?></h6>
-			<?php if ( wpforms()->pro ) : ?>
+			<?php if ( wpforms()->is_pro() ) : ?>
 				<p class="large"><?php esc_html_e( 'Let’s see how your forms performed in the past week.', 'wpforms-lite' ); ?></p>
 			<?php else : ?>
 				<p class="large"><?php esc_html_e( 'Let’s see how your forms performed.', 'wpforms-lite' ); ?></p>

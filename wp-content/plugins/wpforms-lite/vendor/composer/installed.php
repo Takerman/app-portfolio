@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => 'dev-develop',
+        'version' => 'dev-develop',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '0bf12b9c7d14b89ed874b10a3898fee6503f0301',
+        'reference' => 'd8b14ead883dfa0c430a67b3b6eec1583104e3d4',
         'name' => 'awesomemotive/wpforms',
         'dev' => true,
     ),
     'versions' => array(
         'awesomemotive/wpforms' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-develop',
+            'version' => 'dev-develop',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '0bf12b9c7d14b89ed874b10a3898fee6503f0301',
+            'reference' => 'd8b14ead883dfa0c430a67b3b6eec1583104e3d4',
             'dev_requirement' => false,
         ),
         'goodby/csv' => array(
@@ -47,7 +47,7 @@
             'aliases' => array(
                 0 => '9999999-dev',
             ),
-            'reference' => 'fa60732bcafd446e9ff858eefa06cdcbae8d9823',
+            'reference' => '0c86f70adfb4d976d59e222d2c36590919158039',
             'dev_requirement' => true,
         ),
         'symfony/css-selector' => array(
@@ -96,12 +96,12 @@
             'dev_requirement' => false,
         ),
         'woocommerce/action-scheduler' => array(
-            'pretty_version' => '3.2.1',
-            'version' => '3.2.1.0',
+            'pretty_version' => '3.4.0',
+            'version' => '3.4.0.0',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../woocommerce/action-scheduler',
             'aliases' => array(),
-            'reference' => '3c24064f115cd55e972d73d5d48f14133ac60b0d',
+            'reference' => '3218a33ff14b968f8cb05de9656c2efa1eeb1330',
             'dev_requirement' => false,
         ),
     ),

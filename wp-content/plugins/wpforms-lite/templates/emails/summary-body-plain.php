@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 echo esc_html__( 'Hi there!', 'wpforms-lite' ) . "\n\n";
 
-if ( wpforms()->pro ) {
+if ( wpforms()->is_pro() ) {
 	echo esc_html__( 'Let’s see how your forms performed in the past week.', 'wpforms-lite' ) . "\n\n";
 } else {
 	echo esc_html__( 'Let’s see how your forms performed.', 'wpforms-lite' ) . "\n\n";

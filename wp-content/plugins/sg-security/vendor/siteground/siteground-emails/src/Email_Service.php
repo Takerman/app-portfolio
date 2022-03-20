@@ -79,6 +79,16 @@ class Email_Service {
 	protected $sg_mail_body;
 
 	/**
+	 * Mail From Name.
+	 *
+	 * @since  1.0.1
+	 *
+	 * @var    string
+	 * @access protected
+	 */
+	protected $sg_mail_from_name;
+
+	/**
 	 * Initiate the email service.
 	 *
 	 * @since 1.0.0
@@ -97,6 +107,7 @@ class Email_Service {
 		$this->sg_mail_recipients = $mail_args['recipients_option'];
 		$this->sg_mail_subject    = $mail_args['subject'];
 		$this->sg_mail_body       = $mail_args['body_method'];
+		$this->sg_mail_from_name  = array_key_exists( 'from_name', $mail_args ) ? $mail_args['from_name'] : false;
 	}
 
 	/**
@@ -122,13 +133,44 @@ class Email_Service {
 		// Generate the message body from the callable method.
 		$body = call_user_func( $this->sg_mail_body );
 
+		// Bail if we fail to build the body of the message.
+		if ( false === $body ) {
+			// Unschedule the event, so we don't make additional actions if the body is empty.
+			$this->unschedule_event();
+
+			return false;
+		}
+
+		// Apply the from name if it is set.
+		if ( false !== $this->sg_mail_from_name ) {
+			add_filter( 'wp_mail_from_name', array( $this, 'set_mail_from_name' ) );
+		}
+
 		// Sent the email.
-		return wp_mail(
+		$result = wp_mail(
 			$receipients,
 			$this->sg_mail_subject,
 			$body,
 			$this->sg_mail_headers
 		);
+
+		// Remove the from name if it is set.
+		if ( false !== $this->sg_mail_from_name ) {
+			remove_filter( 'wp_mail_from_name', array( $this, 'set_mail_from_name' ) );
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Set "Mail From" name.
+	 *
+	 * @since 1.0.1
+	 *
+	 * @return string The Mail From Name.
+	 */
+	public function set_mail_from_name( $from_name ) {
+		return $this->sg_mail_from_name;
 	}
 
 	/**

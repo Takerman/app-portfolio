@@ -434,7 +434,7 @@ abstract class WPForms_DB {
 	/**
 	 * Build WHERE for a query.
 	 *
-	 * @since 1.7.2.1
+	 * @since 1.7.2.2
 	 *
 	 * @param array           $args    Optional args.
 	 * @param array           $keys    Allowed arg items.
@@ -442,7 +442,7 @@ abstract class WPForms_DB {
 	 *
 	 * @return string
 	 */
-	protected function build_query_where( $args, $keys = [], $formats = [] ) {
+	protected function build_where( $args, $keys = [], $formats = [] ) {
 
 		$formats = array_pad( $formats, count( $keys ), '%d' );
 		$where   = '';

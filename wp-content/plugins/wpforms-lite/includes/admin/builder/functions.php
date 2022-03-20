@@ -101,7 +101,6 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 
 	// Determine what field type to output.
 	switch ( $option ) {
-
 		// Text input.
 		case 'text':
 			$output = sprintf(
@@ -170,7 +169,6 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 			$toggle_args                = $args;
 			$toggle_args['input-class'] = $input_class;
 			$output                     = wpforms_panel_field_toggle_control( $toggle_args, $input_id, $field_name, $label, $value, $data_attr );
-
 			break;
 
 		// Radio.

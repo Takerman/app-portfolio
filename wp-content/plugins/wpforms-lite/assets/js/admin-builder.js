@@ -75,10 +75,17 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 		 */
 		load: function() {
 
+			var panel = $( '#wpforms-panels-toggle .active' ).data( 'panel' );
+
+			// Render form preview on the Revisions panel if the panel is active.
+			if ( panel === 'revisions' ) {
+				app.updateRevisionPreview();
+			}
+
 			app.hideLoadingOverlay();
 
 			// Maybe display informational modal.
-			if ( wpforms_builder.template_modal_display == '1' && 'fields' === wpf.getQueryString('view') ) {
+			if ( wpforms_builder.template_modal_display == '1' && 'fields' === wpf.getQueryString( 'view' ) ) { // eslint-disable-line
 				$.alert( {
 					title: wpforms_builder.template_modal_title,
 					content: wpforms_builder.template_modal_msg,
@@ -113,10 +120,12 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 
 			// Cache other elements.
 			elements.$fieldOptions       = $( '#wpforms-field-options' );
-			elements.$sortableFieldsWrap = $( '.wpforms-field-wrap' );
-			elements.$noFieldsOptions    = $( '.wpforms-no-fields-holder .no-fields' );
-			elements.$noFieldsPreview    = $( '.wpforms-no-fields-holder .no-fields-preview' );
+			elements.$sortableFieldsWrap = $( '#wpforms-panel-fields .wpforms-field-wrap' );
+			elements.$noFieldsOptions    = $( '#wpforms-panel-fields .wpforms-no-fields-holder .no-fields' );
+			elements.$noFieldsPreview    = $( '#wpforms-panel-fields .wpforms-no-fields-holder .no-fields-preview' );
 			elements.$addFieldsButtons   = $( '.wpforms-add-fields-button' ).not( '.not-draggable' ).not( '.warning-modal' ).not( '.education-modal' );
+			elements.$formPreview        = $( '#wpforms-panel-fields .wpforms-preview-wrap' );
+			elements.$revisionPreview    = $( '#wpforms-panel-revisions .wpforms-panel-content' );
 
 			// Remove Embed button if builder opened in popup.
 			if ( app.isBuilderInPopup() ) {
@@ -175,14 +184,6 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 			app.fieldChoiceSortable( 'payment-multiple' );
 			app.fieldChoiceSortable( 'payment-checkbox' );
 			app.fieldChoiceSortable( 'payment-select' );
-
-			// Load match heights.
-			$( '.wpforms-setup-templates.core .wpforms-template-inner' ).matchHeight( {
-				byRow: false,
-			} );
-			$( '.wpforms-setup-templates.additional .wpforms-template-inner' ).matchHeight( {
-				byRow: false,
-			} );
 
 			// Set field group visibility.
 			$( '.wpforms-add-fields-group' ).each( function( index, el ) {
@@ -1383,6 +1384,9 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 			// Settings Panel.
 			app.bindUIActionsSettings();
 
+			// Revisions Panel.
+			app.bindUIActionsRevisions();
+
 			// Save and Exit.
 			app.bindUIActionsSaveExit();
 
@@ -1899,14 +1903,23 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 				$( '#wpforms-field-' + id ).toggleClass( 'sublabel_hide' );
 			} );
 
-			// Real-time updates for Date/Time and Name "Format" option
-			$builder.on('change', '.wpforms-field-option-row-format select', function(e) {
-				var $this = $(this),
-					value = $this.val(),
-					id    = $this.parent().data('field-id');
-				$('#wpforms-field-'+id).find('.format-selected').removeClass().addClass('format-selected format-selected-'+value);
-				$('#wpforms-field-option-'+id).find('.format-selected').removeClass().addClass('format-selected format-selected-'+value);
-			});
+			// Real-time updates for Date/Time and Name "Format" option.
+			$builder.on( 'change', '.wpforms-field-option-row-format select', function() {
+				var $this           = $( this ),
+					value           = $this.val(),
+					id              = $this.parent().data( 'field-id' ),
+					$sublabelToggle = $( '#wpforms-field-option-row-' + id + '-sublabel_hide' );
+
+				$( '#wpforms-field-' + id ).find( '.format-selected' ).removeClass().addClass( 'format-selected format-selected-' + value );
+				$( '#wpforms-field-option-' + id ).find( '.format-selected' ).removeClass().addClass( 'format-selected format-selected-' + value );
+
+				// Show toggle for "Hide Sublabels" only when field consists of more than one subfield.
+				if ( [ 'date-time', 'first-last', 'first-middle-last' ].includes( value ) ) {
+					$sublabelToggle.removeClass( 'wpforms-hidden' );
+				} else {
+					$sublabelToggle.addClass( 'wpforms-hidden' );
+				}
+			} );
 
 			// Real-time updates specific for Address "Scheme" option
 			$builder.on('change', '.wpforms-field-option-row-scheme select', function(e) {
@@ -2699,8 +2712,8 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 			}
 
 			var $field = $( '#wpforms-field-' + id ),
-				$previousPageBreakField = $field.prevAll( '.wpforms-field-pagebreak' ),
-				$nextPageBreakField = $field.nextAll( '.wpforms-field-pagebreak' ),
+				$previousPageBreakField = $field.prevAll( '.wpforms-field-pagebreak' ).first(),
+				$nextPageBreakField = $field.nextAll( '.wpforms-field-pagebreak' ).first(),
 				nextPageBreakId = $nextPageBreakField.data( 'field-id' ),
 				$nextPageBreakOptions = $( '#wpforms-field-option-' + nextPageBreakId );
 
@@ -3240,11 +3253,12 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 
 				if (res.success) {
 
-					var totalFields = $('.wpforms-field').length,
-						$preview    = $('#wpforms-panel-fields .wpforms-panel-content-wrap'),
-						$lastField  = $('.wpforms-field').last(),
-						$newField   = $(res.data.preview),
-						$newOptions = $(res.data.options);
+					var $fields     = $( '#wpforms-panel-fields .wpforms-field' ),
+						$lastField  = $fields.last(),
+						totalFields = $fields.length,
+						$preview    = $( '#wpforms-panel-fields .wpforms-panel-content-wrap' ),
+						$newField   = $( res.data.preview ),
+						$newOptions = $( res.data.options );
 
 					adding = false;
 
@@ -3261,21 +3275,21 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 
 							// Check to see if the last field we have is configured to
 							// be stuck to the bottom, if so add the field above it.
-							$( '.wpforms-field-wrap' ).children( ':eq(' + ( totalFields - 1 ) + ')' ).before( $newField );
-							$( '.wpforms-field-options' ).children( ':eq(' + ( totalFields - 1 ) + ')' ).before( $newOptions );
+							$( '#wpforms-panel-fields .wpforms-field-wrap' ).children( ':eq(' + ( totalFields - 1 ) + ')' ).before( $newField );
+							$( '#wpforms-panel-fields .wpforms-field-options' ).children( ':eq(' + ( totalFields - 1 ) + ')' ).before( $newOptions );
 
 						} else {
 
 							// Add field to bottom
-							$( '.wpforms-field-wrap' ).append( $newField );
-							$( '.wpforms-field-options' ).append( $newOptions );
+							$( '#wpforms-panel-fields .wpforms-field-wrap' ).append( $newField );
+							$( '#wpforms-panel-fields .wpforms-field-options' ).append( $newOptions );
 						}
 
 					} else if ( options.position === 'top' ) {
 
 						// Add field to top, scroll to
-						$( '.wpforms-field-wrap' ).prepend( $newField );
-						$( '.wpforms-field-options' ).prepend( $newOptions );
+						$( '#wpforms-panel-fields .wpforms-field-wrap' ).prepend( $newField );
+						$( '#wpforms-panel-fields .wpforms-field-options' ).prepend( $newOptions );
 
 					} else {
 
@@ -3284,20 +3298,20 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 							// Check to see if the user tried to add the field at
 							// the end BUT the last field we have is configured to
 							// be stuck to the bottom, if so add the field above it.
-							$( '.wpforms-field-wrap' ).children( ':eq(' + ( totalFields - 1 ) + ')' ).before( $newField );
-							$( '.wpforms-field-options' ).children( ':eq(' + ( totalFields - 1 ) + ')' ).before( $newOptions );
+							$( '#wpforms-panel-fields .wpforms-field-wrap' ).children( ':eq(' + ( totalFields - 1 ) + ')' ).before( $newField );
+							$( '#wpforms-panel-fields .wpforms-field-options' ).children( ':eq(' + ( totalFields - 1 ) + ')' ).before( $newOptions );
 
-						} else if ( $( '.wpforms-field-wrap' ).find( '.wpforms-field' ).eq( options.position ).length ) {
+						} else if ( $( '#wpforms-panel-fields .wpforms-field-wrap' ).find( '.wpforms-field' ).eq( options.position ).length ) {
 
 							// Add field to a specific location.
-							$( '.wpforms-field-wrap' ).find( '.wpforms-field' ).eq( options.position ).before( $newField );
-							$( '.wpforms-field-options' ).find( '.wpforms-field-option' ).eq( options.position ).before( $newOptions );
+							$( '#wpforms-panel-fields .wpforms-field-wrap' ).find( '.wpforms-field' ).eq( options.position ).before( $newField );
+							$( '#wpforms-panel-fields .wpforms-field-options' ).find( '.wpforms-field-option' ).eq( options.position ).before( $newOptions );
 
 						} else {
 
 							// Something's wrong, just add the field. This should never occur.
-							$( '.wpforms-field-wrap' ).append( $newField );
-							$( '.wpforms-field-options' ).append( $newOptions );
+							$( '#wpforms-panel-fields .wpforms-field-wrap' ).append( $newField );
+							$( '#wpforms-panel-fields .wpforms-field-options' ).append( $newOptions );
 						}
 					}
 
@@ -4141,7 +4155,7 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 				return;
 			}
 
-			var pagebreaksRemaining = $( '.wpforms-field-pagebreak' ).not( '.wpforms-pagebreak-top, .wpforms-pagebreak-bottom' ).length;
+			var pagebreaksRemaining = $( '#wpforms-panel-fields .wpforms-field-pagebreak' ).not( '.wpforms-pagebreak-top, .wpforms-pagebreak-bottom' ).length;
 
 			if ( pagebreaksRemaining ) {
 				return;
@@ -4149,7 +4163,7 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 
 			// All pagebreaks, excluding top/bottom, are gone.
 			// So we need to remove the top and bottom pagebreak.
-			var $preview = $( '.wpforms-preview-wrap' ),
+			var $preview = $( '#wpforms-panel-fields .wpforms-preview-wrap' ),
 				$top = $preview.find( '.wpforms-pagebreak-top' ),
 				topID = $top.data( 'field-id' ),
 				$bottom = $preview.find( '.wpforms-pagebreak-bottom' ),
@@ -4795,7 +4809,7 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 		bindUIActionsSettings: function() {
 
 			// Clicking form title/desc opens Settings panel.
-			$builder.on( 'click', '.wpforms-title-desc, .wpforms-field-submit-button, .wpforms-center-form-name', function( e ) {
+			$builder.on( 'click', '#wpforms-panel-fields .wpforms-title-desc, #wpforms-panel-fields .wpforms-field-submit-button, .wpforms-center-form-name', function( e ) {
 				e.preventDefault();
 				app.panelSwitch( 'settings' );
 				if ( $( this ).hasClass( 'wpforms-center-form-name' ) || $( this ).hasClass( 'wpforms-title-desc' ) ) {
@@ -5534,6 +5548,186 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 		},
 
 		//--------------------------------------------------------------------//
+		// Revisions Panel
+		//--------------------------------------------------------------------//
+
+		/**
+		 * Element bindings for Revisions panel.
+		 *
+		 * @since 1.7.3
+		 */
+		bindUIActionsRevisions: function() {
+
+			// Update revisions panel when it becomes active.
+			$builder.on( 'wpformsPanelSwitched', function( event, panel ) {
+
+				if ( panel !== 'revisions' ) {
+					return;
+				}
+
+				app.updateRevisionsList();
+				app.updateRevisionPreview();
+			} );
+
+			// Update revisions list when the form was saved with revisions panel being active.
+			$builder.on( 'wpformsSaved', function( event ) {
+
+				if ( wpf.getQueryString( 'view' ) !== 'revisions' ) {
+					return;
+				}
+
+				app.updateRevisionsList();
+			} );
+		},
+
+		/**
+		 * Fetch and update a list of form revisions.
+		 *
+		 * @since 1.7.3
+		 */
+		updateRevisionsList: function() {
+
+			var $revisionsList        = $( '#wpforms-panel-revisions .wpforms-revisions-content' ),
+				$revisionsButtonBadge = $( '.wpforms-panel-revisions-button .badge-exclamation' );
+
+			// Revisions badge exists, send a request and remove the badge on successful response.
+			if ( $revisionsButtonBadge.length ) {
+
+				$.post( wpforms_builder.ajax_url, {
+					action: 'wpforms_mark_panel_viewed',
+					form_id: s.formID, // eslint-disable-line camelcase
+					nonce: wpforms_builder.nonce,
+				} )
+					.done( function( response ) {
+						response.success ? $revisionsButtonBadge.remove() : wpf.debug( response );
+					} )
+					.fail( function( xhr, textStatus, e ) {
+						wpf.debug( xhr.responseText || textStatus || '' );
+					} );
+			}
+
+			// Revisions are disabled, no need to fetch a list of revisions.
+			if ( ! $builder.hasClass( 'wpforms-revisions-enabled' ) ) {
+				return;
+			}
+
+			// Dim the list, send a request and replace the list on successful response.
+			$revisionsList.fadeTo( 250, .25, function() {
+
+				$.post( wpforms_builder.ajax_url, {
+					action: 'wpforms_get_form_revisions',
+					form_id: s.formID, // eslint-disable-line camelcase
+					revision_id: wpf.getQueryString( 'revision_id' ), // eslint-disable-line camelcase
+					nonce: wpforms_builder.nonce,
+				} )
+					.done( function( response ) {
+						response.success ? $revisionsList.replaceWith( response.data.html ) : wpf.debug( response );
+					} )
+					.fail( function( xhr, textStatus, e ) {
+						wpf.debug( xhr.responseText || textStatus || '' );
+
+						// Un-dim the list to reset the UI.
+						$revisionsList.fadeTo( 250, 1 );
+					} );
+			} );
+		},
+
+		/**
+		 * Clone form preview from Fields panel.
+		 *
+		 * @since 1.7.3
+		 */
+		updateRevisionPreview: function() {
+
+			// Clone preview DOM from Fields panel.
+			var $preview = elements.$formPreview.clone();
+
+			// Clean up the cloned preview, remove unnecessary elements, set states etc.
+			$preview
+				.find( '.wpforms-field-duplicate, .wpforms-field-delete, .wpforms-field-helper, .wpforms-debug' )
+				.remove()
+				.end();
+			$preview
+				.find( '.wpforms-field-wrap' )
+				.removeClass( 'ui-sortable' )
+				.addClass( 'ui-sortable-disabled' );
+			$preview
+				.find( '.wpforms-field' )
+				.removeClass( 'ui-sortable-handle ui-draggable ui-draggable-handle active' )
+				.removeAttr( 'id data-field-id data-field-type' )
+				.removeData();
+			$preview
+				.find( '.wpforms-field-submit-button' )
+				.prop( 'disabled', true );
+
+			// Put the cleaned up clone into Preview panel.
+			if ( elements.$revisionPreview.hasClass( 'has-preview' ) ) {
+				elements
+					.$revisionPreview
+					.find( '.wpforms-preview-wrap' )
+					.replaceWith( $preview );
+			} else {
+				elements
+					.$revisionPreview
+					.append( $preview )
+					.addClass( 'has-preview' );
+			}
+		},
+
+		/**
+		 * Inform the user about making this version the default if revision is currently loaded, and it was modified.
+		 *
+		 * @since 1.7.3
+		 */
+		confirmSaveRevision: function() {
+
+			$.confirm( {
+				title: wpforms_builder.heads_up,
+				content: wpforms_builder.revision_update_confirm,
+				icon: 'fa fa-exclamation-circle',
+				type: 'orange',
+				closeIcon: false,
+				buttons: {
+
+					confirm: {
+						text: wpforms_builder.save,
+						btnClass: 'btn-confirm',
+						keys: [ 'enter' ],
+						action: function() {
+
+							// Put the Form Builder into "saving state".
+							$builder.addClass( 'wpforms-revision-is-saving' );
+
+							// Save the revision as current version and reload the Form Builder.
+							WPFormsBuilder.formSave( false ).done( app.revisionSavedReload );
+						},
+					},
+
+					cancel: {
+						text: wpforms_builder.cancel,
+						action: function() {
+
+							WPFormsBuilder.setCloseConfirmation( true );
+						},
+					},
+				},
+			} );
+		},
+
+		/**
+		 * When a modified revision was saved as current version, reload the Form Builder with the current tab active.
+		 *
+		 * @since 1.7.3
+		 */
+		revisionSavedReload: function() {
+
+			wpf.updateQueryString( 'view', wpf.getQueryString( 'view' ) );
+			wpf.removeQueryParam( 'revision_id' );
+
+			window.location.reload();
+		},
+
+		//--------------------------------------------------------------------//
 		// Save and Exit
 		//--------------------------------------------------------------------//
 
@@ -5580,18 +5774,28 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 			} );
 		},
 
+		// eslint-disable-next-line jsdoc/require-returns
 		/**
 		 * Save form.
 		 *
 		 * @since 1.0.0
+		 *
+		 * @param {boolean} redirect Whether to redirect after save.
 		 */
-		formSave: function(redirect) {
+		formSave: function( redirect ) {
 
 			var $saveBtn = $( '#wpforms-save' ),
 				$icon    = $saveBtn.find( 'i.fa-check' ),
 				$spinner = $saveBtn.find( 'i.wpforms-loading-spinner' ),
 				$label   = $saveBtn.find( 'span' ),
 				text     = $label.text();
+
+			// Saving a revision directly is not allowed. We need to notify the user that it will overwrite the current version.
+			if ( $builder.hasClass( 'wpforms-is-revision' ) && ! $builder.hasClass( 'wpforms-revision-is-saving' ) ) {
+				app.confirmSaveRevision();
+
+				return;
+			}
 
 			if ( typeof tinyMCE !== 'undefined' ) {
 				tinyMCE.triggerSave();
@@ -5603,9 +5807,9 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 
 			var data = {
 				action: 'wpforms_save_form',
-				data  : JSON.stringify($('#wpforms-builder-form').serializeArray()),
+				data  : JSON.stringify( $( '#wpforms-builder-form' ).serializeArray() ),
 				id    : s.formID,
-				nonce : wpforms_builder.nonce
+				nonce : wpforms_builder.nonce,
 			};
 
 			return $.post( wpforms_builder.ajax_url, data, function( response ) {
@@ -5613,11 +5817,14 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 				if ( response.success ) {
 					wpf.savedState = wpf.getFormState( '#wpforms-builder-form' );
 					wpf.initialSave = false;
+
 					$builder.trigger( 'wpformsSaved', response.data );
+
 					if ( true === redirect && app.isBuilderInPopup() ) {
 						app.builderInPopupClose( 'saved' );
 						return;
 					}
+
 					if ( true === redirect ) {
 						window.location.href = wpforms_builder.exit_url;
 					}
@@ -5719,7 +5926,7 @@ var WPFormsBuilder = window.WPFormsBuilder || ( function( document, window, $ ) 
 		/**
 		 * Close confirmation setter.
 		 *
-		 * @since {VESRSION}
+		 * @since 1.6.2
 		 *
 		 * @param {boolean} confirm Close confirmation flag value.
 		 */

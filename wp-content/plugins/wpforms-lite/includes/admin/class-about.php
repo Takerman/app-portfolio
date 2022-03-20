@@ -102,8 +102,6 @@ class WPForms_About {
 			return;
 		}
 
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueues' ) );
-
 		/*
 		 * Define the core views for the our tab.
 		 */
@@ -151,22 +149,6 @@ class WPForms_About {
 	}
 
 	/**
-	 * Enqueue assets for the the page.
-	 *
-	 * @since 1.5.0
-	 */
-	public function enqueues() {
-
-		wp_enqueue_script(
-			'jquery-matchheight',
-			WPFORMS_PLUGIN_URL . 'assets/js/jquery.matchHeight-min.js',
-			array( 'jquery' ),
-			'0.7.0',
-			false
-		);
-	}
-
-	/**
 	 * Output the basic page structure.
 	 *
 	 * @since 1.5.0
@@ -207,20 +189,25 @@ class WPForms_About {
 			<h1 class="wpforms-h1-placeholder"></h1>
 
 			<?php
+
 			switch ( $this->view ) {
 				case 'about':
 					$this->output_about();
 					break;
+
 				case 'getting-started':
 					$this->output_getting_started();
 					break;
+
 				case 'versus':
 					$this->output_versus();
 					break;
+
 				default:
 					do_action( 'wpforms_admin_about_display_tab_' . sanitize_key( $this->view ) );
 					break;
 			}
+
 			?>
 
 		</div>
@@ -309,9 +296,10 @@ class WPForms_About {
 			return;
 		}
 
-		$all_plugins         = get_plugins();
-		$am_plugins          = $this->get_am_plugins();
-		$can_install_plugins = wpforms_can_install( 'plugin' );
+		$all_plugins          = get_plugins();
+		$am_plugins           = $this->get_am_plugins();
+		$can_install_plugins  = wpforms_can_install( 'plugin' );
+		$can_activate_plugins = wpforms_can_activate( 'plugin' );
 
 		?>
 		<div id="wpforms-admin-addons">
@@ -319,13 +307,18 @@ class WPForms_About {
 				<?php
 				foreach ( $am_plugins as $plugin => $details ) :
 
-					$plugin_data = $this->get_plugin_data( $plugin, $details, $all_plugins );
+					$plugin_data              = $this->get_plugin_data( $plugin, $details, $all_plugins );
+					$plugin_ready_to_activate = $can_activate_plugins
+						&& isset( $plugin_data['status_class'] )
+						&& $plugin_data['status_class'] === 'status-installed';
+					$plugin_not_activated     = ! isset( $plugin_data['status_class'] )
+						|| $plugin_data['status_class'] !== 'status-active';
 
 					?>
 					<div class="addon-container">
 						<div class="addon-item">
 							<div class="details wpforms-clear">
-								<img src="<?php echo esc_url( $plugin_data['details']['icon'] ); ?>">
+								<img src="<?php echo esc_url( $plugin_data['details']['icon'] ); ?>" alt="<?php echo esc_attr( $plugin_data['details']['name'] ); ?>">
 								<h5 class="addon-name">
 									<?php echo esc_html( $plugin_data['details']['name'] ); ?>
 								</h5>
@@ -338,7 +331,7 @@ class WPForms_About {
 									<strong>
 										<?php
 										printf(
-										/* translators: %s - addon status label. */
+											/* translators: %s - addon status label. */
 											esc_html__( 'Status: %s', 'wpforms-lite' ),
 											'<span class="status-label ' . esc_attr( $plugin_data['status_class'] ) . '">' . wp_kses_post( $plugin_data['status_text'] ) . '</span>'
 										);
@@ -346,11 +339,11 @@ class WPForms_About {
 									</strong>
 								</div>
 								<div class="action-button">
-									<?php if ( $can_install_plugins || ! $details['wporg'] ) { ?>
+									<?php if ( $can_install_plugins || $plugin_ready_to_activate || ! $details['wporg'] ) { ?>
 										<button class="<?php echo esc_attr( $plugin_data['action_class'] ); ?>" data-plugin="<?php echo esc_attr( $plugin_data['plugin_src'] ); ?>" data-type="plugin">
 											<?php echo wp_kses_post( $plugin_data['action_text'] ); ?>
 										</button>
-									<?php } else { ?>
+									<?php } elseif ( $plugin_not_activated ) { ?>
 										<a href="<?php echo esc_url( $details['wporg'] ); ?>" target="_blank" rel="noopener noreferrer">
 											<?php esc_html_e( 'WordPress.org', 'wpforms-lite' ); ?>
 											<span aria-hidden="true" class="dashicons dashicons-external"></span>
@@ -1209,7 +1202,7 @@ class WPForms_About {
 				'pro'   => [
 					'status' => 'full',
 					'text'   => [
-						'<strong>' . esc_html__( 'All Form Templates including Bonus 100+ pre-made form templates', 'wpforms-lite' ) . '</strong>',
+						'<strong>' . esc_html__( 'All Form Templates including Bonus 300+ pre-made form templates', 'wpforms-lite' ) . '</strong>',
 					],
 				],
 			],
@@ -1232,14 +1225,14 @@ class WPForms_About {
 					'status' => 'partial',
 					'text'   => [
 						'<strong>' . esc_html__( 'Additional Marketing Integrations', 'wpforms-lite' ) . '</strong>',
-						esc_html__( 'Constant Contact, Mailchimp, AWeber, GetResponse, Campaign Monitor, Sendinblue, and Drip', 'wpforms-lite' ),
+						esc_html__( 'Constant Contact, Mailchimp, AWeber, GetResponse, Campaign Monitor, Sendinblue, HubSpot and Drip', 'wpforms-lite' ),
 					],
 				],
 				'pro'      => [
 					'status' => 'full',
 					'text'   => [
 						'<strong>' . esc_html__( 'Additional Marketing Integrations', 'wpforms-lite' ) . '</strong>',
-						esc_html__( 'Constant Contact, Mailchimp, AWeber, GetResponse, Campaign Monitor, Sendinblue, and Drip', 'wpforms-lite' ),
+						esc_html__( 'Constant Contact, Mailchimp, AWeber, GetResponse, Campaign Monitor, Sendinblue, HubSpot and Drip', 'wpforms-lite' ),
 						'',
 						wp_kses(
 							__( '<strong>Bonus:</strong> 500+ integrations with Zapier.', 'wpforms-lite' ),
@@ -1253,7 +1246,7 @@ class WPForms_About {
 					'status' => 'full',
 					'text'   => [
 						'<strong>' . esc_html__( 'All Marketing Integrations', 'wpforms-lite' ) . '</strong>',
-						esc_html__( 'ActiveCampaign, Constant Contact, Mailchimp, AWeber, GetResponse, Campaign Monitor, Salesforce, Sendinblue, and Drip', 'wpforms-lite' ),
+						esc_html__( 'ActiveCampaign, Constant Contact, Mailchimp, AWeber, GetResponse, Campaign Monitor, Salesforce, Sendinblue, HubSpot and Drip', 'wpforms-lite' ),
 						'',
 						wp_kses(
 							__( '<strong>Bonus:</strong> 500+ integrations with Zapier.', 'wpforms-lite' ),
@@ -1267,7 +1260,7 @@ class WPForms_About {
 					'status' => 'full',
 					'text'   => [
 						'<strong>' . esc_html__( 'All Marketing Integrations', 'wpforms-lite' ) . '</strong>',
-						esc_html__( 'ActiveCampaign, Constant Contact, Mailchimp, AWeber, GetResponse, Campaign Monitor, Salesforce, Sendinblue, and Drip', 'wpforms-lite' ),
+						esc_html__( 'ActiveCampaign, Constant Contact, Mailchimp, AWeber, GetResponse, Campaign Monitor, Salesforce, Sendinblue, HubSpot and Drip', 'wpforms-lite' ),
 						'',
 						wp_kses(
 							__( '<strong>Bonus:</strong> 500+ integrations with Zapier.', 'wpforms-lite' ),
@@ -1281,7 +1274,7 @@ class WPForms_About {
 					'status' => 'full',
 					'text'   => [
 						'<strong>' . esc_html__( 'All Marketing Integrations', 'wpforms-lite' ) . '</strong>',
-						esc_html__( 'ActiveCampaign, Constant Contact, Mailchimp, AWeber, GetResponse, Campaign Monitor, Salesforce, Sendinblue, and Drip', 'wpforms-lite' ),
+						esc_html__( 'ActiveCampaign, Constant Contact, Mailchimp, AWeber, GetResponse, Campaign Monitor, Salesforce, Sendinblue, HubSpot and Drip', 'wpforms-lite' ),
 						'',
 						wp_kses(
 							__( '<strong>Bonus:</strong> 500+ integrations with Zapier.', 'wpforms-lite' ),
@@ -1418,28 +1411,28 @@ class WPForms_About {
 					'status' => 'full',
 					'text'   => [
 						'<strong>' . esc_html__( 'Pro Addons Included', 'wpforms-lite' ) . '</strong>',
-						esc_html__( 'Form Abandonment, Conversational Forms, Frontend Post Submission, User Registration, Geolocation, and more (23 total)', 'wpforms-lite' ),
+						esc_html__( 'Form Abandonment, Conversational Forms, Frontend Post Submission, User Registration, Geolocation, and more (24 total)', 'wpforms-lite' ),
 					],
 				],
 				'elite'    => [
 					'status' => 'full',
 					'text'   => [
 						'<strong>' . esc_html__( 'All Addons Included', 'wpforms-lite' ) . '</strong>',
-						esc_html__( 'Form Abandonment, Conversational Forms, Frontend Post Submission, User Registration, Geolocation, Webhooks, and more (27 total)', 'wpforms-lite' ),
+						esc_html__( 'Form Abandonment, Conversational Forms, Frontend Post Submission, User Registration, Geolocation, Webhooks, and more (28 total)', 'wpforms-lite' ),
 					],
 				],
 				'ultimate' => [
 					'status' => 'full',
 					'text'   => [
 						'<strong>' . esc_html__( 'All Addons Included', 'wpforms-lite' ) . '</strong>',
-						esc_html__( 'Form Abandonment, Conversational Forms, Frontend Post Submission, User Registration, Geolocation, Webhooks, and more (27 total)', 'wpforms-lite' ),
+						esc_html__( 'Form Abandonment, Conversational Forms, Frontend Post Submission, User Registration, Geolocation, Webhooks, and more (28 total)', 'wpforms-lite' ),
 					],
 				],
 				'agency'   => [
 					'status' => 'full',
 					'text'   => [
 						'<strong>' . esc_html__( 'All Addons Included', 'wpforms-lite' ) . '</strong>',
-						esc_html__( 'Form Abandonment, Conversational Forms, Frontend Post Submission, User Registration, Geolocation, Webhooks, and more (27 total)', 'wpforms-lite' ),
+						esc_html__( 'Form Abandonment, Conversational Forms, Frontend Post Submission, User Registration, Geolocation, Webhooks, and more (28 total)', 'wpforms-lite' ),
 					],
 				],
 			],

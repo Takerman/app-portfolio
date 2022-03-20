@@ -105,20 +105,30 @@ WPFormsEducation.liteCore = window.WPFormsEducation.liteCore || ( function( docu
 				return;
 			}
 
-			var message = wpforms_education.upgrade[ type ].message.replace( /%name%/g, feature );
+			var message      = wpforms_education.upgrade[ type ].message.replace( /%name%/g, feature ),
+				isVideoModal = ! _.isEmpty( video ),
+				modalWidth   = WPFormsEducation.core.getUpgradeModalWidth( isVideoModal );
 
-			$.alert( {
-				title: feature + ' ' + wpforms_education.upgrade[type].title,
-				icon: 'fa fa-lock',
-				content: message,
-				boxWidth: '550px',
-				theme: 'modern,wpforms-education',
-				closeIcon: true,
+			var modal = $.alert( {
+				backgroundDismiss: true,
+				title            : feature + ' ' + wpforms_education.upgrade[type].title,
+				icon             : 'fa fa-lock',
+				content          : message,
+				boxWidth         : modalWidth,
+				theme            : 'modern,wpforms-education',
+				closeIcon        : true,
 				onOpenBefore: function() {
 
-					var videoHtml = ! _.isEmpty( video ) ? '<iframe src="' + video + '" class="feature-video" frameborder="0" allowfullscreen="" width="490" height="276"></iframe>' : '';
+					if ( isVideoModal ) {
+						this.$el.addClass( 'has-video' );
+					}
 
-					this.$btnc.after( '<div class="discount-note">' + wpforms_education.upgrade_bonus + videoHtml + wpforms_education.upgrade[type].doc + '</div>' );
+					var videoHtml = isVideoModal ? '<iframe src="' + video + '" class="feature-video" frameborder="0" allowfullscreen="" width="475" height="267"></iframe>' : '';
+
+					this.$btnc.after( '<div class="discount-note">' + wpforms_education.upgrade_bonus + '</div>' );
+					this.$btnc.after(  wpforms_education.upgrade[type].doc  );
+					this.$btnc.after( videoHtml );
+
 					this.$body.find( '.jconfirm-content' ).addClass( 'lite-upgrade' );
 				},
 				buttons : {
@@ -133,6 +143,15 @@ WPFormsEducation.liteCore = window.WPFormsEducation.liteCore || ( function( docu
 						},
 					},
 				},
+			} );
+
+			$( window ).on( 'resize', function() {
+
+				modalWidth = WPFormsEducation.core.getUpgradeModalWidth( isVideoModal );
+
+				if ( modal.isOpen() ) {
+					modal.setBoxWidth( modalWidth );
+				}
 			} );
 		},
 

@@ -49,11 +49,6 @@ class WPForms_Overview {
 
 		add_action( 'current_screen', [ $this, 'init_overview_table' ] );
 
-		// Bulk actions.
-		add_action( 'load-toplevel_page_wpforms-overview', [ $this, 'notices' ] );
-		add_action( 'load-toplevel_page_wpforms-overview', [ $this, 'process_bulk_actions' ] );
-		add_filter( 'removable_query_args', [ $this, 'removable_query_args' ] );
-
 		// The overview page leverages WP_List_Table so we must load it.
 		if ( ! class_exists( 'WP_List_Table', false ) ) {
 			require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
@@ -142,6 +137,16 @@ class WPForms_Overview {
 	 */
 	public function enqueues() {
 
+		$min = wpforms_get_min_suffix();
+
+		wp_enqueue_script(
+			'wpforms-admin-forms-overview',
+			WPFORMS_PLUGIN_URL . "assets/js/components/admin/forms/overview{$min}.js",
+			[ 'jquery' ],
+			WPFORMS_VERSION,
+			true
+		);
+
 		// Hook for addons.
 		do_action( 'wpforms_overview_enqueue' );
 	}
@@ -174,8 +179,11 @@ class WPForms_Overview {
 
 				if (
 					empty( $this->overview_table->items ) &&
-					// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-					! isset( $_GET['search']['term'] )
+					// phpcs:disable WordPress.Security.NonceVerification.Recommended
+					! isset( $_GET['search']['term'] ) &&
+					! isset( $_GET['status'] ) &&
+					array_sum( wpforms()->get( 'forms_views' )->get_count() ) === 0
+					// phpcs:enable WordPress.Security.NonceVerification.Recommended
 				) {
 
 					// Output no forms screen.
@@ -189,8 +197,8 @@ class WPForms_Overview {
 						<input type="hidden" name="page" value="wpforms-overview" />
 
 						<?php
-							$this->overview_table->views();
 							$this->overview_table->search_box( esc_html__( 'Search Forms', 'wpforms-lite' ), 'wpforms-overview-search' );
+							$this->overview_table->views();
 							$this->overview_table->display();
 						?>
 
@@ -204,158 +212,36 @@ class WPForms_Overview {
 	}
 
 	/**
-	 * Add admin action notices and process bulk actions.
+	 * Admin notices.
 	 *
 	 * @since 1.5.7
+	 * @deprecated 1.7.3
 	 */
 	public function notices() {
 
-		$deleted    = ! empty( $_REQUEST['deleted'] ) ? sanitize_key( $_REQUEST['deleted'] ) : false; // phpcs:ignore WordPress.Security.NonceVerification
-		$duplicated = ! empty( $_REQUEST['duplicated'] ) ? sanitize_key( $_REQUEST['duplicated'] ) : false; // phpcs:ignore WordPress.Security.NonceVerification
-		$notice     = [];
+		_deprecated_function( __METHOD__, '1.7.3 of the WPForms', "wpforms()->get( 'forms_bulk_actions' )->notices()" );
 
-		if ( $deleted && $deleted !== 'error' ) {
-			$notice = [
-				'type' => 'info',
-				/* translators: %s - Deleted forms count. */
-				'msg'  => sprintf( _n( '%s form was successfully deleted.', '%s forms were successfully deleted.', $deleted, 'wpforms-lite' ), $deleted ),
-			];
-		}
-
-		if ( $duplicated && $duplicated !== 'error' ) {
-			$notice = [
-				'type' => 'info',
-				/* translators: %s - Duplicated forms count. */
-				'msg'  => sprintf( _n( '%s form was successfully duplicated.', '%s forms were successfully duplicated.', $duplicated, 'wpforms-lite' ), $duplicated ),
-			];
-		}
-
-		if ( $deleted === 'error' || $duplicated === 'error' ) {
-			$notice = [
-				'type' => 'error',
-				'msg'  => esc_html__( 'Security check failed. Please try again.', 'wpforms-lite' ),
-			];
-		}
-
-		if ( ! empty( $notice ) ) {
-			\WPForms\Admin\Notice::add( $notice['msg'], $notice['type'] );
-		}
+		wpforms()->get( 'forms_bulk_actions' )->notices();
 	}
 
 	/**
 	 * Process the bulk table actions.
 	 *
 	 * @since 1.5.7
+	 * @deprecated 1.7.3
 	 */
 	public function process_bulk_actions() {
 
-		$ids    = isset( $_GET['form_id'] ) ? array_map( 'absint', (array) $_GET['form_id'] ) : []; // phpcs:ignore WordPress.Security.NonceVerification
-		$action = ! empty( $_REQUEST['action'] ) ? sanitize_key( $_REQUEST['action'] ) : false; // phpcs:ignore WordPress.Security.NonceVerification
+		_deprecated_function( __METHOD__, '1.7.3 of the WPForms', "wpforms()->get( 'forms_bulk_actions' )->process()" );
 
-		if ( $action === '-1' ) {
-			$action = ! empty( $_REQUEST['action2'] ) ? sanitize_key( $_REQUEST['action2'] ) : false; // phpcs:ignore WordPress.Security.NonceVerification
-		}
-
-		// Checking the sortable column link.
-		$is_orderby_link = ! empty( $_REQUEST['orderby'] ) && ! empty( $_REQUEST['order'] );
-
-		if ( empty( $ids ) || empty( $action ) || $is_orderby_link ) {
-			return;
-		}
-
-		// Check exact action values.
-		if ( ! in_array( $action, [ 'delete', 'duplicate' ], true ) ) {
-			return;
-		}
-
-		if ( empty( $_GET['_wpnonce'] ) ) {
-			return;
-		}
-
-		// Check the nonce.
-		if (
-			! wp_verify_nonce( sanitize_key( $_GET['_wpnonce'] ), 'bulk-forms' ) &&
-			! wp_verify_nonce( sanitize_key( $_GET['_wpnonce'] ), 'wpforms_' . $action . '_form_nonce' )
-		) {
-			return;
-		}
-
-		// Check that we have a method for this action.
-		if ( ! method_exists( $this, 'bulk_action_' . $action . '_forms' ) ) {
-			return;
-		}
-
-		$processed_forms = count( $this->{'bulk_action_' . $action . '_forms'}( $ids ) );
-
-		// Unset get vars and perform redirect to avoid action reuse.
-		wp_safe_redirect(
-			add_query_arg(
-				$action . 'd',
-				$processed_forms,
-				remove_query_arg( [ 'action', 'action2', '_wpnonce', 'form_id', 'paged', '_wp_http_referer' ] )
-			)
-		);
-		exit;
-	}
-
-	/**
-	 * Delete forms.
-	 *
-	 * @since 1.5.7
-	 *
-	 * @param array $ids Form ids to delete.
-	 *
-	 * @return array List of deleted forms.
-	 */
-	private function bulk_action_delete_forms( $ids ) {
-
-		if ( ! is_array( $ids ) ) {
-			return [];
-		}
-
-		$deleted = [];
-
-		foreach ( $ids as $id ) {
-			$deleted[ $id ] = wpforms()->form->delete( $id );
-		}
-
-		return array_keys( array_filter( $deleted ) );
-	}
-
-	/**
-	 * Duplicate forms.
-	 *
-	 * @since 1.5.7
-	 *
-	 * @param array $ids Form ids to duplicate.
-	 *
-	 * @return array List of duplicated forms.
-	 */
-	private function bulk_action_duplicate_forms( $ids ) {
-
-		if ( ! is_array( $ids ) ) {
-			return [];
-		}
-
-		if ( ! wpforms_current_user_can( 'create_forms' ) ) {
-			return [];
-		}
-
-		$duplicated = [];
-
-		foreach ( $ids as $id ) {
-			if ( wpforms_current_user_can( 'view_form_single', $id ) ) {
-				$duplicated[ $id ] = wpforms()->form->duplicate( $id );
-			}
-		}
-
-		return array_keys( array_filter( $duplicated ) );
+		wpforms()->get( 'forms_bulk_actions' )->process();
 	}
 
 	/**
 	 * Remove certain arguments from a query string that WordPress should always hide for users.
 	 *
 	 * @since 1.5.7
+	 * @deprecated 1.7.3
 	 *
 	 * @param array $removable_query_args An array of parameters to remove from the URL.
 	 *
@@ -363,11 +249,9 @@ class WPForms_Overview {
 	 */
 	public function removable_query_args( $removable_query_args ) {
 
-		if ( wpforms_is_admin_page( 'overview' ) ) {
-			$removable_query_args[] = 'duplicated';
-		}
+		_deprecated_function( __METHOD__, '1.7.3 of the WPForms', "wpforms()->get( 'forms_bulk_actions' )->removable_query_args()" );
 
-		return $removable_query_args;
+		return wpforms()->get( 'forms_bulk_actions' )->removable_query_args( $removable_query_args );
 	}
 }
 

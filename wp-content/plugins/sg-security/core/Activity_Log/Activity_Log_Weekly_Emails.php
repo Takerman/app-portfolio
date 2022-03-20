@@ -14,6 +14,7 @@ class Activity_Log_Weekly_Emails extends Activity_Log_Helper {
 	 * @since 1.2.0
 	 */
 	public function __construct() {
+
 		// Initiate the Email Service Class.
 		$this->weekly_report_email = new Email_Service(
 			'sgs_email_cron',
@@ -21,8 +22,9 @@ class Activity_Log_Weekly_Emails extends Activity_Log_Helper {
 			strtotime( 'next monday' ),
 			array(
 				'recipients_option' => 'sg_security_notification_emails',
-				'subject'           => __( 'SiteGround Security Weekly Activity', 'sg-security' ),
-				'body_method'       => array( '\SG_Security\Activity_Log\Activity_Log_Weekly_Emails', 'generate_message_body' )
+				'subject'           => __( 'Weekly Activity for ', 'sg-security' ) . Helper_Service::get_site_url(),
+				'body_method'       => array( '\SG_Security\Activity_Log\Activity_Log_Weekly_Emails', 'generate_message_body' ),
+				'from_name'         => 'SiteGround Security',
 			)
 		);
 	}
@@ -45,6 +47,27 @@ class Activity_Log_Weekly_Emails extends Activity_Log_Helper {
 		// Generate the end date we should collect the data to.
 		$end_date = $weekly_emails->get_last_cron_run();
 
+		// Get the count of total human visits for the period.
+		$total_human = (int) $weekly_emails->get_total_human_stats( $start_date->getTimestamp(), $end_date->getTimestamp() );
+		// Get the count of total bots visit for the period.
+		$total_bots = (int) $weekly_emails->get_total_bots_stats( $start_date->getTimestamp(), $end_date->getTimestamp() );
+		// Get the count of total blocked login attempts.
+		$total_blocked_login = (int) get_option( 'sg_security_total_blocked_logins', 0 );
+		// Get the count of total blocked visits.
+		$total_blocked_visits = (int) get_option( 'sg_security_total_blocked_visits', 0 );
+
+		// Bail if all stats are 0.
+		if (
+			0 === $total_human &&
+			0 === $total_bots &&
+			0 === $total_blocked_login &&
+			0 === $total_blocked_visits
+		) {
+			return false;
+		}
+
+		// Get assets from remote server.
+		$assets = $weekly_emails->get_remote_assets();
 
 		// Mail template arguments.
 		$args = array(
@@ -55,10 +78,11 @@ class Activity_Log_Weekly_Emails extends Activity_Log_Helper {
 			'end_time'             => $end_date->format( 'F d, Y' ),
 			'is_siteground'        => Helper_Service::is_siteground(),
 			'agreed_email_consent' => (int) get_option( 'siteground_email_consent', 0 ),
-			'total_human'          => $weekly_emails->get_total_human_stats( $start_date->getTimestamp(), $end_date->getTimestamp() ),
-			'total_bots'           => $weekly_emails->get_total_bots_stats( $start_date->getTimestamp(), $end_date->getTimestamp() ),
-			'total_blocked_login'  => get_option( 'sg_security_total_blocked_logins', 0 ),
-			'total_blocked_visits' => get_option( 'sg_security_total_blocked_visits', 0 ),
+			'total_human'          => $total_human,
+			'total_bots'           => $total_bots,
+			'total_blocked_login'  => $total_blocked_login,
+			'total_blocked_visits' => $total_blocked_visits,
+			'email_image'          => is_array( $assets ) ? $assets['image'] : '',
 		);
 
 		// Turn on output buffering.
@@ -75,6 +99,35 @@ class Activity_Log_Weekly_Emails extends Activity_Log_Helper {
 
 		// Return the message body content as a string.
 		return $message_body;
+	}
+
+	/**
+	 * Get assets from remote json.
+	 *
+	 * @since  1.2.4
+	 *
+	 * @return bool/array false if we fail the request/Array with data.
+	 */
+	private function get_remote_assets( ){
+		// Get the banner content.
+		$response = wp_remote_get( 'https://sgwpdemo.com/jsons/sg-security-emails.json' );
+
+		// Bail if the request fails.
+		if ( 200 !== wp_remote_retrieve_response_code( $response ) ) {
+			return false;
+		}
+
+		// Get the locale.
+		$locale = get_locale();
+
+		// Get the body of the response.
+		$body = wp_remote_retrieve_body( $response );
+
+		// Decode the json response.
+		$assets = json_decode( $body, true );
+
+		// Return the correct assets, title and marketing urls.
+		return array_key_exists( $locale, $assets) ? $assets[ $locale ] : $assets['default'];
 	}
 
 	/**

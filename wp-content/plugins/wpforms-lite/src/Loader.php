@@ -81,6 +81,11 @@ class Loader {
 				'id'   => 'notice',
 			],
 			[
+				'name' => 'Admin\Revisions',
+				'id'   => 'revisions',
+				'hook' => 'admin_init',
+			],
+			[
 				'name' => 'Admin\Addons\AddonsCache',
 				'id'   => 'addons_cache',
 			],
@@ -125,8 +130,18 @@ class Loader {
 				'hook' => 'current_screen',
 			],
 			[
+				'name'      => 'Admin\Tools\Importers',
+				'hook'      => 'admin_init',
+				'run'       => 'load',
+				'condition' => wp_doing_ajax(),
+			],
+			[
 				'name' => 'Admin\Pages\Addons',
 				'id'   => 'addons_page',
+			],
+			[
+				'name' => 'Admin\Pages\ConstantContact',
+				'hook' => 'admin_init',
 			],
 			[
 				'name' => 'Forms\Fields\Richtext\EntryViewContent',
@@ -134,6 +149,14 @@ class Loader {
 			[
 				'name' => 'Admin\Forms\Search',
 				'id'   => 'forms_search',
+			],
+			[
+				'name' => 'Admin\Forms\Views',
+				'id'   => 'forms_views',
+			],
+			[
+				'name' => 'Admin\Forms\BulkActions',
+				'id'   => 'forms_bulk_actions',
 			]
 		);
 	}

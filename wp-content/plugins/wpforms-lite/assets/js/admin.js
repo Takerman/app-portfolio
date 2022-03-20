@@ -32,9 +32,6 @@
 			// Document ready.
 			$( WPFormsAdmin.ready );
 
-			// Forms Overview.
-			WPFormsAdmin.initFormOverview();
-
 			// Entries Single (Details).
 			WPFormsAdmin.initEntriesSingle();
 
@@ -120,11 +117,11 @@
 			$( document ).on( 'click', '.wpforms-upgrade-modal', function() {
 
 				$.alert({
-					title: false,
+					title: wpforms_admin.almost_done,
 					content: wpforms_admin.upgrade_modal,
 					icon: 'fa fa-info-circle',
 					type: 'blue',
-					boxWidth: '565px',
+					boxWidth: '550px',
 					buttons: {
 						confirm: {
 							text: wpforms_admin.ok,
@@ -154,11 +151,10 @@
 
 			$( '.choicesjs-select' ).each( function() {
 				var $this = $( this ),
-					args  = { searchEnabled: false };
+					args  = window.wpforms_admin_choicesjs_config ? { ...window.wpforms_admin_choicesjs_config } : {};
 
 				if ( $this.attr( 'multiple' ) ) {
-					args.searchEnabled    = true;
-					args.removeItemButton = true;
+					args.removeItemButton = typeof args.removeItemButton !== 'undefined' ? args.removeItemButton : true;
 				}
 
 				if ( $this.data( 'sorting' ) === 'off' ) {
@@ -169,11 +165,9 @@
 					args.searchEnabled = true;
 				}
 
-				// Translate default strings.
-				args.loadingText = wpforms_admin.choicesjs_loading;
-				args.noResultsText = wpforms_admin.choicesjs_no_results;
-				args.noChoicesText = wpforms_admin.choicesjs_no_choices;
-				args.itemSelectText = wpforms_admin.choicesjs_item_select;
+				if ( $this.data( 'choices-position' ) ) {
+					args.position = $this.data( 'choices-position' );
+				}
 
 				// Function to run once Choices initialises.
 				// We need to reproduce a behaviour like on public-facing area for "Edit Entry" page.
@@ -257,49 +251,15 @@
 		 * Element bindings for Form Overview page.
 		 *
 		 * @since 1.3.9
+		 * @since 1.7.3 Deprecated.
+		 *
+		 * @deprecated Use `WPFormsForms.Overview.init()` instead.
 		 */
 		initFormOverview: function() {
 
-			// Confirm form entry deletion and duplications.
-			$( document ).on( 'click', '#wpforms-overview .wp-list-table .delete a, #wpforms-overview .wp-list-table .duplicate a', function( event ) {
+			console.warn( 'WARNING! Function "WPFormsAdmin.initFormOverview()" has been deprecated, please use the new "WPFormsForms.Overview.init()" function instead!' );
 
-				event.preventDefault();
-
-				var url = $( this ).attr( 'href' ),
-					msg = $( this ).parent().hasClass( 'delete' ) ? wpforms_admin.form_delete_confirm : wpforms_admin.form_duplicate_confirm;
-
-				// Trigger alert modal to confirm.
-				$.confirm( {
-					title: false,
-					content: msg,
-					icon: 'fa fa-exclamation-circle',
-					type: 'orange',
-					buttons: {
-						confirm: {
-							text: wpforms_admin.ok,
-							btnClass: 'btn-confirm',
-							keys: [ 'enter' ],
-							action: function() {
-								window.location = url;
-							},
-						},
-						cancel: {
-							text: wpforms_admin.cancel,
-							keys: [ 'esc' ],
-						},
-					},
-				} );
-			} );
-
-			// Reset search form.
-			$( document ).on( 'click', '#wpforms-overview-table #wpforms-reset-filter .reset', function() {
-
-				// Reset search term.
-				$( '#wpforms-overview-search-term' ).val( '' );
-
-				// Submit the form.
-				$( this ).closest( 'form' ).submit();
-			} );
+			window.WPFormsForms.Overview.init();
 		},
 
 		//--------------------------------------------------------------------//
@@ -328,7 +288,7 @@
 
 				// Trigger alert modal to confirm.
 				$.confirm({
-					title: false,
+					title: wpforms_admin.heads_up,
 					content: wpforms_admin.entry_delete_confirm,
 					icon: 'fa fa-exclamation-circle',
 					type: 'orange',
@@ -404,7 +364,7 @@
 
 				// Trigger alert modal to confirm.
 				$.confirm({
-					title: false,
+					title: wpforms_admin.heads_up,
 					content: wpforms_admin.entry_note_delete_confirm,
 					icon: 'fa fa-exclamation-circle',
 					type: 'orange',
@@ -499,7 +459,7 @@
 
 				// Trigger alert modal to confirm.
 				$.confirm( {
-					title: false,
+					title: wpforms_admin.heads_up,
 					content: wpforms_admin.entry_delete_n_confirm.replace( '{entry_count}', $checked.length ),
 					icon: 'fa fa-exclamation-circle',
 					type: 'orange',
@@ -530,7 +490,7 @@
 
 				// Trigger alert modal to confirm.
 				$.confirm({
-					title: false,
+					title: wpforms_admin.heads_up,
 					content: wpforms_admin.entry_delete_confirm,
 					icon: 'fa fa-exclamation-circle',
 					type: 'orange',
@@ -828,8 +788,6 @@
 				return;
 			}
 
-			WPFormsAdmin.matchHeightAddonBlocks();
-
 			// Addons searching.
 			if ( $( '#wpforms-admin-addons-list' ).length ) {
 				var addonSearch = new List( 'wpforms-admin-addons-list', {
@@ -845,11 +803,18 @@
 						$heading.text( $heading.data( 'text' ) );
 					}
 
+					/*
+					 * Replace dot and comma with space
+					 * it is workaround for a bug in listjs library.
+					 *
+					 * Note: remove when the issue below is fixed:
+					 * @see https://github.com/javve/list.js/issues/699
+					 */
+					searchTerm = searchTerm.replace( /[.,]/g, ' ' );
+
 					addonSearch.search( searchTerm );
 				} );
 			}
-
-			$( window ).on( 'resize', WPFormsAdmin.matchHeightAddonBlocks );
 
 			// Toggle an addon state.
 			$( document ).on( 'click', '#wpforms-admin-addons .addon-item button', function( event ) {
@@ -1011,12 +976,12 @@
 				} else {
 					if ( 'object' === typeof res.data ) {
 						if ( pluginType === 'addon' ) {
-							$addon.find( '.actions' ).append( '<div class="msg error">' + wpforms_admin.addon_error + '</div>' );
+							$addon.find( '.actions' ).append( '<div class="msg error"><p>' + wpforms_admin.addon_error + '</p></div>' );
 						} else {
-							$addon.find( '.actions' ).append( '<div class="msg error">' + wpforms_admin.plugin_error + '</div>' );
+							$addon.find( '.actions' ).append( '<div class="msg error"><p>' + wpforms_admin.plugin_error + '</p></div>' );
 						}
 					} else {
-						$addon.find( '.actions' ).append( '<div class="msg error">' + res.data + '</div>' );
+						$addon.find( '.actions' ).append( '<div class="msg error"><p>' + res.data + '</p></div>' );
 					}
 					if ( 'install' === state && 'plugin' === pluginType ) {
 						$btn.addClass( 'status-go-to-url' ).removeClass( 'status-missing' );
@@ -1026,23 +991,13 @@
 
 				$btn.prop( 'disabled', false ).removeClass( 'loading' );
 
-				// Automatically clear addon messages after 3 seconds.
-				setTimeout( function() {
+				if ( ! $addon.find( '.actions' ).find( '.msg.error' ).length ) {
+					setTimeout( function() {
 
-					$( '.addon-item .msg' ).remove();
-				}, 3000 );
-
+						$( '.addon-item .msg' ).remove();
+					}, 3000 );
+				}
 			} );
-		},
-
-		/**
-		 * Display all addon boxes as the same height.
-		 *
-		 * @since 1.6.3
-		 */
-		matchHeightAddonBlocks: function() {
-
-			$( '.addon-item .details' ).matchHeight( { byrow: false, property: 'height' } );
 		},
 
 		//--------------------------------------------------------------------//
@@ -1478,9 +1433,10 @@
 
 			$.post( wpforms_admin.ajax_url, data, function( res ) {
 
-				var icon = 'fa fa-info-circle',
+				var icon  = 'fa fa-info-circle',
 					color = 'blue',
-					msg = res.data;
+					msg   = res.data,
+					title = wpforms_admin.success;
 
 				if ( res.success ) {
 					$row.find( '#wpforms-setting-license-key' ).val( '' ).prop( 'disabled', false );
@@ -1488,10 +1444,11 @@
 				} else {
 					icon = 'fa fa-exclamation-circle';
 					color = 'orange';
+					title = wpforms_admin.oops;
 				}
 
 				$.alert( {
-					title: false,
+					title: title,
 					content: msg,
 					icon: icon,
 					type: color,
@@ -1687,7 +1644,7 @@
 		integrationError: function( error ) {
 
 			$.alert( {
-				title: false,
+				title: wpforms_admin.something_went_wrong,
 				content: error,
 				icon: 'fa fa-exclamation-circle',
 				type: 'orange',
@@ -1746,7 +1703,7 @@
 
 					// User didn't actually select a form so alert them.
 					$.alert({
-						title: false,
+						title: wpforms_admin.heads_up,
 						content: wpforms_admin.importer_forms_required,
 						icon: 'fa fa-info-circle',
 						type: 'blue',
@@ -2114,16 +2071,21 @@
 				return;
 			}
 
-			var	$overlap       = $( '#wpforms-overview, #wpforms-entries-list, #wpforms-tools.wpforms-tools-tab-action-scheduler, #wpforms-tools.wpforms-tools-tab-logs' ),
-				wpfooterTop    = $wpfooter.offset().top,
-				wpfooterBottom = wpfooterTop + $wpfooter.height(),
-				overlapBottom  = $overlap.length > 0 ? $overlap.offset().top + $overlap.height() + 85 : 0;
+			var	$overlap = $(
+				'#wpforms-overview, ' +
+				'#wpforms-entries-list, ' +
+				'#wpforms-tools.wpforms-tools-tab-action-scheduler, ' +
+				'#wpforms-tools.wpforms-tools-tab-logs'
+			);
 
 			// Hide menu if scrolled down to the bottom of the page.
 			$( window ).on( 'resize scroll', _.debounce( function( e ) {
 
-				var viewTop = $( window ).scrollTop(),
-					viewBottom = viewTop + $( window ).height();
+				var wpfooterTop    = $wpfooter.offset().top,
+					wpfooterBottom = wpfooterTop + $wpfooter.height(),
+					overlapBottom  = $overlap.length > 0 ? $overlap.offset().top + $overlap.height() + 85 : 0,
+					viewTop        = $( window ).scrollTop(),
+					viewBottom     = viewTop + $( window ).height();
 
 				if ( wpfooterBottom <= viewBottom && wpfooterTop >= viewTop && overlapBottom > viewBottom ) {
 					$flyoutMenu.addClass( 'out' );

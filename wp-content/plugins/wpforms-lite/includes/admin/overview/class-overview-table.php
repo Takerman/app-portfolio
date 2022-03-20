@@ -26,6 +26,15 @@ class WPForms_Overview_Table extends WP_List_Table {
 	private $count;
 
 	/**
+	 * Current view.
+	 *
+	 * @since 1.7.3
+	 *
+	 * @var string
+	 */
+	private $view;
+
+	/**
 	 * Primary class constructor.
 	 *
 	 * @since 1.0.0
@@ -42,6 +51,9 @@ class WPForms_Overview_Table extends WP_List_Table {
 		);
 
 		add_filter( 'default_hidden_columns', [ $this, 'default_hidden_columns' ], 10, 2 );
+
+		// Determine the current view.
+		$this->view = wpforms()->get( 'forms_views' )->get_current_view();
 
 		// Default number of forms to show per page.
 		$this->per_page = (int) apply_filters( 'wpforms_overview_per_page', 20 );
@@ -96,22 +108,18 @@ class WPForms_Overview_Table extends WP_List_Table {
 		switch ( $column_name ) {
 			case 'id':
 				$value = $form->ID;
-
 				break;
 
 			case 'shortcode':
 				$value = '[wpforms id="' . $form->ID . '"]';
-
 				break;
 
 			case 'created':
 				$value = get_the_date( get_option( 'date_format' ), $form );
-
 				break;
 
 			case 'modified':
 				$value = get_post_modified_time( get_option( 'date_format' ), false, $form );
-
 				break;
 
 			case 'author':
@@ -128,12 +136,10 @@ class WPForms_Overview_Table extends WP_List_Table {
 				if ( ! empty( $user_edit_url ) ) {
 					$value = '<a href="' . esc_url( $user_edit_url ) . '">' . esc_html( $value ) . '</a>';
 				}
-
 				break;
 
 			case 'php':
 				$value = '<code style="display:block;font-size:11px;">if( function_exists( \'wpforms_get\' ) ){ wpforms_get( ' . $form->ID . ' ); }</code>';
-
 				break;
 
 			default:
@@ -192,6 +198,10 @@ class WPForms_Overview_Table extends WP_List_Table {
 			esc_html( $title )
 		);
 
+		if ( $this->view === 'trash' ) {
+			return $name;
+		}
+
 		if ( wpforms_current_user_can( 'view_form_single', $form->ID ) ) {
 			$name = sprintf(
 				'<a href="%s" title="%s" class="row-title" target="_blank" rel="noopener noreferrer"><strong>%s</strong></a>',
@@ -249,98 +259,19 @@ class WPForms_Overview_Table extends WP_List_Table {
 	 */
 	protected function get_column_name_row_actions( $form ) {
 
-		// Build all of the row action links.
-		$row_actions = [];
+		// phpcs:disable WPForms.Comments.PHPDocHooks.RequiredHookDocumentation, WPForms.PHP.ValidateHooks.InvalidHookName
 
-		// Edit.
-		if ( wpforms_current_user_can( 'edit_form_single', $form->ID ) ) {
-			$row_actions['edit'] = sprintf(
-				'<a href="%s" title="%s">%s</a>',
-				esc_url(
-					add_query_arg(
-						[
-							'view'    => 'fields',
-							'form_id' => $form->ID,
-						],
-						admin_url( 'admin.php?page=wpforms-builder' )
-					)
-				),
-				esc_attr__( 'Edit This Form', 'wpforms-lite' ),
-				esc_html__( 'Edit', 'wpforms-lite' )
-			);
-		}
+		/*
+		 * Filters row action links on the 'All Forms' admin page.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array   $row_actions An array of action links for a given form.
+		 * @param WP_Post $form        Form object.
+		 */
+		return $this->row_actions( apply_filters( 'wpforms_overview_row_actions', [], $form ) );
 
-		// Entries.
-		if ( wpforms_current_user_can( 'view_entries_form_single', $form->ID ) ) {
-			$row_actions['entries'] = sprintf(
-				'<a href="%s" title="%s">%s</a>',
-				esc_url(
-					add_query_arg(
-						[
-							'view'    => 'list',
-							'form_id' => $form->ID,
-						],
-						admin_url( 'admin.php?page=wpforms-entries' )
-					)
-				),
-				esc_attr__( 'View entries', 'wpforms-lite' ),
-				esc_html__( 'Entries', 'wpforms-lite' )
-			);
-		}
-
-		// Preview.
-		if ( wpforms_current_user_can( 'view_form_single', $form->ID ) ) {
-			$row_actions['preview_'] = sprintf(
-				'<a href="%s" title="%s" target="_blank" rel="noopener noreferrer">%s</a>',
-				esc_url( wpforms_get_form_preview_url( $form->ID ) ),
-				esc_attr__( 'View preview', 'wpforms-lite' ),
-				esc_html__( 'Preview', 'wpforms-lite' )
-			);
-		}
-
-		// Duplicate.
-		if ( wpforms_current_user_can( 'create_forms' ) && wpforms_current_user_can( 'view_form_single', $form->ID ) ) {
-			$row_actions['duplicate'] = sprintf(
-				'<a href="%s" title="%s">%s</a>',
-				esc_url(
-					wp_nonce_url(
-						add_query_arg(
-							[
-								'action'  => 'duplicate',
-								'form_id' => $form->ID,
-							],
-							admin_url( 'admin.php?page=wpforms-overview' )
-						),
-						'wpforms_duplicate_form_nonce'
-					)
-				),
-				esc_attr__( 'Duplicate this form', 'wpforms-lite' ),
-				esc_html__( 'Duplicate', 'wpforms-lite' )
-			);
-		}
-
-		// Delete.
-		if ( wpforms_current_user_can( 'delete_form_single', $form->ID ) ) {
-			$row_actions['delete'] = sprintf(
-				'<a href="%s" title="%s">%s</a>',
-				esc_url(
-					wp_nonce_url(
-						add_query_arg(
-							[
-								'action'  => 'delete',
-								'form_id' => $form->ID,
-							],
-							admin_url( 'admin.php?page=wpforms-overview' )
-						),
-						'wpforms_delete_form_nonce'
-					)
-				),
-				esc_attr__( 'Delete this form', 'wpforms-lite' ),
-				esc_html__( 'Delete', 'wpforms-lite' )
-			);
-		}
-
-		return $this->row_actions( apply_filters( 'wpforms_overview_row_actions', $row_actions, $form ) );
+        // phpcs:enable
 	}
 
 	/**
@@ -352,15 +283,7 @@ class WPForms_Overview_Table extends WP_List_Table {
 	 */
 	public function get_bulk_actions() {
 
-		$actions = [];
-
-		if ( wpforms_current_user_can( 'delete_entries' ) ) {
-			$actions = [
-				'delete' => esc_html__( 'Delete', 'wpforms-lite' ),
-			];
-		}
-
-		return $actions;
+		return wpforms()->get( 'forms_bulk_actions' )->get_dropdown_items();
 	}
 
 	/**
@@ -381,18 +304,30 @@ class WPForms_Overview_Table extends WP_List_Table {
 
 		// Otherwise, display bulk actions menu and "0 items" on the right (pagination).
 		?>
-			<div class="tablenav <?php echo esc_attr( $which ); ?>">
-				<div class="alignleft actions bulkactions">
-					<?php $this->bulk_actions( $which ); ?>
-				</div>
-				<?php
-				if ( $which === 'top' ) {
-					$this->pagination( $which );
-				}
-				?>
-				<br class="clear" />
+		<div class="tablenav <?php echo esc_attr( $which ); ?>">
+			<div class="alignleft actions bulkactions">
+				<?php $this->bulk_actions( $which ); ?>
 			</div>
+			<?php
+			if ( $which === 'top' ) {
+				$this->pagination( $which );
+			}
+			?>
+			<br class="clear" />
+		</div>
 		<?php
+	}
+
+	/**
+	 * Extra controls to be displayed between bulk actions and pagination.
+	 *
+	 * @since 1.7.3
+	 *
+	 * @param string $which The location of the table navigation: 'top' or 'bottom'.
+	 */
+	protected function extra_tablenav( $which ) {
+
+		wpforms()->get( 'forms_views' )->extra_tablenav( $which );
 	}
 
 	/**
@@ -445,18 +380,29 @@ class WPForms_Overview_Table extends WP_List_Table {
 			'post_status'    => 'publish',
 		];
 
+		/**
+		 * Filters the `get_posts()` arguments while preparing items for the forms overview table.
+		 *
+		 * @since 1.7.3
+		 *
+		 * @param array $args Arguments array.
+		 */
+		$args = (array) apply_filters( 'wpforms_overview_table_prepare_items_args', $args );
+
 		// Giddy up.
 		$this->items = wpforms()->get( 'form' )->get( '', $args );
 		$per_page    = isset( $args['posts_per_page'] ) ? $args['posts_per_page'] : $this->get_items_per_page( 'wpforms_forms_per_page', $this->per_page );
 
 		$this->update_count( $args );
 
+		$count_current_view = empty( $this->count[ $this->view ] ) ? 0 : $this->count[ $this->view ];
+
 		// Finalize pagination.
 		$this->set_pagination_args(
 			[
-				'total_items' => $this->count['all'],
+				'total_items' => $count_current_view,
 				'per_page'    => $per_page,
-				'total_pages' => ceil( $this->count['all'] / $per_page ),
+				'total_pages' => ceil( $count_current_view / $per_page ),
 			]
 		);
 	}
@@ -471,7 +417,8 @@ class WPForms_Overview_Table extends WP_List_Table {
 	private function update_count( $args ) {
 
 		/**
-		 * Allow developers to count forms filtered by some search criteria.
+		 * Allow counting forms filtered by a given search criteria.
+         *
 		 * If result will not contain `all` key, count All Forms without filtering will be performed.
 		 *
 		 * @since 1.7.2
@@ -490,6 +437,19 @@ class WPForms_Overview_Table extends WP_List_Table {
 		$this->count['all'] = wpforms_current_user_can( 'wpforms_view_others_forms' )
 			 ? (int) wp_count_posts( 'wpforms' )->publish
 			 : (int) count_user_posts( get_current_user_id(), 'wpforms', true );
+
+		/**
+		 * Filters forms count data after counting all forms.
+		 *
+		 * This filter executes only if the result of `wpforms_overview_table_update_count` filter
+		 * doesn't contain `all` key.
+		 *
+		 * @since 1.7.3
+		 *
+		 * @param array $count Contains counts of forms in different views.
+		 * @param array $args  Arguments of the `get_posts`.
+		 */
+		$this->count = (array) apply_filters( 'wpforms_overview_table_update_count_all', $this->count, $args );
 	}
 
 	/**
@@ -540,5 +500,15 @@ class WPForms_Overview_Table extends WP_List_Table {
 	public function search_box( $text, $input_id ) {
 
 		wpforms()->get( 'forms_search' )->search_box( $text, $input_id );
+	}
+
+	/**
+	 * Get the list of views available on forms overview table.
+	 *
+	 * @since 1.7.3
+	 */
+	protected function get_views() {
+
+		return wpforms()->get( 'forms_views' )->get_views();
 	}
 }

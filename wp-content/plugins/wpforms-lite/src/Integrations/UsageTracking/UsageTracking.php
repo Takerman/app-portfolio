@@ -166,7 +166,7 @@ class UsageTracking implements IntegrationInterface {
 			'wpforms_version'                => WPFORMS_VERSION,
 			'wpforms_license_key'            => wpforms_get_license_key(),
 			'wpforms_license_type'           => $this->get_license_type(),
-			'wpforms_is_pro'                 => wpforms()->pro,
+			'wpforms_is_pro'                 => wpforms()->is_pro(),
 			'wpforms_entries_avg'            => $this->get_entries_avg( $forms_total, $entries_total ),
 			'wpforms_entries_total'          => $entries_total,
 			'wpforms_entries_last_7days'     => $this->get_entries_total( '7days' ),
@@ -201,7 +201,7 @@ class UsageTracking implements IntegrationInterface {
 	 */
 	private function get_license_type() {
 
-		if ( ! wpforms()->pro ) {
+		if ( ! wpforms()->is_pro() ) {
 			return 'lite';
 		}
 
@@ -516,7 +516,8 @@ class UsageTracking implements IntegrationInterface {
 	 */
 	private function get_entries_total( $period = 'all' ) {
 
-		if ( ! wpforms()->pro ) {
+		if ( ! wpforms()->is_pro() ) {
+
 			switch ( $period ) {
 				case '7days':
 				case '30days':

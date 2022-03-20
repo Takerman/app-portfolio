@@ -2,12 +2,14 @@
 
 namespace WPForms\Lite\Admin;
 
+use WPForms\Admin\Dashboard\Widget;
+
 /**
  * Dashboard Widget shows a chart and the form entries stats in WP Dashboard.
  *
  * @since 1.5.0
  */
-class DashboardWidget {
+class DashboardWidget extends Widget {
 
 	/**
 	 * Widget settings.
@@ -179,7 +181,7 @@ class DashboardWidget {
 	 */
 	public function widget_content() {
 
-		$forms = \wpforms()->form->get( '', array( 'fields' => 'ids' ) );
+		$forms = wpforms()->get( 'form' )->get( '', [ 'fields' => 'ids' ] );
 
 		echo '<div class="wpforms-dash-widget wpforms-lite">';
 
@@ -188,14 +190,11 @@ class DashboardWidget {
 		} else {
 			$this->widget_content_html();
 		}
-		$plugins = \get_plugins();
 
-		if (
-			! \array_key_exists( 'google-analytics-for-wordpress/googleanalytics.php', $plugins ) &&
-			! \array_key_exists( 'google-analytics-premium/googleanalytics-premium.php', $plugins ) &&
-			! empty( $forms )
-		) {
-			$this->recommended_plugin_block_html();
+		$plugin = $this->get_recommended_plugin();
+
+		if ( ! empty( $plugin ) && ! empty( $forms ) ) {
+			$this->recommended_plugin_block_html( $plugin );
 		}
 
 		echo '</div><!-- .wpforms-dash-widget -->';
@@ -354,22 +353,29 @@ class DashboardWidget {
 	 * Recommended plugin block HTML.
 	 *
 	 * @since 1.5.0
+	 * @since 1.7.3 Added plugin parameter.
+	 *
+	 * @param array $plugin Plugin data.
 	 */
-	public function recommended_plugin_block_html() {
+	public function recommended_plugin_block_html( $plugin = [] ) {
 
-		$install_mi_url = \wp_nonce_url(
-			\self_admin_url( 'update.php?action=install-plugin&plugin=google-analytics-for-wordpress' ),
-			'install-plugin_google-analytics-for-wordpress'
+		if ( ! $plugin ) {
+			return;
+		}
+
+		$install_url = wp_nonce_url(
+			self_admin_url( 'update.php?action=install-plugin&plugin=' . rawurlencode( $plugin['slug'] ) ),
+			'install-plugin_' . $plugin['slug']
 		);
 
 		?>
 		<div class="wpforms-dash-widget-recommended-plugin-block">
-			<p><?php \esc_html_e( 'Recommended Plugin:', 'wpforms-lite' ); ?>
-				<b><?php \esc_html_e( 'MonsterInsights', 'wpforms-lite' ); ?></b> -
+			<p><?php esc_html_e( 'Recommended Plugin:', 'wpforms-lite' ); ?>
+				<strong><?php echo esc_html( $plugin['name'] ); ?></strong> -
 				<?php if ( wpforms_can_install( 'plugin' ) ) { ?>
-					<a href="<?php echo \esc_url( $install_mi_url ); ?>"><?php \esc_html_e( 'Install', 'wpforms-lite' ); ?></a> &vert;
+					<a href="<?php echo esc_url( $install_url ); ?>"><?php esc_html_e( 'Install', 'wpforms-lite' ); ?></a> &vert;
 				<?php } ?>
-				<a href="https://www.monsterinsights.com/?utm_source=wpformsplugin&utm_medium=link&utm_campaign=wpformsdashboardwidget"><?php \esc_html_e( 'Learn More', 'wpforms-lite' ); ?></a></p>
+				<a href="<?php echo esc_url( $plugin['more'] ); ?>?utm_source=wpformsplugin&utm_medium=link&utm_campaign=wpformsdashboardwidget"><?php esc_html_e( 'Learn More', 'wpforms-lite' ); ?></a></p>
 		</div>
 		<?php
 	}

@@ -66,13 +66,6 @@ class Addons {
 
 		// JavaScript.
 		wp_enqueue_script(
-			'jquery-matchheight',
-			WPFORMS_PLUGIN_URL . 'assets/js/jquery.matchHeight-min.js',
-			[ 'jquery' ],
-			'0.7.0'
-		);
-
-		wp_enqueue_script(
 			'listjs',
 			WPFORMS_PLUGIN_URL . 'assets/js/list.min.js',
 			[ 'jquery' ],

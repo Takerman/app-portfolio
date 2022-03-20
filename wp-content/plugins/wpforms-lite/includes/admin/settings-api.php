@@ -104,7 +104,7 @@ function wpforms_settings_content_callback( $args ) {
 function wpforms_settings_license_callback( $args ) {
 
 	// Lite users don't need to worry about license keys.
-	if ( ! wpforms()->pro || ! class_exists( 'WPForms_License', false ) ) {
+	if ( ! wpforms()->is_pro() || ! class_exists( 'WPForms_License', false ) ) {
 
 		$output  = '<p>' . esc_html__( 'You\'re using WPForms Lite - no license needed. Enjoy!', 'wpforms-lite' ) . ' 🙂</p>';
 		$output .=

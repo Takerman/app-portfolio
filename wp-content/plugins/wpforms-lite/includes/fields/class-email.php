@@ -516,7 +516,13 @@ class WPForms_Field_Email extends WPForms_Field {
 			$value = ! empty( $field_submit ) ? $field_submit : '';
 		}
 
-		$name  = ! empty( $form_data['fields'][ $field_id ] ['label'] ) ? $form_data['fields'][ $field_id ]['label'] : '';
+		if ( $value && ! wpforms_is_email( $value ) ) {
+			wpforms()->get( 'process' )->errors[ $form_data['id'] ][ $field_id ] = esc_html__( 'The provided email is not valid.', 'wpforms-lite' );
+
+			return;
+		}
+
+		$name = ! empty( $form_data['fields'][ $field_id ] ['label'] ) ? $form_data['fields'][ $field_id ]['label'] : '';
 
 		// Set final field details.
 		wpforms()->process->fields[ $field_id ] = array(
@@ -548,33 +554,50 @@ class WPForms_Field_Email extends WPForms_Field {
 			];
 		}
 
-		if ( ! empty( $field_submit['primary'] ) ) {
-			$field_submit['primary'] = $this->encode_punycode( $field_submit['primary'] );
+		if ( empty( $field_submit['primary'] ) ) {
+			return;
+		}
+
+		$process = wpforms()->get( 'process' );
+
+		if ( ! $process ) {
+			return;
+		}
+
+		$field_submit['primary'] = $this->email_encode_punycode( $field_submit['primary'] );
+
+		if ( ! $field_submit['primary'] ) {
+			$process->errors[ $form_id ][ $field_id ] = esc_html__( 'The provided email is not valid.', 'wpforms-lite' );
+
+			return;
 		}
 
 		// Validate email field with confirmation.
-		if ( isset( $form_data['fields'][ $field_id ]['confirmation'] ) && ! empty( $field_submit['primary'] ) && ! empty( $field_submit['secondary'] ) ) {
+		if ( isset( $form_data['fields'][ $field_id ]['confirmation'] ) && ! empty( $field_submit['secondary'] ) ) {
+			$field_submit['secondary'] = $this->email_encode_punycode( $field_submit['secondary'] );
 
-			if ( ! is_email( $field_submit['primary'] ) ) {
-				wpforms()->process->errors[ $form_id ][ $field_id ] = esc_html__( 'The provided email is not valid.', 'wpforms-lite' );
+			if ( ! $field_submit['secondary'] ) {
+				$process->errors[ $form_id ][ $field_id ] = esc_html__( 'The provided email is not valid.', 'wpforms-lite' );
 
-			} elseif ( $field_submit['primary'] !== $this->encode_punycode( $field_submit['secondary'] ) ) {
-				wpforms()->process->errors[ $form_id ][ $field_id ] = esc_html__( 'The provided emails do not match.', 'wpforms-lite' );
+				return;
+			}
 
-			} elseif ( ! $this->is_restricted_email( $field_submit['primary'], $form_data['fields'][ $field_id ] ) ) {
-				wpforms()->process->errors[ $form_id ][ $field_id ] = wpforms_setting( 'validation-email-restricted', esc_html__( 'This email address is not allowed.', 'wpforms-lite' ) );
+			if ( $field_submit['primary'] !== $field_submit['secondary'] ) {
+				$process->errors[ $form_id ][ $field_id ] = esc_html__( 'The provided emails do not match.', 'wpforms-lite' );
+
+				return;
+			}
+
+			if ( ! $this->is_restricted_email( $field_submit['primary'], $form_data['fields'][ $field_id ] ) ) {
+				$process->errors[ $form_id ][ $field_id ] = wpforms_setting( 'validation-email-restricted', esc_html__( 'This email address is not allowed.', 'wpforms-lite' ) );
+
+				return;
 			}
 		}
 
 		// Validate regular email field, without confirmation.
-		if ( ! isset( $form_data['fields'][ $field_id ]['confirmation'] ) && ! empty( $field_submit['primary'] ) ) {
-
-			if ( ! is_email( $field_submit['primary'] ) ) {
-				wpforms()->process->errors[ $form_id ][ $field_id ] = esc_html__( 'The provided email is not valid.', 'wpforms-lite' );
-
-			} elseif ( ! $this->is_restricted_email( $field_submit['primary'], $form_data['fields'][ $field_id ] ) ) {
-				wpforms()->process->errors[ $form_id ][ $field_id ] = wpforms_setting( 'validation-email-restricted', esc_html__( 'This email address is not allowed.', 'wpforms-lite' ) );
-			}
+		if ( ! isset( $form_data['fields'][ $field_id ]['confirmation'] ) && ! $this->is_restricted_email( $field_submit['primary'], $form_data['fields'][ $field_id ] ) ) {
+			$process->errors[ $form_id ][ $field_id ] = wpforms_setting( 'validation-email-restricted', esc_html__( 'This email address is not allowed.', 'wpforms-lite' ) );
 		}
 	}
 
@@ -874,6 +897,24 @@ class WPForms_Field_Email extends WPForms_Field {
 	}
 
 	/**
+	 * Encode email.
+	 *
+	 * @since 1.7.3
+	 *
+	 * @param string $email Email.
+	 *
+	 * @return string
+	 */
+	private function email_encode_punycode( $email ) {
+
+		if ( ! wpforms_is_email( $email ) ) {
+			return '';
+		}
+
+		return $this->encode_punycode( $email );
+	}
+
+	/**
 	 * Encode email pattern.
 	 *
 	 * @since 1.6.9
@@ -884,7 +925,13 @@ class WPForms_Field_Email extends WPForms_Field {
 	 */
 	private function encode_punycode( $email_pattern ) {
 
-		return $this->transform_punycode( $email_pattern, [ $this->get_punycode(), 'encode' ] );
+		try {
+			$encoded = $this->transform_punycode( $email_pattern, [ $this->get_punycode(), 'encode' ] );
+		} catch ( Exception $e ) {
+			return '';
+		}
+
+		return $encoded;
 	}
 
 	/**

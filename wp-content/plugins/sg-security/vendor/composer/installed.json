@@ -335,9 +335,9 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.siteground.com/wordpress/siteground-emails.git",
-                "reference": "93ca7a456317f6e7135a68198e560b1c6db22833"
+                "reference": "c0a215b4d90ce33879f0df075b765057c951270a"
             },
-            "time": "2022-02-28T13:32:04+00:00",
+            "time": "2022-03-15T11:33:14+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "source",

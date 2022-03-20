@@ -64,7 +64,7 @@
                                                         <td class="body-text"
                                                             style="padding: 30px 0 40px 0">
                                                             <a href="https://www.siteground.com/wordpress-hosting.htm?mktafcode=2503d9f030a249cba730a3d4a7fecada&utm_source=sgsecweekly&utm_medium=email" class="body-text"
-                                                               target="_blank" rel="noreferrer" style="font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 600; line-height: 20px; text-transform: uppercase; text-decoration: none; display: inline-block; border-top: 10px solid #f47b44; border-bottom: 10px solid #f47b44; border-left: 20px solid #f47b44; border-right: 20px solid #f47b44;  color: #ffffff; background: #f47b44; border-radius: 2px;"><?php esc_html_e( 'Get now with 60% OFF', 'sg-security' ); ?></a>
+                                                               target="_blank" rel="noreferrer" style="font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 600; line-height: 20px; text-transform: uppercase; text-decoration: none; display: inline-block; border-top: 10px solid #f47b44; border-bottom: 10px solid #f47b44; border-left: 20px solid #f47b44; border-right: 20px solid #f47b44;  color: #ffffff; background: #f47b44; border-radius: 2px;"><?php esc_html_e( 'GET NOW 3 MONTHS FREE', 'sg-security' ); ?></a>
                                                         </td>
                                                     </tr>
                                                 </table>

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - All-in-One WP Migration - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-03-14 16:02:01+0000\n"
+"PO-Revision-Date: 2022-03-19 17:37:49+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -44,6 +44,18 @@ msgstr "The file type that you have tried to import is not compatible with this 
 #: lib/model/import/class-ai1wm-import-permalinks.php:42
 msgid "Done getting WordPress permalinks settings."
 msgstr "Finished getting WordPress permalinks settings."
+
+#: lib/view/import/avada.php:33
+msgid "» <a class=\"ai1wm-no-underline\" href=\"%s\" target=\"_blank\">Save permalinks structure</a>. (opens a new window)<br />"
+msgstr "» <a class=\"ai1wm-no-underline\" href=\"%s\" target=\"_blank\">Save permalinks structure</a>. (opens a new window)<br />"
+
+#: lib/model/export/class-ai1wm-export-enumerate-tables.php:84
+msgid "Done retrieving a list of WordPress database tables."
+msgstr "Done retrieving a list of WordPress database tables."
+
+#: lib/model/export/class-ai1wm-export-enumerate-tables.php:48
+msgid "Retrieving a list of WordPress database tables..."
+msgstr "Retrieving a list of WordPress database tables..."
 
 #: lib/view/main/translate.php:31
 msgid "Translate"

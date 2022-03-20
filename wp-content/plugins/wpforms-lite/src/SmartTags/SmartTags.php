@@ -84,7 +84,7 @@ class SmartTags {
 		 *
 		 * @since 1.4.0
 		 *
-		 * @param array The list of smart tags.
+		 * @param array $tags The list of smart tags.
 		 */
 		$this->smart_tags = (array) apply_filters(
 			'wpforms_smart_tags',

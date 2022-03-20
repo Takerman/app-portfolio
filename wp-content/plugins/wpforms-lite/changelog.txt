@@ -1,5 +1,36 @@
 == Changelog ==
 
+= 1.7.3 =
+- IMPORTANT: Support for PHP 5.5 has been discontinued. If you are running PHP 5.5, you MUST upgrade PHP before installing WPForms 1.7.3. Failure to do that will disable WPForms core functionality.
+- IMPORTANT: Support for WordPress 5.1 has been discontinued. If you are running WordPress 5.1, you MUST upgrade WordPress before installing WPForms 1.7.3. Failure to do that will disable WPForms core functionality.
+- Added: Forms now can be moved to Trash and restored on the Forms Overview page.
+- Added: Forms now support Revisions with new UI and ability to switch between them.
+- Added: Form Template Export selection on the Tools > Export page now supports search.
+- Changed: Improved support for WordPress Core UI colors and admin themes in the admin notifications panel.
+- Changed: Improved submitted email field value validation (take into account real-world usage and RFC information).
+- Changed: Updated Action Scheduler library to 3.4.0.
+- Changed: Hide Sub-Labels option should be hidden for some formats in the Name field.
+- Changed: Improved performance of Action Scheduler tasks.
+- Changed: Drop jQuery matchHeight library in favor of a CSS solution.
+- Changed: Unified and improved modals across all plugin pages and the Form Builder.
+- Changed: Forms now can be deleted when the user who created them is deleted.
+- Fixed: Long field titles didn't wrap within the field container.
+- Fixed: Stuck on loading the Form Builder when switching to a new form template with unsaved changes and dismissing the native browser prompt.
+- Fixed: Buttons had no spacing when the Embed button is not available for a user without the capability to edit pages and/or posts.
+- Fixed: Incorrect position of the notification counter in the admin bar when a notification was dismissed.
+- Fixed: Make the form Submit button disabled all the time after the submit action when AJAX form submission or confirmation redirect are enabled.
+- Fixed: Toggle control labels did not have a hand cursor.
+- Fixed: The dropdown list was shown partially when located at the end of the form in the Twenty Twenty theme.
+- Fixed: Multiple selected options in the Classic Dropdown field didn't have a visual active state.
+- Fixed: Deprecation notice when processing smart tags.
+- Fixed: False JavaScript issue error when WP Rocket's Delay JavaScript execution option is on.
+- Fixed: PHP notice generated when email notifications were sent.
+- Fixed: "Did You Know" block now always spaned across all columns.
+- Fixed: Validation error if an email was not required and left empty.
+- Fixed: Email field validation failed with long and invalid emails.
+- Fixed: Import from other plugins.
+- Fixed: Compatibility with PHP 8.1.
+
 = 1.7.2.1 =
 - Fixed: Compatibility with PHP 8.0 and PHP 8.1.
 - Fixed: Compatibility with WordPress 5.9, including its new Full Site Editing feature.

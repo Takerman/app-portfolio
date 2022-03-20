@@ -3,15 +3,16 @@
 namespace WPForms\Providers;
 
 /**
- * Class Loader gives ability to track/load all providers.
+ * Class Providers gives ability to track/load all providers.
  *
  * @since 1.4.7
+ * @since 1.7.3 Renamed from `Loader` to `Providers`.
  */
-class Loader {
+class Providers {
 
 	/**
 	 * Get the instance of a class and store it in itself.
-	 * Later we will be able to use this class as $providers_loader = \WPForms\Providers\Loader::get_instance();
+	 * Later we will be able to use this class as `$providers_loader = \WPForms\Providers\Providers::get_instance();`.
 	 *
 	 * @since 1.4.7
 	 */
@@ -20,7 +21,7 @@ class Loader {
 		static $instance;
 
 		if ( ! $instance ) {
-			$instance = new Loader();
+			$instance = new Providers();
 		}
 
 		return $instance;
