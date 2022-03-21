@@ -9,6 +9,7 @@ class TRP_Machine_Translation_Tab {
         $this->settings = $settings;
 
         add_action( 'plugins_loaded', array( $this, 'add_upsell_filter' ) );
+        add_filter( 'trp_machine_translate_slug', array( $this, 'add_enable_auto_translate_slug_filter' ) );
 
     }
 
@@ -60,26 +61,49 @@ class TRP_Machine_Translation_Tab {
     * Sanitize settings
     */
     public function sanitize_settings($mt_settings ){
-        if( !empty( $mt_settings['machine-translation'] ) )
-            $mt_settings['machine-translation'] = sanitize_text_field( $mt_settings['machine-translation']  );
-        else
-            $mt_settings['machine-translation'] = 'no';
 
-        if( !empty( $mt_settings['translation-engine'] ) )
-            $mt_settings['translation-engine'] = sanitize_text_field( $mt_settings['translation-engine']  );
+        $free_version = ( ( !class_exists( 'TRP_Handle_Included_Addons' ) ) || ( ( defined( 'TRANSLATE_PRESS' ) && ( TRANSLATE_PRESS !== 'TranslatePress - Developer' && TRANSLATE_PRESS !== 'TranslatePress - Business' && TRANSLATE_PRESS !== 'TranslatePress - Dev' && TRANSLATE_PRESS !== 'TranslatePress - Personal' ) ) ) );
+        $seo_pack_active = class_exists( 'TRP_IN_Seo_Pack');
+        $settings = array();
+        $machine_translation_keys = array( 'machine-translation', 'translation-engine', 'google-translate-key', 'deepl-api-type', 'deepl-api-key', 'block-crawlers', 'automatically-translate-slug', 'machine_translation_limit', 'machine_translation_log' );
+        foreach( $machine_translation_keys as $key ){
+            if( isset( $mt_settings[$key] ) ){
+                $settings[$key] = $mt_settings[$key];
+            }
+        }
+        if( !empty( $settings['machine-translation'] ) )
+            $settings['machine-translation'] = sanitize_text_field( $settings['machine-translation']  );
         else
-            $mt_settings['translation-engine'] = 'google_translate_v2';
+            $settings['machine-translation'] = 'no';
 
-        if($mt_settings['translation-engine'] == 'deepl_upsell' && !class_exists( 'TRP_DeepL' ) && !class_exists( 'TRP_IN_DeepL' )){
-            $mt_settings['translation-engine'] = 'google_translate_v2';
+        if( !empty( $settings['translation-engine'] ) )
+            $settings['translation-engine'] = sanitize_text_field( $settings['translation-engine']  );
+        else
+            $settings['translation-engine'] = 'google_translate_v2';
+
+        if($settings['translation-engine'] == 'deepl_upsell' && !class_exists( 'TRP_DeepL' ) && !class_exists( 'TRP_IN_DeepL' )){
+            $settings['translation-engine'] = 'google_translate_v2';
         }
 
-        if( !empty( $mt_settings['block-crawlers'] ) )
-            $mt_settings['block-crawlers'] = sanitize_text_field( $mt_settings['block-crawlers']  );
+        if( !empty( $settings['block-crawlers'] ) )
+            $settings['block-crawlers'] = sanitize_text_field( $settings['block-crawlers']  );
         else
-            $mt_settings['block-crawlers'] = 'no';
+            $settings['block-crawlers'] = 'no';
 
-        return apply_filters( 'trp_machine_translation_sanitize_settings', $mt_settings );
+        if( $free_version || !$seo_pack_active ){
+            $mt_settings_option = get_option( 'trp_machine_translation_settings' );
+            if( isset( $mt_settings_option['automatically-translate-slug'] ) ){
+                $settings['automatically-translate-slug'] = $mt_settings_option['automatically-translate-slug'];
+            }
+        }
+        else{
+            if( !empty( $settings['automatically-translate-slug'] ) )
+                $settings['automatically-translate-slug'] = sanitize_text_field( $settings['automatically-translate-slug'] );
+            else
+                $settings['automatically-translate-slug'] = 'no';
+        }
+
+        return apply_filters( 'trp_machine_translation_sanitize_settings', $settings );
     }
 
     /*
@@ -143,6 +167,12 @@ class TRP_Machine_Translation_Tab {
     }
 
 
+    public function add_enable_auto_translate_slug_filter( $allow ){
+        if( isset( $this->settings['trp_machine_translation_settings']['automatically-translate-slug'] ) && $this->settings['trp_machine_translation_settings']['automatically-translate-slug'] == 'yes' ){
+            $allow = true;
+        }
+        return $allow;
+    }
 
     public function display_unsupported_languages(){
         $trp = TRP_Translate_Press::get_trp_instance();

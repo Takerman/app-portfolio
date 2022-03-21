@@ -1,0 +1,1 @@
+(window["aioseopjsonp"]=window["aioseopjsonp"]||[]).push([["sitemaps-lite-news-sitemap-Update-vue"],{"407f":function(e,t,n){"use strict";n.r(t);var s=function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div")},i=[],o=n("2877"),a={},l=Object(o["a"])(a,s,i,!1,null,null,null);t["default"]=l.exports}}]);

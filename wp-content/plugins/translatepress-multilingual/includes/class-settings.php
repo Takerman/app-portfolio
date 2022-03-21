@@ -411,6 +411,7 @@ class TRP_Settings{
             'machine-translation'               => 'no',
             'translation-engine'                => 'google_translate_v2',
             'block-crawlers'                    => 'yes',
+            'automatically-translate-slug'      => 'yes',
             'machine_translation_counter_date'  => date ("Y-m-d" ),
             'machine_translation_counter'       => 0,
             'machine_translation_limit'         => 1000000

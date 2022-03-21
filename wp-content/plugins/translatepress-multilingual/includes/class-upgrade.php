@@ -79,6 +79,14 @@ class TRP_Upgrade {
             if ( version_compare($stored_database_version, '2.1.2', '<=')){
                 $this->create_opposite_ls_option();
             }
+            if( version_compare( $stored_database_version, '2.2.2', '<=' ) ){
+                $this->migrate_auto_translate_slug_to_automatic_translation();
+            }
+            /**
+             * Write an upgrading function above this comment to be executed only once: while updating plugin to a higher version.
+             * Use example condition: version_compare( $stored_database_version, '2.9.9', '<=')
+             * where 2.9.9 is the current version, and 3.0.0 will be the updated version where this code will be launched.
+             */
         }
 
         // don't update the db version unless they are different. Otherwise the query is run on every page load.
@@ -86,6 +94,20 @@ class TRP_Upgrade {
             update_option( 'trp_plugin_version', TRP_PLUGIN_VERSION );
 		}
 	}
+
+    public function migrate_auto_translate_slug_to_automatic_translation(){
+        $option = get_option( 'trp_advanced_settings', true );
+        $mt_settings_option = get_option( 'trp_machine_translation_settings' );
+        if( !isset( $mt_settings_option['automatically-translate-slug'] ) ){
+            if( !isset( $option['enable_auto_translate_slug'] ) || $option['enable_auto_translate_slug'] == '' || $option['enable_auto_translate_slug'] == 'no' ){
+                $mt_settings_option['automatically-translate-slug'] = 'no';
+            }
+            else{
+                $mt_settings_option['automatically-translate-slug'] = 'yes';
+            }
+            update_option( 'trp_machine_translation_settings', $mt_settings_option );
+        }
+    }
 
 	/**
 	 * Iterates over all languages to call gettext table checking

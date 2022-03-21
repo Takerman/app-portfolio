@@ -2,7 +2,11 @@
     <form method="post" action="options.php">
         <?php settings_fields( 'trp_machine_translation_settings' ); ?>
         <h1> <?php esc_html_e( 'TranslatePress Automatic Translation', 'translatepress-multilingual' );?></h1>
-        <?php do_action ( 'trp_settings_navigation_tabs' ); ?>
+        <?php
+        do_action ( 'trp_settings_navigation_tabs' );
+        $free_version = ( ( !class_exists( 'TRP_Handle_Included_Addons' ) ) || ( ( defined( 'TRANSLATE_PRESS' ) && ( TRANSLATE_PRESS !== 'TranslatePress - Developer' && TRANSLATE_PRESS !== 'TranslatePress - Business' && TRANSLATE_PRESS !== 'TranslatePress - Dev' && TRANSLATE_PRESS !== 'TranslatePress - Personal' ) ) ) );
+        $seo_pack_active = class_exists( 'TRP_IN_Seo_Pack');
+        ?>
 
         <table id="trp-options" class="form-table trp-machine-translation-options">
             <tr>
@@ -46,7 +50,7 @@
 
                             <?php
                             //link and message in case the user has the free version of TranslatePress
-                            if(( !class_exists('TRP_Handle_Included_Addons')) || (( defined('TRANSLATE_PRESS') && (TRANSLATE_PRESS !== 'TranslatePress - Developer' && TRANSLATE_PRESS !=='TranslatePress - Business' && TRANSLATE_PRESS !=='TranslatePress - Dev') )) ) :
+                            if( ( !class_exists( 'TRP_Handle_Included_Addons' ) ) || ( ( defined( 'TRANSLATE_PRESS' ) && ( TRANSLATE_PRESS !== 'TranslatePress - Developer' && TRANSLATE_PRESS !== 'TranslatePress - Business' && TRANSLATE_PRESS !== 'TranslatePress - Dev' ) ) ) ) :
                                 $url = trp_add_affiliate_id_to_link('https://translatepress.com/pricing/?utm_source=wpbackend&utm_medium=clientsite&utm_content=deepl_upsell&utm_campaign=tpfree');
                                 $message = __( '<strong>DeepL</strong> automatic translation is available as a <a href="%1$s" target="_blank" title="%2$s">%2$s</a>.', 'translatepress-multilingual' );
                                 $message_upgrade = __( 'By upgrading you\'ll get access to all paid add-ons, premium support and help fund the future development of TranslatePress.', 'translatepress-multilingual' );
@@ -118,6 +122,44 @@
                     </label>
                     <p class="description">
                         <?php esc_html_e( 'Block crawlers from triggering automatic translations on your website.', 'translatepress-multilingual' ); ?>
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <th scope=row><?php esc_html_e( 'Automatically Translate Slugs', 'translatepress-multilingual' ); ?></th>
+                <td>
+                    <label>
+                        <?php
+                        $is_disabled = '';
+                        //link and message in case the user has the free version of TranslatePress
+                        if( $free_version || !$seo_pack_active ){
+                            $is_disabled = 'disabled';
+                        }
+                        ?>
+                        <input type=checkbox name="trp_machine_translation_settings[automatically-translate-slug]" value="yes" <?php ( isset( $this->settings['trp_machine_translation_settings']['automatically-translate-slug'] ) && !$free_version && $seo_pack_active ) ? checked( $this->settings['trp_machine_translation_settings']['automatically-translate-slug'], 'yes' ) : checked( '', 'yes' ); echo $is_disabled //phpcs:ignore ?>>
+                        <?php esc_html_e( 'Yes' , 'translatepress-multilingual' ); ?>
+                    </label>
+                    <p class="description">
+                        <?php
+                        echo wp_kses( __( 'Generate automatic translations of slugs for posts, pages and Custom Post Types.<br/>The slugs will be automatically translated starting with the second refresh of each page.', 'translatepress-multilingual' ), array( 'br' => array() ) );
+                        if( $free_version ){
+                            $url = trp_add_affiliate_id_to_link( 'https://translatepress.com/pricing/?utm_source=wpbackend&utm_medium=clientsite&utm_content=automatically_translate_slugs&utm_campaign=tpfree' );
+                            $message = __( 'This feature is available only in the paid version. <a href="%1$s" target="_blank" title="%2$s">%2$s</a> and unlock more premium features.', 'translatepress-multilingual' );
+                            $lnk = sprintf(
+                                $message, esc_url( $url ),
+                                __( 'Upgrade TranslatePress', 'translatepress-multilingual' )
+                            );
+                            ?>
+                            <p class="trp-upsell-auto-translate-slugs">
+                                <?php echo wp_kses_post( $lnk ); // Post kses for more generalized output that is more forgiving and has late escaping. ?>
+                            </p>
+                            <?php
+                        }
+                        if( !$free_version && !$seo_pack_active ){
+                            echo wp_kses( __( '<br/>Requires <a href="https://translatepress.com/docs/addons/seo-pack/" title="TranslatePress Add-on SEO Pack documentation" target="_blank"> SEO Pack Add-on</a> to be installed and activated.', 'translatepress-multilingual' ), array( 'br' => array(), 'a' => array( 'href' => array(), 'title' => array(), 'target' => array() ) ) );
+                        }
+                        ?>
                     </p>
                 </td>
             </tr>

@@ -1,0 +1,1 @@
+(window["aioseopjsonp"]=window["aioseopjsonp"]||[]).push([["local-seo-lite-opening-hours-Update-vue"],{"81b2":function(e,n,o){"use strict";o.r(n);var t=function(){var e=this,n=e.$createElement,o=e._self._c||n;return o("div")},l=[],s=o("2877"),i={},u=Object(s["a"])(i,t,l,!1,null,null,null);n["default"]=u.exports}}]);

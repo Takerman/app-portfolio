@@ -60,7 +60,7 @@ class TRP_Translate_Press{
         define( 'TRP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
         define( 'TRP_PLUGIN_BASE', plugin_basename( __DIR__ . '/index.php' ) );
         define( 'TRP_PLUGIN_SLUG', 'translatepress-multilingual' );
-        define( 'TRP_PLUGIN_VERSION', '2.2.2' );
+        define( 'TRP_PLUGIN_VERSION', '2.2.3' );
 
 	    wp_cache_add_non_persistent_groups(array('trp'));
 
@@ -161,7 +161,7 @@ class TRP_Translate_Press{
         $this->install_plugins            = new TRP_Install_Plugins();
         $this->reviews                    = new TRP_Reviews( $this->settings->get_settings() );
         $this->rewrite_rules              = new TRP_Rewrite_Rules( $this->settings->get_settings() );
-        $this->check_invalid_text         = new TRP_Check_Invalid_Text();
+        $this->check_invalid_text         = new TRP_Check_Invalid_Text( );
     }
 
     /**

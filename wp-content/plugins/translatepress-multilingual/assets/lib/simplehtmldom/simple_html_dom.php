@@ -509,15 +509,13 @@ class simple_html_dom_node
 				{
 					case TRP_HDOM_QUOTE_DOUBLE: $quote = '"'; break;
 					case TRP_HDOM_QUOTE_SINGLE: $quote = '\''; break;
-                    default: $quote = '';
                     /*
                      * TranslatePress modifications
                      * We changed the default $quote from '' to ' " ' to avoid JS security issue. There is a filter applied on this global, $TRP_HDOM_QUOTE_DEFAULT,
                      * so it can be changed in case there is a problem for some clients.
-
+*/
 					default: { global $TRP_HDOM_QUOTE_DEFAULT; $quote = $TRP_HDOM_QUOTE_DEFAULT; };
-                    */
-				}
+  				}
 
 				$ret .= $key
 				. $this->_[TRP_HDOM_INFO_SPACE][$i][1]

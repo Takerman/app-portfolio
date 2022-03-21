@@ -280,6 +280,11 @@
 <?php __("Click here to check if the selected translation engine is configured correctly.", "translatepress-multilingual"); ?>
 <?php __("Block Crawlers", "translatepress-multilingual"); ?>
 <?php __("Block crawlers from triggering automatic translations on your website.", "translatepress-multilingual"); ?>
+<?php __("Automatically Translate Slugs", "translatepress-multilingual"); ?>
+<?php __("Generate automatic translations of slugs for posts, pages and Custom Post Types.<br/>The slugs will be automatically translated starting with the second refresh of each page.", "translatepress-multilingual"); ?>
+<?php __("This feature is available only in the paid version. <a href=\"%1$s\" target=\"_blank\" title=\"%2$s\">%2$s</a> and unlock more premium features.", "translatepress-multilingual"); ?>
+<?php __("Upgrade TranslatePress", "translatepress-multilingual"); ?>
+<?php __("<br/>Requires <a href=\"https://translatepress.com/docs/addons/seo-pack/\" title=\"TranslatePress Add-on SEO Pack documentation\" target=\"_blank\"> SEO Pack Add-on</a> to be installed and activated.", "translatepress-multilingual"); ?>
 <?php __("Limit machine translation / characters per day", "translatepress-multilingual"); ?>
 <?php __("Add a limit to the number of automatically translated characters so you can better budget your project.", "translatepress-multilingual"); ?>
 <?php __("Today's character count:", "translatepress-multilingual"); ?>
@@ -377,8 +382,6 @@
 <?php __("Choose what paths can be translated. Supports wildcard at the end of the path.<br>For example, to exclude https://example.com/some/path you can either use the rule /some/path/ or /some/*.<br>Enter each rule on it's own line. To exclude the home page use {{home}}.", "translatepress-multilingual"); ?>
 <?php __("Exclude Paths From Translation", "translatepress-multilingual"); ?>
 <?php __("Translate Only Certain Paths", "translatepress-multilingual"); ?>
-<?php __("Automatically translate slugs", "translatepress-multilingual"); ?>
-<?php __("Generate automatic translations of slugs for posts, pages and Custom Post Types.<br/>Requires <a href=\"https://translatepress.com/docs/addons/seo-pack/\" title=\"TranslatePress Add-on SEO Pack documentation\" target=\"_blank\"> SEO Pack Add-on</a> to be installed and activated.<br>The slugs will be automatically translated starting with the second refresh of each page.", "translatepress-multilingual"); ?>
 <?php __("Enable the hreflang x-default tag for language:", "translatepress-multilingual"); ?>
 <?php __("Enables the hreflang=\"x-default\" for an entire language. See documentation for more details.", "translatepress-multilingual"); ?>
 <?php __("Translate numbers and numerals", "translatepress-multilingual"); ?>
@@ -474,9 +477,21 @@
 <?php __("First by IP address, then by browser language", "translatepress-multilingual"); ?>
 <?php __("Only by browser language", "translatepress-multilingual"); ?>
 <?php __("Only by IP address", "translatepress-multilingual"); ?>
+<?php __("A popup appears asking the user if they want to be redirected", "translatepress-multilingual"); ?>
+<?php __("Redirect directly (*not recommended)", "translatepress-multilingual"); ?>
+<?php __("Pop-up window over the content", "translatepress-multilingual"); ?>
+<?php __("Hello bar before the content", "translatepress-multilingual"); ?>
 <?php __("WARNING. Cannot determine your language preference based on your current IP.<br>This is most likely because the website is on a local environment.", "translatepress-multilingual"); ?>
+<?php __("Go to <a href=\"%s\" target=\"_self\">Advanced</a> tab to change this feature's settings", "translatepress-multilingual"); ?>
 <?php __("Method of language detection", "translatepress-multilingual"); ?>
 <?php __("Select how the language should be detected for first time visitors.<br>The visitor's last displayed language will be remembered through cookies.", "translatepress-multilingual"); ?>
+<?php __("Pop-up to notify the user of the detected language", "translatepress-multilingual"); ?>
+<?php __("Select the type of pop-up you wish to appear.", "translatepress-multilingual"); ?>
+<?php __("Write the text you wish to appear in the pop-up.", "translatepress-multilingual"); ?>
+<?php __("The same text is displayed in all languages. <br>A selecting language switcher will be appended to the pop-up. The detected language is pre-selected.", "translatepress-multilingual"); ?>
+<?php __("Write the text you wish to appear on the button.", "translatepress-multilingual"); ?>
+<?php __("Write the text you wish to appear on the close button. Leave empty for just the close button.", "translatepress-multilingual"); ?>
+<?php __("Choose if you want the user to be redirected directly.<br>* Not recommended because it may cause indexing issues for search engines.", "translatepress-multilingual"); ?>
 <?php __("Bad request. There was an error accessing the DeepL API.", "translatepress-multilingual"); ?>
 <?php __("The API key entered is invalid.", "translatepress-multilingual"); ?>
 <?php __("The API resource could not be found.", "translatepress-multilingual"); ?>
