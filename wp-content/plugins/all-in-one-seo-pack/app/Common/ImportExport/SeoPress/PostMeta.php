@@ -49,8 +49,8 @@ class PostMeta {
 	 */
 	public function scheduleImport() {
 		if ( aioseo()->helpers->scheduleSingleAction( aioseo()->importExport->seoPress->postActionName, 0 ) ) {
-			if ( ! aioseo()->cache->get( 'import_post_meta_seopress' ) ) {
-				aioseo()->cache->update( 'import_post_meta_seopress', time(), WEEK_IN_SECONDS );
+			if ( ! aioseo()->core->cache->get( 'import_post_meta_seopress' ) ) {
+				aioseo()->core->cache->update( 'import_post_meta_seopress', time(), WEEK_IN_SECONDS );
 			}
 		}
 	}
@@ -65,9 +65,9 @@ class PostMeta {
 	public function importPostMeta() {
 		$postsPerAction  = 100;
 		$publicPostTypes = implode( "', '", aioseo()->helpers->getPublicPostTypes( true ) );
-		$timeStarted     = gmdate( 'Y-m-d H:i:s', aioseo()->cache->get( 'import_post_meta_seopress' ) );
+		$timeStarted     = gmdate( 'Y-m-d H:i:s', aioseo()->core->cache->get( 'import_post_meta_seopress' ) );
 
-		$posts = aioseo()->db
+		$posts = aioseo()->core->db
 			->start( 'posts as p' )
 			->select( 'p.ID, p.post_type' )
 			->join( 'postmeta as pm', '`p`.`ID` = `pm`.`post_id`' )
@@ -81,13 +81,13 @@ class PostMeta {
 			->result();
 
 		if ( ! $posts || ! count( $posts ) ) {
-			aioseo()->cache->delete( 'import_post_meta_seopress' );
+			aioseo()->core->cache->delete( 'import_post_meta_seopress' );
 
 			return;
 		}
 
 		foreach ( $posts as $post ) {
-			$postMeta = aioseo()->db
+			$postMeta = aioseo()->core->db
 				->start( 'postmeta' . ' as pm' )
 				->select( 'pm.meta_key, pm.meta_value' )
 				->where( 'pm.post_id', $post->ID )
@@ -111,7 +111,7 @@ class PostMeta {
 		if ( count( $posts ) === $postsPerAction ) {
 			aioseo()->helpers->scheduleSingleAction( aioseo()->importExport->seoPress->postActionName, 5, [], true );
 		} else {
-			aioseo()->cache->delete( 'import_post_meta_seopress' );
+			aioseo()->core->cache->delete( 'import_post_meta_seopress' );
 		}
 	}
 

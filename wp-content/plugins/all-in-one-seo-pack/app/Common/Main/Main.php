@@ -35,44 +35,24 @@ class Main {
 	 * @return void
 	 */
 	public function enqueueAssets() {
-		aioseo()->helpers->enqueueChunkedAssets();
+		$this->enqueueTranslations();
 
-		// Scripts.
-		$standalone = [
-			'app',
-			'notifications'
-		];
+		aioseo()->core->assets->load( 'src/vue/standalone/notifications/main.js', [], [
+			'newNotifications' => count( Models\Notification::getNewNotifications() )
+		], 'aioseoNotifications' );
+	}
 
-		foreach ( $standalone as $key ) {
-			aioseo()->helpers->enqueueScript(
-				'aioseo-' . $key,
-				'js/' . $key . '.js'
-			);
-		}
-
-		wp_localize_script(
-			'aioseo-app',
-			'aioseoTranslations',
-			[
-				'translations' => aioseo()->helpers->getJedLocaleData( 'all-in-one-seo-pack' )
-			]
-		);
-
-		wp_localize_script(
-			'aioseo-notifications',
-			'aioseoNotifications',
-			[
-				'newNotifications' => count( Models\Notification::getNewNotifications() )
-			]
-		);
-
-		$rtl = is_rtl() ? '.rtl' : '';
-		foreach ( $standalone as $key ) {
-			aioseo()->helpers->enqueueStyle(
-				"aioseo-$key-style",
-				"css/$key$rtl.css"
-			);
-		}
+	/**
+	 * Enqueues the translations seperately so it can be called from anywhere.
+	 *
+	 * @since 4.1.9
+	 *
+	 * @return void
+	 */
+	public function enqueueTranslations() {
+		aioseo()->core->assets->load( 'src/vue/standalone/app/main.js', [], [
+			'translations' => aioseo()->helpers->getJedLocaleData( 'all-in-one-seo-pack' )
+		], 'aioseoTranslations' );
 	}
 
 	/**
@@ -91,12 +71,7 @@ class Main {
 			return;
 		}
 
-		// Styles.
-		aioseo()->helpers->enqueueStyle(
-			'aioseo-admin-bar',
-			'css/aioseo-admin-bar.css',
-			false
-		);
+		aioseo()->core->assets->enqueueCss( 'admin-bar.css', [], 'src/vue/assets/scss/app/admin-bar.scss' );
 	}
 
 	/**

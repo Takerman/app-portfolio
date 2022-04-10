@@ -33,12 +33,12 @@ class Htaccess {
 	 * @return string The contents of the file.
 	 */
 	public function getContents() {
-		$wpfs = aioseo()->helpers->wpfs();
-		if ( ! @$wpfs->exists( $this->path ) ) {
+		$fs = aioseo()->core->fs;
+		if ( ! $fs->exists( $this->path ) ) {
 			return false;
 		}
 
-		$contents = @$wpfs->get_contents( $this->path );
+		$contents = $fs->getContents( $this->path );
 
 		return aioseo()->helpers->encodeOutputHtml( $contents );
 	}
@@ -52,10 +52,10 @@ class Htaccess {
 	 * @return boolean           True if the file was updated.
 	 */
 	public function saveContents( $contents ) {
-		$wpfs       = aioseo()->helpers->wpfs();
-		$fileExists = @$wpfs->exists( $this->path );
-		if ( ! $fileExists || @$wpfs->is_writable( $this->path ) ) {
-			$success = @$wpfs->put_contents( $this->path, $contents );
+		$fs         = aioseo()->core->fs;
+		$fileExists = $fs->exists( $this->path );
+		if ( ! $fileExists || $fs->isWritable( $this->path ) ) {
+			$success = $fs->putContents( $this->path, $contents );
 			if ( false === $success ) {
 				return false;
 			}

@@ -194,10 +194,22 @@ class Settings {
 	 * @return \WP_REST_Response          The response.
 	 */
 	public static function importSettings( $request ) {
-		$file     = $request->get_file_params()['file'];
-		$wpfs     = aioseo()->helpers->wpfs();
-		$contents = @$wpfs->get_contents( $file['tmp_name'] );
-		if ( ! empty( $file['type'] ) && 'application/json' === $file['type'] ) {
+		$file = $request->get_file_params()['file'];
+		if (
+			empty( $file['tmp_name'] ) ||
+			empty( $file['type'] ) ||
+			(
+				'application/json' !== $file['type'] &&
+				'application/octet-stream' !== $file['type']
+			)
+		) {
+			return new \WP_REST_Response( [
+				'success' => false
+			], 400 );
+		}
+
+		$contents = aioseo()->core->fs->getContents( $file['tmp_name'] );
+		if ( 'application/json' === $file['type'] ) {
 			// Since this could be any file, we need to pretend like every variable here is missing.
 			$contents = json_decode( $contents, true );
 			if ( empty( $contents ) ) {
@@ -261,7 +273,7 @@ class Settings {
 			}
 		}
 
-		if ( ! empty( $file['type'] ) && 'application/octet-stream' === $file['type'] ) {
+		if ( 'application/octet-stream' === $file['type'] ) {
 			$response = aioseo()->importExport->importIniData( $contents );
 			if ( ! $response ) {
 				return new \WP_REST_Response( [
@@ -330,7 +342,7 @@ class Settings {
 		if ( ! empty( $postOptions ) ) {
 			$notAllowedFields = aioseo()->access->getNotAllowedPageFields();
 			foreach ( $postOptions as $postType ) {
-				$posts = aioseo()->db->start( 'aioseo_posts as ap' )
+				$posts = aioseo()->core->db->start( 'aioseo_posts as ap' )
 					->select( 'ap.*' )
 					->join( 'posts as p', 'ap.post_id = p.ID' )
 					->where( 'p.post_type', $postType )
@@ -388,7 +400,7 @@ class Settings {
 
 		switch ( $action ) {
 			case 'clear-cache':
-				aioseo()->cache->clear();
+				aioseo()->core->cache->clear();
 				break;
 			case 'readd-capabilities':
 				aioseo()->access->addCapabilities();

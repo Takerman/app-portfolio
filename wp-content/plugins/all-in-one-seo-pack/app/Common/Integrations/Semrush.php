@@ -195,7 +195,7 @@ class Semrush {
 		}
 
 		$transientKey = 'semrush_keyphrases_' . $keyphrase . '_' . $database;
-		$results      = aioseo()->cache->get( $transientKey );
+		$results      = aioseo()->core->cache->get( $transientKey );
 
 		if ( null !== $results ) {
 			return $results;
@@ -217,7 +217,7 @@ class Semrush {
 		$response = wp_remote_get( $url );
 		$body     = json_decode( wp_remote_retrieve_body( $response ) );
 
-		aioseo()->cache->update( $transientKey, $body );
+		aioseo()->core->cache->update( $transientKey, $body );
 
 		return $body;
 	}

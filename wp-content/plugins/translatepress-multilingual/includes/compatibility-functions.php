@@ -247,6 +247,17 @@ function trp_woo_skip_dynamic_translation( $skip_selectors ){
     return $skip_selectors;
 }
 
+/**
+ * Prevent translation of names and addresses in WooCommerce emails.
+ */
+if( class_exists( 'WooCommerce' ) ){
+    add_filter( 'woocommerce_order_get_formatted_shipping_address', 'trp_woo_address_no_translate', 10, 3 );
+    add_filter( 'woocommerce_order_get_formatted_billing_address', 'trp_woo_address_no_translate', 10, 3 );
+
+    function trp_woo_address_no_translate( $address, $raw_address, $order ){
+        return empty( $address ) ? $address : '<span data-no-translation>' . $address . '</span>';
+    }
+}
 
 /**
  * Compatibility with WooCommerce product variation.

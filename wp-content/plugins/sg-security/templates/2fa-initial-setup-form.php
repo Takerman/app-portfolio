@@ -17,8 +17,6 @@
 		<input name="sgc2facode" id="sgc2facode" class="input" value="" size="20" pattern="[0-9]*" autofocus />
 	</p>
 
-	<input type="hidden" name="sg-user-id" id="sg-user-id" value="<?php echo esc_attr( $user->ID ); ?>" />
-
 	<?php if ( $args['interim_login'] ) : ?>
 		<input type="hidden" name="interim-login" value="1" />
 	<?php else : ?>

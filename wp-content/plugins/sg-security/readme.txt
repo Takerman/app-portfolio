@@ -11,7 +11,8 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 SiteGround Security is the all-in-one security solution for your WordPress website.
 
 == Description ==
-With the carefully selected and easy to configure functions the plugin provides everything you need to secure your website and prevent a number of threats such as brute-force attacks, compromised login, data leaks, and more.
+
+With the carefully selected and easy to configure functions the [SiteGround Security](https://www.siteground.com/wordpress-plugins/siteground-security) plugin provides everything you need to secure your website and prevent a number of threats such as brute-force attacks, compromised login, data leaks, and more.
 
 == Login Settings ==
 
@@ -173,6 +174,23 @@ In version 1.0.2 we've added full WP-CLI support for all plugin options and func
 1. Go to Plugins -> Installed Plugins and click the 'Activate' link under the WordPress SiteGround Security listing
 
 == Changelog ==
+
+= Version 1.2.7 =
+Release Date: April 8th, 2022
+
+* Minor bug fixes
+
+= Version 1.2.6 =
+Release Date: April 7th, 2022
+
+* 2FA Refactoring
+
+= Version 1.2.5 =
+Release Date: April 6th, 2022
+
+* 2FA Authentication refactoring
+* Improved Weekly Emails
+* HSTS service deprecated
 
 = Version 1.2.4 =
 Release Date: March 16th, 2022

@@ -333,7 +333,7 @@ class ImportExport {
 	 * @return boolean True if an import is currently running.
 	 */
 	public function isImportRunning() {
-		$importsRunning = aioseo()->cache->get( 'import_%_meta_%' );
+		$importsRunning = aioseo()->core->cache->get( 'import_%_meta_%' );
 
 		return ! empty( $importsRunning );
 	}

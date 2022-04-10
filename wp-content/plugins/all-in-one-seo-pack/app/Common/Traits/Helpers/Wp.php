@@ -24,103 +24,6 @@ trait Wp {
 	private static $connection = false;
 
 	/**
-	 * Helper method to enqueue scripts.
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param  string $script The script to enqueue.
-	 * @param  string $url    The URL of the script.
-	 * @param  bool   $vue    Whether or not this is a vue script.
-	 * @return void
-	 */
-	public function enqueueScript( $script, $url, $vue = true ) {
-		if ( ! wp_script_is( $script, 'enqueued' ) ) {
-			wp_enqueue_script(
-				$script,
-				$this->getScriptUrl( $url, $vue ),
-				[],
-				aioseo()->version,
-				true
-			);
-		}
-	}
-
-	/**
-	 * Helper method to enqueue stylesheets.
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param  string $style The stylesheet to enqueue.
-	 * @param  string $url   The URL of the stylesheet.
-	 * @param  bool   $vue    Whether or not this is a vue stylesheet.
-	 * @return void
-	 */
-	public function enqueueStyle( $style, $url, $vue = true ) {
-		if ( ! wp_style_is( $style, 'enqueued' ) && $this->shouldEnqueue( $url ) ) {
-			wp_enqueue_style(
-				$style,
-				$this->getScriptUrl( $url, $vue ),
-				[],
-				aioseo()->version
-			);
-		}
-	}
-
-	/**
-	 * Whether or not we should enqueue a file.
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param  string $url The url to check against.
-	 * @return bool        Whether or not we should enqueue.
-	 */
-	private function shouldEnqueue( $url ) {
-		$version  = strtoupper( aioseo()->versionPath );
-		$host     = defined( 'AIOSEO_DEV_' . $version ) ? constant( 'AIOSEO_DEV_' . $version ) : false;
-
-		if ( ! $host ) {
-			return true;
-		}
-
-		if ( false !== strpos( $url, 'chunk-common.css' ) ) {
-			// return false;
-		}
-
-		return true;
-	}
-
-	/**
-	 * Retrieve the proper URL for this script or style.
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param  string $url The url.
-	 * @param  bool   $vue Whether or not this is a vue script.
-	 * @return string      The modified url.
-	 */
-	public function getScriptUrl( $url, $vue = true ) {
-		$version  = strtoupper( aioseo()->versionPath );
-		$host     = $vue && defined( 'AIOSEO_DEV_' . $version ) ? constant( 'AIOSEO_DEV_' . $version ) : false;
-		$localUrl = $url;
-		$url      = plugins_url( 'dist/' . aioseo()->versionPath . '/assets/' . $url, AIOSEO_FILE );
-
-		if ( ! $host ) {
-			return $url;
-		}
-
-		if ( $host && ! self::$connection ) {
-			$splitHost        = explode( ':', str_replace( '/', '', str_replace( 'http://', '', str_replace( 'https://', '', $host ) ) ) );
-			self::$connection = @fsockopen( $splitHost[0], $splitHost[1] ); // phpcs:ignore WordPress
-		}
-
-		if ( ! self::$connection ) {
-			return $url;
-		}
-
-		return $host . $localUrl;
-	}
-
-	/**
 	 * Returns user roles in the current WP install.
 	 *
 	 * @since 4.0.0
@@ -382,9 +285,9 @@ trait Wp {
 
 		$rolesWhere = [];
 		foreach ( $roles as $role ) {
-			$rolesWhere[] = '(um.meta_key = \'' . aioseo()->db->db->prefix . 'capabilities\' AND um.meta_value LIKE \'%\"' . $role . '\"%\')';
+			$rolesWhere[] = '(um.meta_key = \'' . aioseo()->core->db->db->prefix . 'capabilities\' AND um.meta_value LIKE \'%\"' . $role . '\"%\')';
 		}
-		$dbUsers = aioseo()->db->start( 'users as u' )
+		$dbUsers = aioseo()->core->db->start( 'users as u' )
 			->select( 'u.ID, u.display_name, u.user_nicename, u.user_email' )
 			->join( 'usermeta as um', 'u.ID = um.user_id' )
 			->whereRaw( '(' . implode( ' OR ', $rolesWhere ) . ')' )
@@ -413,7 +316,7 @@ trait Wp {
 	 * @return array An array of user data.
 	 */
 	public function getSiteAuthors() {
-		$authors = aioseo()->cache->get( 'site_authors' );
+		$authors = aioseo()->core->cache->get( 'site_authors' );
 		if ( null === $authors ) {
 			// phpcs:disable WordPress.DB.SlowDBQuery, HM.Performance.SlowMetaQuery
 			global $wpdb;
@@ -437,7 +340,7 @@ trait Wp {
 					'gravatar'    => get_avatar_url( $user->user_email )
 				];
 			}
-			aioseo()->cache->update( 'site_authors', $authors, 12 * HOUR_IN_SECONDS );
+			aioseo()->core->cache->update( 'site_authors', $authors, 12 * HOUR_IN_SECONDS );
 		}
 
 		return $authors;
@@ -477,26 +380,6 @@ trait Wp {
 		}
 
 		return $image[0];
-	}
-
-	/**
-	 * Returns the filesystem object if we have access to it.
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param  array         $args The connection args.
-	 * @return WP_Filesystem       The filesystem object.
-	 */
-	public function wpfs( $args = [] ) {
-		require_once( ABSPATH . 'wp-admin/includes/file.php' );
-		WP_Filesystem( $args );
-
-		global $wp_filesystem;
-		if ( is_object( $wp_filesystem ) ) {
-			return $wp_filesystem;
-		}
-
-		return false;
 	}
 
 	/**
@@ -650,5 +533,104 @@ trait Wp {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Checks if the current user can edit posts of the given post type.
+	 *
+	 * @since 4.1.9
+	 *
+	 * @param  string $postType The name of the post type.
+	 * @return bool             Whether the user can edit posts of the given post type.
+	 */
+	public function canEditPostType( $postType ) {
+		$capabilities = $this->getPostTypeCapabilities( $postType );
+
+		return current_user_can( $capabilities['edit_posts'] );
+	}
+
+	/**
+	 * Returns a list of capabilities for the given post type.
+	 *
+	 * @since 4.1.9
+	 *
+	 * @param  string $postType The name of the post type.
+	 * @return array            The capabilities.
+	 */
+	public function getPostTypeCapabilities( $postType ) {
+		static $capabilities = [];
+		if ( isset( $capabilities[ $postType ] ) ) {
+			return $capabilities[ $postType ];
+		}
+
+		$postTypeObject = get_post_type_object( $postType );
+		if ( ! is_a( $postTypeObject, 'WP_Post_Type' ) ) {
+			$capabilities[ $postType ] = [];
+
+			return $capabilities[ $postType ];
+		}
+
+		if ( ! is_array( $postTypeObject->capability_type ) ) {
+			$postTypeObject->capability_type = [
+				$postTypeObject->capability_type,
+				$postTypeObject->capability_type . 's'
+			];
+		}
+
+		// Singular base for meta capabilities, plural base for primitive capabilities.
+		list( $singularBase, $pluralBase ) = $postTypeObject->capability_type;
+
+		$capabilities[ $postType ] = [
+			'edit_post'          => 'edit_' . $singularBase,
+			'read_post'          => 'read_' . $singularBase,
+			'delete_post'        => 'delete_' . $singularBase,
+			'edit_posts'         => 'edit_' . $pluralBase,
+			'edit_others_posts'  => 'edit_others_' . $pluralBase,
+			'delete_posts'       => 'delete_' . $pluralBase,
+			'publish_posts'      => 'publish_' . $pluralBase,
+			'read_private_posts' => 'read_private_' . $pluralBase,
+		];
+
+		return $capabilities[ $postType ];
+	}
+
+	/**
+	 * Checks if the current user can edit terms of the given taxonomy.
+	 *
+	 * @since 4.1.9
+	 *
+	 * @param  string $taxonomy The name of the taxonomy.
+	 * @return bool             Whether the user can edit posts of the given taxonomy.
+	 */
+	public function canEditTaxonomy( $taxonomy ) {
+		$capabilities = $this->getTaxonomyCapabilities( $taxonomy );
+
+		return current_user_can( $capabilities['edit_terms'] );
+	}
+
+	/**
+	 * Returns a list of capabilities for the given taxonomy.
+	 *
+	 * @since 4.1.9
+	 *
+	 * @param  string $postType The name of the taxonomy.
+	 * @return array            The capabilities.
+	 */
+	public function getTaxonomyCapabilities( $taxonomy ) {
+		static $capabilities = [];
+		if ( isset( $capabilities[ $taxonomy ] ) ) {
+			return $capabilities[ $taxonomy ];
+		}
+
+		$taxonomyObject = get_taxonomy( $taxonomy );
+		if ( ! is_a( $taxonomyObject, 'WP_Taxonomy' ) ) {
+			$capabilities[ $taxonomy ] = [];
+
+			return $capabilities[ $taxonomy ];
+		}
+
+		$capabilities[ $taxonomy ] = (array) $taxonomyObject->cap;
+
+		return $capabilities[ $taxonomy ];
 	}
 }

@@ -5,9 +5,9 @@
  * Description: SEO for WordPress. Features like XML Sitemaps, SEO for custom post types, SEO for blogs, business sites, ecommerce sites, and much more. More than 80 million downloads since 2007.
  * Author:      All in One SEO Team
  * Author URI:  https://aioseo.com/
- * Version:     4.1.8
+ * Version:     4.1.10
  * Text Domain: all-in-one-seo-pack
- * Domain Path: /i18n/
+ * Domain Path: /languages
  *
  * All in One SEO is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

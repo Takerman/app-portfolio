@@ -28,7 +28,7 @@ class Image {
 	 */
 	public function __construct() {
 		// Column may not have been created yet.
-		if ( ! aioseo()->db->columnExists( 'aioseo_posts', 'image_scan_date' ) ) {
+		if ( ! aioseo()->core->db->columnExists( 'aioseo_posts', 'image_scan_date' ) ) {
 			return;
 		}
 
@@ -90,8 +90,8 @@ class Image {
 		$postsPerScan = apply_filters( 'aioseo_image_sitemap_posts_per_scan', 10 );
 		$postTypes    = implode( "', '", aioseo()->helpers->getPublicPostTypes( true ) );
 
-		$posts = aioseo()->db
-			->start( aioseo()->db->db->posts . ' as p', true )
+		$posts = aioseo()->core->db
+			->start( aioseo()->core->db->db->posts . ' as p', true )
 			->select( '`p`.`ID`, `p`.`post_type`, `p`.`post_content`, `p`.`post_excerpt`, `p`.`post_modified_gmt`' )
 			->leftJoin( 'aioseo_posts as ap', '`ap`.`post_id` = `p`.`ID`' )
 			->whereRaw( '( `ap`.`id` IS NULL OR `p`.`post_modified_gmt` > `ap`.`image_scan_date` OR `ap`.`image_scan_date` IS NULL )' )
@@ -158,13 +158,13 @@ class Image {
 			$images = array_merge( $images, $this->getProductImages( $post ) );
 		}
 
+		$images = apply_filters( 'aioseo_sitemap_images', $images, $post );
+
 		if ( ! $images ) {
 			$this->updatePost( $post->ID );
 
 			return;
 		}
-
-		$images = apply_filters( 'aioseo_sitemap_images', $images, $post );
 
 		// Limit to a 1,000 URLs, in accordance to Google's specifications.
 		$images = array_slice( $images, 0, 1000 );

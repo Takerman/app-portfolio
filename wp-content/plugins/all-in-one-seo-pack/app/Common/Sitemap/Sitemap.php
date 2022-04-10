@@ -373,7 +373,7 @@ class Sitemap {
 		];
 
 		// Set a high expiration date so we still have the cache for static sitemaps.
-		aioseo()->cache->update( 'aioseo_sitemap_' . $fileName, $data, MONTH_IN_SECONDS );
+		aioseo()->core->cache->update( 'aioseo_sitemap_' . $fileName, $data, MONTH_IN_SECONDS );
 	}
 
 	/**
@@ -386,7 +386,7 @@ class Sitemap {
 	protected function determineContext() {
 		global $wp_query;
 		$this->type          = 'rss' === $wp_query->query_vars['aiosp_sitemap_path'] ? 'rss' : 'general';
-		$this->filename      = 'sitemap';
+		$this->filename      = $this->helpers->filename();
 		$this->indexName     = $wp_query->query_vars['aiosp_sitemap_path'];
 		$this->pageNumber    = ! empty( $wp_query->query_vars['aiosp_sitemap_page'] ) ? $wp_query->query_vars['aiosp_sitemap_page'] - 1 : 0;
 		$this->indexes       = aioseo()->options->sitemap->general->indexes;
@@ -432,7 +432,7 @@ class Sitemap {
 		}
 
 		require_once( ABSPATH . 'wp-admin/includes/file.php' );
-		if ( ! file_exists( get_home_path() . $_SERVER['REQUEST_URI'] ) ) {
+		if ( ! aioseo()->core->fs->exists( get_home_path() . $_SERVER['REQUEST_URI'] ) ) {
 			$this->scheduleRegeneration();
 		}
 	}
@@ -513,11 +513,11 @@ class Sitemap {
 			$advanced      = aioseo()->options->sitemap->general->advancedSettings->enable;
 			$excludeImages = aioseo()->options->sitemap->general->advancedSettings->excludeImages;
 			$sitemapParams = aioseo()->helpers->getParametersFromUrl( $sitemapUrl );
-			$xslParams     = aioseo()->cache->get( 'aioseo_sitemap_' . trim( $sitemapPath, '/' ) );
+			$xslParams     = aioseo()->core->cache->get( 'aioseo_sitemap_' . trim( $sitemapPath, '/' ) );
 			// phpcs:enable VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
 
 			// Translators: 1 - The sitemap name, 2 - The current page.
-			$title = sprintf( __( '%s Sitemap %s', 'all-in-one-seo-pack' ), $sitemapName, $currentPage > 1 ? $currentPage : '' );
+			$title = sprintf( __( '%1$s Sitemap %2$s', 'all-in-one-seo-pack' ), $sitemapName, $currentPage > 1 ? $currentPage : '' );
 			$title = trim( $title );
 
 			echo '<?xml version="1.0" encoding="' . esc_attr( $charset ) . '"?>';

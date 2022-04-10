@@ -400,10 +400,10 @@ class Sitemap {
 				}
 			}
 
-			$wpfs = aioseo()->helpers->wpfs();
-			if ( count( $detectedFiles ) && is_object( $wpfs ) ) {
+			$fs = aioseo()->core->fs;
+			if ( count( $detectedFiles ) && $fs->isWpfsValid() ) {
 				foreach ( $detectedFiles as $file ) {
-					@$wpfs->delete( $file, false, 'f' );
+					$fs->fs->delete( $file, false, 'f' );
 				}
 			}
 

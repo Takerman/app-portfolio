@@ -36,12 +36,12 @@ class SetupWizard {
 	 */
 	public function redirect() {
 		// Check if we should consider redirection.
-		if ( ! aioseo()->cache->get( 'activation_redirect' ) ) {
+		if ( ! aioseo()->core->cache->get( 'activation_redirect' ) ) {
 			return;
 		}
 
 		// If we are redirecting, clear the transient so it only happens once.
-		aioseo()->cache->delete( 'activation_redirect' );
+		aioseo()->core->cache->delete( 'activation_redirect' );
 
 		// Check option to disable welcome redirect.
 		if ( get_option( 'aioseo_activation_redirect', false ) ) {
@@ -109,7 +109,7 @@ class SetupWizard {
 		remove_action( 'admin_print_styles', 'gutenberg_block_editor_admin_print_styles' );
 
 		// If we are redirecting, clear the transient so it only happens once.
-		aioseo()->cache->delete( 'activation_redirect' );
+		aioseo()->core->cache->delete( 'activation_redirect' );
 
 		$this->loadOnboardingWizard();
 	}
@@ -141,25 +141,9 @@ class SetupWizard {
 		remove_all_actions( 'admin_notices' );
 		remove_all_actions( 'all_admin_notices' );
 
-		aioseo()->helpers->enqueueChunkedAssets();
-		aioseo()->helpers->enqueueScript(
-			'aioseo-setup-wizard-script',
-			'js/setup-wizard.js'
-		);
+		aioseo()->core->assets->load( 'src/vue/standalone/setup-wizard/main.js', [], aioseo()->helpers->getVueData( 'setup-wizard' ) );
 
-		wp_localize_script(
-			'aioseo-setup-wizard-script',
-			'aioseo',
-			aioseo()->helpers->getVueData( 'setup-wizard' )
-		);
-
-		wp_localize_script(
-			'aioseo-setup-wizard-script',
-			'aioseoTranslations',
-			[
-				'translations' => aioseo()->helpers->getJedLocaleData( 'all-in-one-seo-pack' )
-			]
-		);
+		aioseo()->main->enqueueTranslations();
 
 		wp_enqueue_style( 'common' );
 		wp_enqueue_media();
@@ -201,7 +185,9 @@ class SetupWizard {
 	 * @return void
 	 */
 	public function setupWizardContent() {
-		echo '<div id="aioseo-app"></div>';
+		echo '<div id="aioseo-app">';
+		aioseo()->templates->getTemplate( 'admin/settings-page.php' );
+		echo '</div>';
 	}
 
 	/**

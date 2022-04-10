@@ -165,7 +165,7 @@ class SystemStatus {
 	 */
 	public static function getServerInfo() {
 		$sqlMode   = null;
-		$mysqlInfo = aioseo()->db->db->get_results( "SHOW VARIABLES LIKE 'sql_mode'" );
+		$mysqlInfo = aioseo()->core->db->db->get_results( "SHOW VARIABLES LIKE 'sql_mode'" );
 		if ( is_array( $mysqlInfo ) ) {
 			$sqlMode = $mysqlInfo[0]->Value;
 		}
@@ -187,7 +187,7 @@ class SystemStatus {
 				],
 				[
 					'header' => __( 'MySQL Version', 'all-in-one-seo-pack' ),
-					'value'  => aioseo()->db->db->db_version()
+					'value'  => aioseo()->core->db->db->db_version()
 				],
 				[
 					'header' => __( 'MySQL SQL Mode', 'all-in-one-seo-pack' ),

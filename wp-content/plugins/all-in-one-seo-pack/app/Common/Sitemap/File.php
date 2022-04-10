@@ -251,13 +251,11 @@ class File {
 		}
 		$content = ob_get_clean();
 
-		$file = ABSPATH . sanitize_file_name( $filename );
-		$wpfs = aioseo()->helpers->wpfs();
-		if ( $wpfs ) {
-			$fileExists = @$wpfs->exists( $file );
-			if ( ! $fileExists || @$wpfs->is_writable( $file ) ) {
-				@$wpfs->put_contents( $file, $content );
-			}
+		$fs         = aioseo()->core->fs;
+		$file       = ABSPATH . sanitize_file_name( $filename );
+		$fileExists = $fs->exists( $file );
+		if ( ! $fileExists || $fs->isWritable( $file ) ) {
+			$fs->putContents( $file, $content );
 		}
 	}
 

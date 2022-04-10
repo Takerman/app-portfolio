@@ -33,6 +33,7 @@ class Options {
 			'yandex'                    => [ 'type' => 'string' ],
 			'baidu'                     => [ 'type' => 'string' ],
 			'pinterest'                 => [ 'type' => 'string' ],
+			'microsoftClarityProjectId' => [ 'type' => 'string' ],
 			'alexa'                     => [ 'type' => 'string' ],
 			'norton'                    => [ 'type' => 'string' ],
 			'miscellaneousVerification' => [ 'type' => 'html' ]
@@ -470,7 +471,7 @@ TEMPLATE
 			$this->addValueToValuesArray( $this->defaultsMerged, $dbOptions )
 		);
 
-		aioseo()->optionsCache->setOptions( $this->optionsName, apply_filters( 'aioseo_get_options', $options ) );
+		aioseo()->core->optionsCache->setOptions( $this->optionsName, apply_filters( 'aioseo_get_options', $options ) );
 
 		// Get the localized options.
 		$dbOptionsLocalized = get_option( $this->optionsName . '_localized' );
@@ -562,7 +563,7 @@ TEMPLATE
 		}
 
 		// Refactor options.
-		$cachedOptions = aioseo()->optionsCache->getOptions( $this->optionsName );
+		$cachedOptions = aioseo()->core->optionsCache->getOptions( $this->optionsName );
 		$dbOptions     = array_replace_recursive(
 			$cachedOptions,
 			$this->addValueToValuesArray( $cachedOptions, $options, [], true )
@@ -636,7 +637,7 @@ TEMPLATE
 			}
 		}
 
-		aioseo()->optionsCache->setOptions( $this->optionsName, $dbOptions );
+		aioseo()->core->optionsCache->setOptions( $this->optionsName, $dbOptions );
 
 		// Update localized options.
 		update_option( $this->optionsName . '_localized', $this->localized );

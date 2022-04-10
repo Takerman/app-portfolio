@@ -48,6 +48,9 @@ class Memcache {
 				if ( ! $this->is_connection_working() ) {
 					Options::disable_option( 'siteground_optimizer_enable_memcached' );
 					Options::enable_option( 'siteground_optimizer_memcache_notice' );
+
+					// Remove the dropin since we are disabling the option.
+					$this->remove_memcached_dropin();
 				}
 			} else {
 				Options::disable_option( 'siteground_optimizer_enable_memcached' );

@@ -52,8 +52,8 @@ class Sitemaps {
 			], 400 );
 		}
 
-		$wpfs = aioseo()->helpers->wpfs();
-		if ( ! is_object( $wpfs ) ) {
+		$fs = aioseo()->core->fs;
+		if ( ! $fs->isWpfsValid() ) {
 			return new \WP_REST_Response( [
 				'success' => false,
 				'message' => 'No access to filesystem.'
@@ -61,7 +61,7 @@ class Sitemaps {
 		}
 
 		foreach ( $detectedFiles as $file ) {
-			@$wpfs->delete( $file, false, 'f' );
+			$fs->fs->delete( $file, false, 'f' );
 		}
 
 		Models\Notification::deleteNotificationByName( 'sitemap-static-files' );

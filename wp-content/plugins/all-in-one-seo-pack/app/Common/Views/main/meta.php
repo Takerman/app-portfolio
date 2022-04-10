@@ -13,11 +13,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 // phpcs:disable VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable
 // phpcs:disable Generic.WhiteSpace.ScopeIndent.Incorrect
 // phpcs:disable Generic.WhiteSpace.ScopeIndent.IncorrectExact
-$description           = aioseo()->helpers->encodeOutputHtml( aioseo()->meta->description->getDescription() );
-$robots                = aioseo()->meta->robots->meta();
-$keywords              = $this->keywords->getKeywords();
-$canonical             = aioseo()->helpers->canonicalUrl();
-$links                 = $this->links->getLinks();
+$description = aioseo()->helpers->encodeOutputHtml( aioseo()->meta->description->getDescription() );
+$robots      = aioseo()->meta->robots->meta();
+$keywords    = $this->keywords->getKeywords();
+$canonical   = aioseo()->helpers->canonicalUrl();
+$links       = $this->links->getLinks();
 ?>
 <?php if ( $description ) : ?>
 		<meta name="description" content="<?php echo esc_attr( $description ); ?>" />

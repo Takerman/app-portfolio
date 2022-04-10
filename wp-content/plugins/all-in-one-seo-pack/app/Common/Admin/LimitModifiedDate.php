@@ -67,11 +67,8 @@ class LimitModifiedDate {
 		}
 
 		// Only enqueue this script if the post-settings-metabox is already enqueued.
-		if ( wp_script_is( 'aioseo-post-settings-metabox', 'enqueued' ) ) {
-			aioseo()->helpers->enqueueScript(
-				'aioseo-limit-modified-date',
-				'js/limit-modified-date.js'
-			);
+		if ( wp_script_is( 'aioseo/js/src/vue/standalone/post-settings/main.js', 'enqueued' ) ) {
+			aioseo()->core->assets->load( 'src/vue/standalone/limit-modified-date/main.js' );
 		}
 	}
 
@@ -135,6 +132,14 @@ class LimitModifiedDate {
 		if ( isset( $unsanitizedData['aioseo-post-settings'] ) ) {
 			$aioseoData = json_decode( stripslashes( $unsanitizedData['aioseo-post-settings'] ) );
 			if ( ! empty( $aioseoData->limit_modified_date ) ) {
+				$shouldReset = true;
+			}
+		}
+
+		// Handle post revision.
+		if ( ! empty( $GLOBALS['action'] ) && 'restore' === $GLOBALS['action'] ) {
+			$aioseoPost = Models\Post::getPost( $unsanitizedData['ID'] );
+			if ( $aioseoPost->exists() && $aioseoPost->limit_modified_date ) {
 				$shouldReset = true;
 			}
 		}

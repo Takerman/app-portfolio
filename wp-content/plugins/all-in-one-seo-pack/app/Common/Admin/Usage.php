@@ -135,7 +135,7 @@ abstract class Usage {
 			'url'                           => home_url(),
 			'php_version'                   => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
 			'wp_version'                    => get_bloginfo( 'version' ),
-			'mysql_version'                 => aioseo()->db->db->db_version(),
+			'mysql_version'                 => aioseo()->core->db->db->db_version(),
 			'server_version'                => isset( $_SERVER['SERVER_SOFTWARE'] ) ? sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) ) : '',
 			'is_ssl'                        => is_ssl(),
 			'is_multisite'                  => is_multisite(),

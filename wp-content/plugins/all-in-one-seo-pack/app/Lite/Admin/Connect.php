@@ -123,17 +123,7 @@ class Connect {
 		remove_all_actions( 'admin_notices' );
 		remove_all_actions( 'all_admin_notices' );
 
-		aioseo()->helpers->enqueueChunkedAssets();
-		aioseo()->helpers->enqueueScript(
-			'aioseo-connect-script',
-			'js/connect.js'
-		);
-
-		wp_localize_script(
-			'aioseo-connect-script',
-			'aioseo',
-			aioseo()->helpers->getVueData()
-		);
+		aioseo()->core->assets->load( 'src/vue/standalone/connect/main.js', [], aioseo()->helpers->getVueData() );
 	}
 
 	/**
@@ -148,17 +138,7 @@ class Connect {
 		remove_all_actions( 'admin_notices' );
 		remove_all_actions( 'all_admin_notices' );
 
-		aioseo()->helpers->enqueueChunkedAssets();
-		aioseo()->helpers->enqueueScript(
-			'aioseo-connect-pro-script',
-			'js/connect-pro.js'
-		);
-
-		wp_localize_script(
-			'aioseo-connect-pro-script',
-			'aioseo',
-			aioseo()->helpers->getVueData()
-		);
+		aioseo()->core->assets->load( 'src/vue/standalone/connect-pro/main.js', [], aioseo()->helpers->getVueData() );
 	}
 
 	/**
@@ -197,7 +177,9 @@ class Connect {
 	 * @return void
 	 */
 	public function connectContent() {
-		echo '<div id="aioseo-app"></div>';
+		echo '<div id="aioseo-app">';
+		aioseo()->templates->getTemplate( 'admin/settings-page.php' );
+		echo '</div>';
 	}
 
 	/**
@@ -280,7 +262,7 @@ class Connect {
 		], defined( 'AIOSEO_UPGRADE_URL' ) ? AIOSEO_UPGRADE_URL : 'https://upgrade.aioseo.com' );
 
 		// We're storing the ID of the user who is installing Pro so that we can add capabilties for him after upgrading.
-		aioseo()->cache->update( 'connect_active_user', get_current_user_id(), 15 * MINUTE_IN_SECONDS );
+		aioseo()->core->cache->update( 'connect_active_user', get_current_user_id(), 15 * MINUTE_IN_SECONDS );
 
 		return [
 			'url' => $url,
@@ -374,7 +356,10 @@ class Connect {
 		if ( false === $creds ) {
 			wp_send_json_error( $error );
 		}
-		if ( ! aioseo()->helpers->wpfs( $creds ) ) {
+
+		$fs = aioseo()->core->fs->noConflict();
+		$fs->init( $creds );
+		if ( ! $fs->isWpfsValid() ) {
 			wp_send_json_error( $error );
 		}
 

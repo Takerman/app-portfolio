@@ -57,7 +57,7 @@ class Activity_Log_Widgets extends Activity_Log_Helper {
 			array(
 				'activity'    => $activity,
 				'description' => $this->get_widget_description( $_REQUEST['widget-id'] , $activity ), // phpcs:ignore
-				'object_id'   => $_REQUEST['widget-id'], // phpcs:ignore
+				'object_id'   => sanitize_text_field( wp_unslash( $_REQUEST['widget-id'] ) ), // phpcs:ignore
 				'type'        => 'widget',
 				'action'      => 'delete',
 			)

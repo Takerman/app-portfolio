@@ -53,6 +53,37 @@ class Ai1wm_Extractor extends Ai1wm_Archiver {
 		parent::__construct( $file_name );
 	}
 
+	public function list_files() {
+		$files = array();
+
+		// Seek to beginning of archive file
+		if ( @fseek( $this->file_handle, 0, SEEK_SET ) === -1 ) {
+			throw new Ai1wm_Not_Seekable_Exception( sprintf( __( 'Unable to seek to beginning of file. File: %s', AI1WM_PLUGIN_NAME ), $this->file_name ) );
+		}
+
+		// Loop over files
+		while ( $block = @fread( $this->file_handle, 4377 ) ) {
+
+			// End block has been reached
+			if ( $block === $this->eof ) {
+				continue;
+			}
+
+			// Get file data from the block
+			if ( ( $data = $this->get_data_from_block( $block ) ) ) {
+
+				// Skip file content, so we can move forward to the next file
+				if ( @fseek( $this->file_handle, $data['size'], SEEK_CUR ) === -1 ) {
+					throw new Ai1wm_Not_Seekable_Exception( sprintf( __( 'Unable to seek to offset of file. File: %s Offset: %d', AI1WM_PLUGIN_NAME ), $this->file_name, $data['size'] ) );
+				}
+
+				$files[] = $data;
+			}
+		}
+
+		return $files;
+	}
+
 	/**
 	 * Get the total files count in an archive
 	 *

@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '74700de2f3c14951756c29de69e26a5cc9f786a3',
+        'reference' => 'fa6b38a9c5a254651979fd3aa230eb938e5378cd',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '74700de2f3c14951756c29de69e26a5cc9f786a3',
+            'reference' => 'fa6b38a9c5a254651979fd3aa230eb938e5378cd',
             'dev_requirement' => false,
         ),
         'a5hleyrich/wp-background-processing' => array(

@@ -28,4 +28,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Kangaroos cannot jump here' );
 }
 
-printf( ' <span class="ai1wm-menu-count" title="%s">%d</span>', sprintf( _n( 'You have %d backup', 'You have %d backups', $count, AI1WM_PLUGIN_NAME ), $count ), $count );
+if ( $count > 0 ) {
+	printf( ' <span class="ai1wm-menu-count" title="%s">%d</span>', sprintf( _n( 'You have %d backup', 'You have %d backups', $count, AI1WM_PLUGIN_NAME ), $count ), $count );
+}

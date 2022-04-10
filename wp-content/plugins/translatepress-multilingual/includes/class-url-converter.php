@@ -180,13 +180,11 @@ class TRP_Url_Converter {
             }
 
             if ( apply_filters( 'trp_add_region_independent_hreflang_tags', true ) ) {
-                if ( strpos( $language, '_' ) !== false ) {
-                    $language_independent_hreflang = strtok( $language, '_' );
-                    if ( !empty( $language_independent_hreflang ) && !in_array( $language_independent_hreflang, $region_independent_languages ) ) {
-                        $region_independent_languages[] = $language_independent_hreflang;
-                        $hreflang_duplicates_region_independent[$language] = '<link rel="alternate" hreflang="' . esc_attr( $language_independent_hreflang ) . '" href="' . esc_url( $this->get_url_for_language( $language ) ) . '"/>' . "\n";
+                $language_independent_hreflang = strtok( $language, '_' );
+                if ( !empty( $language_independent_hreflang ) && !in_array( $language_independent_hreflang, $region_independent_languages ) ) {
+                    $region_independent_languages[] = $language_independent_hreflang;
+                    $hreflang_duplicates_region_independent[$language] = '<link rel="alternate" hreflang="' . esc_attr( $language_independent_hreflang ) . '" href="' . esc_url( $this->get_url_for_language( $language ) ) . '"/>' . "\n";
 
-                    }
                 }
             }
         }

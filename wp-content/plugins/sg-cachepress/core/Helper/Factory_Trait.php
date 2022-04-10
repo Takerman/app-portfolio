@@ -18,13 +18,6 @@ trait Factory_Trait {
 	 * @throws \Exception Exception If the type is not supported.
 	 */
 	public function factory( $namespace, $class ) {
-
-		// Adding exception for i18n dependency.
-		if ( 'i18n' === $class ) {
-			$this->$class = new \SiteGround_i18n\i18n_Service( 'sg-cachepress' );
-			return;
-		}
-
 		// Build the type and path for the dependency.
 		$type = str_replace( ' ', '_', ucwords( str_replace( '_', ' ', $class ) ) );
 		$path = str_replace( ' ', '_', ucwords( str_replace( '_', ' ', $namespace ) ) );

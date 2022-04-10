@@ -624,3 +624,45 @@ function trp_force_slash_at_end_of_link( $settings ){
     else
         return false;
 }
+
+/**
+ * This function is used by users to create their own language switcher.
+ *It returns an array with all the necessary information for the user to create their own custom language switcher.
+ *
+ * @return array
+ *
+ * The array returned has the following indexes: language_name, language_code, short_language_name, flag_link, current_page_url
+ */
+
+function trp_custom_language_switcher(){
+    $trp = TRP_Translate_Press::get_trp_instance();
+    $trp_languages = $trp->get_component( 'languages' );
+    $trp_settings = $trp->get_component('settings');
+    $settings = $trp_settings->get_settings();
+
+    $languages_to_display  = $settings['publish-languages'];
+    $translation_languages   = $trp_languages->get_language_names( $languages_to_display );
+
+    $url_converter = $trp->get_component('url_converter');
+
+    $custom_ls_array  = array();
+
+    foreach ($translation_languages as $item=> $language){
+
+        $custom_ls_array[$item]['language_name'] = $language;
+        $custom_ls_array[$item]['language_code'] = $item;
+        $custom_ls_array[$item]['short_language_name'] = $url_converter->get_url_slug( $item, false );
+
+        $flags_path = TRP_PLUGIN_URL .'assets/images/flags/';
+        $flags_path = apply_filters( 'trp_flags_path', $flags_path, $item );
+
+        $flag_file_name = $item .'.png';
+        $flag_file_name = apply_filters( 'trp_flag_file_name', $flag_file_name, $item );
+
+        $custom_ls_array[$item]['flag_link'] = esc_url( $flags_path . $flag_file_name );
+
+        $custom_ls_array[$item]['current_page_url'] = esc_url( $url_converter->get_url_for_language( $item, null, '' ));
+    }
+
+    return $custom_ls_array;
+}

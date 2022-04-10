@@ -83,8 +83,11 @@ class Review {
 			'https://aioseo.com/plugin-feedback/'
 		);
 
-		// Translators: 1 - The plugin name ("All in One SEO").
-		$string1  = sprintf( __( 'Are you enjoying %1$s?', 'all-in-one-seo-pack' ), AIOSEO_PLUGIN_NAME );
+		$string1 = sprintf(
+			// Translators: 1 - The plugin short name ("AIOSEO").
+			__( 'Are you enjoying %1$s?', 'all-in-one-seo-pack' ),
+			AIOSEO_PLUGIN_NAME
+		);
 		$string2  = __( 'Yes I love it', 'all-in-one-seo-pack' );
 		$string3  = __( 'Not Really...', 'all-in-one-seo-pack' );
 		// Translators: The plugin name ("All in One SEO").

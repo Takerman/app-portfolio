@@ -385,13 +385,17 @@ class RobotsTxt {
 	 * @return boolean Whether or not the file imported correctly.
 	 */
 	public function importPhysicalRobotsTxt( $network = false ) {
-		$wpfs = aioseo()->helpers->wpfs();
-		$file = trailingslashit( $wpfs->abspath() ) . 'robots.txt';
-		if ( ! @$wpfs->is_readable( $file ) ) {
+		$fs = aioseo()->core->fs;
+		if ( ! $fs->isWpfsValid() ) {
 			return false;
 		}
 
-		$lines = @$wpfs->get_contents_array( $file );
+		$file = trailingslashit( $fs->fs->abspath() ) . 'robots.txt';
+		if ( ! $fs->isReadable( $file ) ) {
+			return false;
+		}
+
+		$lines = $fs->getContentsArray( $file );
 		if ( ! $lines ) {
 			return true;
 		}
@@ -458,13 +462,16 @@ class RobotsTxt {
 	 * @return boolean True if it does, false if not.
 	 */
 	public function hasPhysicalRobotsTxt() {
-		$wpfs       = aioseo()->helpers->wpfs();
+		$fs = aioseo()->core->fs;
+		if ( ! $fs->isWpfsValid() ) {
+			return false;
+		}
+
 		$accessType = get_filesystem_method();
-
 		if ( 'direct' === $accessType ) {
-			$file = trailingslashit( $wpfs->abspath() ) . 'robots.txt';
+			$file = trailingslashit( $fs->fs->abspath() ) . 'robots.txt';
 
-			return @$wpfs->exists( $file );
+			return $fs->exists( $file );
 		}
 
 		return false;
@@ -478,10 +485,14 @@ class RobotsTxt {
 	 * @return mixed The response from the delete method of WP_Filesystem.
 	 */
 	public function deletePhysicalRobotsTxt() {
-		$wpfs = aioseo()->helpers->wpfs();
-		$file = trailingslashit( $wpfs->abspath() ) . 'robots.txt';
+		$fs = aioseo()->core->fs;
+		if ( ! $fs->isWpfsValid() ) {
+			return false;
+		}
 
-		return @$wpfs->delete( $file );
+		$file = trailingslashit( $fs->fs->abspath() ) . 'robots.txt';
+
+		return $fs->fs->delete( $file );
 	}
 
 	/**

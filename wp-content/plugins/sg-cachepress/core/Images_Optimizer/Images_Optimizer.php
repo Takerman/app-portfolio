@@ -411,21 +411,18 @@ class Images_Optimizer extends Abstract_Images_Optimizer {
 	 * @param  int $id The attachment ID.
 	 */
 	public function delete_backups( $id ) {
+		global $wp_filesystem;
 		$main_image = get_attached_file( $id );
 		$metadata   = wp_get_attachment_metadata( $id );
+		$basename   = basename( $main_image );
 
-		$files    = array( preg_replace( '~.(png|jpg|jpeg|gif)$~', '.bak.$1', $main_image ) );
-		$basename = basename( $main_image );
+		$wp_filesystem->delete( preg_replace( '~.(png|jpg|jpeg|gif)$~', '.bak.$1', $main_image ) );
 
 		if ( ! empty( $metadata['sizes'] ) ) {
 			// Loop through all image sizes and optimize them as well.
 			foreach ( $metadata['sizes'] as $size ) {
-				$files[] = preg_replace( '~.(png|jpg|jpeg|gif)$~', '.bak.$1', str_replace( $basename, $size['file'], $main_image ) );
+				$wp_filesystem->delete( preg_replace( '~.(png|jpg|jpeg|gif)$~', '.bak.$1', str_replace( $basename, $size['file'], $main_image ) ) );
 			}
-		}
-
-		if ( ! empty( $files ) ) {
-			exec( 'rm ' . implode( ' ', $files ) );
 		}
 	}
 

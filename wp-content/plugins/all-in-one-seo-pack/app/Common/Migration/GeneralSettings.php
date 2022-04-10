@@ -130,7 +130,7 @@ class GeneralSettings {
 		$post       = 'page' === $showOnFront && $pageOnFront ? get_post( $pageOnFront ) : '';
 		$aioseoPost = Models\Post::getPost( $post->ID );
 
-		$postMeta = aioseo()->db
+		$postMeta = aioseo()->core->db
 			->start( 'postmeta' . ' as pm' )
 			->select( 'pm.meta_key, pm.meta_value' )
 			->where( 'pm.post_id', $post->ID )

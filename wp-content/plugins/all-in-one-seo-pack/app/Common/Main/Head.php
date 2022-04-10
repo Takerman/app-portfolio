@@ -38,9 +38,10 @@ class Head {
 		$this->keywords     = new Meta\Keywords();
 		$this->verification = new Meta\SiteVerification();
 		$this->views        = [
-			'meta'   => AIOSEO_DIR . '/app/Common/Views/main/meta.php',
-			'social' => AIOSEO_DIR . '/app/Common/Views/main/social.php',
-			'schema' => AIOSEO_DIR . '/app/Common/Views/main/schema.php'
+			'meta'    => AIOSEO_DIR . '/app/Common/Views/main/meta.php',
+			'social'  => AIOSEO_DIR . '/app/Common/Views/main/social.php',
+			'schema'  => AIOSEO_DIR . '/app/Common/Views/main/schema.php',
+			'clarity' => AIOSEO_DIR . '/app/Common/Views/main/clarity.php'
 		];
 	}
 

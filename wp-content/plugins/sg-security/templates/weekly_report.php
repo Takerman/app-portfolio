@@ -139,7 +139,7 @@
                 <tr>
                     <td class="body-text"
                         style="color: #444444; font-style: italic; font-weight: 400; font-family: 'Open Sans', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 26px; padding: 0px 0 25px 0">
-                        <?php esc_html_e( 'You can learn more about blocked traffic and how you can manage it in your plugin in our ', 'sg-security' ); ?><a href="https://www.siteground.com/tutorials/wordpress/sg-security/blocked-login-visit-attempts/" target="_blank" rel="noreferrer" style="color: #22b8d1; text-decoration: none;"><?php esc_html_e( 'Blocked Login and Visit Attempts ', 'sg-security' ); ?></a><?php esc_html_e( 'article.', 'sg-security' ); ?>
+                        <?php esc_html_e( 'You can learn more about blocked traffic and how you can manage it in your plugin in our ', 'sg-security' ); ?><a href="https://www.siteground.com/tutorials/wordpress/sg-security/activity-log/" target="_blank" rel="noreferrer" style="color: #22b8d1; text-decoration: none;"><?php esc_html_e( 'Blocked Login and Visit Attempts ', 'sg-security' ); ?></a><?php esc_html_e( 'article.', 'sg-security' ); ?>
                         </a>
                     </td>
                 </tr>

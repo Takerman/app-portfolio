@@ -57,6 +57,7 @@ class Elementor extends Integration {
 
 		add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'enqueue' ] );
 		add_action( 'elementor/documents/register_controls', [ $this, 'registerDocumentControls' ] );
+		add_action( 'elementor/editor/footer', [ $this, 'addContainers' ] );
 	}
 
 	/**
@@ -114,5 +115,16 @@ class Elementor extends Integration {
 		}
 
 		return ElementorPlugin::instance()->documents->get( $postId )->is_built_with_elementor();
+	}
+
+	/**
+	 * Add the containers to mount our panel.
+	 *
+	 * @since 4.1.9
+	 *
+	 * @return void
+	 */
+	public function addContainers() {
+		echo '<div id="aioseo-admin"></div>';
 	}
 }

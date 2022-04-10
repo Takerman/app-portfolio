@@ -595,6 +595,13 @@ class Analysis {
 		// Return the string containing the pre-migration speed test.
 		$pre_migration_result = json_decode( $wp_filesystem->get_contents( Helper_Service::get_uploads_dir() . '/pagespeed_results.json' ), true );
 
+		// Bail if json cannot be decoded or if the encoded data is deeper than the nesting limit.
+		if ( false === (bool) $pre_migration_result ) {
+			// Delete the file so we don't try to decode it upon future activation.
+			$wp_filesystem->delete( Helper_Service::get_uploads_dir() . '/pagespeed_results.json' );
+			return false;
+		}
+
 		$data = array_merge( $this->process_analysis( $pre_migration_result ), array( 'device' => 'desktop' ) );
 
 		// Save the processed analysis in the database.

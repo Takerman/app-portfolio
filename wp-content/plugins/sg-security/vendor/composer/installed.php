@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '6d5ca7bccf78465944bf5ecf9ef2c472310eea5d',
+        'reference' => '88916631e9f0d60aa0e76f0841de892c7d3b359c',
         'name' => 'siteground/sg-security',
         'dev' => true,
     ),
@@ -65,7 +65,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '6d5ca7bccf78465944bf5ecf9ef2c472310eea5d',
+            'reference' => '88916631e9f0d60aa0e76f0841de892c7d3b359c',
             'dev_requirement' => false,
         ),
         'siteground/siteground-data' => array(

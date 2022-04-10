@@ -17,6 +17,7 @@ class Helpers {
 	use TraitHelpers\ActionScheduler;
 	use TraitHelpers\Arrays;
 	use TraitHelpers\Constants;
+	use TraitHelpers\Deprecated;
 	use TraitHelpers\DateTime;
 	use TraitHelpers\Language;
 	use TraitHelpers\Shortcodes;
@@ -74,7 +75,7 @@ class Helpers {
 	 * @return boolean True if we are, false if not.
 	 */
 	public function isDev() {
-		return defined( 'AIOSEO_DEV_VERSION' ) || isset( $_REQUEST['aioseo-dev'] ); // phpcs:ignore HM.Security.NonceVerification.Recommended
+		return aioseo()->isDev || isset( $_REQUEST['aioseo-dev'] ); // phpcs:ignore HM.Security.NonceVerification.Recommended
 	}
 
 	/**
@@ -260,40 +261,5 @@ class Helpers {
 		}
 
 		return $string;
-	}
-
-	/**
-	 * Enqueue the chunk styles and scripts.
-	 *
-	 * @since 4.1.7
-	 *
-	 * @param  string $handle The script/style handle.
-	 * @return void
-	 */
-	public function enqueueChunkedAssets( $handle = '' ) {
-		if ( ! empty( $handle ) ) {
-			$handle = $handle . '-';
-		}
-
-		// Scripts.
-		aioseo()->helpers->enqueueScript(
-			'aioseo-' . $handle . 'vendors',
-			'js/chunk-vendors.js'
-		);
-		aioseo()->helpers->enqueueScript(
-			'aioseo-' . $handle . 'common',
-			'js/chunk-common.js'
-		);
-
-		// Styles.
-		$rtl = is_rtl() ? '.rtl' : '';
-		aioseo()->helpers->enqueueStyle(
-			'aioseo-' . $handle . 'common',
-			"css/chunk-common$rtl.css"
-		);
-		aioseo()->helpers->enqueueStyle(
-			'aioseo-' . $handle . 'vendors',
-			"css/chunk-vendors$rtl.css"
-		);
 	}
 }

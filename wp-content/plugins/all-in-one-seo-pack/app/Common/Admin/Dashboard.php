@@ -70,7 +70,7 @@ class Dashboard {
 
 		include_once( ABSPATH . WPINC . '/feed.php' );
 
-		$rssItems = aioseo()->cache->get( 'rss_feed' );
+		$rssItems = aioseo()->core->cache->get( 'rss_feed' );
 		if ( null === $rssItems ) {
 
 			$rss = fetch_feed( 'https://aioseo.com/feed/' );
@@ -91,7 +91,7 @@ class Dashboard {
 			}
 			$rssItems = $cached;
 
-			aioseo()->cache->update( 'rss_feed', $cached, 12 * HOUR_IN_SECONDS );
+			aioseo()->core->cache->update( 'rss_feed', $cached, 12 * HOUR_IN_SECONDS );
 
 		}
 

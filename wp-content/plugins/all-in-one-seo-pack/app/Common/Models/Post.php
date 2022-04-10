@@ -57,6 +57,7 @@ class Post extends Model {
 		'robots_noimageindex',
 		'robots_noodp',
 		'robots_notranslate',
+		'limit_modified_date',
 	];
 
 	/**
@@ -68,8 +69,16 @@ class Post extends Model {
 	 * @return Post         The Post object.
 	 */
 	public static function getPost( $postId ) {
-		$post = aioseo()->db
-			->start( 'aioseo_posts' )
+		// This is needed to prevent an error when upgrading from 4.1.8 to 4.1.9.
+		// WordPress deletes the attachment .zip file for the new plugin version after installing it, which triggers the "delete_post" hook.
+		// In-between the 4.1.8 to 4.1.9 update, the new Core class does not exist yet, causing the PHP error.
+		// TODO: Delete this in a future release.
+		$post = new self;
+		if ( ! property_exists( aioseo(), 'core' ) ) {
+			return $post;
+		}
+
+		$post = aioseo()->core->db->start( 'aioseo_posts' )
 			->where( 'post_id', $postId )
 			->run()
 			->model( 'AIOSEO\\Plugin\\Common\\Models\\Post' );
@@ -195,7 +204,7 @@ class Post extends Model {
 		$thePost->save();
 		$thePost->reset();
 
-		$lastError = aioseo()->db->lastError();
+		$lastError = aioseo()->core->db->lastError();
 		if ( ! empty( $lastError ) ) {
 			return $lastError;
 		}

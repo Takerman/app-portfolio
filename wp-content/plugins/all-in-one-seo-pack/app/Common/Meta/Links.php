@@ -74,6 +74,13 @@ class Links {
 		$prev = aioseo()->helpers->maybeRemoveTrailingSlash( $prev );
 		$next = aioseo()->helpers->maybeRemoveTrailingSlash( $next );
 
+		// Remove any query args that may be set on the URL, except if the site is using plain permalinks.
+		$permalinkStructure = get_option( 'permalink_structure' );
+		if ( ! empty( $permalinkStructure ) ) {
+			$prev = explode( '?', $prev )[0];
+			$next = explode( '?', $next )[0];
+		}
+
 		return [
 			'prev' => $prev,
 			'next' => $next,

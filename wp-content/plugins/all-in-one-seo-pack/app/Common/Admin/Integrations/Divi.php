@@ -79,32 +79,9 @@ class Divi extends Integration {
 			return;
 		}
 
-		aioseo()->helpers->enqueueChunkedAssets( $this->integrationSlug );
-		aioseo()->helpers->enqueueScript(
-			'aioseo-' . $this->integrationSlug . '-admin',
-			'js/divi-admin.js'
-		);
+		aioseo()->core->assets->load( 'src/vue/standalone/divi-admin/main.js', [], aioseo()->helpers->getVueData() );
 
-		wp_localize_script(
-			'aioseo-' . $this->integrationSlug . '-admin',
-			'aioseo',
-			aioseo()->helpers->getVueData()
-		);
-
-		wp_localize_script(
-			'aioseo-' . $this->integrationSlug . '-admin',
-			'aioseoTranslations',
-			[
-				'translations' => aioseo()->helpers->getJedLocaleData( 'all-in-one-seo-pack' )
-			]
-		);
-
-		// Styles.
-		$rtl = is_rtl() ? '.rtl' : '';
-		aioseo()->helpers->enqueueStyle(
-			'aioseo-' . $this->integrationSlug . '-integration-divi-admin',
-			"css/divi-admin$rtl.css"
-		);
+		aioseo()->main->enqueueTranslations();
 	}
 
 	/**
@@ -117,16 +94,15 @@ class Divi extends Integration {
 	 * @param  string $src    The script's source URL.
 	 * @return string         The tag.
 	 */
-	public function addEtTag( $tag, $handle, $src ) {
+	public function addEtTag( $tag, $handle ) {
 		$scriptHandles = [
-			'aioseo-divi',
-			'aioseo-vendors',
-			'aioseo-common',
+			'aioseo/js/src/vue/standalone/divi/main.js',
+			'aioseo/js/src/vue/standalone/app/main.js'
 		];
 
 		if ( in_array( $handle, $scriptHandles, true ) ) {
 			// These tags load in parent window only, not in Divi iframe.
-			return '<script type="text/javascript" src="' . $src . '" class="et_fb_ignore_iframe"></script>' . "\n";
+			return preg_replace( '/<script/', '<script class="et_fb_ignore_iframe"', $tag );
 		}
 
 		return $tag;
@@ -161,6 +137,7 @@ class Divi extends Integration {
 	public function addContainers() {
 		echo '<div id="aioseo-app-modal" class="et_fb_ignore_iframe"><div class="et_fb_ignore_iframe"></div></div>';
 		echo '<div id="aioseo-settings" class="et_fb_ignore_iframe"></div>';
+		echo '<div id="aioseo-admin" class="et_fb_ignore_iframe"></div>';
 	}
 
 	/**

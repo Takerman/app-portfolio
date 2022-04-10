@@ -23,10 +23,10 @@ __( "Weekly Reports" ), // src/pages/activity-log/activity-log.jsx:31
 __( "Filter Activity" ), // src/pages/activity-log/activity-table.jsx:80
 __( "close" ), // src/pages/activity-log/activity-table.jsx:92
 __( "reset" ), // src/pages/activity-log/activity-table.jsx:93
-__( "Blocked On" ), // src/pages/activity-log/blocked-users.jsx:18
-__( "User/Ip" ), // src/pages/activity-log/blocked-users.jsx:23
-__( "Actions" ), // src/pages/activity-log/blocked-users.jsx:27
-__( "unblock" ), // src/pages/activity-log/blocked-users.jsx:55
+__( "Blocked On" ), // src/pages/activity-log/blocked-users.jsx:39
+__( "User/Ip" ), // src/pages/activity-log/blocked-users.jsx:44
+__( "Actions" ), // src/pages/activity-log/blocked-users.jsx:48
+__( "unblock" ), // src/pages/activity-log/blocked-users.jsx:74
 __( "Email" ), // src/pages/activity-log/constants.jsx:30
 __( "Delete Notification Email" ), // src/pages/activity-log/dialogs/delete-email-record.jsx:28
 __( "This action cannot be undone. Are you sure you wish to proceed?" ), // src/pages/activity-log/dialogs/delete-email-record.jsx:59
@@ -105,29 +105,32 @@ __( "Change Common Usernames" ), // src/pages/login-settings/dialogs/disable-adm
 __( "There are one or more users with common usernames. Please provide new username(s) for them." ), // src/pages/login-settings/dialogs/disable-admin-username.jsx:34
 __( "New username: %(admin)s" ), // src/pages/login-settings/dialogs/disable-admin-username.jsx:80
 __( "Bear in mind that the user will NOT be notified of the change." ), // src/pages/login-settings/dialogs/disable-admin-username.jsx:100
+__( "Configure 2FA Immediately" ), // src/pages/login-settings/dialogs/enable-two-factor.jsx:21
+__( "Enabling Two-factor authentication will require you to immediately configure the token for this admin account to your authenticator app. All other admin users and editors will be asked to configure it on their next login." ), // src/pages/login-settings/dialogs/enable-two-factor.jsx:22
+__( "Are you sure you wish to proceed?" ), // src/pages/login-settings/dialogs/enable-two-factor.jsx:45
 __( "IP" ), // src/pages/login-settings/dialogs/login-access.jsx:21
 __( "Manage Login Access" ), // src/pages/login-settings/dialogs/login-access.jsx:47
 __( "Reset 2-factor Authentication" ), // src/pages/login-settings/dialogs/two-factor.jsx:22
 __( "Resetting the 2FA authentication will enable them to set up their Authentication app anew on their next login. Use this functionality when a user no longer has access to their Authenticator app or backup codes and cannot log in." ), // src/pages/login-settings/dialogs/two-factor.jsx:23
 __( "Select User" ), // src/pages/login-settings/dialogs/two-factor.jsx:50
-__( "Two-factor authentication forces admin users to login only after providing a token, generated from the Google Authenticator application. When you enable this option, {{strong}}all admin & editor users will be asked to configure their two-factor authentication in the Authenticator app on their next login.{{/strong}}" ), // src/pages/login-settings/login-settings.jsx:47
-__( "Two-factor authentication forces admin users to login only after providing a token, generated from the Google Authenticator application. You can find the backup codes for your 2-factor authentication in the WordPress Profile page. If one of your users no longer have access to their Authenticator app and cannot log in to get their backup codes, {{link}}click here{{/link}} to reset their 2-factor authentication." ), // src/pages/login-settings/login-settings.jsx:51
-__( "Login Settings" ), // src/pages/login-settings/login-settings.jsx:59
-__( "recommended" ), // src/pages/login-settings/login-settings.jsx:63
-__( "Custom Login URL" ), // src/pages/login-settings/login-settings.jsx:64
-__( "Attackers often try exploits on /wp-admin as a default login URL for WordPress. Change it to avoid these attacks and have an easily memorisable login URL." ), // src/pages/login-settings/login-settings.jsx:65
-__( "configure" ), // src/pages/login-settings/login-settings.jsx:70
-__( "Login Access" ), // src/pages/login-settings/login-settings.jsx:76
-__( "Currently your WordPress login can be accessed by any IP. You can limit the access to specific IPs or range of IPs in order to prevent brute-force attacks or malicious login attempts." ), // src/pages/login-settings/login-settings.jsx:77
-__( "configure" ), // src/pages/login-settings/login-settings.jsx:82
-__( "recommended" ), // src/pages/login-settings/login-settings.jsx:88
-__( "Two-factor Authentication for Admin & Editors Users" ), // src/pages/login-settings/login-settings.jsx:89
-__( "recommended" ), // src/pages/login-settings/login-settings.jsx:111
-__( "Disable Common Usernames" ), // src/pages/login-settings/login-settings.jsx:112
-__( "Using common usernames like 'admin' is a security threat that often results in unauthorised access. By enabling this option we will disable the creation of common usernames and if you already have one or more users with a weak username, we'll ask you to provide new one(s)." ), // src/pages/login-settings/login-settings.jsx:113
-__( "recommended" ), // src/pages/login-settings/login-settings.jsx:142
-__( "Limit Login Attempts" ), // src/pages/login-settings/login-settings.jsx:143
-__( "Limit the number of times a given user can attempt to log in to your wp-admin with incorrect credentials. Once the login attempt limit is reached, the IP from which the attempts have originated will be blocked first for 1 hour. If the attempts continue after the first hour, the limit will then be triggered for 24 hours and then for 7 days." ), // src/pages/login-settings/login-settings.jsx:144
+__( "Two-factor authentication forces admin users to login only after providing a token, generated from the Google Authenticator application. When you enable this option, {{strong}}all admin & editor users will be asked to configure their two-factor authentication in the Authenticator app on their next login. All currently logged admin & editor users will be forced to set it up immediately.{{/strong}}" ), // src/pages/login-settings/login-settings.jsx:48
+__( "Two-factor authentication forces admin users to login only after providing a token, generated from the Google Authenticator application. You can find the backup codes for your 2-factor authentication in the WordPress Profile page. If one of your users no longer have access to their Authenticator app and cannot log in to get their backup codes, {{link}}click here{{/link}} to reset their 2-factor authentication." ), // src/pages/login-settings/login-settings.jsx:52
+__( "Login Settings" ), // src/pages/login-settings/login-settings.jsx:60
+__( "recommended" ), // src/pages/login-settings/login-settings.jsx:64
+__( "Custom Login URL" ), // src/pages/login-settings/login-settings.jsx:65
+__( "Attackers often try exploits on /wp-admin as a default login URL for WordPress. Change it to avoid these attacks and have an easily memorisable login URL." ), // src/pages/login-settings/login-settings.jsx:66
+__( "configure" ), // src/pages/login-settings/login-settings.jsx:71
+__( "Login Access" ), // src/pages/login-settings/login-settings.jsx:77
+__( "Currently your WordPress login can be accessed by any IP. You can limit the access to specific IPs or range of IPs in order to prevent brute-force attacks or malicious login attempts." ), // src/pages/login-settings/login-settings.jsx:78
+__( "configure" ), // src/pages/login-settings/login-settings.jsx:83
+__( "recommended" ), // src/pages/login-settings/login-settings.jsx:89
+__( "Two-factor Authentication for Admin & Editors Users" ), // src/pages/login-settings/login-settings.jsx:90
+__( "recommended" ), // src/pages/login-settings/login-settings.jsx:117
+__( "Disable Common Usernames" ), // src/pages/login-settings/login-settings.jsx:118
+__( "Using common usernames like 'admin' is a security threat that often results in unauthorised access. By enabling this option we will disable the creation of common usernames and if you already have one or more users with a weak username, we'll ask you to provide new one(s)." ), // src/pages/login-settings/login-settings.jsx:119
+__( "recommended" ), // src/pages/login-settings/login-settings.jsx:148
+__( "Limit Login Attempts" ), // src/pages/login-settings/login-settings.jsx:149
+__( "Limit the number of times a given user can attempt to log in to your wp-admin with incorrect credentials. Once the login attempt limit is reached, the IP from which the attempts have originated will be blocked first for 1 hour. If the attempts continue after the first hour, the limit will then be triggered for 24 hours and then for 7 days." ), // src/pages/login-settings/login-settings.jsx:150
 __( "Post-hack Actions" ), // src/pages/post-hack-actions/post-hack-actions.jsx:20
 __( "Reinstall All Free Plugins" ), // src/pages/post-hack-actions/post-hack-actions.jsx:24
 __( "Doing this will reinstall the same version of all free plugins you have installed in order to make sure that their codebase is not compromised by an attacker." ), // src/pages/post-hack-actions/post-hack-actions.jsx:25
@@ -138,31 +141,31 @@ __( "force password reset" ), // src/pages/post-hack-actions/post-hack-actions.j
 __( "Log out All Users" ), // src/pages/post-hack-actions/post-hack-actions.jsx:73
 __( "This will log out all currently logged in users without asking them to change their passwords." ), // src/pages/post-hack-actions/post-hack-actions.jsx:74
 __( "Log out All Users" ), // src/pages/post-hack-actions/post-hack-actions.jsx:91
-__( "Site Security" ), // src/pages/site-security/site-security.jsx:43
-__( "recommended" ), // src/pages/site-security/site-security.jsx:47
-__( "Lock and Protect System Folders" ), // src/pages/site-security/site-security.jsx:48
-__( "By enabling this option you are ensuring that no unauthorised or malicious scripts can be executed in your system folders. This is an often exploited back door you can close with a simple toggle." ), // src/pages/site-security/site-security.jsx:49
-__( "recommended" ), // src/pages/site-security/site-security.jsx:72
-__( "Hide WordPress Version" ), // src/pages/site-security/site-security.jsx:73
-__( "Many attackers scan sites for vulnerable WordPress versions. By hiding the version from your site HTML, you avoid being marked by hackers for mass attacks." ), // src/pages/site-security/site-security.jsx:74
-__( "recommended" ), // src/pages/site-security/site-security.jsx:97
-__( "Disable Themes & Plugins Editor" ), // src/pages/site-security/site-security.jsx:98
-__( "Disable the option to edit themes and plugins code directly from the WordPress admin to prevent potential coding errors or unauthorised access via the WordPress editor." ), // src/pages/site-security/site-security.jsx:99
-__( "recommended" ), // src/pages/site-security/site-security.jsx:122
-__( "Disable XML-RPC" ), // src/pages/site-security/site-security.jsx:123
-__( "XML-RPC was designed as a protocol enabling WordPress to communicate with third-party systems but recently it has been used in a number of exploits. Unless you specifically need to use it, we recommend that XML-RPC is always disabled." ), // src/pages/site-security/site-security.jsx:124
-__( "recommended" ), // src/pages/site-security/site-security.jsx:147
-__( "Force HTTP Strict-Transport-Security (HSTS)" ), // src/pages/site-security/site-security.jsx:148
-__( "Enabling this option protects your site from cookie hijacking and protocol downgrade attacks. It is an additional rule forcing browsers to request HTTPS for your domain." ), // src/pages/site-security/site-security.jsx:149
-__( "recommended" ), // src/pages/site-security/site-security.jsx:172
-__( "Disable RSS and ATOM Feeds" ), // src/pages/site-security/site-security.jsx:173
-__( "RSS and ATOM feeds are often used to scrape your content and to perform a number of attacks against your site. Only use feeds if you have readers using your site via RSS readers." ), // src/pages/site-security/site-security.jsx:174
-__( "recommended" ), // src/pages/site-security/site-security.jsx:197
-__( "Advanced XSS Protection" ), // src/pages/site-security/site-security.jsx:198
-__( "Enabling this option will add extra headers to your site for protection against XSS attacks." ), // src/pages/site-security/site-security.jsx:199
-__( "Delete the Default Readme.html" ), // src/pages/site-security/site-security.jsx:222
-__( "WordPress comes with a Readme.html file containing information about your website. The Readme.txt is often used by hackers to compile lists of potentially vulnerable sites which can be hacked or attacked." ), // src/pages/site-security/site-security.jsx:223
-__( "delete" ), // src/pages/site-security/site-security.jsx:240
+__( "Site Security" ), // src/pages/site-security/site-security.jsx:45
+__( "recommended" ), // src/pages/site-security/site-security.jsx:49
+__( "Lock and Protect System Folders" ), // src/pages/site-security/site-security.jsx:50
+__( "By enabling this option you are ensuring that no unauthorised or malicious scripts can be executed in your system folders. This is an often exploited back door you can close with a simple toggle." ), // src/pages/site-security/site-security.jsx:51
+__( "recommended" ), // src/pages/site-security/site-security.jsx:74
+__( "Hide WordPress Version" ), // src/pages/site-security/site-security.jsx:75
+__( "Many attackers scan sites for vulnerable WordPress versions. By hiding the version from your site HTML, you avoid being marked by hackers for mass attacks." ), // src/pages/site-security/site-security.jsx:76
+__( "recommended" ), // src/pages/site-security/site-security.jsx:99
+__( "Disable Themes & Plugins Editor" ), // src/pages/site-security/site-security.jsx:100
+__( "Disable the option to edit themes and plugins code directly from the WordPress admin to prevent potential coding errors or unauthorised access via the WordPress editor." ), // src/pages/site-security/site-security.jsx:101
+__( "recommended" ), // src/pages/site-security/site-security.jsx:124
+__( "Disable XML-RPC" ), // src/pages/site-security/site-security.jsx:125
+__( "XML-RPC was designed as a protocol enabling WordPress to communicate with third-party systems but recently it has been used in a number of exploits. Unless you specifically need to use it, we recommend that XML-RPC is always disabled." ), // src/pages/site-security/site-security.jsx:126
+__( "recommended" ), // src/pages/site-security/site-security.jsx:150
+__( "Force HTTP Strict-Transport-Security (HSTS)" ), // src/pages/site-security/site-security.jsx:151
+__( "Enabling this option protects your site from cookie hijacking and protocol downgrade attacks. It is an additional rule forcing browsers to request HTTPS for your domain." ), // src/pages/site-security/site-security.jsx:152
+__( "recommended" ), // src/pages/site-security/site-security.jsx:176
+__( "Disable RSS and ATOM Feeds" ), // src/pages/site-security/site-security.jsx:177
+__( "RSS and ATOM feeds are often used to scrape your content and to perform a number of attacks against your site. Only use feeds if you have readers using your site via RSS readers." ), // src/pages/site-security/site-security.jsx:178
+__( "recommended" ), // src/pages/site-security/site-security.jsx:201
+__( "Advanced XSS Protection" ), // src/pages/site-security/site-security.jsx:202
+__( "Enabling this option will add extra headers to your site for protection against XSS attacks." ), // src/pages/site-security/site-security.jsx:203
+__( "Delete the Default Readme.html" ), // src/pages/site-security/site-security.jsx:226
+__( "WordPress comes with a readme.html file containing information about your website. The readme.html is often used by hackers to compile lists of potentially vulnerable sites which can be hacked or attacked." ), // src/pages/site-security/site-security.jsx:227
+__( "delete" ), // src/pages/site-security/site-security.jsx:244
 __( "Either a security plugin, custom function, or rules in your .htaccess file is preventing the WordPress REST API from working properly. SiteGround Optimizer is using it to store its options and other functionalities so please make sure it works properly." ), // src/sagas/requests-completion.js:26
 __( "Could not connect to the WordPress REST API" ), // src/sagas/requests-completion.js:29
 __( "Either a security plugin, custom function or rules in your .htaccess file is preventing the WordPress REST API from working properly. SiteGround Security is using it to store its options and other functionalities so please make sure it works properly." ), // src/sagas/requests-completion.js:38

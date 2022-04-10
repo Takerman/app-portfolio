@@ -219,6 +219,11 @@ class Api {
 			return false;
 		}
 
+		// Admins always have access.
+		if ( aioseo()->access->isAdmin() ) {
+			return true;
+		}
+
 		switch ( $routeData['access'] ) {
 			case 'everyone':
 				// Any user is able to access the route.

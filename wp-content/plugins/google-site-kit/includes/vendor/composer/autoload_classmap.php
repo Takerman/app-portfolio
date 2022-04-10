@@ -46,8 +46,6 @@ return array(
     'Google\\Site_Kit\\Core\\Authentication\\Owner_ID' => $baseDir . '/Core/Authentication/Owner_ID.php',
     'Google\\Site_Kit\\Core\\Authentication\\Profile' => $baseDir . '/Core/Authentication/Profile.php',
     'Google\\Site_Kit\\Core\\Authentication\\Setup' => $baseDir . '/Core/Authentication/Setup.php',
-    'Google\\Site_Kit\\Core\\Authentication\\Setup_V1' => $baseDir . '/Core/Authentication/Setup_V1.php',
-    'Google\\Site_Kit\\Core\\Authentication\\Setup_V2' => $baseDir . '/Core/Authentication/Setup_V2.php',
     'Google\\Site_Kit\\Core\\Authentication\\Token' => $baseDir . '/Core/Authentication/Token.php',
     'Google\\Site_Kit\\Core\\Authentication\\User_Input_State' => $baseDir . '/Core/Authentication/User_Input_State.php',
     'Google\\Site_Kit\\Core\\Authentication\\Verification' => $baseDir . '/Core/Authentication/Verification.php',

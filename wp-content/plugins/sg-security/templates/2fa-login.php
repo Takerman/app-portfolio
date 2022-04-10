@@ -2,7 +2,6 @@
 	$backup_codes_action = add_query_arg(
 		array(
 			'action'      => 'load_sgs2fabc',
-			'sg-user-id'  => $user->ID,
 		),
 		wp_login_url()
 	);
@@ -22,8 +21,6 @@
 		<label for="sgc2facode"><?php esc_html_e( 'Authentication Code:', 'sg-security' ); ?></label>
 		<input name="sgc2facode" id="sgc2facode" class="input" value="" size="20" pattern="[0-9]*" autofocus />
 	</p>
-
-	<input type="hidden" name="sg-user-id" id="sg-user-id" value="<?php echo esc_attr( $user->ID ); ?>" />
 
 	<?php if ( $args['interim_login'] ) : ?>
 		<input type="hidden" name="interim-login" value="1" />

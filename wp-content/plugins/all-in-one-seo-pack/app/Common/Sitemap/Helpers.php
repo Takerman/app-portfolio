@@ -83,8 +83,8 @@ class Helpers {
 			$postTypes = implode( "', '", $postTypes );
 		}
 
-		$query = aioseo()->db
-			->start( aioseo()->db->db->posts . ' as p', true )
+		$query = aioseo()->core->db
+			->start( aioseo()->core->db->db->posts . ' as p', true )
 			->select( 'MAX(`p`.`post_modified_gmt`) as last_modified' )
 			->where( 'p.post_status', 'publish' )
 			->whereRaw( "( `p`.`post_type` IN ( '$postTypes' ) )" );
@@ -254,8 +254,8 @@ class Helpers {
 	 * @return bool             Whether or not there is an indexed post.
 	 */
 	private function checkForIndexedPost( $postType ) {
-		$posts = aioseo()->db
-			->start( aioseo()->db->db->posts . ' as p', true )
+		$posts = aioseo()->core->db
+			->start( aioseo()->core->db->db->posts . ' as p', true )
 			->select( 'p.ID' )
 			->join( 'aioseo_posts as ap', '`ap`.`post_id` = `p`.`ID`' )
 			->where( 'p.post_status', 'attachment' === $postType ? 'inherit' : 'publish' )

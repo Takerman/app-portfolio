@@ -126,8 +126,8 @@ class Schema {
 			'BreadcrumbList'
 		];
 
-		if ( is_front_page() ) {
-			$this->graphs[] = 'posts' === get_option( 'show_on_front' ) ? 'CollectionPage' : 'WebPage';
+		if ( is_front_page() && 'posts' === get_option( 'show_on_front' ) ) {
+			$this->graphs[] = 'CollectionPage';
 			$this->context  = $context->home();
 
 			return;

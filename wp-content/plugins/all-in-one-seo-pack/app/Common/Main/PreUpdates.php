@@ -41,7 +41,7 @@ class PreUpdates {
 	 * @return void
 	 */
 	public function createCacheTable() {
-		$db             = aioseo()->db->db;
+		$db             = aioseo()->core->db->db;
 		$charsetCollate = '';
 
 		if ( ! empty( $db->charset ) ) {
@@ -51,11 +51,11 @@ class PreUpdates {
 			$charsetCollate .= " COLLATE {$db->collate}";
 		}
 
-		$tableName = aioseo()->cache->getTableName();
-		if ( ! aioseo()->db->tableExists( $tableName ) ) {
+		$tableName = aioseo()->core->cache->getTableName();
+		if ( ! aioseo()->core->db->tableExists( $tableName ) ) {
 			$tableName = $db->prefix . $tableName;
 
-			aioseo()->db->execute(
+			aioseo()->core->db->execute(
 				"CREATE TABLE {$tableName} (
 					`id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 					`key` varchar(80) NOT NULL,

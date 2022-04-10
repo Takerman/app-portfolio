@@ -205,7 +205,7 @@ class GoogleAnalytics {
 	 * @return string The autotrack.js URL.
 	 */
 	public function autoTrackUrl() {
-		return apply_filters( 'aioseo_google_autotrack', plugin_dir_url( AIOSEO_FILE ) . 'app/Common/Assets/js/autotrack.js' );
+		return apply_filters( 'aioseo_google_autotrack', aioseo()->core->assets->jsUrl( 'src/app/autotrack/autotrack.js' ) );
 	}
 
 	/**

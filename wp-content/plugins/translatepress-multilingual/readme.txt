@@ -5,7 +5,7 @@ Tags: translate, translation, multilingual, automatic translation, bilingual, fr
 Requires at least: 3.1.0
 Tested up to: 5.9.2
 Requires PHP: 5.6.20
-Stable tag: 2.2.3
+Stable tag: 2.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -140,6 +140,12 @@ For more information please check out our [documentation](https://translatepress
 
 
 == Changelog ==
+= 2.2.4 =
+* Prevent automatic translation of names and addresses in WooCommerce emails
+* Added external function for devs to easily create custom language switchers: trp_custom_language_switcher
+* Fixed issue with not including hreflang tags for some languages when Advanced option to Remove hreflang with Country Locale is used
+* Fixed warning related to using custom language flags
+
 = 2.2.3 =
 * Fixed XSS security vulnerability
 * Fixed sitemap containing urls with language slugs linking to paths excluded from translation

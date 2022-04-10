@@ -90,25 +90,11 @@ class PostSettings {
 				$page = 'post';
 			}
 
-			aioseo()->helpers->enqueueScript(
-				'aioseo-post-settings-metabox',
-				'js/post-settings.js'
-			);
-			wp_localize_script(
-				'aioseo-post-settings-metabox',
-				'aioseo',
-				aioseo()->helpers->getVueData( $page )
-			);
+			aioseo()->core->assets->load( 'src/vue/standalone/post-settings/main.js', [], aioseo()->helpers->getVueData( $page ) );
 
 			if ( 'post' === $page ) {
 				$this->enqueuePublishPanelAssets();
 			}
-
-			$rtl = is_rtl() ? '.rtl' : '';
-			aioseo()->helpers->enqueueStyle(
-				'aioseo-post-settings-metabox',
-				"css/post-settings$rtl.css"
-			);
 		}
 
 		$screen = get_current_screen();
@@ -125,16 +111,7 @@ class PostSettings {
 	 * @return void
 	 */
 	private function enqueuePublishPanelAssets() {
-		aioseo()->helpers->enqueueScript(
-			'aioseo-publish-panel',
-			'js/publish-panel.js'
-		);
-
-		$rtl = is_rtl() ? '.rtl' : '';
-		aioseo()->helpers->enqueueStyle(
-			'aioseo-publish-panel',
-			"css/publish-panel$rtl.css"
-		);
+		aioseo()->core->assets->load( 'src/vue/standalone/publish-panel/main.js' );
 	}
 
 	/**
@@ -247,8 +224,8 @@ class PostSettings {
 	 * @return void
 	 */
 	public function saveSettingsMetabox( $postId ) {
-		// Ignore auto saving.
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		$publicPostStatuses = aioseo()->helpers->getPublicPostStatuses( true );
+		if ( ! aioseo()->helpers->isValidPost( $postId, $publicPostStatuses ) ) {
 			return;
 		}
 

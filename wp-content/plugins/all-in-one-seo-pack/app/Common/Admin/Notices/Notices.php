@@ -55,7 +55,7 @@ class Notices {
 	 */
 	public function init() {
 		// If our tables do not exist, create them now.
-		if ( ! aioseo()->db->tableExists( 'aioseo_notifications' ) ) {
+		if ( ! aioseo()->core->db->tableExists( 'aioseo_notifications' ) ) {
 			aioseo()->updates->addInitialCustomTablesForV4();
 		}
 
@@ -72,7 +72,7 @@ class Notices {
 	 * @return void
 	 */
 	private function maybeUpdate() {
-		$nextRun = aioseo()->cache->get( 'admin_notifications_update' );
+		$nextRun = aioseo()->core->cache->get( 'admin_notifications_update' );
 		if ( null !== $nextRun && time() < $nextRun ) {
 			return;
 		}
@@ -81,7 +81,7 @@ class Notices {
 		aioseo()->helpers->scheduleAsyncAction( 'aioseo_admin_notifications_update' );
 
 		// Update the cache.
-		aioseo()->cache->update( 'admin_notifications_update', time() + DAY_IN_SECONDS );
+		aioseo()->core->cache->update( 'admin_notifications_update', time() + DAY_IN_SECONDS );
 	}
 
 	/**
@@ -95,7 +95,7 @@ class Notices {
 		$notifications = $this->fetch();
 		foreach ( $notifications as $notification ) {
 			// First, let's check to see if this notification already exists. If so, we want to override it.
-			$n = aioseo()->db
+			$n = aioseo()->core->db
 				->start( 'aioseo_notifications' )
 				->where( 'notification_id', $notification->id )
 				->run()

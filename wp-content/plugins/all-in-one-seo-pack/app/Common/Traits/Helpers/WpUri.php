@@ -60,15 +60,21 @@ trait WpUri {
 			}
 		}
 
-		if ( ! $url ) {
-			global $wp;
+		if ( $url ) {
+			return $url;
+		}
 
-			if ( $wp->did_permalink ) {
-				$url = trailingslashit( home_url( $wp->request ) );
-			} else {
-				// Fall back to request URI if site uses plain permalinks..
-				$url = trailingslashit( home_url( $_SERVER['REQUEST_URI'] ) );
-			}
+		// NOTE: network_home_url() will fall back to home_url() if the site isn't a multisite.
+		global $wp;
+		if ( $wp->did_permalink ) {
+			$url = user_trailingslashit( network_home_url( $wp->request ) );
+		} else {
+			$url = user_trailingslashit( network_home_url( $_SERVER['REQUEST_URI'] ) );
+		}
+
+		$permalinkStructure = get_option( 'permalink_structure' );
+		if ( $canonical && $permalinkStructure ) {
+			$url = explode( '?', $url )[0];
 		}
 
 		return $url;
@@ -87,6 +93,10 @@ trait WpUri {
 			return $canonicalUrl;
 		}
 
+		if ( is_404() ) {
+			return apply_filters( 'aioseo_canonical_url', '' );
+		}
+
 		$metaData = [];
 		$post     = $this->getPost();
 		if ( $post ) {
@@ -98,12 +108,14 @@ trait WpUri {
 		}
 
 		if ( $metaData && ! empty( $metaData->canonical_url ) ) {
-			return $this->makeUrlAbsolute( $metaData->canonical_url );
+			return apply_filters( 'aioseo_canonical_url', $this->makeUrlAbsolute( $metaData->canonical_url ) );
 		}
 
-		$url = $this->getUrl( true );
-		if ( aioseo()->options->searchAppearance->advanced->noPaginationForCanonical && 1 < $this->getPageNumber() ) {
-			$url = preg_replace( '#(\d+\/|(?<=\/)page\/\d+\/)$#', '', $url );
+		$url                      = $this->getUrl( true );
+		$noPaginationForCanonical = aioseo()->options->searchAppearance->advanced->noPaginationForCanonical;
+		$pageNumber               = $this->getPageNumber();
+		if ( $noPaginationForCanonical && 1 < $pageNumber ) {
+			$url = preg_replace( '/(\d+|(?<=\/)page\/\d+\/|(?<=\/)comment-page-\d+\/*(#comments)*)$/', '', $url );
 		}
 
 		$url = $this->maybeRemoveTrailingSlash( $url );
@@ -276,7 +288,7 @@ trait WpUri {
 		$postTypes = is_array( $postType ) ? $postType : [ $postType, 'attachment' ];
 		$postTypes = "'" . implode( "','", $postTypes ) . "'";
 
-		$posts = aioseo()->db->start( 'posts' )
+		$posts = aioseo()->core->db->start( 'posts' )
 			->select( 'ID, post_name, post_parent, post_type' )
 			->whereRaw( "post_name in ( $postNames )" )
 			->whereRaw( "post_type in ( $postTypes )" )

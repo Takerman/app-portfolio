@@ -8,9 +8,6 @@ use SiteGround_Optimizer\Helper\Helper;
 use SiteGround_Optimizer\Helper\Factory_Trait;
 use SiteGround_Optimizer\Install_Service\Install_6_0_0;
 use SiteGround_Helper\Helper_Service;
-use SiteGround_i18n\i18n_Service;
-use SiteGround_Data\Settings_Page;
-use SiteGround_Data\Settings;
 
 /**
  * Loader functions and main initialization class.
@@ -18,7 +15,7 @@ use SiteGround_Data\Settings;
 class Loader {
 	use Factory_Trait;
 	/**
-	 * Configuration map array
+	 * Configuration map array.
 	 *
 	 * @var array
 	 */
@@ -31,7 +28,6 @@ class Loader {
 		),
 		'default_hooks' => array(
 			'helper'                 => 'helper',
-			'i18n'                   => 'i18n',
 			'install_service'        => 'install_service',
 			'modules'                => 'modules',
 			'admin'                  => 'admin',
@@ -53,34 +49,85 @@ class Loader {
 	);
 
 	/**
+	 * External dependencies.
+	 *
+	 * @var array
+	 */
+	public $external_dependencies = array(
+		'Settings_Page'  => array(
+			'namespace' => 'Data',
+		),
+		'Settings'       => array(
+			'namespace' => 'Data',
+			'hook'      => 'settings',
+		),
+		'Helper_Service' => array(
+			'namespace' => 'Helper',
+		),
+		'i18n_Service'   => array(
+			'namespace' => 'i18n',
+			'hook'      => 'i18n',
+			'args'      => 'sg-cachepress',
+		),
+	);
+
+	/**
 	 * Create a new helper.
 	 */
 	public function __construct() {
+		$this->load_external_dependencies();
 		$this->load_dependencies();
 		$this->add_hooks();
-		$this->add_settings();
 	}
 
 	/**
 	 * Add the data collector hooks.
 	 *
-	 * @since 7.0.0
+	 * @since 7.0.6
 	 */
-	public function add_settings() {
-		$this->page = new Settings_Page();
-		$this->settings = new Settings();
+	public function add_settings_hooks() {
 
-		add_action( 'admin_menu', array( $this->page, 'register_settings_page' ) );
+		add_action( 'admin_menu', array( $this->settings_page, 'register_settings_page' ) );
 
-		add_action( 'admin_init', array( $this->page, 'add_setting_fields' ) );
+		add_action( 'admin_init', array( $this->settings_page, 'add_setting_fields' ) );
 
-		add_filter( 'allowed_options', array( $this->page, 'change_allowed_options' ) );
+		add_filter( 'allowed_options', array( $this->settings_page, 'change_allowed_options' ) );
 
 		// Register rest route.
-		add_action( 'rest_api_init', array( $this->page, 'register_rest_routes' ) );
+		add_action( 'rest_api_init', array( $this->settings_page, 'register_rest_routes' ) );
 
 		if ( 1 === intval( get_option( 'siteground_data_consenst', 0 ) ) ) {
 			$this->settings->schedule_cron_job();
+		}
+	}
+
+	/**
+	 * Load all of our external dependencies.
+	 *
+	 * @since 7.0.8
+	 */
+	public function load_external_dependencies() {
+		// Loop trough all deps.
+		foreach ( $this->external_dependencies as $library => $props ) {
+
+			// Build the class.
+			$class = 'SiteGround_' . $props['namespace'] . '\\' . $library;
+
+			// Check if class exists.
+			if ( ! class_exists( $class ) ) {
+				throw new \Exception( 'Unknown library type "' . $library . '".' );
+			}
+
+			// Lowercase the classsname we are going to use in the object context.
+			$classname = strtolower( $library );
+
+			// Check if we need to add any arguments when calling the class.
+			$this->$classname = true === array_key_exists( 'args', $props ) ? new $class( $props['args'] ) : new $class();
+
+			// Check if we need to add hooks for the specific dependency.
+			if ( array_key_exists( 'hook', $props ) ) {
+				call_user_func( array( $this, 'add_' . $props['hook'] . '_hooks' ) );
+			}
 		}
 	}
 
@@ -131,7 +178,7 @@ class Loader {
 		// Check if plugin is installed.
 		add_action( 'plugins_loaded', array( $this->helper, 'is_plugin_installed' ) );
 		// Hide warnings in rest api.
-		add_action( 'init', array( new Helper_Service(), 'hide_warnings_in_rest_api' ) );
+		add_action( 'init', array( $this->helper_service, 'hide_warnings_in_rest_api' ) );
 		// Remove the https module from Site Heatlh, because our plugin provide the same functionality.
 		add_filter( 'site_status_tests', array( $this->helper, 'sitehealth_remove_https_status' ) );
 	}
@@ -143,9 +190,9 @@ class Loader {
 	 */
 	public function add_i18n_hooks() {
 		// Load the plugin textdomain.
-		add_action( 'after_setup_theme', array( $this->i18n, 'load_textdomain' ), 9999 );
+		add_action( 'after_setup_theme', array( $this->i18n_service, 'load_textdomain' ), 9999 );
 		// Generate JSON translations.
-		add_action( 'upgrader_process_complete', array( $this->i18n, 'update_json_translations' ), 10, 2 );
+		add_action( 'upgrader_process_complete', array( $this->i18n_service, 'update_json_translations' ), 10, 2 );
 	}
 
 	/**
@@ -597,7 +644,9 @@ class Loader {
 	}
 
 	/**
-	 * Add general caching hookss
+	 * Add general caching hooks.
+	 *
+	 * @since 7.0.0
 	 *
 	 * @param class $class - the class instance, holding the method invoked in this.
 	 */

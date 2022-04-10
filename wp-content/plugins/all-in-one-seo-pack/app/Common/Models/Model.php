@@ -132,7 +132,7 @@ class Model implements \JsonSerializable {
 			return false;
 		}
 
-		$query = aioseo()->db
+		$query = aioseo()->core->db
 			->start( $this->table )
 			->where( $this->pk, $var )
 			->limit( 1 )
@@ -197,8 +197,8 @@ class Model implements \JsonSerializable {
 	 * @return array         The array of valid columns for the database query.
 	 */
 	protected function filter( $key ) {
-		$table   = aioseo()->db->prefix . $this->table;
-		$results = aioseo()->db->execute( 'SHOW COLUMNS FROM `' . $table . '`', true );
+		$table   = aioseo()->core->db->prefix . $this->table;
+		$results = aioseo()->core->db->execute( 'SHOW COLUMNS FROM `' . $table . '`', true );
 		$fields  = [];
 		$skip    = [ 'created', 'updated' ];
 		$columns = $results->result();
@@ -302,7 +302,7 @@ class Model implements \JsonSerializable {
 	 * @return null
 	 */
 	public function delete() {
-		aioseo()->db
+		aioseo()->core->db
 			->delete( $this->table )
 			->where( $this->pk, $this->id )
 			->run();
@@ -325,7 +325,7 @@ class Model implements \JsonSerializable {
 			if ( isset( $this->$pk ) && '' !== $this->$pk ) {
 				// PK specified.
 				$pkv   = $this->$pk;
-				$query = aioseo()->db
+				$query = aioseo()->core->db
 					->start( $this->table )
 					->where( [ $pk => $pkv ] )
 					->run();
@@ -333,7 +333,7 @@ class Model implements \JsonSerializable {
 				if ( ! $query->nullSet() ) {
 					// Row exists in database.
 					$fields['updated'] = gmdate( 'Y-m-d H:i:s' );
-					aioseo()->db
+					aioseo()->core->db
 						->update( $this->table )
 						->set( $fields )
 						->where( [ $pk => $pkv ] )
@@ -345,7 +345,7 @@ class Model implements \JsonSerializable {
 					$fields['created'] = gmdate( 'Y-m-d H:i:s' );
 					$fields['updated'] = gmdate( 'Y-m-d H:i:s' );
 
-					$id = aioseo()->db
+					$id = aioseo()->core->db
 						->insert( $this->table )
 						->set( $fields )
 						->run()
@@ -359,7 +359,7 @@ class Model implements \JsonSerializable {
 				$fields['created'] = gmdate( 'Y-m-d H:i:s' );
 				$fields['updated'] = gmdate( 'Y-m-d H:i:s' );
 
-				$id = aioseo()->db
+				$id = aioseo()->core->db
 					->insert( $this->table )
 					->set( $fields )
 					->run()
@@ -432,8 +432,8 @@ class Model implements \JsonSerializable {
 			self::$columns[ get_called_class() ] = [];
 
 			// Let's set the columns that are available by default.
-			$table   = aioseo()->db->prefix . $this->table;
-			$results = aioseo()->db->execute( 'SHOW COLUMNS FROM `' . $table . '`', true );
+			$table   = aioseo()->core->db->prefix . $this->table;
+			$results = aioseo()->core->db->execute( 'SHOW COLUMNS FROM `' . $table . '`', true );
 
 			foreach ( $results->result() as $col ) {
 				self::$columns[ get_called_class() ][ $col->Field ] = $col->Default;

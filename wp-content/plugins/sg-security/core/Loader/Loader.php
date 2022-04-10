@@ -64,6 +64,7 @@ class Loader {
 		$this->load_dependencies();
 		$this->add_hooks();
 	}
+
 	/**
 	 * Add our custom settings page hooks.
 	 *
@@ -319,7 +320,8 @@ class Loader {
 		if ( ! Options_Service::is_enabled( 'sg2fa' ) ) {
 			return;
 		}
-		add_action( 'wp_login', array( $this->sg_2fa, 'init_2fa' ), 3, 2 );
+
+		add_action( 'wp_login', array( $this->sg_2fa, 'init_2fa' ), 10, 2 );
 		add_action( 'login_form_sgs2fa', array( $this->sg_2fa, 'validate_2fa_login' ) );
 		add_action( 'login_form_sgs2fabc', array( $this->sg_2fa, 'validate_2fabc_login' ) );
 		add_action( 'login_form_load_sgs2fabc', array( $this->sg_2fa, 'load_backup_codes_form' ) );

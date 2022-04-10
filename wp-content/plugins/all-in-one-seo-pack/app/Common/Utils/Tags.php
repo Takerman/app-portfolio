@@ -723,10 +723,6 @@ class Tags {
 
 		// Taxonomies including from CPT's.
 		foreach ( aioseo()->helpers->getPublicTaxonomies() as $taxonomy ) {
-			if ( 'post_tag' !== $taxonomy['name'] && 'category' !== $taxonomy['name'] ) {
-				continue;
-			}
-
 			$context[ $taxonomy['name'] . 'Title' ]       = $context['taxonomyTitle'];
 			$context[ $taxonomy['name'] . 'Description' ] = $context['taxonomyDescription'];
 		}
@@ -797,13 +793,7 @@ class Tags {
 
 		switch ( $tag['id'] ) {
 			case 'page_number':
-				global $paged;
-				$page = get_query_var( 'page' );
-				if ( $paged > $page ) {
-					$page = $paged;
-				}
-
-				return $page;
+				return aioseo()->helpers->getPageNumber();
 			case 'alt_tag':
 				return empty( $id )
 					? ( $sampleData ? __( 'A sample alt tag for your image', 'all-in-one-seo-pack' ) : '' )

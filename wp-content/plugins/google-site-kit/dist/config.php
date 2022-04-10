@@ -8,5 +8,5 @@
 
 return array(
 	'buildMode' => 'production',
-	'features' => array( 'adsenseSetupV2','dashboardSharing','ideaHubModule','serviceSetupV2','swgModule','userInput','unifiedDashboard','zeroDataStates' ),
+	'features' => array( 'adsenseSetupV2','dashboardSharing','ideaHubModule','swgModule','userInput','unifiedDashboard','zeroDataStates' ),
 );

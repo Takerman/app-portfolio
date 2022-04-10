@@ -26,6 +26,7 @@ trait Vue {
 	 * @return array                The data.
 	 */
 	public function getVueData( $page = null, $staticPostId = null, $integration = null ) {
+		global $wp_version;
 		$screen = aioseo()->helpers->getCurrentScreen();
 
 		$isStaticHomePage = 'page' === get_option( 'show_on_front' );
@@ -49,7 +50,8 @@ trait Vue {
 				'mainSiteUrl'       => $this->getSiteUrl(),
 				'home'              => home_url(),
 				'restUrl'           => rest_url(),
-				'publicPath'        => plugin_dir_url( AIOSEO_FILE ),
+				'publicPath'        => aioseo()->core->assets->normalizeAssetsHost( plugin_dir_url( AIOSEO_FILE ) ),
+				'assetsPath'        => aioseo()->core->assets->getAssetsPath(),
 				'rssFeedUrl'        => get_bloginfo( 'rss2_url' ),
 				'generalSitemapUrl' => aioseo()->sitemap->helpers->getUrl( 'general' ),
 				'rssSitemapUrl'     => aioseo()->sitemap->helpers->getUrl( 'rss' ),
@@ -63,17 +65,19 @@ trait Vue {
 					'redirect' => rawurldecode( base64_encode( admin_url( 'index.php?page=aioseo-connect' ) ) )
 				], defined( 'AIOSEO_CONNECT_URL' ) ? AIOSEO_CONNECT_URL : 'https://connect.aioseo.com' ),
 				'aio'               => [
-					'wizard'           => admin_url( 'index.php?page=aioseo-setup-wizard' ),
 					'dashboard'        => admin_url( 'admin.php?page=aioseo' ),
-					'settings'         => admin_url( 'admin.php?page=aioseo-settings' ),
-					'localSeo'         => admin_url( 'admin.php?page=aioseo-local-seo' ),
 					'featureManager'   => admin_url( 'admin.php?page=aioseo-feature-manager' ),
-					'sitemaps'         => admin_url( 'admin.php?page=aioseo-sitemaps' ),
-					'seoAnalysis'      => admin_url( 'admin.php?page=aioseo-seo-analysis' ),
+					'linkAssistant'    => admin_url( 'admin.php?page=aioseo-link-assistant' ),
+					'localSeo'         => admin_url( 'admin.php?page=aioseo-local-seo' ),
+					'monsterinsights'  => admin_url( 'admin.php?page=aioseo-monsterinsights' ),
+					'redirects'        => admin_url( 'admin.php?page=aioseo-redirects' ),
 					'searchAppearance' => admin_url( 'admin.php?page=aioseo-search-appearance' ),
+					'seoAnalysis'      => admin_url( 'admin.php?page=aioseo-seo-analysis' ),
+					'settings'         => admin_url( 'admin.php?page=aioseo-settings' ),
+					'sitemaps'         => admin_url( 'admin.php?page=aioseo-sitemaps' ),
 					'socialNetworks'   => admin_url( 'admin.php?page=aioseo-social-networks' ),
 					'tools'            => admin_url( 'admin.php?page=aioseo-tools' ),
-					'monsterinsights'  => admin_url( 'admin.php?page=aioseo-monsterinsights' )
+					'wizard'           => admin_url( 'index.php?page=aioseo-setup-wizard' )
 				],
 				'admin'             => [
 					'widgets'          => admin_url( 'widgets.php' ),
@@ -103,7 +107,7 @@ trait Vue {
 				'multisite'           => is_multisite(),
 				'network'             => is_network_admin(),
 				'mainSite'            => is_main_site(),
-				'subdomain'           => apply_filters( 'aioseo_multisite_subdomain', defined( 'SUBDOMAIN_INSTALL' ) && SUBDOMAIN_INSTALL ),
+				'subdomain'           => $this->isSubdomain(),
 				'isWooCommerceActive' => $this->isWooCommerceActive(),
 				'isBBPressActive'     => class_exists( 'bbPress' ),
 				'staticHomePage'      => $isStaticHomePage ? $staticHomePage : false,
@@ -132,6 +136,7 @@ trait Vue {
 			'notifications'    => Models\Notification::getNotifications( false ),
 			'addons'           => aioseo()->addons->getAddons(),
 			'version'          => AIOSEO_VERSION,
+			'wpVersion'        => $wp_version,
 			'helpPanel'        => json_decode( aioseo()->help->getDocs() ),
 			'scheduledActions' => [
 				'sitemaps' => []
@@ -306,6 +311,12 @@ trait Vue {
 
 		if ( 'settings' === $page ) {
 			$data['breadcrumbs']['defaultTemplate'] = aioseo()->helpers->encodeOutputHtml( aioseo()->breadcrumbs->frontend->getDefaultTemplate() );
+		}
+
+		if ( 'divi' === $integration ) {
+			// This needs to be dropped in order to prevent JavaScript errors in Divi's visual builder.
+			// Some of the data from the site analysis can contain HTML tags, e.g. the search preview, and somehow that causes JSON.parse to fail on our localized Vue data.
+			unset( $data['internalOptions']['internal']['siteAnalysis'] );
 		}
 
 		return $data;

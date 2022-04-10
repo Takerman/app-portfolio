@@ -131,30 +131,12 @@ abstract class Integration {
 	 * @return void
 	 */
 	public function enqueue() {
-		aioseo()->helpers->enqueueChunkedAssets( $this->integrationSlug );
-		aioseo()->helpers->enqueueScript(
-			'aioseo-' . $this->integrationSlug,
-			'js/' . $this->integrationSlug . '.js'
-		);
-		wp_localize_script(
-			'aioseo-' . $this->integrationSlug,
-			'aioseo',
-			aioseo()->helpers->getVueData( 'post', $this->getPostId(), $this->integrationSlug )
-		);
-		wp_localize_script(
-			'aioseo-' . $this->integrationSlug,
-			'aioseoTranslations',
-			[
-				'translations' => aioseo()->helpers->getJedLocaleData( 'all-in-one-seo-pack' )
-			]
-		);
+		$integrationSlug = $this->integrationSlug;
+		aioseo()->core->assets->load( "src/vue/standalone/$integrationSlug/main.js", [], aioseo()->helpers->getVueData( 'post', $this->getPostId(), $this->integrationSlug ) );
 
-		$rtl = is_rtl() ? '.rtl' : '';
-		aioseo()->helpers->enqueueStyle(
-			'aioseo-' . $this->integrationSlug . '-integrations',
-			"css/aioseo-integrations$rtl.css",
-			false
-		);
+		aioseo()->core->assets->enqueueCss( 'integrations.css', [], 'src/vue/assets/scss/integrations/main.scss' );
+
+		aioseo()->main->enqueueTranslations();
 	}
 
 	/**

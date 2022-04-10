@@ -67,7 +67,7 @@ class CachePrune {
 	 * @return void
 	 */
 	public function prune() {
-		aioseo()->db->delete( aioseo()->cache->getTableName() )
+		aioseo()->core->db->delete( aioseo()->core->cache->getTableName() )
 			->whereRaw( '( `expiration` IS NOT NULL AND expiration <= \'' . aioseo()->helpers->timeToMysql( time() ) . '\' )' )
 			->run();
 	}
@@ -80,7 +80,7 @@ class CachePrune {
 	 * @return void
 	 */
 	public function optionCacheClean() {
-		$optionCache = aioseo()->db->delete( aioseo()->db->db->options, true )
+		$optionCache = aioseo()->core->db->delete( aioseo()->core->db->db->options, true )
 			->whereRaw( "option_name LIKE '\_aioseo\_cache\_%'" )
 			->limit( 10000 )
 			->run();

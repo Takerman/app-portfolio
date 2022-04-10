@@ -29,11 +29,12 @@ class HeadlineAnalyzer {
 	 * @return void
 	 */
 	public function enqueue() {
-		if ( ! aioseo()->helpers->isScreenBase( 'post' ) ) {
-			return;
-		}
-
-		if ( ! aioseo()->access->hasCapability( 'aioseo_page_analysis' ) ) {
+		global $wp_version;
+		if (
+			! aioseo()->helpers->isScreenBase( 'post' ) ||
+			version_compare( $wp_version, '5.2', '<' ) ||
+			! aioseo()->access->hasCapability( 'aioseo_page_analysis' )
+		) {
 			return;
 		}
 
@@ -46,22 +47,12 @@ class HeadlineAnalyzer {
 		}
 
 		$path = '/vendor/jwhennessey/phpinsight/autoload.php';
-		if ( ! file_exists( AIOSEO_DIR . $path ) ) {
+		if ( ! aioseo()->core->fs->exists( AIOSEO_DIR . $path ) ) {
 			return;
 		}
 		require AIOSEO_DIR . $path;
 
-		aioseo()->helpers->enqueueScript(
-			'aioseo-headline-analyzer',
-			'js/headline-analyzer.js',
-			false
-		);
-
-		aioseo()->helpers->enqueueStyle(
-			'aioseo-headline-analyzer',
-			'css/headline-analyzer.css',
-			false
-		);
+		aioseo()->core->assets->load( 'src/react/headline-analyzer/main.js' );
 	}
 
 	/**

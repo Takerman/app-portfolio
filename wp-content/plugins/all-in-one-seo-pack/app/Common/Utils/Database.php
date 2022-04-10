@@ -23,7 +23,6 @@ class Database {
 		'aioseo_cache',
 		'aioseo_links',
 		'aioseo_links_suggestions',
-		'aioseo_links_post_relationships',
 		'aioseo_notifications',
 		'aioseo_posts',
 		'aioseo_redirects',
@@ -1532,7 +1531,7 @@ class Database {
 	 *
 	 * @since 4.1.0
 	 *
-	 * @return Options The cloned Options object.
+	 * @return Database The cloned Database object.
 	 */
 	public function noConflict() {
 		return clone $this;

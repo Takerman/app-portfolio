@@ -211,22 +211,20 @@ class Images_Optimizer_Webp extends Abstract_Images_Optimizer {
 	 * @param  int $id The attachment ID.
 	 */
 	public function delete_webp_copy( $id ) {
+		global $wp_filesystem;
 		$main_image = get_attached_file( $id );
 		$metadata   = wp_get_attachment_metadata( $id );
+		$basename   = basename( $main_image );
 
-		$files    = array( $main_image . '.webp' );
-		$basename = basename( $main_image );
+		$wp_filesystem->delete( $main_image . '.webp' );
 
 		if ( ! empty( $metadata['sizes'] ) ) {
 			// Loop through all image sizes and optimize them as well.
 			foreach ( $metadata['sizes'] as $size ) {
-				$files[] = str_replace( $basename, $size['file'], $main_image ) . '.webp';
+				$wp_filesystem->delete( str_replace( $basename, $size['file'], $main_image ) . '.webp' );
 			}
 		}
 
-		if ( ! empty( $files ) ) {
-			exec( 'rm ' . implode( ' ', $files ) );
-		}
 	}
 
 	/**

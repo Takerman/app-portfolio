@@ -412,13 +412,9 @@ class Frontend {
 			if ( ! empty( $child['children'] ) ) {
 				$tree .= $this->generateHierarchicalTree( $child );
 			}
-
-			// Because the list is closed off after the loop ends, we must keep track of the nest level so that all nested lists are closed.
-			for ( $i = 0; $i < $nestedLevel; $i++ ) {
-				$tree .= '</ul>';
-				$nestedLevel--;
-			}
+			$tree .= '</li>';
 		}
+		$tree .= '</ul>';
 
 		return $tree;
 	}

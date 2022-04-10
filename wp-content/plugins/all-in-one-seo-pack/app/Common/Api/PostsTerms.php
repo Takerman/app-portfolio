@@ -38,7 +38,7 @@ class PostsTerms {
 			], 400 );
 		}
 
-		$searchQuery = esc_sql( aioseo()->db->db->esc_like( $body['query'] ) );
+		$searchQuery = esc_sql( aioseo()->core->db->db->esc_like( $body['query'] ) );
 
 		$objects        = [];
 		$dynamicOptions = aioseo()->dynamicOptions->noConflict();
@@ -52,7 +52,7 @@ class PostsTerms {
 				}
 			}
 
-			$objects = aioseo()->db
+			$objects = aioseo()->core->db
 				->start( 'posts' )
 				->select( 'ID, post_type, post_title, post_name' )
 				->whereRaw( "( post_title LIKE '%{$searchQuery}%' OR post_name LIKE '%{$searchQuery}%' OR ID = '{$searchQuery}' )" )
@@ -73,7 +73,7 @@ class PostsTerms {
 				}
 			}
 
-			$objects = aioseo()->db
+			$objects = aioseo()->core->db
 				->start( 'terms as t' )
 				->select( 't.term_id as term_id, t.slug as slug, t.name as name, tt.taxonomy as taxonomy' )
 				->join( 'term_taxonomy as tt', 't.term_id = tt.term_id', 'INNER' )
@@ -316,7 +316,7 @@ class PostsTerms {
 		}
 		$thePost->save();
 
-		$lastError = aioseo()->db->lastError();
+		$lastError = aioseo()->core->db->lastError();
 		if ( ! empty( $lastError ) ) {
 			return new \WP_REST_Response( [
 				'success' => false,
@@ -366,7 +366,7 @@ class PostsTerms {
 		$thePost->updated = gmdate( 'Y-m-d H:i:s' );
 		$thePost->save();
 
-		$lastError = aioseo()->db->lastError();
+		$lastError = aioseo()->core->db->lastError();
 		if ( ! empty( $lastError ) ) {
 			return new \WP_REST_Response( [
 				'success' => false,

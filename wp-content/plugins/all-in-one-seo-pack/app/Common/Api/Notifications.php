@@ -186,7 +186,7 @@ class Notifications {
 	public static function dismissNotifications( $request ) {
 		$slugs = $request->get_json_params();
 
-		$notifications = aioseo()->db
+		$notifications = aioseo()->core->db
 			->start( 'aioseo_notifications' )
 			->whereIn( 'slug', $slugs )
 			->run()

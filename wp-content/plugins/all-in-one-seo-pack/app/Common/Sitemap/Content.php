@@ -319,8 +319,8 @@ class Content {
 				continue;
 			}
 
-			$post = aioseo()->db
-				->start( aioseo()->db->db->posts . ' as p', true )
+			$post = aioseo()->core->db
+				->start( aioseo()->core->db->db->posts . ' as p', true )
 				->select( 'p.ID' )
 				->where( 'p.post_status', 'publish' )
 				->where( 'p.post_type', $postType )
@@ -400,9 +400,9 @@ class Content {
 	 * @return string         The lastmod timestamp.
 	 */
 	public function getTermLastModified( $termId ) {
-		$termRelationshipsTable = aioseo()->db->db->prefix . 'term_relationships';
-		$lastModified = aioseo()->db
-			->start( aioseo()->db->db->posts . ' as p', true )
+		$termRelationshipsTable = aioseo()->core->db->db->prefix . 'term_relationships';
+		$lastModified = aioseo()->core->db
+			->start( aioseo()->core->db->db->posts . ' as p', true )
 			->select( 'MAX(`p`.`post_modified_gmt`) as last_modified' )
 			->whereRaw( "
 			( `p`.`ID` IN

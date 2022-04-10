@@ -188,10 +188,28 @@ class Helper_Service {
 	 */
 	public static function is_siteground() {
 		// Bail if open_basedir restrictions are set, and we are not able to check certain directories.
-		if ( ! empty( ini_get( 'open_basedir' ) ) ){
+		if ( ! empty( ini_get( 'open_basedir' ) ) ) {
 			return 0;
 		}
 
 		return (int) ( @file_exists( '/etc/yum.repos.d/baseos.repo' ) && @file_exists( '/Z' ) );
+	}
+
+	/**
+	 * Checks if the user is 2FA authenticated.
+	 *
+	 * @since  1.0.1
+	 *
+	 * @return boolean True/False.
+	 */
+	public static function is_2fa_logged() {
+		global $wpdb;
+
+		// Return false if SG Security plugin is not active.
+		$active_plugins = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}options WHERE option_name = 'active_plugins'", OBJECT );
+		error_log( print_r( $active_plugins, true ));
+
+		// Return false if 2FA option is not enabled.
+
 	}
 }

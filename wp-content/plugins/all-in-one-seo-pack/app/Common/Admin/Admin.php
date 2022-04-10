@@ -61,6 +61,20 @@ class Admin {
 	protected $adminBarMenuItems = [];
 
 	/**
+	 * An array of asset slugs to use.
+	 *
+	 * @since 4.1.9
+	 *
+	 * @var array
+	 */
+	protected $assetSlugs = [
+		'posts-table' => 'src/vue/standalone/posts-table/main.js',
+		'plugins'     => 'src/app/plugins/main.js',
+		'flyout-menu' => 'src/vue/standalone/flyout-menu/main.js',
+		'pages'       => 'src/vue/pages/{page}/main.js'
+	];
+
+	/**
 	 * Construct method.
 	 *
 	 * @since 4.0.0
@@ -72,11 +86,29 @@ class Admin {
 			return;
 		}
 
+		add_filter( 'language_attributes', [ $this, 'alwaysAddHtmlDirAttribute' ], 3000 );
+
 		add_action( 'sanitize_comment_cookies', [ $this, 'init' ], 20 );
 
 		add_filter( 'admin_body_class', [ $this, 'bodyClass' ] );
 
 		$this->setupWizard = new SetupWizard();
+	}
+
+	/**
+	 * Always add dir attribute to HTML tag.
+	 *
+	 * @since 4.1.9
+	 *
+	 * @param  string $output The HTML language attribute.
+	 * @return string         The possibly modified HTML language attribute.
+	 */
+	public function alwaysAddHtmlDirAttribute( $output ) {
+		if ( is_rtl() ) {
+			return $output;
+		}
+
+		return 'dir="ltr" ' . $output;
 	}
 
 	/**
@@ -219,11 +251,15 @@ class Admin {
 	 */
 	public function enqueueBlockEditorLinkFormat() {
 		wp_enqueue_script( 'aioseo-link-format' );
-		aioseo()->helpers->enqueueStyle(
-			'aioseo-link-format',
-			'css/link-format-block.css',
-			false
-		);
+
+		if ( ! wp_style_is( 'aioseo-link-format', 'enqueued' ) ) {
+			wp_enqueue_style(
+				'aioseo-link-format',
+				aioseo()->core->assets->getAssetsPath( false ) . '/link-format/link-format-block.css',
+				[],
+				aioseo()->version
+			);
+		}
 	}
 
 	/**
@@ -240,19 +276,9 @@ class Admin {
 			return;
 		}
 
-		aioseo()->helpers->enqueueScript(
-			'aioseo-plugins',
-			'js/plugins.js',
-			false
-		);
-
-		wp_localize_script(
-			'aioseo-plugins',
-			'aioseoPlugins',
-			[
-				'basename' => AIOSEO_PLUGIN_BASENAME
-			]
-		);
+		aioseo()->core->assets->load( $this->assetSlugs['plugins'], [], [
+			'basename' => AIOSEO_PLUGIN_BASENAME
+		], 'aioseoPlugins' );
 	}
 
 	/**
@@ -267,7 +293,7 @@ class Admin {
 
 		wp_enqueue_script(
 			'wplink',
-			aioseo()->helpers->getScriptUrl( 'js/link-format-classic.js', false ),
+			aioseo()->core->assets->getAssetsPath( false ) . '/link-format/link-format-classic.js',
 			[ 'jquery', 'wp-a11y' ],
 			aioseo()->version,
 			true
@@ -323,7 +349,7 @@ class Admin {
 
 		wp_register_script(
 			'aioseo-link-format',
-			aioseo()->helpers->getScriptUrl( "js/link-format-$linkFormat.js", false ),
+			aioseo()->core->assets->getAssetsPath( false ) . "link-format/link-format-$linkFormat.js",
 			[
 				'wp-blocks',
 				'wp-i18n',
@@ -734,7 +760,9 @@ class Admin {
 	 * @return void
 	 */
 	public function page() {
-		echo '<div id="aioseo-app"></div>';
+		echo '<div id="aioseo-app">';
+		aioseo()->templates->getTemplate( 'admin/settings-page.php' );
+		echo '</div>';
 
 		if ( $this->isFlyoutMenuEnabled() ) {
 			echo '<div id="aioseo-flyout-menu"></div>';
@@ -846,6 +874,7 @@ class Admin {
 
 			$this->currentPage = $page;
 			add_action( 'admin_enqueue_scripts', [ $this, 'enqueueAssets' ], 11 );
+			add_action( 'admin_enqueue_scripts', [ $this, 'dequeueTagDivOptinBuilderScript' ], 99999 );
 
 			add_action( 'admin_footer_text', [ $this, 'addFooterText' ] );
 
@@ -870,42 +899,12 @@ class Admin {
 	 * @return void
 	 */
 	public function enqueueAssets() {
-		aioseo()->helpers->enqueueChunkedAssets();
-		aioseo()->helpers->enqueueScript(
-			'aioseo-' . $this->currentPage . '-script',
-			'js/' . $this->currentPage . '.js'
-			// [ 'aioseo-common', 'aioseo-venders', 'aioseo-app' ]
-		);
+		$page = str_replace( '{page}', $this->currentPage, $this->assetSlugs['pages'] );
+		aioseo()->core->assets->load( $page, [], aioseo()->helpers->getVueData( $this->currentPage ) );
 
-		wp_localize_script(
-			'aioseo-' . $this->currentPage . '-script',
-			'aioseo',
-			aioseo()->helpers->getVueData( $this->currentPage )
-		);
-
-		if ( ! apply_filters( 'aioseo_flyout_menu_disable', false ) ) {
-			$this->enqueueFlyoutMenu();
+		if ( $this->isFlyoutMenuEnabled() ) {
+			aioseo()->core->assets->load( $this->assetSlugs['flyout-menu'] );
 		}
-	}
-
-	/**
-	 * Enqueues the JS/CSS for the Flyout Menu.
-	 *
-	 * @since 4.1.5
-	 *
-	 * @return void
-	 */
-	private function enqueueFlyoutMenu() {
-		aioseo()->helpers->enqueueScript(
-			'aioseo-flyout-menu',
-			'js/flyout-menu.js'
-		);
-
-		$rtl = is_rtl() ? '.rtl' : '';
-		aioseo()->helpers->enqueueStyle(
-			'aioseo-flyout-menu',
-			"css/flyout-menu$rtl.css"
-		);
 	}
 
 	/**
@@ -1004,26 +1003,11 @@ class Admin {
 	 * @return void
 	 */
 	public function enqueuePostsScripts() {
-		aioseo()->helpers->enqueueChunkedAssets();
-		aioseo()->helpers->enqueueScript(
-			'aioseo-posts-table',
-			'js/posts-table.js'
-		);
-
 		$data          = aioseo()->helpers->getVueData();
 		$data['posts'] = [];
 		$data['terms'] = [];
-		wp_localize_script(
-			'aioseo-posts-table',
-			'aioseo',
-			$data
-		);
 
-		$rtl = is_rtl() ? '.rtl' : '';
-		aioseo()->helpers->enqueueStyle(
-			'aioseo-posts-table-style',
-			"css/posts-table$rtl.css"
-		);
+		aioseo()->core->assets->load( $this->assetSlugs['posts-table'], [], $data );
 	}
 
 	/**
@@ -1070,28 +1054,30 @@ class Admin {
 			// Add this column/post to the localized array.
 			global $wp_scripts;
 
-			$data = $wp_scripts->get_data( 'aioseo-posts-table', 'data' );
+			$data = $wp_scripts->get_data( 'aioseo/js/' . $this->assetSlugs['posts-table'], 'data' );
 
 			if ( ! is_array( $data ) ) {
 				$data = json_decode( str_replace( 'var aioseo = ', '', substr( $data, 0, -1 ) ), true );
 			}
 
-			$nonce   = wp_create_nonce( "aioseo_meta_{$columnName}_{$postId}" );
-			$posts   = $data['posts'];
-			$thePost = Models\Post::getPost( $postId );
+			$nonce    = wp_create_nonce( "aioseo_meta_{$columnName}_{$postId}" );
+			$posts    = $data['posts'];
+			$thePost  = Models\Post::getPost( $postId );
+			$postType = get_post_type( $postId );
 			$postData = [
 				'id'                 => $postId,
 				'columnName'         => $columnName,
 				'nonce'              => $nonce,
 				'title'              => $thePost->title,
 				'titleParsed'        => aioseo()->meta->title->getPostTitle( $postId ),
-				'defaultTitle'       => aioseo()->meta->title->getPostTypeTitle( get_post_type( $postId ) ),
+				'defaultTitle'       => aioseo()->meta->title->getPostTypeTitle( $postType ),
 				'description'        => $thePost->description,
 				'descriptionParsed'  => aioseo()->meta->description->getPostDescription( $postId ),
-				'defaultDescription' => aioseo()->meta->description->getPostTypeDescription( get_post_type( $postId ) ),
+				'defaultDescription' => aioseo()->meta->description->getPostTypeDescription( $postType ),
 				'value'              => (int) $thePost->seo_score,
 				'showMedia'          => false,
-				'isSpecialPage'      => aioseo()->helpers->isSpecialPage( $postId )
+				'isSpecialPage'      => aioseo()->helpers->isSpecialPage( $postId ),
+				'postType'           => $postType
 			];
 
 			foreach ( aioseo()->addons->getLoadedAddons() as $loadedAddon ) {
@@ -1103,8 +1089,8 @@ class Admin {
 			$posts[]       = $postData;
 			$data['posts'] = $posts;
 
-			$wp_scripts->add_data( 'aioseo-posts-table', 'data', '' );
-			wp_localize_script( 'aioseo-posts-table', 'aioseo', $data );
+			$wp_scripts->add_data( 'aioseo/js/' . $this->assetSlugs['posts-table'], 'data', '' );
+			wp_localize_script( 'aioseo/js/' . $this->assetSlugs['posts-table'], 'aioseo', $data );
 
 			require( AIOSEO_DIR . '/app/Common/Views/admin/posts/columns.php' );
 		}
@@ -1146,10 +1132,12 @@ class Admin {
 		) {
 			return;
 		}
-		$postTypes     = aioseo()->helpers->getPublicPostTypes();
-		$showTruSeo    = aioseo()->options->advanced->truSeo;
-		$isSpecialPage = aioseo()->helpers->isSpecialPage( $post->ID );
-		$showMetabox   = aioseo()->dynamicOptions->searchAppearance->postTypes->{$post->post_type}->advanced->showMetaBox;
+		$postTypes      = aioseo()->helpers->getPublicPostTypes();
+		$showTruSeo     = aioseo()->options->advanced->truSeo;
+		$isSpecialPage  = aioseo()->helpers->isSpecialPage( $post->ID );
+		$dynamicOptions = aioseo()->dynamicOptions->noConflict();
+		$showMetabox    = $dynamicOptions->searchAppearance->postTypes->has( $post->post_type, false )
+			&& $dynamicOptions->{$post->post_type}->advanced->showMetaBox;
 
 		$postTypesMB = [];
 		foreach ( $postTypes as $pt ) {
@@ -1206,7 +1194,7 @@ class Admin {
 
 		// Remove all AIOSEO cache.
 		if ( isset( $_GET['aioseo-clear-cache'] ) ) {
-			aioseo()->cache->clear();
+			aioseo()->core->cache->clear();
 		}
 
 		if ( isset( $_GET['aioseo-remove-duplicates'] ) ) {
@@ -1232,7 +1220,7 @@ class Admin {
 	 * @return void
 	 */
 	public function scheduleUnescapeData() {
-		aioseo()->cache->update( 'unslash_escaped_data_posts', time(), WEEK_IN_SECONDS );
+		aioseo()->core->cache->update( 'unslash_escaped_data_posts', time(), WEEK_IN_SECONDS );
 		aioseo()->helpers->scheduleSingleAction( 'aioseo_unslash_escaped_data_posts', 120 );
 	}
 
@@ -1245,9 +1233,9 @@ class Admin {
 	 */
 	public function unslashEscapedDataPosts() {
 		$postsToUnslash = 200;
-		$timeStarted    = gmdate( 'Y-m-d H:i:s', aioseo()->cache->get( 'unslash_escaped_data_posts' ) );
+		$timeStarted    = gmdate( 'Y-m-d H:i:s', aioseo()->core->cache->get( 'unslash_escaped_data_posts' ) );
 
-		$posts = aioseo()->db->start( 'aioseo_posts' )
+		$posts = aioseo()->core->db->start( 'aioseo_posts' )
 			->select( '*' )
 			->whereRaw( "updated < '$timeStarted'" )
 			->orderBy( 'updated ASC' )
@@ -1256,7 +1244,7 @@ class Admin {
 			->result();
 
 		if ( empty( $posts ) ) {
-			aioseo()->cache->delete( 'unslash_escaped_data_posts' );
+			aioseo()->core->cache->delete( 'unslash_escaped_data_posts' );
 
 			return;
 		}
@@ -1479,5 +1467,16 @@ class Admin {
 		}
 
 		return $classes;
+	}
+
+	/**
+	 * Dequeues a script from the tagDiv Opt-in Builder plugin that, accompanied by the Newspaper theme, crashes our menu pages.
+	 *
+	 * @since 4.1.9
+	 *
+	 * @return void
+	 */
+	public function dequeueTagDivOptinBuilderScript() {
+		wp_dequeue_script( 'tds_js_vue_files_last' );
 	}
 }

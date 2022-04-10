@@ -339,16 +339,22 @@ trait WpContext {
 	 * @return int The page number.
 	 */
 	public function getPageNumber() {
-		$page  = get_query_var( 'page' );
-		$paged = get_query_var( 'paged' );
+		$page = get_query_var( 'page' );
+		if ( ! empty( $page ) ) {
+			return (int) $page;
+		}
 
-		return ! empty( $page )
-			? $page
-			: (
-				! empty( $paged )
-					? $paged
-					: 1
-			);
+		$paged = get_query_var( 'paged' );
+		if ( ! empty( $paged ) ) {
+			return (int) $paged;
+		}
+
+		$cpage = get_query_var( 'cpage' );
+		if ( ! empty( $cpage ) ) {
+			return (int) $cpage;
+		}
+
+		return 1;
 	}
 
 	/**
@@ -409,7 +415,7 @@ trait WpContext {
 	public function attachmentUrlToPostId( $url ) {
 		$cacheName = sha1( "aioseo_attachment_url_to_post_id_$url" );
 
-		$cachedId = aioseo()->cache->get( $cacheName );
+		$cachedId = aioseo()->core->cache->get( $cacheName );
 		if ( $cachedId ) {
 			return 'none' !== $cachedId && is_numeric( $cachedId ) ? (int) $cachedId : false;
 		}
@@ -426,7 +432,7 @@ trait WpContext {
 		}
 
 		if ( ! $this->isValidAttachment( $path ) ) {
-			aioseo()->cache->update( $cacheName, 'none' );
+			aioseo()->core->cache->update( $cacheName, 'none' );
 
 			return false;
 		}
@@ -435,7 +441,7 @@ trait WpContext {
 			$path = substr( $path, strlen( $uploadDirInfo['baseurl'] . '/' ) );
 		}
 
-		$results = aioseo()->db->start( 'postmeta' )
+		$results = aioseo()->core->db->start( 'postmeta' )
 			->select( 'post_id' )
 			->where( 'meta_key', '_wp_attached_file' )
 			->where( 'meta_value', $path )
@@ -444,12 +450,12 @@ trait WpContext {
 			->result();
 
 		if ( empty( $results[0]->post_id ) ) {
-			aioseo()->cache->update( $cacheName, 'none' );
+			aioseo()->core->cache->update( $cacheName, 'none' );
 
 			return false;
 		}
 
-		aioseo()->cache->update( $cacheName, $results[0]->post_id );
+		aioseo()->core->cache->update( $cacheName, $results[0]->post_id );
 
 		return $results[0]->post_id;
 	}
@@ -544,5 +550,20 @@ trait WpContext {
 		}
 
 		return get_current_screen();
+	}
+
+	/**
+	 * Checks whether the current site is a multisite subdomain.
+	 *
+	 * @since 4.1.9
+	 *
+	 * @return bool Whether the current site is a subdomain.
+	 */
+	public function isSubdomain() {
+		if ( ! is_multisite() ) {
+			return false;
+		}
+
+		return apply_filters( 'aioseo_multisite_subdomain', is_subdomain_install() );
 	}
 }
