@@ -345,8 +345,8 @@ trait Assets {
 			return $file;
 		}
 
-		$content = $this->core->fs->getContents( $this->manifestFile );
-		$file    = json_decode( $content, true );
+		require( $this->manifestFile );
+		$file = json_decode( $manifestJson, true ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable
 
 		return $file;
 	}
@@ -364,8 +364,8 @@ trait Assets {
 			return $file;
 		}
 
-		$content = $this->core->fs->getContents( $this->assetManifestFile );
-		$file    = json_decode( $content, true );
+		require( $this->assetManifestFile );
+		$file = json_decode( $manifestJson, true ); // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UndefinedVariable
 
 		return $file;
 	}
@@ -443,7 +443,13 @@ trait Assets {
 			return $this->shouldLoadDevScripts;
 		}
 
-		if ( ! $this->isDev ) {
+		if (
+			! $this->isDev ||
+			(
+				defined( 'AIOSEO_LOAD_DEV_SCRIPTS' ) &&
+				false === AIOSEO_LOAD_DEV_SCRIPTS
+			)
+		) {
 			$this->shouldLoadDevScripts = false;
 
 			return $this->shouldLoadDevScripts;

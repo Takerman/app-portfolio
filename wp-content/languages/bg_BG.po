@@ -2,19 +2,20 @@
 # This file is distributed under the same license as the WordPress - 5.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-03-29 12:06:55+0000\n"
+"PO-Revision-Date: 2022-04-28 06:54:05+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"X-Generator: GlotPress/3.0.0\n"
 "Language: bg\n"
 "Project-Id-Version: WordPress - 5.9.x - Development\n"
 
 #. translators: Use this to specify the proper Google Font name and variants to
 #. load that is supported by your language. Do not translate. Set to 'off' to
 #. disable loading.
-#: wp-includes/script-loader.php:1514
+#: wp-includes/script-loader.php:1524
+#, gp-priority: high
 msgctxt "Google Font Name and Variants"
 msgid "Noto Serif:400,400i,700,700i"
 msgstr "Noto Serif:400,400i,700,700i"
@@ -22,6 +23,7 @@ msgstr "Noto Serif:400,400i,700,700i"
 #. translators: If comment number in your language requires declension,
 #. translate this to 'on'. Do not translate into your own language.
 #: wp-includes/comment-template.php:915
+#, gp-priority: high
 msgctxt "Comment number declension: on or off"
 msgid "off"
 msgstr "Изключен"
@@ -30,12 +32,14 @@ msgstr "Изключен"
 #. https://www.w3.org/International/articles/language-tags/ for reference. Do
 #. not translate into your own language.
 #: wp-includes/general-template.php:871
+#, gp-priority: high
 msgid "html_lang_attribute"
 msgstr "bg-BG"
 
 #. translators: If months in your language require a genitive case, translate
 #. this to 'on'. Do not translate into your own language.
 #: wp-includes/functions.php:347
+#, gp-priority: high
 msgctxt "decline months names: on or off"
 msgid "off"
 msgstr "off"
@@ -44,8 +48,9 @@ msgstr "off"
 #. Asian characters), enter 'characters_excluding_spaces' or
 #. 'characters_including_spaces'. Otherwise, enter 'words'. Do not translate
 #. into your own language.
-#: wp-includes/formatting.php:3930 wp-includes/script-loader.php:1751
+#: wp-includes/formatting.php:3930 wp-includes/script-loader.php:1761
 #: wp-includes/js/dist/editor.js:10717
+#, gp-priority: high
 msgctxt "Word count type. Do not translate!"
 msgid "words"
 msgstr "words"
@@ -54,44 +59,91 @@ msgstr "words"
 #: wp-includes/widgets/class-wp-widget-meta.php:91 wp-login.php:123
 #: wp-admin/admin-footer.php:38 wp-admin/maint/repair.php:24
 #: wp-admin/upgrade.php:68
+#, gp-priority: high
 msgid "https://wordpress.org/"
 msgstr "https://bg.wordpress.org/"
 
 #. translators: If there are characters in your language that are not supported
 #. by Open Sans, translate this to 'off'. Do not translate into your own
 #. language.
-#: wp-includes/script-loader.php:1424
+#: wp-includes/script-loader.php:1434
+#, gp-priority: high
 msgctxt "Open Sans font: on or off"
 msgid "on"
 msgstr "включено"
 
+#. translators: Localized date and time format, see
+#. https://www.php.net/manual/datetime.format.php
+#. translators: Date/Time format, see
+#. https://www.php.net/manual/datetime.format.php
+#. translators: Links last updated date format, see
+#. https://www.php.net/manual/datetime.format.php
+#: wp-includes/class-wp-locale.php:367 wp-includes/script-loader.php:154
+#: wp-includes/script-loader.php:375 wp-admin/includes/schema.php:430
+#, gp-priority: high
+msgid "F j, Y g:i a"
+msgstr "d.m.Y G:i"
+
+#. translators: Localized date format, see
+#. https://www.php.net/manual/datetime.format.php
+#. translators: Date format, see https://www.php.net/manual/datetime.format.php
+#. translators: 1: Name of most recent post author, 2: Post edited date, 3:
+#. Post edited time.
+#. translators: 1: Post edited date, 2: Post edited time.
+#. translators: 1: Post creation date, 2: Post creation time.
+#. translators: Default date format, see
+#. https://www.php.net/manual/datetime.format.php
+#. translators: 1: Date, 2: Time.
+#: wp-includes/class-wp-locale.php:363 wp-includes/media.php:4016
+#: wp-includes/script-loader.php:153 wp-includes/script-loader.php:373
+#: wp-admin/admin.php:113 wp-admin/edit-form-advanced.php:627
+#: wp-admin/edit-form-advanced.php:630 wp-admin/includes/ajax-actions.php:1573
+#: wp-admin/includes/ajax-actions.php:2811
+#: wp-admin/includes/ajax-actions.php:2814
+#: wp-admin/includes/class-wp-application-passwords-list-table.php:71
+#: wp-admin/includes/class-wp-application-passwords-list-table.php:86
+#: wp-admin/includes/class-wp-application-passwords-list-table.php:226
+#: wp-admin/includes/class-wp-application-passwords-list-table.php:229
+#: wp-admin/includes/class-wp-privacy-policy-content.php:382
+#: wp-admin/includes/dashboard.php:656 wp-admin/includes/media.php:1703
+#: wp-admin/includes/schema.php:426 wp-admin/options-general.php:293
+#: wp-admin/options-general.php:319 wp-admin/update-core.php:1057
+#, gp-priority: high
+msgid "F j, Y"
+msgstr "d.m.Y"
+
 #. translators: 'rtl' or 'ltr'. This sets the text direction for WordPress.
 #: wp-includes/class-wp-locale.php:217 wp-includes/script-loader.php:275
 #: wp-includes/js/dist/i18n.js:1465
+#, gp-priority: high
 msgctxt "text direction"
 msgid "ltr"
 msgstr "от ляво надясно"
 
 #. translators: Closing curly single quote.
 #: wp-includes/formatting.php:99
+#, gp-priority: high
 msgctxt "closing curly single quote"
 msgid "&#8217;"
 msgstr "&#8217;"
 
 #. translators: Opening curly single quote.
 #: wp-includes/formatting.php:97
+#, gp-priority: high
 msgctxt "opening curly single quote"
 msgid "&#8216;"
 msgstr "&#8216;"
 
 #. translators: Closing curly double quote.
 #: wp-includes/formatting.php:86
+#, gp-priority: high
 msgctxt "closing curly double quote"
 msgid "&#8221;"
 msgstr "&#8220;"
 
 #. translators: Opening curly double quote.
 #: wp-includes/formatting.php:84 wp-includes/formatting.php:5524
+#, gp-priority: high
 msgctxt "opening curly double quote"
 msgid "&#8220;"
 msgstr "&#8222;"
@@ -99,22 +151,195 @@ msgstr "&#8222;"
 #. translators: $thousands_sep argument for https://www.php.net/number_format,
 #. default is ','
 #: wp-includes/class-wp-locale.php:200
+#, gp-priority: high
 msgid "number_format_thousands_sep"
 msgstr " "
 
 #. translators: $dec_point argument for https://www.php.net/number_format,
 #. default is '.'
 #: wp-includes/class-wp-locale.php:208
+#, gp-priority: high
 msgid "number_format_decimal_point"
 msgstr ","
+
+#. translators: Weekday.
+#. translators: One-letter abbreviation of the weekday.
+#. translators: Three-letter abbreviation of the weekday.
+#: wp-includes/class-wp-locale.php:128 wp-includes/class-wp-locale.php:137
+#: wp-includes/class-wp-locale.php:146
+#, gp-priority: high
+msgid "Saturday"
+msgstr "събота"
+
+#. translators: Weekday.
+#. translators: One-letter abbreviation of the weekday.
+#. translators: Three-letter abbreviation of the weekday.
+#: wp-includes/class-wp-locale.php:127 wp-includes/class-wp-locale.php:136
+#: wp-includes/class-wp-locale.php:145
+#, gp-priority: high
+msgid "Friday"
+msgstr "петък"
+
+#. translators: Weekday.
+#. translators: One-letter abbreviation of the weekday.
+#. translators: Three-letter abbreviation of the weekday.
+#: wp-includes/class-wp-locale.php:126 wp-includes/class-wp-locale.php:135
+#: wp-includes/class-wp-locale.php:144
+#, gp-priority: high
+msgid "Thursday"
+msgstr "четвъртък"
+
+#. translators: Weekday.
+#. translators: One-letter abbreviation of the weekday.
+#. translators: Three-letter abbreviation of the weekday.
+#: wp-includes/class-wp-locale.php:125 wp-includes/class-wp-locale.php:134
+#: wp-includes/class-wp-locale.php:143
+#, gp-priority: high
+msgid "Wednesday"
+msgstr "сряда"
+
+#. translators: Weekday.
+#. translators: One-letter abbreviation of the weekday.
+#. translators: Ttree-letter abbreviation of the weekday.
+#: wp-includes/class-wp-locale.php:124 wp-includes/class-wp-locale.php:133
+#: wp-includes/class-wp-locale.php:142
+#, gp-priority: high
+msgid "Tuesday"
+msgstr "вторник"
+
+#. translators: Weekday.
+#. translators: One-letter abbreviation of the weekday.
+#. translators: Three-letter abbreviation of the weekday.
+#: wp-includes/class-wp-locale.php:123 wp-includes/class-wp-locale.php:132
+#: wp-includes/class-wp-locale.php:141
+#, gp-priority: high
+msgid "Monday"
+msgstr "понеделник"
+
+#. translators: Weekday.
+#: wp-includes/class-wp-locale.php:122 wp-includes/class-wp-locale.php:131
+#: wp-includes/class-wp-locale.php:140
+#, gp-priority: high
+msgid "Sunday"
+msgstr "неделя"
+
+#. translators: Month name.
+#. translators: Three-letter abbreviation of the month.
+#: wp-includes/class-wp-locale.php:160 wp-includes/class-wp-locale.php:188
+#: wp-includes/js/dist/components.js:46842
+#, gp-priority: high
+msgid "December"
+msgstr "декември"
+
+#. translators: Month name.
+#. translators: Three-letter abbreviation of the month.
+#: wp-includes/class-wp-locale.php:159 wp-includes/class-wp-locale.php:187
+#: wp-includes/js/dist/components.js:46840
+#, gp-priority: high
+msgid "November"
+msgstr "ноември"
+
+#. translators: Month name.
+#. translators: Three-letter abbreviation of the month.
+#: wp-includes/class-wp-locale.php:158 wp-includes/class-wp-locale.php:186
+#: wp-includes/js/dist/components.js:46838
+#, gp-priority: high
+msgid "October"
+msgstr "октомври"
+
+#. translators: Month name.
+#. translators: Three-letter abbreviation of the month.
+#: wp-includes/class-wp-locale.php:157 wp-includes/class-wp-locale.php:185
+#: wp-includes/js/dist/components.js:46836
+#, gp-priority: high
+msgid "September"
+msgstr "септември"
+
+#. translators: Month name.
+#. translators: Three-letter abbreviation of the month.
+#: wp-includes/class-wp-locale.php:156 wp-includes/class-wp-locale.php:184
+#: wp-includes/js/dist/components.js:46834
+#, gp-priority: high
+msgid "August"
+msgstr "август"
+
+#. translators: Month name.
+#. translators: Three-letter abbreviation of the month.
+#: wp-includes/class-wp-locale.php:155 wp-includes/class-wp-locale.php:183
+#: wp-includes/js/dist/components.js:46832
+#, gp-priority: high
+msgid "July"
+msgstr "юли"
+
+#. translators: Month name.
+#. translators: Three-letter abbreviation of the month.
+#: wp-includes/class-wp-locale.php:154 wp-includes/class-wp-locale.php:182
+#: wp-includes/js/dist/components.js:46830
+#, gp-priority: high
+msgid "June"
+msgstr "юни"
+
+#. translators: Month name.
+#. translators: Three-letter abbreviation of the month.
+#: wp-includes/class-wp-locale.php:153 wp-includes/class-wp-locale.php:181
+#: wp-includes/js/dist/components.js:46828
+#, gp-priority: high
+msgid "May"
+msgstr "май"
+
+#. translators: Month name.
+#. translators: Three-letter abbreviation of the month.
+#: wp-includes/class-wp-locale.php:152 wp-includes/class-wp-locale.php:180
+#: wp-includes/js/dist/components.js:46826
+#, gp-priority: high
+msgid "April"
+msgstr "април"
+
+#. translators: Month name.
+#. translators: Three-letter abbreviation of the month.
+#: wp-includes/class-wp-locale.php:151 wp-includes/class-wp-locale.php:179
+#: wp-includes/js/dist/components.js:46824
+#, gp-priority: high
+msgid "March"
+msgstr "март"
+
+#. translators: Month name.
+#. translators: Three-letter abbreviation of the month.
+#: wp-includes/class-wp-locale.php:150 wp-includes/class-wp-locale.php:178
+#: wp-includes/js/dist/components.js:46822
+#, gp-priority: high
+msgid "February"
+msgstr "февруари"
+
+#. translators: Month name.
+#: wp-includes/class-wp-locale.php:149 wp-includes/class-wp-locale.php:177
+#: wp-includes/js/dist/components.js:46820
+#, gp-priority: high
+msgid "January"
+msgstr "януари"
 
 #: wp-includes/category-template.php:161
 #: wp-includes/js/dist/block-editor.js:49140
 #: wp-includes/js/dist/block-editor.js:49145
 #: wp-includes/js/dist/block-editor.js:49599
 #: wp-includes/js/dist/edit-post.js:5209 wp-admin/includes/upgrade.php:158
+#, gp-priority: high
 msgid "Uncategorized"
 msgstr "Без категория"
+
+#: wp-includes/script-loader.php:1230
+msgid "Use Site Editor"
+msgstr "Отваряне на редактора на сайта"
+
+#. translators: 1: Link to Site Editor documentation on HelpHub, 2: HTML
+#. button.
+#: wp-includes/script-loader.php:1225
+msgid "Hurray! Your theme supports Full Site Editing with blocks. <a href=\"%1$s\">Tell me more</a>. %2$s"
+msgstr "Браво! Темата ви поддържа функцията за пълно редактиране на сайт с блокове. <a href=\"%1$s\">Още по темата</a>. %2$s"
+
+#: wp-includes/script-loader.php:1226 wp-includes/js/dist/edit-site.js:2966
+msgid "https://wordpress.org/support/article/site-editor/"
+msgstr "https://wordpress.org/support/article/site-editor/"
 
 #: wp-includes/blocks/site-logo.php:89
 msgid "Site icon."
@@ -126,29 +351,99 @@ msgid "Extra Large"
 msgstr "Много голям"
 
 #: wp-includes/blocks/term-description/block.json
+msgctxt "block description"
+msgid "Display the description of categories, tags and custom taxonomies when viewing an archive."
+msgstr "Показване на описанието на категории, етикети и таксономии когато се преглежда архив."
+
+#: wp-includes/blocks/term-description/block.json
 msgctxt "block title"
 msgid "Term Description"
 msgstr "Описание на термина"
+
+#: wp-includes/blocks/template-part/block.json
+msgctxt "block description"
+msgid "Edit the different global regions of your site, like the header, footer, sidebar, or create your own."
+msgstr "Редактирайте различните глобални региони на Вашия сайт като горна част, долна част, страничен панел, или създайте свои собствени."
 
 #: wp-includes/blocks/template-part/block.json
 msgctxt "block title"
 msgid "Template Part"
 msgstr "Част от шаблон"
 
+#: wp-includes/blocks/table/block.json
+msgctxt "block description"
+msgid "Create structured content in rows and columns to display information."
+msgstr "Структурирано съдържание за показване на информация в редове и колони "
+
+#: wp-includes/blocks/site-title/block.json
+msgctxt "block description"
+msgid "Displays the name of this site. Update the block, and the changes apply everywhere it’s used. This will also appear in the browser title bar and in search results."
+msgstr "Показва името на този сайт. Актуализирайте блока и промените ще се прилагат навсякъде, където се използват. Това също ще се появи и в заглавната лента на браузъра и в резултатите от търсенето."
+
+#: wp-includes/blocks/site-logo/block.json
+msgctxt "block description"
+msgid "Display a graphic to represent this site. Update the block, and the changes apply everywhere it’s used. This is different than the site icon, which is the smaller image visible in your dashboard, browser tabs, etc used to help others recognize this site."
+msgstr "Показване на графика за представяне на сайта. Когато актуализирате блока промените ще се отразят навсякъде, където го използвате. Тази графика е различна от иконата на сайта, която е по-малкото изображение, което виждате в таблото, разделите на браузъра и т.н., и помага за разпознаване на сайта. "
+
+#: wp-includes/blocks/quote/block.json
+msgctxt "block style label"
+msgid "Plain"
+msgstr "Обикновен"
+
 #: wp-includes/blocks/query-pagination/block.json
 msgctxt "block title"
 msgid "Pagination"
 msgstr "Странициране"
+
+#: wp-includes/blocks/query-pagination-previous/block.json
+msgctxt "block title"
+msgid "Previous Page"
+msgstr "Предишна страница"
+
+#: wp-includes/blocks/query-pagination-numbers/block.json
+msgctxt "block title"
+msgid "Page Numbers"
+msgstr "Номера на страницата"
 
 #: wp-includes/blocks/query-pagination-next/block.json
 msgctxt "block title"
 msgid "Next Page"
 msgstr "Следваща страница"
 
+#: wp-includes/blocks/post-navigation-link/block.json
+msgctxt "block description"
+msgid "Displays the next or previous post link that is adjacent to the current post."
+msgstr "Показва връзката към следващата или предишната публикация, която е в съседство с текущата публикация."
+
+#: wp-includes/blocks/post-navigation-link/block.json
+msgctxt "block title"
+msgid "Post Navigation Link"
+msgstr "Навигация в публикацията"
+
+#: wp-includes/blocks/post-comments/block.json
+msgctxt "block description"
+msgid "Display a post's comments."
+msgstr "Да се показват коментарите в публикацията."
+
+#: wp-includes/blocks/post-comments/block.json
+msgctxt "block title"
+msgid "Post Comments"
+msgstr "Коментари към публикацията"
+
+#: wp-includes/blocks/post-author/block.json
+msgctxt "block description"
+msgid "Add the author of this post."
+msgstr "Добавяне на автора на тази публикация."
+
 #: wp-includes/blocks/post-author/block.json
 msgctxt "block title"
 msgid "Post Author"
 msgstr "Автор на публикацията"
+
+#: wp-includes/blocks/pattern/block.json
+msgctxt "block description"
+msgid "Show a block pattern."
+msgstr "Показване на макета на блока."
 
 #: wp-includes/blocks/pattern/block.json
 msgctxt "block title"
@@ -185,45 +480,375 @@ msgctxt "block title"
 msgid "Custom Link"
 msgstr "Потребителска връзка"
 
+#: wp-includes/blocks/columns/block.json
+msgctxt "block description"
+msgid "Display content in multiple columns, with blocks added to each column."
+msgstr "Показване на съдържанието в няколко колони, всяка от които може да съдържа различни блокове."
+
+#: wp-includes/js/dist/edit-site.js:8460 wp-admin/site-editor.php:27
+msgid "Editor (beta)"
+msgstr "Редактор (бета)"
+
+#. translators: 1: HTML meta tag, 2: HTML meta tag.
+#: wp-includes/rest-api/endpoints/class-wp-rest-url-details-controller.php:111
+msgid "The Open Graph image link of the %1$s or %2$s element from the URL."
+msgstr "Връзката на изображеието от Open Graph на елементи %1$s или %2$s от адреса."
+
+#. translators: %s: HTML link tag.
+#: wp-includes/rest-api/endpoints/class-wp-rest-url-details-controller.php:90
+msgid "The favicon image link of the %s element from the URL."
+msgstr "Линка към изображението на иконата на елемент %s от адреса на сайта."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-block-types-controller.php:544
+msgid "Public facing and editor style handle."
+msgstr "Официално име на стила, видимо в редактора и публично."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-block-types-controller.php:523
+msgid "Public facing and editor script handle."
+msgstr "Официално име на скрипта, видимо в редактора и публично."
+
 #: wp-includes/post.php:3145
 msgctxt "file type group"
 msgid "Audio"
 msgstr "Аудио"
+
+#: wp-includes/post.php:409
+msgid "Insert into template part"
+msgstr "Вкарване в шаблон"
+
+#: wp-includes/post.php:408
+msgid "Template part archives"
+msgstr "Архиви на шаблонните части"
+
+#: wp-includes/post.php:407
+msgid "No template parts found in Trash."
+msgstr "Не са намерени шаблони в кошчето."
+
+#: wp-includes/post.php:406
+msgid "No template parts found."
+msgstr "Няма намерени шаблони."
+
+#: wp-includes/post.php:405
+msgid "Parent Template Part:"
+msgstr "Родителска категория от шаблони:"
+
+#: wp-includes/post.php:404
+msgid "Search Template Parts"
+msgstr "Търсене на категория от шаблони"
+
+#: wp-includes/post.php:401
+msgid "Edit Template Part"
+msgstr "Редактиране на категорията от шаблони"
+
+#: wp-includes/post.php:400
+msgid "New Template Part"
+msgstr "Нов шаблон"
+
+#: wp-includes/post.php:399
+msgid "Add New Template Part"
+msgstr "Добавяне на нов шаблон"
 
 #: wp-includes/post.php:398
 msgctxt "Template Part"
 msgid "Add New"
 msgstr "Добавяне"
 
+#: wp-includes/post.php:397
+msgctxt "post type singular name"
+msgid "Template Part"
+msgstr "Име на шаблона"
+
+#: wp-includes/post.php:396
+msgctxt "post type general name"
+msgid "Template Parts"
+msgstr "Части от шаблона"
+
+#: wp-includes/post.php:337
+msgctxt "post type singular name"
+msgid "Template"
+msgstr "Шаблон"
+
+#: wp-includes/post.php:336
+msgctxt "post type general name"
+msgid "Templates"
+msgstr "Темплейти"
+
+#. translators: %s: Link to the login page.
+#: wp-includes/ms-functions.php:545 wp-includes/user.php:3117
+msgid "<strong>Error:</strong> This email address is already registered. <a href=\"%s\">Log in</a> with this address or choose another one."
+msgstr "<strong>Грешка:</strong> Този имейл е вече регистриран. <a href=\"%s\">Влезте</a> с този адрес или изберете друг."
+
+#: wp-includes/media.php:4474
+#: wp-admin/includes/class-wp-media-list-table.php:154
+msgctxt "media items"
+msgid "Unattached"
+msgstr "Неприкачен"
+
+#. translators: 1: Function name, 2: A variable type, like "boolean" or
+#. "integer".
+#: wp-includes/functions.php:8306
+msgid "%1$s only accepts a non-empty path string, received %2$s."
+msgstr "%1$s приема само непразен низ за път, получен %2$s."
+
+#. translators: 1: Path to the JSON file, 2: Error message.
+#: wp-includes/functions.php:4494
+msgid "Error when decoding a JSON file at path %1$s: %2$s"
+msgstr "Грешка при декодиране на JSON файл на път %1$s: %2$s"
+
+#. translators: %s: Path to the JSON file.
+#: wp-includes/functions.php:4480
+msgid "File %s doesn't exist!"
+msgstr "Файлът %s не съществува!"
+
+#: wp-includes/functions.php:2850 wp-includes/script-loader.php:878
+#: wp-includes/js/dist/media-utils.js:664 wp-admin/includes/file.php:934
+msgid "Sorry, you are not allowed to upload this file type."
+msgstr "Нямате право да качвате файлове от този тип."
+
+#. translators: 1: Option name, 2: Error code.
+#: wp-includes/formatting.php:4957
+msgid "Could not sanitize the %1$s option. Error code: %2$s"
+msgstr "Неуспешно санитизиране на %1$s опцията. Код на грешката: %2$s"
+
+#. translators: %s: URL to the themes page (also it activates the theme).
+#: wp-includes/customize/class-wp-customize-theme-control.php:267
+#: wp-admin/includes/theme.php:1017
+msgid "However, you can still <a href=\"%s\">activate this theme</a>, and use the Site Editor to customize it."
+msgstr "Все пак можете да използвате <a href=\"%s\">activate this theme</a>, и да ползвате Сайт Редактора за да я персонализирате."
+
+#: wp-includes/customize/class-wp-customize-theme-control.php:260
+#: wp-admin/includes/theme.php:1011
+msgid "This theme doesn't support Customizer."
+msgstr "Тази тема нe поддържа персонализиране."
+
+#: wp-includes/comment.php:3552
+msgid "<strong>Error</strong>: Please fill the required fields."
+msgstr "<strong>Грешка</strong>: Mоля, попълнете задължителните полета."
+
+#: wp-includes/class-wp-block-styles-registry.php:68
+msgid "Block style name must not contain any spaces."
+msgstr "Името на стила на блока не трябва да съдържа интервали."
+
+#. translators: %s: Template part slug.
+#. translators: %s: Template part slug
+#: wp-includes/blocks/template-part.php:113
+#: wp-includes/js/dist/block-library.js:39552
+msgid "Template part has been deleted or is unavailable: %s"
+msgstr "Шаблонната част е била изтрита или не е достъпна: %s"
+
+#: wp-includes/blocks/post-navigation-link.php:64
+msgctxt "label before the title of the previous post"
+msgid "Previous:"
+msgstr "Предишна:"
+
+#: wp-includes/blocks/post-navigation-link.php:64
+msgctxt "label before the title of the next post"
+msgid "Next:"
+msgstr "Следваща:"
+
+#: wp-includes/blocks/post-navigation-link.php:34
+msgctxt "label for previous post link"
+msgid "Previous"
+msgstr "Предишна"
+
+#: wp-includes/blocks/post-navigation-link.php:34
+msgctxt "label for next post link"
+msgid "Next"
+msgstr "Следваща"
+
+#: wp-includes/blocks/navigation.php:555
+#: wp-includes/js/dist/block-library.js:21516
+msgid "Close menu"
+msgstr "Затваряне на менюто"
+
+#: wp-includes/blocks/navigation.php:554
+#: wp-includes/js/dist/block-library.js:21486
+msgid "Open menu"
+msgstr "Отваряне на менюто"
+
+#. translators: Accessibility text. %s: Parent page title.
+#: wp-includes/blocks/navigation-submenu.php:193
+#: wp-includes/blocks/page-list.php:184
+msgid "%s submenu"
+msgstr "%s подменю"
+
+#: wp-includes/blocks/navigation-link.php:286
+msgid "A link to a post format"
+msgstr "Връзка към формат на публикация"
+
+#: wp-includes/blocks/navigation-link.php:285
+msgid "Post Format Link"
+msgstr "Връзка за формат на публикация"
+
+#: wp-includes/blocks/calendar.php:22
+msgid "The calendar block is hidden because there are no published posts."
+msgstr "Блокът на календара е скрит, защото няма публикувани публикации."
+
+#: wp-includes/block-template-utils.php:924
+msgid "Unable to open export file (archive) for writing."
+msgstr "Не може да се отвори файл за експортиране (архив) за запис."
+
+#: wp-includes/block-template-utils.php:916
+msgid "Zip Export not supported."
+msgstr "Zip Извличане не се поддържа."
+
+#. translators: %1$s: Template area type, %2$s: the uncategorized template area
+#. value.
+#: wp-includes/block-template-utils.php:216
+msgid "\"%1$s\" is not a supported wp_template_part area value and has been added as \"%2$s\"."
+msgstr "\"%1$s\" не е поддържана стойност на зоната wp_template_part и е добавена като \"%2$s\"."
+
+#: wp-includes/block-template-utils.php:178
+msgid "Displays when no content is found."
+msgstr "Показва се, когато не е намерено съдържание."
+
 #: wp-includes/block-template-utils.php:177
 msgctxt "Template name"
 msgid "404"
 msgstr "404"
+
+#: wp-includes/block-template-utils.php:174
+msgid "Displays the privacy policy page."
+msgstr "Показва страницата с политиката за поверителност."
+
+#: wp-includes/block-template-utils.php:170
+msgid "Template used to display search results."
+msgstr "Шаблон, използван за показване на резултатите от търсенето."
+
+#: wp-includes/block-template-utils.php:169
+msgctxt "Template name"
+msgid "Search"
+msgstr "Търсене"
+
+#: wp-includes/block-template-utils.php:166
+msgid "Displays individual media items or attachments."
+msgstr "Показва отделни медийни елементи или прикачени файлове."
+
+#: wp-includes/block-template-utils.php:162
+msgid "Displays latest posts with single post tag."
+msgstr "Показва най-новите публикации с единичен етикет за публикация."
+
+#: wp-includes/block-template-utils.php:161
+msgctxt "Template name"
+msgid "Tag"
+msgstr "Етикет"
+
+#: wp-includes/block-template-utils.php:158
+msgid "Displays posts from a specific date."
+msgstr "Показва публикации от конкретна дата."
+
+#: wp-includes/block-template-utils.php:157
+msgctxt "Template name"
+msgid "Date"
+msgstr "Дата"
+
+#: wp-includes/block-template-utils.php:154
+msgid "Displays latest posts from a single post taxonomy."
+msgstr "Показва най-новите публикации от единична таксономия за публикация."
+
+#: wp-includes/block-template-utils.php:153
+msgctxt "Template name"
+msgid "Taxonomy"
+msgstr "Таксономия"
+
+#: wp-includes/block-template-utils.php:150
+msgid "Displays latest posts in single post category."
+msgstr "Показва последните публикации от една категория."
 
 #: wp-includes/block-template-utils.php:149
 msgctxt "Template name"
 msgid "Category"
 msgstr "Категория"
 
+#: wp-includes/block-template-utils.php:146
+msgid "Displays latest posts written by a single author."
+msgstr "Показва най-новите публикации, написани от един автор."
+
 #: wp-includes/block-template-utils.php:145
 msgctxt "Template name"
 msgid "Author"
 msgstr "Автор"
+
+#: wp-includes/block-template-utils.php:142
+msgid "Displays post categories, tags, and other archives."
+msgstr "Показва категории на публикации, етикети и други архиви."
 
 #: wp-includes/block-template-utils.php:141
 msgctxt "Template name"
 msgid "Archive"
 msgstr "Архив"
 
+#: wp-includes/block-template-utils.php:138
+msgid "Displays a single page."
+msgstr "Показва единична страница."
+
 #: wp-includes/block-template-utils.php:137
 msgctxt "Template name"
 msgid "Page"
 msgstr "Страница"
 
+#: wp-includes/block-template-utils.php:134
+msgid "Displays a single post."
+msgstr "Показване на единична публикация."
+
+#: wp-includes/block-template-utils.php:133
+msgctxt "Template name"
+msgid "Single Post"
+msgstr "Единична публикация"
+
+#: wp-includes/block-template-utils.php:130
+msgid "Displays a single post or page."
+msgstr "Показва единична страница или пост."
+
+#: wp-includes/block-template-utils.php:129
+msgctxt "Template name"
+msgid "Singular"
+msgstr "Единичен"
+
+#: wp-includes/block-template-utils.php:126
+msgid "Displays as the site's home page."
+msgstr "Показва се като начална страница на сайта."
+
 #: wp-includes/block-template-utils.php:125
 msgctxt "Template name"
 msgid "Front Page"
 msgstr "Начална страница"
+
+#: wp-includes/block-template-utils.php:122
+msgid "Displays as the site's home page, or as the Posts page when a static home page isn't set."
+msgstr "Показва се като начална страница на сайта или като страница с публикации, когато не е зададена статична начална страница."
+
+#: wp-includes/block-template-utils.php:121
+msgctxt "Template name"
+msgid "Home"
+msgstr "Начало"
+
+#: wp-includes/block-template-utils.php:118
+msgid "Displays posts."
+msgstr "Показва публикации."
+
+#: wp-includes/block-template-utils.php:117
+msgctxt "Template name"
+msgid "Index"
+msgstr "Индекс"
+
+#: wp-includes/block-template-utils.php:87
+#: wp-includes/js/dist/block-library.js:39638
+msgid "The Footer template defines a page area that typically contains site credits, social links, or any other combination of blocks."
+msgstr "Шаблонът ефинира област на страницата, която обикновено съдържа кредити за сайта, социални връзки или друга комбинация от блокове."
+
+#: wp-includes/block-template-utils.php:78
+#: wp-includes/js/dist/block-library.js:39629
+msgid "The Header template defines a page area that typically contains a title, logo, and main navigation."
+msgstr "Шаблонът за горната част дефинира област на страницата, която обикновено съдържа заглавие, лого и основна навигация."
+
+#: wp-includes/block-template-utils.php:69
+msgid "General templates often perform a specific role like displaying post content, and are not tied to any particular area."
+msgstr "Общите шаблони често изпълняват конкретна роля като показване на съдържание на публикация и не са обвързани с никаква конкретна област."
+
+#: wp-includes/admin-bar.php:432
+msgid "Edit site"
+msgstr "Редактиране на сайта"
 
 #: wp-includes/theme.json
 msgctxt "Duotone name"
@@ -2042,7 +2667,7 @@ msgid "Filter by category"
 msgstr "Филтриране по категория"
 
 #. translators: Documentation explaining HTTPS and why it should be used.
-#: wp-includes/functions.php:8104
+#: wp-includes/functions.php:8111
 msgid "https://wordpress.org/support/article/why-should-i-use-https/"
 msgstr "https://wordpress.org/support/article/why-should-i-use-https/"
 
@@ -4011,7 +4636,7 @@ msgid "Block name must be a string."
 msgstr "Името на блока трябва да е низ."
 
 #. translators: Documentation explaining debugging in WordPress.
-#: wp-includes/functions.php:5757
+#: wp-includes/functions.php:5764
 #: wp-admin/includes/class-wp-site-health.php:1459
 msgid "https://wordpress.org/support/article/debugging-in-wordpress/"
 msgstr "https://wordpress.org/support/article/debugging-in-wordpress/"
@@ -4415,7 +5040,7 @@ msgstr "[%s] Искане за промяна на имейл адреса на 
 
 #. translators: Site admin email change notification email subject. %s: Site
 #. title.
-#: wp-includes/functions.php:7617
+#: wp-includes/functions.php:7624
 msgid "[%s] Admin Email Changed"
 msgstr "[%s] Имейл адресът на администратора е променен"
 
@@ -4623,7 +5248,7 @@ msgstr "Липсващ ID на заявката."
 msgid "Usage of the title attribute on the login logo is not recommended for accessibility reasons. Use the link text instead."
 msgstr "Използването на атрибут за заглавие върху логото за влизане не се препоръчва заради проблеми с достъпността. Използвайте вместо това текстова връзка."
 
-#: wp-includes/functions.php:8045
+#: wp-includes/functions.php:8052
 msgid "Update PHP"
 msgstr "Обновете PHP версията си"
 
@@ -4731,11 +5356,11 @@ msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
 #. translators: %s: Default Update PHP page URL.
-#: wp-includes/functions.php:7988
+#: wp-includes/functions.php:7995
 msgid "This resource is provided by your web host, and is specific to your site. For more information, <a href=\"%s\" target=\"_blank\">see the official WordPress documentation</a>."
 msgstr "Този ресурс е предоставен от уеб-хоста ви и е специфичен за вашия сайт. За повече информация <a href=\"%s\" target=\"_blank\">прегледайте официалната документация на WordPress</a>."
 
-#: wp-includes/functions.php:7945
+#: wp-includes/functions.php:7952
 msgctxt "localized PHP upgrade information page"
 msgid "https://wordpress.org/support/update-php/"
 msgstr "https://wordpress.org/support/update-php/"
@@ -4910,7 +5535,7 @@ msgstr "Елементът е добавен."
 #: wp-includes/class-wp-customize-manager.php:5666
 #: wp-includes/class-wp-customize-manager.php:5687
 #: wp-includes/customize/class-wp-customize-nav-menu-locations-control.php:58
-#: wp-includes/functions.php:8047 wp-includes/media-template.php:167
+#: wp-includes/functions.php:8054 wp-includes/media-template.php:167
 #: wp-includes/widgets/class-wp-widget-custom-html.php:318 wp-login.php:648
 #: wp-includes/js/dist/components.js:48318
 #: wp-includes/js/dist/customize-widgets.js:805
@@ -5384,12 +6009,12 @@ msgid "User Requests"
 msgstr "Потребителски заявки"
 
 #. translators: Deleted long text.
-#: wp-includes/functions.php:7768
+#: wp-includes/functions.php:7775
 msgid "This content was deleted by the author."
 msgstr "Съдръжанието е изтрито от автора."
 
 #. translators: Deleted text.
-#: wp-includes/functions.php:7764
+#: wp-includes/functions.php:7771
 msgid "[deleted]"
 msgstr "[изтрито]"
 
@@ -5762,7 +6387,7 @@ msgstr "Неподдържан тип стойност (%s)."
 #. translators: %s: register_widget()
 #: wp-includes/widgets.php:1214
 msgid "Widgets need to be registered using %s, before they can be displayed."
-msgstr "Джаджите трябва да бъдат регистрирани чрес %s, преди да могат да бъдат показвани."
+msgstr "Джаджите трябва да бъдат регистрирани чрез %s преди да могат да бъдат показвани."
 
 #: wp-includes/widgets/class-wp-widget-media-image.php:342
 msgid "Link to:"
@@ -6241,7 +6866,7 @@ msgstr "Проверката за scrape nonce се провали. Опитай
 
 #. translators: Do not translate OLD_EMAIL, NEW_EMAIL, SITENAME, SITEURL: those
 #. are placeholders.
-#: wp-includes/functions.php:7600
+#: wp-includes/functions.php:7607
 msgid ""
 "Hi,\n"
 "\n"
@@ -6267,7 +6892,7 @@ msgstr ""
 "###SITENAME###\n"
 "###SITEURL###"
 
-#: wp-includes/functions.php:7519
+#: wp-includes/functions.php:7526
 msgid "Only UUID V4 is supported at this time."
 msgstr "Само UUID V4 се поддържа в момента."
 
@@ -9083,7 +9708,7 @@ msgstr "Извличането на съобщението с грешката �
 msgid "Edit Menu"
 msgstr "Редактиране на меню"
 
-#: wp-includes/script-loader.php:1805 wp-admin/includes/dashboard.php:1002
+#: wp-includes/script-loader.php:1815 wp-admin/includes/dashboard.php:1002
 msgid "Today"
 msgstr "Днес"
 
@@ -9318,14 +9943,14 @@ msgstr "<strong>Грешка</strong>: Невалидни потребителс
 msgid "%1$s %2$s %3$s %4$s Feed"
 msgstr "%1$s %2$s %3$s %4$s поток"
 
-#: wp-includes/functions.php:7083 wp-includes/media-template.php:199
+#: wp-includes/functions.php:7090 wp-includes/media-template.php:199
 #: wp-includes/media-template.php:347 wp-includes/js/dist/components.js:53073
 msgid "Close dialog"
 msgstr "Затваряне на прозореца"
 
 #. translators: 1: PHP class name, 2: PHP parent class name, 3: Version number,
 #. 4: __construct() method.
-#: wp-includes/functions.php:5403
+#: wp-includes/functions.php:5410
 msgid "The called constructor method for %1$s in %2$s is <strong>deprecated</strong> since version %3$s! Use %4$s instead."
 msgstr "Извиканият конструктор за %1$s, наследяващ %2$s, <strong>не се използва</strong> от версия %3$s насам! Използвайте %4$s вместо него."
 
@@ -9453,7 +10078,7 @@ msgid "(Currently set to: %s)"
 msgstr "(В момента е: %s)"
 
 #. translators: %s: Documentation URL.
-#: wp-includes/functions.php:5756
+#: wp-includes/functions.php:5763
 msgid "Please see <a href=\"%s\">Debugging in WordPress</a> for more information."
 msgstr "За повече информация вижте <a href=\"%s\">Debugging in WordPress</a>."
 
@@ -10157,7 +10782,7 @@ msgstr "Слаба"
 #: wp-includes/script-loader.php:1089
 msgctxt "password strength"
 msgid "Very weak"
-msgstr "Прекално слаба"
+msgstr "Прекалено слаба"
 
 #: wp-includes/customize/class-wp-customize-header-image-control.php:237
 msgid "Add new image"
@@ -10207,7 +10832,7 @@ msgid "Username may not be longer than 60 characters."
 msgstr "Потребителското име не трябва да бъде по-дълго от 60 символа. "
 
 #. translators: 1: PHP class name, 2: Version number, 3: __construct() method.
-#: wp-includes/functions.php:5415
+#: wp-includes/functions.php:5422
 msgid "The called constructor method for %1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead."
 msgstr "Извиканият конструктор метод за %1$s <strong>не се използва</strong> от версия %2$s насам! Използвайте %3$s вместо него."
 
@@ -11022,7 +11647,7 @@ msgstr "Кошче"
 msgid "Edit Selection"
 msgstr "Редакция на избраните"
 
-#: wp-includes/script-loader.php:1809
+#: wp-includes/script-loader.php:1819
 #: wp-includes/js/dist/block-library.js:27870
 #: wp-includes/js/dist/components.js:53273
 msgid "Previous"
@@ -12004,7 +12629,7 @@ msgstr "Главна клетка"
 #: wp-includes/block-template-utils.php:86
 #: wp-includes/js/dist/block-library.js:39637
 #: wp-includes/js/dist/customize-widgets.js:3979
-#: wp-includes/js/dist/edit-post.js:3146 wp-includes/js/dist/edit-site.js:11320
+#: wp-includes/js/dist/edit-post.js:3146 wp-includes/js/dist/edit-site.js:11324
 #: wp-includes/js/dist/edit-widgets.js:4917
 msgid "Footer"
 msgstr "Футър"
@@ -12271,6 +12896,10 @@ msgstr "https://wordpress.org/support/forum/requests-and-feedback"
 msgid "https://wordpress.org/support/"
 msgstr "https://wordpress.org/support/"
 
+#: wp-login.php:370 wp-admin/includes/class-wp-users-list-table.php:306
+msgid "Change"
+msgstr "Промяна"
+
 #: wp-includes/js/dist/editor.js:6931 wp-admin/includes/ajax-actions.php:2192
 #: wp-admin/includes/class-wp-posts-list-table.php:1909
 #: wp-admin/includes/class-wp-privacy-requests-table.php:44
@@ -12355,7 +12984,7 @@ msgstr "Възникна грешка с WordPress.org или с настрой�
 #. translators: To add an additional Open Sans character subset specific to
 #. your language, translate this to 'greek', 'cyrillic' or 'vietnamese'. Do not
 #. translate into your own language.
-#: wp-includes/script-loader.php:1431
+#: wp-includes/script-loader.php:1441
 msgctxt "Open Sans font: add new subset (greek, cyrillic, vietnamese)"
 msgid "no-subset"
 msgstr "no-subset"
@@ -12496,17 +13125,6 @@ msgstr "#%d (няма заглавие)"
 msgid "JavaScript must be enabled to use this feature."
 msgstr "За тази функционалност се изисква JavaScript."
 
-#. translators: Localized date and time format, see
-#. https://www.php.net/manual/datetime.format.php
-#. translators: Date/Time format, see
-#. https://www.php.net/manual/datetime.format.php
-#. translators: Links last updated date format, see
-#. https://www.php.net/manual/datetime.format.php
-#: wp-includes/class-wp-locale.php:367 wp-includes/script-loader.php:154
-#: wp-includes/script-loader.php:375 wp-admin/includes/schema.php:430
-msgid "F j, Y g:i a"
-msgstr "d.m.Y G:i"
-
 #. translators: Localized time format, see
 #. https://www.php.net/manual/datetime.format.php
 #. translators: Time format, see https://www.php.net/manual/datetime.format.php
@@ -12532,33 +13150,6 @@ msgstr "d.m.Y G:i"
 #: wp-admin/options-general.php:356
 msgid "g:i a"
 msgstr "G:i"
-
-#. translators: Localized date format, see
-#. https://www.php.net/manual/datetime.format.php
-#. translators: Date format, see https://www.php.net/manual/datetime.format.php
-#. translators: 1: Name of most recent post author, 2: Post edited date, 3:
-#. Post edited time.
-#. translators: 1: Post edited date, 2: Post edited time.
-#. translators: 1: Post creation date, 2: Post creation time.
-#. translators: Default date format, see
-#. https://www.php.net/manual/datetime.format.php
-#. translators: 1: Date, 2: Time.
-#: wp-includes/class-wp-locale.php:363 wp-includes/media.php:4016
-#: wp-includes/script-loader.php:153 wp-includes/script-loader.php:373
-#: wp-admin/admin.php:113 wp-admin/edit-form-advanced.php:627
-#: wp-admin/edit-form-advanced.php:630 wp-admin/includes/ajax-actions.php:1573
-#: wp-admin/includes/ajax-actions.php:2811
-#: wp-admin/includes/ajax-actions.php:2814
-#: wp-admin/includes/class-wp-application-passwords-list-table.php:71
-#: wp-admin/includes/class-wp-application-passwords-list-table.php:86
-#: wp-admin/includes/class-wp-application-passwords-list-table.php:226
-#: wp-admin/includes/class-wp-application-passwords-list-table.php:229
-#: wp-admin/includes/class-wp-privacy-policy-content.php:382
-#: wp-admin/includes/dashboard.php:656 wp-admin/includes/media.php:1703
-#: wp-admin/includes/schema.php:426 wp-admin/options-general.php:293
-#: wp-admin/options-general.php:319 wp-admin/update-core.php:1057
-msgid "F j, Y"
-msgstr "d.m.Y"
 
 #: wp-includes/class-wp-xmlrpc-server.php:546
 msgid "The URL to the admin area"
@@ -12592,7 +13183,7 @@ msgstr "Сайтът, който търсите - %s, не съществува,
 msgid "Have you entered your email correctly? You have entered %s, if it&#8217;s incorrect, you will not receive your email."
 msgstr "Правилен ли е въведеният от вас имейл? Въвели сте %s, ако адресът не е верен, няма да получавате поща."
 
-#: wp-includes/functions.php:7103
+#: wp-includes/functions.php:7110
 msgid "The login page will open in a new tab. After logging in you can close it and return to this page."
 msgstr "Страницата за вход ще се отвори в нов раздел. След като влезете, можете да го затворите и да се върнете обратно на тази."
 
@@ -12617,7 +13208,7 @@ msgctxt "placeholder"
 msgid "Search &hellip;"
 msgstr "Търсене &hellip;"
 
-#: wp-includes/functions.php:7101 wp-includes/script-loader.php:1182
+#: wp-includes/functions.php:7108 wp-includes/script-loader.php:1182
 msgid "Session expired"
 msgstr "Изтекла сесия"
 
@@ -13338,7 +13929,7 @@ msgstr "Стил"
 #: wp-includes/js/dist/edit-post.js:6873 wp-includes/js/dist/edit-post.js:6874
 #: wp-includes/js/dist/edit-post.js:8252 wp-includes/js/dist/edit-site.js:6158
 #: wp-includes/js/dist/edit-site.js:6169 wp-includes/js/dist/edit-site.js:6171
-#: wp-includes/js/dist/edit-site.js:9309
+#: wp-includes/js/dist/edit-site.js:9313
 #: wp-admin/includes/class-wp-posts-list-table.php:1810
 #: wp-admin/includes/meta-boxes.php:979
 msgid "Template"
@@ -13531,6 +14122,10 @@ msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr "F Y"
 
+#: wp-includes/block-patterns.php:108
+msgid "Featured"
+msgstr "На фокус"
+
 #. translators: Double prime, for example in 9" (nine inches).
 #: wp-includes/formatting.php:94
 msgctxt "double prime"
@@ -13664,12 +14259,12 @@ msgstr "Документация"
 msgid "&hellip;"
 msgstr "&hellip;"
 
-#: wp-includes/functions.php:5251 wp-includes/ms-load.php:471
+#: wp-includes/functions.php:5258 wp-includes/ms-load.php:471
 #: wp-includes/wp-db.php:1801
 msgid "Error establishing a database connection"
 msgstr "Грешка при свързване с базата данни"
 
-#: wp-includes/functions.php:5251
+#: wp-includes/functions.php:5258
 msgid "Database Error"
 msgstr "Грешка в базата данни"
 
@@ -13858,12 +14453,12 @@ msgstr "Този потребител е вече активен."
 
 #. translators: Developer debugging message. 1: PHP function name, 2:
 #. Explanatory message, 3: WordPress version number.
-#: wp-includes/functions.php:5763
+#: wp-includes/functions.php:5770
 msgid "%1$s was called <strong>incorrectly</strong>. %2$s %3$s"
 msgstr "%1$s е извикана <strong>некоректно</strong>. %2$s %3$s"
 
 #. translators: %s: Version number.
-#: wp-includes/functions.php:5751
+#: wp-includes/functions.php:5758
 msgid "(This message was added in version %s.)"
 msgstr "(Това съобщение беше добавено във версия %s.)"
 
@@ -14870,7 +15465,7 @@ msgid "%s is your new username"
 msgstr "%s е вашето ново потребителско име"
 
 #: wp-includes/class-wp-customize-nav-menus.php:1112
-#: wp-includes/script-loader.php:1808 wp-signup.php:626
+#: wp-includes/script-loader.php:1818 wp-signup.php:626
 #: wp-includes/js/dist/block-library.js:27870
 #: wp-includes/js/dist/components.js:53276
 msgid "Next"
@@ -14992,7 +15587,7 @@ msgstr "<strong>Грешка</strong>: WordPress %1$s изисква MySQL ве�
 msgid "Sidebar %d"
 msgstr "Странична лента %d"
 
-#: wp-includes/functions.php:7102 wp-includes/user.php:295
+#: wp-includes/functions.php:7109 wp-includes/user.php:295
 msgid "Please log in again."
 msgstr "Моля, влезте отново."
 
@@ -15847,143 +16442,6 @@ msgstr "пн"
 msgid "Sun"
 msgstr "нд"
 
-#. translators: Weekday.
-#. translators: One-letter abbreviation of the weekday.
-#. translators: Three-letter abbreviation of the weekday.
-#: wp-includes/class-wp-locale.php:128 wp-includes/class-wp-locale.php:137
-#: wp-includes/class-wp-locale.php:146
-msgid "Saturday"
-msgstr "събота"
-
-#. translators: Weekday.
-#. translators: One-letter abbreviation of the weekday.
-#. translators: Three-letter abbreviation of the weekday.
-#: wp-includes/class-wp-locale.php:127 wp-includes/class-wp-locale.php:136
-#: wp-includes/class-wp-locale.php:145
-msgid "Friday"
-msgstr "петък"
-
-#. translators: Weekday.
-#. translators: One-letter abbreviation of the weekday.
-#. translators: Three-letter abbreviation of the weekday.
-#: wp-includes/class-wp-locale.php:126 wp-includes/class-wp-locale.php:135
-#: wp-includes/class-wp-locale.php:144
-msgid "Thursday"
-msgstr "четвъртък"
-
-#. translators: Weekday.
-#. translators: One-letter abbreviation of the weekday.
-#. translators: Three-letter abbreviation of the weekday.
-#: wp-includes/class-wp-locale.php:125 wp-includes/class-wp-locale.php:134
-#: wp-includes/class-wp-locale.php:143
-msgid "Wednesday"
-msgstr "сряда"
-
-#. translators: Weekday.
-#. translators: One-letter abbreviation of the weekday.
-#. translators: Ttree-letter abbreviation of the weekday.
-#: wp-includes/class-wp-locale.php:124 wp-includes/class-wp-locale.php:133
-#: wp-includes/class-wp-locale.php:142
-msgid "Tuesday"
-msgstr "вторник"
-
-#. translators: Weekday.
-#. translators: One-letter abbreviation of the weekday.
-#. translators: Three-letter abbreviation of the weekday.
-#: wp-includes/class-wp-locale.php:123 wp-includes/class-wp-locale.php:132
-#: wp-includes/class-wp-locale.php:141
-msgid "Monday"
-msgstr "понеделник"
-
-#. translators: Weekday.
-#: wp-includes/class-wp-locale.php:122 wp-includes/class-wp-locale.php:131
-#: wp-includes/class-wp-locale.php:140
-msgid "Sunday"
-msgstr "неделя"
-
-#. translators: Month name.
-#. translators: Three-letter abbreviation of the month.
-#: wp-includes/class-wp-locale.php:160 wp-includes/class-wp-locale.php:188
-#: wp-includes/js/dist/components.js:46842
-msgid "December"
-msgstr "декември"
-
-#. translators: Month name.
-#. translators: Three-letter abbreviation of the month.
-#: wp-includes/class-wp-locale.php:159 wp-includes/class-wp-locale.php:187
-#: wp-includes/js/dist/components.js:46840
-msgid "November"
-msgstr "ноември"
-
-#. translators: Month name.
-#. translators: Three-letter abbreviation of the month.
-#: wp-includes/class-wp-locale.php:158 wp-includes/class-wp-locale.php:186
-#: wp-includes/js/dist/components.js:46838
-msgid "October"
-msgstr "октомври"
-
-#. translators: Month name.
-#. translators: Three-letter abbreviation of the month.
-#: wp-includes/class-wp-locale.php:157 wp-includes/class-wp-locale.php:185
-#: wp-includes/js/dist/components.js:46836
-msgid "September"
-msgstr "септември"
-
-#. translators: Month name.
-#. translators: Three-letter abbreviation of the month.
-#: wp-includes/class-wp-locale.php:156 wp-includes/class-wp-locale.php:184
-#: wp-includes/js/dist/components.js:46834
-msgid "August"
-msgstr "август"
-
-#. translators: Month name.
-#. translators: Three-letter abbreviation of the month.
-#: wp-includes/class-wp-locale.php:155 wp-includes/class-wp-locale.php:183
-#: wp-includes/js/dist/components.js:46832
-msgid "July"
-msgstr "юли"
-
-#. translators: Month name.
-#. translators: Three-letter abbreviation of the month.
-#: wp-includes/class-wp-locale.php:154 wp-includes/class-wp-locale.php:182
-#: wp-includes/js/dist/components.js:46830
-msgid "June"
-msgstr "юни"
-
-#. translators: Month name.
-#. translators: Three-letter abbreviation of the month.
-#: wp-includes/class-wp-locale.php:153 wp-includes/class-wp-locale.php:181
-#: wp-includes/js/dist/components.js:46828
-msgid "May"
-msgstr "май"
-
-#. translators: Month name.
-#. translators: Three-letter abbreviation of the month.
-#: wp-includes/class-wp-locale.php:152 wp-includes/class-wp-locale.php:180
-#: wp-includes/js/dist/components.js:46826
-msgid "April"
-msgstr "април"
-
-#. translators: Month name.
-#. translators: Three-letter abbreviation of the month.
-#: wp-includes/class-wp-locale.php:151 wp-includes/class-wp-locale.php:179
-#: wp-includes/js/dist/components.js:46824
-msgid "March"
-msgstr "март"
-
-#. translators: Month name.
-#. translators: Three-letter abbreviation of the month.
-#: wp-includes/class-wp-locale.php:150 wp-includes/class-wp-locale.php:178
-#: wp-includes/js/dist/components.js:46822
-msgid "February"
-msgstr "февруари"
-
-#. translators: Month name.
-#: wp-includes/class-wp-locale.php:149 wp-includes/class-wp-locale.php:177
-#: wp-includes/js/dist/components.js:46820
-msgid "January"
-msgstr "януари"
-
 #: wp-includes/class-wp-http-curl.php:243
 #: wp-includes/class-wp-http-curl.php:292 wp-includes/class-wp-http.php:1041
 msgid "Too many redirects."
@@ -16091,34 +16549,34 @@ msgstr "Изход"
 msgid "Log in"
 msgstr "Вход"
 
-#: wp-includes/functions.php:6400
+#: wp-includes/functions.php:6407
 msgid "Manual Offsets"
 msgstr "Часова разлика"
 
-#: wp-includes/functions.php:6391 wp-includes/functions.php:6396
+#: wp-includes/functions.php:6398 wp-includes/functions.php:6403
 msgid "UTC"
 msgstr "По Гринуич"
 
-#: wp-includes/functions.php:6346
+#: wp-includes/functions.php:6353
 msgid "Select a city"
 msgstr "Изберете град"
 
 #. translators: 1: PHP function name, 2: Version number.
-#: wp-includes/functions.php:5606
+#: wp-includes/functions.php:5613
 msgid "%1$s was called with an argument that is <strong>deprecated</strong> since version %2$s with no alternative available."
 msgstr "%1$s е извикана с параметър, който <strong>не трябва да се използва</strong> от версия %2$s."
 
 #. translators: 1: PHP function name, 2: Version number, 3: Optional message
 #. regarding the change.
-#: wp-includes/functions.php:5595
+#: wp-includes/functions.php:5602
 msgid "%1$s was called with an argument that is <strong>deprecated</strong> since version %2$s! %3$s"
 msgstr "%1$s е извикана с параметър, който <strong>не трябва да се използва</strong> след версия %2$s! %3$s"
 
 #. translators: 1: PHP function name, 2: Version number.
 #. translators: 1: PHP file name, 2: Version number.
 #. translators: 1: WordPress hook name, 2: Version number.
-#: wp-includes/functions.php:5322 wp-includes/functions.php:5512
-#: wp-includes/functions.php:5697
+#: wp-includes/functions.php:5329 wp-includes/functions.php:5519
+#: wp-includes/functions.php:5704
 msgid "%1$s is <strong>deprecated</strong> since version %2$s with no alternative available."
 msgstr "%1$s вече <strong>не трябва да се използва</strong> след версия %2$s!"
 
@@ -16127,8 +16585,8 @@ msgstr "%1$s вече <strong>не трябва да се използва</stro
 #. translators: 1: PHP file name, 2: Version number, 3: Alternative file name.
 #. translators: 1: WordPress hook name, 2: Version number, 3: Alternative hook
 #. name.
-#: wp-includes/functions.php:5311 wp-includes/functions.php:5501
-#: wp-includes/functions.php:5686
+#: wp-includes/functions.php:5318 wp-includes/functions.php:5508
+#: wp-includes/functions.php:5693
 msgid "%1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead."
 msgstr "%1$s вече <strong>не трябва да се използва</strong> след версия %2$s! Заменена е от %3$s."
 
@@ -16580,7 +17038,7 @@ msgstr "Коментарите са затворени."
 
 #: wp-includes/admin-bar.php:1014
 #: wp-includes/class-wp-customize-widgets.php:418
-#: wp-includes/functions.php:5198 wp-includes/js/dist/blocks.js:256
+#: wp-includes/functions.php:5199 wp-includes/js/dist/blocks.js:256
 #: wp-includes/js/dist/core-data.js:1932
 #: wp-includes/js/dist/customize-widgets.js:1886
 #: wp-includes/js/dist/edit-widgets.js:2784
@@ -16691,7 +17149,7 @@ msgstr "Първа публикация"
 #: wp-includes/js/dist/block-library.js:33927
 #: wp-includes/js/dist/customize-widgets.js:3973
 #: wp-includes/js/dist/edit-post.js:3140 wp-includes/js/dist/edit-post.js:8401
-#: wp-includes/js/dist/edit-site.js:6381 wp-includes/js/dist/edit-site.js:11314
+#: wp-includes/js/dist/edit-site.js:6381 wp-includes/js/dist/edit-site.js:11318
 #: wp-includes/js/dist/edit-widgets.js:2215
 #: wp-includes/js/dist/edit-widgets.js:4911 wp-admin/includes/ms.php:1082
 #: wp-admin/menu.php:359 wp-admin/options.php:22 wp-admin/network/menu.php:109
@@ -16881,7 +17339,7 @@ msgstr "Избор"
 #: wp-includes/class-wp-customize-manager.php:5694
 #: wp-includes/class-wp-editor.php:1179 wp-includes/class-wp-editor.php:1858
 #: wp-includes/script-loader.php:862 wp-includes/script-loader.php:1175
-#: wp-includes/script-loader.php:1804 wp-includes/js/dist/block-editor.js:11832
+#: wp-includes/script-loader.php:1814 wp-includes/js/dist/block-editor.js:11832
 #: wp-includes/js/dist/block-editor.js:49480
 #: wp-includes/js/dist/block-library.js:20644
 #: wp-includes/js/dist/block-library.js:25453
@@ -16891,7 +17349,7 @@ msgstr "Избор"
 #: wp-includes/js/dist/edit-post.js:4842 wp-includes/js/dist/edit-post.js:5497
 #: wp-includes/js/dist/edit-post.js:5870 wp-includes/js/dist/edit-post.js:8110
 #: wp-includes/js/dist/edit-site.js:2678 wp-includes/js/dist/edit-site.js:6781
-#: wp-includes/js/dist/edit-site.js:8931
+#: wp-includes/js/dist/edit-site.js:8934
 #: wp-includes/js/dist/edit-widgets.js:2592
 #: wp-includes/js/dist/reusable-blocks.js:459
 #: wp-admin/includes/class-wp-theme-install-list-table.php:394
@@ -17045,7 +17503,7 @@ msgstr "Добре"
 msgid "Image URL"
 msgstr "URL на картинка"
 
-#: wp-includes/js/dist/edit-site.js:9022 wp-includes/js/dist/edit-site.js:9315
+#: wp-includes/js/dist/edit-site.js:9025 wp-includes/js/dist/edit-site.js:9319
 #: wp-admin/includes/media.php:2584
 #: wp-admin/includes/class-wp-ms-sites-list-table.php:370
 msgid "Actions"
@@ -17208,7 +17666,7 @@ msgstr "Странична лента"
 #: wp-includes/admin-bar.php:1050 wp-includes/block-template-utils.php:77
 #: wp-includes/js/dist/block-library.js:39628
 #: wp-includes/js/dist/customize-widgets.js:3964
-#: wp-includes/js/dist/edit-post.js:3131 wp-includes/js/dist/edit-site.js:11305
+#: wp-includes/js/dist/edit-post.js:3131 wp-includes/js/dist/edit-site.js:11309
 #: wp-includes/js/dist/edit-widgets.js:4902
 #: wp-admin/includes/class-custom-image-header.php:73 wp-admin/menu.php:233
 msgid "Header"
@@ -17252,7 +17710,7 @@ msgstr "Етикети"
 #. translators: accessibility text for the content landmark region.
 #: wp-includes/revision.php:33 wp-includes/js/dist/block-editor.js:26362
 #: wp-includes/js/dist/customize-widgets.js:3967
-#: wp-includes/js/dist/edit-post.js:3134 wp-includes/js/dist/edit-site.js:11308
+#: wp-includes/js/dist/edit-post.js:3134 wp-includes/js/dist/edit-site.js:11312
 #: wp-includes/js/dist/edit-widgets.js:4905 wp-admin/includes/dashboard.php:576
 #: wp-admin/index.php:104
 msgid "Content"
@@ -17269,7 +17727,7 @@ msgstr "Съдържание"
 #: wp-includes/js/dist/block-library.js:39146
 #: wp-includes/js/dist/block-library.js:39161
 #: wp-includes/js/dist/edit-post.js:8138 wp-includes/js/dist/edit-site.js:6844
-#: wp-includes/js/dist/edit-site.js:8955 wp-includes/js/dist/editor.js:9201
+#: wp-includes/js/dist/edit-site.js:8958 wp-includes/js/dist/editor.js:9201
 #: wp-includes/js/dist/reusable-blocks.js:486 wp-admin/comment.php:247
 #: wp-admin/includes/class-walker-nav-menu-edit.php:305
 #: wp-admin/includes/class-wp-posts-list-table.php:2011
@@ -17402,7 +17860,7 @@ msgstr "Описание"
 #: wp-includes/js/dist/block-library.js:32456
 #: wp-includes/js/dist/block-library.js:39152
 #: wp-includes/js/dist/edit-post.js:8122 wp-includes/js/dist/edit-site.js:6799
-#: wp-includes/js/dist/edit-site.js:8942
+#: wp-includes/js/dist/edit-site.js:8945
 #: wp-includes/js/dist/reusable-blocks.js:474 wp-admin/edit-form-comment.php:49
 #: wp-admin/includes/class-wp-application-passwords-list-table.php:29
 #: wp-admin/includes/class-wp-debug-data.php:1129
@@ -17437,7 +17895,7 @@ msgid "Categories"
 msgstr "Категории"
 
 #: wp-includes/class-wp-editor.php:1247 wp-includes/js/dist/edit-site.js:3029
-#: wp-includes/js/dist/edit-site.js:8958 wp-includes/js/dist/editor.js:5423
+#: wp-includes/js/dist/edit-site.js:8961 wp-includes/js/dist/editor.js:5423
 #: wp-includes/js/dist/editor.js:9489
 #: wp-includes/js/dist/reusable-blocks.js:489
 #: wp-includes/js/dist/widgets.js:392 wp-admin/edit-form-comment.php:90
@@ -17486,7 +17944,7 @@ msgstr "Откъс"
 #: wp-includes/script-loader.php:1162
 #: wp-includes/js/dist/customize-widgets.js:3976
 #: wp-includes/js/dist/edit-post.js:3143 wp-includes/js/dist/edit-post.js:6952
-#: wp-includes/js/dist/edit-site.js:11317
+#: wp-includes/js/dist/edit-site.js:11321
 #: wp-includes/js/dist/edit-widgets.js:4914 wp-includes/js/dist/editor.js:7750
 #: wp-includes/js/dist/editor.js:7941 wp-admin/customize.php:193
 #: wp-admin/includes/meta-boxes.php:359 wp-admin/includes/meta-boxes.php:360

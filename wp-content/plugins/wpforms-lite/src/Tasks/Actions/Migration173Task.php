@@ -221,10 +221,6 @@ class Migration173Task extends Task {
 
 		global $wpdb;
 
-		if ( ! $this->entry_handler->table_exists() ) {
-			return [];
-		}
-
 		// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.NoCaching
 		$entries = $wpdb->get_results(
 			"

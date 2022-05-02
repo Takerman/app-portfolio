@@ -385,7 +385,10 @@ var wpforms = window.wpforms || ( function( document, window, $ ) {
 				// Validate password strength.
 				$.validator.addMethod( 'password-strength', function( value, element ) {
 
-					return WPFormsPasswordField.passwordStrength( value, element ) >= Number( $( element ).data( 'password-strength-level' ) );
+					var $el = $( element );
+
+					return $el.val().trim() === '' && ! $el.hasClass( 'wpforms-field-required' ) || // Don't check the password strength for empty fields which is set as not required.
+						WPFormsPasswordField.passwordStrength( value, element ) >= Number( $el.data( 'password-strength-level' ) );
 				}, wpforms_settings.val_password_strength );
 
 				// Finally load jQuery Validation library for our forms.
@@ -958,11 +961,14 @@ var wpforms = window.wpforms || ( function( document, window, $ ) {
 
 			// Loads if function exists.
 			if ( typeof window.Choices !== 'function' ) {
-
 				return;
 			}
 
 			$( '.wpforms-field-select-style-modern .choicesjs-select, .wpforms-field-payment-select .choicesjs-select' ).each( function( idx, el ) {
+
+				if ( $( el ).data( 'choicesjs' ) ) {
+					return;
+				}
 
 				var args          = window.wpforms_choicesjs_config || {},
 					searchEnabled = $( el ).data( 'search-enabled' );

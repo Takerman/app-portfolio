@@ -36,11 +36,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<div class="addon-container">
 						<div class="addon-item">
 							<div class="details wpforms-clear" style="">
-								<img src="<?php echo esc_url( WPFORMS_PLUGIN_URL . 'assets/images/' . $addon['icon'] ); ?>">
+								<img src="<?php echo esc_url( WPFORMS_PLUGIN_URL . 'assets/images/' . $addon['icon'] ); ?>" alt="<?php echo esc_attr( $addon['title'] ); ?> <?php esc_attr_e( 'logo', 'wpforms-lite' ); ?>">
 								<h5 class="addon-name">
 									<?php
 									printf(
-										'<a href="%1$s" title="%2$s" target="_blank" rel="noopener noreferrer">%3$s</a>',
+										'<a href="%1$s" title="%2$s" target="_blank" rel="noopener noreferrer" class="addon-link">%3$s</a>',
 										esc_url( $upgrade_link ),
 										esc_attr__( 'Learn more', 'wpforms-lite' ),
 										esc_html( $addon['title'] )

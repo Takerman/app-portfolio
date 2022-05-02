@@ -3,9 +3,9 @@ Contributors: cozmoslabs, razvan.mo, madalin.ungureanu, sareiodata, cristophor
 Donate link: https://www.translatepress.com/
 Tags: translate, translation, multilingual, automatic translation, bilingual, front-end translation, google translate, language
 Requires at least: 3.1.0
-Tested up to: 5.9.2
+Tested up to: 5.9.3
 Requires PHP: 5.6.20
-Stable tag: 2.2.4
+Stable tag: 2.2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -140,6 +140,11 @@ For more information please check out our [documentation](https://translatepress
 
 
 == Changelog ==
+= 2.2.5 =
+* Fixed span tag appearing in WooCommerce Orders in WP Dashboard
+* Fixed warnings from The Event Calendar about SQL commands
+* Fixed errors appearing in logs when using custom integration code
+
 = 2.2.4 =
 * Prevent automatic translation of names and addresses in WooCommerce emails
 * Added external function for devs to easily create custom language switchers: trp_custom_language_switcher

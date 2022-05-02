@@ -362,4 +362,54 @@ trait ThirdParty {
 
 		return $acfFields;
 	}
+
+	/**
+	 * Checks whether the Smash Balloon Custom Facebook Feed plugin is active.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @return bool Whether the SB CFF plugin is active.
+	 */
+	public function isSbCustomFacebookFeedActive() {
+		static $isActive = null;
+		if ( null !== $isActive ) {
+			return $isActive;
+		}
+
+		$isActive = defined( 'CFFVER' ) || is_plugin_active( 'custom-facebook-feed/custom-facebook-feed.php' );
+
+		return $isActive;
+	}
+
+	/**
+	 * Returns the access token for Facebook from Smash Balloon if there is one.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @return string|false The access token or false if there is none.
+	 */
+	public function getSbAccessToken() {
+		static $accessToken = null;
+		if ( null !== $accessToken ) {
+			return $accessToken;
+		}
+
+		if ( ! $this->isSbCustomFacebookFeedActive() ) {
+			$accessToken = false;
+
+			return $accessToken;
+		}
+
+		$oembedTokenData = get_option( 'cff_oembed_token', [] );
+		if ( ! $oembedTokenData || empty( $oembedTokenData['access_token'] ) ) {
+			$accessToken = false;
+
+			return $accessToken;
+		}
+
+		$sbFacebookDataEncryptionInstance = new \CustomFacebookFeed\SB_Facebook_Data_Encryption;
+		$accessToken                      = $sbFacebookDataEncryptionInstance->maybe_decrypt( $oembedTokenData['access_token'] );
+
+		return $accessToken;
+	}
 }

@@ -775,6 +775,8 @@ class Ai1wm_Main_Controller {
 				'how_may_we_help_you'                 => __( 'How may we help you?', AI1WM_PLUGIN_NAME ),
 				'thanks_for_submitting_your_feedback' => __( 'Thanks for submitting your feedback!', AI1WM_PLUGIN_NAME ),
 				'thanks_for_submitting_your_request'  => __( 'Thanks for submitting your request!', AI1WM_PLUGIN_NAME ),
+				'backups_count_singular'              => __( 'You have %d backup', AI1WM_PLUGIN_NAME ),
+				'backups_count_plural'                => __( 'You have %d backups', AI1WM_PLUGIN_NAME ),
 			)
 		);
 	}
@@ -1073,6 +1075,8 @@ class Ai1wm_Main_Controller {
 					'Free up %s of disk space.',
 					AI1WM_PLUGIN_NAME
 				),
+				'backups_count_singular'              => __( 'You have %d backup', AI1WM_PLUGIN_NAME ),
+				'backups_count_plural'                => __( 'You have %d backups', AI1WM_PLUGIN_NAME ),
 			)
 		);
 	}

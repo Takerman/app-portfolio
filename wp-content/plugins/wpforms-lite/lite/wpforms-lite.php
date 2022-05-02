@@ -1,5 +1,7 @@
 <?php
 
+use WPForms\Lite\Integrations\LiteConnect\LiteConnect;
+use WPForms\Lite\Integrations\LiteConnect\Integration as LiteConnectIntegration;
 use WPMailSMTP\Options;
 
 /**
@@ -18,6 +20,7 @@ class WPForms_Lite {
 
 		$this->includes();
 
+		add_action( 'wpforms_install', [ $this, 'install' ] );
 		add_action( 'wpforms_form_settings_notifications', [ $this, 'form_settings_notifications' ], 8, 1 );
 		add_action( 'wpforms_form_settings_confirmations', [ $this, 'form_settings_confirmations' ] );
 		add_action( 'wpforms_builder_enqueues_before', [ $this, 'builder_enqueues' ] );
@@ -28,7 +31,11 @@ class WPForms_Lite {
 		add_filter( 'wpforms_helpers_templates_get_theme_template_paths', [ $this, 'add_templates' ] );
 
 		// Entries count logging for WPForms Lite.
+		add_action( 'wpforms_process_entry_save', [ $this, 'entry_submit' ], 10, 4 );
 		add_action( 'wpforms_process_entry_save', [ $this, 'update_entry_count' ], 10, 3 );
+
+		// Upgrade to Pro WPForms menu bar item.
+		add_action( 'admin_bar_menu', [ $this, 'upgrade_to_pro_menu' ], 1000 );
 	}
 
 	/**
@@ -107,7 +114,7 @@ class WPForms_Lite {
 			echo '<p>';
 			printf(
 				wp_kses( /* translators: 1$s, %2$s - Links to the WPForms.com doc articles. */
-					__( 'After saving these settings, be sure to <a href="%1$s" target="_blank" rel="noopener noreferrer">test a form submission</a>. This lets you see how emails will look, and to ensure that<br>they <a href="%2$s" target="_blank" rel="noopener noreferrer">are delivered successfully</a>.', 'wpforms-lite' ),
+					__( 'After saving these settings, be sure to <a href="%1$s" target="_blank" rel="noopener noreferrer">test a form submission</a>. This lets you see how emails will look, and to ensure that they <a href="%2$s" target="_blank" rel="noopener noreferrer">are delivered successfully</a>.', 'wpforms-lite' ),
 					[
 						'a'  => [
 							'href'   => [],
@@ -592,9 +599,13 @@ class WPForms_Lite {
 	 */
 	public function entries_page() {
 
-		if ( ! isset( $_GET['page'] ) || 'wpforms-entries' !== $_GET['page'] ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( ! isset( $_GET['page'] ) || $_GET['page'] !== 'wpforms-entries' ) {
 			return;
 		}
+
+		$is_lite_connect_enabled = LiteConnect::is_enabled();
+		$is_lite_connect_allowed = LiteConnect::is_allowed();
 		?>
 
 		<style>
@@ -631,12 +642,13 @@ class WPForms_Lite {
 				text-align: center;
 				width: 730px;
 				box-shadow: 0 0 60px 30px rgba(0, 0, 0, 0.15);
-				border-radius: 3px;
+				border-radius: 6px;
 				position: absolute;
 				top: 75px;
 				left: 50%;
 				margin: 0 auto 0 -365px;
 				z-index: 100;
+				overflow: hidden;
 			}
 
 			.entries-modal *,
@@ -655,13 +667,36 @@ class WPForms_Lite {
 
 			.entries-modal p {
 				font-size: 16px;
-				color: #666;
+				line-height: 24px;
+				color: #777777;
 				margin: 0 0 30px 0;
 				padding: 0;
 			}
 
+			.entries-modal-content-top-notice {
+				padding: 10px;
+				text-align: center;
+				font-style: normal;
+				font-weight: normal;
+				font-size: 15px;
+				line-height: 24px;
+				color: #444444;
+				background: #fcf9e8;
+			}
+
+			.entries-modal-content-top-notice .wpforms-icon {
+				width: 18px;
+				height: 16px;
+				background-image: url('<?php echo esc_url( WPFORMS_PLUGIN_URL ); ?>assets/images/exclamation-triangle-orange.svg');
+				background-repeat: no-repeat;
+				background-size: 18px 16px;
+				display: inline-block;
+				margin-right: 10px;
+				vertical-align: -2px;
+			}
+
 			.entries-modal-content {
-				background-color: #fff;
+				background-color: #ffffff;
 				border-radius: 3px 3px 0 0;
 				padding: 40px;
 			}
@@ -675,8 +710,9 @@ class WPForms_Lite {
 			}
 
 			.entries-modal li {
-				color: #666;
+				color: #777777;
 				font-size: 16px;
+				line-height: 19px;
 				padding: 6px 0;
 			}
 
@@ -690,6 +726,31 @@ class WPForms_Lite {
 				padding: 30px;
 				background: #f5f5f5;
 				text-align: center;
+			}
+
+			.entries-modal-button p {
+				margin: 20px 0 0 0;
+				font-size: 15px;
+				line-height: 18px;
+				text-align: center;
+			}
+
+			.entries-modal-button p span {
+				display: inline-block;
+				margin-left: 20px;
+				vertical-align: bottom;
+				font-size: 14px;
+				line-height: 17px;
+			}
+
+			.entries-modal-button p .wpforms-toggle-control .wpforms-toggle-control-label {
+				max-width: none;
+			}
+
+			.entries-modal-button .entries-modal-button-before {
+				line-height: 24px;
+				margin: 0 0 20px 0;
+				color: #444444;
 			}
 
 			#wpforms-entries-list .entries .column-indicators > a {
@@ -713,10 +774,16 @@ class WPForms_Lite {
 			<div class="wpforms-admin-content-wrap">
 
 				<div class="entries-modal">
+					<?php if ( ! $is_lite_connect_enabled ) : ?>
+						<div class="entries-modal-content-top-notice">
+							<i class="wpforms-icon"></i><?php esc_html_e( 'Form entries are not stored in WPForms Lite.', 'wpforms-lite' ); ?>
+						</div>
+					<?php endif; ?>
 					<div class="entries-modal-content">
-						<h2><?php esc_html_e( 'View and Manage All Your Form Entries inside WordPress', 'wpforms-lite' ); ?></h2>
+						<h2>
+							<?php esc_html_e( 'View and Manage Your Form Entries inside WordPress', 'wpforms-lite' ); ?>
+						</h2>
 						<p>
-							<strong><?php esc_html_e( 'Form entries are not stored in WPForms Lite.', 'wpforms-lite' ); ?></strong><br>
 							<?php esc_html_e( 'Once you upgrade to WPForms Pro, all future form entries will be stored in your WordPress database and displayed on this Entries screen.', 'wpforms-lite' ); ?>
 						</p>
 						<div class="wpforms-clear">
@@ -735,11 +802,66 @@ class WPForms_Lite {
 						</div>
 					</div>
 					<div class="entries-modal-button">
-						<a href="<?php echo esc_url( wpforms_admin_upgrade_link( 'entries' ) ); ?>" class="wpforms-btn wpforms-btn-lg wpforms-btn-orange wpforms-upgrade-modal" target="_blank" rel="noopener noreferrer">
-							<?php esc_html_e( 'Upgrade to WPForms Pro Now', 'wpforms-lite' ); ?>
-						</a>
-						<br>
-						<p style="margin: 10px 0 0;font-style:italic;font-size: 13px;">and start collecting entries!</p>
+						<?php if ( $is_lite_connect_enabled && $is_lite_connect_allowed ) : ?>
+
+							<p class="entries-modal-button-before">
+							<?php
+								$entries_count = LiteConnectIntegration::get_new_entries_count();
+								$enabled_since = LiteConnectIntegration::get_enabled_since();
+
+								printf(
+									'<strong>' . esc_html( /* translators: %d - Backed up entries count. */
+										_n(
+											'%d entry has been backed up',
+											'%d entries have been backed up',
+											$entries_count,
+											'wpforms-lite'
+										)
+									) . '</strong>',
+									absint( $entries_count )
+								);
+
+								if ( ! empty( $enabled_since ) ) {
+									echo ' ';
+									printf(
+										/* translators: %s - Time when Lite Connect was enabled. */
+										esc_html__( 'since you enabled Lite Connect on %s', 'wpforms-lite' ),
+										esc_html( date_i18n( 'M j, Y', $enabled_since + get_option( 'gmt_offset' ) * 3600 ) )
+									);
+								}
+							// phpcs:ignore Squiz.PHP.EmbeddedPhp.ContentAfterEnd
+							?>.</p>
+							<a href="<?php echo esc_url( wpforms_admin_upgrade_link( 'entries' ) ); ?>" class="wpforms-btn wpforms-btn-lg wpforms-btn-orange wpforms-upgrade-modal" target="_blank" rel="noopener noreferrer">
+								<?php esc_html_e( 'Upgrade to WPForms Pro & Restore Form Entries', 'wpforms-lite' ); ?>
+							</a>
+
+						<?php else : ?>
+
+							<a href="<?php echo esc_url( wpforms_admin_upgrade_link( 'entries' ) ); ?>" class="wpforms-btn wpforms-btn-lg wpforms-btn-orange wpforms-upgrade-modal" target="_blank" rel="noopener noreferrer">
+								<?php esc_html_e( 'Upgrade to WPForms Pro Now', 'wpforms-lite' ); ?>
+							</a>
+
+							<?php
+								if ( $is_lite_connect_allowed ) {
+									echo '<p>';
+									esc_html_e( 'Not ready to upgrade?', 'wpforms-lite' );
+
+									// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+									echo wpforms_panel_field_toggle_control(
+										[
+											'control-class' => 'wpforms-setting-lite-connect-auto-save-toggle',
+										],
+										'wpforms-setting-lite-connect-enabled',
+										'',
+										esc_html__( 'Enable Form Entry Backups for free', 'wpforms-lite' ),
+										$is_lite_connect_enabled,
+										''
+									);
+									echo '</p>';
+								}
+							?>
+
+						<?php endif; ?>
 					</div>
 				</div>
 
@@ -1079,6 +1201,35 @@ class WPForms_Lite {
 	}
 
 	/**
+	 * Submit entry to the Lite Connect API.
+	 *
+	 * @since 1.7.4
+	 *
+	 * @param array $fields    Set of form fields.
+	 * @param array $entry     Entry contents.
+	 * @param int   $form_id   Form ID.
+	 * @param array $form_data Form data.
+	 */
+	public function entry_submit( $fields, $entry, $form_id, $form_data = [] ) {
+
+		$submission = wpforms()->get( 'submission' );
+
+		$submission->register( $fields, $entry, $form_id, $form_data );
+
+		// Prepare the entry args.
+		$entry_args = $submission->prepare_entry_data();
+
+		// Submit entry args and form data to the Lite Connect API.
+		if (
+			 LiteConnect::is_allowed() &&
+			 LiteConnect::is_enabled() &&
+			 ! empty( $entry_args )
+		) {
+			( new LiteConnectIntegration() )->submit( $entry_args, $form_data );
+		}
+	}
+
+	/**
 	 * Add Lite-specific templates to the list of searchable template paths.
 	 *
 	 * @since 1.6.6
@@ -1094,6 +1245,42 @@ class WPForms_Lite {
 		$paths[102] = trailingslashit( __DIR__ . '/templates' );
 
 		return $paths;
+	}
+
+	/**
+	 * Render Upgrade to Pro admin bar menu item.
+	 *
+	 * @since 1.7.4
+	 *
+	 * @param WP_Admin_Bar $wp_admin_bar WordPress Admin Bar object.
+	 */
+	public function upgrade_to_pro_menu( WP_Admin_Bar $wp_admin_bar ) {
+
+		$wp_admin_bar->add_menu(
+			[
+				'parent' => 'wpforms-menu',
+				'id'     => 'wpforms-upgrade',
+				'title'  => esc_html__( 'Upgrade to Pro', 'wpforms-lite' ),
+				'href'   => 'https://wpforms.com/lite-upgrade/?utm_campaign=liteplugin&utm_medium=admin-bar&utm_source=WordPress&utm_content=Upgrade+to+Pro',
+				'meta'   => [
+					'target' => '_blank',
+					'rel'    => 'noopener noreferrer',
+				],
+			]
+		);
+	}
+
+	/*
+	 * Handle plugin installation upon activation.
+	 *
+	 * @since 1.7.4
+	 */
+	public function install() {
+
+		// Restart the import flags for Lite Connect if needed.
+		if ( class_exists( LiteConnectIntegration::class ) ) {
+			LiteConnectIntegration::maybe_restart_import_flag();
+		}
 	}
 }
 

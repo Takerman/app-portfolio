@@ -281,8 +281,8 @@ abstract class Filters {
 	 * @return array[Object]|array[string]            The filtered post types.
 	 */
 	public function removeFalsePublicPostTypes( $postTypes ) {
-		$elementorEnabled = isset( aioseo()->postSettings->integrations['elementor'] ) &&
-			aioseo()->postSettings->integrations['elementor']->isPluginActive();
+		$elementorEnabled = isset( aioseo()->standalone->pageBuilderIntegrations['elementor'] ) &&
+			aioseo()->standalone->pageBuilderIntegrations['elementor']->isPluginActive();
 
 		if ( ! $elementorEnabled ) {
 			return $postTypes;

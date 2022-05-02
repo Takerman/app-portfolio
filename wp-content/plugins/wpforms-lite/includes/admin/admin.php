@@ -188,6 +188,7 @@ function wpforms_admin_scripts() {
 		'provider_delete_confirm'         => esc_html__( 'Are you sure you want to disconnect this account?', 'wpforms-lite' ),
 		'provider_delete_error'           => esc_html__( 'Could not disconnect this account.', 'wpforms-lite' ),
 		'provider_auth_error'             => esc_html__( 'Could not authenticate with the provider.', 'wpforms-lite' ),
+		'connecting'                      => esc_html__( 'Connecting...', 'wpforms-lite' ),
 		'save_refresh'                    => esc_html__( 'Save and Refresh', 'wpforms-lite' ),
 		'server_error'                    => esc_html__( 'Unfortunately there was a server connection error.', 'wpforms-lite' ),
 		'settings_form_style_base'        => sprintf(

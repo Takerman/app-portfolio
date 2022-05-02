@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '8957c3113bf0943211361b771f7d39486a3f2c51',
+    'reference' => '7c2fca902190b95a4cc369a41e5ef8022cf82899',
     'name' => 'brizy/brizy',
   ),
   'versions' => 
@@ -46,7 +46,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '8957c3113bf0943211361b771f7d39486a3f2c51',
+      'reference' => '7c2fca902190b95a4cc369a41e5ef8022cf82899',
     ),
     'enshrined/svg-sanitize' => 
     array (

@@ -197,7 +197,7 @@ trait WpContext {
 	 * @param  WP_Post|int $post The post (optional).
 	 * @return string            The post content.
 	 */
-	public function getContent( $post = null ) {
+	public function getPostContent( $post = null ) {
 		$post = ( $post && is_object( $post ) ) ? $post : $post = $this->getPost( $post );
 
 		static $content = [];
@@ -225,6 +225,10 @@ trait WpContext {
 	 * @return string              The parsed post content.
 	 */
 	public function theContent( $postContent ) {
+		if ( ! aioseo()->options->searchAppearance->advanced->runShortcodes ) {
+			return $postContent;
+		}
+
 		// The order of the function calls below is intentional and should NOT change.
 		$postContent = function_exists( 'do_blocks' ) ? do_blocks( $postContent ) : $postContent; // phpcs:ignore AIOSEO.WpFunctionUse.NewFunctions.do_blocksFound
 		$postContent = wpautop( $postContent );
@@ -253,14 +257,7 @@ trait WpContext {
 			return $post->post_content;
 		}
 
-		$postContent = $post->post_content;
-		if (
-			! in_array( 'runShortcodesInDescription', aioseo()->internalOptions->deprecatedOptions, true ) ||
-			aioseo()->options->deprecated->searchAppearance->advanced->runShortcodesInDescription
-		) {
-			$postContent = $this->theContent( $postContent );
-		}
-
+		$postContent          = $this->getPostContent( $post );
 		$postContent          = wp_trim_words( $postContent, 55, '' );
 		$postContent          = str_replace( ']]>', ']]&gt;', $postContent );
 		$postContent          = preg_replace( '#(<figure.*\/figure>|<img.*\/>)#', '', $postContent );
@@ -375,12 +372,23 @@ trait WpContext {
 			$post = get_post( $post );
 		}
 
-		// In order to prevent recursion, we are skipping scheduled-action posts.
+		// No post, no go.
+		if ( empty( $post ) ) {
+			return false;
+		}
+
+		// In order to prevent recursion, we are skipping scheduled-action posts and revisions.
 		if (
-			empty( $post ) ||
 			'scheduled-action' === $post->post_type ||
-			'revision' === $post->post_type ||
-			! in_array( $post->post_status, $allowedPostStatuses, true )
+			'revision' === $post->post_type
+		) {
+			return false;
+		}
+
+		// Ensure this post has the proper post status.
+		if (
+			! in_array( $post->post_status, $allowedPostStatuses, true ) &&
+			! in_array( 'all', $allowedPostStatuses, true )
 		) {
 			return false;
 		}

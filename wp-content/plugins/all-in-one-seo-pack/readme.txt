@@ -3,7 +3,7 @@ Contributors: aioseo, smub, benjaminprojas
 Tags: SEO, Google Search Console, XML Sitemap, meta description, schema, meta title, rich snippets, woocommerce seo, local seo, open graph, google news sitemap, video sitemap, robots.txt, seo audit, content analysis, seo plugin, redirection
 Requires at least: 4.9
 Tested up to: 5.9.3
-Stable tag: 4.1.10
+Stable tag: 4.2.0
 License: GPLv2 or later
 Requires PHP: 5.4
 
@@ -141,7 +141,6 @@ Since redirect speed is important for SEO, we built in both Apache / NGINX serve
 * Microsoft Clarity Integration - Better understand how users interact with your website through heatmaps and session recordings.
 * WordPress REST API Integration - Manage your post and term SEO meta via the WordPress REST API for seamless integration with headless WordPress installations.
 
-
 = WordPress SEO Integrations =
 
 * WooCommerce SEO - optimize your WooCommerce product pages and improve your WooCommerce store's SEO rankings.
@@ -209,6 +208,23 @@ Visit <a href="http://www.wpbeginner.com/" rel="friend" title="WPBeginner">WPBeg
 
 
 == Changelog ==
+
+**New in Version 4.2.0**
+
+* New: Added a brand new dashboard widget to help you quickly identify pages and posts that can be optimized to help your SEO rankings!
+* New: Added a second dashboard widget for users who have not yet finished the setup wizard.
+* New: Added an option to strip the category base.
+* New: Added internal integration with Smash Balloon's Facebook plugin to automatically bust the open graph cache when a page or post is updated.
+* Updated: Disabled shortcode parsing by default for new sites and surfaced the option so users can disable it without filter hooks.
+* Updated: Sorted the sitemap posts and pages by priority, then last modified date.
+* Fixed: Setup wizard not always saving every setting.
+* Fixed: Manually entered person not working in the setup wizard.
+* Fixed: Conflict with WPBakery's Visual Composer and our blocks.
+* Fixed: Clicking the gear icon in the Divi page builder didn't always work.
+* Fixed: Redirects modal appearing behind block editor sidebar.
+* Fixed: TruSEO analysis not running on page load in Elementor.
+* Fixed: Convert the manifest.json into a manifest.php file to fix loading on unique filesystems.
+* Fixed: Media title and descriptions not updating.
 
 **New in Version 4.1.10**
 
@@ -878,6 +894,6 @@ AIOSEO is the original WordPress SEO plugin, and it's trusted by over 3 million 
 
 == Upgrade Notice ==
 
-= 4.1.10 =
+= 4.2.0 =
 
 This update adds major improvements and bugfixes.

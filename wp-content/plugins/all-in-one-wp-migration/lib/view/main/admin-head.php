@@ -95,6 +95,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 		z-index: 26;
 	}
 
+	.ai1wm-menu-count.ai1wm-menu-hide {
+		display: none;
+	}
+
 	<?php if ( version_compare( $version, '3.8', '<' ) ) : ?>
 	.toplevel_page_ai1wm_export > div.wp-menu-image {
 		background: none !important;

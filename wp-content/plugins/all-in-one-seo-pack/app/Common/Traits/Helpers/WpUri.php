@@ -114,8 +114,13 @@ trait WpUri {
 		$url                      = $this->getUrl( true );
 		$noPaginationForCanonical = aioseo()->options->searchAppearance->advanced->noPaginationForCanonical;
 		$pageNumber               = $this->getPageNumber();
-		if ( $noPaginationForCanonical && 1 < $pageNumber ) {
-			$url = preg_replace( '/(\d+|(?<=\/)page\/\d+\/|(?<=\/)comment-page-\d+\/*(#comments)*)$/', '', $url );
+		if ( $noPaginationForCanonical ) {
+			if ( 1 < $pageNumber ) {
+				$url = preg_replace( '/(\d+\/|(?<=\/)page\/\d+\/)$/', '', $url );
+			}
+
+			// Comment pages.
+			$url = preg_replace( '/((?<=\/)comment-page-\d+\/*(#comments)*)$/', '', $url );
 		}
 
 		$url = $this->maybeRemoveTrailingSlash( $url );

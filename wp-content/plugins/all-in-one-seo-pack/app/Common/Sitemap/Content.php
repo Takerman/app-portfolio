@@ -149,12 +149,35 @@ class Content {
 	 * @return array $entries The sitemap entries.
 	 */
 	private function nonIndexed() {
-		$entries = array_merge( $this->addl(), $this->author(), $this->date(), $this->postArchive() );
+		$additional       = $this->addl();
+		$postTypes        = aioseo()->sitemap->helpers->includedPostTypes();
+		$isStaticHomepage = 'page' === get_option( 'show_on_front' );
+		$blogPageEntry    = [];
+		$homePageEntry    = ! $isStaticHomepage ? [ array_shift( $additional ) ] : [];
+		$entries          = array_merge( $additional, $this->author(), $this->date(), $this->postArchive() );
 
-		$postTypes = aioseo()->sitemap->helpers->includedPostTypes();
 		if ( $postTypes ) {
 			foreach ( $postTypes as $postType ) {
-				$entries = array_merge( $entries, $this->posts( $postType ) );
+				$postTypeEntries = $this->posts( $postType );
+
+				// If we don't have a static homepage, it's business as usual.
+				if ( ! $isStaticHomepage ) {
+					$entries = array_merge( $entries, $postTypeEntries );
+					continue;
+				}
+
+				$homePageId = (int) get_option( 'page_on_front' );
+				$blogPageId = (int) get_option( 'page_for_posts' );
+
+				if ( 'post' === $postType && $blogPageId ) {
+					$blogPageEntry[] = array_shift( $postTypeEntries );
+				}
+
+				if ( 'page' === $postType && $homePageId ) {
+					$homePageEntry[] = array_shift( $postTypeEntries );
+				}
+
+				$entries = array_merge( $entries, $postTypeEntries );
 			}
 		}
 
@@ -165,7 +188,18 @@ class Content {
 			}
 		}
 
-		return $entries;
+		// Sort first by priority, then by last modified date.
+		usort( $entries, function ( $a, $b ) {
+			// If the priorities are equal, sort by last modified date.
+			if ( $a['priority'] === $b['priority'] ) {
+				return $a['lastmod'] > $b['lastmod'] ? -1 : 1;
+			}
+
+			return $a['priority'] > $b['priority'] ? -1 : 1;
+		} );
+
+		// Merge the arrays with the home page always first.
+		return array_merge( $homePageEntry, $blogPageEntry, $entries );
 	}
 
 	/**

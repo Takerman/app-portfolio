@@ -1955,6 +1955,7 @@ function wpforms_log( $title = '', $message = '', $args = array() ) {
 	 * - Providers (provider)
 	 * - Security (security)
 	 * - Spam (spam)
+	 * - Log (log)
 	 */
 	$types = ! empty( $args['type'] ) ? (array) $args['type'] : [ 'error' ];
 
@@ -2391,7 +2392,7 @@ function wpforms_update_providers_options( $provider, $options, $key = '' ) {
 }
 
 /**
- * Helper function to determine if loading an WPForms related admin page.
+ * Helper function to determine if loading on WPForms related admin page.
  *
  * Here we determine if the current administration page is owned/created by
  * WPForms. This is done in compliance with WordPress best practices for
@@ -3213,4 +3214,34 @@ function wpforms_get_pages_list( $args = [] ) {
 	}
 
 	return $list;
+}
+
+/**
+ * Changes array of items into string of items, separated by comma and sql-escaped.
+ *
+ * @see https://coderwall.com/p/zepnaw
+ *
+ * @since 1.7.4
+ *
+ * @param mixed|array $items  Item(s) to be joined into string.
+ * @param string      $format Can be %s or %d.
+ *
+ * @return string Items separated by comma and sql-escaped.
+ */
+function wpforms_wpdb_prepare_in( $items, $format = '%s' ) {
+
+	global $wpdb;
+
+	$items    = (array) $items;
+	$how_many = count( $items );
+
+	if ( $how_many === 0 ) {
+		return '';
+	}
+
+	$placeholders    = array_fill( 0, $how_many, $format );
+	$prepared_format = implode( ',', $placeholders );
+
+	// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+	return $wpdb->prepare( $prepared_format, $items );
 }

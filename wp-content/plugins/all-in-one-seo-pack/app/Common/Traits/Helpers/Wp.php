@@ -526,7 +526,7 @@ trait Wp {
 	 * @return bool|string         The page builder or false if not built with page builders.
 	 */
 	public function getPostPageBuilderName( $postId ) {
-		foreach ( aioseo()->postSettings->integrations as $integration => $pageBuilder ) {
+		foreach ( aioseo()->standalone->pageBuilderIntegrations as $integration => $pageBuilder ) {
 			if ( $pageBuilder->isBuiltWith( $postId ) ) {
 				return $integration;
 			}

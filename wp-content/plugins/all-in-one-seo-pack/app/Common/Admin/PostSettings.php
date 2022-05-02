@@ -15,15 +15,6 @@ use AIOSEO\Plugin\Common\Models;
  */
 class PostSettings {
 	/**
-	 * The integration objects for our PostSettings.
-	 *
-	 * @since 4.1.7
-	 *
-	 * @var array
-	 */
-	public $integrations = [];
-
-	/**
 	 * Initialize the admin.
 	 *
 	 * @since 4.0.0
@@ -31,9 +22,6 @@ class PostSettings {
 	 * @return void
 	 */
 	public function __construct() {
-		// This needs to run here before page builders use AJAX to save.
-		$this->loadIntegrations();
-
 		if ( wp_doing_ajax() || wp_doing_cron() || ! is_admin() ) {
 			return;
 		}
@@ -51,21 +39,14 @@ class PostSettings {
 		add_action( 'save_post', [ $this, 'saveSettingsMetabox' ] );
 		add_action( 'edit_attachment', [ $this, 'saveSettingsMetabox' ] );
 		add_action( 'add_attachment', [ $this, 'saveSettingsMetabox' ] );
-	}
 
-	/**
-	 * Load the Page Builder integrations.
-	 *
-	 * @since 4.1.7
-	 *
-	 * @return void
-	 */
-	public function loadIntegrations() {
-		$this->integrations = [
-			'elementor' => new Integrations\Elementor(),
-			'divi'      => new Integrations\Divi(),
-			'seedprod'  => new Integrations\SeedProd()
-		];
+		// Clear the Post Type Overview cache.
+		add_action( 'save_post', [ $this, 'clearPostTypeOverviewCache' ], 100 );
+		add_action( 'delete_post', [ $this, 'clearPostTypeOverviewCache' ], 100 );
+		add_action( 'wp_trash_post', [ $this, 'clearPostTypeOverviewCache' ], 100 );
+
+		// Filter the sql clauses to show posts filtered by our params.
+		add_filter( 'posts_clauses', [ $this, 'changeClausesToFilterPosts' ], 10, 2 );
 	}
 
 	/**
@@ -91,27 +72,12 @@ class PostSettings {
 			}
 
 			aioseo()->core->assets->load( 'src/vue/standalone/post-settings/main.js', [], aioseo()->helpers->getVueData( $page ) );
-
-			if ( 'post' === $page ) {
-				$this->enqueuePublishPanelAssets();
-			}
 		}
 
 		$screen = get_current_screen();
 		if ( 'attachment' === $screen->id ) {
 			wp_enqueue_media();
 		}
-	}
-
-	/**
-	 * Enqueues the JS/CSS for the Block Editor integrations.
-	 *
-	 * @since 4.1.4
-	 *
-	 * @return void
-	 */
-	private function enqueuePublishPanelAssets() {
-		aioseo()->core->assets->load( 'src/vue/standalone/publish-panel/main.js' );
 	}
 
 	/**
@@ -224,8 +190,7 @@ class PostSettings {
 	 * @return void
 	 */
 	public function saveSettingsMetabox( $postId ) {
-		$publicPostStatuses = aioseo()->helpers->getPublicPostStatuses( true );
-		if ( ! aioseo()->helpers->isValidPost( $postId, $publicPostStatuses ) ) {
+		if ( ! aioseo()->helpers->isValidPost( $postId, [ 'all' ] ) ) {
 			return;
 		}
 
@@ -253,5 +218,150 @@ class PostSettings {
 		}
 
 		Models\Post::savePost( $postId, $currentPost );
+	}
+
+	/**
+	 * Clear the Post Type Overview cache from our cache table.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @param  int  $postId The Post ID being updated/deleted.
+	 * @return void
+	 */
+	public function clearPostTypeOverviewCache( $postId ) {
+		$postType = get_post_type( $postId );
+		if ( empty( $postType ) ) {
+			return;
+		}
+
+		aioseo()->cache->delete( $postType . '_overview_data' );
+	}
+
+	/**
+	 * Get a list of post types with an overview showing how many posts are good, okay and so on.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @return array The list of post types with the overview.
+	 */
+	public function getPostTypesOverview() {
+		$postTypes      = [];
+		$dynamicOptions = aioseo()->dynamicOptions->noConflict();
+
+		foreach ( aioseo()->helpers->getPublicPostTypes( true ) as $postType ) {
+			if (
+				! $dynamicOptions->searchAppearance->postTypes->has( $postType ) ||
+				! $dynamicOptions->searchAppearance->postTypes->$postType->show ||
+				! $dynamicOptions->searchAppearance->postTypes->$postType->advanced->showMetaBox ||
+				'attachment' === $postType
+			) {
+				continue;
+			}
+
+			$postTypes[ $postType ] = $this->getPostTypeOverview( $postType );
+		}
+
+		return $postTypes;
+	}
+
+	/**
+	 * Get how many posts are good, okay, needs improvement or are missing the focus keyphrase for the given post type.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @param string $postType The post type name.
+	 * @return array           The overview for the given post type.
+	 */
+	public function getPostTypeOverview( $postType ) {
+		$overview = aioseo()->cache->get( $postType . '_overview_data' );
+		if ( null !== $overview ) {
+			return $overview;
+		}
+
+		$posts = aioseo()->core->db->start( 'posts as p' )
+			->select( 'ap.seo_score, ap.keyphrases' )
+			->leftJoin( 'aioseo_posts as ap', 'ap.post_id = p.ID' )
+			->where( 'p.post_status', 'publish' )
+			->where( 'p.post_type', $postType )
+			->run()
+			->result();
+
+		$overview = [
+			'total'                 => count( $posts ),
+			'needsImprovement'      => 0,
+			'okay'                  => 0,
+			'good'                  => 0,
+			'withoutFocusKeyphrase' => 0,
+		];
+
+		foreach ( $posts as $post ) {
+			if ( empty( $post->keyphrases ) || strpos( $post->keyphrases, '{"focus":[]' ) === 0 ) {
+				$overview['withoutFocusKeyphrase']++;
+
+				// We skip to the next since we will just consider posts with focus keyphrase in the counts.
+				continue;
+			}
+
+			if ( 50 > $post->seo_score ) {
+				$overview['needsImprovement']++;
+				continue;
+			}
+
+			if ( 50 <= $post->seo_score && 80 >= $post->seo_score ) {
+				$overview['okay']++;
+				continue;
+			}
+
+			if ( 80 < $post->seo_score ) {
+				$overview['good']++;
+			}
+		}
+
+		aioseo()->cache->update( $postType . '_overview_data', $overview, WEEK_IN_SECONDS );
+
+		return $overview;
+	}
+
+	/**
+	 * Change the JOIN and WHERE clause to filter just the posts we need to show depending on the query string.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @param  array    $clauses Associative array of the clauses for the query.
+	 * @param  WP_Query $query   The WP_Query instance (passed by reference).
+	 * @return array             The clauses array updated.
+	 */
+	public function changeClausesToFilterPosts( $clauses, $query ) {
+		if ( ! is_admin() || ! $query->is_main_query() ) {
+			return $clauses;
+		}
+
+		$filter = filter_input( INPUT_GET, 'aioseo-filter' );
+		if ( empty( $filter ) ) {
+			return $clauses;
+		}
+
+		$noKeyphrasesClause = " (aioseo_p.keyphrases = '' OR aioseo_p.keyphrases IS NULL OR aioseo_p.keyphrases LIKE '{\"focus\":[]%') ";
+		switch ( $filter ) {
+			case 'withoutFocusKeyphrase':
+				$whereClause = " AND $noKeyphrasesClause ";
+				break;
+			case 'needsImprovement':
+				$whereClause = " AND aioseo_p.seo_score < 50 AND NOT $noKeyphrasesClause ";
+				break;
+			case 'okay':
+				$whereClause = " AND aioseo_p.seo_score BETWEEN 50 AND 80 AND NOT $noKeyphrasesClause ";
+				break;
+			case 'good':
+				$whereClause = " AND aioseo_p.seo_score > 80 AND NOT $noKeyphrasesClause ";
+				break;
+		}
+
+		$prefix            = aioseo()->db->prefix;
+		$postsTable        = aioseo()->db->db->posts;
+		$clauses['join']  .= " LEFT JOIN {$prefix}aioseo_posts AS aioseo_p ON ({$postsTable}.ID = aioseo_p.post_id) ";
+		$clauses['where'] .= $whereClause;
+
+		return $clauses;
 	}
 }

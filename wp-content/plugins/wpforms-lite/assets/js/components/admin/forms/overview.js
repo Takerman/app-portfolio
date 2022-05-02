@@ -1,4 +1,4 @@
-/* global wpforms_admin */
+/* global wpforms_admin, wpforms_forms_locator */
 /**
  * WPForms Forms Overview.
  *
@@ -51,8 +51,8 @@ WPFormsForms.Overview = WPFormsForms.Overview || ( function( document, window, $
 				.on( 'click', '#wpforms-overview .wp-list-table .delete a, #wpforms-overview .wp-list-table .duplicate a', app.confirmSingleAction )
 				.on( 'click', '#wpforms-overview .button.delete-all', app.confirmSingleAction )
 				.on( 'click', '#wpforms-overview .bulkactions #doaction', app.confirmBulkAction )
-				.on( 'click', '#wpforms-overview-table #wpforms-reset-filter .reset', app.resetSearch );
-
+				.on( 'click', '#wpforms-overview-table #wpforms-reset-filter .reset', app.resetSearch )
+				.on( 'click', '#wpforms-overview-table .wpforms-locations-count, #wpforms-overview-table .row-actions .locations, #wpforms-overview-table .wpforms-locations-close', app.formsLocator );
 		},
 
 		/**
@@ -154,6 +154,57 @@ WPFormsForms.Overview = WPFormsForms.Overview || ( function( document, window, $
 
 			// Submit the form.
 			$( this ).closest( 'form' ).submit();
+		},
+
+		/**
+		 * Show form locations. Take them from Locations column and show in the pane under the form row.
+		 *
+		 * @since 1.7.4
+		 *
+		 * @param {object} event Event object.
+		 *
+		 * @returns {false} Event processing status.
+		 */
+		formsLocator: function( event ) {
+
+			let $pane = $( '#wpforms-overview-table .wpforms-locations-pane' );
+
+			event.preventDefault();
+
+			const $currentRow = $( event.target.closest( 'tr' ) ),
+				$paneRow = $pane.prev().prev(),
+				$rowActions = $paneRow.find( '.row-actions' );
+
+			if ( $pane.length > 0 ) {
+				$pane.prev().remove();
+				$pane.remove();
+				$rowActions.removeClass( 'visible' );
+
+				if ( $paneRow.is( $currentRow ) ) {
+					return false;
+				}
+			}
+
+			const $locationsList = $currentRow.find( '.locations-list' );
+
+			if ( $locationsList.length === 0 ) {
+				return false;
+			}
+
+			const tdNum = $currentRow.find( 'td:not(.hidden)' ).length;
+			const locationsHtml = $locationsList.html();
+			const html = `<th></th><td colSpan="${tdNum}" class="colspanchange">
+				<span class="wpforms-locations-pane-title">${wpforms_forms_locator.paneTitle}</span>
+				${locationsHtml}
+				<button type="button" class="button wpforms-locations-close alignleft">${wpforms_forms_locator.close}</button>
+				</td>`;
+			$pane = $( '<tr class="wpforms-locations-pane"></tr>' ).html( html );
+
+			$currentRow.after( $pane );
+			$currentRow.after( $( '<tr class="hidden"></tr>' ) );
+			$rowActions.addClass( 'visible' );
+
+			return false;
 		},
 	};
 

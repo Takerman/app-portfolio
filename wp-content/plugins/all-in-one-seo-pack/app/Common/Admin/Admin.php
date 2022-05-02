@@ -68,10 +68,8 @@ class Admin {
 	 * @var array
 	 */
 	protected $assetSlugs = [
-		'posts-table' => 'src/vue/standalone/posts-table/main.js',
-		'plugins'     => 'src/app/plugins/main.js',
-		'flyout-menu' => 'src/vue/standalone/flyout-menu/main.js',
-		'pages'       => 'src/vue/pages/{page}/main.js'
+		'plugins' => 'src/app/plugins/main.js',
+		'pages'   => 'src/vue/pages/{page}/main.js'
 	];
 
 	/**
@@ -89,10 +87,6 @@ class Admin {
 		add_filter( 'language_attributes', [ $this, 'alwaysAddHtmlDirAttribute' ], 3000 );
 
 		add_action( 'sanitize_comment_cookies', [ $this, 'init' ], 20 );
-
-		add_filter( 'admin_body_class', [ $this, 'bodyClass' ] );
-
-		$this->setupWizard = new SetupWizard();
 	}
 
 	/**
@@ -131,9 +125,6 @@ class Admin {
 			if ( is_multisite() ) {
 				add_action( 'network_admin_menu', [ $this, 'addRobotsMenu' ] );
 			}
-
-			// Add the columns to page/posts.
-			add_action( 'current_screen', [ $this, 'addPostColumns' ], 1 );
 
 			// Add Score to Publish metabox.
 			add_action( 'post_submitbox_misc_actions', [ $this, 'addPublishScore' ] );
@@ -764,20 +755,9 @@ class Admin {
 		aioseo()->templates->getTemplate( 'admin/settings-page.php' );
 		echo '</div>';
 
-		if ( $this->isFlyoutMenuEnabled() ) {
+		if ( aioseo()->standalone->flyoutMenu->isEnabled() ) {
 			echo '<div id="aioseo-flyout-menu"></div>';
 		}
-	}
-
-	/**
-	 * Returns if the Flyout menu is enabled or not.
-	 *
-	 * @since 4.1.5
-	 *
-	 * @return bool Whether or not the Flyout menu is enabled.
-	 */
-	public function isFlyoutMenuEnabled() {
-		return apply_filters( 'aioseo_flyout_menu_enable', true );
 	}
 
 	/**
@@ -892,6 +872,32 @@ class Admin {
 	}
 
 	/**
+	 * Checks whether the current page is an AIOSEO menu page.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @return bool Whether the current page is an AIOSEO menu page.
+	 */
+	public function isAioseoScreen() {
+		if ( ! function_exists( 'get_current_screen' ) ) {
+			return false;
+		}
+
+		$adminPages = array_keys( $this->pages );
+		$adminPages = array_map( function( $slug ) {
+			if ( 'aioseo' === $slug ) {
+				return 'toplevel_page_aioseo';
+			}
+
+			return 'all-in-one-seo_page_' . $slug;
+		}, $adminPages );
+
+		$currentScreen = get_current_screen();
+
+		return in_array( $currentScreen->id, $adminPages, true );
+	}
+
+	/**
 	 * Enqueue admin assets for the current page.
 	 *
 	 * @since 4.1.3
@@ -901,10 +907,6 @@ class Admin {
 	public function enqueueAssets() {
 		$page = str_replace( '{page}', $this->currentPage, $this->assetSlugs['pages'] );
 		aioseo()->core->assets->load( $page, [], aioseo()->helpers->getVueData( $this->currentPage ) );
-
-		if ( $this->isFlyoutMenuEnabled() ) {
-			aioseo()->core->assets->load( $this->assetSlugs['flyout-menu'] );
-		}
 	}
 
 	/**
@@ -937,181 +939,6 @@ class Admin {
 			wp_kses_post( $link1 ),
 			wp_kses_post( $link2 )
 		);
-	}
-
-	/**
-	 * Check to get if the screen should be shown.
-	 *
-	 * @since 4.0.0
-	 *
-	 * @return bool
-	 */
-	public function isAllowedScreen( $screen, $postType ) {
-		if ( 'type' === $postType ) {
-			$postType = '_aioseo_type';
-		}
-		if ( 'edit' === $screen || 'upload' === $screen ) {
-			if ( aioseo()->options->advanced->postTypes->all && in_array( $postType, aioseo()->helpers->getPublicPostTypes( true ), true ) ) {
-				return true;
-			}
-
-			$postTypes = aioseo()->options->advanced->postTypes->included;
-			if ( in_array( $postType, $postTypes, true ) ) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * Adds the columns to the page/post types.
-	 *
-	 * @since 4.0.0
-	 *
-	 * @return void
-	 */
-	public function addPostColumns() {
-		$screen = get_current_screen();
-		if ( $this->isAllowedScreen( $screen->base, $screen->post_type ) ) {
-			add_action( 'admin_enqueue_scripts', [ $this, 'enqueuePostsScripts' ] );
-
-			if ( 'product' === $screen->post_type ) {
-				add_filter( 'manage_edit-product_columns', [ $this, 'postColumns' ] );
-				add_action( 'manage_posts_custom_column', [ $this, 'renderColumn' ], 10, 2 );
-			} elseif ( 'attachment' === $screen->post_type ) {
-				$enabled = apply_filters( 'aioseo_image_seo_media_columns', true );
-
-				if ( ! $enabled ) {
-					return;
-				}
-
-				add_filter( 'manage_media_columns', [ $this, 'postColumns' ] );
-				add_action( 'manage_media_custom_column', [ $this, 'renderColumn' ], 10, 2 );
-			} else {
-				add_filter( "manage_edit-{$screen->post_type}_columns", [ $this, 'postColumns' ] );
-				add_action( "manage_{$screen->post_type}_posts_custom_column", [ $this, 'renderColumn' ], 10, 2 );
-			}
-		}
-	}
-
-	/**
-	 * Enqueues the JS/CSS for the page/posts table page.
-	 *
-	 * @since 4.0.0
-	 *
-	 * @return void
-	 */
-	public function enqueuePostsScripts() {
-		$data          = aioseo()->helpers->getVueData();
-		$data['posts'] = [];
-		$data['terms'] = [];
-
-		aioseo()->core->assets->load( $this->assetSlugs['posts-table'], [], $data );
-	}
-
-	/**
-	 * Adds columns to the page/post tables in the admin.
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param  array $columns The columns we are adding ours onto.
-	 * @return array          The modified columns.
-	 */
-	public function postColumns( $columns ) {
-		$canManageSeo = apply_filters( 'aioseo_manage_seo', 'aioseo_manage_seo' );
-		if (
-			! current_user_can( $canManageSeo ) &&
-			(
-				! current_user_can( 'aioseo_page_general_settings' ) &&
-				! current_user_can( 'aioseo_page_analysis' )
-			)
-		) {
-			return $columns;
-		}
-
-		// Translators: 1 - The short plugin name ("AIOSEO").
-		$columns['aioseo-details'] = sprintf( esc_html__( '%1$s Details', 'all-in-one-seo-pack' ), AIOSEO_PLUGIN_SHORT_NAME );
-
-		return $columns;
-	}
-
-	/**
-	 * Renders the column in the page/post table.
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param  string $columnName The column name.
-	 * @param  int    $postId     The current rows, post id.
-	 * @return void
-	 */
-	public function renderColumn( $columnName, $postId ) {
-		if ( ! current_user_can( 'edit_post', $postId ) && ! current_user_can( 'aioseo_manage_seo' ) ) {
-			return;
-		}
-
-		if ( 'aioseo-details' === $columnName ) {
-			// Add this column/post to the localized array.
-			global $wp_scripts;
-
-			$data = $wp_scripts->get_data( 'aioseo/js/' . $this->assetSlugs['posts-table'], 'data' );
-
-			if ( ! is_array( $data ) ) {
-				$data = json_decode( str_replace( 'var aioseo = ', '', substr( $data, 0, -1 ) ), true );
-			}
-
-			$nonce    = wp_create_nonce( "aioseo_meta_{$columnName}_{$postId}" );
-			$posts    = $data['posts'];
-			$thePost  = Models\Post::getPost( $postId );
-			$postType = get_post_type( $postId );
-			$postData = [
-				'id'                 => $postId,
-				'columnName'         => $columnName,
-				'nonce'              => $nonce,
-				'title'              => $thePost->title,
-				'titleParsed'        => aioseo()->meta->title->getPostTitle( $postId ),
-				'defaultTitle'       => aioseo()->meta->title->getPostTypeTitle( $postType ),
-				'description'        => $thePost->description,
-				'descriptionParsed'  => aioseo()->meta->description->getPostDescription( $postId ),
-				'defaultDescription' => aioseo()->meta->description->getPostTypeDescription( $postType ),
-				'value'              => (int) $thePost->seo_score,
-				'showMedia'          => false,
-				'isSpecialPage'      => aioseo()->helpers->isSpecialPage( $postId ),
-				'postType'           => $postType
-			];
-
-			foreach ( aioseo()->addons->getLoadedAddons() as $loadedAddon ) {
-				if ( isset( $loadedAddon->admin ) && method_exists( $loadedAddon->admin, 'renderColumnData' ) ) {
-					$postData = array_merge( $postData, $loadedAddon->admin->renderColumnData( $columnName, $postId, $postData ) );
-				}
-			}
-
-			$posts[]       = $postData;
-			$data['posts'] = $posts;
-
-			$wp_scripts->add_data( 'aioseo/js/' . $this->assetSlugs['posts-table'], 'data', '' );
-			wp_localize_script( 'aioseo/js/' . $this->assetSlugs['posts-table'], 'aioseo', $data );
-
-			require( AIOSEO_DIR . '/app/Common/Views/admin/posts/columns.php' );
-		}
-	}
-
-	/**
-	 * Renders the column in the media/attachment table.
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param  string $columnName The column name.
-	 * @param  int    $postId     The current rows, post id.
-	 * @return void
-	 */
-	public function renderMediaColumn( $columnName, $postId ) {
-		$screen = get_current_screen();
-		if ( $this->isAllowedScreen( $screen->base, $screen->post_type ) ) {
-			$this->renderColumn( $columnName, $postId );
-		}
-
-		return null;
 	}
 
 	/**
@@ -1425,9 +1252,8 @@ class Admin {
 	*
 	* @since 4.0.0
 	*
-	* @param int $score The content to retrieve from the remote URL.
-	*
-	* @return string The class name for Score button.
+	* @param  int    $score The content to retrieve from the remote URL.
+	* @return string        The class name for Score button.
 	*/
 	private function getScoreClass( $score ) {
 		$scoreClass = 50 < $score ? 'score-orange' : 'score-red';
@@ -1450,23 +1276,6 @@ class Admin {
 	 */
 	public function loadTextDomain() {
 		aioseo()->helpers->loadTextDomain( 'all-in-one-seo-pack' );
-	}
-
-	/**
-	 * Filters the CSS classes for the body tag in the admin.
-	 *
-	 * @since 4.1.5
-	 *
-	 * @param  string $classes Space-separated list of CSS classes.
-	 * @return string          Space-separated list of CSS classes.
-	 */
-	public function bodyClass( $classes ) {
-		if ( $this->isFlyoutMenuEnabled() ) {
-			// This adds a bottom margin to our menu so that we push the footer down and prevent the flyout menu from overlapping the "Save Changes" button.
-			$classes .= ' aioseo-flyout-menu-enabled ';
-		}
-
-		return $classes;
 	}
 
 	/**

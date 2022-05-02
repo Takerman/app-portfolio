@@ -34,6 +34,6 @@ $config = array (
   ),
   'output_dir' => '/home/customer/www/tanyoivanov.net/public_html/wp-content/cache/sgo-cache/',
   'logged_in_cache' => 0,
-  'cache_secret_key' => '4bd78f02015f9d1e6d2216d4acf30e0c',
+  'cache_secret_key' => '925fa4174b6b701e867ca794af4096b6',
   'logged_in_cookie' => 'wordpress_logged_in_5c65459ededeaab5d2603be88e1643c1',
 );

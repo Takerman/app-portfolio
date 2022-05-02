@@ -27,6 +27,7 @@ class GeneralSettings {
 
 		$this->isTruSeoDisabled();
 		$this->migrateRedirectAttachments();
+		$this->migrateStripCategoryBase();
 		$this->migrateRssContentSettings();
 
 		$settings = [
@@ -67,6 +68,19 @@ class GeneralSettings {
 			} else {
 				aioseo()->dynamicOptions->searchAppearance->postTypes->attachment->redirectAttachmentUrls = 'disabled';
 			}
+		}
+	}
+
+	/**
+	 * Migrates the Strip Category Base setting.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @return void
+	 */
+	private function migrateStripCategoryBase() {
+		if ( isset( $this->options['strip_category_base'] ) ) {
+			aioseo()->options->searchAppearance->advanced->removeCatBase = 'on' === $this->options['strip_category_base'] ? true : false;
 		}
 	}
 

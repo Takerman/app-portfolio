@@ -14,6 +14,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 4.0.0
  */
 class Social {
+	/**
+	 * The name of the action to bust the OG cache.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @var string
+	 */
+	private $bustOgCacheActionName = 'aioseo_og_cache_bust_post';
 
 	/**
 	 * Class constructor.
@@ -40,18 +48,22 @@ class Social {
 	 * @since 4.0.0
 	 */
 	protected function hooks() {
-		if ( ! is_admin() || wp_doing_ajax() ) {
-			add_filter( 'language_attributes', [ $this, 'addAttributes' ] );
-		}
+		add_action( $this->bustOgCacheActionName, [ $this, 'bustOgCachePost' ] );
 
 		// To avoid duplicate sets of meta tags.
 		add_filter( 'jetpack_enable_open_graph', '__return_false' );
+
+		if ( ! is_admin() ) {
+			add_filter( 'language_attributes', [ $this, 'addAttributes' ] );
+
+			return;
+		}
+
 		// Adds special filters.
 		add_filter( 'user_contactmethods', [ $this, 'addContactMethods' ] );
 
-		// @TODO: [V4+] Needs access token for authentication.
 		// Forces a refresh of the Facebook cache.
-		//add_action( 'post_updated', [ $this, 'forceFbRefreshCache' ], 10, 2 );
+		add_action( 'post_updated', [ $this, 'scheduleBustOgCachePost' ], 10, 2 );
 	}
 
 	/**
@@ -138,33 +150,78 @@ class Social {
 	}
 
 	/**
-	 * Forces FaceBook Open Graph to refresh on update.
+	 * Schedule a ping to bust the OG cache.
 	 *
-	 * @since 4.0.0
-	 *
-	 * @see https://developers.facebook.com/docs/sharing/opengraph/using-objects#update
+	 * @since 4.2.0
 	 *
 	 * @param  int     $postId The post ID.
 	 * @param  WP_Post $post   The post object.
 	 * @return void
 	 */
-	public function forceFbRefreshCache( $postId, $post ) {
-		if ( 'publish' !== $post->post_status ) {
+	public function scheduleBustOgCachePost( $postId, $post ) {
+		if ( ! aioseo()->helpers->isSbCustomFacebookFeedActive() || ! aioseo()->helpers->isValidPost( $post ) ) {
 			return;
 		}
 
-		$postUrl = urldecode( get_permalink( $postId ) );
+		if ( aioseo()->helpers->isScheduledAction( $this->bustOgCacheActionName, [ 'postId' => $postId ] ) ) {
+			return;
+		}
 
-		// @TODO: [V4+] Needs access token for authentication.
-		$endpoint = sprintf(
+		// Schedule the new ping.
+		aioseo()->helpers->scheduleAsyncAction( $this->bustOgCacheActionName, [ 'postId' => $postId ] );
+	}
+
+	/**
+	 * Pings Facebook and asks them to bust the OG cache for a particular post.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @see https://developers.facebook.com/docs/sharing/opengraph/using-objects#update
+	 *
+	 * @param  int  $postId The post ID.
+	 * @return void
+	 */
+	public function bustOgCachePost( $postId ) {
+		$post              = get_post( $postId );
+		$customAccessToken = apply_filters( 'aioseo_facebook_access_token', '' );
+
+		if (
+			! aioseo()->helpers->isValidPost( $post ) ||
+			( ! aioseo()->helpers->isSbCustomFacebookFeedActive() && ! $customAccessToken )
+		) {
+			return;
+		}
+
+		$permalink = get_permalink( $postId );
+		$this->bustOgCacheHelper( $permalink );
+	}
+
+	/**
+	 * Helper function for bustOgCache().
+	 *
+	 * @since 4.2.0
+	 *
+	 * @param  string $permalink The permalink.
+	 * @return void
+	 */
+	protected function bustOgCacheHelper( $permalink ) {
+		$accessToken = aioseo()->helpers->getSbAccessToken();
+		$accessToken = apply_filters( 'aioseo_facebook_access_token', $accessToken );
+		if ( ! $accessToken ) {
+			return;
+		}
+
+		$url = sprintf(
 			'https://graph.facebook.com/?%s',
 			http_build_query(
 				[
-					'id'     => $postUrl,
-					'scrape' => true,
+					'id'           => $permalink,
+					'scrape'       => true,
+					'access_token' => $accessToken
 				]
 			)
 		);
-		wp_remote_post( $endpoint, [ 'blocking' => false ] );
+
+		wp_remote_post( $url, [ 'blocking' => false ] );
 	}
 }

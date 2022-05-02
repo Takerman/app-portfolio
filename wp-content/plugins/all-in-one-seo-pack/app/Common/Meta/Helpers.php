@@ -55,10 +55,7 @@ class Helpers {
 	 */
 	public function sanitize( $value, $objectId = false, $replaceTags = false ) {
 		$value = $replaceTags ? $value : aioseo()->tags->replaceTags( $value, $objectId );
-
-		if ( apply_filters( "aioseo_{$this->name}_do_shortcodes", true ) ) {
-			$value = aioseo()->helpers->doShortcodes( $value );
-		}
+		$value = aioseo()->helpers->doShortcodes( $value );
 
 		$value = aioseo()->helpers->decodeHtmlEntities( $value );
 		$value = $this->encodeExceptions( $value );

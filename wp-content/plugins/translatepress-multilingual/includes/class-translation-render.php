@@ -1362,7 +1362,7 @@ class TRP_Translation_Render{
 	    }
 
         $translated_strings = array();
-	    $machine_translation_available = $this->machine_translator->is_available( array( $this->settings['default-language'], $language_code ));
+	    $machine_translation_available = $this->machine_translator ? $this->machine_translator->is_available( array( $this->settings['default-language'], $language_code )) : false;
 
         if ( ! $this->trp_query ) {
             $trp = TRP_Translate_Press::get_trp_instance();

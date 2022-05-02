@@ -186,7 +186,7 @@ class Image {
 			return $cachedImage;
 		}
 
-		$postContent = aioseo()->helpers->getContent( $this->post );
+		$postContent = aioseo()->helpers->getPostContent( $this->post );
 		preg_match_all( '|<img.*?src=[\'"](.*?)[\'"].*?>|i', $postContent, $matches );
 
 		// Ignore cover block background image - WP >= 5.7.

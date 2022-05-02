@@ -143,6 +143,9 @@ class Notices {
 			$n->button2_action  = $buttons['button2']['url'];
 			$n->dismissed       = 0;
 			$n->save();
+
+			// Since we've added a new remote notification, let's show the notification drawer.
+			aioseo()->core->cache->update( 'show_notifications_drawer', true );
 		}
 	}
 

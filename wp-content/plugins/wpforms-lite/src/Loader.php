@@ -65,6 +65,18 @@ class Loader {
 			'name' => 'Forms\Honeypot',
 			'id'   => 'honeypot',
 		];
+
+		$this->classes[] = [
+			'name' => 'Forms\Submission',
+			'id'   => 'submission',
+			'hook' => false,
+			'run'  => false,
+		];
+
+		$this->classes[] = [
+			'name' => 'Forms\Locator',
+			'id'   => 'locator',
+		];
 	}
 
 	/**
@@ -314,6 +326,7 @@ class Loader {
 
 		// Education features classes.
 		$features = [
+			'LiteConnect',
 			'Builder\Captcha',
 			'Builder\Fields',
 			'Builder\Settings',
@@ -330,12 +343,9 @@ class Loader {
 		];
 
 		foreach ( $features as $feature ) {
-			array_push(
-				$this->classes,
-				[
-					'name' => 'Admin\Education\\' . $feature,
-				]
-			);
+			$this->classes[] = [
+				'name' => 'Admin\Education\\' . $feature,
+			];
 		}
 	}
 

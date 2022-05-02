@@ -1,4 +1,4 @@
-/* global wpforms_dashboard_widget, moment, Chart */
+/* global wpforms_dashboard_widget, moment, Chart, ajaxurl */
 /**
  * WPForms Dashboard Widget function.
  *
@@ -14,11 +14,14 @@ var WPFormsDashboardWidget = window.WPFormsDashboardWidget || ( function( docume
 	 *
 	 * @since 1.5.0
 	 *
-	 * @type {Object}
+	 * @type {object}
 	 */
 	var el = {
-		$widget: $( '#wpforms_reports_widget_lite' ),
-		$canvas: $( '#wpforms-dash-widget-chart' ),
+		$widget:               $( '#wpforms_reports_widget_lite' ),
+		$settingsBtn:          $( '#wpforms-dash-widget-settings-button' ),
+		$canvas:               $( '#wpforms-dash-widget-chart' ),
+		$dismissBtn:           $( '.wpforms-dash-widget-dismiss-chart-upgrade' ),
+		$recomBlockDismissBtn: $( '#wpforms-dash-widget-dismiss-recommended-plugin-block' ),
 	};
 
 	/**
@@ -26,7 +29,7 @@ var WPFormsDashboardWidget = window.WPFormsDashboardWidget || ( function( docume
 	 *
 	 * @since 1.5.0
 	 *
-	 * @type {Object}
+	 * @type {object}
 	 */
 	var chart = {
 
@@ -118,6 +121,7 @@ var WPFormsDashboardWidget = window.WPFormsDashboardWidget || ( function( docume
 					displayColors: false,
 				},
 				responsiveAnimationDuration: 0,
+				maintainAspectRatio: false,
 			},
 		},
 
@@ -188,16 +192,9 @@ var WPFormsDashboardWidget = window.WPFormsDashboardWidget || ( function( docume
 	 *
 	 * @since 1.5.0
 	 *
-	 * @type {Object}
+	 * @type {object}
 	 */
 	var app = {
-
-		/**
-		 * Publicly accessible Chart.js functions and properties.
-		 *
-		 * @since 1.5.0
-		 */
-		// chart: chart,
 
 		/**
 		 * Start the engine.
@@ -205,6 +202,7 @@ var WPFormsDashboardWidget = window.WPFormsDashboardWidget || ( function( docume
 		 * @since 1.5.0
 		 */
 		init: function() {
+
 			$( app.ready );
 		},
 
@@ -214,8 +212,23 @@ var WPFormsDashboardWidget = window.WPFormsDashboardWidget || ( function( docume
 		 * @since 1.5.0
 		 */
 		ready: function() {
+
 			chart.init();
 			app.events();
+			app.graphSettings();
+		},
+
+		/**
+		 * Graph settings related events.
+		 *
+		 * @since 1.7.4
+		 */
+		graphSettings: function() {
+
+			el.$settingsBtn.on( 'click', function() {
+
+				$( this ).siblings( '.wpforms-dash-widget-settings-menu' ).toggle();
+			} );
 		},
 
 		/**
@@ -224,7 +237,10 @@ var WPFormsDashboardWidget = window.WPFormsDashboardWidget || ( function( docume
 		 * @since 1.5.0
 		 */
 		events: function() {
+
 			app.formsListEvents();
+			app.handleChartClose();
+			app.handleRecommendedPluginsClose();
 		},
 
 		/**
@@ -235,8 +251,58 @@ var WPFormsDashboardWidget = window.WPFormsDashboardWidget || ( function( docume
 		formsListEvents: function() {
 
 			el.$widget.on( 'click', '#wpforms-dash-widget-forms-more', function() {
+
 				app.toggleCompleteFormsList();
 			} );
+		},
+
+		/**
+		 * Handle chart close.
+		 *
+		 * @since 1.7.4
+		 */
+		handleChartClose: function() {
+
+			el.$dismissBtn.on( 'click', function( event ) {
+
+				event.preventDefault();
+				app.saveWidgetMeta( 'hide_graph', 1 );
+				$( '.wpforms-dash-widget.wpforms-lite' ).addClass( 'wpforms-dash-widget-no-graph' );
+				$( this ).closest( '.wpforms-dash-widget-chart-block-container' ).remove();
+			} );
+		},
+
+		/**
+		 * Handle recommended plugins block close.
+		 *
+		 * @since 1.7.4
+		 */
+		handleRecommendedPluginsClose: function() {
+
+			el.$recomBlockDismissBtn.click( function() {
+
+				app.dismissRecommendedBlock();
+			} );
+		},
+
+		/**
+		 * Save dashboard widget meta on a backend.
+		 *
+		 * @since 1.7.4
+		 *
+		 * @param {string} meta Meta name to save.
+		 * @param {number} value Value to save.
+		 */
+		saveWidgetMeta: function( meta, value ) {
+
+			const data = {
+				_wpnonce: wpforms_dashboard_widget.nonce,
+				action  : 'wpforms_' + wpforms_dashboard_widget.slug + '_save_widget_meta',
+				meta    : meta,
+				value   : value,
+			};
+
+			$.post( ajaxurl, data );
 		},
 
 		/**
@@ -248,8 +314,20 @@ var WPFormsDashboardWidget = window.WPFormsDashboardWidget || ( function( docume
 
 			$( '#wpforms-dash-widget-forms-list-table .wpforms-dash-widget-forms-list-hidden-el' ).toggle();
 			$( '#wpforms-dash-widget-forms-more' ).html( function( i, html ) {
+
 				return html === wpforms_dashboard_widget.show_less_html ? wpforms_dashboard_widget.show_more_html : wpforms_dashboard_widget.show_less_html;
 			} );
+		},
+
+		/**
+		 * Dismiss recommended plugin block.
+		 *
+		 * @since 1.7.4
+		 */
+		dismissRecommendedBlock: function() {
+
+			$( '.wpforms-dash-widget-recommended-plugin-block' ).remove();
+			app.saveWidgetMeta( 'hide_recommended_block', 1 );
 		},
 	};
 

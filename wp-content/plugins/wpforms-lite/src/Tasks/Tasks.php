@@ -3,7 +3,9 @@
 namespace WPForms\Tasks;
 
 use WPForms\Helpers\Transient;
+use WPForms\Tasks\Actions\EntryEmailsMetaCleanupTask;
 use WPForms\Tasks\Actions\EntryEmailsTask;
+use WPForms\Tasks\Actions\FormsLocatorScanTask;
 
 /**
  * Class Tasks manages the tasks queue and provides API to work with it.
@@ -91,7 +93,8 @@ class Tasks {
 		}
 
 		$tasks = [
-			Actions\EntryEmailsMetaCleanupTask::class,
+			EntryEmailsMetaCleanupTask::class,
+			FormsLocatorScanTask::class,
 		];
 
 		return apply_filters( 'wpforms_tasks_get_tasks', $tasks );
@@ -128,7 +131,7 @@ class Tasks {
 	 * Function `thats_what_you_call_me()` will receive `$meta_id` param,
 	 * and you will be able to receive all params from the action like this:
 	 *     $params = ( new Meta() )->get( (int) $meta_id );
-	 *     list( $name, $year ) = $meta->data;
+	 *     list( $name, $year ) = $params->data;
 	 *
 	 * @since 1.5.9
 	 *

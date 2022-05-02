@@ -41,6 +41,8 @@ class VueSettings {
 		'showUpgradeBar'  => true,
 		'showSetupWizard' => true,
 		'toggledCards'    => [
+			'dashboardOverview'            => true,
+			'dashboardSeoSetup'            => true,
 			'dashboardSeoSiteScore'        => true,
 			'dashboardNotifications'       => true,
 			'dashboardSupport'             => true,

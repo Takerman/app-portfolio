@@ -125,6 +125,7 @@ class WPForms_Settings {
 
 				switch ( $field['type'] ) {
 					case 'checkbox':
+					case 'toggle':
 						$value = (bool) $value;
 						break;
 

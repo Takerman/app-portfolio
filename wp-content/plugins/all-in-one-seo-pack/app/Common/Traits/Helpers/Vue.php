@@ -26,6 +26,16 @@ trait Vue {
 	 * @return array                The data.
 	 */
 	public function getVueData( $page = null, $staticPostId = null, $integration = null ) {
+		static $showNotificationsDrawer = null;
+		if ( null === $showNotificationsDrawer ) {
+			$showNotificationsDrawer = aioseo()->core->cache->get( 'show_notifications_drawer' ) ? true : false;
+
+			// IF this is set to true, let's disable it now so it doesn't pop up again.
+			if ( $showNotificationsDrawer ) {
+				aioseo()->core->cache->delete( 'show_notifications_drawer' );
+			}
+		}
+
 		global $wp_version;
 		$screen = aioseo()->helpers->getCurrentScreen();
 
@@ -50,6 +60,7 @@ trait Vue {
 				'mainSiteUrl'       => $this->getSiteUrl(),
 				'home'              => home_url(),
 				'restUrl'           => rest_url(),
+				'editScreen'        => admin_url( 'edit.php' ),
 				'publicPath'        => aioseo()->core->assets->normalizeAssetsHost( plugin_dir_url( AIOSEO_FILE ) ),
 				'assetsPath'        => aioseo()->core->assets->getAssetsPath(),
 				'rssFeedUrl'        => get_bloginfo( 'rss2_url' ),
@@ -133,7 +144,9 @@ trait Vue {
 				'archives'     => $this->getPublicPostTypes( false, true, true ),
 				'postStatuses' => $this->getPublicPostStatuses()
 			],
-			'notifications'    => Models\Notification::getNotifications( false ),
+			'notifications'    => array_merge( Models\Notification::getNotifications( false ), [
+				'force' => $showNotificationsDrawer ? true : false
+			] ),
 			'addons'           => aioseo()->addons->getAddons(),
 			'version'          => AIOSEO_VERSION,
 			'wpVersion'        => $wp_version,
@@ -257,6 +270,13 @@ trait Vue {
 			}
 		}
 
+		if ( 'dashboard' === $page ) {
+			$data['setupWizard']['isCompleted'] = aioseo()->standalone->setupWizard->isCompleted();
+			$data['rssFeed']                    = aioseo()->dashboard->getAioseoRssFeed();
+			$data['seoOverview']                = aioseo()->postSettings->getPostTypesOverview();
+			$data['importers']                  = aioseo()->importExport->plugins();
+		}
+
 		if ( 'sitemaps' === $page ) {
 			try {
 				if ( as_next_scheduled_action( 'aioseo_static_sitemap_regeneration' ) ) {
@@ -270,6 +290,10 @@ trait Vue {
 		if ( 'setup-wizard' === $page ) {
 			$data['users']     = $this->getSiteUsers( [ 'administrator', 'editor', 'author' ] );
 			$data['importers'] = aioseo()->importExport->plugins();
+			$data['data'] += [
+				'staticHomePageTitle'       => $isStaticHomePage ? aioseo()->meta->title->getTitle( $staticHomePage ) : '',
+				'staticHomePageDescription' => $isStaticHomePage ? aioseo()->meta->description->getDescription( $staticHomePage ) : '',
+			];
 		}
 
 		if ( 'search-appearance' === $page ) {

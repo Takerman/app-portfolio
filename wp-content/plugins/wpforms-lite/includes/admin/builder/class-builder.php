@@ -441,7 +441,7 @@ class WPForms_Builder {
 			'dom-purify',
 			WPFORMS_PLUGIN_URL . 'assets/js/purify.min.js',
 			[],
-			'2.3.4'
+			'2.3.6'
 		);
 
 		if ( wp_is_mobile() ) {
@@ -801,6 +801,15 @@ class WPForms_Builder {
 		if ( $this->form && wp_revisions_enabled( $this->form ) ) {
 			$builder_classes[] = 'wpforms-revisions-enabled';
 		}
+
+		/**
+		 * Allow developers to add content before the top toolbar in the Form Builder.
+		 *
+		 * @since 1.7.4
+		 *
+		 * @param string $content Content before toolbar. Defaults to empty string.
+		 */
+		$before_toolbar = apply_filters( 'wpforms_builder_output_before_toolbar', '' );
 		?>
 
 		<div id="wpforms-builder" class="<?php echo wpforms_sanitize_classes( $builder_classes, true ); ?>">
@@ -853,13 +862,13 @@ class WPForms_Builder {
 				<input type="hidden" name="id" value="<?php echo esc_attr( $form_id ); ?>">
 				<input type="hidden" value="<?php echo absint( $field_id ); ?>" name="field_id" id="wpforms-field-id">
 
+				<?php echo $before_toolbar; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+
 				<!-- Toolbar -->
 				<div class="wpforms-toolbar">
 
 					<div class="wpforms-left">
-
 						<img src="<?php echo esc_url( WPFORMS_PLUGIN_URL . 'assets/images/sullie-alt.png' ); ?>" alt="<?php esc_attr_e( 'Sullie the WPForms mascot', 'wpforms-lite' ); ?>">
-
 					</div>
 
 					<div class="wpforms-center">

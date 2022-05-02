@@ -17,7 +17,7 @@ class WPForms_Form_Handler {
 	public function __construct() {
 
 		// Register wpforms custom post type.
-		$this->register_cpt();
+		add_action( 'init', [ $this, 'register_cpt' ] );
 
 		// Add wpforms to new-content admin bar menu.
 		add_action( 'admin_bar_menu', [ $this, 'admin_bar' ], 99 );

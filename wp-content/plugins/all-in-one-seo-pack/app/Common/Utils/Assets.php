@@ -35,8 +35,8 @@ class Assets {
 	public function __construct( $core ) {
 		$this->core              = $core;
 		$this->version           = aioseo()->version;
-		$this->manifestFile      = AIOSEO_DIR . '/dist/' . aioseo()->versionPath . '/manifest.json';
-		$this->assetManifestFile = AIOSEO_DIR . '/dist/' . aioseo()->versionPath . '/manifest-assets.json';
+		$this->manifestFile      = AIOSEO_DIR . '/dist/' . aioseo()->versionPath . '/manifest.php';
+		$this->assetManifestFile = AIOSEO_DIR . '/dist/' . aioseo()->versionPath . '/manifest-assets.php';
 		$this->isDev             = aioseo()->isDev;
 
 		if ( $this->isDev ) {

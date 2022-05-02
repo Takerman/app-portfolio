@@ -36,6 +36,7 @@ class SearchAppearance {
 		$this->migrateRedirectAttachments();
 		$this->migrateKnowledgeGraphSettings();
 		$this->migrateRssContentSettings();
+		$this->migrateStripCategoryBase();
 	}
 
 	/**
@@ -306,5 +307,16 @@ class SearchAppearance {
 	 */
 	private function migrateRedirectAttachments() {
 		aioseo()->dynamicOptions->searchAppearance->postTypes->attachment->redirectAttachmentUrls = empty( $this->options['disable-attachment'] ) ? 'disabled' : 'attachment';
+	}
+
+	/**
+	 * Migrates the strip category base option.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @return void
+	 */
+	private function migrateStripCategoryBase() {
+		aioseo()->options->searchAppearance->advanced->removeCatBase = empty( $this->options['stripcategorybase'] ) ? false : true;
 	}
 }

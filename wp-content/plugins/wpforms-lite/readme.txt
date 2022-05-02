@@ -3,11 +3,11 @@ Contributors: wpforms, jaredatch, smub, slaFFik
 Tags: contact form, contact form plugin, forms, form builder, custom form, contact button, contact me, custom contact form, form manager, form, forms builder, forms creator, captcha, recaptcha, Akismet, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, mailchimp, mailchimp form, aweber, aweber form, paypal, paypal form, stripe, stripe form, getresponse, getresponse form, email subscription, contact form widget, user registration form, wordpress registration, wordpress login form, feedback
 Requires at least: 5.2
 Tested up to: 5.9
-Stable tag: 1.7.3
+Stable tag: 1.7.4
 Requires PHP: 5.6
 License: GNU General Public License v2.0 or later
 
-The best WordPress contact form plugin. Drag & Drop online form builder that helps you create beautiful contact forms with just a few clicks.
+The best WordPress contact form plugin. Drag & Drop online form builder that helps you create beautiful contact forms + custom forms with just a few clicks.
 
 == Description ==
 
@@ -426,6 +426,18 @@ Thank you
 Syed Balkhi
 
 == Changelog ==
+
+= 1.7.4 =
+- Added: Form Locations! On the Forms Overview page easily check all places where each form is currently embedded.
+- Added: Back up form submissions into the cloud and restore them to your database as Entries after upgrading to a paid plan.
+- Changed: Improved text wrapping of field labels and descriptions.
+- Changed: Each smart tag inserted by a user in the Form Builder will now be placed as the last one in relevant inputs.
+- Changed: The input field in the Form Embed wizard popup in the Form Builder is now focused by default.
+- Changed: Updated DOMPurify lib to 2.3.6.
+- Fixed: Search result was not reset when the user clicked "x" sign in the search field on the Addons page.
+- Fixed: The form could be saved while still adding a field, but it should not.
+- Fixed: Improved compatibility with Elementor popups.
+- Fixed: Cleaned up deprecation notice for `_register_controls()` with recent Elementor versions.
 
 = 1.7.3 =
 - IMPORTANT: Support for PHP 5.5 has been discontinued. If you are running PHP 5.5, you MUST upgrade PHP before installing WPForms 1.7.3. Failure to do that will disable WPForms core functionality.

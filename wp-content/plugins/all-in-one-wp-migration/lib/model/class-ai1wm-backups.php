@@ -101,7 +101,7 @@ class Ai1wm_Backups {
 	 * @return boolean
 	 */
 	public static function delete_file( $file ) {
-		if ( validate_file( $file ) === 0 ) {
+		if ( ai1wm_is_filename_supported( $file ) ) {
 			return @unlink( ai1wm_backup_path( array( 'archive' => $file ) ) );
 		}
 	}

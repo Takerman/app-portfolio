@@ -1,5 +1,17 @@
 == Changelog ==
 
+= 1.7.4 =
+- Added: Form Locations! On the Forms Overview page easily check all places where each form is currently embedded.
+- Added: Back up form submissions into the cloud and restore them to your database as Entries after upgrading to a paid plan.
+- Changed: Improved text wrapping of field labels and descriptions.
+- Changed: Each smart tag inserted by a user in the Form Builder will now be placed as the last one in relevant inputs.
+- Changed: The input field in the Form Embed wizard popup in the Form Builder is now focused by default.
+- Changed: Updated DOMPurify lib to 2.3.6.
+- Fixed: Search result was not reset when the user clicked "x" sign in the search field on the Addons page.
+- Fixed: The form could be saved while still adding a field, but it should not.
+- Fixed: Improved compatibility with Elementor popups.
+- Fixed: Cleaned up deprecation notice for `_register_controls()` with recent Elementor versions.
+
 = 1.7.3 =
 - IMPORTANT: Support for PHP 5.5 has been discontinued. If you are running PHP 5.5, you MUST upgrade PHP before installing WPForms 1.7.3. Failure to do that will disable WPForms core functionality.
 - IMPORTANT: Support for WordPress 5.1 has been discontinued. If you are running WordPress 5.1, you MUST upgrade WordPress before installing WPForms 1.7.3. Failure to do that will disable WPForms core functionality.

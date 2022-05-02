@@ -131,7 +131,7 @@ class Analyze {
 			], 400 );
 		}
 
-		$result = aioseo()->headlineAnalyzer->getResult( $headline );
+		$result = aioseo()->standalone->headlineAnalyzer->getResult( $headline );
 
 		$headlines = aioseo()->internalOptions->internal->headlineAnalysis->headlines;
 		$headlines = array_reverse( $headlines, true );

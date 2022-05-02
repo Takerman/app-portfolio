@@ -150,9 +150,9 @@ function wpforms_settings_license_callback( $args ) {
 	$key          = ! empty( $license['key'] ) ? $license['key'] : '';
 	$type         = ! empty( $license['type'] ) ? $license['type'] : '';
 	$is_valid_key = ! empty( $key ) &&
-	                ( isset( $license['is_expired'] ) && $license['is_expired'] === false ) &&
-	                ( isset( $license['is_disabled'] ) && $license['is_disabled'] === false ) &&
-	                ( isset( $license['is_invalid'] ) && $license['is_invalid'] === false );
+					( isset( $license['is_expired'] ) && $license['is_expired'] === false ) &&
+					( isset( $license['is_disabled'] ) && $license['is_disabled'] === false ) &&
+					( isset( $license['is_invalid'] ) && $license['is_invalid'] === false );
 
 	$output  = '<span class="wpforms-setting-license-wrapper">';
 	$output .= '<input type="password" id="wpforms-setting-license-key" value="' . esc_attr( $key ) . '"' . disabled( true, $is_valid_key, false ) . ' />';
@@ -357,6 +357,53 @@ function wpforms_settings_radio_callback( $args ) {
 
 	if ( ! empty( $args['desc'] ) ) {
 		$output .= '<p class="desc">' . wp_kses_post( $args['desc'] ) . '</p>';
+	}
+
+	return $output;
+}
+
+/**
+ * Settings toggle field callback.
+ *
+ * @since 1.7.4
+ *
+ * @param array $args Arguments.
+ *
+ * @return string
+ */
+function wpforms_settings_toggle_callback( $args ) {
+
+	$value  = wpforms_setting( $args['id'] );
+	$id     = wpforms_sanitize_key( $args['id'] );
+	$class  = ! empty( $args['control-class'] ) ? $args['control-class'] : '';
+	$class .= ! empty( $args['is-important'] ) ? ' wpforms-important' : '';
+	$output = wpforms_panel_field_toggle_control(
+		[
+			'control-class' => $class,
+		],
+		'wpforms-setting-' . $id,
+		$id,
+		! empty( $args['label'] ) ? $args['label'] : '',
+		$value,
+		''
+	);
+
+	$desc_on  = ! empty( $args['desc'] ) ? $args['desc'] : '';
+	$desc_on  = ! empty( $args['desc-on'] ) ? $args['desc-on'] : $desc_on;
+	$desc_off = ! empty( $args['desc-off'] ) ? $args['desc-off'] : '';
+
+	$output .= sprintf(
+		'<p class="desc desc-on wpforms-toggle-desc%1$s">%2$s</p>',
+		empty( $value ) && ! empty( $desc_off ) ? ' wpforms-hidden' : '',
+		wp_kses_post( $desc_on )
+	);
+
+	if ( ! empty( $desc_off ) ) {
+		$output .= sprintf(
+			'<p class="desc desc-off wpforms-toggle-desc%1$s">%2$s</p>',
+			empty( $value ) ? '' : ' wpforms-hidden',
+			wp_kses_post( $desc_off )
+		);
 	}
 
 	return $output;

@@ -790,30 +790,19 @@
 
 			// Addons searching.
 			if ( $( '#wpforms-admin-addons-list' ).length ) {
-				var addonSearch = new List( 'wpforms-admin-addons-list', {
-					valueNames: [ 'addon-name' ] } );
-
-				$( '#wpforms-admin-addons-search' ).on( 'keyup', function() {
-					var searchTerm = $( this ).val(),
-						$heading = $( '#addons-heading' );
-
-					if ( searchTerm ) {
-						$heading.text( wpforms_admin.addon_search );
-					} else {
-						$heading.text( $heading.data( 'text' ) );
+				var addonSearch = new List(
+					'wpforms-admin-addons-list',
+					{
+						valueNames: [ 'addon-link' ],
 					}
+				);
 
-					/*
-					 * Replace dot and comma with space
-					 * it is workaround for a bug in listjs library.
-					 *
-					 * Note: remove when the issue below is fixed:
-					 * @see https://github.com/javve/list.js/issues/699
-					 */
-					searchTerm = searchTerm.replace( /[.,]/g, ' ' );
-
-					addonSearch.search( searchTerm );
-				} );
+				$( '#wpforms-admin-addons-search' ).on(
+					'keyup search',
+					function() {
+						WPFormsAdmin.updateAddonSearchResult( this, addonSearch );
+					}
+				);
 			}
 
 			// Toggle an addon state.
@@ -827,6 +816,37 @@
 
 				WPFormsAdmin.addonToggle( $( this ) );
 			} );
+		},
+
+		/**
+		 * Handle addons search field operations.
+		 *
+		 * @since 1.7.4
+		 *
+		 * @param {object} searchField The search field html element.
+		 * @param {object} addonSearch Addons list (uses List.js).
+		 */
+		updateAddonSearchResult: function( searchField, addonSearch ) {
+
+			var searchTerm = $( searchField ).val(),
+				$heading   = $( '#addons-heading' );
+
+			if ( searchTerm ) {
+				$heading.text( wpforms_admin.addon_search );
+			} else {
+				$heading.text( $heading.data( 'text' ) );
+			}
+
+			/*
+			 * Replace dot and comma with space
+			 * it is workaround for a bug in listjs library.
+			 *
+			 * Note: remove when the issue below is fixed:
+			 * @see https://github.com/javve/list.js/issues/699
+			 */
+			searchTerm = searchTerm.replace( /[.,]/g, ' ' );
+
+			addonSearch.search( searchTerm );
 		},
 
 		/**
@@ -1194,7 +1214,7 @@
 			});
 
 			// Integration account disconnect.
-			$( document ).on( 'click', '.wpforms-settings-provider-accounts-list a', function( event ) {
+			$( document ).on( 'click', '.wpforms-settings-provider-accounts-list .remove a', function( event ) {
 
 				event.preventDefault();
 
@@ -1251,6 +1271,20 @@
 
 				$( '#wpforms-setting-row-captcha-preview' ).toggleClass( 'wpforms-hidden', 'v2' !== this.value );
 				$( '#wpforms-setting-row-recaptcha-v3-threshold' ).toggleClass( 'wpforms-hidden', 'v3' !== this.value );
+			} );
+
+			// Toggle control switch description.
+			$( document ).on( 'change', '.wpforms-toggle-control input', function() {
+
+				var $input = $( this ),
+					checked = $input.is( ':checked' ),
+					$field = $input.closest( '.wpforms-setting-field' ),
+					$descOn = $field.find( '.wpforms-toggle-desc.desc-on' ),
+					$descOff = $field.find( '.wpforms-toggle-desc.desc-off' ),
+					isDoubleDesc = $descOn.length > 0 && $descOff.length > 0;
+
+				$descOn.toggleClass( 'wpforms-hidden', ! checked && isDoubleDesc );
+				$descOff.toggleClass( 'wpforms-hidden', checked && isDoubleDesc );
 			} );
 		},
 
@@ -1538,7 +1572,7 @@
 				},
 				errorMessage = wpforms_admin.provider_auth_error;
 
-			$btn.html( 'Connecting...' ).css( 'width', buttonWidth ).prop( 'disabled', true );
+			$btn.html( wpforms_admin.connecting ).css( 'width', buttonWidth ).prop( 'disabled', true );
 
 			$.post( wpforms_admin.ajax_url, data, function( response ) {
 

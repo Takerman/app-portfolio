@@ -1,5 +1,7 @@
 <?php
 
+use WPForms\Forms\Locator;
+
 /**
  * Generate the table on the plugin overview page.
  *
@@ -156,6 +158,8 @@ class WPForms_Overview_Table extends WP_List_Table {
 	 *
 	 * @param string[]  $hidden Array of IDs of columns hidden by default.
 	 * @param WP_Screen $screen WP_Screen object of the current screen.
+	 *
+	 * @return string[]
 	 */
 	public function default_hidden_columns( $hidden, $screen ) {
 
@@ -163,7 +167,10 @@ class WPForms_Overview_Table extends WP_List_Table {
 			return $hidden;
 		}
 
-		return [ 'author' ];
+		$hidden[] = 'author';
+		$hidden[] = Locator::COLUMN_NAME;
+
+		return $hidden;
 	}
 
 	/**
@@ -261,7 +268,7 @@ class WPForms_Overview_Table extends WP_List_Table {
 
 		// phpcs:disable WPForms.Comments.PHPDocHooks.RequiredHookDocumentation, WPForms.PHP.ValidateHooks.InvalidHookName
 
-		/*
+		/**
 		 * Filters row action links on the 'All Forms' admin page.
 		 *
 		 * @since 1.0.0
@@ -271,7 +278,7 @@ class WPForms_Overview_Table extends WP_List_Table {
 		 */
 		return $this->row_actions( apply_filters( 'wpforms_overview_row_actions', [], $form ) );
 
-        // phpcs:enable
+		// phpcs:enable
 	}
 
 	/**
@@ -418,7 +425,7 @@ class WPForms_Overview_Table extends WP_List_Table {
 
 		/**
 		 * Allow counting forms filtered by a given search criteria.
-         *
+		 *
 		 * If result will not contain `all` key, count All Forms without filtering will be performed.
 		 *
 		 * @since 1.7.2
