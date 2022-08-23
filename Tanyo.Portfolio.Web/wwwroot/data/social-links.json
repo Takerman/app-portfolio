@@ -1,26 +1,30 @@
 [
-  {
-    "url": "https://www.facebook.com/dev.tanyoivanov",
-    "icon": "facebook-f"
-  },
+  //{
+  //  "url": "https://www.facebook.com/dev.tanyoivanov",
+  //  "icon": "facebook-f"
+  //},
   {
     "url": "https://www.linkedin.com/in/tanyo-ivanov/",
     "icon": "linkedin"
   },
-  {
-    "url": "https://twitter.com/TanyoIvanov",
-    "icon": "twitter"
-  },
+  //{
+  //  "url": "https://twitter.com/TanyoIvanov",
+  //  "icon": "twitter"
+  //},
   {
     "url": "https://www.youtube.com/channel/UCPTCSnkn2CtiVFc-EGdJycg",
     "icon": "youtube"
   },
-  {
-    "url": "skype:live:contact_44094?chat",
-    "icon": "skype"
-  },
+  //{
+  //  "url": "skype:live:contact_44094?chat",
+  //  "icon": "skype"
+  //},
   {
     "url": "https://www.github.com/takerman",
+    "icon": "github"
+  },
+  {
+    "url": "https://www.github.com/takermanltd",
     "icon": "github"
   }
 ]
