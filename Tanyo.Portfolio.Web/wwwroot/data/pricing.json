@@ -1,96 +1,96 @@
 [
   {
-    "value": 50000,
+    "value": 80000,
     "currency": "GBP",
+    "type": 1,
+    "location": 1
+  },
+  {
+    "value": 95000,
+    "currency": "USD",
+    "type": 1,
+    "location": 1
+  },
+  {
+    "value": 100000,
+    "currency": "CHF",
     "type": 1,
     "location": 1
   },
   {
     "value": 80000,
-    "currency": "USD",
-    "type": 1,
-    "location": 1
-  },
-  {
-    "value": 80000,
-    "currency": "CHF",
-    "type": 1,
-    "location": 1
-  },
-  {
-    "value": 55000,
     "currency": "EUR",
     "type": 1,
     "location": 1
   },
   {
-    "value": 40000,
+    "value": 70000,
     "currency": "GBP",
     "type": 1,
     "location": 2
   },
   {
-    "value": 50000,
+    "value": 70000,
     "currency": "USD",
     "type": 1,
     "location": 2
   },
   {
-    "value": 45000,
+    "value": 8000,
     "currency": "CHF",
     "type": 1,
     "location": 2
   },
   {
-    "value": 42000,
+    "value": 70000,
     "currency": "EUR",
     "type": 1,
     "location": 2
   },
   {
-    "value": 300,
+    "value": 400,
     "currency": "GBP",
     "type": 2,
     "location": 1
   },
   {
-    "value": 360,
+    "value": 450,
     "currency": "USD",
     "type": 2,
     "location": 1
   },
   {
-    "value": 360,
+    "value": 450,
     "currency": "CHF",
     "type": 2,
     "location": 1
   },
   {
-    "value": 340,
+    "value": 400,
     "currency": "EUR",
     "type": 2,
     "location": 1
   },
   {
-    "value": 200,
+    "value": 350,
     "currency": "GBP",
     "type": 2,
     "location": 2
   },
   {
-    "value": 200,
+    "value": 400,
     "currency": "USD",
     "type": 2,
     "location": 2
   },
   {
-    "value": 200,
+    "value": 400,
     "currency": "CHF",
     "type": 2,
     "location": 2
   },
   {
-    "value": 250,
+    "value": 350,
     "currency": "EUR",
     "type": 2,
     "location": 2

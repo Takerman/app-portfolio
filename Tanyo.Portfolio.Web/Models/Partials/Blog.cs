@@ -20,13 +20,13 @@ namespace Tanyo.Portfolio.Web.Models.Partials
                         //    Image = "/img/profile/b1.jpg",
                         //    Name = "portfiolio-has-been-released" },
 
-                        new BlogItemMini(){
-                            Author = "Tanyo Ivanov",
-                            Title = "Prices defined and listed",
-                            Content = "How I defined and listed my optimized for the client prices.",
-                            Date = new DateTime(2020, 1, 17),
-                            Image = "/img/blog/home-blog/home-blog-4.jpg",
-                            Name = "prices-listed" },
+                        //new BlogItemMini(){
+                        //    Author = "Tanyo Ivanov",
+                        //    Title = "Prices defined and listed",
+                        //    Content = "How I defined and listed my optimized for the client prices.",
+                        //    Date = new DateTime(2020, 1, 17),
+                        //    Image = "/img/blog/home-blog/home-blog-4.jpg",
+                        //    Name = "prices-listed" },
 
                         new BlogItemMini(){
                             Author = "Tanyo Ivanov",

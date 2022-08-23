@@ -12,13 +12,13 @@
     "Category": "Technology"
   },
   {
-    "Value": 4,
+    "Value": 6,
     "Name": "Bash",
     "Years": 2,
     "Category": "Language"
   },
   {
-    "Value": 6,
+    "Value": 8,
     "Name": "CSS",
     "Years": 6,
     "Category": "Language"
@@ -30,7 +30,7 @@
     "Category": "Language"
   },
   {
-    "Value": 8,
+    "Value": 9,
     "Name": "HTML5",
     "Years": 5,
     "Category": "Language"
@@ -48,19 +48,19 @@
     "Category": "Language"
   },
   {
-    "Value": 9,
+    "Value": 10,
     "Name": "ASP.NET MVC",
     "Years": 7,
     "Category": "Technology"
   },
   {
-    "Value": 4,
+    "Value": 5,
     "Name": "Azure",
     "Years": 1,
     "Category": "Technology"
   },
   {
-    "Value": 4,
+    "Value": 6,
     "Name": "AWS",
     "Years": 3,
     "Category": "Technology"
@@ -72,7 +72,7 @@
     "Category": "Language"
   },
   {
-    "Value": 6,
+    "Value": 7,
     "Name": "T-SQL",
     "Years": 5,
     "Category": "Language"
@@ -90,25 +90,25 @@
     "Category": "Technology"
   },
   {
-    "Value": 8,
+    "Value": 9,
     "Name": "Windows Services",
     "Years": 3,
     "Category": "Technology"
   },
   {
-    "Value": 5,
+    "Value": 7,
     "Name": "Amazon EC2",
     "Years": 2,
     "Category": "Technology"
   },
   {
-    "Value": 5,
+    "Value": 6,
     "Name": "TypeScript",
     "Years": 1,
     "Category": "Language"
   },
   {
-    "Value": 6,
+    "Value": 8,
     "Name": "Windows Server",
     "Years": 5,
     "Category": "Technology"
@@ -138,7 +138,7 @@
     "Category": "Language"
   },
   {
-    "Value": 8,
+    "Value": 7,
     "Name": "Bootstrap",
     "Years": 4,
     "Category": "Technology"
@@ -163,18 +163,12 @@
   },
   {
     "Value": 6,
-    "Name": "Raspberry Pi",
-    "Years": 2,
-    "Category": "Stream"
-  },
-  {
-    "Value": 6,
     "Name": "Load Testing",
     "Years": 1,
     "Category": "Stream"
   },
   {
-    "Value": 7,
+    "Value": 6,
     "Name": "Design Patterns",
     "Years": 1,
     "Category": "Stream"
@@ -216,15 +210,9 @@
     "Category": "Stream"
   },
   {
-    "Value": 6,
+    "Value": 4,
     "Name": "Umbraco",
     "Years": 2,
-    "Category": "Technology"
-  },
-  {
-    "Value": 6,
-    "Name": "Piranha CMS",
-    "Years": 1,
     "Category": "Technology"
   },
   {
@@ -234,7 +222,7 @@
     "Category": "Technology"
   },
   {
-    "Value": 6,
+    "Value": 5,
     "Name": "xUnit Tests",
     "Years": 1,
     "Category": "Technology"
@@ -246,7 +234,7 @@
     "Category": "Technology"
   },
   {
-    "Value": 6,
+    "Value": 5,
     "Name": "MS Tests",
     "Years": 1,
     "Category": "Technology"
@@ -258,7 +246,7 @@
     "Category": "Technology"
   },
   {
-    "Value": 4,
+    "Value": 5,
     "Name": "Vue.js",
     "Years": 1,
     "Category": "Technology"
