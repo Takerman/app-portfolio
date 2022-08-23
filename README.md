@@ -41,3 +41,8 @@ Some of the features includes
 * Blog with blogposts
 * Contact form
 * Languages selector
+
+
+docker build -t tanyoivanov .
+docker run -p 8084:80 tanyoivanov
+Visit http://localhost:8084

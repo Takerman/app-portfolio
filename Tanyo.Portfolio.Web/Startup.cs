@@ -96,14 +96,14 @@ namespace Tanyo.Portfolio.Web
                 options.RequestCultureProviders.Insert(0, provider);
             });
 
-            if (!Env.IsDevelopment())
-            {
-                services.AddHttpsRedirection(options =>
-                {
-                    options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
-                    options.HttpsPort = 443;
-                });
-            }
+            //if (!Env.IsDevelopment())
+            //{
+            //    services.AddHttpsRedirection(options =>
+            //    {
+            //        options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
+            //        options.HttpsPort = 443;
+            //    });
+            //}
 
             services.AddHsts(options =>
             {
@@ -116,12 +116,6 @@ namespace Tanyo.Portfolio.Web
 
                 options.ExcludedHosts.Add("tanyoivanov.net");
                 options.ExcludedHosts.Add("www.tanyoivanov.net");
-
-                options.ExcludedHosts.Add("tivanov.takerman.net");
-                options.ExcludedHosts.Add("www.tivanov.takerman.net");
-
-                options.ExcludedHosts.Add("tanyo.takerman.net");
-                options.ExcludedHosts.Add("www.tanyo.takerman.net");
             });
         }
 
@@ -139,13 +133,13 @@ namespace Tanyo.Portfolio.Web
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             var cachePeriod = env.IsDevelopment() ? "600" : "604800";
 
             app.UseStaticFiles(new StaticFileOptions
             {
-                HttpsCompression = HttpsCompressionMode.Compress,
+                //HttpsCompression = HttpsCompressionMode.Compress,
                 OnPrepareResponse = (context) =>
                 {
                     var headers = context.Context.Response.GetTypedHeaders();
@@ -168,8 +162,7 @@ namespace Tanyo.Portfolio.Web
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller}/{action}/{id?}",
-                    defaults: new { controller = "Home", action = "Index", area = string.Empty });
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

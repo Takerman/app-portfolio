@@ -14,6 +14,7 @@ namespace Tanyo.Portfolio.Web
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseUrls("http://*:80");
                     webBuilder.UseStartup<Startup>();
                 });
     }
