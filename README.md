@@ -44,6 +44,7 @@ Some of the features includes
 
 
 docker build -t tanyoivanov .
-docker run -p 8084:80 tanyoivanov
+docker tag tanyoivanov takerman/tanyoivanov:latest
 docker push takerman/tanyoivanov:latest
+docker run -d -p 8084:80 takerman/tanyoivanov:latest
 Visit http://localhost:8084
