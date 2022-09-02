@@ -96,15 +96,6 @@ namespace Tanyo.Portfolio.Web
                 options.RequestCultureProviders.Insert(0, provider);
             });
 
-            if (!Env.IsDevelopment())
-            {
-                services.AddHttpsRedirection(options =>
-                {
-                    options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
-                    options.HttpsPort = 443;
-                });
-            }
-
             services.AddHsts(options =>
             {
                 options.Preload = true;
@@ -133,13 +124,10 @@ namespace Tanyo.Portfolio.Web
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-
             var cachePeriod = env.IsDevelopment() ? "600" : "604800";
 
             app.UseStaticFiles(new StaticFileOptions
             {
-                HttpsCompression = HttpsCompressionMode.Compress,
                 OnPrepareResponse = (context) =>
                 {
                     var headers = context.Context.Response.GetTypedHeaders();
