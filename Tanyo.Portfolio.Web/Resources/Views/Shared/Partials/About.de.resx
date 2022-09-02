@@ -120,16 +120,16 @@
   <data name="About me" xml:space="preserve">
     <value>Über mich</value>
   </data>
+  <data name="Engineering projects" xml:space="preserve">
+    <value>Engineering-Projekte</value>
+  </data>
+  <data name="I can plan the steps of the project development, develop and deploy it. I've done it in the past. The choice of technologies is important from the begining. That's why I keep myself up to date." xml:space="preserve">
+    <value>Ich kann die Schritte der Projektentwicklung planen, entwickeln und implementieren. Ich habe es in der Vergangenheit getan. Die Wahl der Technologien ist von Anfang an wichtig. Deshalb halte ich mich auf dem Laufenden.</value>
+  </data>
   <data name="Pricing" xml:space="preserve">
     <value>Preisgestaltung</value>
   </data>
   <data name="Skills" xml:space="preserve">
     <value>Kompetenzen</value>
-  </data>
-  <data name="Software Developer" xml:space="preserve">
-    <value>Softwareentwickler</value>
-  </data>
-  <data name="Software developer with long years of experience in various technologies, projects, environments and companies. A person who don't stop until delivery. A person who invests from himself in his work. Able to learn new technologies in short period of time when needed." xml:space="preserve">
-    <value>Software-Entwickler mit langjähriger Erfahrung in verschiedenen Technologien, Projekten, Umgebungen und Unternehmen. Eine Person, die nicht bis zur Auslieferung stoppen. Eine Person, die von sich selbst in seiner Arbeit investiert. Die Lage, neue Technologien in kurzer Zeit zu lernen, wenn nötig.</value>
   </data>
 </root>

@@ -120,16 +120,16 @@
   <data name="About me" xml:space="preserve">
     <value>За мен</value>
   </data>
+  <data name="Engineering projects" xml:space="preserve">
+    <value>Програмист</value>
+  </data>
+  <data name="I can plan the steps of the project development, develop and deploy it. I've done it in the past. The choice of technologies is important from the begining. That's why I keep myself up to date." xml:space="preserve">
+    <value>Мога да планирам разработката на проекта, да го разработя и да го доставя. Правил съм го вече. Изборът на технологии е важен още в самото начало. Затова се обновявам постоянно.</value>
+  </data>
   <data name="Pricing" xml:space="preserve">
     <value>Цена</value>
   </data>
   <data name="Skills" xml:space="preserve">
     <value>Умения</value>
-  </data>
-  <data name="Software Developer" xml:space="preserve">
-    <value>Програмист</value>
-  </data>
-  <data name="Software developer with long years of experience in various technologies, projects, environments and companies. A person who don't stop until delivery. A person who invests from himself in his work. Able to learn new technologies in short period of time when needed." xml:space="preserve">
-    <value>Програмист със много години опит във различни технологии, проекти, среди и компании. Личност която не спира до доставка. Личност, която инвестира от себе си във работата си. Успява да научи нови технологии за кратък период от време, когато е нужно.</value>
   </data>
 </root>

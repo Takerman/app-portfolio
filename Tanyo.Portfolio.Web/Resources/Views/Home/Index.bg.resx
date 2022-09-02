@@ -117,17 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name=".NET Application Developer" xml:space="preserve">
-    <value>.NET Програмист</value>
-  </data>
   <data name="BROCHURE" xml:space="preserve">
     <value>Брошура</value>
   </data>
   <data name="CV" xml:space="preserve">
     <value>Био</value>
   </data>
-  <data name="I'M TANYO IVANOV" xml:space="preserve">
+  <data name="I'M TANYO" xml:space="preserve">
     <value>АЗ СЪМ ТАНЬО</value>
+  </data>
+  <data name="IT SPECIALIST AND ENGINEER" xml:space="preserve">
+    <value>ИТ СПЕЦИАЛИСТ И ИНЖИНЕР</value>
   </data>
   <data name="PORTFOLIO" xml:space="preserve">
     <value>ПОРТФОЛИО</value>
