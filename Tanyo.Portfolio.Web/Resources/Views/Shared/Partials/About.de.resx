@@ -120,8 +120,8 @@
   <data name="About me" xml:space="preserve">
     <value>Über mich</value>
   </data>
-  <data name="Engineering projects" xml:space="preserve">
-    <value>Engineering-Projekte</value>
+  <data name="ENGINEERING PROJECTS" xml:space="preserve">
+    <value>ENGINEERING-PROJEKTE</value>
   </data>
   <data name="I can plan the steps of the project development, develop and deploy it. I've done it in the past. The choice of technologies is important from the begining. That's why I keep myself up to date." xml:space="preserve">
     <value>Ich kann die Schritte der Projektentwicklung planen, entwickeln und implementieren. Ich habe es in der Vergangenheit getan. Die Wahl der Technologien ist von Anfang an wichtig. Deshalb halte ich mich auf dem Laufenden.</value>
