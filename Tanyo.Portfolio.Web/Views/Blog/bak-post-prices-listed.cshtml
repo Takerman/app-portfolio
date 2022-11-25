@@ -25,22 +25,8 @@
                             <a href="https://docs.google.com/spreadsheets/d/1zjgE1PTWX42fH4eoIMzhvRhUyyYjhJ3a50YqfbZy5dk" target="_blank">@localizer["here"].</a>
                             @localizer["Please feel free to comment them with me and to use the average for the project you want to develop."]
                         </p>
-                        <div id="disqus_thread"></div>
-                        <script>
-                            const PAGE_URL = 'https://tanyoivanov.net';
-                            const PAGE_IDENTIFIER = location.href;
-                            var disqus_config = function () {
-                                this.page.url = PAGE_URL;
-                                this.page.identifier = PAGE_IDENTIFIER;
-                            };
-                            (function () {
-                                var d = document, s = d.createElement('script');
-                                s.src = 'https://tanyo-takerman-net-1.disqus.com/embed.js';
-                                s.setAttribute('data-timestamp', +new Date());
-                                (d.head || d.body).appendChild(s);
-                            })();
-                        </script>
-                        <noscript>@localizer["Please enable JavaScript to view the comments"]</noscript>
+                        @await Html.PartialAsync("~/Views/Shared/Partials/Share.cshtml")
+                        @await Html.PartialAsync("~/Views/Shared/Partials/Disqus.cshtml")
                     </div>
                 </div>
             </div>
