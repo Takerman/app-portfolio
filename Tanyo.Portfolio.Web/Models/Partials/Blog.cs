@@ -44,7 +44,15 @@ namespace Tanyo.Portfolio.Web.Models.Partials
                             Content = @"Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them.",
                             Date = new DateTime(2020, 3, 22),
                             Image = "/img/blog/designpatterns.png",
-                            Name = "designpatterns-package" }
+                            Name = "designpatterns-package" },
+
+                        new BlogItemMini(){
+                            Author = "Tanyo Ivanov",
+                            Title = "aws-summit-title-mini",
+                            Content = @"aws-summit-content-mini",
+                            Date = new DateTime(2022, 11, 26),
+                            Image = "/img/blog/aws-summit.png",
+                            Name = "aws-summit-2022" }
                     };
 
             this.BlogItemsMini = this.BlogItemsMini.Reverse();

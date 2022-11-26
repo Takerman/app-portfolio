@@ -117,28 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Blog" xml:space="preserve">
-    <value>Блог</value>
+  <data name="aws-summit-content" xml:space="preserve">
+    <value>This year (2022), while I worked in LexisNexis UK, I went with some colleagues to the annual AWS conference in London named 'AWS Summit'. It was interesting to see how the conferences in the West are organised and what are the talks there. The organisation was really good and there were many speaches running at the same time in different rooms. There were some software architects to ask about project decisions too and how to solve them with AWS. In Bulgaria we have many IT conferences and I think they are a bit different from this one. I was happy to see that our conferences are not smaller than these in London. I think Bulgaria is highly underestimated at all. The conference continued for 6 hours I think with some pauses between the talks. I choosed to go to talks related with Cloud Storage as S3, Architectual aproaches to solve issues, Amazon Athena and some more. Check my Youtube video for more info. It is in Bulgarian language, but there are parts from the conference and subtitles I think.</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>контакт</value>
-  </data>
-  <data name="CV" xml:space="preserve">
-    <value>резюме</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Начало</value>
-  </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Портфолио</value>
-  </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>ценообразование</value>
-  </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Навыки и умения</value>
-  </data>
-  <data name="Takerman" xml:space="preserve">
-    <value>Такерман</value>
+  <data name="Hello" xml:space="preserve">
+    <value>Hello</value>
   </data>
 </root>

@@ -117,28 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Blog" xml:space="preserve">
-    <value>Блог</value>
+  <data name="aws-summit-content" xml:space="preserve">
+    <value>В этом году (2022), когда я работал в LexisNexis UK, я вместе с коллегами посетил ежегодную конференцию AWS в Лондоне под названием «AWS Summit». Было интересно посмотреть, как устроены конференции на Западе и какие там доклады. Организация была действительно хорошей, и было много речей, которые шли одновременно в разных залах. Некоторые архитекторы программного обеспечения также спрашивали о проектных решениях и о том, как их решать с помощью AWS. В Болгарии у нас проходит много ИТ-конференций, и я думаю, что они немного отличаются от этой. Я был рад видеть, что наши конференции не меньше, чем в Лондоне. Думаю, Болгарию вообще сильно недооценивают. Конференция продолжалась, кажется, часов 6 с небольшими паузами между докладами. Я решил пойти на переговоры, связанные с облачным хранилищем как S3, архитектурными подходами к решению проблем, Amazon Athena и некоторыми другими. Посмотрите мое видео на YouTube для получения дополнительной информации. Он на болгарском языке, но, кажется, там есть отрывки из конференции и субтитры.</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>контакт</value>
-  </data>
-  <data name="CV" xml:space="preserve">
-    <value>резюме</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Начало</value>
-  </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Портфолио</value>
-  </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>ценообразование</value>
-  </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Навыки и умения</value>
-  </data>
-  <data name="Takerman" xml:space="preserve">
-    <value>Такерман</value>
+  <data name="Hello" xml:space="preserve">
+    <value>Привет</value>
   </data>
 </root>

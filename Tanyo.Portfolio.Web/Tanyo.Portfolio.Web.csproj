@@ -100,13 +100,37 @@
     <EmbeddedResource Update="Resources\SharedResource.bg.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Blog\post-aws-summit-2022.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>post-aws-summit-2022.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Blog\post-aws-summit-2022.bg.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Blog\post-aws-summit-2022.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Blog\post-aws-summit-2022.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views\Blog\post-designpatterns-package.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Shared\Partials\Blog.en.resx">
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\img\cv\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\Views\Blog\post-aws-summit-2022.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>post-aws-summit-2022.en.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 

@@ -117,28 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Blog" xml:space="preserve">
-    <value>Блог</value>
+  <data name="aws-summit-content" xml:space="preserve">
+    <value>Тази година (2022), докато работех във Великобритания за LexisNexis, отидох със колеги на тяхната година конференция в Лондон, която се казва 'AWS Summit'. Беше интересно да видя как конференциите са организирани на Запад и как са организирани изказванията там. Организацията беше доста добра и имаше доста говорители, които изнасяха речи по едно и също време в различни стаи. Имаше също така софтуерни архитекти, които човек можеше да попита за решение на някой архитектурен проблем, чрез AWS. 
+
+В България имаме доста ИТ конференции и мисля, че те са малко по-различни от тази. Зарадвах се да видя, че нашите по нищо не отстъпват на тези в Лондон. Мисля, че България е подценена като цяло. 
+
+Конференцията продължи около 6 часа мисля, със паузите между речите. Аз избрах да ида на такива свързани със места за съхранение на данни във Облака, като S3, Архитектурни начини за решение на проблеми, Амазон Athena и други. 
+
+Прегледайте видеото ми в YouTube за повече информация. На Български е, но там има части от конференцията и мисля, че има субтитри също.</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>контакт</value>
-  </data>
-  <data name="CV" xml:space="preserve">
-    <value>резюме</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Начало</value>
-  </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Портфолио</value>
-  </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>ценообразование</value>
-  </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Навыки и умения</value>
-  </data>
-  <data name="Takerman" xml:space="preserve">
-    <value>Такерман</value>
+  <data name="Hello" xml:space="preserve">
+    <value>Здравейте</value>
   </data>
 </root>

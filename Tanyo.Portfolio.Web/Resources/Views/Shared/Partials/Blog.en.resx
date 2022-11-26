@@ -117,28 +117,42 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Blog" xml:space="preserve">
-    <value>Блог</value>
+  <data name="aws-summit-content-mini" xml:space="preserve">
+    <value>The annual AWS conference in London. This year (2022), I went to the conference in Excel, London. It was quite interesting to attend. Read the full article for more info.</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>контакт</value>
+  <data name="aws-summit-title-mini" xml:space="preserve">
+    <value>AWS Summit 2022 Conference - London, Excel</value>
   </data>
-  <data name="CV" xml:space="preserve">
-    <value>резюме</value>
+  <data name="Design Patterns Package" xml:space="preserve">
+    <value>Design Patterns Package</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Начало</value>
+  <data name="Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them." xml:space="preserve">
+    <value>Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them.</value>
   </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Портфолио</value>
+  <data name="How I defined and listed my optimized for the client prices." xml:space="preserve">
+    <value>How I defined and listed my optimized for the client prices.</value>
   </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>ценообразование</value>
+  <data name="In this blog post I will show you how I'm using some Raspberry PIs&#xD;&#xA;                                        for web server, media center, smar home, database server, to save pictures&#xD;&#xA;                                        from a camera and more." xml:space="preserve">
+    <value>In this blog post I will show you how I'm using some Raspberry PIs
+                                        for web server, media center, smar home, database server, to save pictures
+                                        from a camera and more.</value>
   </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Навыки и умения</value>
+  <data name="Latest Stories From" xml:space="preserve">
+    <value>Latest Stories From</value>
   </data>
-  <data name="Takerman" xml:space="preserve">
-    <value>Такерман</value>
+  <data name="Learn More" xml:space="preserve">
+    <value>Learn More</value>
+  </data>
+  <data name="My blog" xml:space="preserve">
+    <value>My blog</value>
+  </data>
+  <data name="Prices defined and listed" xml:space="preserve">
+    <value>Prices defined and listed</value>
+  </data>
+  <data name="Raspberry Pi Home Automation" xml:space="preserve">
+    <value>Raspberry Pi Home Automation</value>
+  </data>
+  <data name="Tanyo Ivanov" xml:space="preserve">
+    <value>Tanyo Ivanov</value>
   </data>
 </root>
