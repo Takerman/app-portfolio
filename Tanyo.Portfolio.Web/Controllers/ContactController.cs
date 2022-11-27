@@ -41,7 +41,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 
             MailMessage email = new MailMessage(from, to);
             email.Subject = model.Subject;
-            email.Body = model.Message;
+            email.Body = "From: " + model.Email + ": " model.Message;
 
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
