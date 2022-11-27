@@ -1,35 +1,58 @@
-﻿@inject SharedLocalizationService sharedLocalizer
+﻿@using Tanyo.Portfolio.Web.Models.ViewModels
+@inject SharedLocalizationService sharedLocalizer
 @inject IViewLocalizer localizer
+@model MessageModel
 <section class="section-margin">
     <div class="container">
         @*<div class="d-none d-sm-block mb-5 pb-4">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2957.9456672518913!2d24.761658315315238!3d42.15144947920149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ad32ddcf6de943%3A0x5306aea73ed7127a!2sTakerman!5e0!3m2!1sen!2sbg!4v1591565987724!5m2!1sen!2sbg" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-            </div>*@
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2957.9456672518913!2d24.761658315315238!3d42.15144947920149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ad32ddcf6de943%3A0x5306aea73ed7127a!2sTakerman!5e0!3m2!1sen!2sbg!4v1591565987724!5m2!1sen!2sbg" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>*@
 
         <div class="row">
             <div class="col-12">
                 <h2 class="contact-title">@localizer["Get in Touch"]</h2>
             </div>
             <div class="col-lg-8 mb-4 mb-lg-0">
-                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/shell.js"></script>
-                <script>
-                    hbspt.forms.create({
-                        portalId: "6846508",
-                        formId: "1e7c1f2d-57d7-4b9d-9e0e-5e0f9add410e"
-                    });
-                </script>
+                <form class="form-contact contact_form" asp-controller="Contact" asp-action="Index" method="post" id="contactForm" novalidate="novalidate">
+                    <div class="row">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <textarea class="form-control w-100" asp-for="Message" id="message" cols="30" rows="9" placeholder="Enter Message"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input class="form-control" asp-for="Name" id="name" type="text" placeholder="Enter your name">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input class="form-control" asp-for="Email" id="email" type="email" placeholder="Enter email address">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input class="form-control" asp-for="Subject" id="subject" type="text" placeholder="Enter Subject">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-lg-3">
+                        <button type="submit" class="primary_btn button-contactForm">Send Message</button>
+                    </div>
+                </form>
             </div>
 
             <div class="col-lg-4">
                 @*<div class="media contact-info">
-                        <span class="contact-info__icon"><i class="ti-home"></i></span>
-                        <div class="media-body">
-                            <h3>London, United Kingdom.</h3>
-                            <p>Battersea, SW11 5DN</p>
-                            <h3>@localizer["Plovdiv"], 4000</h3>
-                            <p>@localizer["Bulgaria"]</p>
-                        </div>
-                    </div>*@
+                <span class="contact-info__icon"><i class="ti-home"></i></span>
+                <div class="media-body">
+                <h3>London, United Kingdom.</h3>
+                <p>Battersea, SW11 5DN</p>
+                <h3>@localizer["Plovdiv"], 4000</h3>
+                <p>@localizer["Bulgaria"]</p>
+                </div>
+                </div>*@
                 <div class="media contact-info">
                     <span class="contact-info__icon"><i class="ti-tablet"></i></span>
                     <div class="media-body">

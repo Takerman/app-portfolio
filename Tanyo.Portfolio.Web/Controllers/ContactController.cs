@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
+using System.Net.Mail;
+using System.Net;
 using Tanyo.Portfolio.Web.Models;
 using Tanyo.Portfolio.Web.Models.Services;
+using Tanyo.Portfolio.Web.Models.ViewModels;
 
 namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
@@ -25,6 +29,37 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
                 new NavLink(){ Action = "Index", Controller = "Contact", Label = _sharedLocalizer["Contact"] },
             };
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Index(MessageModel model)
+        {
+            _logger.LogInformation(model.Name);
+
+            MailAddress to = new MailAddress("tivanov@takerman.net");
+            MailAddress from = new MailAddress(model.Email);
+
+            MailMessage email = new MailMessage(from, to);
+            email.Subject = model.Subject;
+            email.Body = model.Message;
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.Credentials = new NetworkCredential("tivanov@takerman.net", "ybpetvbqcuxjsolw");
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.EnableSsl = true;
+
+            try
+            {
+                smtp.Send(email);
+            }
+            catch (SmtpException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            return View(model);
         }
     }
 }
