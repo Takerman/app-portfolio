@@ -25,7 +25,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="tanyo_data.db" />
+  </ItemGroup>
+
+  <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\js\site.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="tanyo_data.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -148,6 +158,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>post-aws-summit-2022.en.resx</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="tanyo_data.db-shm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="tanyo_data.db-wal">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 

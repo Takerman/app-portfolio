@@ -7,16 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Data\tanyo_data.db" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Data\tanyo_data.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
       <PrivateAssets>all</PrivateAssets>
@@ -41,15 +31,6 @@
       <SubType>Designer</SubType>
       <Generator></Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Data\tanyo_data.db-shm">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Data\tanyo_data.db-wal">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
