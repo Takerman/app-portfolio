@@ -26,8 +26,11 @@ COPY Tanyo.Portfolio.BLL/. ./Tanyo.Portfolio.BLL/
 COPY Tanyo.Portfolio.Web/. ./Tanyo.Portfolio.Web/
 COPY Tanyo.Portfolio.Web.Tests/. ./Tanyo.Portfolio.Web.Tests/
 
+WORKDIR /app/Tanyo.Portfolio.Tests/
+RUN dotnet build Tanyo.Portfolio.Web.Tests.csproj
+RUN dotnet test Tanyo.Portfolio.Web.Tests.csproj --logger "trx;LogFileName=Tanyo.Portfolio.Web.Tests.trx" 
+
 WORKDIR /app/Tanyo.Portfolio.Web/
-RUN dotnet test -c Release
 RUN dotnet publish -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS runtime
