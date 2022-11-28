@@ -19,7 +19,6 @@ WORKDIR /app
 COPY Tanyo.Portfolio.Web.Tests/*.csproj ./Tanyo.Portfolio.Web.Tests/
 WORKDIR /app/Tanyo.Portfolio.Web.Tests/
 RUN dotnet restore
-RUN dotnet test
 
 WORKDIR /app
 COPY Tanyo.Portfolio.Data/. ./Tanyo.Portfolio.Data/
@@ -28,6 +27,7 @@ COPY Tanyo.Portfolio.Web/. ./Tanyo.Portfolio.Web/
 COPY Tanyo.Portfolio.Web.Tests/. ./Tanyo.Portfolio.Web.Tests/
 
 WORKDIR /app/Tanyo.Portfolio.Web/
+RUN dotnet test program.tests -c Release
 RUN dotnet publish -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS runtime
