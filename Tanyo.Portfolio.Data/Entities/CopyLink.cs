@@ -8,10 +8,8 @@ namespace Tanyo.Portfolio.Data.Entities
         [Key]
         public int ID { get; set; }
 
-        [JsonPropertyName("url")]
         public string Url { get; set; }
 
-        [JsonPropertyName("label")]
         public string Label { get; set; }
     }
 }
