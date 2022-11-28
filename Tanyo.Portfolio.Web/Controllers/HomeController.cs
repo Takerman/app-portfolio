@@ -23,14 +23,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
         {
             Layout.Head.Title = _sharedLocalizer["Home | " + Layout.Head.Title + " | .NET Developer"];
             Layout.Banner = null;
-
-            var model = new IndexModel()
-            {
-                Stats = new Stats(),
-                Blog = _blogService.GetBlogItemsReversed(3)
-            };
-
-            return View(model);
+            return View();
         }
     }
 }

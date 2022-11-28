@@ -2,9 +2,18 @@
 @using Tanyo.Portfolio.Web.Models.Partials
 @inject SharedLocalizationService sharedLocalizer
 @inject IViewLocalizer localizer
-@model IndexModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var model = new IndexModel()
+            {
+                Stats = new Stats(),
+                Blog = new Blog()
+                {
+                    BlogItemsMini = new BlogService().GetBlogItemsReversed(3).ToList()
+                }
+            };
+
 }
 
 <section class="home_banner_area" style="background: url(/img/profile/home-banner.png) no-repeat top center;">
@@ -47,8 +56,9 @@
         @await Html.PartialAsync("~/Views/Shared/Partials/ProgressBars.cshtml", new ProgressBars())
     </div>
 </section>
-@await Html.PartialAsync("~/Views/Shared/Partials/Stats.cshtml", new Stats())
+
+@await Html.PartialAsync("~/Views/Shared/Partials/Stats.cshtml", model.Stats)
 @await Html.PartialAsync("~/Views/Shared/Partials/About.cshtml")
 @await Html.PartialAsync("~/Views/Shared/Partials/Services.cshtml")
 @await Html.PartialAsync("~/Views/Shared/Partials/Testimonial.cshtml")
-@await Html.PartialAsync("~/Views/Shared/Partials/Blog.cshtml", Model.Blog)
+@await Html.PartialAsync("~/Views/Shared/Partials/Blog.cshtml", model.Blog)
