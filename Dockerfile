@@ -32,4 +32,9 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS runtime
 WORKDIR /app
 COPY --from=build /app/Tanyo.Portfolio.Web/out ./
+
+RUN apk --update-cache add sqlite \
+    && rm -rf /var/cache/apk/* \
+    && chmod a+rw ./tanyo_data.db
+
 ENTRYPOINT ["dotnet", "Tanyo.Portfolio.Web.dll"]
