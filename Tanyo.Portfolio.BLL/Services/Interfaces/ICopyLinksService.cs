@@ -2,8 +2,8 @@
 
 namespace Tanyo.Portfolio.BLL.Services.Interfaces
 {
-    public interface IProjectsService
+    public interface ICopyLinksService
     {
-        IEnumerable<Project> GetProjects();
+        IEnumerable<CopyLink> GetLinks();
     }
 }

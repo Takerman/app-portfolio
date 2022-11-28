@@ -3,18 +3,13 @@ using System.Text.Json.Serialization;
 
 namespace Tanyo.Portfolio.Data.Entities
 {
-    public class NavLink
+    public class CopyLink
     {
         [Key]
         public int ID { get; set; }
 
-        public object Data;
-
-        [JsonPropertyName("action")]
-        public string Action { get; set; }
-
-        [JsonPropertyName("controller")]
-        public string Controller { get; set; }
+        [JsonPropertyName("url")]
+        public string Url { get; set; }
 
         [JsonPropertyName("label")]
         public string Label { get; set; }

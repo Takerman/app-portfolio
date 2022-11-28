@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Localization;
 using System.Reflection;
-using Tanyo.Portfolio.BLL.Services.Interfaces;
 using Tanyo.Portfolio.Data.Entities;
+using Tanyo.Portfolio.BLL.Services.Interfaces;
 
-namespace Tanyo.Portfolio.Web.Services
+namespace Tanyo.Portfolio.BLL.Services
 {
     public class SharedLocalizationService : ISharedLocalizationService
     {

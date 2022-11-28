@@ -12,11 +12,10 @@ using System;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Tanyo.Portfolio.BLL.Services;
 using Tanyo.Portfolio.BLL.Services.Interfaces;
 using Tanyo.Portfolio.Data.Entities;
 using Tanyo.Portfolio.Web.Models.Services;
-using Tanyo.Portfolio.Web.Resources;
-using Tanyo.Portfolio.Web.Services;
 
 namespace Tanyo.Portfolio.Web
 {
@@ -44,6 +43,10 @@ namespace Tanyo.Portfolio.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            AddServices(services);
+            AddHsts(services);
+            AddLocalization(services);
+
             services.AddControllersWithViews();
             services.AddMvc(option =>
             {
@@ -51,10 +54,6 @@ namespace Tanyo.Portfolio.Web
                 option.CacheProfiles.Add("Default", new CacheProfile() { Duration = 30 });
             }).AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
             .AddDataAnnotationsLocalization(options => { options.DataAnnotationLocalizerProvider = (type, factory) => factory.Create(typeof(SharedResource)); });
-
-            AddServices(services);
-            AddHsts(services);
-            AddLocalization(services);
         }
 
         private void AddLocalization(IServiceCollection services)
@@ -111,11 +110,15 @@ namespace Tanyo.Portfolio.Web
         private void AddServices(IServiceCollection services)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddSingleton<ISharedLocalizationService, SharedLocalizationService>();
+            services.AddSingleton<SharedLocalizationService>();
             services.AddTransient<INavLinksService, NavLinksService>();
+            services.AddTransient<ISocialLinksService, SocialLinksService>();
+            services.AddTransient<ICopyLinksService, CopyLinksService>();
+            services.AddTransient<ICompaniesService, CompaniesService>();
             services.AddTransient<ISkillsService, SkillsService>();
             services.AddTransient<IPricingService, PricingService>();
             services.AddTransient<IProjectsService, ProjectsService>();
+            services.AddTransient<IBlogService, BlogService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -22,15 +22,24 @@ namespace Tanyo.Portfolio.Web.Models
             INavLinksService navLinksService) : this()
         {
             Head.Title = sharedLocalizer["Tanyo Ivanov"];
+
             Header.ImageUrl = "/img/profile/logo.png";
-            Header.NavigationLinks = navLinksService.GetNavLinks().ToList();
+            Header.NavigationLinks = navLinksService.GetLinks().ToList();
 
             Footer.ImageUrl = "/img/profile/logo2.png";
             Footer.NavigationLinks = Header.NavigationLinks;
-            Footer.SocialLinks = navLinksService.GetSocialLinks().ToList();
-            Footer.CopyLink = navLinksService.GetCopyLinks().FirstOrDefault();
+        }
 
-            Companies.Data = navLinksService.GetCompanies().ToList();
+        public DefaultLayout(IStringLocalizer sharedLocalizer,
+            INavLinksService navLinksService,
+            ISocialLinksService socialLinksService,
+            ICopyLinksService copyLinksService,
+            ICompaniesService companiesService) : this(sharedLocalizer, navLinksService)
+        {
+            Footer.SocialLinks = socialLinksService.GetLinks().ToList();
+            Footer.CopyLink = copyLinksService.GetLinks().FirstOrDefault();
+
+            Companies.Data = companiesService.GetCompanies().ToList();
         }
 
         public Header Header { get; set; }

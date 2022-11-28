@@ -32,7 +32,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
                 new NavLink(){ Action = "Index", Controller = "Portfolio", Label = _sharedLocalizer["Portfolio"] },
             };
 
-            var model = _projectsService.GetAll().Where(x => x.IsPrivate == false).ToList();
+            var model = _projectsService.GetProjects().Where(x => x.IsPrivate == false).ToList();
             return View(model);
         }
 

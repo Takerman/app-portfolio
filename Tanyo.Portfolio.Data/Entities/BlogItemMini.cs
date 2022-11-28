@@ -6,7 +6,7 @@ namespace Tanyo.Portfolio.Data.Entities
     {
         public BlogItemMini()
         {
-            this.Date = DateTime.Now;
+            Date = DateTime.Now;
         }
 
         [Key]

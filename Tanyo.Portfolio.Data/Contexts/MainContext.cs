@@ -9,6 +9,10 @@ namespace Tanyo.Portfolio.Data.Contexts
 
         public DbSet<NavLink> NavLinks { get; set; }
 
+        public DbSet<CopyLink> CopyLinks { get; set; }
+
+        public DbSet<SocialLink> SocialLinks { get; set; }
+
         public DbSet<Price> Prices { get; set; }
 
         public DbSet<Project> Projects { get; set; }
@@ -26,6 +30,8 @@ namespace Tanyo.Portfolio.Data.Contexts
         {
             modelBuilder.Entity<BlogItemMini>().ToTable("BlogItemsMini");
             modelBuilder.Entity<NavLink>().ToTable("NavLinks");
+            modelBuilder.Entity<CopyLink>().ToTable("CopyLinks");
+            modelBuilder.Entity<SocialLink>().ToTable("SocialLinks");
             modelBuilder.Entity<Price>().ToTable("Prices");
             modelBuilder.Entity<Project>().ToTable("Projects");
             modelBuilder.Entity<Skill>().ToTable("Skills");

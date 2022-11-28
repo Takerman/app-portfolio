@@ -2,14 +2,14 @@
 using Tanyo.Portfolio.Data.Contexts;
 using Tanyo.Portfolio.Data.Entities;
 
-namespace Tanyo.Portfolio.Web.Models.Services
+namespace Tanyo.Portfolio.BLL.Services
 {
-    public class NavLinksService : INavLinksService
+    public class SocialLinksService : ISocialLinksService
     {
-        public IEnumerable<NavLink> GetLinks()
+        public IEnumerable<SocialLink> GetLinks()
         {
             using var context = new MainContext();
-            return context.NavLinks.ToList();
+            return context.SocialLinks.ToList();
         }
     }
 }

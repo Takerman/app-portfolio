@@ -2,6 +2,7 @@
 @using Tanyo.Portfolio.Web.Models.Partials
 @inject SharedLocalizationService sharedLocalizer
 @inject IViewLocalizer localizer
+@model IndexModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -50,4 +51,4 @@
 @await Html.PartialAsync("~/Views/Shared/Partials/About.cshtml")
 @await Html.PartialAsync("~/Views/Shared/Partials/Services.cshtml")
 @await Html.PartialAsync("~/Views/Shared/Partials/Testimonial.cshtml")
-@await Html.PartialAsync("~/Views/Shared/Partials/Blog.cshtml", new Blog(3))
+@await Html.PartialAsync("~/Views/Shared/Partials/Blog.cshtml", Model.Blog)

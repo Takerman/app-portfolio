@@ -10,8 +10,6 @@ using Tanyo.Portfolio.BLL.Services.Interfaces;
 using Tanyo.Portfolio.Data.Entities;
 using Tanyo.Portfolio.Web.Models;
 using Tanyo.Portfolio.Web.Models.Filters;
-using Tanyo.Portfolio.Web.Models.Services;
-using Tanyo.Portfolio.Web.Resources;
 
 namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
@@ -34,7 +32,6 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 
             _localizer = factory.Create(type);
             _sharedLocalizer = factory.Create("SharedResource", assemblyName.Name);
-            //_configuration = configuration;
             _logger = logger;
 
             Layout = new DefaultLayout(_sharedLocalizer, navLinksService);

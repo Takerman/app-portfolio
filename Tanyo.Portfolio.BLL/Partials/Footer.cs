@@ -8,17 +8,17 @@ namespace Tanyo.Portfolio.Web.Models
         {
             NavigationLinks = new List<NavLink>();
 
-            SocialLinks = new List<NavLink>();
+            SocialLinks = new List<SocialLink>();
 
-            CopyLink = new NavLink();
+            CopyLink = new CopyLink();
         }
 
         public string ImageUrl { get; set; }
 
         public IEnumerable<NavLink> NavigationLinks { get; set; }
 
-        public IEnumerable<NavLink> SocialLinks { get; set; }
+        public IEnumerable<SocialLink> SocialLinks { get; set; }
 
-        public NavLink CopyLink { get; set; }
+        public CopyLink CopyLink { get; set; }
     }
 }

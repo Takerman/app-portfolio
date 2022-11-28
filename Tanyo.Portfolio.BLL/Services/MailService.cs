@@ -7,5 +7,10 @@ namespace Tanyo.Portfolio.Web.Models.Services
         public MailService()
         {
         }
+
+        public void SendMessage()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

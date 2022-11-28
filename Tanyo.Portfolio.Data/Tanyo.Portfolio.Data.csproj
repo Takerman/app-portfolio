@@ -7,37 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="data\brands.json" />
     <None Remove="data\copy-links.json" />
     <None Remove="data\nav-links.json" />
-    <None Remove="data\pricing.json" />
-    <None Remove="data\projects.json" />
-    <None Remove="data\skills.json" />
     <None Remove="data\social-links.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="data\brands.json">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
     <Content Include="data\copy-links.json">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="data\nav-links.json">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="data\pricing.json">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="data\projects.json">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="data\skills.json">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

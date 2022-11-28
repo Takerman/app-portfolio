@@ -6,7 +6,7 @@ namespace Tanyo.Portfolio.Web.Models.Services
 {
     public class ProjectsService : IProjectsService
     {
-        public IEnumerable<Project> GetAll()
+        public IEnumerable<Project> GetProjects()
         {
             using var context = new MainContext();
             return context.Projects.ToList();
