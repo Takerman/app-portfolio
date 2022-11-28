@@ -150,6 +150,18 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="tanyo_data.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="tanyo_data.db-shm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="tanyo_data.db-wal">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 
 
 </Project>
