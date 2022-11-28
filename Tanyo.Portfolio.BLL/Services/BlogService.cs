@@ -12,9 +12,14 @@ namespace Tanyo.Portfolio.BLL.Services
             return context.BlogItemsMini.ToList();
         }
 
-        public IEnumerable<BlogItemMini> GetBlogItemsReversed(int maxPostsCount)
+        public IEnumerable<BlogItemMini> GetBlogItemsReversed(int? maxPostsCount = null)
         {
-            return GetBlogItems().Reverse().Take(maxPostsCount).ToList();
+            var result = GetBlogItems().Reverse();
+
+            if (maxPostsCount != null && maxPostsCount.HasValue)
+                result = result.Take(maxPostsCount.Value);
+
+            return result.ToList();
         }
     }
 }

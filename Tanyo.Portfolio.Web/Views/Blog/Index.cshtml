@@ -1,9 +1,10 @@
 ﻿@using Tanyo.Portfolio.Web.Models.Partials
+@model Blog
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="section-margin">
-    @await Html.PartialAsync("~/Views/Shared/Partials/Blog.cshtml", new Blog())
+    @await Html.PartialAsync("~/Views/Shared/Partials/Blog.cshtml", Model)
 </div>

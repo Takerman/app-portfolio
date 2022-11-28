@@ -6,6 +6,6 @@ namespace Tanyo.Portfolio.BLL.Services.Interfaces
     {
         IEnumerable<BlogItemMini> GetBlogItems();
 
-        IEnumerable<BlogItemMini> GetBlogItemsReversed(int maxPostsCount);
+        IEnumerable<BlogItemMini> GetBlogItemsReversed(int? maxPostsCount = null);
     }
 }
