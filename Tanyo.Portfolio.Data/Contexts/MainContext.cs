@@ -24,7 +24,7 @@ namespace Tanyo.Portfolio.Data.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=" + Path.Combine(Environment.CurrentDirectory, "tanyo_data.db;"));
+            optionsBuilder.UseSqlite("Data Source=" + Path.Combine(Environment.CurrentDirectory, "tanyo_data.db3;"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
