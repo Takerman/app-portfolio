@@ -39,7 +39,7 @@ namespace Tanyo.Portfolio.Web.Models
             Footer.SocialLinks = socialLinksService.GetLinks().ToList();
             Footer.CopyLink = copyLinksService.GetLinks().FirstOrDefault();
 
-            Companies.Data = companiesService.GetCompanies().ToList();
+            Companies = new Companies(); //.Data = companiesService.GetCompanies().ToList();
         }
 
         public Header Header { get; set; }
