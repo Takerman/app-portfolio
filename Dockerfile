@@ -26,7 +26,7 @@ COPY Tanyo.Portfolio.BLL/. ./Tanyo.Portfolio.BLL/
 COPY Tanyo.Portfolio.Web/. ./Tanyo.Portfolio.Web/
 COPY Tanyo.Portfolio.Web.Tests/. ./Tanyo.Portfolio.Web.Tests/
 
-WORKDIR /app/Tanyo.Portfolio.Tests/
+WORKDIR /app/Tanyo.Portfolio.Web.Tests/
 RUN dotnet build ./*.csproj
 RUN dotnet test ./*.csproj --logger "trx;LogFileName=Tanyo.Portfolio.Web.Tests.trx" 
 
