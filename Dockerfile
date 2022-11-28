@@ -30,5 +30,6 @@ WORKDIR /app/Tanyo.Portfolio.Web/
 RUN dotnet publish -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0
-COPY --from=build-env /app/out .
+WORKDIR /app
+COPY --from=build /app/Tanyo.Portfolio.Web/out ./
 ENTRYPOINT ["dotnet", "Tanyo.Portfolio.Web.dll"]
