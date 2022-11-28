@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Linq;
 using System.Reflection;
+using Tanyo.Portfolio.BLL.Services.Interfaces;
+using Tanyo.Portfolio.Data.Entities;
 using Tanyo.Portfolio.Web.Models;
 using Tanyo.Portfolio.Web.Models.Filters;
 using Tanyo.Portfolio.Web.Models.Services;
@@ -17,34 +19,25 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
     [ResponseCache(CacheProfileName = "Default")]
     public abstract class BaseController : Controller
     {
-        public Layout Layout { get; set; }
-
-        protected ILogger<BaseController> _logger;
         private readonly IStringLocalizer _localizer;
+        protected ILogger<BaseController> _logger;
         protected IStringLocalizer _sharedLocalizer;
+        protected IConfiguration _configuration;
+        public DefaultLayout Layout { get; set; }
 
         public BaseController(ILogger<BaseController> logger,
-            NavLinksService navLinksService,
+            INavLinksService navLinksService,
             IStringLocalizerFactory factory)
         {
             var type = typeof(SharedResource);
             var assemblyName = new AssemblyName(type.GetTypeInfo().Assembly.FullName);
+
             _localizer = factory.Create(type);
             _sharedLocalizer = factory.Create("SharedResource", assemblyName.Name);
-
-            Layout = new Layout();
-            Layout.Head.Title = _sharedLocalizer["Tanyo Ivanov"];
-            Layout.Header.ImageUrl = "/img/profile/logo.png";
-            Layout.Header.NavigationLinks = navLinksService.GetNavLinks().ToList();
-
-            Layout.Footer.ImageUrl = "/img/profile/logo2.png";
-            Layout.Footer.NavigationLinks = Layout.Header.NavigationLinks;
-            Layout.Footer.SocialLinks = navLinksService.GetSocialLinks().ToList();
-            Layout.Footer.CopyLink = navLinksService.GetCopyLinks().FirstOrDefault();
-
-            Layout.Brands = navLinksService.GetBrands().ToList();
-
+            //_configuration = configuration;
             _logger = logger;
+
+            Layout = new DefaultLayout(_sharedLocalizer, navLinksService);
         }
 
         [HttpPost]

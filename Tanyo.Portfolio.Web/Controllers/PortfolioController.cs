@@ -3,6 +3,8 @@ using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
+using Tanyo.Portfolio.BLL.Services.Interfaces;
+using Tanyo.Portfolio.Data.Entities;
 using Tanyo.Portfolio.Web.Models;
 using Tanyo.Portfolio.Web.Models.Services;
 
@@ -10,11 +12,11 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
     public class PortfolioController : BaseController
     {
-        private readonly ProjectsService _projectsService;
+        private readonly IProjectsService _projectsService;
 
         public PortfolioController(ILogger<BaseController> logger,
-            NavLinksService navLinksService,
-            ProjectsService projectsService,
+            INavLinksService navLinksService,
+            IProjectsService projectsService,
             IStringLocalizerFactory factory) : base(logger, navLinksService, factory)
         {
             _projectsService = projectsService;

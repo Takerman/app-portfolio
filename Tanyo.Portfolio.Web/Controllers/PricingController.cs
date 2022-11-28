@@ -3,6 +3,8 @@ using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
+using Tanyo.Portfolio.BLL.Services.Interfaces;
+using Tanyo.Portfolio.Data.Entities;
 using Tanyo.Portfolio.Web.Models;
 using Tanyo.Portfolio.Web.Models.Partials;
 using Tanyo.Portfolio.Web.Models.Services;
@@ -11,13 +13,13 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
     public class PricingController : BaseController
     {
-        private readonly SkillsService _skillsService;
-        private readonly PricingService _pricingService;
+        private readonly ISkillsService _skillsService;
+        private readonly IPricingService _pricingService;
 
         public PricingController(ILogger<BaseController> logger,
-            NavLinksService navLinksService,
-            SkillsService skillsService,
-            PricingService pricingService,
+            INavLinksService navLinksService,
+            ISkillsService skillsService,
+            IPricingService pricingService,
             IStringLocalizerFactory factory) : base(logger, navLinksService, factory)
         {
             _skillsService = skillsService;

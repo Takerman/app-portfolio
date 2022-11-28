@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -13,6 +12,8 @@ using System;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Tanyo.Portfolio.BLL.Services.Interfaces;
+using Tanyo.Portfolio.Data.Entities;
 using Tanyo.Portfolio.Web.Models.Services;
 using Tanyo.Portfolio.Web.Resources;
 using Tanyo.Portfolio.Web.Services;
@@ -21,15 +22,14 @@ namespace Tanyo.Portfolio.Web
 {
     public class Startup
     {
-        public Startup(
-            IConfiguration configuration,
-            IWebHostEnvironment env)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
             Env = env;
         }
 
         public IConfiguration Configuration { get; }
+
         public IWebHostEnvironment Env { get; }
 
         public const string DefaultCulture = "en";
@@ -45,25 +45,21 @@ namespace Tanyo.Portfolio.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddLocalization(options => options.ResourcesPath = "Resources");
-
             services.AddMvc(option =>
             {
                 option.EnableEndpointRouting = false;
-                option.CacheProfiles.Add("Default", new CacheProfile()
-                {
-                    Duration = 30
-                });
+                option.CacheProfiles.Add("Default", new CacheProfile() { Duration = 30 });
             }).AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
             .AddDataAnnotationsLocalization(options => { options.DataAnnotationLocalizerProvider = (type, factory) => factory.Create(typeof(SharedResource)); });
 
-            services.AddSingleton<SharedLocalizationService>();
-            services.AddTransient<NavLinksService>();
-            services.AddTransient<SkillsService>();
-            services.AddTransient<PricingService>();
-            services.AddTransient<ProjectsService>();
+            AddServices(services);
+            AddHsts(services);
+            AddLocalization(services);
+        }
 
+        private void AddLocalization(IServiceCollection services)
+        {
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
             var provider = new CustomRequestCultureProvider(async (HttpContext) =>
             {
                 await Task.Yield();
@@ -87,7 +83,6 @@ namespace Tanyo.Portfolio.Web
 
                 return new ProviderCultureResult(ci.Name);
             });
-
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 options.DefaultRequestCulture = new RequestCulture(DefaultCulture);
@@ -95,7 +90,10 @@ namespace Tanyo.Portfolio.Web
                 options.SupportedUICultures = SupportedCultures;
                 options.RequestCultureProviders.Insert(0, provider);
             });
+        }
 
+        private void AddHsts(IServiceCollection services)
+        {
             services.AddHsts(options =>
             {
                 options.Preload = true;
@@ -108,6 +106,16 @@ namespace Tanyo.Portfolio.Web
                 options.ExcludedHosts.Add("tanyoivanov.net");
                 options.ExcludedHosts.Add("www.tanyoivanov.net");
             });
+        }
+
+        private void AddServices(IServiceCollection services)
+        {
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<ISharedLocalizationService, SharedLocalizationService>();
+            services.AddTransient<INavLinksService, NavLinksService>();
+            services.AddTransient<ISkillsService, SkillsService>();
+            services.AddTransient<IPricingService, PricingService>();
+            services.AddTransient<IProjectsService, ProjectsService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

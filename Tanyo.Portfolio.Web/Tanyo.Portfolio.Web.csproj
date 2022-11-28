@@ -31,6 +31,10 @@
   <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
     <PackageReference Include="BundlerMinifier.Core" Version="3.2.449" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="6.0.0" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.7.4">
       <PrivateAssets>all</PrivateAssets>
@@ -109,15 +113,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resources\SharedResource.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\SharedResource.de.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\SharedResource.bg.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views\Blog\post-aws-summit-2022.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>post-aws-summit-2022.en.Designer.cs</LastGenOutput>
@@ -141,6 +136,10 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\img\cv\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tanyo.Portfolio.BLL\Tanyo.Portfolio.BLL.csproj" />
   </ItemGroup>
 
   <ItemGroup>

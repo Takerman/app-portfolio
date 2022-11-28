@@ -3,18 +3,18 @@ using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Net.Mail;
 using System.Net;
+using System.Net.Mail;
+using Tanyo.Portfolio.BLL.Services.Interfaces;
+using Tanyo.Portfolio.Data.Entities;
 using Tanyo.Portfolio.Web.Models;
-using Tanyo.Portfolio.Web.Models.Services;
-using Tanyo.Portfolio.Web.Models.ViewModels;
 
 namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
     public class ContactController : BaseController
     {
         public ContactController(ILogger<BaseController> logger,
-            NavLinksService navLinksService,
+            INavLinksService navLinksService,
             IStringLocalizerFactory factory) : base(logger, navLinksService, factory)
         {
         }
@@ -46,7 +46,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
             smtp.Port = 587;
-            smtp.Credentials = new NetworkCredential("tivanov@takerman.net", "ybpetvbqcuxjsolw");
+            smtp.Credentials = new NetworkCredential("tivanov@takerman.net", _configuration["Mail.Password"]);
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.EnableSsl = true;
 

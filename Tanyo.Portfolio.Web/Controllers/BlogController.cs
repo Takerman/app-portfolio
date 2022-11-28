@@ -2,15 +2,16 @@
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using Tanyo.Portfolio.BLL.Services.Interfaces;
+using Tanyo.Portfolio.Data.Entities;
 using Tanyo.Portfolio.Web.Models;
-using Tanyo.Portfolio.Web.Models.Services;
 
 namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
     public class BlogController : BaseController
     {
         public BlogController(ILogger<BaseController> logger,
-            NavLinksService navLinksService,
+            INavLinksService navLinksService,
             IStringLocalizerFactory factory) : base(logger, navLinksService, factory)
         {
         }

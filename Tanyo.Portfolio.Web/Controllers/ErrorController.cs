@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using Tanyo.Portfolio.BLL.Services.Interfaces;
 using Tanyo.Portfolio.Web.Areas.Tanyo.Controllers;
 using Tanyo.Portfolio.Web.Models;
 using Tanyo.Portfolio.Web.Models.Services;
@@ -13,7 +14,7 @@ namespace Tanyo.Portfolio.Web.Controllers
     public class ErrorController : BaseController
     {
         public ErrorController(ILogger<BaseController> logger,
-            NavLinksService navLinksService,
+            INavLinksService navLinksService,
             IStringLocalizerFactory factory) : base(logger, navLinksService, factory)
         {
         }
@@ -29,7 +30,7 @@ namespace Tanyo.Portfolio.Web.Controllers
 
             _logger.LogError($"The path {exceptionDetails.Path} threw an exception {exceptionDetails.Error}");
 
-            var model = new ErrorViewModel
+            var model = new ErrorModel
             {
                 RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
                 Code = code

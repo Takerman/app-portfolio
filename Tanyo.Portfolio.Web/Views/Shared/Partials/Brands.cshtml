@@ -1,13 +1,13 @@
 ﻿@inject SharedLocalizationService sharedLocalizer
 @inject IViewLocalizer localizer
-@model IEnumerable<Brand>
+@model Companies
 
 <section class="brands-area section_gap_bottom">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-12">
                 <div class="owl-carousel brand-carousel">
-                    @foreach (var brand in Model)
+                    @foreach (var brand in Model.Data)
                     {
                         <div class="single-brand-item d-table">
                             <div class="d-table-cell">

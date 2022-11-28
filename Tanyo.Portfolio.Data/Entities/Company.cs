@@ -1,0 +1,17 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
+
+namespace Tanyo.Portfolio.Data.Entities
+{
+    public class Company
+    {
+        [Key]
+        public int ID { get; set; }
+
+        [JsonPropertyName("url")]
+        public string Url { get; set; }
+
+        [JsonPropertyName("imageName")]
+        public string ImageName { get; set; }
+    }
+}
