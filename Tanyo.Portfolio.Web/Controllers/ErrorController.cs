@@ -7,7 +7,6 @@ using System.Diagnostics;
 using Tanyo.Portfolio.BLL.Services.Interfaces;
 using Tanyo.Portfolio.Web.Areas.Tanyo.Controllers;
 using Tanyo.Portfolio.Web.Models;
-using Tanyo.Portfolio.Web.Models.Services;
 
 namespace Tanyo.Portfolio.Web.Controllers
 {
@@ -15,7 +14,10 @@ namespace Tanyo.Portfolio.Web.Controllers
     {
         public ErrorController(ILogger<BaseController> logger,
             INavLinksService navLinksService,
-            IStringLocalizerFactory factory) : base(logger, navLinksService, factory)
+            ISocialLinksService socialLinksService,
+            ICopyLinksService copyLinksService,
+            ICompaniesService companiesService,
+            IStringLocalizerFactory factory) : base(logger, navLinksService, socialLinksService, copyLinksService, companiesService, factory)
         {
         }
 

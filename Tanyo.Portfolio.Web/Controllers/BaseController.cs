@@ -25,6 +25,9 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 
         public BaseController(ILogger<BaseController> logger,
             INavLinksService navLinksService,
+            ISocialLinksService socialLinksService,
+            ICopyLinksService copyLinksService,
+            ICompaniesService companiesService,
             IStringLocalizerFactory factory)
         {
             var type = typeof(SharedResource);
@@ -34,7 +37,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
             _sharedLocalizer = factory.Create("SharedResource", assemblyName.Name);
             _logger = logger;
 
-            Layout = new DefaultLayout(_sharedLocalizer, navLinksService);
+            Layout = new DefaultLayout(_sharedLocalizer, navLinksService, socialLinksService, copyLinksService, companiesService);
         }
 
         [HttpPost]

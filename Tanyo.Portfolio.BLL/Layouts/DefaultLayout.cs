@@ -7,15 +7,15 @@ namespace Tanyo.Portfolio.Web.Models
     {
         public DefaultLayout()
         {
+            Head = new Head();
+
             Header = new Header();
 
-            Footer = new Footer();
+            Banner = new Banner();
 
             Companies = new Companies();
 
-            Head = new Head();
-
-            Banner = new Banner();
+            Footer = new Footer();
         }
 
         public DefaultLayout(IStringLocalizer sharedLocalizer,

@@ -2,8 +2,6 @@
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Tanyo.Portfolio.BLL.Services.Interfaces;
-using Tanyo.Portfolio.Web.Models;
-using Tanyo.Portfolio.Web.Models.Partials;
 
 namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
@@ -13,8 +11,11 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 
         public HomeController(ILogger<BaseController> logger,
             INavLinksService navLinksService,
+            ISocialLinksService socialLinksService,
+            ICopyLinksService copyLinksService,
+            ICompaniesService companiesService,
             IBlogService blogService,
-            IStringLocalizerFactory factory) : base(logger, navLinksService, factory)
+            IStringLocalizerFactory factory) : base(logger, navLinksService, socialLinksService, copyLinksService, companiesService, factory)
         {
             _blogService = blogService;
         }

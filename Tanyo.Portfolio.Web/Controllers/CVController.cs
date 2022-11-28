@@ -4,7 +4,6 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using Tanyo.Portfolio.BLL.Services.Interfaces;
 using Tanyo.Portfolio.Data.Entities;
-using Tanyo.Portfolio.Web.Models;
 
 namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
@@ -12,7 +11,10 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
     {
         public CvController(ILogger<BaseController> logger,
             INavLinksService navLinksService,
-            IStringLocalizerFactory factory) : base(logger, navLinksService, factory)
+            ISocialLinksService socialLinksService,
+            ICopyLinksService copyLinksService,
+            ICompaniesService companiesService,
+            IStringLocalizerFactory factory) : base(logger, navLinksService, socialLinksService, copyLinksService, companiesService, factory)
         {
         }
 

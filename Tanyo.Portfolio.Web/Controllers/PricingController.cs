@@ -6,8 +6,6 @@ using System.Linq;
 using Tanyo.Portfolio.BLL.Services.Interfaces;
 using Tanyo.Portfolio.Data.Entities;
 using Tanyo.Portfolio.Web.Models;
-using Tanyo.Portfolio.Web.Models.Partials;
-using Tanyo.Portfolio.Web.Models.Services;
 
 namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
@@ -18,9 +16,12 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 
         public PricingController(ILogger<BaseController> logger,
             INavLinksService navLinksService,
-            ISkillsService skillsService,
+            ISocialLinksService socialLinksService,
+            ICopyLinksService copyLinksService,
+            ICompaniesService companiesService,
             IPricingService pricingService,
-            IStringLocalizerFactory factory) : base(logger, navLinksService, factory)
+            ISkillsService skillsService,
+            IStringLocalizerFactory factory) : base(logger, navLinksService, socialLinksService, copyLinksService, companiesService, factory)
         {
             _skillsService = skillsService;
             _pricingService = pricingService;

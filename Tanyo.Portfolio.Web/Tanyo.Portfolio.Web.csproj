@@ -135,7 +135,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Interfaces\" />
     <Folder Include="wwwroot\img\cv\" />
   </ItemGroup>
 

@@ -15,7 +15,10 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
     {
         public ContactController(ILogger<BaseController> logger,
             INavLinksService navLinksService,
-            IStringLocalizerFactory factory) : base(logger, navLinksService, factory)
+            ISocialLinksService socialLinksService,
+            ICopyLinksService copyLinksService,
+            ICompaniesService companiesService,
+            IStringLocalizerFactory factory) : base(logger, navLinksService, socialLinksService, copyLinksService, companiesService, factory)
         {
         }
 

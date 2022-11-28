@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Tanyo.Portfolio.BLL.Services.Interfaces;
 using Tanyo.Portfolio.Data.Entities;
-using Tanyo.Portfolio.Web.Models;
-using Tanyo.Portfolio.Web.Models.Services;
 
 namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
@@ -16,8 +14,11 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 
         public PortfolioController(ILogger<BaseController> logger,
             INavLinksService navLinksService,
+            ISocialLinksService socialLinksService,
+            ICopyLinksService copyLinksService,
+            ICompaniesService companiesService,
             IProjectsService projectsService,
-            IStringLocalizerFactory factory) : base(logger, navLinksService, factory)
+            IStringLocalizerFactory factory) : base(logger, navLinksService, socialLinksService, copyLinksService, companiesService, factory)
         {
             _projectsService = projectsService;
         }

@@ -4,7 +4,6 @@ namespace Tanyo.Portfolio.Web.Models
 {
     public class MessageModel
     {
-
         [StringLength(300)]
         public string Subject { get; set; }
 
