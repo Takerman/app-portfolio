@@ -7,17 +7,13 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
     public class HomeController : BaseController
     {
-        private IBlogService _blogService;
-
         public HomeController(ILogger<BaseController> logger,
             INavLinksService navLinksService,
             ISocialLinksService socialLinksService,
             ICopyLinksService copyLinksService,
             ICompaniesService companiesService,
-            IBlogService blogService,
             IStringLocalizerFactory factory) : base(logger, navLinksService, socialLinksService, copyLinksService, companiesService, factory)
         {
-            _blogService = blogService;
         }
 
         public IActionResult Index()

@@ -8,6 +8,7 @@ namespace Tanyo.Portfolio.Data.Entities
         public int ID { get; set; }
 
         public object Data;
+
         public string Action { get; set; }
 
         public string Controller { get; set; }
