@@ -5,7 +5,7 @@ namespace Tanyo.Portfolio.Web.Tests
         [Fact]
         public void GivenValidInput_WhenSendMessage_ThenSendMessageSuccessfully()
         {
-            Assert.True(true);
+            Assert.True(false);
         }
     }
 }
