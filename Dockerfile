@@ -17,7 +17,7 @@ RUN dotnet restore
 
 WORKDIR /app
 COPY Tanyo.Portfolio.Web.Tests/*.csproj ./Tanyo.Portfolio.Web.Tests/
-WORKDIR /app/Tanyo.Portfolio.Tests/
+WORKDIR /app/Tanyo.Portfolio.Web.Tests/
 RUN dotnet restore
 
 WORKDIR /app
