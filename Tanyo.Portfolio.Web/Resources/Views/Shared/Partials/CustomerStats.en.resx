@@ -117,19 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Back-End" xml:space="preserve">
-    <value>Логика</value>
+  <data name="AverageRating" xml:space="preserve">
+    <value>Average Rating</value>
   </data>
-  <data name="Databases" xml:space="preserve">
-    <value>База данни</value>
+  <data name="HappyCustomer" xml:space="preserve">
+    <value>Happy Customer</value>
   </data>
-  <data name="Desktop" xml:space="preserve">
-    <value>Десктоп</value>
-  </data>
-  <data name="Front-End" xml:space="preserve">
-    <value>Външност</value>
-  </data>
-  <data name="Web" xml:space="preserve">
-    <value>Уеб</value>
+  <data name="TicketSolved" xml:space="preserve">
+    <value>Ticket Solved</value>
   </data>
 </root>

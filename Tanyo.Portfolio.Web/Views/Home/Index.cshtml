@@ -1,19 +1,10 @@
-﻿@page
-@using Tanyo.Portfolio.Web.Models.Partials
+﻿@using Tanyo.Portfolio.Web.Models.Partials
 @inject SharedLocalizationService sharedLocalizer
 @inject IViewLocalizer localizer
+@model IndexModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-
-    var model = new IndexModel()
-            {
-                Stats = new Stats(),
-                Blog = new Blog()
-                {
-                    BlogItemsMini = new BlogService().GetBlogItemsReversed(3).ToList()
-                }
-            };
-
+    Console.WriteLine(Model.ToString());
 }
 
 <section class="home_banner_area" style="background: url(/img/profile/home-banner.png) no-repeat top center;">
@@ -53,12 +44,12 @@
                 </div>
             </div>
         </div>
-        @await Html.PartialAsync("~/Views/Shared/Partials/ProgressBars.cshtml", new ProgressBars())
+        @await Html.PartialAsync("~/Views/Shared/Partials/DevStats.cshtml", Model.DevStats)
     </div>
 </section>
 
-@await Html.PartialAsync("~/Views/Shared/Partials/Stats.cshtml", model.Stats)
+@await Html.PartialAsync("~/Views/Shared/Partials/CustomerStats.cshtml", Model.CustomerStats)
 @await Html.PartialAsync("~/Views/Shared/Partials/About.cshtml")
 @await Html.PartialAsync("~/Views/Shared/Partials/Services.cshtml")
 @await Html.PartialAsync("~/Views/Shared/Partials/Testimonial.cshtml")
-@await Html.PartialAsync("~/Views/Shared/Partials/Blog.cshtml", model.Blog)
+@await Html.PartialAsync("~/Views/Shared/Partials/Blog.cshtml", Model.Blog)

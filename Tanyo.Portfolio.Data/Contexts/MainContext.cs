@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 using Tanyo.Portfolio.Data.Entities;
 
 namespace Tanyo.Portfolio.Data.Contexts
@@ -22,10 +21,11 @@ namespace Tanyo.Portfolio.Data.Contexts
 
         public DbSet<Company> Companies { get; set; }
 
+        public DbSet<Stat> Stats { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=" + Path.Combine(Environment.CurrentDirectory, "tanyo_data.db3;"));
-            //optionsBuilder.UseMySQL("server=localhost;database=library;user=user;password=password");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -38,6 +38,7 @@ namespace Tanyo.Portfolio.Data.Contexts
             modelBuilder.Entity<Project>().ToTable("Projects");
             modelBuilder.Entity<Skill>().ToTable("Skills");
             modelBuilder.Entity<Company>().ToTable("Companies");
+            modelBuilder.Entity<Stat>().ToTable("Stats");
         }
     }
 }

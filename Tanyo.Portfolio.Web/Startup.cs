@@ -119,6 +119,7 @@ namespace Tanyo.Portfolio.Web
             services.AddTransient<IPricingService, PricingService>();
             services.AddTransient<IProjectsService, ProjectsService>();
             services.AddTransient<IBlogService, BlogService>();
+            services.AddTransient<IStatsService, StatsService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
