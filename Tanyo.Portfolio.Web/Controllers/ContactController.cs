@@ -43,7 +43,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
             _logger.LogInformation(model.Name);
 
             var to = new MailAddress(_configuration["Smtp:UserName"]);
-            var from = new MailAddress(model.Email);
+            var from = new MailAddress(model.Email, model.Name);
 
             var email = new MailMessage(from, to)
             {
