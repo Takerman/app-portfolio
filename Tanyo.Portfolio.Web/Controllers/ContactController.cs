@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using System;
@@ -18,8 +19,10 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
             ISocialLinksService socialLinksService,
             ICopyLinksService copyLinksService,
             ICompaniesService companiesService,
+            IConfiguration configuration,
             IStringLocalizerFactory factory) : base(logger, navLinksService, socialLinksService, copyLinksService, companiesService, factory)
         {
+            _configuration = configuration; 
         }
 
         public IActionResult Index()
@@ -39,19 +42,23 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
         {
             _logger.LogInformation(model.Name);
 
-            MailAddress to = new MailAddress("tivanov@takerman.net");
-            MailAddress from = new MailAddress(model.Email);
+            var to = new MailAddress(_configuration["Smtp:UserName"]);
+            var from = new MailAddress(model.Email);
 
-            MailMessage email = new MailMessage(from, to);
-            email.Subject = model.Subject;
-            email.Body = "From: " + model.Email + ": " + model.Message;
+            var email = new MailMessage(from, to)
+            {
+                Subject = model.Subject,
+                Body = "From: " + model.Email + ": " + Environment.NewLine + model.Message
+            };
 
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = "smtp.gmail.com";
-            smtp.Port = 587;
-            smtp.Credentials = new NetworkCredential("tivanov@takerman.net", _configuration["Mail.Password"]);
-            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtp.EnableSsl = true;
+            var smtp = new SmtpClient
+            {
+                Host = _configuration["Smtp:Server"],
+                Port = int.TryParse(_configuration["Smtp:Port"], out int port) ? port : 587,
+                Credentials = new NetworkCredential(_configuration["Smtp:UserName"], _configuration["Smtp:Password"]),
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                EnableSsl = true
+            };
 
             try
             {
