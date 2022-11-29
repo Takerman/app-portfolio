@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BackEnd" xml:space="preserve">
-    <value>Логика</value>
+    <value>Логический уровень</value>
   </data>
   <data name="Databases" xml:space="preserve">
     <value>Базы данных</value>
@@ -127,7 +127,7 @@
     <value>Рабочий стол</value>
   </data>
   <data name="FrontEnd" xml:space="preserve">
-    <value>Внешний интерфейс</value>
+    <value>Интерфейс</value>
   </data>
   <data name="Web" xml:space="preserve">
     <value>Уеб</value>
