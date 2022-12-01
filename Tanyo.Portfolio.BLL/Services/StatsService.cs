@@ -9,7 +9,7 @@ namespace Tanyo.Portfolio.BLL.Services
         public IEnumerable<Stat> GetDevStats()
         {
             using var context = new MainContext();
-            return context.Stats.Where(x=>x.Type.ToLower() == "dev").ToList();
+            return context.Stats.Where(x => x.Type.ToLower() == "dev").ToList();
         }
 
         public IEnumerable<Stat> GetCustomerStats()
