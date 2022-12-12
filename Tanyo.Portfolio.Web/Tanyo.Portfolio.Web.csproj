@@ -145,10 +145,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\img\cv\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Tanyo.Portfolio.BLL\Tanyo.Portfolio.BLL.csproj" />
   </ItemGroup>
 

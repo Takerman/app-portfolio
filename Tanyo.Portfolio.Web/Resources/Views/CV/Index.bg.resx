@@ -195,6 +195,15 @@
   <data name="Plovdiv" xml:space="preserve">
     <value>Пловдив</value>
   </data>
+  <data name="position-lexis-title1" xml:space="preserve">
+    <value>Софтуерен Инжинер II</value>
+  </data>
+  <data name="position-lexis-title2" xml:space="preserve">
+    <value>Софтуерен Инжинер III</value>
+  </data>
+  <data name="position-ln-content" xml:space="preserve">
+    <value>Участвал в разработката на модерна глобална таксова платформа със много зависимости към други микро услуги. Облачна среда, най-модерната за времето си методология на работа, Реакт клиенти свързани, чрез множесто интерфейси.</value>
+  </data>
   <data name="Pre-Intermediate English" xml:space="preserve">
     <value>Почти среден Английски</value>
   </data>
@@ -206,6 +215,9 @@
   </data>
   <data name="Remote" xml:space="preserve">
     <value>Ремоут</value>
+  </data>
+  <data name="resume" xml:space="preserve">
+    <value>БИОГРАФИЯ</value>
   </data>
   <data name="Senior .NET Developer" xml:space="preserve">
     <value>Старши .NET програмист</value>
