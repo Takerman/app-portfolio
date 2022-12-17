@@ -129,6 +129,9 @@
   <data name="Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them." xml:space="preserve">
     <value>Тук можете да намерите пакети със модели за дйзайн, които създадох докато гледам един YouTube канал. Има обяснение и видео за всеки един от тях.</value>
   </data>
+  <data name="home-blog-see-all" xml:space="preserve">
+    <value>ВИЖ ВСИЧКИ</value>
+  </data>
   <data name="How I defined and listed my optimized for the client prices." xml:space="preserve">
     <value>Как обособих и изброих цените си, така че да са оптимизирани за клиента.</value>
   </data>

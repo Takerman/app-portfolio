@@ -1,11 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TypeScriptTarget>ES6</TypeScriptTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <TypeScriptTarget>ES6</TypeScriptTarget>
+  </PropertyGroup>
+
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <AssemblyName>Tanyo.Portfolio.Web</AssemblyName>
     <UserSecretsId>badb8582-24ff-4b9b-ad8c-b341b41d634a</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>favicon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/Takerman/Tanyo.Portfolio.git</RepositoryUrl>
+    <FileVersion>2</FileVersion>
+    <AssemblyVersion>2</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -54,6 +67,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="bundleconfig.json" />
     <None Include="wwwroot\files\DesignPatterns.zip" />
     <None Include="wwwroot\files\recomendations\AndersPersson.pdf" />
@@ -68,6 +85,10 @@
     <None Include="wwwroot\img\brands\logo1.png.kra" />
     <None Include="wwwroot\img\brands\logo2.png.kra" />
     <None Include="wwwroot\img\brands\logo3.png.kra" />
+    <None Include="wwwroot\img\favicon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="wwwroot\img\portfolio\bg.jpg.kra" />
     <None Include="wwwroot\img\portfolio\p1.png.kra" />
     <None Include="wwwroot\img\portfolio\p2.png.kra" />
