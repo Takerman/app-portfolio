@@ -117,31 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Blog" xml:space="preserve">
-    <value>Blog</value>
-  </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
-  </data>
-  <data name="CV" xml:space="preserve">
-    <value>Lebenslauf</value>
-  </data>
-  <data name="fanless-home-lab" xml:space="preserve">
-    <value>Ein Heimlabor ohne Ventilatoren</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Zuhause</value>
-  </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Mappe</value>
-  </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>Preisgestaltung</value>
+  <data name="Here are most of my Skills" xml:space="preserve">
+    <value>Here are most of my Skills</value>
   </data>
   <data name="Skills" xml:space="preserve">
-    <value>Kompetenzen</value>
+    <value>Skills</value>
   </data>
-  <data name="Takerman" xml:space="preserve">
-    <value>Takerman</value>
+  <data name="Tech Skills" xml:space="preserve">
+    <value>Tech Skills</value>
+  </data>
+  <data name="The prices could be negotiated." xml:space="preserve">
+    <value>The prices could be negotiated.</value>
+  </data>
+  <data name="Updated" xml:space="preserve">
+    <value>Updated</value>
+  </data>
+  <data name="Years" xml:space="preserve">
+    <value>Years</value>
   </data>
 </root>

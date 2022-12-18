@@ -117,31 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Blog" xml:space="preserve">
-    <value>Blog</value>
+  <data name="BG" xml:space="preserve">
+    <value>BG</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
+  <data name="Bulgaria" xml:space="preserve">
+    <value>Bulgaria</value>
   </data>
-  <data name="CV" xml:space="preserve">
-    <value>Lebenslauf</value>
+  <data name="Get in Touch" xml:space="preserve">
+    <value>Get in Touch</value>
   </data>
-  <data name="fanless-home-lab" xml:space="preserve">
-    <value>Ein Heimlabor ohne Ventilatoren</value>
+  <data name="Mon to Fri 9am to 6pm" xml:space="preserve">
+    <value>Mon to Fri 9am to 6pm</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Zuhause</value>
+  <data name="Plovdiv" xml:space="preserve">
+    <value>Plovdiv</value>
   </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Mappe</value>
+  <data name="Send me your query anytime!" xml:space="preserve">
+    <value>Send me your query anytime!</value>
   </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>Preisgestaltung</value>
-  </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Kompetenzen</value>
-  </data>
-  <data name="Takerman" xml:space="preserve">
-    <value>Takerman</value>
+  <data name="UK" xml:space="preserve">
+    <value>UK</value>
   </data>
 </root>

@@ -126,6 +126,9 @@
   <data name="CV" xml:space="preserve">
     <value>резюме</value>
   </data>
+  <data name="fanless-home-lab" xml:space="preserve">
+    <value>Домашняя лаборатория без вентиляторов</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Начало</value>
   </data>

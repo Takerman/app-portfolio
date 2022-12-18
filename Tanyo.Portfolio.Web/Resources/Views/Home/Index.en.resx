@@ -117,31 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Blog" xml:space="preserve">
-    <value>Blog</value>
-  </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
+  <data name="BROCHURE" xml:space="preserve">
+    <value>BROCHURE</value>
   </data>
   <data name="CV" xml:space="preserve">
-    <value>Lebenslauf</value>
+    <value>CV</value>
   </data>
-  <data name="fanless-home-lab" xml:space="preserve">
-    <value>Ein Heimlabor ohne Ventilatoren</value>
+  <data name="I'M TANYO" xml:space="preserve">
+    <value>I'M TANYO</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Zuhause</value>
+  <data name="IT SPECIALIST AND ENGINEER" xml:space="preserve">
+    <value>IT SPECIALIST AND ENGINEER</value>
   </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Mappe</value>
+  <data name="PORTFOLIO" xml:space="preserve">
+    <value>PORTFOLIO</value>
   </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>Preisgestaltung</value>
-  </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Kompetenzen</value>
-  </data>
-  <data name="Takerman" xml:space="preserve">
-    <value>Takerman</value>
+  <data name="schedule" xml:space="preserve">
+    <value>schedule</value>
   </data>
 </root>

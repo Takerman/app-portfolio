@@ -117,31 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Blog" xml:space="preserve">
-    <value>Blog</value>
+  <data name="Cluster" xml:space="preserve">
+    <value>Cluster</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
+  <data name="Feb" xml:space="preserve">
+    <value>Feb</value>
   </data>
-  <data name="CV" xml:space="preserve">
-    <value>Lebenslauf</value>
+  <data name="Forum" xml:space="preserve">
+    <value>Форум</value>
   </data>
-  <data name="fanless-home-lab" xml:space="preserve">
-    <value>Ein Heimlabor ohne Ventilatoren</value>
+  <data name="Hello friends" xml:space="preserve">
+    <value>Forum</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Zuhause</value>
+  <data name="Here are the resources" xml:space="preserve">
+    <value>Тук са ресурсите</value>
   </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Mappe</value>
+  <data name="Hope you enjoyed, see you in the next videos" xml:space="preserve">
+    <value>Here are the resources</value>
   </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>Preisgestaltung</value>
+  <data name="How to cluster" xml:space="preserve">
+    <value>How to cluster</value>
   </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Kompetenzen</value>
+  <data name="In this video I'll show you how I made my appartment smarter with a few raspberry pi 3B+ boards. I'm using the PIs for web server, media center, smart home, database server, to save pictures from a camera and more." xml:space="preserve">
+    <value>In this video I'll show you how I made my appartment smarter with a few raspberry pi 3B+ boards. I'm using the PIs for web server, media center, smart home, database server, to save pictures from a camera and more.</value>
   </data>
-  <data name="Takerman" xml:space="preserve">
-    <value>Takerman</value>
+  <data name="Kodi" xml:space="preserve">
+    <value>Kodi</value>
+  </data>
+  <data name="Regards" xml:space="preserve">
+    <value>Regards</value>
+  </data>
+  <data name="Tanyo Ivanov" xml:space="preserve">
+    <value>Tanyo Ivanov</value>
+  </data>
+  <data name="The video is long, but it gives a lot of information how to configure the server. If you have difficulties write a comment or send me a message, I'll try to answer you when I have time." xml:space="preserve">
+    <value>The video is long, but it gives a lot of information how to configure the server. If you have difficulties write a comment or send me a message, I'll try to answer you when I have time.</value>
   </data>
 </root>

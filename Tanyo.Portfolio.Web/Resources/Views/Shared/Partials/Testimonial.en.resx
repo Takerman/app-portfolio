@@ -117,31 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Blog" xml:space="preserve">
-    <value>Blog</value>
+  <data name="About Me" xml:space="preserve">
+    <value>About Me</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
+  <data name="Anders Person" xml:space="preserve">
+    <value>Anders Person</value>
   </data>
-  <data name="CV" xml:space="preserve">
-    <value>Lebenslauf</value>
+  <data name="BGO Software" xml:space="preserve">
+    <value>BGO Software</value>
   </data>
-  <data name="fanless-home-lab" xml:space="preserve">
-    <value>Ein Heimlabor ohne Ventilatoren</value>
+  <data name="Comstream" xml:space="preserve">
+    <value>Comstream</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Zuhause</value>
+  <data name="Honourable Clients Says" xml:space="preserve">
+    <value>Honourable Clients Says</value>
   </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Mappe</value>
+  <data name="In our opinion, Tanyo conducted his tasks in an excellent way. He was appreciated by his colleagues and showed a great attitude towards work. I would recommend Tanyo for a similar position based on his professional and personal skills." xml:space="preserve">
+    <value>In our opinion, Tanyo conducted his tasks in an excellent way. He was appreciated by his colleagues and showed a great attitude towards work. I would recommend Tanyo for a similar position based on his professional and personal skills.</value>
   </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>Preisgestaltung</value>
+  <data name="Ivan Lekushev" xml:space="preserve">
+    <value>Ivan Lekushev</value>
   </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Kompetenzen</value>
+  <data name="Ivaylo Ivanov" xml:space="preserve">
+    <value>Ivaylo Ivanov</value>
   </data>
-  <data name="Takerman" xml:space="preserve">
-    <value>Takerman</value>
+  <data name="My testimonials" xml:space="preserve">
+    <value>My testimonials</value>
+  </data>
+  <data name="Recomendation" xml:space="preserve">
+    <value>Recomendation</value>
+  </data>
+  <data name="Tanyo was with us for long time and contributed to an important project in our company. He gave some creative ideas and stayed in touch after leaving the company." xml:space="preserve">
+    <value>Tanyo was with us for long time and contributed to an important project in our company. He gave some creative ideas and stayed in touch after leaving the company.</value>
+  </data>
+  <data name="Tanyo would be a good part in every team as he was an important part of our. I would definately recommend Tanyo to his next employers." xml:space="preserve">
+    <value>Tanyo would be a good part in every team as he was an important part of our. I would definately recommend Tanyo to his next employers.</value>
   </data>
 </root>

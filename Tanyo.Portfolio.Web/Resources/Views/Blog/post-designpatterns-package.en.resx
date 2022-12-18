@@ -117,31 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Blog" xml:space="preserve">
-    <value>Blog</value>
+  <data name="Design Patterns Package" xml:space="preserve">
+    <value>Design Patterns Package</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
+  <data name="Design Patterns YouTube Playlist" xml:space="preserve">
+    <value>Design Patterns YouTube Playlist</value>
   </data>
-  <data name="CV" xml:space="preserve">
-    <value>Lebenslauf</value>
+  <data name="Download Design Patterns Package" xml:space="preserve">
+    <value>Download Design Patterns Package</value>
   </data>
-  <data name="fanless-home-lab" xml:space="preserve">
-    <value>Ein Heimlabor ohne Ventilatoren</value>
+  <data name="Facebook" xml:space="preserve">
+    <value>Facebook</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Zuhause</value>
+  <data name="Hello friends" xml:space="preserve">
+    <value>Hello friends</value>
   </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Mappe</value>
+  <data name="Here are the resources" xml:space="preserve">
+    <value>Here are the resources</value>
   </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>Preisgestaltung</value>
+  <data name="Here you can find a package with Design Patterns which I made while watching a YouTube channel.There is explanation and a video about all of them." xml:space="preserve">
+    <value>Here you can find a package with Design Patterns which I made while watching a YouTube channel.There is explanation and a video about all of them.</value>
   </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Kompetenzen</value>
+  <data name="Hope you enjoyed, see you in the next videos" xml:space="preserve">
+    <value>Hope you enjoyed, see you in the next videos</value>
   </data>
-  <data name="Takerman" xml:space="preserve">
-    <value>Takerman</value>
+  <data name="Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="LinkedIn" xml:space="preserve">
+    <value>LinkedIn</value>
+  </data>
+  <data name="Mar" xml:space="preserve">
+    <value>Mar</value>
+  </data>
+  <data name="Regards" xml:space="preserve">
+    <value>Regards</value>
+  </data>
+  <data name="Tanyo Ivanov" xml:space="preserve">
+    <value>Tanyo Ivanov</value>
+  </data>
+  <data name="Twitter" xml:space="preserve">
+    <value>Twitter</value>
   </data>
 </root>

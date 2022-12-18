@@ -121,25 +121,25 @@
     <value>Blog</value>
   </data>
   <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
+    <value>Contact</value>
   </data>
   <data name="CV" xml:space="preserve">
-    <value>Lebenslauf</value>
+    <value>CV</value>
   </data>
   <data name="fanless-home-lab" xml:space="preserve">
-    <value>Ein Heimlabor ohne Ventilatoren</value>
+    <value>Fanless Home lab</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Zuhause</value>
+    <value>Home</value>
   </data>
   <data name="Portfolio" xml:space="preserve">
-    <value>Mappe</value>
+    <value>Portfolio</value>
   </data>
   <data name="Pricing" xml:space="preserve">
-    <value>Preisgestaltung</value>
+    <value>Pricing</value>
   </data>
   <data name="Skills" xml:space="preserve">
-    <value>Kompetenzen</value>
+    <value>Skills</value>
   </data>
   <data name="Takerman" xml:space="preserve">
     <value>Takerman</value>

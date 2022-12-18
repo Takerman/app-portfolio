@@ -117,31 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Blog" xml:space="preserve">
-    <value>Blog</value>
+  <data name="all" xml:space="preserve">
+    <value>all</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
+  <data name="Check My Recent" xml:space="preserve">
+    <value>Check My Recent</value>
   </data>
-  <data name="CV" xml:space="preserve">
-    <value>Lebenslauf</value>
+  <data name="Client Work" xml:space="preserve">
+    <value>Client Work</value>
   </data>
-  <data name="fanless-home-lab" xml:space="preserve">
-    <value>Ein Heimlabor ohne Ventilatoren</value>
+  <data name="Client:" xml:space="preserve">
+    <value>Client:</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Zuhause</value>
+  <data name="desktop" xml:space="preserve">
+    <value>desktop</value>
   </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Mappe</value>
+  <data name="MY PORTFOLIO" xml:space="preserve">
+    <value>MY PORTFOLIO</value>
   </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>Preisgestaltung</value>
+  <data name="other" xml:space="preserve">
+    <value>other</value>
   </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Kompetenzen</value>
-  </data>
-  <data name="Takerman" xml:space="preserve">
-    <value>Takerman</value>
+  <data name="web" xml:space="preserve">
+    <value>web</value>
   </data>
 </root>

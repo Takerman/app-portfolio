@@ -117,31 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Blog" xml:space="preserve">
-    <value>Blog</value>
+  <data name="2016 - IoT devices mobile installer" xml:space="preserve">
+    <value>2016 - IoT devices mobile installer</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
   </data>
-  <data name="CV" xml:space="preserve">
-    <value>Lebenslauf</value>
+  <data name="Aug" xml:space="preserve">
+    <value>Aug</value>
   </data>
-  <data name="fanless-home-lab" xml:space="preserve">
-    <value>Ein Heimlabor ohne Ventilatoren</value>
+  <data name="Client" xml:space="preserve">
+    <value>Client</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Zuhause</value>
+  <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
   </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Mappe</value>
+  <data name="Design Patterns Package" xml:space="preserve">
+    <value>Design Patterns Package</value>
   </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>Preisgestaltung</value>
+  <data name="DOWNLOAD" xml:space="preserve">
+    <value>DOWNLOAD</value>
   </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Kompetenzen</value>
+  <data name="I wanted to create a package with design patterns which contains the most used design patterns while I am learning them from this" xml:space="preserve">
+    <value>I wanted to create a package with design patterns which contains the most used design patterns while I am learning them from this</value>
   </data>
-  <data name="Takerman" xml:space="preserve">
-    <value>Takerman</value>
+  <data name="In my free time I created a webserver for my emails, websites etc. from 3 Raspberry PIs. They work as One virtual machine through the Docker swarm mode and can run multiple applications, scale them etc. As a cloud platform. I use the cluster as media center for my TV and smart house center too. I am constantly upgrading it and I have plan to make my appartment event smarter. Currently I am able to run ASP.NET Core apps and APIs with docker there. I am using it as a Database server for MariaDb too." xml:space="preserve">
+    <value>In my free time I created a webserver for my emails, websites etc. from 3 Raspberry PIs. They work as One virtual machine through the Docker swarm mode and can run multiple applications, scale them etc. As a cloud platform. I use the cluster as media center for my TV and smart house center too. I am constantly upgrading it and I have plan to make my appartment event smarter. Currently I am able to run ASP.NET Core apps and APIs with docker there. I am using it as a Database server for MariaDb too.</value>
+  </data>
+  <data name="Jan" xml:space="preserve">
+    <value>Jan</value>
+  </data>
+  <data name="My spare time" xml:space="preserve">
+    <value>My spare time</value>
+  </data>
+  <data name="playlist" xml:space="preserve">
+    <value>playlist</value>
+  </data>
+  <data name="Project Info" xml:space="preserve">
+    <value>Project Info</value>
+  </data>
+  <data name="Rating" xml:space="preserve">
+    <value>Rating</value>
+  </data>
+  <data name="Started" xml:space="preserve">
+    <value>Started</value>
+  </data>
+  <data name="Tech" xml:space="preserve">
+    <value>Tech</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>Website</value>
   </data>
 </root>

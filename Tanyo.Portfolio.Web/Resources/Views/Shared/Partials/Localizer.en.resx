@@ -117,31 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Blog" xml:space="preserve">
-    <value>Blog</value>
+  <data name="Bulgarian" xml:space="preserve">
+    <value>Bulgarian</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
   </data>
-  <data name="CV" xml:space="preserve">
-    <value>Lebenslauf</value>
+  <data name="German" xml:space="preserve">
+    <value>German</value>
   </data>
-  <data name="fanless-home-lab" xml:space="preserve">
-    <value>Ein Heimlabor ohne Ventilatoren</value>
+  <data name="Language:" xml:space="preserve">
+    <value>Language:</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Zuhause</value>
+  <data name="Request culture provider:" xml:space="preserve">
+    <value>Request culture provider:</value>
   </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Mappe</value>
-  </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>Preisgestaltung</value>
-  </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Kompetenzen</value>
-  </data>
-  <data name="Takerman" xml:space="preserve">
-    <value>Takerman</value>
+  <data name="Russian" xml:space="preserve">
+    <value>Russian</value>
   </data>
 </root>

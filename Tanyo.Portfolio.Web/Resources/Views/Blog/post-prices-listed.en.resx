@@ -117,31 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Blog" xml:space="preserve">
-    <value>Blog</value>
+  <data name="here" xml:space="preserve">
+    <value>here</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
+  <data name="I thought for long time until I defined my average prices as I wanted they to be cheap for the clients and optimized for me and them. After I decied to be self-employed I saw how much we can save from additional taxation from the government and to be easier for them to pay me. They just made a payment, I send them invoice and that's everything. I am paying my insurance, government taxes at the minimum for my country and taxes for accountant. The prices are listed on the homepage and they are synchronized with the sheet that I created" xml:space="preserve">
+    <value>I thought for long time until I defined my average prices as I wanted they to be cheap for the clients and optimized for me and them. After I decied to be self-employed I saw how much we can save from additional taxation from the government and to be easier for them to pay me. They just made a payment, I send them invoice and that's everything. I am paying my insurance, government taxes at the minimum for my country and taxes for accountant. The prices are listed on the homepage and they are synchronized with the sheet that I created</value>
   </data>
-  <data name="CV" xml:space="preserve">
-    <value>Lebenslauf</value>
+  <data name="Jan" xml:space="preserve">
+    <value>Jan</value>
   </data>
-  <data name="fanless-home-lab" xml:space="preserve">
-    <value>Ein Heimlabor ohne Ventilatoren</value>
+  <data name="Please enable JavaScript to view the comments" xml:space="preserve">
+    <value>Please enable JavaScript to view the comments</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Zuhause</value>
+  <data name="Please feel free to comment them with me and to use the average for the project you want to develop." xml:space="preserve">
+    <value>Please feel free to comment them with me and to use the average for the project you want to develop.</value>
   </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Mappe</value>
+  <data name="Prices defined and listed" xml:space="preserve">
+    <value>Prices defined and listed</value>
   </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>Preisgestaltung</value>
-  </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Kompetenzen</value>
-  </data>
-  <data name="Takerman" xml:space="preserve">
-    <value>Takerman</value>
+  <data name="Tanyo Ivanov" xml:space="preserve">
+    <value>Tanyo Ivanov</value>
   </data>
 </root>

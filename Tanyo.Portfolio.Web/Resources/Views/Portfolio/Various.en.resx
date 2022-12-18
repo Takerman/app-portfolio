@@ -117,31 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Blog" xml:space="preserve">
-    <value>Blog</value>
+  <data name="2017 - Internet offer making calendar" xml:space="preserve">
+    <value>2017 - Internet offer making calendar</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
+  <data name="About:" xml:space="preserve">
+    <value>About:</value>
   </data>
-  <data name="CV" xml:space="preserve">
-    <value>Lebenslauf</value>
+  <data name="Client" xml:space="preserve">
+    <value>Client</value>
   </data>
-  <data name="fanless-home-lab" xml:space="preserve">
-    <value>Ein Heimlabor ohne Ventilatoren</value>
+  <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Zuhause</value>
+  <data name="Jan" xml:space="preserve">
+    <value>Jan</value>
   </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Mappe</value>
+  <data name="May" xml:space="preserve">
+    <value>May</value>
   </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>Preisgestaltung</value>
+  <data name="Module for configuring and calculation of an offer for television." xml:space="preserve">
+    <value>Module for configuring and calculation of an offer for television.</value>
   </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Kompetenzen</value>
+  <data name="Module for configuring and calculation of an offer for television. Started and completed by the end." xml:space="preserve">
+    <value>Module for configuring and calculation of an offer for television. Started and completed by the end.</value>
   </data>
-  <data name="Takerman" xml:space="preserve">
-    <value>Takerman</value>
+  <data name="Project Info" xml:space="preserve">
+    <value>Project Info</value>
+  </data>
+  <data name="Started" xml:space="preserve">
+    <value>Started</value>
+  </data>
+  <data name="Tech:" xml:space="preserve">
+    <value>Tech:</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="Website and webshop for selling of luxury wedding invitations." xml:space="preserve">
+    <value>Website and webshop for selling of luxury wedding invitations.</value>
+  </data>
+  <data name="Website and webshop for selling of luxury wedding invitations. Started and completed by the end." xml:space="preserve">
+    <value>Website and webshop for selling of luxury wedding invitations. Started and completed by the end.</value>
   </data>
 </root>

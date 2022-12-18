@@ -117,31 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Blog" xml:space="preserve">
-    <value>Blog</value>
+  <data name="A automatic message bout the exception has been already sent to me. &lt;br /&gt; Great apologies for the uncomfortable situation and hope it will not occure again.&lt;br /&gt; You can use the contact form to send me a quick message anytime." xml:space="preserve">
+    <value>A automatic message bout the exception has been already sent to me. &lt;br /&gt; Great apologies for the uncomfortable situation and hope it will not occure again.&lt;br /&gt; You can use the contact form to send me a quick message anytime.</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
+  <data name="An error occurred &lt;br /&gt;while processing your request" xml:space="preserve">
+    <value>An error occurred &lt;br /&gt;while processing your request</value>
   </data>
-  <data name="CV" xml:space="preserve">
-    <value>Lebenslauf</value>
+  <data name="Request ID" xml:space="preserve">
+    <value>Request ID</value>
   </data>
-  <data name="fanless-home-lab" xml:space="preserve">
-    <value>Ein Heimlabor ohne Ventilatoren</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Zuhause</value>
-  </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Mappe</value>
-  </data>
-  <data name="Pricing" xml:space="preserve">
-    <value>Preisgestaltung</value>
-  </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Kompetenzen</value>
-  </data>
-  <data name="Takerman" xml:space="preserve">
-    <value>Takerman</value>
+  <data name="We will handle it" xml:space="preserve">
+    <value>We will handle it</value>
   </data>
 </root>

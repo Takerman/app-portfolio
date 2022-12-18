@@ -117,29 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="All rights reserved by" xml:space="preserve">
+    <value>All rights reserved by</value>
+  </data>
   <data name="Blog" xml:space="preserve">
     <value>Blog</value>
   </data>
   <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
+    <value>Contact</value>
   </data>
   <data name="CV" xml:space="preserve">
-    <value>Lebenslauf</value>
-  </data>
-  <data name="fanless-home-lab" xml:space="preserve">
-    <value>Ein Heimlabor ohne Ventilatoren</value>
+    <value>CV</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Zuhause</value>
+    <value>Home</value>
   </data>
   <data name="Portfolio" xml:space="preserve">
-    <value>Mappe</value>
+    <value>Portfolio</value>
   </data>
   <data name="Pricing" xml:space="preserve">
-    <value>Preisgestaltung</value>
+    <value>Pricing</value>
   </data>
   <data name="Skills" xml:space="preserve">
-    <value>Kompetenzen</value>
+    <value>Skills</value>
   </data>
   <data name="Takerman" xml:space="preserve">
     <value>Takerman</value>
