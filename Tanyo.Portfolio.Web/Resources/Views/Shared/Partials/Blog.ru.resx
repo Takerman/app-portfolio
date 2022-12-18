@@ -132,6 +132,12 @@
   <data name="fanless-home-lab-title-mini" xml:space="preserve">
     <value>Домашний сервер без вентиляторов</value>
   </data>
+  <data name="grafana-content-mini" xml:space="preserve">
+    <value>Для моей текущей конфигурации я использую мониторинг Grafana для мониторинга производительности сервера и контейнера. В посте вы можете прочитать о Grafana и других инструментах, таких как DataDog.</value>
+  </data>
+  <data name="grafana-title-mini" xml:space="preserve">
+    <value>Графана мониторинг</value>
+  </data>
   <data name="Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them." xml:space="preserve">
     <value>Здесь вы можете найти пакет с шаблонами дизайна, которые я сделал во время просмотра канала YouTube. Существует объяснение и видео обо всех из них.</value>
   </data>
@@ -140,11 +146,6 @@
   </data>
   <data name="How I defined and listed my optimized for the client prices." xml:space="preserve">
     <value>Как я определил и перечислил мои оптимизировано для цен клиента.</value>
-  </data>
-  <data name="In this blog post I will show you how I'm using some Raspberry PIs&#xD;&#xA;                                        for web server, media center, smar home, database server, to save pictures&#xD;&#xA;                                        from a camera and more." xml:space="preserve">
-    <value>В этом блоге я покажу вам, как я использую некоторые Малина ИП
- для веб-сервера, медиа-центр, SMAR дома, сервер базы данных, для сохранения фотографий
- от камеры и многое другое.</value>
   </data>
   <data name="Latest Stories From" xml:space="preserve">
     <value>Последние истории из</value>

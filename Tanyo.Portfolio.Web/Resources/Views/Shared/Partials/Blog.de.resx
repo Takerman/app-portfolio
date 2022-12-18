@@ -132,6 +132,12 @@
   <data name="fanless-home-lab-title-mini" xml:space="preserve">
     <value>Heimserver ohne Lüfter</value>
   </data>
+  <data name="grafana-content-mini" xml:space="preserve">
+    <value>Für meine aktuelle Konfiguration verwende ich die Grafana-Überwachung, um die Server- und Containerleistung zu überwachen. In dem Beitrag können Sie über Grafana und andere Tools wie DataDog lesen</value>
+  </data>
+  <data name="grafana-title-mini" xml:space="preserve">
+    <value>Grafana-Überwachung</value>
+  </data>
   <data name="Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them." xml:space="preserve">
     <value>Hier können Sie ein Paket mit Design Patterns finden, die ich gemacht, während eines YouTube-Kanal zu beobachten. Es gibt Erklärung und ein Video über alle von ihnen.</value>
   </data>
@@ -140,11 +146,6 @@
   </data>
   <data name="How I defined and listed my optimized for the client prices." xml:space="preserve">
     <value>Wie ich definierte und aufgelistet mein für die Client-Preise optimiert.</value>
-  </data>
-  <data name="In this blog post I will show you how I'm using some Raspberry PIs&#xD;&#xA;                                        for web server, media center, smar home, database server, to save pictures&#xD;&#xA;                                        from a camera and more." xml:space="preserve">
-    <value>In dieser Blog-Post werde ich Ihnen zeigen, wie ich einige Raspberry PIs bin mit
- für Web-Server, Media-Center, smar Haus, Datenbankserver, Bilder zu speichern
- von einer Kamera und vieles mehr.</value>
   </data>
   <data name="Latest Stories From" xml:space="preserve">
     <value>Neuesten Geschichten aus</value>

@@ -117,52 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="aws-summit-content-mini" xml:space="preserve">
-    <value>The annual AWS conference in London. This year (2022), I went to the conference in Excel, London. It was quite interesting to attend. Read the full article for more info.</value>
+  <data name="grafana-content" xml:space="preserve">
+    <value>Dieser Arbeitsbereich enthält Statistiken zu CPU-Auslastung, Arbeitsspeicher, Festplatte, CPU-Temperatur, anderen Ressourcen, SWAP-Speicher und Serverausfallzeit.
+
+Es gibt einige Dinge, die ich an Grafana ehrlich gesagt nicht mag. Erstens bekomme ich nicht viele Dinge von der Stange und muss alles selbst machen oder ein Dashboard aus dem Internet herunterladen und für meine Bedürfnisse anpassen. Die zweite Sache, und die wichtigste für mich, ist, dass das Parsen selbst viele Ressourcen verbraucht und ein bisschen Overhead ist. Außerdem müssen wir beim Erstellen eines Dashboards verschiedene Datensätze verwenden, die auch bestimmten Speicher von dem der Maschine zuweisen. Node_Exporter verwendet viel Speicher und ich werde versuchen, ihn in Zukunft zu reduzieren.
+
+Ich verwende einen anderen Desktop, der mir Statistiken über Docker und die darin enthaltenen Container liefert. Von dort erfuhr ich von den verschiedenen Exporteuren etwas über die Speicherzuweisung. Es gibt mir einen klareren Überblick über die Containerleistung, und auf dieser Grundlage kann ich entscheiden, wem ich wie viel Speicher zuweisen soll, und wenn es sich um ein handgefertigtes System handelt, wo ich es verbessern kann. Hier ist die zweite Arbeitsumgebung:</value>
   </data>
-  <data name="aws-summit-title-mini" xml:space="preserve">
-    <value>AWS Summit 2022 Conference - London, Excel</value>
+  <data name="grafana-intro" xml:space="preserve">
+    <value>In diesem Beitrag zeige ich Ihnen, wie ich meine Serverstatistiken auswerte und einsehe. Es war ein langer Auswahlprozess und ich habe einige Analysetools durchlaufen, bevor ich mich für dieses entschieden habe. Zuerst wusste ich, dass Grafana ein gutes Tool ist und dachte darüber nach, aber ich wollte nicht trivial werden und entschied mich, Netdata auszuprobieren, dann probierte ich Checkmk, dann WebMin, dann andere, aber am Ende entschied ich, dass Grafana es ist das Tool, das mir die größte Freiheit gibt, die Ansicht zu ändern, und den größten Satz an Statistiken, obwohl ich denke, dass Netdata ziemlich viel Out-of-the-Box bietet, anstatt sie manuell selbst zu erstellen.
+
+Hier sehen Sie ein Bild meines Haupt-Grafana-Arbeitsbereichs. Dies ist meine Homepage und zeigt die Ressourcennutzung.
+Ich habe andere, die die Verwendung von Containern usw. zeigen:</value>
   </data>
-  <data name="Design Patterns Package" xml:space="preserve">
-    <value>Design Patterns Package</value>
+  <data name="grafana-outro" xml:space="preserve">
+    <value>Insgesamt hat Grafana seine Vor- und Nachteile. Ich verwende einige andere Tools, wie z. B. Microsofts AppInsights, die mir ziemlich gute Statistiken lieferten und die Produktivität nicht beeinträchtigten. Aber das ist, wenn wir Azure verwenden und ich mich derzeit auf einem Docker-Host befinde. Ich kann auch noch keinen Ort finden, an dem Warnmeldungen und detaillierte Systemfehlerdaten wie bei DataDog abgerufen werden können. Zuerst habe ich DataDog verwendet, aber ich möchte nicht, dass die Systemdaten in ausländischen Unternehmen aufbewahrt werden, daher habe ich das Gefühl, dass ich die Daten nicht besitze, sie werden von anderen Personen verwendet, insbesondere wenn sie Daten analysieren.
+
+Insgesamt bietet Grafana ziemlich viel Freiheit, Privatsphäre und eine schöne Präsentation der Daten.
+
+Ich hoffe, Ihnen hat gefallen, was ich geschrieben habe. Ich habe versucht, so viele Details wie möglich zu speichern.
+
+Vielen Dank fürs Lesen, bis bald,
+Tanjo</value>
   </data>
-  <data name="fanless-home-lab-content-mini" xml:space="preserve">
-    <value>This home server turned out to be something amazing. No fans, consumes almost no power and is super powerful</value>
-  </data>
-  <data name="fanless-home-lab-title-mini" xml:space="preserve">
-    <value>Home server without fans</value>
-  </data>
-  <data name="grafana-content-mini" xml:space="preserve">
-    <value>For my current configuration, I use Grafana monitoring to monitor server and container performance. In the post you can read about Grafana and other tools like DataDog</value>
-  </data>
-  <data name="grafana-title-mini" xml:space="preserve">
-    <value>Grafana monitoring</value>
-  </data>
-  <data name="Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them." xml:space="preserve">
-    <value>Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them.</value>
-  </data>
-  <data name="home-blog-see-all" xml:space="preserve">
-    <value>SEE ALL</value>
-  </data>
-  <data name="How I defined and listed my optimized for the client prices." xml:space="preserve">
-    <value>How I defined and listed my optimized for the client prices.</value>
-  </data>
-  <data name="Latest Stories From" xml:space="preserve">
-    <value>Latest Stories From</value>
-  </data>
-  <data name="Learn More" xml:space="preserve">
-    <value>Learn More</value>
-  </data>
-  <data name="My blog" xml:space="preserve">
-    <value>My blog</value>
-  </data>
-  <data name="Prices defined and listed" xml:space="preserve">
-    <value>Prices defined and listed</value>
-  </data>
-  <data name="Raspberry Pi Home Automation" xml:space="preserve">
-    <value>Raspberry Pi Home Automation</value>
-  </data>
-  <data name="Tanyo Ivanov" xml:space="preserve">
-    <value>Tanyo Ivanov</value>
+  <data name="grafana-title" xml:space="preserve">
+    <value>Grafana-Überwachung</value>
   </data>
 </root>

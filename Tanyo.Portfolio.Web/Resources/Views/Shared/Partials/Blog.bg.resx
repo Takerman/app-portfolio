@@ -132,6 +132,12 @@
   <data name="fanless-home-lab-title-mini" xml:space="preserve">
     <value>Домашен сървър без вентилатори</value>
   </data>
+  <data name="grafana-content-mini" xml:space="preserve">
+    <value>За текущата ми конфигурация използвам Grafana monitoring, за да следя произведителността на сървъра и контейнерите. В поста можете да прочетете за Grafana и други инструменти като DataDog</value>
+  </data>
+  <data name="grafana-title-mini" xml:space="preserve">
+    <value>Графана мониторинг</value>
+  </data>
   <data name="Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them." xml:space="preserve">
     <value>Тук можете да намерите пакети със модели за дйзайн, които създадох докато гледам един YouTube канал. Има обяснение и видео за всеки един от тях.</value>
   </data>
@@ -140,9 +146,6 @@
   </data>
   <data name="How I defined and listed my optimized for the client prices." xml:space="preserve">
     <value>Как обособих и изброих цените си, така че да са оптимизирани за клиента.</value>
-  </data>
-  <data name="In this blog post I will show you how I'm using some Raspberry PIs&#xD;&#xA;                                        for web server, media center, smar home, database server, to save pictures&#xD;&#xA;                                        from a camera and more." xml:space="preserve">
-    <value>Във този блог пост ще ви покажа как ползвам няколко Raspberry Pi платки за да създам уеб сървър, медиен център, умен дом, база данни сървър за запазване на картинки от камера и повече.</value>
   </data>
   <data name="Latest Stories From" xml:space="preserve">
     <value>Последни истории от</value>
