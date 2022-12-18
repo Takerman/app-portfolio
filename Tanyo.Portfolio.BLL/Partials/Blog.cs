@@ -6,6 +6,7 @@ namespace Tanyo.Portfolio.Web.Models.Partials
     {
         public Blog()
         {
+            SeeAllVisible = false;
             BlogItemsMini = new List<BlogItemMini>();
         }
 
