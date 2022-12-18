@@ -72,6 +72,15 @@
     border: 1px solid #e0e0e0;
 }
 
+.blog-post-image-lg {
+    width: 70%;
+    max-width: 650px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #e0e0e0;
+}
+
 .blog-post-thumbnail {
     padding: 20px 50px 20px 50px;
 }
