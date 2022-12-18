@@ -34,6 +34,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
             };
 
             var model = new Blog();
+            model.SeeAllVisible = false;
             model.BlogItemsMini = _blogService.GetBlogItemsReversed();
 
             return View(model);

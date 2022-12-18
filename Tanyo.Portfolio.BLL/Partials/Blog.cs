@@ -10,5 +10,7 @@ namespace Tanyo.Portfolio.Web.Models.Partials
         }
 
         public IEnumerable<BlogItemMini> BlogItemsMini { get; set; }
+        
+        public bool SeeAllVisible { get; set; }
     }
 }

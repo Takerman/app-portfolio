@@ -41,8 +41,11 @@
                 </div>
             }
         </div>
-        <div class="text-center">
-            <a href="@Url.ActionLink("Index", "Blog")" class="primary_btn2">@localizer["home-blog-see-all"]</a>
-        </div>
+        @if (Model.SeeAllVisible)
+        {
+            <div class="text-center">
+                <a href="@Url.ActionLink("Index", "Blog")" class="primary_btn2">@localizer["home-blog-see-all"]</a>
+            </div>
+        }
     </div>
 </section>

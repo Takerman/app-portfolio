@@ -37,6 +37,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
                 DevStats = _statsService.GetDevStats().ToList(),
                 Blog = new Blog()
                 {
+                    SeeAllVisible = true,
                     BlogItemsMini = _blogService.GetBlogItemsReversed(3).ToList()
                 }
             };
