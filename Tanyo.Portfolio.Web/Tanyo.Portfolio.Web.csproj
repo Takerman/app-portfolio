@@ -194,7 +194,7 @@
     <EmbeddedResource Update="Resources\Views\Blog\post-designpatterns-package.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Views\Blog\post-grafana-monitoring.ru.resx">
+    <EmbeddedResource Update="Resources\Views\Blog\post-grafana-monitoring.bg.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views\Blog\post-grafana-monitoring.de.resx">
@@ -203,8 +203,9 @@
     <EmbeddedResource Update="Resources\Views\Blog\post-grafana-monitoring.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Views\Blog\post-grafana-monitoring.bg.resx">
+    <EmbeddedResource Update="Resources\Views\Blog\post-grafana-monitoring.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>post-grafana-monitoring.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views\Blog\post-fanless-home-lab.bg.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -527,6 +528,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>post-aws-summit-2022.en.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Blog\post-grafana-monitoring.ru.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>post-grafana-monitoring.ru.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
