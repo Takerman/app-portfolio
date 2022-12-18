@@ -126,6 +126,12 @@
   <data name="Design Patterns Package" xml:space="preserve">
     <value>Модели за дизайн</value>
   </data>
+  <data name="fanless-home-lab-content-mini" xml:space="preserve">
+    <value>Този домашен сървър се оказа нещо невероятно. Няма вентилатори, почти не ползва енергия и е супер силен</value>
+  </data>
+  <data name="fanless-home-lab-title-mini" xml:space="preserve">
+    <value>Домашен сървър без вентилатори</value>
+  </data>
   <data name="Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them." xml:space="preserve">
     <value>Тук можете да намерите пакети със модели за дйзайн, които създадох докато гледам един YouTube канал. Има обяснение и видео за всеки един от тях.</value>
   </data>

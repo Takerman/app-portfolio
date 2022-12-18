@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="fanless-content-intro" xml:space="preserve">
+    <value>В этом посте я расскажу вам о том, как я купил и настроил домашний сервер, в котором нет вентиляторов и вращающихся частей. В прошлых постах я рассказывал о тестовом кластерном сервере из плат Raspberry PI ARM, который использовал просто для развлечения и тестирования некоторых технологий. Затем я разобрал его и использовал для домашней автоматизации.
+
+Теперь вещи уже не тестовые и я решил сделать что-то реальное. Я вложил 1500 левов в сервер из Китая, который оказался неплохим. Правда в том, что Китай является мировым лидером в области аппаратного обеспечения и опережает его на годы. Это машина нового поколения, у которой еще нет драйверов ни для одной из частей. Это большой кулер, в котором размещен мощный процессор i9, терабайтный SSD-винчестер и почти 70 гигабайт оперативной памяти.
+
+Его также можно использовать в качестве маршрутизатора. Он имеет 5 разъемов для кабелей LAN и может установить на него pfsense.
+
+Вот его конфигурация:
+Процессор: 2,5G i7 1165G7
+Оперативная память: 68 ГБ DDR4
+Жесткий: 1 ТБ NVMe
+
+Я использую его для медиа- и веб-сервера, а также для графической среды домашнего телевидения и игровой платформы. В общем...
+
+Вы можете увидеть это на картинке ниже. Я подключил к нему 2 жестких диска и ожидаю еще два в ближайшее время. Я запускаю веб-сайт с помощью Docker и Nginx Proxy Manager.
+
+Вот картинка:</value>
+  </data>
+  <data name="fanless-content-outro" xml:space="preserve">
+    <value>Вы видите, насколько полезен домашний сервер. Я также заметил улучшение скорости веб-сайтов, которые я запускаю, вместо хостинга, который я использовал. В качестве минуса скажу, что использовать домашний сервер вместо хостинга намного сложнее и дольше. Хостинг дает вам уже готовые вещи и вам не придется совершать ошибки, которые они уже исправили. В качестве положительного момента я бы сказал, что у вас гораздо больше свободы и чувства собственности, вам не нужно иметь дело со службой поддержки и т. д.
+
+В целом хостинг безопаснее для рабочих сайтов, но с другой стороны, там меньше управления и ваши данные есть у кого-то другого.
+
+Надеюсь, вам понравилось. Это только начало серии, которую я буду запускать для сервера. Скоро будет пост о Grafana и других технологиях.</value>
+  </data>
+  <data name="fanless-content-section1" xml:space="preserve">
+    <value>В качестве устройств моя домашняя сеть состоит из персональных устройств, таких как ноутбук, телефон и принтер. Устройства, которые я использую для сервера, — это сам сервер, два жестких диска, которых скоро станет больше, и маршрутизатор.
+
+На сервере я установил несвободную версию Debian 11 + графический интерфейс KDE. Я сохраняю все программное обеспечение в файле sh, который можно использовать повторно. Сервер использует Docker для запуска сайтов как контейнеров, образы которых я сейчас храню на GitHub.
+
+Существует прокси-менеджер Nginx, который создает записи доменных имен для портов, открытых в Docker, и сопоставляет записи с портом 80 HTTP или 443 HTTPS на маршрутизаторе. Порты 80:80 и 443:443 открываются с роутера, чтобы когда кто-то пишет доменное имя, его можно было сопоставить с соответствующим контейнером.
+
+Ниже вы можете увидеть карту устройств в домашней сети, а также есть еще несколько не важных и поэтому не включенных:</value>
+  </data>
+  <data name="fanless-content-section2" xml:space="preserve">
+    <value>Программное обеспечение и контейнеры, которые я установил на ноутбук, в основном ориентированы на:
+- Мониторинг системы и контейнеров
+- Бухгалтерия и делопроизводство
+- Сохранение резервных копий сайтов и системы
+- Запуск веб-сайтов
+- Потоковое мультимедиа, такое как игры, фильмы, музыка и книги
+- Играть в игры
+
+Сайт, который вы сейчас просматриваете, находится на сервере и находится в Болгарии. Еще несколько сайтов, которые связаны с виртуальными скоростными свиданиями, моей компанией и небольшими экспериментами. Это мои аппликации ручной работы.
+
+В качестве готовых приложений использую:
+- Система Oddo ERP для учета и организации документов и прочего о компании
+- Nginx Proxy Manager для создания внутренних доменных имен для контейнеров и предоставления их через маршрутизатор.
+- Медиацентр Plex для просмотра фильмов и музыки, если они у меня загружены, а также он есть у меня на телефоне, поэтому, когда я в пути, я тоже могу им пользоваться.
+- Grafana для мониторинга системы и контейнеров. Есть несколько довольно симпатичных рисунков, которые я скоро покажу в будущем посте.
+- jsWiki, которую я использую для создания проектной документации.
+- Portainer, который я использую для управления контейнерами
+- Другие контейнеры, которые имеют разные цели, такие как Searchxng для поиска в Интернете вместо Google, Caliber-web для управления книгами, Jellyfish в качестве альтернативы Plex, контейнер Map, с помощью которого я создаю панель инструментов для всех сайтов и могу более легко получить доступ из одно место.
+
+У меня на сервере установлено другое программное обеспечение, кроме Docker. Для игр использую эмулятор Mame и PCSXe.
+
+Вы можете взглянуть на карту программного обеспечения и устройств, чтобы получить общее представление о том, что это такое:</value>
+  </data>
+  <data name="fanless-title" xml:space="preserve">
+    <value>Домашняя лаборатория без вентиляторов</value>
+  </data>
+</root>

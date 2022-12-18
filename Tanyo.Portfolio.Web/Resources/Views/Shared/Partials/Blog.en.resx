@@ -126,6 +126,12 @@
   <data name="Design Patterns Package" xml:space="preserve">
     <value>Design Patterns Package</value>
   </data>
+  <data name="fanless-home-lab-content-mini" xml:space="preserve">
+    <value>This home server turned out to be something amazing. No fans, consumes almost no power and is super powerful</value>
+  </data>
+  <data name="fanless-home-lab-title-mini" xml:space="preserve">
+    <value>Home server without fans</value>
+  </data>
   <data name="Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them." xml:space="preserve">
     <value>Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them.</value>
   </data>

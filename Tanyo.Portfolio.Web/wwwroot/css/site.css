@@ -18261,3 +18261,10 @@ h6 {
 .page_link {
     padding-bottom: 10px;
 }
+
+.blog-paragraph {
+    width: 60%;
+    text-align: center;
+    margin: auto;
+    padding-bottom: 40px;
+}

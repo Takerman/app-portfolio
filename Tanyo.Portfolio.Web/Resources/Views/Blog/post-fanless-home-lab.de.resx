@@ -117,51 +117,65 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="aws-summit-content-mini" xml:space="preserve">
-    <value>Ежегодная конференция AWS в Лондоне. В этом году (2022) я ездил на конференцию в Excel, Лондон. Присутствовать было довольно интересно. Прочитайте полную статью для получения дополнительной информации.</value>
+  <data name="fanless-content-intro" xml:space="preserve">
+    <value>In diesem Beitrag erzähle ich Ihnen, wie ich einen Heimserver ohne Lüfter oder rotierende Teile gekauft und eingerichtet habe. In den vergangenen Beiträgen habe ich über den Test-Cluster-Server aus Raspberry PI ARM-Boards gesprochen, den ich nur zum Spaß und zum Testen einiger Technologien verwendet habe. Dann zerlegte ich es und benutzte es für die Heimautomatisierung.
+
+Jetzt sind die Dinge keine Tests mehr und ich beschloss, etwas Richtiges zu tun. Ich habe 1.500 BGN in einen Server aus China investiert, was sich als ziemlich gut herausstellte. Die Wahrheit ist, dass China das globale Kraftpaket für Hardware ist und der Entwicklung um Jahre voraus ist. Es ist eine Maschine der neuen Generation, die noch nicht einmal Treiber für eines der Teile hat. Es ist ein großer Kühler, der einen leistungsstarken i7-Prozessor, eine Terabyte-SSD-Festplatte und fast 70 Gigabyte RAM beherbergt.
+
+Es kann auch als Router verwendet werden. Es hat 5 Buchsen für LAN-Kabel und kann darauf pfsense installieren.
+
+Hier ist seine Konfiguration:
+Prozessor: 2,5 G i7 1165G7
+Arbeitsspeicher: 68 GB DDR4
+Schwer: 1 TB NVMe
+
+Ich verwende es für einen Medien- und Webserver sowie für eine Heim-TV-Grafikumgebung und eine Spieleplattform. Alles in allem...
+
+Sie können es auf dem Bild unten sehen. Ich habe 2 Festplatten daran angeschlossen und erwarte bald zwei weitere. Ich betreibe eine Website mit Docker und Nginx Proxy Manager.
+
+Hier ist ein Bild:</value>
   </data>
-  <data name="aws-summit-title-mini" xml:space="preserve">
-    <value>Конференция AWS Summit 2022 — Лондон, Excel</value>
+  <data name="fanless-content-outro" xml:space="preserve">
+    <value>Sie sehen, wie nützlich der Heimserver ist. Ich habe auch eine Verbesserung der Geschwindigkeit der Websites festgestellt, die ich anstelle des von mir verwendeten Hostings betreibe. Negativ würde ich sagen, dass es viel schwieriger und zeitaufwändiger ist, einen Heimserver zu verwenden, anstatt zu hosten. Das Hosting gibt Ihnen die Dinge bereits fertig und Sie müssen nicht die Fehler machen, die sie bereits gelöst haben. Positiv würde ich sagen, dass man viel mehr Freiheit und Eigenverantwortung hat, sich nicht mit dem Helpdesk herumschlagen muss etc.
+
+Im Allgemeinen ist das Hosting für Produktionswebsites sicherer, aber auf der anderen Seite gibt es weniger Verwaltungsaufwand und jemand anderes hat Ihre Daten.
+
+Ich hoffe, es hat euch gefallen. Dies ist nur der Anfang einer Reihe, die ich für den Server ausführen werde. Es wird bald einen Beitrag über Grafana und andere Technologien geben.</value>
   </data>
-  <data name="Design Patterns Package" xml:space="preserve">
-    <value>Шаблоны пакета</value>
+  <data name="fanless-content-section1" xml:space="preserve">
+    <value>Als Geräte besteht mein Heimnetzwerk aus persönlichen Geräten wie Laptop, Telefon und Drucker. Die Geräte, die ich für den Server verwende, sind der Server selbst, zwei Festplatten, aus denen bald mehr werden, und ein Router.
+
+Auf dem Server habe ich die unfreie Debian 11-Version + die grafische KDE-Oberfläche installiert. Ich speichere die gesamte Software in einer sh-Datei, die wiederverwendet werden kann. Der Server verwendet Docker, um die Sites als Container auszuführen, deren Bilder ich derzeit auf GitHub halte.
+
+Es gibt einen Nginx-Proxy-Manager, der Domänennameneinträge für die in Docker geöffneten Ports erstellt und die Einträge Port 80 HTTP oder 443 HTTPS auf dem Router zuordnet. Die Ports 80:80 und 443:443 werden vom Router aus geöffnet, sodass, wenn jemand einen Domainnamen schreibt, dieser dem entsprechenden Container zugeordnet werden kann.
+
+Unten sehen Sie eine Karte der Geräte im Heimnetzwerk, und es gibt noch ein paar weitere, die nicht wichtig sind und daher nicht enthalten sind:</value>
   </data>
-  <data name="fanless-home-lab-content-mini" xml:space="preserve">
-    <value>Этот домашний сервер оказался чем-то удивительным. Нет вентиляторов, почти не потребляет энергии и очень мощный</value>
+  <data name="fanless-content-section2" xml:space="preserve">
+    <value>Die Software und Container, die ich auf dem Laptop installiert habe, orientieren sich hauptsächlich an:
+- Anlagen- und Behälterüberwachung
+- Buchhaltung und Bürotätigkeiten
+- Aufbewahrung von Backups der Sites und des Systems
+- Starten von Websites
+- Streaming von Medien wie Spielen, Filmen, Musik und Büchern
+- Spiele spielen
+
+Die Website, die Sie gerade ansehen, befindet sich auf dem Server und befindet sich in Bulgarien. Ein paar weitere Websites, die mit virtuellem Speed-Dating zu tun haben, meine Firma und kleine Experimente sind auch dabei. Dies sind handgefertigte Applikationen von mir.
+
+Als fertige Anwendungen verwende ich:
+- Oddo ERP-System für die Buchhaltung und Organisation von Dokumenten und anderen Dingen über das Unternehmen
+- Nginx Proxy Manager zum Erstellen interner Domänennamen für Container und deren Offenlegung über den Router.
+- Plex Media Center zum Ansehen von Filmen und Musik, wenn ich sie heruntergeladen habe, und ich habe es auch auf meinem Telefon, sodass ich es auch unterwegs verwenden kann.
+- Grafana für System- und Containerüberwachung. Es gibt einige ziemlich schöne Grafiken, die ich bald in einem zukünftigen Beitrag zeigen werde.
+- jsWiki, mit dem ich Projektdokumentationen erstelle.
+- Portainer, mit dem ich Container verwalte
+- Andere Container, die andere Zwecke haben, wie Searchxng zum Suchen im Internet anstelle von Google, Caliber-Web zum Verwalten von Büchern, Jellyfish als Alternative zu Plex, Map-Container, mit dem ich ein Dashboard für alle Websites erstelle und leichter darauf zugreifen kann ein Platz.
+
+Ich habe neben Docker noch andere Software auf dem Server installiert. Für Spiele verwende ich Mame und den PCSXe-Emulator.
+
+Sie können einen Blick auf die Software- und Gerätekarte werfen, um eine ungefähre Vorstellung davon zu bekommen, worum es geht:</value>
   </data>
-  <data name="fanless-home-lab-title-mini" xml:space="preserve">
-    <value>Домашний сервер без вентиляторов</value>
-  </data>
-  <data name="Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them." xml:space="preserve">
-    <value>Здесь вы можете найти пакет с шаблонами дизайна, которые я сделал во время просмотра канала YouTube. Существует объяснение и видео обо всех из них.</value>
-  </data>
-  <data name="home-blog-see-all" xml:space="preserve">
-    <value>УВИДЕТЬ ВСЕ</value>
-  </data>
-  <data name="How I defined and listed my optimized for the client prices." xml:space="preserve">
-    <value>Как я определил и перечислил мои оптимизировано для цен клиента.</value>
-  </data>
-  <data name="In this blog post I will show you how I'm using some Raspberry PIs&#xD;&#xA;                                        for web server, media center, smar home, database server, to save pictures&#xD;&#xA;                                        from a camera and more." xml:space="preserve">
-    <value>В этом блоге я покажу вам, как я использую некоторые Малина ИП
- для веб-сервера, медиа-центр, SMAR дома, сервер базы данных, для сохранения фотографий
- от камеры и многое другое.</value>
-  </data>
-  <data name="Latest Stories From" xml:space="preserve">
-    <value>Последние истории из</value>
-  </data>
-  <data name="Learn More" xml:space="preserve">
-    <value>Учить больше</value>
-  </data>
-  <data name="My blog" xml:space="preserve">
-    <value>Мой блог</value>
-  </data>
-  <data name="Prices defined and listed" xml:space="preserve">
-    <value>Цены определены и перечислены</value>
-  </data>
-  <data name="Raspberry Pi Home Automation" xml:space="preserve">
-    <value>Автоматизация на дом чрез Raspberry Pi</value>
-  </data>
-  <data name="Tanyo Ivanov" xml:space="preserve">
-    <value>Таньо Иванов</value>
+  <data name="fanless-title" xml:space="preserve">
+    <value>Ein Heimlabor ohne Ventilatoren</value>
   </data>
 </root>
