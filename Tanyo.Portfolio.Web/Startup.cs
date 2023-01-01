@@ -31,13 +31,13 @@ namespace Tanyo.Portfolio.Web
 
         public IWebHostEnvironment Env { get; }
 
-        public const string DefaultCulture = "bg";
+        public const string DefaultCulture = "ru";
 
         public readonly CultureInfo[] SupportedCultures = new[]
         {
             new CultureInfo(DefaultCulture),
             new CultureInfo("de"),
-            new CultureInfo("ru"),
+            new CultureInfo("bg"),
             new CultureInfo("en")
         };
 
