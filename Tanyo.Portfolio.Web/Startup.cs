@@ -31,14 +31,14 @@ namespace Tanyo.Portfolio.Web
 
         public IWebHostEnvironment Env { get; }
 
-        public const string DefaultCulture = "ru";
+        public const string DefaultCulture = "en";
 
         public readonly CultureInfo[] SupportedCultures = new[]
         {
             new CultureInfo(DefaultCulture),
             new CultureInfo("de"),
             new CultureInfo("bg"),
-            new CultureInfo("en")
+            new CultureInfo("ru")
         };
 
         public void ConfigureServices(IServiceCollection services)
