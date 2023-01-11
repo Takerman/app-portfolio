@@ -150,6 +150,19 @@
   <data name="Courses" xml:space="preserve">
     <value>Courses</value>
   </data>
+  <data name="cv-database-developer" xml:space="preserve">
+    <value>Database Developer</value>
+  </data>
+  <data name="cv-plovdiv" xml:space="preserve">
+    <value>Plovdiv</value>
+  </data>
+  <data name="cv-unrealsoft" xml:space="preserve">
+    <value>UnrealSoft</value>
+  </data>
+  <data name="cv-unrealsoft-content" xml:space="preserve">
+    <value>Web application for phone calls reports and stats.
+Contribution to a GPS automobile tracking system.</value>
+  </data>
   <data name="Dec" xml:space="preserve">
     <value>Dec</value>
   </data>

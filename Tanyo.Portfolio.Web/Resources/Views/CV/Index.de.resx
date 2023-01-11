@@ -150,6 +150,18 @@
   <data name="Courses" xml:space="preserve">
     <value>Kurse</value>
   </data>
+  <data name="cv-database-developer" xml:space="preserve">
+    <value>Datenbankprogrammierer</value>
+  </data>
+  <data name="cv-plovdiv" xml:space="preserve">
+    <value>Plowdiw</value>
+  </data>
+  <data name="cv-unrealsoft" xml:space="preserve">
+    <value>Unwirklich</value>
+  </data>
+  <data name="cv-unrealsoft-content" xml:space="preserve">
+    <value>Anwendung zur Statistik von Telefongesprächen in einem Unternehmen. Mitarbeit an der Entwicklung einer Anwendung zur Führung eines Güterverkehrsunternehmens.</value>
+  </data>
   <data name="Dec" xml:space="preserve">
     <value>Dezember</value>
   </data>
