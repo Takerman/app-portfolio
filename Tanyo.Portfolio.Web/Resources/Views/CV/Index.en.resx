@@ -208,11 +208,8 @@ Contribution to a GPS automobile tracking system.</value>
   <data name="Plovdiv" xml:space="preserve">
     <value>Plovdiv</value>
   </data>
-  <data name="position-lexis-title1" xml:space="preserve">
-    <value>Software Engineer II</value>
-  </data>
-  <data name="position-lexis-title2" xml:space="preserve">
-    <value>Software Engineer III</value>
+  <data name="position-lexis-title" xml:space="preserve">
+    <value>Software Engineer</value>
   </data>
   <data name="position-ln-content" xml:space="preserve">
     <value>Contributes to the development of a modern Global Tax platform with load of dependencies to different micro-services. Cloud based delivery, most-modern at the time methodology of work, React Clients connected to multiple APIs.</value>

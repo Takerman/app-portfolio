@@ -207,11 +207,8 @@
   <data name="Plovdiv" xml:space="preserve">
     <value>Plovdiv</value>
   </data>
-  <data name="position-lexis-title1" xml:space="preserve">
-    <value>Softwareingenieur II</value>
-  </data>
-  <data name="position-lexis-title2" xml:space="preserve">
-    <value>Softwareingenieur III</value>
+  <data name="position-lexis-title" xml:space="preserve">
+    <value>Softwareingenieur</value>
   </data>
   <data name="position-ln-content" xml:space="preserve">
     <value>Trägt zur Entwicklung einer modernen globalen Steuerplattform mit vielen Abhängigkeiten zu verschiedenen Mikrodiensten bei. Cloudbasierte Bereitstellung, zu dieser Zeit modernste Arbeitsmethodik, React Clients, die mit mehreren APIs verbunden sind.</value>

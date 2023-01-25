@@ -207,11 +207,8 @@
   <data name="Plovdiv" xml:space="preserve">
     <value>Пловдив</value>
   </data>
-  <data name="position-lexis-title1" xml:space="preserve">
-    <value>Инженер-программист II</value>
-  </data>
-  <data name="position-lexis-title2" xml:space="preserve">
-    <value>Инженер-программист III</value>
+  <data name="position-lexis-title" xml:space="preserve">
+    <value>Инженер-программист</value>
   </data>
   <data name="position-ln-content" xml:space="preserve">
     <value>Участвует в разработке современной глобальной налоговой платформы с множеством зависимостей от различных микросервисов. Облачная доставка, самая современная на тот момент методология работы, клиенты React, подключенные к множеству API.</value>

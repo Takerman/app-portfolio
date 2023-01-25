@@ -1,0 +1,40 @@
+﻿@inject SharedLocalizationService sharedLocalizer
+@inject IViewLocalizer localizer
+@{
+    ViewData["Title"] = "RAID Drives";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="blog_area single-post-area section-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 p-0 posts-list">
+                <div class="single-post">
+                    <div class="blog_details">
+                        <h2>
+                            @localizer["raid-title"]
+                        </h2>
+                        <ul class="blog-info-link mt-3 mb-4">
+                            <li><i class="ti-user"></i> @localizer["Tanyo Ivanov"]</li>
+                            <li><i class="ti-calendar"></i> @localizer["Jan"] 17, 2023</li>
+                        </ul>
+                        <p class="blog-paragraph">
+                            @localizer["Hello"],<br />
+                            @localizer["raid-content-intro"]
+                        </p>
+                        <img class="img-fluid blog-post-image" src="~/img/blog/fanless-home-lab/fanless.png" />
+                        <p class="blog-paragraph">
+                            @localizer["raid-content-section"]
+                        </p>
+                        <p class="text-center">
+                            @localizer["Regards"],<br />
+                            @localizer["Tanyo Ivanov"]
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @await Html.PartialAsync("~/Views/Shared/Partials/Share.cshtml")
+        @await Html.PartialAsync("~/Views/Shared/Partials/Disqus.cshtml")
+    </div>
+</section>

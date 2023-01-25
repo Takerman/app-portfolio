@@ -207,11 +207,8 @@
   <data name="Plovdiv" xml:space="preserve">
     <value>Пловдив</value>
   </data>
-  <data name="position-lexis-title1" xml:space="preserve">
-    <value>Софтуерен Инжинер II</value>
-  </data>
-  <data name="position-lexis-title2" xml:space="preserve">
-    <value>Софтуерен Инжинер III</value>
+  <data name="position-lexis-title" xml:space="preserve">
+    <value>Софтуерен Инжинер</value>
   </data>
   <data name="position-ln-content" xml:space="preserve">
     <value>Участвал в разработката на модерна глобална таксова платформа със много зависимости към други микро услуги. Облачна среда, най-модерната за времето си методология на работа, Реакт клиенти свързани, чрез множесто интерфейси.</value>
