@@ -44,7 +44,7 @@ namespace Tanyo.Portfolio.Web
         public void ConfigureServices(IServiceCollection services)
         {
             AddServices(services);
-            AddHsts(services);
+            //AddHsts(services);
             AddLocalization(services);
 
             services.AddControllersWithViews();
