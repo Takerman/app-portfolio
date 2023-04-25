@@ -48,8 +48,8 @@ jobs:
       #- name: Add nuget.org as nuget package source
       #  run: dotnet nuget add source https://api.nuget.org/v3/index.json --name nuget.org
         
-      - name: Add Takerman as nuget package source
-        run: dotnet nuget add source https://pkgs.dev.azure.com/Takerman/_packaging/Takerman/nuget/v3/index.json --name Takerman2
+      #- name: Add Takerman as nuget package source
+      #  run: dotnet nuget add source https://pkgs.dev.azure.com/Takerman/_packaging/Takerman/nuget/v3/index.json --name Takerman
 
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action
