@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 
 WORKDIR /app
 COPY Tanyo.Portfolio.Data/*.csproj ./Tanyo.Portfolio.Data/
-COPY ./nuget.Config ./
+COPY ./nuget.config ./
 WORKDIR /app/Tanyo.Portfolio.Data/
 RUN dotnet restore
 
