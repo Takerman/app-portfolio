@@ -2,10 +2,12 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Mail;
+using Takerman.Mail;
 using Tanyo.Portfolio.BLL.Services.Interfaces;
 using Tanyo.Portfolio.Data.Entities;
 using Tanyo.Portfolio.Web.Models;
@@ -14,15 +16,22 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
     public class ContactController : BaseController
     {
+        private readonly IMailService _mailService;
+        private readonly IOptions<RabbitMqConfig> _rabbitMqConfig;
+
         public ContactController(ILogger<BaseController> logger,
             INavLinksService navLinksService,
             ISocialLinksService socialLinksService,
             ICopyLinksService copyLinksService,
             ICompaniesService companiesService,
             IConfiguration configuration,
-            IStringLocalizerFactory factory) : base(logger, navLinksService, socialLinksService, copyLinksService, companiesService, factory)
+            IStringLocalizerFactory factory,
+            IMailService mailService,
+            IOptions<RabbitMqConfig> rabbitMqConfig) : base(logger, navLinksService, socialLinksService, copyLinksService, companiesService, factory)
         {
-            _configuration = configuration; 
+            _configuration = configuration;
+            _mailService = mailService;
+            _rabbitMqConfig = rabbitMqConfig;
         }
 
         public IActionResult Index()
@@ -42,32 +51,15 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
         {
             _logger.LogInformation(model.Name);
 
-            var to = new MailAddress(_configuration["Smtp:UserName"]);
-            var from = new MailAddress(model.Email, model.Name);
-
-            var email = new MailMessage(from, to)
+            var mailMessageDto = new MailMessageDto()
             {
+                Body = $"Email: {model.Email}. From tanyoivanov.net. Message: {model.Message}",
+                From = model.Email,
                 Subject = model.Subject,
-                Body = "From: " + model.Email + ": " + Environment.NewLine + model.Message
+                To = "tivanov@takerman.net"
             };
 
-            var smtp = new SmtpClient
-            {
-                Host = _configuration["Smtp:Server"],
-                Port = int.TryParse(_configuration["Smtp:Port"], out int port) ? port : 587,
-                Credentials = new NetworkCredential(_configuration["Smtp:UserName"], _configuration["Smtp:Password"]),
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                EnableSsl = true
-            };
-
-            try
-            {
-                smtp.Send(email);
-            }
-            catch (SmtpException ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
+            _mailService.SendToQueue(mailMessageDto, _rabbitMqConfig.Value);
 
             return View(model);
         }

@@ -12,6 +12,7 @@ using System;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Takerman.Mail;
 using Tanyo.Portfolio.BLL.Services;
 using Tanyo.Portfolio.BLL.Services.Interfaces;
 using Tanyo.Portfolio.Data.Entities;
@@ -111,15 +112,17 @@ namespace Tanyo.Portfolio.Web
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<SharedLocalizationService>();
-            services.AddTransient<INavLinksService, NavLinksService>();
-            services.AddTransient<ISocialLinksService, SocialLinksService>();
-            services.AddTransient<ICopyLinksService, CopyLinksService>();
-            services.AddTransient<ICompaniesService, CompaniesService>();
-            services.AddTransient<ISkillsService, SkillsService>();
-            services.AddTransient<IPricingService, PricingService>();
-            services.AddTransient<IProjectsService, ProjectsService>();
-            services.AddTransient<IBlogService, BlogService>();
-            services.AddTransient<IStatsService, StatsService>();
+            services.AddScoped<INavLinksService, NavLinksService>();
+            services.AddScoped<ISocialLinksService, SocialLinksService>();
+            services.AddScoped<ICopyLinksService, CopyLinksService>();
+            services.AddScoped<ICompaniesService, CompaniesService>();
+            services.AddScoped<ISkillsService, SkillsService>();
+            services.AddScoped<IPricingService, PricingService>();
+            services.AddScoped<IProjectsService, ProjectsService>();
+            services.AddScoped<IBlogService, BlogService>();
+            services.AddScoped<IStatsService, StatsService>();
+            services.AddScoped<IMailService, MailService>();
+            services.Configure<RabbitMqConfig>(Configuration.GetSection(nameof(RabbitMqConfig)));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
