@@ -45,8 +45,8 @@ jobs:
       - name: Setup Docker buildx
         uses: docker/setup-buildx-action@79abd3f86f79a9d68a23c75a09a9a85889262adf
         
-      - name: Add nuget.org as nuget package source
-        run: dotnet nuget add source https://api.nuget.org/v3/index.json --name nuget.org
+      #- name: Add nuget.org as nuget package source
+      #  run: dotnet nuget add source https://api.nuget.org/v3/index.json --name nuget.org
         
       - name: Add Takerman as nuget package source
         run: dotnet nuget add source https://pkgs.dev.azure.com/Takerman/_packaging/Takerman/nuget/v3/index.json --name Takerman
