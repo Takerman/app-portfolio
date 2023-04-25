@@ -4,7 +4,6 @@ WORKDIR /app
 COPY Tanyo.Portfolio.Data/*.csproj ./Tanyo.Portfolio.Data/
 COPY ./nuget.config ./
 WORKDIR /app/Tanyo.Portfolio.Data/
-RUN dotnet nuget add source https://pkgs.dev.azure.com/Takerman/_packaging/Takerman/nuget/v3/index.json -n Takerman
 RUN dotnet restore
 
 WORKDIR /app
