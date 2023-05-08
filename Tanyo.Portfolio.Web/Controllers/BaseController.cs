@@ -14,7 +14,7 @@ using Tanyo.Portfolio.Web.Models.Filters;
 namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
     [TanyoLayoutActionFilter]
-    [ResponseCache(CacheProfileName = "Default")]
+    [ResponseCache(Location = ResponseCacheLocation.None, CacheProfileName = "Default")]
     public abstract class BaseController : Controller
     {
         private readonly IStringLocalizer _localizer;
