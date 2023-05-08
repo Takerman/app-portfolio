@@ -65,8 +65,8 @@ jobs:
       - name: Clean
         run: dotnet clean && dotnet nuget locals all --clear
 
-      - name: Restore dependencies
-        run: dotnet restore
+      #- name: Restore dependencies
+      #  run: dotnet restore
 
       - name: Build and push Docker image
         id: build-and-push
