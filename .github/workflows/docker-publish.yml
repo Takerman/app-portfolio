@@ -12,9 +12,9 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  NUGET_FEED_NAME: 'Takerman'
-  NUGET_FEED_SOURCE: 'https://pkgs.dev.azure.com/Takerman/_packaging/Takerman/nuget/v3/index.json'
-  NUGET_CONFIG: './nuget.config'
+  #NUGET_FEED_NAME: 'Takerman'
+  #NUGET_FEED_SOURCE: 'https://pkgs.dev.azure.com/Takerman/_packaging/Takerman/nuget/v3/index.json'
+  #NUGET_CONFIG: './nuget.config'
 
 
 jobs:
@@ -39,8 +39,8 @@ jobs:
       - name: Setup Docker buildx
         uses: docker/setup-buildx-action@79abd3f86f79a9d68a23c75a09a9a85889262adf
       
-      - name: Auth NuGet
-        run: dotnet nuget add source ${{ env.NUGET_FEED_SOURCE }} --name ${{ env.NUGET_FEED_NAME }} --username az --password ${{ secrets.AZURE_DEVOPS_TOKEN }} --configfile ${{ env.NUGET_CONFIG }} --store-password-in-clear-text
+      #- name: Auth NuGet
+      #  run: dotnet nuget add source ${{ env.NUGET_FEED_SOURCE }} --name ${{ env.NUGET_FEED_NAME }} --username az --password ${{ secrets.AZURE_DEVOPS_TOKEN }} --configfile ${{ env.NUGET_CONFIG }} --store-password-in-clear-text
      
       #- name: Add nuget.org as nuget package source
       #  run: dotnet nuget add source https://api.nuget.org/v3/index.json --name nuget.org
