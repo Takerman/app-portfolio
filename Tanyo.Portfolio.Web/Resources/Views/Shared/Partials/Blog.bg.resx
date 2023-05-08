@@ -159,6 +159,12 @@
   <data name="Prices defined and listed" xml:space="preserve">
     <value>Цените са дефинирани и изброени</value>
   </data>
+  <data name="raid-content-mini" xml:space="preserve">
+    <value>В този пост описвам системата ми от хард дискове, която ползвам в домашната си мрежа</value>
+  </data>
+  <data name="raid-title-mini" xml:space="preserve">
+    <value>RAID-1 огледални бекъпи</value>
+  </data>
   <data name="Raspberry Pi Home Automation" xml:space="preserve">
     <value>Автоматизация на дом чрез Raspberry Pi</value>
   </data>

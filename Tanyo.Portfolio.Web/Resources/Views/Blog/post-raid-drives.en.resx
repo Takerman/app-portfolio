@@ -117,58 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="aws-summit-content-mini" xml:space="preserve">
-    <value>Die jährliche AWS-Konferenz in London. Dieses Jahr (2022) war ich auf der Konferenz in Excel, London. Es war sehr interessant dabei zu sein. Lesen Sie den vollständigen Artikel für weitere Informationen.</value>
+  <data name="raid-content-intro" xml:space="preserve">
+    <value>I am storing the backups of my home lab and databases on a RAID-1 drive with space of 1 TB memory. There are some commands that you need to execute to setup it and maintain it. With RAID-1 the drives are synchronous and the things which are written on the one drive are written to the other too. I am using 2xSATAIII Seagate green 1TB drives. HDD is the prefered way for backups as the data can be restored from the magnetic plates in case of failure, but with the SSD would be not possible. Here it is a picture of the completed setup:</value>
   </data>
-  <data name="aws-summit-title-mini" xml:space="preserve">
-    <value>AWS Summit 2022-Konferenz – London, Excel</value>
+  <data name="raid-content-section" xml:space="preserve">
+    <value>My hard drives setup are: 2xSATAIII 1TB drives for the RAID-1 mirroring where I store the data, 1x2TB SATAIII Seagate green to store media files, 1TB internal OS hard drive. Also I had some not used hard drives from before and pluged them into the system. Here are they: 1x750GB SATAIII HDD Seagate drive, 1x1TB SSD Kingston, 1x150GB HDD Seagate.
+
+There are loads of guides how to setup RAID-1 mirror. I used this one https://www.tecmint.com/create-raid1-in-linux/ 
+
+Then on each restart I am re-assembling the drives with this command:
+mdadm --assemble /dev/md0
+
+Then I am mounting to a location like that:
+mount /dev/md0 /mnt/backups
+
+This is a temporary solution until I found a way to re-assemble automatically or do it just by runing a cron after restart.
+
+Mdam is lightweight and good to for creation of RAID drives and I am using it for mine. 
+
+Thanks for reading. If tou need to ask something write a comment.</value>
   </data>
-  <data name="Design Patterns Package" xml:space="preserve">
-    <value>Design Patterns Package</value>
-  </data>
-  <data name="fanless-home-lab-content-mini" xml:space="preserve">
-    <value>Dieser Heimserver stellte sich als etwas Erstaunliches heraus. Keine Lüfter, verbraucht fast keinen Strom und ist super leistungsstark</value>
-  </data>
-  <data name="fanless-home-lab-title-mini" xml:space="preserve">
-    <value>Heimserver ohne Lüfter</value>
-  </data>
-  <data name="grafana-content-mini" xml:space="preserve">
-    <value>Für meine aktuelle Konfiguration verwende ich die Grafana-Überwachung, um die Server- und Containerleistung zu überwachen. In dem Beitrag können Sie über Grafana und andere Tools wie DataDog lesen</value>
-  </data>
-  <data name="grafana-title-mini" xml:space="preserve">
-    <value>Grafana-Überwachung</value>
-  </data>
-  <data name="Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them." xml:space="preserve">
-    <value>Hier können Sie ein Paket mit Design Patterns finden, die ich gemacht, während eines YouTube-Kanal zu beobachten. Es gibt Erklärung und ein Video über alle von ihnen.</value>
-  </data>
-  <data name="home-blog-see-all" xml:space="preserve">
-    <value>ALLES SEHEN</value>
-  </data>
-  <data name="How I defined and listed my optimized for the client prices." xml:space="preserve">
-    <value>Wie ich definierte und aufgelistet mein für die Client-Preise optimiert.</value>
-  </data>
-  <data name="Latest Stories From" xml:space="preserve">
-    <value>Neuesten Geschichten aus</value>
-  </data>
-  <data name="Learn More" xml:space="preserve">
-    <value>Erfahren Sie mehr</value>
-  </data>
-  <data name="My blog" xml:space="preserve">
-    <value>Mein Blog</value>
-  </data>
-  <data name="Prices defined and listed" xml:space="preserve">
-    <value>Preise definiert und aufgelistet</value>
-  </data>
-  <data name="raid-content-mini" xml:space="preserve">
-    <value>In dem Beitrag beschreibe ich die Einrichtung von Festplatten, die ich für mein Heimlabor verwende</value>
-  </data>
-  <data name="raid-title-mini" xml:space="preserve">
-    <value>RAID-1-Spiegelsicherungen</value>
-  </data>
-  <data name="Raspberry Pi Home Automation" xml:space="preserve">
-    <value>Raspberry Pi Home Automation</value>
-  </data>
-  <data name="Tanyo Ivanov" xml:space="preserve">
-    <value>Tanyo Ivanov</value>
+  <data name="raid-title" xml:space="preserve">
+    <value>RAID-1 огледални бекъпи</value>
   </data>
 </root>

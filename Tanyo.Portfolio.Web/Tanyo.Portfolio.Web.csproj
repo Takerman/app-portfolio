@@ -229,6 +229,18 @@
     <EmbeddedResource Update="Resources\Views\Blog\post-prices-listed.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Blog\post-raid-drives.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Blog\post-raid-drives.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Blog\post-raid-drives.bg.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Blog\post-raid-drives.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views\Blog\post-raspberrypi-home-automation.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>

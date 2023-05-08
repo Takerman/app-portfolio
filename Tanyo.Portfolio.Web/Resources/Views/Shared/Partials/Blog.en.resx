@@ -159,6 +159,12 @@
   <data name="Prices defined and listed" xml:space="preserve">
     <value>Prices defined and listed</value>
   </data>
+  <data name="raid-content-mini" xml:space="preserve">
+    <value>In the post I am describing the setup of hard drives which I am using for my home lab</value>
+  </data>
+  <data name="raid-title-mini" xml:space="preserve">
+    <value>RAID-1 mirror backups</value>
+  </data>
   <data name="Raspberry Pi Home Automation" xml:space="preserve">
     <value>Raspberry Pi Home Automation</value>
   </data>

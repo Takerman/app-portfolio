@@ -159,6 +159,12 @@
   <data name="Prices defined and listed" xml:space="preserve">
     <value>Цены определены и перечислены</value>
   </data>
+  <data name="raid-content-mini" xml:space="preserve">
+    <value>В посте я описываю настройку жестких дисков, которые я использую для своей домашней лаборатории.</value>
+  </data>
+  <data name="raid-title-mini" xml:space="preserve">
+    <value>Зеркальное резервное копирование RAID-1</value>
+  </data>
   <data name="Raspberry Pi Home Automation" xml:space="preserve">
     <value>Автоматизация на дом чрез Raspberry Pi</value>
   </data>

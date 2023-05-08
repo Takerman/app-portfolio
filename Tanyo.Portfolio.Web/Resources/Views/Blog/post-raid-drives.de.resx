@@ -117,58 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="aws-summit-content-mini" xml:space="preserve">
-    <value>Die jährliche AWS-Konferenz in London. Dieses Jahr (2022) war ich auf der Konferenz in Excel, London. Es war sehr interessant dabei zu sein. Lesen Sie den vollständigen Artikel für weitere Informationen.</value>
+  <data name="raid-content-intro" xml:space="preserve">
+    <value>Ich speichere die Backups meines Heimlabors und meiner Datenbanken auf einem RAID-1-Laufwerk mit 1 TB Speicherplatz. Es gibt einige Befehle, die Sie ausführen müssen, um es einzurichten und zu warten. Bei RAID-1 sind die Laufwerke synchron und die Dinge, die auf das eine Laufwerk geschrieben werden, werden auch auf das andere geschrieben. Ich verwende 2xSATAIII Seagate Green 1TB Laufwerke. HDD ist der bevorzugte Weg für Backups, da die Daten im Fehlerfall von den Magnetplatten wiederhergestellt werden können, aber mit der SSD wäre dies nicht möglich. Hier ein Bild des fertigen Aufbaus:</value>
   </data>
-  <data name="aws-summit-title-mini" xml:space="preserve">
-    <value>AWS Summit 2022-Konferenz – London, Excel</value>
+  <data name="raid-content-section" xml:space="preserve">
+    <value>Mein Festplatten-Setup ist: 2 x SATAIII 1 TB Laufwerke für die RAID-1-Spiegelung, wo ich die Daten speichere, 1 x 2 TB SATAIII Seagate Green zum Speichern von Mediendateien, 1 TB interne Betriebssystemfestplatte. Außerdem hatte ich einige unbenutzte Festplatten von früher und habe sie an das System angeschlossen. Hier sind sie: 1 x 750 GB SATAIII-HDD von Seagate, 1 x 1 TB SSD von Kingston, 1 x 150 GB HDD von Seagate.
+
+Es gibt viele Anleitungen zum Einrichten von RAID-1-Mirror. Ich habe dieses hier verwendet https://www.tecmint.com/create-raid1-in-linux/
+
+Dann baue ich bei jedem Neustart die Laufwerke mit diesem Befehl neu zusammen:
+mdadm --assemble /dev/md0
+
+Dann montiere ich an einem Ort wie diesem:
+mount /dev/md0 /mnt/backups
+
+Dies ist eine vorübergehende Lösung, bis ich einen Weg gefunden habe, automatisch wieder zusammenzubauen oder es einfach durch Ausführen eines Cron nach dem Neustart zu tun.
+
+Mdam ist leicht und eignet sich gut zum Erstellen von RAID-Laufwerken, und ich verwende es für meine.
+
+Danke fürs Lesen. Wenn Sie etwas fragen müssen, schreiben Sie einen Kommentar.</value>
   </data>
-  <data name="Design Patterns Package" xml:space="preserve">
-    <value>Design Patterns Package</value>
-  </data>
-  <data name="fanless-home-lab-content-mini" xml:space="preserve">
-    <value>Dieser Heimserver stellte sich als etwas Erstaunliches heraus. Keine Lüfter, verbraucht fast keinen Strom und ist super leistungsstark</value>
-  </data>
-  <data name="fanless-home-lab-title-mini" xml:space="preserve">
-    <value>Heimserver ohne Lüfter</value>
-  </data>
-  <data name="grafana-content-mini" xml:space="preserve">
-    <value>Für meine aktuelle Konfiguration verwende ich die Grafana-Überwachung, um die Server- und Containerleistung zu überwachen. In dem Beitrag können Sie über Grafana und andere Tools wie DataDog lesen</value>
-  </data>
-  <data name="grafana-title-mini" xml:space="preserve">
-    <value>Grafana-Überwachung</value>
-  </data>
-  <data name="Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them." xml:space="preserve">
-    <value>Hier können Sie ein Paket mit Design Patterns finden, die ich gemacht, während eines YouTube-Kanal zu beobachten. Es gibt Erklärung und ein Video über alle von ihnen.</value>
-  </data>
-  <data name="home-blog-see-all" xml:space="preserve">
-    <value>ALLES SEHEN</value>
-  </data>
-  <data name="How I defined and listed my optimized for the client prices." xml:space="preserve">
-    <value>Wie ich definierte und aufgelistet mein für die Client-Preise optimiert.</value>
-  </data>
-  <data name="Latest Stories From" xml:space="preserve">
-    <value>Neuesten Geschichten aus</value>
-  </data>
-  <data name="Learn More" xml:space="preserve">
-    <value>Erfahren Sie mehr</value>
-  </data>
-  <data name="My blog" xml:space="preserve">
-    <value>Mein Blog</value>
-  </data>
-  <data name="Prices defined and listed" xml:space="preserve">
-    <value>Preise definiert und aufgelistet</value>
-  </data>
-  <data name="raid-content-mini" xml:space="preserve">
-    <value>In dem Beitrag beschreibe ich die Einrichtung von Festplatten, die ich für mein Heimlabor verwende</value>
-  </data>
-  <data name="raid-title-mini" xml:space="preserve">
+  <data name="raid-title" xml:space="preserve">
     <value>RAID-1-Spiegelsicherungen</value>
-  </data>
-  <data name="Raspberry Pi Home Automation" xml:space="preserve">
-    <value>Raspberry Pi Home Automation</value>
-  </data>
-  <data name="Tanyo Ivanov" xml:space="preserve">
-    <value>Tanyo Ivanov</value>
   </data>
 </root>
