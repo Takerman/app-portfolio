@@ -5,8 +5,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
-using System.Net;
-using System.Net.Mail;
 using Takerman.Mail;
 using Tanyo.Portfolio.BLL.Services.Interfaces;
 using Tanyo.Portfolio.Data.Entities;
@@ -47,21 +45,31 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(MessageModel model)
+        public IActionResult Index([FromBody] MessageModel model)
         {
-            _logger.LogInformation(model.Name);
-
-            var mailMessageDto = new MailMessageDto()
+            try
             {
-                Body = $"Email: {model.Email}. From tanyoivanov.net. Message: {model.Message}",
-                From = model.Email,
-                Subject = model.Subject,
-                To = "tivanov@takerman.net"
-            };
+                _logger.LogInformation(model.Name);
 
-            _mailService.SendToQueue(mailMessageDto, _rabbitMqConfig.Value);
+                var mailMessageDto = new MailMessageDto()
+                {
+                    Body = $"Email: {model.Email}. From tanyoivanov.net. Message: {model.Message}",
+                    From = model.Email,
+                    Subject = model.Subject,
+                    To = "tivanov@takerman.net"
+                };
 
-            return View("ThankYou");
+                _mailService.SendToQueue(mailMessageDto, _rabbitMqConfig.Value);
+
+                return View("ThankYou");
+            }
+            catch (Exception ex)
+            {
+                var error = $"Exception: {ex.Message + (ex.InnerException != null && !string.IsNullOrEmpty(ex.InnerException.Message) ? ex.InnerException.Message : string.Empty)}";
+                _logger.LogError(error);
+                Console.WriteLine(error);
+                throw;
+            }
         }
     }
 }
