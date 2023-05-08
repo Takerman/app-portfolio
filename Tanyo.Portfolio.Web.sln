@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tanyo.Portfolio.Web", "Tany
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tanyo.Portfolio.Web.Tests", "Tanyo.Portfolio.Web.Tests\Tanyo.Portfolio.Web.Tests.csproj", "{056E57ED-4D98-498A-9F21-35EBB4ED1CC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tanyo.Portfolio.BLL", "Tanyo.Portfolio.BLL\Tanyo.Portfolio.BLL.csproj", "{672E7998-9592-4820-832E-B0785894A3C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tanyo.Portfolio.BLL", "Tanyo.Portfolio.BLL\Tanyo.Portfolio.BLL.csproj", "{672E7998-9592-4820-832E-B0785894A3C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tanyo.Portfolio.Data", "Tanyo.Portfolio.Data\Tanyo.Portfolio.Data.csproj", "{2B7CF041-9A56-49AB-B484-2B107810F5FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tanyo.Portfolio.Data", "Tanyo.Portfolio.Data\Tanyo.Portfolio.Data.csproj", "{2B7CF041-9A56-49AB-B484-2B107810F5FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
