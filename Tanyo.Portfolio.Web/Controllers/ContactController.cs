@@ -45,7 +45,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index([FromBody] MessageModel model)
+        public IActionResult Index(MessageModel model)
         {
             try
             {
