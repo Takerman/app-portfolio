@@ -62,6 +62,12 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
+      - name: Clean
+        run: dotnet clean && dotnet nuget locals all --clear
+
+      - name: Restore dependencies
+        run: dotnet restore
+
       - name: Build and push Docker image
         id: build-and-push
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
@@ -83,3 +89,6 @@ jobs:
       #   # This step uses the identity token to provision an ephemeral certificate
       #   # against the sigstore community Fulcio instance.
       #   run: echo "${{ steps.meta.outputs.tags }}" | xargs -I {} cosign sign {}@${{ steps.build-and-push.outputs.digest }}
+
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
