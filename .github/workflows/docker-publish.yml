@@ -42,8 +42,8 @@ jobs:
       - name: Auth NuGet
         run: dotnet nuget add source ${{ env.NUGET_FEED_SOURCE }} --name ${{ env.NUGET_FEED_NAME }} --username az --password ${{ secrets.AZURE_DEVOPS_TOKEN }} --configfile ${{ env.NUGET_CONFIG }} --store-password-in-clear-text
      
-      #- name: Add nuget.org as nuget package source
-      #  run: dotnet nuget add source https://api.nuget.org/v3/index.json --name nuget.org
+      - name: Add nuget.org as nuget package source
+        run: dotnet nuget add source https://api.nuget.org/v3/index.json --name nuget
         
       # - name: Add Takerman as nuget package source
       #   run: dotnet nuget add source https://pkgs.dev.azure.com/Takerman/_packaging/Takerman/nuget/v3/index.json --name Takerman
