@@ -61,7 +61,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 
             _mailService.SendToQueue(mailMessageDto, _rabbitMqConfig.Value);
 
-            return View(model);
+            return View("ThankYou");
         }
     }
 }
