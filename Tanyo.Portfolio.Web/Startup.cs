@@ -112,16 +112,16 @@ namespace Tanyo.Portfolio.Web
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<SharedLocalizationService>();
-            services.AddTransient<INavLinksService, NavLinksService>();
-            services.AddTransient<ISocialLinksService, SocialLinksService>();
-            services.AddTransient<ICopyLinksService, CopyLinksService>();
-            services.AddTransient<ICompaniesService, CompaniesService>();
-            services.AddTransient<ISkillsService, SkillsService>();
-            services.AddTransient<IPricingService, PricingService>();
-            services.AddTransient<IProjectsService, ProjectsService>();
-            services.AddTransient<IBlogService, BlogService>();
-            services.AddTransient<IStatsService, StatsService>();
-            services.AddTransient<IMailService, MailService>();
+            services.AddScoped<INavLinksService, NavLinksService>();
+            services.AddScoped<ISocialLinksService, SocialLinksService>();
+            services.AddScoped<ICopyLinksService, CopyLinksService>();
+            services.AddScoped<ICompaniesService, CompaniesService>();
+            services.AddScoped<ISkillsService, SkillsService>();
+            services.AddScoped<IPricingService, PricingService>();
+            services.AddScoped<IProjectsService, ProjectsService>();
+            services.AddScoped<IBlogService, BlogService>();
+            services.AddScoped<IStatsService, StatsService>();
+            services.AddSingleton<IMailService, MailService>();
             services.Configure<RabbitMqConfig>(Configuration.GetSection(nameof(RabbitMqConfig)));
         }
 
