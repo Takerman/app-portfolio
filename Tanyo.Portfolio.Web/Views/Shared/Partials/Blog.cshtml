@@ -25,7 +25,8 @@
                         </div>
                         <div class="short_details">
                             <div class="meta-top d-flex">
-                                <span><i class="ti-user"></i> @localizer[blogItem.Author] | <i class="ti-calendar"></i> @blogItem.Date.ToString("MMM dd, yyyy")</span>
+                                <span><i class="ti-user"></i> @localizer[blogItem.Author] | <i class="ti-calendar"></i> @blogItem.Date</span>
+                                @* .ToString("MMM dd, yyyy") *@
                             </div>
                             <a class="d-block" href="@link">
                                 <h4>@localizer[blogItem.Title]</h4>

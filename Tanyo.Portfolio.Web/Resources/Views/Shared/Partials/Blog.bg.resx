@@ -165,6 +165,9 @@
   <data name="raid-title-mini" xml:space="preserve">
     <value>RAID-1 огледални бекъпи</value>
   </data>
+  <data name="ransomware-title-mini" xml:space="preserve">
+    <value>I've got 0xxx ransomware</value>
+  </data>
   <data name="Raspberry Pi Home Automation" xml:space="preserve">
     <value>Автоматизация на дом чрез Raspberry Pi</value>
   </data>

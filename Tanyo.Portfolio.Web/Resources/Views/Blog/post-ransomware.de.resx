@@ -117,61 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="aws-summit-content-mini" xml:space="preserve">
-    <value>Ежегодная конференция AWS в Лондоне. В этом году (2022) я ездил на конференцию в Excel, Лондон. Присутствовать было довольно интересно. Прочитайте полную статью для получения дополнительной информации.</value>
+  <data name="ransomware-content" xml:space="preserve">
+    <value>It was a sunny sunday in Bulgaria and everything was going great! I was just preparing to go for a ride with my bycicle and wanted just to update my server. When i ran the custom command for update I saw a message that I need to commit some changes in the git repository before executing a git pull command. I checked the status of the repo and what to see...there were strange files with extension 0xxx. Then i opened the websites and saw that they are switched off and everything on my server is encrypted in files with the same extension 0xxx. After a short try to recover the things I searched about the extension and saw in the web that this is a specific 0xxx ransomware which encrypts all the files on the server and makes it unusable. Terrible!
+
+Even my backups were encrypted and all the volumes of the docker containers...everything. I had a raid drive and btrfs snapshots, but they were encrypted too. Really Terrible! 
+
+For now I am looking of a solution to the problem and mainly running some antivirus scans with tools as CalmAV etc.
+
+Will keep you posted.</value>
   </data>
-  <data name="aws-summit-title-mini" xml:space="preserve">
-    <value>Конференция AWS Summit 2022 — Лондон, Excel</value>
-  </data>
-  <data name="Design Patterns Package" xml:space="preserve">
-    <value>Шаблоны пакета</value>
-  </data>
-  <data name="fanless-home-lab-content-mini" xml:space="preserve">
-    <value>Этот домашний сервер оказался чем-то удивительным. Нет вентиляторов, почти не потребляет энергии и очень мощный</value>
-  </data>
-  <data name="fanless-home-lab-title-mini" xml:space="preserve">
-    <value>Домашний сервер без вентиляторов</value>
-  </data>
-  <data name="grafana-content-mini" xml:space="preserve">
-    <value>Для моей текущей конфигурации я использую мониторинг Grafana для мониторинга производительности сервера и контейнера. В посте вы можете прочитать о Grafana и других инструментах, таких как DataDog.</value>
-  </data>
-  <data name="grafana-title-mini" xml:space="preserve">
-    <value>Графана мониторинг</value>
-  </data>
-  <data name="Here you can find a package with Design Patterns which I made while watching a YouTube channel. There is explanation and a video about all of them." xml:space="preserve">
-    <value>Здесь вы можете найти пакет с шаблонами дизайна, которые я сделал во время просмотра канала YouTube. Существует объяснение и видео обо всех из них.</value>
-  </data>
-  <data name="home-blog-see-all" xml:space="preserve">
-    <value>УВИДЕТЬ ВСЕ</value>
-  </data>
-  <data name="How I defined and listed my optimized for the client prices." xml:space="preserve">
-    <value>Как я определил и перечислил мои оптимизировано для цен клиента.</value>
-  </data>
-  <data name="Latest Stories From" xml:space="preserve">
-    <value>Последние истории из</value>
-  </data>
-  <data name="Learn More" xml:space="preserve">
-    <value>Учить больше</value>
-  </data>
-  <data name="My blog" xml:space="preserve">
-    <value>Мой блог</value>
-  </data>
-  <data name="Prices defined and listed" xml:space="preserve">
-    <value>Цены определены и перечислены</value>
-  </data>
-  <data name="raid-content-mini" xml:space="preserve">
-    <value>В посте я описываю настройку жестких дисков, которые я использую для своей домашней лаборатории.</value>
-  </data>
-  <data name="raid-title-mini" xml:space="preserve">
-    <value>Зеркальное резервное копирование RAID-1</value>
-  </data>
-  <data name="ransomware-title-mini" xml:space="preserve">
+  <data name="ransomware-title" xml:space="preserve">
     <value>I've got 0xxx ransomware</value>
-  </data>
-  <data name="Raspberry Pi Home Automation" xml:space="preserve">
-    <value>Автоматизация на дом чрез Raspberry Pi</value>
-  </data>
-  <data name="Tanyo Ivanov" xml:space="preserve">
-    <value>Таньо Иванов</value>
   </data>
 </root>

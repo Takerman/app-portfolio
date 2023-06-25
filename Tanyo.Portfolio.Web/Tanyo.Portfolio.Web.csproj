@@ -169,6 +169,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\Views\Blog\post-ransomware.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Blog\post-ransomware.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Blog\post-ransomware.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Blog\post-ransomware.bg.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views\Blog\post-aws-summit-2022.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>post-aws-summit-2022.en.Designer.cs</LastGenOutput>
@@ -568,6 +580,10 @@
     <None Update="tanyo_data.db-wal">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\img\blog\ransomware\" />
   </ItemGroup>
 
 

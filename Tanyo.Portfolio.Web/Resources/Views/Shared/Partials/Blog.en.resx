@@ -165,6 +165,9 @@
   <data name="raid-title-mini" xml:space="preserve">
     <value>RAID-1 mirror backups</value>
   </data>
+  <data name="ransomware-title-mini" xml:space="preserve">
+    <value>I've got 0xxx ransomware</value>
+  </data>
   <data name="Raspberry Pi Home Automation" xml:space="preserve">
     <value>Raspberry Pi Home Automation</value>
   </data>
