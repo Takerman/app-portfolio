@@ -49,6 +49,11 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+
                 _logger.LogInformation(model.Name);
 
                 var mailMessageDto = new MailMessageDto()
