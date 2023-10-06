@@ -123,6 +123,7 @@ namespace Tanyo.Portfolio.Web
             services.AddScoped<IStatsService, StatsService>();
             services.AddSingleton<IMailService, MailService>();
             services.Configure<RabbitMqConfig>(Configuration.GetSection(nameof(RabbitMqConfig)));
+            services.AddRecaptchaService();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

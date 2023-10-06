@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Griesoft.AspNetCore.ReCaptcha;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
@@ -45,6 +46,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
         }
 
         [HttpPost]
+        [ValidateRecaptcha]
         public IActionResult Index(MessageModel model)
         {
             try
