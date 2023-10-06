@@ -46,7 +46,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
         }
 
         [HttpPost]
-        [ValidateRecaptcha]
+        [ValidateRecaptcha(Action = "submit")]
         public IActionResult Index(MessageModel model)
         {
             try
