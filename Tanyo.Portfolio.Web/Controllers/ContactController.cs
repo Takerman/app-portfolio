@@ -66,7 +66,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
                     To = "tivanov@takerman.net"
                 };
 
-                _mailService.SendToQueue(mailMessageDto, _rabbitMqConfig.Value);
+                _mailService.SendToQueue(mailMessageDto);
 
                 return View("ThankYou");
             }
