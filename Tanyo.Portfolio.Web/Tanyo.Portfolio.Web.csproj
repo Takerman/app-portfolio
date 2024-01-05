@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <AssemblyName>Tanyo.Portfolio.Web</AssemblyName>
     <UserSecretsId>badb8582-24ff-4b9b-ad8c-b341b41d634a</UserSecretsId>
@@ -55,12 +55,12 @@
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
     <PackageReference Include="BundlerMinifier.Core" Version="3.2.449" />
     <PackageReference Include="Griesoft.AspNetCore.ReCaptcha" Version="2.2.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.2.2">
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.3.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -83,21 +83,20 @@
     <None Include="wwwroot\fonts\fontawesome-webfont.svg" />
     <None Include="wwwroot\fonts\fontawesome-webfont.woff2" />
     <None Include="wwwroot\fonts\themify.svg" />
-    <None Include="wwwroot\img\banner\home-right.png.kra" />
-    <None Include="wwwroot\img\brands\logo1.png.kra" />
-    <None Include="wwwroot\img\brands\logo2.png.kra" />
-    <None Include="wwwroot\img\brands\logo3.png.kra" />
+    <None Include="wwwroot\img\banner\home-right.png" />
+    <None Include="wwwroot\img\brands\logo1.png" />
+    <None Include="wwwroot\img\brands\logo2.png" />
+    <None Include="wwwroot\img\brands\logo3.png" />
     <None Include="wwwroot\img\favicon.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Include="wwwroot\img\portfolio\bg.jpg.kra" />
-    <None Include="wwwroot\img\portfolio\p1.png.kra" />
-    <None Include="wwwroot\img\portfolio\p2.png.kra" />
-    <None Include="wwwroot\img\portfolio\p3.png.kra" />
-    <None Include="wwwroot\img\portfolio\p4.png.kra" />
-    <None Include="wwwroot\img\portfolio\p5.png.kra" />
-    <None Include="wwwroot\img\portfolio\p6.png.kra" />
+    <None Include="wwwroot\img\portfolio\p1.png" />
+    <None Include="wwwroot\img\portfolio\p2.png" />
+    <None Include="wwwroot\img\portfolio\p3.png" />
+    <None Include="wwwroot\img\portfolio\p4.png" />
+    <None Include="wwwroot\img\portfolio\p5.png" />
+    <None Include="wwwroot\img\portfolio\p6.png" />
     <None Include="wwwroot\vendors\bootstrap-datepicker\bootstrap-datetimepicker.min.js" />
     <None Include="wwwroot\vendors\bootstrap-datepicker\bootstrap-select.js" />
     <None Include="wwwroot\vendors\flipclock\timer.js" />
