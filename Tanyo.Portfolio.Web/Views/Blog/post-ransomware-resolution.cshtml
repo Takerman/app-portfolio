@@ -1,0 +1,35 @@
+﻿@inject SharedLocalizationService sharedLocalizer
+@inject IViewLocalizer localizer
+@{
+    ViewData["Title"] = @localizer["ransomware-resolution-title"];
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="blog_area single-post-area section-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 p-0 posts-list">
+                <div class="single-post">
+                    <div class="blog_details">
+                        <h2>
+                            @localizer["ransomware-resolution-title"]
+                        </h2>
+                        <ul class="blog-info-link mt-3 mb-4">
+                            <li><i class="ti-user"></i> @localizer["Tanyo Ivanov"]</li>
+                            <li><i class="ti-calendar"></i> @localizer["Jan"] 20, 2024</li>
+                        </ul>
+                        <p style="width: 60%; text-align: center; margin: auto; padding-bottom: 40px;">
+                            @localizer["Hello"],<br />
+                            @localizer["ransomware-resolution-content"]
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <img class="img-fluid blog-post-image" src="~/img/blog/ransomware/dietpi.png" />
+        </div>
+        @await Html.PartialAsync("~/Views/Shared/Partials/Share.cshtml")
+        @await Html.PartialAsync("~/Views/Shared/Partials/Disqus.cshtml")
+    </div>
+</section>

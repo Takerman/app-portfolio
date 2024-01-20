@@ -10,7 +10,7 @@
     @await Html.PartialAsync("~/Views/Shared/Partials/Head.cshtml", Model.Head)
     @RenderSection("styles", required: false)
 </head>
-<body>
+<body style="color: black;">
     @await Html.PartialAsync("~/Views/Shared/Partials/Header.cshtml", Model.Header)
     @if (Model.Banner != null)
     {

@@ -114,3 +114,7 @@
     margin: auto;
     padding-bottom: 40px;
 }
+
+p, div, span {
+    color: black !important;
+}

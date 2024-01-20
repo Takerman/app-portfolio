@@ -165,6 +165,12 @@
   <data name="raid-title-mini" xml:space="preserve">
     <value>Зеркальное резервное копирование RAID-1</value>
   </data>
+  <data name="ransomware-resolution-content-mini" xml:space="preserve">
+    <value>In this story I will tell you what I've been through after the ransomware attack and how I turned back to my favourte OS - DietPi</value>
+  </data>
+  <data name="ransomware-resolution-title-mini" xml:space="preserve">
+    <value>Resolution of the Ransoware problem</value>
+  </data>
   <data name="ransomware-title-mini" xml:space="preserve">
     <value>I've got 0xxx ransomware</value>
   </data>

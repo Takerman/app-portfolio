@@ -172,6 +172,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\Views\Blog\post-ransomware-resolution.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Blog\post-ransomware-resolution.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Blog\post-ransomware-resolution.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Blog\post-ransomware-resolution.bg.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views\Blog\post-ransomware.de.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
@@ -583,10 +595,6 @@
     <None Update="tanyo_data.db-wal">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\img\blog\ransomware\" />
   </ItemGroup>
 
 
