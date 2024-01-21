@@ -121,20 +121,20 @@
     <value>Ich speichere die Backups meines Heimlabors und meiner Datenbanken auf einem RAID-1-Laufwerk mit 1 TB Speicherplatz. Es gibt einige Befehle, die Sie ausführen müssen, um es einzurichten und zu warten. Bei RAID-1 sind die Laufwerke synchron und die Dinge, die auf das eine Laufwerk geschrieben werden, werden auch auf das andere geschrieben. Ich verwende 2xSATAIII Seagate Green 1TB Laufwerke. HDD ist der bevorzugte Weg für Backups, da die Daten im Fehlerfall von den Magnetplatten wiederhergestellt werden können, aber mit der SSD wäre dies nicht möglich. Hier ein Bild des fertigen Aufbaus:</value>
   </data>
   <data name="raid-content-section" xml:space="preserve">
-    <value>Mein Festplatten-Setup ist: 2 x SATAIII 1 TB Laufwerke für die RAID-1-Spiegelung, wo ich die Daten speichere, 1 x 2 TB SATAIII Seagate Green zum Speichern von Mediendateien, 1 TB interne Betriebssystemfestplatte. Außerdem hatte ich einige unbenutzte Festplatten von früher und habe sie an das System angeschlossen. Hier sind sie: 1 x 750 GB SATAIII-HDD von Seagate, 1 x 1 TB SSD von Kingston, 1 x 150 GB HDD von Seagate.
-
-Es gibt viele Anleitungen zum Einrichten von RAID-1-Mirror. Ich habe dieses hier verwendet https://www.tecmint.com/create-raid1-in-linux/
-
+    <value>Mein Festplatten-Setup ist: 2 x SATAIII 1 TB Laufwerke für die RAID-1-Spiegelung, wo ich die Daten speichere, 1 x 2 TB SATAIII Seagate Green zum Speichern von Mediendateien, 1 TB interne Betriebssystemfestplatte. Außerdem hatte ich einige unbenutzte Festplatten von früher und habe sie an das System angeschlossen. Hier sind sie: 1 x 750 GB SATAIII-HDD von Seagate, 1 x 1 TB SSD von Kingston, 1 x 150 GB HDD von Seagate.&lt;br /&gt;
+&lt;br /&gt;
+Es gibt viele Anleitungen zum Einrichten von RAID-1-Mirror. Ich habe dieses hier verwendet https://dietpi.com/blog/?p=2239&lt;br /&gt;
+&lt;br /&gt;
 Dann baue ich bei jedem Neustart die Laufwerke mit diesem Befehl neu zusammen:
-mdadm --assemble /dev/md0
-
-Dann montiere ich an einem Ort wie diesem:
-mount /dev/md0 /mnt/backups
-
-Dies ist eine vorübergehende Lösung, bis ich einen Weg gefunden habe, automatisch wieder zusammenzubauen oder es einfach durch Ausführen eines Cron nach dem Neustart zu tun.
-
-Mdam ist leicht und eignet sich gut zum Erstellen von RAID-Laufwerken, und ich verwende es für meine.
-
+mdadm --assemble /dev/md0&lt;br /&gt;
+&lt;br /&gt;
+Dann montiere ich an einem Ort wie diesem:&lt;br /&gt;
+mount /dev/md0 /mnt/backups&lt;br /&gt;
+&lt;br /&gt;
+Dies ist eine vorübergehende Lösung, bis ich einen Weg gefunden habe, automatisch wieder zusammenzubauen oder es einfach durch Ausführen eines Cron nach dem Neustart zu tun.&lt;br /&gt;
+&lt;br /&gt;
+Mdam ist leicht und eignet sich gut zum Erstellen von RAID-Laufwerken, und ich verwende es für meine.&lt;br /&gt;
+&lt;br /&gt;
 Danke fürs Lesen. Wenn Sie etwas fragen müssen, schreiben Sie einen Kommentar.</value>
   </data>
   <data name="raid-title" xml:space="preserve">
