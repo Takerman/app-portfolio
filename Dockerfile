@@ -1,7 +1,13 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ENV ASPNETCORE_ENVIRONMENT Production
+ARG BUILD_CONFIGURATION=Release
+ARG NUGET_PASSWORD
 
 WORKDIR /app
 COPY nuget.config ./
+RUN sed -i "s|</configuration>|<packageSourceCredentials><github><add key=\"Username\" value=\"takerman\"/><add key=\"ClearTextPassword\" value=\"${NUGET_PASSWORD}\"/></github></packageSourceCredentials></configuration>|" nuget.config
+RUN dotnet nuget add source https://nuget.pkg.github.com/takermanltd/index.json --name github
+RUN dotnet nuget list source
 
 WORKDIR /app
 COPY Tanyo.Portfolio.Data/*.csproj ./Tanyo.Portfolio.Data/
@@ -30,6 +36,7 @@ COPY Tanyo.Portfolio.Web/. ./Tanyo.Portfolio.Web/
 COPY Tanyo.Portfolio.Web.Tests/. ./Tanyo.Portfolio.Web.Tests/
 
 WORKDIR /app/Tanyo.Portfolio.Web.Tests/
+RUN dotnet clean ./*.csproj
 RUN dotnet build ./*.csproj
 RUN dotnet test ./*.csproj --logger "trx;LogFileName=Tanyo.Portfolio.Web.Tests.trx" 
 
