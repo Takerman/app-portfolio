@@ -68,8 +68,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
-    <PackageReference Include="Takerman.Blogging" Version="1.0.0" />
-    <PackageReference Include="Takerman.Notifications" Version="1.0.0" />
+    <PackageReference Include="Takerman.Blogging" Version="1.0.2" />
+    <PackageReference Include="Takerman.Notifications" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>
