@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Takerman.Mail;
 using Tanyo.Portfolio.BLL.Services.Interfaces;
 using Tanyo.Portfolio.Data.Entities;
@@ -47,7 +48,7 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 
         [HttpPost]
         [ValidateRecaptcha(Action = "submit")]
-        public IActionResult Index(MessageModel model)
+        public async Task<IActionResult> Index(MessageModel model)
         {
             try
             {
@@ -60,13 +61,14 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 
                 var mailMessageDto = new MailMessageDto()
                 {
-                    Body = $"Email: {model.Email}. From tanyoivanov.net. Message: {model.Message}",
+                    Body = $"{model.Name} sent with email: {model.Email} sent a message: <br /> <br/>{model.Message}",
                     From = model.Email,
                     Subject = model.Subject,
-                    To = "tivanov@takerman.net"
+                    To = "tivanov@takerman.net",
+                    Name = model.Name
                 };
 
-                _mailService.SendToQueue(mailMessageDto);
+                await _mailService.SendToQueue(mailMessageDto);
 
                 return View("ThankYou");
             }
