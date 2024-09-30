@@ -4,19 +4,10 @@ namespace Tanyo.Portfolio.Web.Models
 {
     public class Header
     {
-        public Header()
-        {
-            Classes = string.Empty;
+        public string Classes { get; set; } = string.Empty;
 
-            NavigationLinks = new List<NavLink>();
+        public IEnumerable<NavLink> NavigationLinks { get; set; } = [];
 
-            ImageUrl = string.Empty;
-        }
-
-        public string Classes { get; set; }
-
-        public IEnumerable<NavLink> NavigationLinks { get; set; }
-
-        public string ImageUrl { get; set; }
+        public string ImageUrl { get; set; } = string.Empty;
     }
 }

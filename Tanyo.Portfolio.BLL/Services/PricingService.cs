@@ -4,12 +4,8 @@ using Tanyo.Portfolio.Data.Entities;
 
 namespace Tanyo.Portfolio.Web.Models.Services
 {
-    public class PricingService : IPricingService
+    public class PricingService(DefaultContext context) : IPricingService
     {
-        public IEnumerable<Price> GetPrices()
-        {
-            using var context = new MainContext();
-            return context.Prices.ToList();
-        }
+        public IEnumerable<Price> GetPrices() => [.. context.Prices];
     }
 }

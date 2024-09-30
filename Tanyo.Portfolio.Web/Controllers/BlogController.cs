@@ -1,41 +1,34 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
 using Tanyo.Portfolio.BLL.Services.Interfaces;
-using Tanyo.Portfolio.Data.Entities;
 using Tanyo.Portfolio.Web.Models.Partials;
 
 namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
-    public class BlogController : BaseController
+    public class BlogController(ILogger<BlogController> _logger,
+        INavLinksService _navLinksService,
+        ISocialLinksService _socialLinksService,
+        ICopyLinksService _copyLinksService,
+        ICompaniesService _companiesService,
+        IBlogService _blogService,
+        IStringLocalizerFactory _factory) : BaseController(_logger, _navLinksService, _socialLinksService, _copyLinksService, _companiesService, _factory)
     {
-        private IBlogService _blogService;
-
-        public BlogController(ILogger<BaseController> logger,
-            INavLinksService navLinksService,
-            ISocialLinksService socialLinksService,
-            ICopyLinksService copyLinksService,
-            ICompaniesService companiesService,
-            IBlogService blogService,
-            IStringLocalizerFactory factory) : base(logger, navLinksService, socialLinksService, copyLinksService, companiesService, factory)
-        {
-            _blogService = blogService;
-        }
-
         public IActionResult Index()
         {
             Layout.Head.Title = _sharedLocalizer["Blog | " + Layout.Head.Title + " | .NET Developer"];
             Layout.Banner.Title = _sharedLocalizer["Blog"];
-            Layout.Banner.NavLinks = new List<NavLink>()
-            {
-                new NavLink(){ Action = "Index", Controller = "Home", Label = _sharedLocalizer["Home"] },
-                new NavLink(){ Action = "Index", Controller = "Blog", Label = _sharedLocalizer["Blog"] },
-            };
+            Layout.Banner.NavLinks =
+            [
+                new(){ Action = "Index", Controller = "Home", Label = _sharedLocalizer["Home"] },
+                new(){ Action = "Index", Controller = "Blog", Label = _sharedLocalizer["Blog"] },
+            ];
 
-            var model = new Blog();
-            model.SeeAllVisible = false;
-            model.BlogItemsMini = _blogService.GetBlogItemsReversed();
+            var model = new Blog
+            {
+                SeeAllVisible = false,
+                BlogItemsMini = _blogService.GetBlogItemsReversed()
+            };
 
             return View(model);
         }
@@ -44,12 +37,12 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
         {
             Layout.Head.Title = name + " | " + Layout.Head.Title + " | .NET Developer";
             Layout.Banner.Title = _sharedLocalizer["Blog"];
-            Layout.Banner.NavLinks = new List<NavLink>()
-            {
-                new NavLink(){ Action = "Index", Controller = "Home", Label = _sharedLocalizer["Home"] },
-                new NavLink(){ Action = "Index", Controller = "Blog", Label = _sharedLocalizer["Blog"] },
-                new NavLink(){ Action = "Post", Controller = "Blog", Label = name, Data = new { name = name } },
-            };
+            Layout.Banner.NavLinks =
+            [
+                new(){ Action = "Index", Controller = "Home", Label = _sharedLocalizer["Home"] },
+                new(){ Action = "Index", Controller = "Blog", Label = _sharedLocalizer["Blog"] },
+                new(){ Action = "Post", Controller = "Blog", Label = name, Data = new { name = name } },
+            ];
             return View("post-" + name);
         }
     }

@@ -5,21 +5,7 @@ namespace Tanyo.Portfolio.Web.Models
 {
     public class DefaultLayout
     {
-        public DefaultLayout()
-        {
-            Head = new Head();
-
-            Header = new Header();
-
-            Banner = new Banner();
-
-            Companies = new Companies();
-
-            Footer = new Footer();
-        }
-
-        public DefaultLayout(IStringLocalizer sharedLocalizer,
-            INavLinksService navLinksService) : this()
+        public DefaultLayout(IStringLocalizer sharedLocalizer, INavLinksService navLinksService)
         {
             Head.Title = sharedLocalizer["Tanyo Ivanov"];
 
@@ -42,14 +28,14 @@ namespace Tanyo.Portfolio.Web.Models
             Companies = new Companies(); //.Data = companiesService.GetCompanies().ToList();
         }
 
-        public Header Header { get; set; }
+        public Header Header { get; set; } = new Header();
 
-        public Footer Footer { get; set; }
+        public Footer Footer { get; set; } = new Footer();
 
-        public Companies Companies { get; set; }
+        public Companies Companies { get; set; } = new Companies();
 
-        public Head Head { get; set; }
+        public Head Head { get; set; } = new Head();
 
-        public Banner Banner { get; set; }
+        public Banner Banner { get; set; } = new Banner();
     }
 }

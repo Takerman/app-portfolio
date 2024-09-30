@@ -4,12 +4,8 @@ using Tanyo.Portfolio.Data.Entities;
 
 namespace Tanyo.Portfolio.BLL.Services
 {
-    public class CompaniesService : ICompaniesService
+    public class CompaniesService(DefaultContext context) : ICompaniesService
     {
-        public IEnumerable<Company> GetCompanies()
-        {
-            using var context = new MainContext();
-            return context.Companies.ToList();
-        }
+        public IEnumerable<Company> GetCompanies() => [.. context.Companies];
     }
 }

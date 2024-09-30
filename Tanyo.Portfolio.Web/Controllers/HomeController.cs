@@ -8,23 +8,17 @@ using Tanyo.Portfolio.Web.Models.Partials;
 
 namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController(ILogger<BaseController> logger,
+        INavLinksService navLinksService,
+        ISocialLinksService socialLinksService,
+        ICopyLinksService copyLinksService,
+        ICompaniesService companiesService,
+        IStatsService statsService,
+        IBlogService blogService,
+        IStringLocalizerFactory factory) : BaseController(logger, navLinksService, socialLinksService, copyLinksService, companiesService, factory)
     {
-        private IStatsService _statsService;
-        private IBlogService _blogService;
-
-        public HomeController(ILogger<BaseController> logger,
-            INavLinksService navLinksService,
-            ISocialLinksService socialLinksService,
-            ICopyLinksService copyLinksService,
-            ICompaniesService companiesService,
-            IStatsService statsService,
-            IBlogService blogService,
-            IStringLocalizerFactory factory) : base(logger, navLinksService, socialLinksService, copyLinksService, companiesService, factory)
-        {
-            _statsService = statsService;
-            _blogService = blogService;
-        }
+        private IStatsService _statsService = statsService;
+        private IBlogService _blogService = blogService;
 
         public IActionResult Index()
         {

@@ -9,7 +9,7 @@ using Tanyo.Portfolio.Data.Contexts;
 
 namespace Tanyo.Portfolio.Data.Migrations
 {
-    [DbContext(typeof(MainContext))]
+    [DbContext(typeof(DefaultContext))]
     partial class MainContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

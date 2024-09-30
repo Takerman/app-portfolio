@@ -10,17 +10,13 @@ using Tanyo.Portfolio.Web.Models;
 
 namespace Tanyo.Portfolio.Web.Controllers
 {
-    public class ErrorController : BaseController
+    public class ErrorController(ILogger<BaseController> logger,
+        INavLinksService navLinksService,
+        ISocialLinksService socialLinksService,
+        ICopyLinksService copyLinksService,
+        ICompaniesService companiesService,
+        IStringLocalizerFactory factory) : BaseController(logger, navLinksService, socialLinksService, copyLinksService, companiesService, factory)
     {
-        public ErrorController(ILogger<BaseController> logger,
-            INavLinksService navLinksService,
-            ISocialLinksService socialLinksService,
-            ICopyLinksService copyLinksService,
-            ICompaniesService companiesService,
-            IStringLocalizerFactory factory) : base(logger, navLinksService, socialLinksService, copyLinksService, companiesService, factory)
-        {
-        }
-
         [AllowAnonymous]
         [Route("Error")]
         [Route("Error/{code:int}")]

@@ -4,11 +4,6 @@ namespace Tanyo.Portfolio.Data.Entities
 {
     public class BlogItemMini
     {
-        public BlogItemMini()
-        {
-            //Date = DateTime.Now;
-        }
-
         [Key]
         public int ID { get; set; }
 

@@ -4,12 +4,8 @@ using Tanyo.Portfolio.Data.Entities;
 
 namespace Tanyo.Portfolio.BLL.Services
 {
-    public class CopyLinksService : ICopyLinksService
+    public class CopyLinksService(DefaultContext context) : ICopyLinksService
     {
-        public IEnumerable<CopyLink> GetLinks()
-        {
-            using var context = new MainContext();
-            return context.CopyLinks.ToList();
-        }
+        public IEnumerable<CopyLink> GetLinks() => [.. context.CopyLinks];
     }
 }

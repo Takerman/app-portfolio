@@ -4,18 +4,10 @@ using Tanyo.Portfolio.Data.Entities;
 
 namespace Tanyo.Portfolio.BLL.Services
 {
-    public class StatsService : IStatsService
+    public class StatsService(DefaultContext context) : IStatsService
     {
-        public IEnumerable<Stat> GetDevStats()
-        {
-            using var context = new MainContext();
-            return context.Stats.Where(x => x.Type.ToLower() == "dev").ToList();
-        }
+        public IEnumerable<Stat> GetDevStats() => [.. context.Stats.Where(x => x.Type.ToLower() == "dev")];
 
-        public IEnumerable<Stat> GetCustomerStats()
-        {
-            using var context = new MainContext();
-            return context.Stats.Where(x => x.Type.ToLower() == "customer").ToList();
-        }
+        public IEnumerable<Stat> GetCustomerStats() => [.. context.Stats.Where(x => x.Type.ToLower() == "customer")];
     }
 }

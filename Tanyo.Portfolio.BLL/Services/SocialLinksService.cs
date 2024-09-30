@@ -4,12 +4,8 @@ using Tanyo.Portfolio.Data.Entities;
 
 namespace Tanyo.Portfolio.BLL.Services
 {
-    public class SocialLinksService : ISocialLinksService
+    public class SocialLinksService(DefaultContext context) : ISocialLinksService
     {
-        public IEnumerable<SocialLink> GetLinks()
-        {
-            using var context = new MainContext();
-            return context.SocialLinks.ToList();
-        }
+        public IEnumerable<SocialLink> GetLinks() => [.. context.SocialLinks];
     }
 }

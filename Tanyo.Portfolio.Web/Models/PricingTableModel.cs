@@ -5,7 +5,7 @@ namespace Tanyo.Portfolio.Web.Models
 {
     public class PricingTableModel
     {
-        private int employmentTypeId;
+        private readonly int employmentTypeId;
 
         public PricingTableModel(int employmentTypeId)
         {

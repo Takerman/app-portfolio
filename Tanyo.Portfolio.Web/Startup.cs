@@ -4,48 +4,45 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Net.Http.Headers;
 using System;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Takerman.Mail;
 using Tanyo.Portfolio.BLL.Services;
 using Tanyo.Portfolio.BLL.Services.Interfaces;
+using Tanyo.Portfolio.Data.Contexts;
 using Tanyo.Portfolio.Data.Entities;
 using Tanyo.Portfolio.Web.Models.Services;
 
 namespace Tanyo.Portfolio.Web
 {
-    public class Startup
+    public class Startup(IConfiguration configuration, IWebHostEnvironment env)
     {
-        public Startup(IConfiguration configuration, IWebHostEnvironment env)
-        {
-            Configuration = configuration;
-            Env = env;
-        }
+        public IConfiguration Configuration { get; } = configuration;
 
-        public IConfiguration Configuration { get; }
-
-        public IWebHostEnvironment Env { get; }
+        public IWebHostEnvironment Env { get; } = env;
 
         public const string DefaultCulture = "en";
 
-        public readonly CultureInfo[] SupportedCultures = new[]
-        {
+        public readonly CultureInfo[] SupportedCultures =
+        [
             new CultureInfo(DefaultCulture),
             new CultureInfo("de"),
             new CultureInfo("bg"),
             new CultureInfo("ru")
-        };
+        ];
 
         public void ConfigureServices(IServiceCollection services)
         {
             AddServices(services);
-            //AddHsts(services);
+            AddHsts(services);
             AddLocalization(services);
 
             services.AddControllersWithViews();
@@ -110,6 +107,13 @@ namespace Tanyo.Portfolio.Web
 
         private void AddServices(IServiceCollection services)
         {
+            services.AddDbContext<DefaultContext>((options) =>
+            {
+                options.UseSqlite("Data Source=" + Path.Combine(Environment.CurrentDirectory, "tanyo_data.db3;"), b => b.MigrationsAssembly("Takerman.Portfolio.Data"));
+                options.EnableSensitiveDataLogging();
+                options.EnableDetailedErrors();
+            });
+            services.AddTransient<DbContext, DefaultContext>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<SharedLocalizationService>();
             services.AddScoped<INavLinksService, NavLinksService>();

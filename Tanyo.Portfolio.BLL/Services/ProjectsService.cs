@@ -4,12 +4,8 @@ using Tanyo.Portfolio.Data.Entities;
 
 namespace Tanyo.Portfolio.Web.Models.Services
 {
-    public class ProjectsService : IProjectsService
+    public class ProjectsService(DefaultContext context) : IProjectsService
     {
-        public IEnumerable<Project> GetProjects()
-        {
-            using var context = new MainContext();
-            return context.Projects.ToList();
-        }
+        public IEnumerable<Project> GetProjects() => [.. context.Projects];
     }
 }

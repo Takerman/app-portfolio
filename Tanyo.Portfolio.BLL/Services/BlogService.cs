@@ -4,13 +4,9 @@ using Tanyo.Portfolio.Data.Entities;
 
 namespace Tanyo.Portfolio.BLL.Services
 {
-    public class BlogService : IBlogService
+    public class BlogService(DefaultContext context) : IBlogService
     {
-        public IEnumerable<BlogItemMini> GetBlogItems()
-        {
-            using var context = new MainContext();
-            return context.BlogItemsMini.ToList();
-        }
+        public IEnumerable<BlogItemMini> GetBlogItems() => [.. context.BlogItemsMini];
 
         public IEnumerable<BlogItemMini> GetBlogItemsReversed(int? maxPostsCount = null)
         {

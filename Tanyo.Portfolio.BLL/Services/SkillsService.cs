@@ -4,12 +4,8 @@ using Tanyo.Portfolio.Data.Entities;
 
 namespace Tanyo.Portfolio.Web.Models.Services
 {
-    public class SkillsService : ISkillsService
+    public class SkillsService(DefaultContext context) : ISkillsService
     {
-        public IEnumerable<Skill> GetSkills()
-        {
-            using var context = new MainContext();
-            return context.Skills.ToList();
-        }
+        public IEnumerable<Skill> GetSkills() => [.. context.Skills];
     }
 }

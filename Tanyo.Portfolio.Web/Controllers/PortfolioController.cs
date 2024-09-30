@@ -8,20 +8,15 @@ using Tanyo.Portfolio.Data.Entities;
 
 namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
 {
-    public class PortfolioController : BaseController
+    public class PortfolioController(ILogger<BaseController> logger,
+        INavLinksService navLinksService,
+        ISocialLinksService socialLinksService,
+        ICopyLinksService copyLinksService,
+        ICompaniesService companiesService,
+        IProjectsService projectsService,
+        IStringLocalizerFactory factory) : BaseController(logger, navLinksService, socialLinksService, copyLinksService, companiesService, factory)
     {
-        private readonly IProjectsService _projectsService;
-
-        public PortfolioController(ILogger<BaseController> logger,
-            INavLinksService navLinksService,
-            ISocialLinksService socialLinksService,
-            ICopyLinksService copyLinksService,
-            ICompaniesService companiesService,
-            IProjectsService projectsService,
-            IStringLocalizerFactory factory) : base(logger, navLinksService, socialLinksService, copyLinksService, companiesService, factory)
-        {
-            _projectsService = projectsService;
-        }
+        private readonly IProjectsService _projectsService = projectsService;
 
         public IActionResult Index()
         {
@@ -29,8 +24,8 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
             Layout.Banner.Title = _sharedLocalizer["Portfolio"];
             Layout.Banner.NavLinks = new List<NavLink>()
             {
-                new NavLink(){ Action = "Index", Controller = "Home", Label = _sharedLocalizer["Home"] },
-                new NavLink(){ Action = "Index", Controller = "Portfolio", Label = _sharedLocalizer["Portfolio"] },
+                new(){ Action = "Index", Controller = "Home", Label = _sharedLocalizer["Home"] },
+                new(){ Action = "Index", Controller = "Portfolio", Label = _sharedLocalizer["Portfolio"] },
             };
 
             var model = _projectsService.GetProjects().Where(x => x.IsPrivate == false).ToList();
@@ -60,9 +55,9 @@ namespace Tanyo.Portfolio.Web.Areas.Tanyo.Controllers
             Layout.Banner.Title = _sharedLocalizer["Portfolio"];
             Layout.Banner.NavLinks = new List<NavLink>()
             {
-                new NavLink(){ Action = "Index", Controller = "Home", Label = _sharedLocalizer["Home"] },
-                new NavLink(){ Action = "Index", Controller = "Portfolio", Label = _sharedLocalizer["Portfolio"] },
-                new NavLink(){ Action = "Project", Controller = "Portfolio", Data = new { name = name }, Label = name },
+                new(){ Action = "Index", Controller = "Home", Label = _sharedLocalizer["Home"] },
+                new(){ Action = "Index", Controller = "Portfolio", Label = _sharedLocalizer["Portfolio"] },
+                new(){ Action = "Project", Controller = "Portfolio", Data = new { name = name }, Label = name },
             };
             return View(name);
         }

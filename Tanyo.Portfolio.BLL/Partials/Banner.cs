@@ -4,15 +4,8 @@ namespace Tanyo.Portfolio.Web.Models
 {
     public class Banner
     {
-        public Banner()
-        {
-            Title = string.Empty;
+        public string Title { get; set; } = string.Empty;
 
-            NavLinks = new List<NavLink>();
-        }
-
-        public string Title { get; set; }
-
-        public IEnumerable<NavLink> NavLinks { get; set; }
+        public IEnumerable<NavLink> NavLinks { get; set; } = [];
     }
 }

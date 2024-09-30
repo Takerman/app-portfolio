@@ -10,7 +10,7 @@ using Tanyo.Portfolio.Data.Contexts;
 
 namespace Tanyo.Portfolio.Data.Migrations
 {
-    [DbContext(typeof(MainContext))]
+    [DbContext(typeof(DefaultContext))]
     [Migration("20221129080659_StatsData")]
     partial class StatsData
     {

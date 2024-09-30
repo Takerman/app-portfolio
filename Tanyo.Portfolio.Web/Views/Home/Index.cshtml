@@ -4,7 +4,6 @@
 @model IndexModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    Console.WriteLine(Model.ToString());
 }
 
 <section class="home_banner_area" style="background: url(/img/profile/home-banner.png) no-repeat top center;">
@@ -44,12 +43,12 @@
                 </div>
             </div>
         </div>
-        @await Html.PartialAsync("~/Views/Shared/Partials/DevStats.cshtml", Model.DevStats)
+        @await Html.PartialAsync("DevStats.cshtml", Model.DevStats)
     </div>
 </section>
 
-@await Html.PartialAsync("~/Views/Shared/Partials/CustomerStats.cshtml", Model.CustomerStats)
-@await Html.PartialAsync("~/Views/Shared/Partials/About.cshtml")
-@await Html.PartialAsync("~/Views/Shared/Partials/Services.cshtml")
-@await Html.PartialAsync("~/Views/Shared/Partials/Testimonial.cshtml")
-@await Html.PartialAsync("~/Views/Shared/Partials/Blog.cshtml", Model.Blog)
+@await Html.PartialAsync("~/Views/Home/CustomerStats.cshtml", Model.CustomerStats)
+@await Html.PartialAsync("~/Views/Home/About.cshtml")
+@await Html.PartialAsync("~/Views/Home/Services.cshtml")
+@await Html.PartialAsync("~/Views/Home/Testimonial.cshtml")
+@await Html.PartialAsync("~/Views/Home/Blog.cshtml", Model.Blog)

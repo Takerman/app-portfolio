@@ -4,12 +4,8 @@ using Tanyo.Portfolio.Data.Entities;
 
 namespace Tanyo.Portfolio.Web.Models.Services
 {
-    public class NavLinksService : INavLinksService
+    public class NavLinksService(DefaultContext context) : INavLinksService
     {
-        public IEnumerable<NavLink> GetLinks()
-        {
-            using var context = new MainContext();
-            return context.NavLinks.ToList();
-        }
+        public IEnumerable<NavLink> GetLinks() => [.. context.NavLinks];
     }
 }

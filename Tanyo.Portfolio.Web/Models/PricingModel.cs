@@ -5,21 +5,8 @@ namespace Tanyo.Portfolio.Web.Models
 {
     public class PricingModel
     {
-        public PricingModel()
-        {
-            if (Skills == null)
-            {
-                Skills = new List<Skill>();
-            }
+        public IEnumerable<Skill> Skills { get; set; } = [];
 
-            if (Prices == null)
-            {
-                Prices = new List<Price>();
-            }
-        }
-
-        public IEnumerable<Skill> Skills { get; set; }
-
-        public IEnumerable<Price> Prices { get; set; }
+        public IEnumerable<Price> Prices { get; set; } = [];
     }
 }
