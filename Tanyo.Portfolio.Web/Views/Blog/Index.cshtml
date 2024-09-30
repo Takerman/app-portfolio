@@ -6,3 +6,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<div class="section-margin">
+    @await Html.PartialAsync("~/Views/Home/Blog.cshtml", Model)
+</div>
