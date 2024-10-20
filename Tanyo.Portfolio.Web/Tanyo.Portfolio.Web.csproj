@@ -74,6 +74,7 @@
     <PackageReference Include="Serilog" Version="4.0.2" />
     <PackageReference Include="Serilog.Settings.Configuration" Version="8.0.4" />
     <PackageReference Include="Serilog.Sinks.Slack" Version="2.2.2" />
+    <PackageReference Include="Takerman.Logging" Version="1.0.4" />
     <PackageReference Include="Takerman.Notifications" Version="1.0.2" />
   </ItemGroup>
 
