@@ -9,6 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Net.Http.Headers;
+using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.Slack;
+using Serilog.Sinks.Slack.Models;
 using System;
 using System.Globalization;
 using System.IO;
@@ -19,6 +23,7 @@ using Tanyo.Portfolio.BLL.Services;
 using Tanyo.Portfolio.BLL.Services.Interfaces;
 using Tanyo.Portfolio.Data.Contexts;
 using Tanyo.Portfolio.Data.Entities;
+using Tanyo.Portfolio.Web.Models.Partials;
 using Tanyo.Portfolio.Web.Models.Services;
 
 namespace Tanyo.Portfolio.Web
@@ -128,6 +133,21 @@ namespace Tanyo.Portfolio.Web
             services.AddSingleton<IMailService, MailService>();
             services.Configure<RabbitMqConfig>(Configuration.GetSection(nameof(RabbitMqConfig)));
             services.AddRecaptchaService();
+
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Warning()
+                .ReadFrom.Configuration(Configuration)
+                .WriteTo.Slack(new SlackSinkOptions
+                {
+                    WebHookUrl = "https://hooks.slack.com/services/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",
+                    CustomIcon = ":curly_haired_person:",
+                    Period = TimeSpan.FromSeconds(10),
+                    ShowDefaultAttachments = false,
+                    ShowExceptionAttachments = true,
+                    MinimumLogEventLevel = LogEventLevel.Error,
+                    PropertyDenyList = ["Level", "SourceContext"]
+                })
+                .CreateLogger();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
