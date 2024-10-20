@@ -54,7 +54,9 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: NUGET_PASSWORD=${{ secrets.REGISTRY_TOKEN }}
+          build-args: |
+            SLACK_WEB_HOOK=${{ secrets.SLACK_EXCEPTIONS }}
+            NUGET_PASSWORD=${{ secrets.REGISTRY_TOKEN }}
 
       - name: Test
         run: dotnet test --no-build --verbosity normal

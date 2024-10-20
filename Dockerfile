@@ -8,6 +8,8 @@ COPY nuget.config ./
 RUN sed -i "s|</configuration>|<packageSourceCredentials><github><add key=\"Username\" value=\"takerman\"/><add key=\"ClearTextPassword\" value=\"${NUGET_PASSWORD}\"/></github></packageSourceCredentials></configuration>|" nuget.config
 RUN dotnet nuget add source https://nuget.pkg.github.com/takermanltd/index.json --name github
 RUN dotnet nuget list source
+ARG SLACK_EXCEPTIONS
+ENV SLACK_WEBHOOK_URL=SLACK_EXCEPTIONS
 
 WORKDIR /app
 COPY Tanyo.Portfolio.Data/*.csproj ./Tanyo.Portfolio.Data/
