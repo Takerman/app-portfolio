@@ -1,4 +1,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ARG SLACK_EXCEPTIONS
+ENV SLACK_WEBHOOK_URL=$SLACK_EXCEPTIONS
 ENV ASPNETCORE_ENVIRONMENT Production
 ARG BUILD_CONFIGURATION=Release
 ARG NUGET_PASSWORD
@@ -9,7 +11,7 @@ RUN sed -i "s|</configuration>|<packageSourceCredentials><github><add key=\"User
 RUN dotnet nuget add source https://nuget.pkg.github.com/takermanltd/index.json --name github
 RUN dotnet nuget list source
 ARG SLACK_EXCEPTIONS
-ENV SLACK_WEBHOOK_URL=SLACK_EXCEPTIONS
+ENV SLACK_WEBHOOK_URL=$SLACK_EXCEPTIONS
 
 WORKDIR /app
 COPY Tanyo.Portfolio.Data/*.csproj ./Tanyo.Portfolio.Data/
