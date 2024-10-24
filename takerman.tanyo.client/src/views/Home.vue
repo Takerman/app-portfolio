@@ -25,8 +25,8 @@
                                 </div> -->
                             </div>
                             <div class="button-box col-lg-12">
-                                <a class="primary_btn" role="button" href="~/files/Tanyo_Ivanov_CV.pdf" target="_blank"><span>CV</span></a>
-                                <a class="primary_btn" role="button" href="~/files/Brochure.pdf" target="_blank"><span>BROCHURE</span></a>
+                                <a class="primary_btn" role="button" href="../assets/files/Tanyo_Ivanov_CV.pdf" target="_blank"><span>CV</span></a>
+                                <a class="primary_btn" role="button" href="../assets/files/Brochure.pdf" target="_blank"><span>BROCHURE</span></a>
                             </div>
                         </div>
                     </div>
