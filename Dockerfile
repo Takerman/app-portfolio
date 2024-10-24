@@ -1,54 +1,51 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 ARG SLACK_EXCEPTIONS
 ENV SLACK_WEBHOOK_URL=$SLACK_EXCEPTIONS
-ENV ASPNETCORE_ENVIRONMENT Production
+ENV ASPNETCORE_ENVIRONMENT=Production
+WORKDIR /app
+EXPOSE 80
+EXPOSE 443
+RUN apt update && apt install -y curl gnupg libpng-dev libjpeg-dev curl libxi6 build-essential libgl1-mesa-glx
+RUN curl -fsSL https://deb.nodesource.com/nsolid_setup_deb.sh | sh -s 20
+RUN apt-get install -y nodejs
+
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+ENV ASPNETCORE_ENVIRONMENT=Production
+WORKDIR /src
+RUN apt update && apt install -y curl libpng-dev libjpeg-dev curl libxi6 build-essential libgl1-mesa-glx
+RUN curl -fsSL https://deb.nodesource.com/nsolid_setup_deb.sh | sh -s 20
+RUN apt-get install -y nodejs
 ARG BUILD_CONFIGURATION=Release
 ARG NUGET_PASSWORD
-
-WORKDIR /app
-COPY nuget.config ./
-RUN sed -i "s|</configuration>|<packageSourceCredentials><github><add key=\"Username\" value=\"takerman\"/><add key=\"ClearTextPassword\" value=\"${NUGET_PASSWORD}\"/></github></packageSourceCredentials></configuration>|" nuget.config
-RUN dotnet nuget add source https://nuget.pkg.github.com/takermanltd/index.json --name github
-RUN dotnet nuget list source
 ARG SLACK_EXCEPTIONS
 ENV SLACK_WEBHOOK_URL=$SLACK_EXCEPTIONS
 
+COPY . .
+
+COPY ["takerman.tanyo.client/nuget.config", "./"]
+COPY ["takerman.tanyo.client/package.json", "package.json"]
+
+RUN sed -i "s|</configuration>|<packageSourceCredentials><github><add key=\"Username\" value=\"takerman\"/><add key=\"ClearTextPassword\" value=\"${NUGET_PASSWORD}\"/></github></packageSourceCredentials></configuration>|" nuget.config
+RUN dotnet nuget add source https://nuget.pkg.github.com/takermanltd/index.json --name github
+RUN echo //npm.pkg.github.com/:_authToken=$NUGET_PASSWORD >> ~/.npmrc
+RUN echo @takermanltd:registry=https://npm.pkg.github.com/ >> ~/.npmrc
+RUN echo "user.email=tivanov@takerman.net" > .npmrc
+RUN echo "user.name=takerman" > .npmrc
+RUN echo "user.username=takerman" > .npmrc
+RUN npm install --production
+
+WORKDIR "/src/Takerman.Tanyo.Tests"
+RUN dotnet test
+
+WORKDIR "/src/Takerman.Tanyo.Server"
+RUN dotnet clean && dotnet restore && dotnet build -c $BUILD_CONFIGURATION -o /app/build
+RUN rm -f .npmrc
+
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
 WORKDIR /app
-COPY Tanyo.Portfolio.Data/*.csproj ./Tanyo.Portfolio.Data/
-WORKDIR /app/Tanyo.Portfolio.Data/
-RUN dotnet restore
-
-WORKDIR /app
-COPY Tanyo.Portfolio.BLL/*.csproj ./Tanyo.Portfolio.BLL/
-WORKDIR /app/Tanyo.Portfolio.BLL/
-RUN dotnet restore
-
-WORKDIR /app
-COPY Tanyo.Portfolio.Web/*.csproj ./Tanyo.Portfolio.Web/
-WORKDIR /app/Tanyo.Portfolio.Web/
-RUN dotnet restore
-
-WORKDIR /app
-COPY Tanyo.Portfolio.Web.Tests/*.csproj ./Tanyo.Portfolio.Web.Tests/
-WORKDIR /app/Tanyo.Portfolio.Web.Tests/
-RUN dotnet restore
-
-WORKDIR /app
-COPY Tanyo.Portfolio.Data/. ./Tanyo.Portfolio.Data/
-COPY Tanyo.Portfolio.BLL/. ./Tanyo.Portfolio.BLL/
-COPY Tanyo.Portfolio.Web/. ./Tanyo.Portfolio.Web/
-COPY Tanyo.Portfolio.Web.Tests/. ./Tanyo.Portfolio.Web.Tests/
-
-WORKDIR /app/Tanyo.Portfolio.Web.Tests/
-RUN dotnet clean ./*.csproj
-RUN dotnet build ./*.csproj
-RUN dotnet test ./*.csproj --logger "trx;LogFileName=Tanyo.Portfolio.Web.Tests.trx" 
-
-WORKDIR /app/Tanyo.Portfolio.Web/
-RUN dotnet publish -c Release -o out
-
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS runtime
-WORKDIR /app
-COPY --from=build /app/Tanyo.Portfolio.Web/out ./
-
-ENTRYPOINT ["dotnet", "Tanyo.Portfolio.Web.dll"]
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "Takerman.Tanyo.Server.dll"]

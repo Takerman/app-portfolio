@@ -1,9 +1,0 @@
-﻿@using Tanyo.Portfolio.Data.Entities;
-@inject SharedLocalizationService sharedLocalizer
-@inject IViewLocalizer localizer
-@model IEnumerable<Project>
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-@await Html.PartialAsync("Portfolio.cshtml", Model)
