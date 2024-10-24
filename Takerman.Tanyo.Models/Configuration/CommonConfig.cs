@@ -2,6 +2,5 @@
 {
     public class CommonConfig
     {
-        public string TanyoLocation { get; set; } = string.Empty;
     }
 }

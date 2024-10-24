@@ -14,8 +14,7 @@ namespace Takerman.Tanyo.Tests
             => services
                 .Configure<ConnectionStrings>(configuration.GetSection(nameof(ConnectionStrings)))
                 .Configure<CommonConfig>(configuration.GetSection(nameof(CommonConfig)))
-                .AddTransient<IDatabasesService, DatabasesService>()
-                .AddTransient<ITanyoService, TanyoService>();
+                .AddTransient<IHomeService, HomeService>();
 
         protected override ValueTask DisposeAsyncCore() => new();
 

@@ -4,6 +4,5 @@
     "DataProvider": "sqlserver"
   },
   "CommonConfig": {
-    "TanyoLocation": "/var/opt/mssql/data"
   }
 }

@@ -1,7 +1,6 @@
 {
   "AllowedHosts": "*",
   "CommonConfig": {
-    "TanyoLocation": "\\\takerman.net\\root\\home\\takerman\\volumes\\mssql\\data"
   },
   "ConnectionStrings": {
     "DataProvider": "sqlserver",

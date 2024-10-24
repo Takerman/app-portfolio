@@ -23,8 +23,7 @@ builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection(nameof(ConnectionStrings)));
 builder.Services.Configure<CommonConfig>(builder.Configuration.GetSection(nameof(CommonConfig)));
-builder.Services.AddTransient<IDatabasesService, DatabasesService>();
-builder.Services.AddTransient<ITanyoService, TanyoService>();
+builder.Services.AddTransient<IHomeService, HomeService>();
 builder.Services.AddHsts(options =>
 {
     options.Preload = true;
