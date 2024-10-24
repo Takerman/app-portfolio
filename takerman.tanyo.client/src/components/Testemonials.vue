@@ -1,0 +1,115 @@
+<template>
+<div>
+    <section style="padding-bottom: 240px !important" class="testimonial_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main_title">
+                    <p class="top_text">My testimonials <span></span></p>
+                    <h2>
+                        Honourable Clients Says <br>
+                        About Me
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="owl-carousel owl-theme testimonial-slider ">
+
+            <div class="testimonial-item">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="testi-img mb-4 mb-lg-0">
+                            <img src="../assets/img/testimonials/anders.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="testi-right">
+                            <h4>Anders Person</h4>
+                            <p><small>CEO, Comstream</small></p>
+
+                            <p>
+                                In our opinion, Tanyo conducted his tasks in an excellent way. He was appreciated by his colleagues and showed a great attitude towards work. I would recommend Tanyo for a similar position based on his professional and personal skills.
+                                <a href="../assets/files/recomendations/AndersPersson.pdf" target="_blank"><strong>Recomendation</strong></a>
+                            </p>
+                            <ul class="star_rating mt-3">
+                                <li><span><i class="fas fa-star"></i></span></li>
+                                <li><span><i class="fas fa-star"></i></span></li>
+                                <li><span><i class="fas fa-star"></i></span></li>
+                                <li><span><i class="fas fa-star"></i></span></li>
+                                <li class="disable"><span><i class="fas fa-star"></i></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-item">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="testi-img mb-4 mb-lg-0">
+                            <img src="../assets/img/testimonials/ivo.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="testi-right">
+                            <h4>Ivaylo Ivanov</h4>
+                            <p><small>CTO, BGO Software</small></p>
+                            <p>
+                                Tanyo was with us for long time and contributed to an important project in our company. He gave some creative ideas and stayed in touch after leaving the company.
+                                <a href="../assets/files/recomendations/IvayloIvanov.pdf" target="_blank"><strong>Recomendation</strong></a>
+                            </p>
+                            <ul class="star_rating mt-4">
+                                <li><span><i class="fas fa-star"></i></span></li>
+                                <li><span><i class="fas fa-star"></i></span></li>
+                                <li><span><i class="fas fa-star"></i></span></li>
+                                <li><span><i class="fas fa-star"></i></span></li>
+                                <li><span><i class="fas fa-star"></i></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-item">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="testi-img mb-4 mb-lg-0">
+                            <img src="../assets/img/testimonials/ivan.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="testi-right">
+                            <h4>Ivan Lekushev</h4>
+                            <p><small>CEO, BGO Software</small></p>
+
+                            <p>
+                                Tanyo would be a good part in every team as he was an important part of our. I would definately recommend Tanyo to his next employers.
+                                <a href="../assets/files/recomendations/IvanLekushev.pdf" target="_blank"><strong>Recomendation</strong></a>
+                            </p>
+                            <ul class="star_rating mt-3">
+                                <li><span><i class="fas fa-star"></i></span></li>
+                                <li><span><i class="fas fa-star"></i></span></li>
+                                <li><span><i class="fas fa-star"></i></span></li>
+                                <li><span><i class="fas fa-star"></i></span></li>
+                                <li><span><i class="fas fa-star"></i></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="trustpilot-widget" data-locale="en-US" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="5e5ad03c09f40400014b10e9" data-style-height="24px" data-style-width="100%" data-theme="light">
+    <a href="https://www.trustpilot.com/review/tivanov.takerman.net" target="_blank" rel="noopener">Trustpilot</a>
+</div></div>
+</template>
+
+<script lang="js">
+export default {
+}
+</script>
+
+<style scoped></style>

@@ -1,0 +1,41 @@
+﻿<section class="blog_area single-post-area section-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 p-0 posts-list">
+                <div class="single-post">
+                    <div class="blog_details">
+                        <h2>
+                            fanless-title
+                        </h2>
+                        <ul class="blog-info-link mt-3 mb-4">
+                            <li><i class="ti-user"></i> Tanyo Ivanov</li>
+                            <li><i class="ti-calendar"></i> Dec 18, 2022</li>
+                        </ul>
+                        <p class="blog-paragraph">
+                            Hello,<br />
+                            fanless-content-intro
+                        </p>
+                        <img class="img-fluid blog-post-image" src="~/img/blog/fanless-home-lab/fanless.png" />
+                        <p class="blog-paragraph">
+                            fanless-content-section1
+                        </p>
+                        <img class="img-fluid blog-post-image" src="~/img/blog/fanless-home-lab/devices.drawio.png" />
+                        <p class="blog-paragraph">
+                            fanless-content-section2
+                        </p>
+                        <img class="img-fluid blog-post-image" src="~/img/blog/fanless-home-lab/server.drawio.png" />
+                        <p class="blog-paragraph">
+                            fanless-content-outro
+                        </p>
+                        <p class="text-center">
+                            Regards,<br />
+                            Tanyo Ivanov
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @await Html.PartialAsync("~/Views/Shared/Partials/Share.cshtml")
+        @await Html.PartialAsync("~/Views/Shared/Partials/Disqus.cshtml")
+    </div>
+</section>
