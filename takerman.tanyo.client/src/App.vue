@@ -1,5 +1,6 @@
 <template>
     <AppHeader style="margin-bottom: 100px" />
+    <!-- <Banner></Banner> -->
     <router-view></router-view>
     <AppFooter />
 </template>
@@ -7,11 +8,13 @@
 <script lang="js">
 import AppHeader from './components/AppHeader.vue';
 import AppFooter from './components/AppFooter.vue';
+import Banner from './components/Banner.vue';
 
 export default {
     components: {
         AppHeader,
-        AppFooter
+        AppFooter,
+        Banner
     },
     metaInfo: {
         title: 'common.title',

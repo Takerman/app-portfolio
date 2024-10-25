@@ -10,15 +10,20 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.3",
-    "bootstrap-vue": "^2.23.1",
+    "animate": "^1.0.0",
+    "bootstrap": "^4.6.0",
+    "bootstrap-icons": "^1.11.3",
+    "easing": "^1.2.1",
     "events": "^3.3.0",
+    "mitt": "^3.0.1",
     "moment": "^2.30.1",
+    "pinia": "^2.2.4",
     "stream": "^0.0.3",
     "volar-service-vetur": "^0.0.62",
     "vue": "^3.5.12",
+    "vue-gtag": "^2.0.1",
     "vue-meta": "^2.4.0",
+    "vue-owl-carousel": "^2.0.3",
     "vue-router": "^4.4.5"
   },
   "devDependencies": {
@@ -26,8 +31,8 @@
     "cypress": "^13.15.0",
     "eslint": "^9.12.0",
     "eslint-plugin-vue": "^9.29.0",
-    "run-script-os": "^1.1.6",
-    "vite": "^5.4.9"
+    "vite": "^5.4.9",
+    "vue-i18n": "^10.0.4"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.24.0"

@@ -1,6 +1,6 @@
 <template>
 
-    <section class="home_banner_area" style="background: url(/img/profile/home-banner.png) no-repeat top center;">
+    <section class="home_banner_area" style="background: url(/src/assets/img/profile/home-banner.png) no-repeat top center;">
         <div class="banner_inner">
             <div class="container">
                 <div class="row align-items-center justify-content-between">
@@ -56,7 +56,14 @@ import Blog from './Blog.vue';
 import DevStats from '../components/DevStats.vue';
 
 export default {
-    components: [CustomerStats, About, Services, Testemonials, Blog]
+    components: {
+        CustomerStats, 
+        About, 
+        Services, 
+        Testemonials, 
+        Blog, 
+        DevStats
+    }
 }
 </script>
 
