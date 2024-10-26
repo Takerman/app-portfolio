@@ -47,7 +47,17 @@
 </template>
 
 <script lang="js">
+import blogService from "../services/blogService";
+
 export default {
+    data() {
+        return {
+            blogItems: []
+        }
+    },
+    async mounted() {
+        this.blogItems = await blogService.getBlogposts();
+    },
 }
 </script>
 

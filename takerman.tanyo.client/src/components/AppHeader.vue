@@ -15,7 +15,7 @@
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav">
                             <li v-for="(link, key) in navLinks" :key="key" class="nav-item">
-                                <router-link :to="link.url">{{ link.name }}</router-link>
+                                <router-link :to="link.value">{{ link.key.toUpperCase() }}</router-link>
                             </li>
                         </ul>
                     </div>
@@ -27,17 +27,19 @@
 </template>
 
 <script lang="js">
+import homeService from "../services/homeService";
+
 export default {
     data() {
         return {
             isHome: true,
-            navLinks: [
-                { url: '/home', name: 'HOME' },
-                { url: '/home', name: 'HOME' },
-                { url: '/home', name: 'HOME' }
-            ]
+            navLinks: []
         }
     },
+    async mounted() {
+        this.isHome = this.$route.path == '/' || this.$route.path == '/home';
+        this.navLinks = await homeService.getNavLinks();
+    }
 }
 </script>
 

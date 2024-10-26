@@ -5,7 +5,7 @@
                 <div class="banner_content text-center">
                     <h2>{{ title }}</h2>
                     <div class="page_link">
-                        <router-link v-for="(link, key) in navLinks" :key="key" :to="link.url">{{ link.name }}</router-link>
+                        <router-link v-for="(link, key) in navLinks" :key="key" :to="link.value">{{ link.key }}</router-link>
                     </div>
                     <div class="fb-like"
                          data-href="https://tanyoivanov.net"
@@ -22,12 +22,17 @@
 </template>
 
 <script lang="js">
+import homeService from '../services/homeService';
+
 export default {
     data() {
         return {
             title: '',
             navLinks: []
         }
+    },
+    async mounted() {
+        this.navLinks = await homeService.getNavLinks();
     }
 }
 </script>

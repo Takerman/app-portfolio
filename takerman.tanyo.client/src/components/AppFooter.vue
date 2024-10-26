@@ -13,7 +13,7 @@
                                     <div class="collapse navbar-collapse offset">
                                         <ul class="nav navbar-nav menu_nav mx-auto">
                                             <li v-for="(link, key) in navLinks" :key="key" class="nav-item">
-                                                <router-link class="nav-link text-white" :to="link.url">{{ link.name }}</router-link>
+                                                <router-link class="nav-link text-white" :to="link.value">{{ link.key }}</router-link>
                                             </li>
                                         </ul>
                                     </div>
@@ -22,7 +22,7 @@
                         </div>
                         <div class="footer_social mt-lg-0 mt-4">
                             <li v-for="(link, key) in socialLinks" :key="key" class="nav-item">
-                                <a :href="link.url" target="_blank"><i :class="'fab fa-' + link.icon"></i></a>
+                                <a :href="link.value" target="_blank"><i :class="'fab fa-' + link.key"></i></a>
                             </li>
                         </div>
                     </div>
@@ -39,6 +39,7 @@
 </template>
 
 <script lang="js">
+import homeService from '../services/homeService';
 
 export default {
     data() {
@@ -47,6 +48,10 @@ export default {
             socialLinks: []
         }
     },
+    async mounted() {
+        this.navLinks = await homeService.getNavLinks();
+        this.socialLinks = await homeService.getSocialLinks();
+    }
 }
 </script>
 

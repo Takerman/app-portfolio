@@ -1,9 +1,10 @@
 using System.Net;
+using Takerman.Logging;
 using Takerman.Tanyo.Models.Configuration;
 using Takerman.Tanyo.Server.Middleware;
+using Takerman.Tanyo.Services;
 using Takerman.Tanyo.Services.Abstraction;
 using Takerman.Tanyos.Services;
-using Takerman.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration
@@ -24,6 +25,7 @@ builder.Services.AddProblemDetails();
 builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection(nameof(ConnectionStrings)));
 builder.Services.Configure<CommonConfig>(builder.Configuration.GetSection(nameof(CommonConfig)));
 builder.Services.AddTransient<IHomeService, HomeService>();
+builder.Services.AddTransient<IBlogService, BlogService>();
 builder.Services.AddHsts(options =>
 {
     options.Preload = true;

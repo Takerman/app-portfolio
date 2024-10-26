@@ -35,13 +35,13 @@
                     <thead>
                         <tr class="thead-dark">
                             <th></th>
-                            <th v-for="(price, key) in prices" :key="key" scope="col">{{ price.currency }}</th>
+                            <th scope="col">EUR</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="thead-active">
                             <td>Average</td>
-                            <td v-for="(price, key) in prices" :key="key">{{ price.value }}</td>
+                            <td>90 000 EUR</td>
                         </tr>
                     </tbody>
                 </table>
@@ -52,11 +52,6 @@
 
 <script lang="js">
 export default {
-    data() {
-        return {
-            prices: []
-        }
-    }
 }
 </script>
 

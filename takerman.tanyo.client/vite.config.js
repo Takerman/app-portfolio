@@ -61,11 +61,11 @@ export default defineConfig({
     },
     server: {
         proxy: {
-            '^/Tanyo': {
+            '^/Home': {
                 target: 'https://localhost:5180/',
                 secure: false
             },
-            '^/Databases': {
+            '^/Blog': {
                 target: 'https://localhost:5180/',
                 secure: false
             }

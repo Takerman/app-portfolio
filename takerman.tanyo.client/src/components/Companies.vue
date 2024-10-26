@@ -17,12 +17,17 @@
 </template>
 
 <script lang="js">
+import homeService from '../services/homeService';
+
 export default {
     data() {
         return {
             title: '',
             companies: []
         }
+    },
+    async mounted() {
+        this.navLinks = await homeService.getCompanies();
     }
 }
 </script>

@@ -40,7 +40,7 @@
             <DevStats></DevStats>
         </div>
     </section>
-    <CustomerStats></CustomerStats>
+    <Highlights></Highlights>
     <About></About>
     <Services></Services>
     <Testemonials></Testemonials>
@@ -48,7 +48,7 @@
 </template>
 
 <script lang="js">
-import CustomerStats from '../components/CustomerStats.vue';
+import Highlights from '../components/Highlights.vue';
 import Services from '../components/Services.vue';
 import About from '../components/About.vue';
 import Testemonials from '../components/Testemonials.vue';
@@ -57,7 +57,7 @@ import DevStats from '../components/DevStats.vue';
 
 export default {
     components: {
-        CustomerStats, 
+        Highlights, 
         About, 
         Services, 
         Testemonials, 
