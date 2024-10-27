@@ -1,6 +1,6 @@
 <template>
 
-    <section class="home_banner_area" style="background: url(/src/img/profile/home-banner.png) no-repeat top center;">
+    <section class="home_banner_area" style="background: url(/img/profile/home-banner.png) no-repeat top center;">
         <div class="banner_inner">
             <div class="container">
                 <div class="row align-items-center justify-content-between">
@@ -17,8 +17,8 @@
                                 <a href="https://calendar.app.google/4LBrMVrDuMRcSimS9" target="_blank" title="Book a meeting" class="text-sm-left"><i class="ti-calendar"></i> schedule</a>
                             </div>
                             <div class="button-box col-lg-12">
-                                <a class="primary_btn" role="button" href="../assets/files/Tanyo_Ivanov_CV.pdf" target="_blank"><span>CV</span></a>
-                                <a class="primary_btn" role="button" href="../assets/files/Brochure.pdf" target="_blank"><span>BROCHURE</span></a>
+                                <a class="primary_btn" role="button" href="/files/Tanyo_Ivanov_CV.pdf" target="_blank"><span>CV</span></a>
+                                <a class="primary_btn" role="button" href="/files/Brochure.pdf" target="_blank"><span>BROCHURE</span></a>
                             </div>
                         </div>
                     </div>
