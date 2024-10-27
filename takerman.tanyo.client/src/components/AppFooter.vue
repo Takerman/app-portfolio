@@ -6,7 +6,7 @@
                     <div class="footer_top flex-column">
                         <div class="footer_logo">
                             <router-link to="/">
-                                <img src="../assets/img/profile/logo2.png" alt="">
+                                <img src="/img/profile/logo2.png" alt="">
                             </router-link>
                             <div class="d-lg-block d-none">
                                 <nav class="navbar navbar-expand-lg navbar-light justify-content-center">

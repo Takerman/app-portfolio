@@ -4,8 +4,8 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
                     <router-link class="navbar-brand logo_h" to="/">
-                        <img v-if="isHome" src="../assets/img/profile/logo.png" class="header-image" alt="">
-                        <img v-else src="../assets/img/profile/home-banner.png" class="header-image" alt="">
+                        <img v-if="isHome" src="/img/profile/logo.png" class="header-image" alt="">
+                        <img v-else src="/img/profile/home-banner.png" class="header-image" alt="">
                     </router-link>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-bar"></span>

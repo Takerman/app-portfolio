@@ -4,7 +4,7 @@
         <div class="row justify-content-start align-items-center">
             <div class="col-lg-5">
                 <div class="about_img">
-                    <img class="" src="../assets/img/profile/about-us.png" alt="">
+                    <img class="" src="/img/profile/about-us.png" alt="">
                 </div>
             </div>
             <div class="offset-lg-1 col-lg-5">
@@ -21,7 +21,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <img style="margin-left: auto; margin-right: auto; display: block;" src="../assets/img/specs/chart.png" alt="Technologies chart" />
+                <img style="margin-left: auto; margin-right: auto; display: block;" src="/img/specs/chart.png" alt="Technologies chart" />
             </div>
         </div>
     </div>

@@ -19,7 +19,7 @@
             </div>
 
             <div>
-                <img style="margin-left: auto; margin-right: auto; display: block; top: -30px" src="../assets/img/specs/chart.png" alt="Technologies chart" />
+                <img style="margin-left: auto; margin-right: auto; display: block; top: -30px" src="/img/specs/chart.png" alt="Technologies chart" />
                 <div class="align-items-center">
                     <table id="tbl-skills" class="table portfolio-table display compact table-sm">
                         <thead>

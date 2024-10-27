@@ -15,8 +15,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div v-for="(blogItem, key) in blogItems" :key="key" class="col-lg-4 col-md-6" style="color: black;">
-                        <div :onclick="location.href = 'Blog/Post?name=' + blogItem.name" style="cursor: pointer;" class="single-blog">
+                    <router-link v-for="(blogItem, key) in blogItems" :key="key" :to="'/blog/' + blogItem.name" class="col-lg-4 col-md-6" style="color: black;">
+                        <div style="cursor: pointer;" class="single-blog">
                             <div class="thumb">
                                 <img class="img-fluid blog-post-thumbnail" :src="blogItem.image" alt="">
                             </div>
@@ -24,7 +24,7 @@
                                 <div class="meta-top d-flex">
                                     <span><i class="ti-calendar"></i> {{ blogItem.date }}</span>
                                 </div>
-                                <a class="d-block" :href="blogItem.url">
+                                <a class="d-block" :href="blogItem.name + '.html'">
                                     <h4>{{ blogItem.title }}</h4>
                                 </a>
                                 <div class="text-wrap">
@@ -32,13 +32,13 @@
                                         {{ blogItem.content }}
                                     </p>
                                 </div>
-                                <a :href="blogItem.url" class="primary_btn2">Learn More</a>
+                                <a :href="blogItem.name + '.html'" class="primary_btn2">Learn More</a>
                             </div>
                         </div>
-                    </div>
+                    </router-link>
                 </div>
                 <div class="text-center">
-                <router-link to="/blog"></router-link>
+                    <router-link to="/blog"></router-link>
                     <a href="/blog" class="primary_btn2">SEE ALL</a>
                 </div>
             </div>
@@ -57,7 +57,13 @@ export default {
     },
     async mounted() {
         this.blogItems = await blogService.getBlogposts();
+        if (this.take) {
+            this.blogItems = this.blogItems.slice(0, this.take);
+        }
     },
+    props: {
+        take: Number
+    }
 }
 </script>
 

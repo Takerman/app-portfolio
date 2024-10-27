@@ -12,6 +12,7 @@ export const router = createRouter({
     routes: [
         { path: '/', component: Home },
         { path: '/blog', component: Blog, name: "blog" },
+        { path: '/blog/:post', component: Blog, name: "blogPost" },
         { path: '/contacts', component: Contacts, name: "contacts" },
         { path: '/cv', component: CV, name: "cv" },
         { path: '/home', component: Home, name: "home" },
