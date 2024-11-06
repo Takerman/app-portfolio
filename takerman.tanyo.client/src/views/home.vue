@@ -699,22 +699,7 @@
 </template>
 
 <script lang="js">
-import Highlights from '../components/Highlights.vue';
-import Services from '../components/Services.vue';
-import About from '../components/About.vue';
-import Testemonials from '../components/Testemonials.vue';
-import Blog from './Blog.vue';
-import DevStats from '../components/DevStats.vue';
-
 export default {
-    components: {
-        Highlights, 
-        About, 
-        Services, 
-        Testemonials, 
-        Blog, 
-        DevStats
-    }
 }
 </script>
 

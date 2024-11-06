@@ -8,10 +8,7 @@ import "vue-owl-carousel";
 import "animate";
 import cookies from "./helpers/cookies.js";
 import moment from 'moment';
-import en from './assets/languages/en.json';
-import bg from './assets/languages/bg.json';
-import de from './assets/languages/de.json';
-import ru from './assets/languages/ru.json';
+import en from './langs/en.json';
 import VueGtag from "vue-gtag";
 import router from './helpers/router.js';
 
@@ -26,10 +23,7 @@ const i18n = createI18n({
 	fallbackLocale: 'en',
 	formatFallbackMessages: true,
 	messages: {
-		en: en,
-		bg: bg,
-		de: de,
-		ru: ru
+		en: en
 	}
 });
 
