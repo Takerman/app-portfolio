@@ -50,12 +50,15 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            SLACK_EXCEPTIONS=${{ secrets.SLACK_EXCEPTIONS }}
+            NUGET_PASSWORD=${{ secrets.REGISTRY_TOKEN }}
 
       # - name: E2E tests
       #   uses: cypress-io/github-action@v6
       #   with:
-      #     working-directory: ./takerman.dating.client
-      #     config: baseUrl=https://sreshti.net
+      #     working-directory: ./takerman.tanyo.client
+      #     config: baseUrl=https://takerman.net
       #     build: npm run build
       #     start: npm run dev
       #   env:

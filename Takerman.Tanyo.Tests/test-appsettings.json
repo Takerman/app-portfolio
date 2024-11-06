@@ -1,0 +1,15 @@
+{
+  "AllowedHosts": "*",
+  "CommonConfig": {
+  },
+  "ConnectionStrings": {
+    "DataProvider": "sqlserver",
+    "DefaultConnection": "Data Source=takerman.net,5433;Initial Catalog=master;Integrated Security=False;Persist Security Info=False;User ID=takerman;Password=Hakerman91!;Trust Server Certificate=True"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  }
+}
