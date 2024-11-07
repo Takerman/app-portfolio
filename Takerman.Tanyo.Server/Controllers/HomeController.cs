@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Takerman.Mail;
+using Takerman.Tanyo.Models.DTOs;
 using Takerman.Tanyo.Services.Abstraction;
 
 namespace Takerman.Tanyo.Server.Controllers
@@ -7,40 +9,10 @@ namespace Takerman.Tanyo.Server.Controllers
     [Route("[controller]")]
     public class HomeController(IHomeService _homeService) : ControllerBase
     {
-        [HttpGet("GetFooterLinks")] 
-        public List<KeyValuePair<string, string>> GetFooterLinks()
+        [HttpPost("SendMessage")] 
+        public async Task SendMessage(MailMessageDto message)
         {
-            return _homeService.GetFooterLinks();
-        }
-        
-        [HttpGet("GetHighlights")] 
-        public List<KeyValuePair<int, string>> GetHighlights()
-        {
-            return _homeService.GetHighlights();
-        }
-        
-        [HttpGet("GetNavLinks")] 
-        public List<KeyValuePair<string, string>> GetNavLinks()
-        {
-            return _homeService.GetNavLinks();
-        }
-        
-        [HttpGet("GetSkills")] 
-        public List<KeyValuePair<string, int>> GetSkills()
-        {
-            return _homeService.GetSkills();
-        }
-        
-        [HttpGet("GetSocialLinks")] 
-        public List<KeyValuePair<string, string>> GetSocialLinks()
-        {
-            return _homeService.GetSocialLinks();
-        }
-
-        [HttpGet("GetCompanies")]
-        public List<KeyValuePair<string, string>> GetCompanies()
-        {
-            return _homeService.GetCompanies();
+            await _homeService.SendMessageAsync(message);
         }
     }
 }

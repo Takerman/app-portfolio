@@ -1,5 +1,6 @@
 using System.Net;
 using Takerman.Logging;
+using Takerman.Mail;
 using Takerman.Tanyo.Models.Configuration;
 using Takerman.Tanyo.Server.Middleware;
 using Takerman.Tanyo.Services;
@@ -26,6 +27,7 @@ builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection(n
 builder.Services.Configure<CommonConfig>(builder.Configuration.GetSection(nameof(CommonConfig)));
 builder.Services.AddTransient<IHomeService, HomeService>();
 builder.Services.AddTransient<IBlogService, BlogService>();
+builder.Services.AddTransient<IMailService, MailService>();
 builder.Services.AddHsts(options =>
 {
     options.Preload = true;
