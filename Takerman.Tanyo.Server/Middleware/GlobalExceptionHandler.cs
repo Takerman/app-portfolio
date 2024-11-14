@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Takerman.Extensions;
 
 namespace Takerman.Tanyo.Server.Middleware
 {
@@ -7,9 +8,7 @@ namespace Takerman.Tanyo.Server.Middleware
     {
         public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
         {
-            var message = exception.Message + (exception.InnerException == null ? string.Empty : exception.InnerException.Message);
-
-            _logger.LogError(exception, $"Exception occurred: {message}");
+            _logger.LogError(exception, $"*Tanyo*: `{exception.GetMessage()}`");
 
             var problemDetails = new ProblemDetails
             {
