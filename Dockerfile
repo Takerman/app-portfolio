@@ -28,10 +28,6 @@ COPY ["takerman.tanyo.client/package.json", "package.json"]
 RUN sed -i "s|</configuration>|<packageSourceCredentials><github><add key=\"Username\" value=\"takerman\"/><add key=\"ClearTextPassword\" value=\"${NUGET_PASSWORD}\"/></github></packageSourceCredentials></configuration>|" nuget.config
 RUN dotnet nuget add source https://nuget.pkg.github.com/takermanltd/index.json --name github
 RUN echo //npm.pkg.github.com/:_authToken=$NUGET_PASSWORD >> ~/.npmrc
-RUN echo @takermanltd:registry=https://npm.pkg.github.com/ >> ~/.npmrc
-RUN echo "user.email=tivanov@takerman.net" > .npmrc
-RUN echo "user.name=takerman" > .npmrc
-RUN echo "user.username=takerman" > .npmrc
 RUN npm install --production
 
 WORKDIR "/src/Takerman.Tanyo.Tests"
