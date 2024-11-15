@@ -1,9 +1,11 @@
-﻿using Takerman.Mail;
+﻿using Microsoft.Extensions.Logging;
+using Takerman.Extensions;
+using Takerman.Mail;
 using Takerman.Tanyo.Services.Abstraction;
 
 namespace Takerman.Tanyos.Services
 {
-    public class HomeService(IMailService _mailService) : IHomeService
+    public class HomeService(ILogger<HomeService> _logger, IMailService _mailService) : IHomeService
     {
         public List<KeyValuePair<string, int>> GetSkills()
         {
@@ -62,7 +64,14 @@ namespace Takerman.Tanyos.Services
 
         public async Task SendMessageAsync(MailMessageDto message)
         {
-            await _mailService.SendToQueue(message);
+            try
+            {
+                await _mailService.SendToQueue(message);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "*Takerman*: An error occured when sending an email. {Exception}", ex.GetMessage());
+            }
         }
     }
 }
