@@ -33,6 +33,9 @@ app.config.productionTip = false;
 app.use(pinia)
 	.use(i18n)
 	.use(router)
-	.use(VueGtag, {
-		config: { id: 'G-5Z8VNY3X2S' }
-	}).mount('#app');
+	.mount('#app');
+
+
+	// .use(VueGtag, {
+	// 	config: { id: 'G-5Z8VNY3X2S' }
+	// })

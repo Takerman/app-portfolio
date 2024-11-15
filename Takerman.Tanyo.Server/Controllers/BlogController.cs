@@ -11,7 +11,7 @@ namespace Takerman.Tanyo.Server.Controllers
         [HttpGet("GetBlogposts")]
         public List<BlogpostDto> GetBlogposts()
         {
-            return [.. _blogService.GetBlogposts().OrderBy(x => x.ID)];
+            return [.. _blogService.GetBlogposts().OrderByDescending(x => x.Created)];
         }
     }
 }

@@ -1,5 +1,4 @@
 <template>
-
     <div class="section-margin">
         <section class="blog-area section-gap">
             <div class="container">
@@ -15,31 +14,25 @@
                     </div>
                 </div>
                 <div class="row">
-                    <router-link v-for="(blogItem, key) in blogItems" :key="key" :to="'/blog/' + blogItem.name" class="col-lg-4 col-md-6" style="color: black;">
+                    <router-link v-for="(blogItem, key) in blogItems" :key="key" :to="'/blog/' + blogItem.name" class="col-sm-3 col-md-3" style="color: black;">
                         <div style="cursor: pointer;" class="single-blog">
                             <div class="thumb">
-                                <img class="img-fluid blog-post-thumbnail" :src="blogItem.image" alt="">
+                                <img class="img img-fluid img-responsive" :src="blogItem.image" :alt="blogItem.name">
                             </div>
                             <div class="short_details">
                                 <div class="meta-top d-flex">
-                                    <span><i class="ti-calendar"></i> {{ blogItem.date }}</span>
+                                    <span><i class="ti-calendar"></i> {{ moment(blogItem.created).format('DD MMM YYYY') }}</span>
                                 </div>
-                                <a class="d-block" :href="blogItem.name + '.html'">
-                                    <h4>{{ blogItem.title }}</h4>
-                                </a>
+                                <router-link :to="'/blog/' + blogItem.name">{{ blogItem.title }}</router-link>
                                 <div class="text-wrap">
                                     <p>
                                         {{ blogItem.content }}
                                     </p>
                                 </div>
-                                <a :href="blogItem.name + '.html'" class="primary_btn2">Learn More</a>
+                                <router-link :to="'/blog/' + blogItem.name" class="primary_btn2">Learn More</router-link>
                             </div>
                         </div>
                     </router-link>
-                </div>
-                <div class="text-center">
-                    <router-link to="/blog"></router-link>
-                    <a href="/blog" class="primary_btn2">SEE ALL</a>
                 </div>
             </div>
         </section>
@@ -47,22 +40,17 @@
 </template>
 
 <script lang="js">
-import blogService from "../services/blogService";
+import moment from "moment";
 
 export default {
     data() {
         return {
-            blogItems: []
+            blogItems: [],
+            moment: moment
         }
     },
-    async mounted() {
-        this.blogItems = await blogService.getBlogposts();
-        if (this.take) {
-            this.blogItems = this.blogItems.slice(0, this.take);
-        }
-    },
-    props: {
-        take: Number
+    async created() {
+        this.blogItems = await (await fetch('/Blog/GetBlogposts')).json();
     }
 }
 </script>
