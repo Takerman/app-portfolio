@@ -30,8 +30,8 @@ namespace Takerman.Tanyo.Services
                 new ()
                 {
                     ID = 3,
-                    Title = "aws-summit-title-mini",
-                    Content = @"aws-summit-content-mini",
+                    Title = "AWS Summit 2022 Conference - London, Excel",
+                    Content = @"The annual AWS conference in London. This year (2022), I went to the conference in Excel, London. It was quite interesting to attend. Read the full article for more info.",
                     Image = "/images/blog/aws-summit/aws-summit.png",
                     Created = new DateTime(2022, 11, 26),
                     Name = "aws-summit-2022"
@@ -39,8 +39,8 @@ namespace Takerman.Tanyo.Services
                 new ()
                 {
                     ID = 4,
-                    Title = "fanless-home-lab-title-mini",
-                    Content = @"fanless-home-lab-content-mini",
+                    Title = "Home server without fans",
+                    Content = @"This home server turned out to be something amazing. No fans, consumes almost no power and is super powerful",
                     Image = "/images/blog/fanless/fanless.png",
                     Created = new DateTime(2022, 12, 18),
                     Name = "fanless-home-lab"
@@ -48,8 +48,8 @@ namespace Takerman.Tanyo.Services
                 new ()
                 {
                     ID = 5,
-                    Title = "grafana-title-mini",
-                    Content = @"grafana-content-mini",
+                    Title = "Grafana monitoring",
+                    Content = @"For my current configuration, I use Grafana monitoring to monitor server and container performance. In the post you can read about Grafana and other tools like DataDog",
                     Image = "/images/blog/grafana/logo.png",
                     Created = new DateTime(2022, 12, 18),
                     Name = "grafana-monitoring"
@@ -57,8 +57,8 @@ namespace Takerman.Tanyo.Services
                 new ()
                 {
                     ID = 6,
-                    Title = "raid-title-mini",
-                    Content = @"raid-content-mini",
+                    Title = "RAID-1 mirror backups",
+                    Content = @"In the post I am describing the setup of hard drives which I am using for my home lab",
                     Image = "/images/blog/raid/raid-server.jpg",
                     Created = new DateTime(2023, 5, 8),
                     Name = "raid-drives"
@@ -66,8 +66,8 @@ namespace Takerman.Tanyo.Services
                 new ()
                 {
                     ID = 7,
-                    Title = "ransomware-title-mini",
-                    Content = @"ransomware-title-mini",
+                    Title = "I've got 0xxx ransomware",
+                    Content = @"I've got 0xxx ransomware",
                     Image = "/images/blog/ransomware/0xxx.png",
                     Created = new DateTime(2023, 6, 25),
                     Name = "ransomware"
@@ -75,8 +75,8 @@ namespace Takerman.Tanyo.Services
                 new ()
                 {
                     ID = 8,
-                    Title = "ransomware -resolution-title-mini@",
-                    Content = "ransomware-resolution-content-mini",
+                    Title = "No resolution of the problem with the Ransomware",
+                    Content = "In this story I will tell you what I've been through after the ransomware attack and how I turned back to my favourte OS - DietPi",
                     Image = "/images/blog/ransomware/0xxx.png",
                     Created = new DateTime(2024, 1, 20),
                     Name = "ransomware-resolution"

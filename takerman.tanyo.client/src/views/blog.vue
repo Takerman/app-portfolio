@@ -17,7 +17,7 @@
                     <router-link v-for="(blogItem, key) in blogItems" :key="key" :to="'/blog/' + blogItem.name" class="col-sm-3 col-md-3" style="color: black;">
                         <div style="cursor: pointer;" class="single-blog">
                             <div class="thumb">
-                                <img class="img img-fluid img-responsive" :src="blogItem.image" :alt="blogItem.name">
+                                <img class="img img-fluid img-responsive img-responsive" :src="blogItem.image" :alt="blogItem.name">
                             </div>
                             <div class="short_details">
                                 <div class="meta-top d-flex">
@@ -49,7 +49,7 @@ export default {
             moment: moment
         }
     },
-    async created() {
+    async mounted() {
         this.blogItems = await (await fetch('/Blog/GetBlogposts')).json();
     }
 }
