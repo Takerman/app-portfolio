@@ -24,6 +24,7 @@ builder.Services.AddExceptionHandler<BadRequestExceptionHandler>();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection(nameof(ConnectionStrings)));
+builder.Services.Configure<RabbitMqConfig>(builder.Configuration.GetSection(nameof(RabbitMqConfig)));
 builder.Services.Configure<CommonConfig>(builder.Configuration.GetSection(nameof(CommonConfig)));
 builder.Services.AddTransient<IHomeService, HomeService>();
 builder.Services.AddTransient<IBlogService, BlogService>();

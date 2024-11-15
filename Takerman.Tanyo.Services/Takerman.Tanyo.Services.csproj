@@ -14,7 +14,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Formats.Asn1" Version="9.0.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.0" />
-    <PackageReference Include="Takerman.Extensions" Version="1.0.8" />
+    <PackageReference Include="Takerman.Extensions" Version="1.0.9" />
     <PackageReference Include="Takerman.Notifications" Version="1.0.5" />
   </ItemGroup>
 

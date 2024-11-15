@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Takerman.Mail;
 using Takerman.Tanyo.Models.Configuration;
 using Takerman.Tanyo.Services.Abstraction;
 using Takerman.Tanyos.Services;
@@ -14,6 +15,7 @@ namespace Takerman.Tanyo.Tests
             => services
                 .Configure<ConnectionStrings>(configuration.GetSection(nameof(ConnectionStrings)))
                 .Configure<CommonConfig>(configuration.GetSection(nameof(CommonConfig)))
+                .Configure<RabbitMqConfig>(configuration.GetSection(nameof(RabbitMqConfig)))
                 .AddTransient<IHomeService, HomeService>();
 
         protected override ValueTask DisposeAsyncCore() => new();
