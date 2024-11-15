@@ -365,91 +365,148 @@
 			</div>
 		</div>
 	</section>
-	<!-- 
-				<section class="colorlib-experience" data-section="experience">
-					<div class="colorlib-narrow-content">
-						<div class="row">
-							<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-								<span class="heading-meta">Experience</span>
-								<h2 class="colorlib-heading animate-box">Work Experience</h2>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<div class="timeline-centered">
-									<article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
-										<div class="timeline-entry-inner">
 
-											<div class="timeline-icon color-1">
-												<i class="icon-pen2"></i>
-											</div>
-
-											<div class="timeline-label">
-												<h2><a href="#">Full Stack Developer</a> <span>2017-2018</span></h2>
-												<p>Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may.</p>
-											</div>
-										</div>
-									</article>
-
-									<article class="timeline-entry animate-box" data-animate-effect="fadeInRight">
-										<div class="timeline-entry-inner">
-											<div class="timeline-icon color-2">
-												<i class="icon-pen2"></i>
-											</div>
-											<div class="timeline-label">
-												<h2><a href="#">Front End Developer at Google Company</a> <span>2017-2018</span></h2>
-												<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-											</div>
-										</div>
-									</article>
-
-									<article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
-										<div class="timeline-entry-inner">
-											<div class="timeline-icon color-3">
-												<i class="icon-pen2"></i>
-											</div>
-											<div class="timeline-label">
-												<h2><a href="#">System Analyst</a> <span>2017-2018</span></h2>
-												<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-											</div>
-										</div>
-									</article>
-
-									<article class="timeline-entry animate-box" data-animate-effect="fadeInTop">
-										<div class="timeline-entry-inner">
-											<div class="timeline-icon color-4">
-												<i class="icon-pen2"></i>
-											</div>
-											<div class="timeline-label">
-												<h2><a href="#">Creative Designer</a> <span>2017-2018</span></h2>
-												<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-											</div>
-										</div>
-									</article>
-
-									<article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
-										<div class="timeline-entry-inner">
-											<div class="timeline-icon color-5">
-												<i class="icon-pen2"></i>
-											</div>
-											<div class="timeline-label">
-												<h2><a href="#">UI/UX Designer at Envato</a> <span>2017-2018</span></h2>
-												<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-											</div>
-										</div>
-									</article>
-
-									<article class="timeline-entry begin animate-box" data-animate-effect="fadeInBottom">
-										<div class="timeline-entry-inner">
-											<div class="timeline-icon color-none">
-											</div>
-										</div>
-									</article>
+	<section class="colorlib-experience" data-section="experience">
+		<div class="colorlib-narrow-content">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+					<span class="heading-meta">Experience</span>
+					<h2 class="colorlib-heading animate-box">Work Experience</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="timeline-centered">
+						<article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
+							<div class="timeline-entry-inner">
+								<div class="timeline-icon color-1">
+									<i class="icon-pen2"></i>
+								</div>
+								<div class="timeline-label">
+									<h2><a href="https://activtrades.com">Software Engineer</a> <span>Mar 2023 - Present</span></h2>
+									<p>Migration of legacy dotnet app to another architecture and newer stack. Adding features and improvements.</p>
 								</div>
 							</div>
-						</div>
+						</article>
+
+						<article class="timeline-entry animate-box" data-animate-effect="fadeInRight">
+							<div class="timeline-entry-inner">
+								<div class="timeline-icon color-2">
+									<i class="icon-pen2"></i>
+								</div>
+								<div class="timeline-label">
+									<h2><a href="https://www.lexisnexis.com/en-us">Software Engineer III in LexisNexis UK</a> <span>Oct 2020-Dec 2021</span></h2>
+									<p>
+										Contributed to the development of a modern Global Tax platform with load of dependencies to different micro-services. <br />
+										Cloud based delivery, most-modern at the time methodology of work, React Clients connected to multiple APIs.<br />
+										<br />
+										Skills: Terraform · Kubernetes · React Test Library · .NET Core · AWS · React.js · Jest · Agile Methodologies · ASP.NET · NUnit · React Hooks · Docker · SASS · Git
+									</p>
+								</div>
+							</div>
+						</article>
+
+						<article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
+							<div class="timeline-entry-inner">
+								<div class="timeline-icon color-3">
+									<i class="icon-pen2"></i>
+								</div>
+								<div class="timeline-label">
+									<h2><a href="https://fosterandpartners.com">Application Developer in Foster + Partners</a> <span>Jan 2019-Jan 2020</span></h2>
+									<p>
+										- Worked on the development and testing of the Intranet portal and all the accompanying application inside it. <br />
+										- An important part of the agile meetings. Tickets handling, bug fixing and features development. <br />
+										<br />
+										Skills: SQL · WinForms · Agile Environment · xUnit · Microsoft Azure · .NET Core · Load Testing · Umbraco · Vue.js · ASP.NET · Bootstrap · Selenium · jQuery · Windows Server · Entity Framework (EF) Core · TDD · SASS · Git
+									</p>
+								</div>
+							</div>
+						</article>
+
+						<article class="timeline-entry animate-box" data-animate-effect="fadeInTop">
+							<div class="timeline-entry-inner">
+								<div class="timeline-icon color-4">
+									<i class="icon-pen2"></i>
+								</div>
+								<div class="timeline-label">
+									<h2><a href="https://www.bgosoftware.com/">Senior .NET Developer in BGO Software</a> <span>Jun 2016-Nov 2018</span></h2>
+									<p>
+										- Coordinating the work with the Project Manager and training a junior for a few months. <br />
+										- Maintained the internal health research portal of the NHS. New features, bug fixing and handle tickets.<br />
+										- Everyday communication with the Government team <br />
+										<br />
+										Skills: SQL · Windows Services · Unit Testing · Agile Methodologies · Entity Framework · Bootstrap · jQuery · Windows Server · Ace Admin · ASP.NET Core · Test Automation · Git
+									</p>
+								</div>
+							</div>
+						</article>
+
+						<article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
+							<div class="timeline-entry-inner">
+								<div class="timeline-icon color-5">
+									<i class="icon-pen2"></i>
+								</div>
+								<div class="timeline-label">
+									<h2><a href="https://comstream.eu/">Software Engineer in ComStream</a> <span>Jun 2015-Jun 2016</span></h2>
+									<p>
+										- Built mobile Installer for a smart home gadget onsite in the Swedish office. <br />
+										- Coordinated the work between me and a junior. <br />
+										- Attended in everyday communication with the project manager. <br />
+										<br />
+										Skills: SQL · Windows Services · Entity Framework · ASP.NET · Bootstrap · jQuery · ASP.NET Web API · .NET Framework · Windows Server · Git
+									</p>
+								</div>
+							</div>
+						</article>
+
+						<article class="timeline-entry animate-box" data-animate-effect="fadeInRight">
+							<div class="timeline-entry-inner">
+								<div class="timeline-icon color-2">
+									<i class="icon-pen2"></i>
+								</div>
+								<div class="timeline-label">
+									<h2><a href="https://www.bucons.com">DotNet Developer in Bucons</a> <span>Jan 2013-Jun 2015</span></h2>
+									<p>
+										- WinForm module for a Swiss University custom web shop using ASP.NET MVC<br />
+										- Found and trained a Junior. <br />
+										- Developed and delivered on time standalone Win services, Web services and libraries. <br />
+										- WinForm module for a Swiss University custom web shop using ASP.NET MVC - Found and trained a Junior. - Developed and delivered on time standalone Win services, Web services and libraries. <br />
+										<br />
+										Skills: SQL · WPF · DotNetNuke (DNN) · WinForms · Windows Services · AWS · Entity Framework · ASP.NET · XBAP · Bootstrap · jQuery · ASP.NET Web API · .NET Framework · Windows Server · Git
+									</p>
+								</div>
+							</div>
+						</article>
+
+						<article class="timeline-entry animate-box" data-animate-effect="fadeInTop">
+							<div class="timeline-entry-inner">
+								<div class="timeline-icon color-4">
+									<i class="icon-pen2"></i>
+								</div>
+								<div class="timeline-label">
+									<h2><a href="https://www.unrealsoft.net/">Database Engineer</a> <span>Jul 2012-Jan 2013</span></h2>
+									<p>
+										Web application for phone calls reports and stats.<br />
+										Contribution to a GPS automobile tracking system.<br />
+										Web application for phone calls reports and stats. Contribution to a GPS automobile tracking system. <br />
+										<br />
+										Skills: ASP.NET MVC · Firebird · jQuery · .NET Framework · Kendo Ui
+									</p>
+								</div>
+							</div>
+						</article>
+
+						<article class="timeline-entry begin animate-box" data-animate-effect="fadeInBottom">
+							<div class="timeline-entry-inner">
+								<div class="timeline-icon color-none">
+								</div>
+							</div>
+						</article>
 					</div>
-				</section> -->
+				</div>
+			</div>
+		</div>
+	</section>
 	<!-- 
 				<section class="colorlib-work" data-section="work">
 					<div class="colorlib-narrow-content">
