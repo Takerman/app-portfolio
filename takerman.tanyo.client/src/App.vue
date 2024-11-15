@@ -13,7 +13,7 @@
                     <li><a href="/#about" data-nav-section="about">About</a></li>
                     <li><a href="/#services" data-nav-section="services">Services</a></li>
                     <li><a href="/#skills" data-nav-section="skills">Skills</a></li>
-                    <li><a href="/#education" data-nav-section="education">Education</a></li>
+                    <!-- <li><a href="/#education" data-nav-section="education">Education</a></li> -->
                     <li><a href="/#experience" data-nav-section="experience">Experience</a></li>
                     <!-- <li><a href="/#work" data-nav-section="work">Side Projects</a></li> -->
                     <li><a href="/blog" data-nav-section="blog">Blog</a></li>

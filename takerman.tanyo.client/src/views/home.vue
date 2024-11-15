@@ -366,7 +366,7 @@
 		</div>
 	</section>
 
-	<section class="colorlib-experience" data-section="experience">
+	<section id="experience" class="colorlib-experience" data-section="experience">
 		<div class="colorlib-narrow-content">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
