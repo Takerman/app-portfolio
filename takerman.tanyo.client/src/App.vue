@@ -16,7 +16,7 @@
                     <li><a href="/#education" data-nav-section="education">Education</a></li>
                     <li><a href="/#experience" data-nav-section="experience">Experience</a></li>
                     <li><a href="/#work" data-nav-section="work">Work</a></li>
-                    <li><a href="/#blog" data-nav-section="blog">Blog</a></li>
+                    <li><a href="/blog" data-nav-section="blog">Blog</a></li>
                     <li><a href="/#contact" data-nav-section="contact">Contact</a></li>
                 </ul>
             </div>
