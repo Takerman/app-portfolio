@@ -9,8 +9,8 @@
         <nav id="colorlib-main-menu" role="navigation" class="navbar">
             <div id="navbar" class="collapse">
                 <ul>
-                    <li><a href="/#colorlib-hero" data-nav-section="home">Home</a></li>
-                    <li><a href="/#about" data-nav-section="about">About</a></li>
+                    <li><a href="/#home" data-nav-section="home">Home</a></li>
+                    <!-- <li><a href="/#about" data-nav-section="about">About</a></li> -->
                     <li><a href="/#services" data-nav-section="services">Services</a></li>
                     <li><a href="/#skills" data-nav-section="skills">Skills</a></li>
                     <!-- <li><a href="/#education" data-nav-section="education">Education</a></li> -->
@@ -24,7 +24,7 @@
 
         <div class="colorlib-footer">
             <ul>
-                <li><a href="https://github.com/Takerman"><i class="icon-github"></i></a></li>
+                <li><a href="https://github.com/Takerman"><i class="dark icon-github"></i></a></li>
                 <li><a href="https://www.linkedin.com/in/tanyo-ivanov/"><i class="icon-linkedin2"></i></a></li>
             </ul>
         </div>

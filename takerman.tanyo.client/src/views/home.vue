@@ -1,5 +1,5 @@
 <template>
-	<section id="colorlib-hero" class="js-fullheight" data-section="home">
+	<!-- <section id="colorlib-hero" class="js-fullheight" data-section="home">
 		<div class="flexslider js-fullheight">
 			<ul class="slides">
 				<li style="background-image: url(images/img_bg_1.jpg);">
@@ -18,7 +18,7 @@
 						</div>
 					</div>
 				</li>
-				<!-- <li style="background-image: url(images/img_bg_2.jpg);"> -->
+				<li style="background-image: url(images/img_bg_2.jpg);">
 				<li>
 					<div class="overlay"></div>
 					<div class="container-fluid">
@@ -37,9 +37,9 @@
 				</li>
 			</ul>
 		</div>
-	</section>
+	</section> -->
 
-	<section id="about" class="colorlib-about" data-section="about">
+	<section id="home" class="colorlib-about" data-section="home">
 		<div class="colorlib-narrow-content">
 			<div class="row">
 				<div class="col-md-12">
@@ -187,7 +187,7 @@
 			<div class="row">
 				<div class="col-md-3 text-center animate-box">
 					<span class="colorlib-counter js-counter" data-from="0" data-to="2010" data-speed="5000" data-refresh-interval="50">2010</span>
-					<span class="colorlib-counter-label">Work since</span>
+					<span class="colorlib-counter-label">Works since</span>
 				</div>
 				<div class="col-md-3 text-center animate-box">
 					<span class="colorlib-counter js-counter" data-from="0" data-to="18" data-speed="5000" data-refresh-interval="50">18</span>
@@ -311,13 +311,13 @@
 					<div class="fancy-collapse-panel">
 						<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingThree">
+								<div class="panel-heading" role="tab" id="headingThreeHeading">
 									<h4 class="panel-title">
-										<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Certifications
+										<a class="collapse" @click="toggle('certifications')" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="certifications">Certifications
 										</a>
 									</h4>
 								</div>
-								<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+								<div id="certifications" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
 									<div class="panel-body">
 										<p>I already worked from the start of my Bachelor degree and back then I had to be on a long-term project in Sweden so I decided to not take a Master degree as I saw it as uneccessary after the Bachelor degree. I concentrated on out of work studies and took numerous certifications in different areas.
 											<!-- <p>
@@ -333,13 +333,13 @@
 							</div>
 
 							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingFour">
+								<div class="panel-heading" role="tab" id="headingFourHeading">
 									<h4 class="panel-title">
-										<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Bachelor - Business Information Technologies
+										<a class="collapse" @click="toggle('university')" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="university">Bachelor - Business Information Technologies
 										</a>
 									</h4>
 								</div>
-								<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+								<div id="university" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
 									<div class="panel-body">
 										<p>After the high-school I started to learn Business Information Technologies in the university of Plovdiv. Back then I already started my first job, so I was learning and working in the same time. It was a 50/50 mix of Programing and Economics. I was learning 2 disciplines of Software Development and 2 disciplines of bussiness studies. They were preparing us for positions like Business Analyst who can understand the requirements but in the same time can work with code. I was the only one in the country who entered with 100% marks 6.00 test of programming. I graduated with excelent score too as one of the few people with excelent scores.</p>
 									</div>
@@ -347,13 +347,13 @@
 							</div>
 
 							<div class="panel panel-default">
-								<div class="panel-heading" role="tab" id="headingFive">
+								<div class="panel-heading" role="tab" id="highSchoolHeading">
 									<h4 class="panel-title">
-										<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">High School - Information Technologies
+										<a class="collapse" @click="toggle('highSchool')" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="highSchool">High School - Information Technologies
 										</a>
 									</h4>
 								</div>
-								<div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+								<div id="highSchool" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
 									<div class="panel-body">
 										<p>Many, many yers ago I was in a high-school and i was learning software development and technologies there. Very old languages as Turbo Pascal, Visual Basic, C etc. Very old technologies as Microsoft Office 2003, Flash, Corel Draw, etc. However, I was passionate about 3D Design as the last 6 years I was winning the painging contest each year. That's why I learned 3D Studio Max, Google SketchUp, K3D and some more and created large library with 3D models on a CD (that i lost after some years before saving it in the cloud).</p>
 									</div>
@@ -677,7 +677,7 @@
 						<div class="colorlib-text">
 							<p>
 								<a href="https://www.linkedin.com/in/tanyo-ivanov/" target="_blank">LinkedIn</a> |
-								<a href="https://github.com/Takerman" target="_blank">GitHub</a> |
+								<a href="https://github.com/Takerman" target="_blank">GitHub</a>
 							</p>
 						</div>
 					</div>
@@ -709,7 +709,6 @@
 			</div>
 		</div>
 	</section>
-	<p style="text-align: center;">Soon there will be more content. Now I don't have time</p>
 </template>
 
 <script lang="js">
@@ -733,6 +732,20 @@ export default {
 	methods: {
 		async getBlogpost(path) {
 			return await (await fetch(path)).text();
+		},
+		toggle(id) {
+			let pannels = document.getElementsByClassName('panel-collapse');
+			for (let i = 0; i < pannels.length; i++) {
+				const pannel = pannels[i];
+				if (!pannel.classList.contains('collapse'))
+					pannel.classList.add('collapse');
+			}
+			let element = document.getElementById(id);
+			if (element.classList.contains('collapse')) {
+				element.classList.remove('collapse');
+			} else {
+				pannel.classList.add('collapse');
+			}
 		},
 		async send() {
 			try {
