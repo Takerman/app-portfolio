@@ -26,7 +26,8 @@
     <PackageReference Include="Microsoft.Identity.Client" Version="4.66.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
     <PackageReference Include="System.Formats.Asn1" Version="9.0.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.1" />
+    <PackageReference Include="Takerman.Extensions" Version="1.0.9" />
     <PackageReference Include="xunit" Version="2.9.2" />
     <PackageReference Include="Xunit.Microsoft.DependencyInjection" Version="8.2.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
