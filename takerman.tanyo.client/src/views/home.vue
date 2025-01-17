@@ -667,6 +667,7 @@
 						</div>
 						<div class="colorlib-text">
 							<p><a href="mailto:tivanov@takerman.net">tivanov@takerman.net</a></p>
+							<p><a href="tel:+359894834513">+359894834513</a></p>
 						</div>
 					</div>
 
