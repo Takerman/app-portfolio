@@ -8,7 +8,6 @@ import 'animate.css';
 import cookies from "./helpers/cookies.js";
 import moment from 'moment';
 import en from './langs/en.json';
-import VueGtag from "vue-gtag";
 import router from './helpers/router.js';
 
 Date.prototype.toJSON = function () { return moment(this).format(); }
@@ -33,8 +32,3 @@ app.use(pinia)
 	.use(i18n)
 	.use(router)
 	.mount('#app');
-
-
-	// .use(VueGtag, {
-	// 	config: { id: 'G-5Z8VNY3X2S' }
-	// })
