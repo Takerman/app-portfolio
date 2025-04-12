@@ -28,7 +28,6 @@ builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection(n
 builder.Services.Configure<RabbitMqConfig>(builder.Configuration.GetSection(nameof(RabbitMqConfig)));
 builder.Services.Configure<CommonConfig>(builder.Configuration.GetSection(nameof(CommonConfig)));
 builder.Services.AddTransient<IHomeService, HomeService>();
-builder.Services.AddTransient<IBlogService, BlogService>();
 builder.Services.AddTransient<IMailService, MailService>();
 builder.Services.AddTransient<IMailService, MailService>();
 builder.Services.AddHttpClient<PostsClient>(client =>
