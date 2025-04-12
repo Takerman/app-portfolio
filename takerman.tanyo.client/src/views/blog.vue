@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div v-for="(blogItem, key) in blogItems" :key="key" class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div v-for="(blogItem, key) in blogItems" :key="key" class="col-lg-5 col-md-6 col-sm-12 mb-5" style="margin: 40px 20px 40px 20px;">
                         <router-link :to="'/blog/' + blogItem.id" class="blog-card-link">
                             <div class="blog-card">
                                 <div class="blog-image">

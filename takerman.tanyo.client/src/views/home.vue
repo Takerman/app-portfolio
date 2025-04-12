@@ -632,11 +632,11 @@
 			<div class="row">
 				<div v-for="(blogItem, key) in blogItems" :key="key" class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
 					<div class="blog-entry">
-						<router-link :to="'/blog/' + blogItem.name" class="blog-img"><img :src="blogItem.image" class="img-responsive" :alt="blogItem.title"></router-link>
+						<router-link :to="'/blog/' + blogItem.title" class="blog-img"><img :src="blogItem.thumbnail" class="img-responsive" :alt="blogItem.title"></router-link>
 						<div class="desc">
-							<span><small>{{ moment(blogItem.created).format('DD MMM YYYY') }} </small> | <small> {{ blogItem.title }} </small></span>
-							<h3><router-link :to="'/blog/' + blogItem.name">{{ blogItem.title }}</router-link></h3>
-							<p>{{ blogItem.content }}</p>
+							<span><small>{{ moment(blogItem.datePublished).format('DD MMM YYYY') }} </small> | <small> {{ blogItem.title }} </small></span>
+							<h3><router-link :to="'/blog/' + blogItem.id">{{ blogItem.title }}</router-link></h3>
+							<p>{{ blogItem.content.substr(0, 100) }}...</p>
 						</div>
 					</div>
 				</div>
@@ -713,61 +713,61 @@
 </template>
 
 <script lang="js">
-import moment from 'moment';
+	import moment from 'moment';
 
-export default {
-	data() {
-		return {
-			name: '',
-			from: '',
-			subject: '',
-			body: '',
-			blogItems: [],
-			moment: moment
-		}
-	},
-	async created() {
-		this.blogItems = await (await fetch('/Blog/GetBlogposts')).json();
-		this.blogItems = this.blogItems.slice(0, 3);
-	},
-	methods: {
-		async getBlogpost(path) {
-			return await (await fetch(path)).text();
+	export default {
+		data() {
+			return {
+				name: '',
+				from: '',
+				subject: '',
+				body: '',
+				blogItems: [],
+				moment: moment
+			}
 		},
-		toggle(id) {
-			let pannels = document.getElementsByClassName('panel-collapse');
-			for (let i = 0; i < pannels.length; i++) {
-				const pannel = pannels[i];
-				if (!pannel.classList.contains('collapse'))
+		async created() {
+			this.blogItems = await (await fetch('/Blog/GetBlogposts')).json();
+			this.blogItems = this.blogItems.slice(0, 3);
+		},
+		methods: {
+			async getBlogpost(path) {
+				return await (await fetch(path)).text();
+			},
+			toggle(id) {
+				let pannels = document.getElementsByClassName('panel-collapse');
+				for (let i = 0; i < pannels.length; i++) {
+					const pannel = pannels[i];
+					if (!pannel.classList.contains('collapse'))
+						pannel.classList.add('collapse');
+				}
+				let element = document.getElementById(id);
+				if (element.classList.contains('collapse')) {
+					element.classList.remove('collapse');
+				} else {
 					pannel.classList.add('collapse');
-			}
-			let element = document.getElementById(id);
-			if (element.classList.contains('collapse')) {
-				element.classList.remove('collapse');
-			} else {
-				pannel.classList.add('collapse');
+				}
+			},
+			async send() {
+				try {
+					await fetch('Home/SendMessage', {
+						method: "POST",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify({
+							name: this.name,
+							from: this.from,
+							subject: this.subject,
+							body: this.body,
+							to: 'tivanov@takerman.net'
+						})
+					});
+					alert("Send sucessfully");
+				} catch (error) {
+					console.log("Error: " + error);
+				}
 			}
 		},
-		async send() {
-			try {
-				await fetch('Home/SendMessage', {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({
-						name: this.name,
-						from: this.from,
-						subject: this.subject,
-						body: this.body,
-						to: 'tivanov@takerman.net'
-					})
-				});
-				alert("Send sucessfully");
-			} catch (error) {
-				console.log("Error: " + error);
-			}
-		}
-	},
-}
+	}
 </script>
 
 <style scoped></style>

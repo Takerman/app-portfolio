@@ -153,7 +153,7 @@ export default {
   font-size: 2.5rem;
   margin-bottom: 15px;
   color: #333;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .blog-meta {
@@ -174,7 +174,6 @@ export default {
   padding: 0 30px 30px;
   line-height: 1.8;
   color: #444;
-  font-size: 1.05rem;
 }
 
 .blog-content img {
