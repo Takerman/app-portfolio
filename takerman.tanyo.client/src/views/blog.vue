@@ -14,23 +14,27 @@
                     </div>
                 </div>
                 <div class="row">
-                    <router-link v-for="(blogItem, key) in blogItems" :key="key" :to="'/blog/' + blogItem.title" class="col-sm-3 col-md-3" style="color: black;">
-                        <div style="cursor: pointer;" class="single-blog">
-                            <div class="thumb">
-                                <img class="img img-fluid img-responsive img-responsive" :src="blogItem.thumbnail" :alt="blogItem.title">
-                            </div>
-                            <div class="short_details">
-                                <div class="meta-top d-flex">
-                                    <span><i class="ti-calendar"></i> {{ moment(blogItem.datePublished).format('DD MMM YYYY') }}</span>
+                    <div v-for="(blogItem, key) in blogItems" :key="key" class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <router-link :to="'/blog/' + blogItem.id" class="blog-card-link">
+                            <div class="blog-card">
+                                <div class="blog-image">
+                                    <img class="img-fluid" :src="blogItem.thumbnail" :alt="blogItem.title">
                                 </div>
-                                <router-link :to="'/blog/' + blogItem.title">{{ blogItem.title }}</router-link>
-                                <div class="text-wrap">
-                                    <div v-html="blogItem.content.substring(0, 250)"></div>
+                                <div class="blog-content">
+                                    <div class="blog-date">
+                                        <i class="ti-calendar"></i> {{ moment(blogItem.datePublished).format('DD MMM YYYY') }}
+                                    </div>
+                                    <h4 class="blog-title">{{ blogItem.title }}</h4>
+                                    <div class="blog-excerpt">
+                                        <div v-html="truncateContent(blogItem.content)"></div>
+                                    </div>
+                                    <div class="blog-read-more">
+                                        <span class="primary_btn2">Learn More</span>
+                                    </div>
                                 </div>
-                                <router-link :to="'/blog/' + blogItem.title" class="primary_btn2">Learn More</router-link>
                             </div>
-                        </div>
-                    </router-link>
+                        </router-link>
+                    </div>
                 </div>
             </div>
         </section>
@@ -47,10 +51,84 @@ export default {
             moment: moment
         }
     },
+    methods: {
+        truncateContent(content) {
+            // Safely truncate HTML content to around 150 characters
+            const div = document.createElement('div');
+            div.innerHTML = content;
+            const text = div.textContent || div.innerText || '';
+            return text.substring(0, 150) + (text.length > 150 ? '...' : '');
+        }
+    },
     async mounted() {
         this.blogItems = await (await fetch('/Blog/GetBlogposts')).json();
     }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.blog-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    background: white;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.blog-image {
+    overflow: hidden;
+    height: 200px;
+}
+
+.blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.blog-card:hover .blog-image img {
+    transform: scale(1.05);
+}
+
+.blog-content {
+    padding: 20px;
+}
+
+.blog-date {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.blog-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.blog-excerpt {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.blog-read-more {
+    margin-top: 15px;
+}
+
+.blog-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+</style>

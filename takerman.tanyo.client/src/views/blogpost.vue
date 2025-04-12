@@ -9,15 +9,15 @@ import { useRoute } from 'vue-router';
 export default {
     data() {
         return {
-            post: null,
+            id: null,
             moment: moment,
             content: ''
         }
     },
     async mounted() {
-        const { params } = useRoute();
-        this.post = params.post;
-        this.content = await (await fetch('/posts/post-' + this.post + ".html")).text();
+        const { id } = useRoute();
+        this.id = params.id;
+        this.content = await (await fetch('/Blog/GetBlogpost?id=' + this.id));
         debugger;
     }
 }
