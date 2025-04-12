@@ -52,7 +52,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             SLACK_EXCEPTIONS=${{ secrets.SLACK_EXCEPTIONS }}
-            NUGET_PASSWORD=${{ secrets.REGISTRY_TOKEN }}
+            NUGET_PASSWORD=${{ secrets.NUGET_PASSWORD }}
 
       # - name: E2E tests
       #   uses: cypress-io/github-action@v6
