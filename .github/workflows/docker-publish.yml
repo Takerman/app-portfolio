@@ -4,10 +4,10 @@ on:
   schedule:
     - cron: '18 19 * * *'
   push:
-    branches: [ "latest" ]
+    branches: [ "master" ]
     tags: [ 'v*.*.*' ]
   pull_request:
-    branches: [ "latest" ]
+    branches: [ "master" ]
 
 env:
   REGISTRY: ghcr.io
