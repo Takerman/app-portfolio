@@ -7,19 +7,14 @@ using Tanyo.Portfolio.Web.Models;
 
 namespace Tanyo.Portfolio.Web.Components
 {
-    public class LocalizerComponent : ViewComponent
+    public class LocalizerComponent(IOptions<RequestLocalizationOptions> _localizationOptions) : ViewComponent
     {
-        private readonly IOptions<RequestLocalizationOptions> localizationOptions;
-
-        public LocalizerComponent(IOptions<RequestLocalizationOptions> localizationOptions) =>
-            this.localizationOptions = localizationOptions;
-
         public IViewComponentResult Invoke()
         {
             var cultureFeature = HttpContext.Features.Get<IRequestCultureFeature>();
             var model = new LocalizerModel
             {
-                SupportedCultures = localizationOptions.Value.SupportedUICultures.ToList(),
+                SupportedCultures = _localizationOptions.Value.SupportedUICultures.ToList(),
                 CurrentUICulture = cultureFeature.RequestCulture.UICulture
             };
             return View(model);
