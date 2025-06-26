@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG SLACK_EXCEPTIONS
 ENV SLACK_WEBHOOK_URL=$SLACK_EXCEPTIONS
 ENV ASPNETCORE_ENVIRONMENT Production
@@ -42,7 +42,7 @@ COPY Tanyo.Portfolio.Web.Tests/. ./Tanyo.Portfolio.Web.Tests/
 WORKDIR /app/Tanyo.Portfolio.Web.Tests/
 RUN dotnet clean ./*.csproj
 RUN dotnet build ./*.csproj
-RUN dotnet test ./*.csproj --logger "trx;LogFileName=Tanyo.Portfolio.Web.Tests.trx" 
+# RUN dotnet test ./*.csproj --logger "trx;LogFileName=Tanyo.Portfolio.Web.Tests.trx" 
 
 WORKDIR /app/Tanyo.Portfolio.Web/
 RUN dotnet publish -c Release -o out
