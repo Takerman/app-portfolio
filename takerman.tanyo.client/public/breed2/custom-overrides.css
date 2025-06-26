@@ -1,0 +1,249 @@
+/* Breed2 Template Overrides for Vue Integration */
+
+/* Reset any conflicting styles */
+* {
+  box-sizing: border-box;
+}
+
+/* Remove Tailwind CSS conflicts */
+.min-h-screen,
+.bg-gradient-to-br,
+.from-purple-900,
+.via-blue-900,
+.to-indigo-900 {
+  background: none !important;
+  min-height: auto !important;
+}
+
+/* Ensure breed2 body styles */
+body {
+  font-size: 14px;
+  line-height: 27px;
+  font-weight: 300;
+  font-family: "Roboto", sans-serif !important;
+  color: #797979;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header area fixes */
+.header_area {
+  position: fixed !important;
+  width: 100%;
+  z-index: 9999;
+  background: transparent;
+  top: 0;
+}
+
+.header_area .main_menu {
+  transition: all 0.3s ease;
+}
+
+.header_area.navbar_fixed .main_menu {
+  background: #ffffff !important;
+  box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.1);
+}
+
+/* Navbar brand logo */
+.navbar-brand img {
+  max-height: 40px;
+  width: auto;
+}
+
+/* Navigation links */
+.navbar .nav .nav-item .nav-link {
+  font: 500 14px/100px "Roboto", sans-serif !important;
+  text-transform: uppercase;
+  color: #05364d !important;
+  padding: 0px;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.navbar .nav .nav-item:hover .nav-link,
+.navbar .nav .nav-item.active .nav-link {
+  color: #1345e6 !important;
+}
+
+/* Main content spacing */
+#app {
+  padding-top: 0;
+}
+
+/* Home banner area */
+.home_banner_area {
+  background: url('/breed2/img/banner/home-banner.png') no-repeat center center;
+  background-size: cover;
+  min-height: 890px;
+  padding-top: 100px;
+}
+
+/* Footer area */
+.footer_area {
+  background: #021017 !important;
+  padding: 60px 0 !important;
+  color: white;
+}
+
+.footer_logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.footer_logo img {
+  max-width: 150px;
+  height: auto;
+}
+
+.footer_social {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.footer_social a {
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 50%;
+  color: #05364d;
+  font-size: 16px;
+  margin-right: 12px;
+  transition: all 0.4s ease;
+  text-decoration: none;
+}
+
+.footer_social a:hover {
+  background: linear-gradient(90deg, #1345e6 0%, #ed239f 100%);
+  color: #ffffff;
+}
+
+.footer_social a:last-child {
+  margin-right: 0;
+}
+
+.footer_bottom {
+  text-align: center;
+}
+
+.footer_bottom p {
+  margin-bottom: 0;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+/* Mobile menu styles */
+@media (max-width: 991px) {
+  .header_area .navbar {
+    background: #ffffff !important;
+    box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.1);
+  }
+  
+  .navbar-toggler {
+    border: none;
+    padding: 0;
+    outline: none;
+  }
+  
+  .navbar-toggler .icon-bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #05364d;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+  }
+  
+  .home_banner_area {
+    min-height: 750px;
+    padding-top: 120px;
+  }
+}
+
+/* Remove any Vue-specific conflicting styles */
+.container-fluid {
+  padding: 0;
+}
+
+/* Ensure sections have proper spacing */
+.section_gap {
+  padding: 140px 0;
+}
+
+@media (max-width: 1199px) {
+  .section_gap {
+    padding: 80px 0;
+  }
+}
+
+/* Statistics area positioning */
+.statistics_area {
+  position: relative;
+  margin-top: -121px;
+}
+
+@media (max-width: 991px) {
+  .statistics_area {
+    margin-top: 0px;
+  }
+}
+
+/* Breed2 buttons */
+.primary_btn {
+  display: inline-block;
+  background: linear-gradient(to right, #1345e6 0%, #ed239f 51%, #1345e6 100%);
+  color: #fff !important;
+  letter-spacing: 0px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 50px;
+  padding: 0 38px;
+  outline: none !important;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius: 5px;
+  background-size: 200% auto;
+  text-decoration: none;
+  border: none;
+}
+
+.primary_btn:hover {
+  background-position: right center;
+  color: #fff !important;
+  text-decoration: none;
+}
+
+/* Banner content positioning */
+.banner_inner {
+  display: flex;
+  align-items: center;
+  min-height: 890px;
+}
+
+@media (max-width: 991px) {
+  .banner_inner {
+    min-height: 750px;
+  }
+}
+
+/* Gradient text effects */
+.gradient-color {
+  background: linear-gradient(90deg, #1345e6 0%, #ed239f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Remove any router-link default styles that might conflict */
+router-link {
+  text-decoration: none;
+}
+
+/* Ensure proper z-index for dropdowns */
+.dropdown-menu {
+  z-index: 10000;
+}

@@ -5,6 +5,7 @@ import { createPinia } from 'pinia';
 import mitt from 'mitt';
 // import "vue-owl-carousel";
 import 'animate.css';
+import './style.css';
 import cookies from "./helpers/cookies.js";
 import moment from 'moment';
 import en from './langs/en.json';
