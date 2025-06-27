@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG SLACK_EXCEPTIONS
 ENV SLACK_WEBHOOK_URL=$SLACK_EXCEPTIONS
 ENV ASPNETCORE_ENVIRONMENT Production
@@ -35,7 +35,7 @@ RUN dotnet test --configuration $BUILD_CONFIGURATION --no-build --verbosity norm
 RUN dotnet publish Tanyo.Portfolio.Web/Tanyo.Portfolio.Web.csproj --configuration $BUILD_CONFIGURATION --no-build --output /app/publish
 
 # Runtime stage
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
 WORKDIR /app
 
 # Copy published application
