@@ -43,8 +43,8 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ github.repository }}
 
-      - name: Clean
-        run: dotnet clean && dotnet nuget locals all --clear
+      # - name: Clean
+      #   run: dotnet clean && dotnet nuget locals all --clear
 
       - name: Build
         run: dotnet build --configuration Release
